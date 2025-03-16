@@ -1,0 +1,7 @@
+pandas
+geopandas
+requests
+requests_cache
+shapely
+timezonefinder
+tqdm
