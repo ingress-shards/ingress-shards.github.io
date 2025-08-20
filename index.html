@@ -47,6 +47,35 @@
                 z-index: 9999;
                 padding: 10px;
                 border-radius: 10px;
+                display: grid;
+                grid-template-columns: 1fr;
+                min-width: 15%;
+                min-height: 10%;
+            }
+
+            #controls #loading-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 10;
+                border-radius: 10px;
+            }
+
+            #controls #loading-overlay h3 {
+                margin-block: 0 0.5em;
+            }
+
+            #controls #loading-progress {
+                width: 80%;
+                margin-top: 5px;
             }
 
             #controls span {
@@ -66,9 +95,16 @@
         </script>
         <div id="map"></div>
         <div id="controls">
+            <div id="loading-overlay">
+                <h3>Loading Shard Data...</h3>
+                <progress id="loading-progress" value="0" max="100"></progress>
+            </div>
+
             <select id="series">
-                <option value="custom">Custom</option></select
-            ><br /><input id="custom" class="series" type="file" accept="application/json" style="display: none" />
+                <option value="custom">Custom</option>
+            </select>
+            <br />
+            <input id="custom" class="series" type="file" accept="application/json" style="display: none" />
         </div>
         <a
             class="github-fork-ribbon"
@@ -77,10 +113,11 @@
             title="Fork me on GitHub"
             >Fork me on GitHub</a
         >
+
         <script type="module">
             window.map = L.map("map", {
                 worldCopyJump: true,
-            });
+            }).fitWorld();
             var baseMaps = {
                 OSM: L.tileLayer.provider("OpenStreetMap.Mapnik"),
                 "CartoDB Positron": L.tileLayer.provider("CartoDB.Positron"),
@@ -220,6 +257,15 @@
             window.layer_lookup = {};
             let currentActiveSeriesLayer = null;
 
+            let _shardEventData = {};
+
+            // Web Worker instance
+            let jsonParserWorker = null;
+
+            // UI elements
+            const loadingOverlay = document.getElementById("loading-overlay");
+            const loadingProgress = document.getElementById("loading-progress");
+
             // A function to convert Niantic's shard jump times json into a more usable format for display on a map.
             function processShardEventData(name, json) {
                 const artifacts = json.artifact.filter((d) => d.fragment);
@@ -286,9 +332,9 @@
                             switch (historyItem.reason) {
                                 case historyReasons.SPAWN:
                                     /*
-                                    Create a new shard entry if a spawn entry is found.
-                                    This covers the instances where Niantic reuse shards within an event
-                                    i.e. 65 shards for a 78 shard anomaly!
+                                        Create a new shard entry if a spawn entry is found.
+                                        This covers the instances where Niantic reuse shards within an event
+                                        i.e. 65 shards for a 78 shard anomaly!
                                     */
                                     shardEntries.push({
                                         id: fragment.id,
@@ -643,27 +689,153 @@
                 "+Delta 2025-09-20": "shard-jump-times-2025.09.20.17.45.44.json"
             };
 
-            var all_data = await fetch("all_data.json").then((resp) => resp.json());
+            async function initDataPipeline() {
+                try {
+                    _shardEventData = await loadAndParseShardData();
+                    console.debug("Shard data loaded successfully:", _shardEventData);
+                    loadingProgress.value = 66;
+                    await new Promise(requestAnimationFrame);
 
-            for (var name in json_files) {
-                var safe_name = name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
-                var selected = name == "+Delta 2025-08-23" ? "selected" : "";
-                $("#series").append(`<option value="${safe_name}" ${selected}>${name}</option>`);
-                var json = all_data[json_files[name]];
+                    await processAndRenderShards();
 
-                const shardEventData = processShardEventData(safe_name, json);
-                renderShardEventData(safe_name, shardEventData);
+                    loadingProgress.value = 100;
+                    await new Promise(requestAnimationFrame);
+
+                    initMapState();
+
+                    setTimeout(() => (loadingOverlay.style.display = "none"), 500);
+                } catch (error) {
+                    console.error("Error loading shard data:", error);
+                    loadingProgress.value = 0;
+                }
             }
 
-            $("#series").change(function () {
-                handleSeriesDisplay(this.value);
-                map.fitBounds(currentActiveSeriesLayer.getBounds());
-            });
+            async function loadAndParseShardData() {
+                const startTime = performance.now();
+                loadingProgress.value = 0;
 
-            function handleSeriesDisplay(seriesName) {
+                const response = await fetch("all_data.json");
+                if (!response.ok) {
+                    console.error("Failed to fetch all_data.json:", response.statusText);
+                    return;
+                }
+                const fetchTime = performance.now();
+                console.log(`fetch time is : ${fetchTime - startTime} milliseconds`);
+
+                const contentLength = response.headers.get("content-length");
+                const total = parseInt(contentLength, 10);
+                let loaded = 0;
+
+                const reader = response.body.getReader();
+                const chunks = [];
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) {
+                        break;
+                    }
+                    chunks.push(value);
+                    loaded += value.length;
+                    loadingProgress.value = (loaded / total) * 33; // 0-33% for download
+                }
+
+                const combinedChunks = concatUint8Arrays(chunks);
+                const rawJsonString = new TextDecoder().decode(combinedChunks);
+
+                loadingProgress.value = 33; // Move to 33% for parsing
+
+                return new Promise((resolve, reject) => {
+                    jsonParserWorker = new Worker("json-parser-worker.js");
+
+                    jsonParserWorker.onmessage = (event) => {
+                        if (event.data.status === "complete") {
+                            const parseTime = performance.now();
+                            console.log(`parse time is : ${parseTime - fetchTime} milliseconds`);
+
+                            resolve(event.data.data);
+                        } else if (event.data.status === "error") {
+                            console.error("Web Worker error:", event.data.message);
+                            loadingProgress.value = 0; // Reset progress
+                            loadingOverlay.style.display = "flex"; // Keep overlay visible on error
+                            reject(new Error(event.data.message));
+                        }
+                    };
+
+                    jsonParserWorker.onerror = (error) => {
+                        console.error("Web Worker general error:", error);
+                        loadingProgress.value = 0; // Reset progress
+                        loadingOverlay.style.display = "flex"; // Keep overlay visible on error
+                        reject(error);
+                    };
+
+                    jsonParserWorker.postMessage(rawJsonString);
+                });
+            }
+
+            // --- Helper function to concatenate Uint8Arrays ---
+            function concatUint8Arrays(arrays) {
+                let totalLength = 0;
+                for (const arr of arrays) {
+                    totalLength += arr.length;
+                }
+                const result = new Uint8Array(totalLength);
+                let offset = 0;
+                for (const arr of arrays) {
+                    result.set(arr, offset);
+                    offset += arr.length;
+                }
+                return result;
+            }
+
+            async function processAndRenderShards() {
+                const startTime = performance.now();
+                const filesArray = Object.keys(json_files);
+                for (let i = 0; i < filesArray.length; i++) {
+                    const name = filesArray[i];
+                    const safeName = name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
+
+                    $("#series").append(`<option value="${safeName}">${name}</option>`);
+
+                    const json = _shardEventData[json_files[name]];
+                    console.debug("Processing shard event data:", safeName);
+
+                    const shardEventData = processShardEventData(safeName, json);
+                    renderShardEventData(safeName, shardEventData);
+
+                    loadingProgress.value = 66 + ((i + 1) / filesArray.length) * 34;
+                    await new Promise(requestAnimationFrame);
+                }
+                const endTime = performance.now();
+                console.log(`process and render time is : ${startTime - endTime} milliseconds`);
+            }
+
+            function initMapState() {
+                const hash = location.hash.substring(1).replace("Abaddon_1", "").replace("abaddon1_", "");
+                let seriesName = "_delta_2025_08_16";
+                if (hash) {
+                    seriesName = hash.split("_").slice(0, -1).join("_");
+                }
+
+                // We can use a one-time event listener to ensure the button click happens
+                // after the layers are displayed.
+                $("#series").one("seriesDisplayComplete", () => {
+                    console.debug(`Series display complete. Checking hash: ${location.hash}`);
+                    if ($(location.hash).length > 0) {
+                        $(location.hash).click();
+                    }
+                });
+
+                $("#series").val(seriesName);
+                displaySeries(seriesName, "pageLoad");
+            }
+
+            async function displaySeries(seriesName, source = "user") {
                 console.debug(`Displaying series layer for: ${seriesName}`);
                 $(".series").hide();
+
                 $(`#${seriesName}`).show();
+                $("button").off("click").on("click", buttonHandler);
+
                 if (currentActiveSeriesLayer && map.hasLayer(currentActiveSeriesLayer)) {
                     map.removeLayer(currentActiveSeriesLayer);
                 }
@@ -671,16 +843,27 @@
                 if (newSeriesLayer) {
                     layer_lookup[seriesName].addTo(map);
                     currentActiveSeriesLayer = newSeriesLayer;
+
+                    if (source === "user" || location.hash === "") {
+                        map.fitBounds(currentActiveSeriesLayer.getBounds());
+                    }
+
+                    $("#series").trigger("seriesDisplayComplete");
                 } else {
                     console.warn(`No layer found for series: ${seriesName}`);
                 }
+
+                $("#series")
+                    .off("change")
+                    .on("change", function () {
+                        displaySeries(this.value);
+                    });
             }
 
             function buttonHandler() {
                 var layer = layer_lookup[this.id];
                 map.fitBounds(layer.getBounds());
                 location.hash = this.id;
-                console.debug(layer);
                 layer.eachLayer(function (l) {
                     if (l instanceof L.Polyline) {
                         if (l.animatedShards) l.animatedShards.forEach((s) => s.motionStart());
@@ -689,36 +872,49 @@
                 var d = layer.data;
                 //console.log(d.fragment.map(f => f.history.map(h => new Date(parseInt(h.moveTimeMs)))))
             }
-            $("button").click(buttonHandler);
-            String.prototype.rsplit = function (sep, maxsplit) {
-                var split = this.split(sep);
-                return maxsplit ? [split.slice(0, -maxsplit).join(sep)].concat(split.slice(-maxsplit)) : split;
-            };
-            if (location.hash) {
-                var site = location.hash.substring(1).replace("Abaddon_1").replace("abaddon1_", "").rsplit("_", 1);
-                console.debug("hash", site);
-                $("#series").val(site);
-                handleSeriesDisplay(site[0]);
-                $(location.hash).click();
-            } else {
-                handleSeriesDisplay("_delta_2025_08_23");
-                map.fitBounds(currentActiveSeriesLayer.getBounds());
-            }
-            $("#custom").change(function () {
+
+            async function handleCustomFile() {
                 var file = this.files[0];
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    var json = JSON.parse(e.target.result);
-                    var name = file.name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
+                if (!file) return;
 
-                    const shardEventData = processShardEventData(name, json); // Process the raw JSON
-                    renderShardEventData(name, shardEventData);
+                loadingOverlay.style.display = "flex";
+                loadingProgress.value = 0;
+                await new Promise(requestAnimationFrame);
 
-                    $("#series").append(`<option value="${name}">${file.name}</option>`);
-                    $("#series").val(name).change();
-                    $("button").off("click").on("click", buttonHandler);
+                let reader = new FileReader();
+                reader.onload = async function (e) {
+                    const localRawJsonString = e.target.result;
+                    loadingProgress.value = 33;
+                    await new Promise(requestAnimationFrame);
+
+                    jsonParserWorker.postMessage(localRawJsonString);
+                    jsonParserWorker.onmessage = async (workerEvent) => {
+                        if (workerEvent.data.status === "complete") {
+                            loadingProgress.value = 66;
+                            await new Promise(requestAnimationFrame);
+
+                            const parsedJson = workerEvent.data.data;
+                            const name = file.name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
+                            const shardEventData = processShardEventData(name, parsedJson);
+
+                            _shardEventData[name] = shardEventData;
+                            renderShardEventData(name, shardEventData);
+
+                            $("#series").append(`<option value="${name}">${file.name}</option>`);
+                            $("#series").val(name).change();
+                            $("button").off("click").on("click", buttonHandler);
+
+                            loadingProgress.value = 100;
+                            setTimeout(() => (loadingOverlay.style.display = "none"), 500);
+                        }
+                    };
                 };
                 reader.readAsText(file);
+            }
+
+            $(() => {
+                $("#custom").change(handleCustomFile);
+                initDataPipeline();
             });
         </script>
     </body>
