@@ -9,24 +9,20 @@
             rel="icon"
             type="image/png"
             href="//commondatastorage.googleapis.com/ingress.com/img/map_icons/marker_images/abaddon1_shard.png"
-            sizes="60x60"
-        />
+            sizes="60x60" />
         <title>Ingress Shards</title>
         <link
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
             integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-            crossorigin=""
-        />
+            crossorigin="" />
         <link
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"
-        />
+            href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
         <script
             src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin=""
-        ></script>
+            crossorigin=""></script>
         <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://neon-ninja.github.io/leaflet.motion/dist/leaflet.motion.min.js"></script>
@@ -83,7 +79,7 @@
         >
         <script type="module">
             window.map = L.map("map", {
-                worldCopyJump: true
+                worldCopyJump: true,
             });
             var baseMaps = {
                 OSM: L.tileLayer.provider("OpenStreetMap.Mapnik"),
@@ -92,8 +88,8 @@
                 "ESRI WorldImagery": L.tileLayer.provider("Esri.WorldImagery"),
                 "Google Hybrid": L.tileLayer("http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}", {
                     maxZoom: 20,
-                    subdomains: ["mt0", "mt1", "mt2", "mt3"]
-                })
+                    subdomains: ["mt0", "mt1", "mt2", "mt3"],
+                }),
             };
             const factionColors = {
                 NEUTRAL: "#FF6600",
@@ -101,19 +97,19 @@
                 ENLIGHTENED: "#03DC03",
                 MACHINA: "#FF0028",
                 NOT_SPECIFIED: "#FF6600",
-                undefined: "#FF6600"
+                undefined: "#FF6600",
             };
             const historyReasons = {
                 SPAWN: "spawn",
                 NO_MOVE: "no move",
                 LINK: "link",
                 JUMP: "jump",
-                DESPAWN: "despawn"
+                DESPAWN: "despawn",
             };
             const shardEventType = {
                 SKIRMISH: "skirmish",
                 SINGULAR: "singular",
-                ANOMALY: "anomaly"
+                ANOMALY: "anomaly",
             };
             var layerControl = L.control.layers(baseMaps, {}, { position: "topleft" }).addTo(map);
 
@@ -121,7 +117,7 @@
                 iconUrl:
                     "//commondatastorage.googleapis.com/ingress.com/img/map_icons/marker_images/abaddon1_shard.png",
                 iconSize: [30, 30],
-                iconAnchor: [15, 15]
+                iconAnchor: [15, 15],
             });
 
             var shard_singulars = [
@@ -172,7 +168,7 @@
                 "🇺🇸 Columbus, OH, USA",
                 "🇺🇸 Milwaukee, WI, USA",
                 "🇺🇸 Fort Worth, TX, USA",
-                "🇨🇦 Vancouver, Canada"
+                "🇨🇦 Vancouver, Canada",
             ];
             const linkScoringRules = new Map()
                 .set(shardEventType.SINGULAR, {
@@ -184,7 +180,7 @@
                             minDistance: 100000,
                             maxDistance: Infinity,
                             linkLengthPoints: 3,
-                            allowFurtherPoints: false
+                            allowFurtherPoints: false,
                         },
                         {
                             description: "1 point for each jump over a Link between 1km and 5km in length.",
@@ -192,9 +188,9 @@
                             minDistance: 1000,
                             maxDistance: 5000,
                             linkLengthPoints: 1,
-                            allowFurtherPoints: true
-                        }
-                    ]
+                            allowFurtherPoints: true,
+                        },
+                    ],
                 })
                 .set(shardEventType.SKIRMISH, {
                     rules: [
@@ -204,21 +200,21 @@
                             minDistance: 249.5,
                             maxDistance: Infinity,
                             linkLengthPoints: 1,
-                            allowFurtherPoints: true
-                        }
-                    ]
+                            allowFurtherPoints: true,
+                        },
+                    ],
                 })
                 .set(shardEventType.ANOMALY, {
                     rules: [
                         {
-                            description: "1 point for a single jump over a Link longer than 249.5m.",
+                            description: "1 point for a single jump.",
                             jumpPoints: 1,
                             minDistance: 0,
                             maxDistance: Infinity,
                             linkLengthPoints: 0,
-                            allowFurtherPoints: true
-                        }
-                    ]
+                            allowFurtherPoints: true,
+                        },
+                    ],
                 });
 
             window.layer_lookup = {};
@@ -246,24 +242,30 @@
                         continue;
                     }
 
+                    const anomalyEventNames = [
+                        "theta_2025_06_14",
+                        "delta_2025_08_16",
+                        "delta_2025_08_23",
+                        "delta_2025_09_20",
+                    ];
+
                     const sortedFragments = artifact.fragment.sort((a, b) => a.id.localeCompare(b.id));
                     let site;
                     for (const [index, fragment] of sortedFragments.entries()) {
-                        console.debug(`Processing fragment (shard) ${fragment.id} for artifact ${artifact.id}`);
                         let siteDetails;
                         if (artifact.city) {
-                            const eventType = name.includes("theta_2025_06_14")
+                            const eventType = anomalyEventNames.some((nameToFind) => name.includes(nameToFind))
                                 ? shardEventType.ANOMALY
                                 : shardEventType.SKIRMISH;
                             siteDetails = {
                                 ...artifact,
-                                eventType
+                                eventType,
                             };
                         } else {
                             siteDetails = {
                                 ...fragment,
                                 city: getShardSingularCity(name, index),
-                                eventType: shardEventType.SINGULAR
+                                eventType: shardEventType.SINGULAR,
                             };
                         }
                         site = getOrCreateSite(eventData, siteDetails);
@@ -290,7 +292,7 @@
                                     */
                                     shardEntries.push({
                                         id: fragment.id,
-                                        links: new Map()
+                                        links: new Map(),
                                     });
 
                                     const destinationPortal = getOrCreatePortalForSite(
@@ -349,15 +351,22 @@
                                             linkCreationTimeMs: historyItem.linkCreationTimeMs,
                                             moveTimeMs: historyItem.moveTimeMs,
                                             distance,
-                                            points
+                                            points,
                                         });
                                     } else {
                                         console.warn(`Link already exists for key: ${linkKey}`);
                                     }
 
                                     if (points > 0) {
+                                        const moveTimeMs = new Date(parseInt(historyItem.moveTimeMs)).toLocaleString(
+                                            navigator.language,
+                                            {
+                                                timeZone: site.timezone,
+                                            }
+                                        );
+
                                         console.debug(
-                                            `${artifact.id}: Adding link from ${originPortalKey} to ${destinationPortalKey} with points: ${points}, ${allowFurtherPoints}`
+                                            `${artifact.id}: Adding ${historyItem.linkCreatorTeam} link from ${originPortalKey} to ${destinationPortalKey} (${distance}m) at ${moveTimeMs} with points: ${points}`
                                         );
 
                                         switch (historyItem.linkCreatorTeam) {
@@ -415,8 +424,8 @@
                             RESISTANCE: 0,
                             ENLIGHTENED: 0,
                             MACHINA: 0,
-                            NEUTRAL: 0
-                        }
+                            NEUTRAL: 0,
+                        },
                     });
                 }
                 return eventData.get(siteId);
@@ -436,7 +445,7 @@
                         lat: portalInfo.latE6 / 1e6,
                         lng: portalInfo.lngE6 / 1e6,
                         team: capturerTeam,
-                        history: new Map()
+                        history: new Map(),
                     });
                 }
                 return site.portals.get(portalKey);
@@ -448,7 +457,7 @@
                 }
                 portal.history.get(shardId).push({
                     moveTimeMs: historyItem.moveTimeMs,
-                    reason: historyItem.reason
+                    reason: historyItem.reason,
                 });
             }
 
@@ -484,11 +493,10 @@
 
                     const linkedPortalColors = new Map();
                     site.shards.forEach((shard) => {
-                        console.debug(`Rendering shard: ${shard.id} for site: ${site.name}`);
                         const renderedLinks = renderShardLinks({
                             shard,
                             site,
-                            linkedPortalColors
+                            linkedPortalColors,
                         });
 
                         if (renderedLinks.length > 0) {
@@ -504,7 +512,7 @@
                             portal,
                             color: linkedPortalColors.get(key) || factionColors[portal.team] || factionColors.NEUTRAL,
                             timezone: site.timezone,
-                            hasUnmovedShard: !linkedPortalColors.has(key)
+                            hasUnmovedShard: !linkedPortalColors.has(key),
                         }).forEach((marker) => marker.addTo(layer));
                     });
 
@@ -538,18 +546,18 @@
                             [L.latLng(originPortal.lat, originPortal.lng), L.latLng(destPortal.lat, destPortal.lng)],
                             {
                                 color: linkColor,
-                                dashArray: ["10,5,5,5,5,5,5,5,100000"]
+                                dashArray: ["10,5,5,5,5,5,5,5,100000"],
                             }
                         );
 
                         const linkCreationTimeMs = new Date(parseInt(link.linkCreationTimeMs)).toLocaleString(
                             navigator.language,
                             {
-                                timeZone: site.timezone
+                                timeZone: site.timezone,
                             }
                         );
                         const moveTimeMs = new Date(parseInt(link.moveTimeMs)).toLocaleString(navigator.language, {
-                            timeZone: site.timezone
+                            timeZone: site.timezone,
                         });
                         const linkTooltip = `<strong>${shard.id}</strong><br />${originPortal.title} -> ${
                             destPortal.title
@@ -574,16 +582,16 @@
                         coords,
                         {
                             color: "transparent",
-                            interactive: false
+                            interactive: false,
                         },
                         { auto: true, duration: renderedLinks.length * 1000 },
                         {
                             showMarker: true,
                             removeOnEnd: false,
                             icon: shardIcon,
-                            interactive: false
+                            interactive: false,
                         }
-                    )
+                    ),
                 ];
                 for (const polyline of renderedLinks) {
                     polyline.animatedShards = animatedShards;
@@ -604,7 +612,7 @@
                         portalTooltip += `${historyItem.reason} at ${new Date(
                             parseInt(historyItem.moveTimeMs)
                         ).toLocaleString(navigator.language, {
-                            timeZone: portalDetails.timezone
+                            timeZone: portalDetails.timezone,
                         })}<br />`;
                     });
                 });
@@ -629,14 +637,16 @@
                 "+Theta 2025 AMER": "shard-jump-times-2025.06.03.15.20.36.json",
                 "+Theta 2025-06-07 Shard Singular": "shard-jump-times-2025.06.08.12.07.39.json",
                 "+Theta 2025 APAC": "shard-jump-times-2025.06.08.12.07.39.json",
-                "+Theta 2025-06-14": "shard-jump-times-2025.06.16.17.47.43.json"
+                "+Theta 2025-06-14": "shard-jump-times-2025.06.16.17.47.43.json",
+                "+Delta 2025-08-16": "shard-jump-times-2025.08.18.12.11.03.json",
+                "+Delta 2025-08-23": "shard-jump-times-2025.08.23.22.03.28.json",
             };
 
             var all_data = await fetch("all_data.json").then((resp) => resp.json());
 
             for (var name in json_files) {
                 var safe_name = name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
-                var selected = name == "+Theta 2025-06-14" ? "selected" : "";
+                var selected = name == "+Delta 2025-08-23" ? "selected" : "";
                 $("#series").append(`<option value="${safe_name}" ${selected}>${name}</option>`);
                 var json = all_data[json_files[name]];
 
@@ -690,7 +700,7 @@
                 handleSeriesDisplay(site[0]);
                 $(location.hash).click();
             } else {
-                handleSeriesDisplay("_theta_2025_06_14");
+                handleSeriesDisplay("_delta_2025_08_23");
                 map.fitBounds(currentActiveSeriesLayer.getBounds());
             }
             $("#custom").change(function () {

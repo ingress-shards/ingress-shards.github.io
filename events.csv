@@ -93,12 +93,12 @@ lat,lng,type,city,date,series
 59.623198,16.562288,Shard Skirmish,"Västerås, Sweden",2024-11-30,2024-erasedmem
 48.11543,-1.677796,Shard Skirmish,"Rennes, France",2024-11-30,2024-erasedmem
 46.908698,19.685749,Shard Skirmish,"Kecskemét, Hungary",2024-11-30,2024-erasedmem
-53.082845,8.79465,Shard Skirmish,"Bremen, Germany",2024-11-30,2024-erasedmem
-40.195808,-8.432982,Shard Skirmish,"Coimbra, Portugal",2024-11-30,2024-erasedmem
 39.985071,-0.041769,Shard Skirmish,"Castellón de la Plana, Spain",2024-11-30,2024-erasedmem
+40.195808,-8.432982,Shard Skirmish,"Coimbra, Portugal",2024-11-30,2024-erasedmem
+51.895233,-8.481212,Shard Skirmish,"Cork, Ireland",2024-11-30,2024-erasedmem
 41.05085,14.326992,Shard Skirmish,"Caserta, Italy",2024-11-30,2024-erasedmem
 44.437953,26.098602,Shard Skirmish,"Bucharest, Romania",2024-11-30,2024-erasedmem
-51.895233,-8.481212,Shard Skirmish,"Cork, Ireland",2024-11-30,2024-erasedmem
+53.082845,8.79465,Shard Skirmish,"Bremen, Germany",2024-11-30,2024-erasedmem
 53.136213,23.163491,Shard Skirmish,"Białystok, Poland",2024-11-30,2024-erasedmem
 56.154434,10.165914,Shard Skirmish,"Aarhus, Denmark",2024-11-30,2024-erasedmem
 36.157262912274376,-86.78524545,Anomaly,Nashville,2024-12-14,2024-erasedmem
@@ -130,15 +130,15 @@ lat,lng,type,city,date,series
 -16.705417,-49.240386,Shard Skirmish,"Goiânia, Brazil",2025-03-15,2025-plusalpha
 27.966567,-82.493316,Shard Skirmish,"Tampa, FL, United States",2025-03-15,2025-plusalpha
 -34.605421,-58.435496,Shard Skirmish,"Buenos Aires, Argentina",2025-03-15,2025-plusalpha
--29.971247,-71.329765,Shard Skirmish,"Coquimbo, Chile",2025-03-15,2025-plusalpha
+-25.304188,-57.559509,Shard Skirmish,"Asunción, Paraguay",2025-03-15,2025-plusalpha
 36.865636,-76.307708,Shard Skirmish,"Norfolk, VA, United States",2025-03-15,2025-plusalpha
 -5.194723,-80.634898,Shard Skirmish,"Piura, Peru",2025-03-15,2025-plusalpha
--25.304188,-57.559509,Shard Skirmish,"Asunción, Paraguay",2025-03-15,2025-plusalpha
+-29.971247,-71.329765,Shard Skirmish,"Coquimbo, Chile",2025-03-15,2025-plusalpha
 44.880504,-68.674677,Shard Skirmish,"Orono, ME, United States",2025-03-15,2025-plusalpha
-35.478669,-97.521426,Shard Skirmish,"Oklahoma City, OK, United States",2025-03-15,2025-plusalpha
-20.675112,-103.387245,Shard Skirmish,"Guadalajara, Jalisco, Mexico",2025-03-15,2025-plusalpha
 48.434051,-123.380812,Shard Skirmish,"Victoria, BC, Canada",2025-03-15,2025-plusalpha
 8.996831,-79.518817,Shard Skirmish,"Panama City, Panama",2025-03-15,2025-plusalpha
+35.478669,-97.521426,Shard Skirmish,"Oklahoma City, OK, United States",2025-03-15,2025-plusalpha
+20.675112,-103.387245,Shard Skirmish,"Guadalajara, Jalisco, Mexico",2025-03-15,2025-plusalpha
 40.8494848615729,14.2664047653559,Anomaly,"Naples, IT",2025-03-22,2025-plusalpha
 14.5868,120.97645,Anomaly,"Manila, Philippines",2025-05-17,2025-plustheta
 41.82353,-71.40829,Anomaly,"Providence, RI, USA ",2025-05-17,2025-plustheta
@@ -148,34 +148,40 @@ lat,lng,type,city,date,series
 47.896894,1.904397,Shard Skirmish,"Orléans, France",2025-05-24,2025-plustheta
 56.455646,10.034401,Shard Skirmish,"Randers, Denmark",2025-05-24,2025-plustheta
 59.741863,10.212151,Shard Skirmish,"Drammen, Norway",2025-05-24,2025-plustheta
-44.812348,20.461648,Shard Skirmish,"Belgrade, Serbia",2025-05-24,2025-plustheta
+59.862111,17.642132,Shard Skirmish,"Uppsala, Sweden",2025-05-24,2025-plustheta
 60.981384,25.661564,Shard Skirmish,"Lahti, Finland",2025-05-24,2025-plustheta
 41.012577,28.977703,Shard Skirmish,"İstanbul, Türkiye",2025-05-24,2025-plustheta
-59.862111,17.642132,Shard Skirmish,"Uppsala, Sweden",2025-05-24,2025-plustheta
--6.76914,-79.850933,Shard Skirmish,"Chiclayo, Peru",2025-05-31,2025-plustheta
+44.812348,20.461648,Shard Skirmish,"Belgrade, Serbia",2025-05-24,2025-plustheta
 -36.814978,-73.030958,Shard Skirmish,"Concepción, Chile",2025-05-31,2025-plustheta
 29.660044,-82.372323,Shard Skirmish,"Gainesville, FL, USA",2025-05-31,2025-plustheta
+-15.792502,-47.89654,Shard Skirmish,"Brasília, Brazil",2025-05-31,2025-plustheta
 -17.781946,-63.185803,Shard Skirmish,"Santa Cruz de la Sierra, Bolivia",2025-05-31,2025-plustheta
 44.947735,-93.29969,Shard Skirmish,"Minneapolis, USA",2025-05-31,2025-plustheta
--15.792502,-47.89654,Shard Skirmish,"Brasília, Brazil",2025-05-31,2025-plustheta
+-6.76914,-79.850933,Shard Skirmish,"Chiclayo, Peru",2025-05-31,2025-plustheta
 6.230128,-75.57658,Shard Skirmish,"Medellín, Colombia",2025-05-31,2025-plustheta
-14.62188,-90.552373,Shard Skirmish,"Guatemala City, Guatemala",2025-05-31,2025-plustheta
-53.52327,-113.486215,Shard Skirmish,"Edmonton, Canada",2025-05-31,2025-plustheta
+-16.394823,-71.537791,Shard Skirmish,"Arequipa, Peru",2025-05-31,2025-plustheta
 19.371571,-99.136415,Shard Skirmish,"Mexico City, Mexico",2025-05-31,2025-plustheta
+14.62188,-90.552373,Shard Skirmish,"Guatemala City, Guatemala",2025-05-31,2025-plustheta
 47.664358,-117.396573,Shard Skirmish,"Spokane, USA",2025-05-31,2025-plustheta
 33.407147,-111.917432,Shard Skirmish,"Tempe, USA",2025-05-31,2025-plustheta
--16.394823,-71.537791,Shard Skirmish,"Arequipa, Peru",2025-05-31,2025-plustheta
+53.52327,-113.486215,Shard Skirmish,"Edmonton, Canada",2025-05-31,2025-plustheta
+19.188559,72.846637,Shard Skirmish,"Mumbai, India",2025-06-07,2025-plustheta
+12.96974,77.606332,Shard Skirmish,"Bengaluru, India",2025-06-07,2025-plustheta
 21.02808,105.834918,Shard Skirmish,"Hanoi, Vietnam",2025-06-07,2025-plustheta
 -7.945678,112.629714,Shard Skirmish,"Malang, Indonesia",2025-06-07,2025-plustheta
 24.154759,120.655519,Shard Skirmish,"Taichung, Taiwan",2025-06-07,2025-plustheta
 23.986351,121.610162,Shard Skirmish,"Hualien, Taiwan",2025-06-07,2025-plustheta
 35.185275,129.081151,Shard Skirmish,"Busan, South Korea",2025-06-07,2025-plustheta
-32.799568,130.717828,Shard Skirmish,"Kumamoto, Japan",2025-06-07,2025-plustheta
+33.84007,132.768415,Shard Skirmish,"Matsuyama, Japan",2025-06-07,2025-plustheta
 39.702942,141.140844,Shard Skirmish,"Morioka, Japan",2025-06-07,2025-plustheta
 43.764318,142.376256,Shard Skirmish,"Asahikawa, Japan",2025-06-07,2025-plustheta
 -34.904993,138.611218,Shard Skirmish,"Adelaide, Australia",2025-06-07,2025-plustheta
-12.96974,77.606332,Shard Skirmish,"Bengaluru, India",2025-06-07,2025-plustheta
-33.84007,132.768415,Shard Skirmish,"Matsuyama, Japan",2025-06-07,2025-plustheta
-19.188559,72.846637,Shard Skirmish,"Mumbai, India",2025-06-07,2025-plustheta
+32.799568,130.717828,Shard Skirmish,"Kumamoto, Japan",2025-06-07,2025-plustheta
 -31.95147,115.861375,Anomaly,"Perth, AU",2025-06-14,2025-plustheta
 50.828215,12.9208504,Anomaly,"Chemnitz, DE",2025-06-14,2025-plustheta
+2.19,102.25,Anomaly,"Melaka, Malaysia",2025-08-16,2025-plusdelta
+45.52,-122.68,Anomaly,"Portland, OR, USA",2025-08-16,2025-plusdelta
+46.81,-71.21,Anomaly,"Quebec City, Canada",2025-08-23,2025-plusdelta
+57.71,11.97,Anomaly,"Gothenburg, Sweden",2025-08-23,2025-plusdelta
+52.2,0.13,Anomaly,"Cambridge, United Kingdom",2025-09-20,2025-plusdelta
+-8.67,115.21,Anomaly,"Denpasar, Bali, Indonesia",2025-09-20,2025-plusdelta
