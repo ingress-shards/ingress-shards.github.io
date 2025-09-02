@@ -96,7 +96,7 @@
         <div id="map"></div>
         <div id="controls">
             <div id="loading-overlay">
-                <h3>Loading Shard Data...</h3>
+                <h3 id="loading-message">Loading Shard Data...</h3>
                 <progress id="loading-progress" value="0" max="100"></progress>
             </div>
 
@@ -129,581 +129,86 @@
                 }),
             };
             const factionColors = {
-                NEUTRAL: "#FF6600",
-                RESISTANCE: "#0088FF",
-                ENLIGHTENED: "#03DC03",
-                MACHINA: "#FF0028",
+                NEU: "#FF6600",
+                RES: "#0088FF",
+                ENL: "#03DC03",
+                MAC: "#FF0028",
                 NOT_SPECIFIED: "#FF6600",
                 undefined: "#FF6600",
             };
-            const historyReasons = {
-                SPAWN: "spawn",
-                NO_MOVE: "no move",
-                LINK: "link",
-                JUMP: "jump",
-                DESPAWN: "despawn",
-            };
-            const shardEventType = {
-                SKIRMISH: "skirmish",
-                SINGULAR: "singular",
-                ANOMALY: "anomaly",
-            };
-            var layerControl = L.control.layers(baseMaps, {}, { position: "topleft" }).addTo(map);
+            const layerControl = L.control.layers(baseMaps, {}, { position: "topleft" }).addTo(map);
 
-            var shardIcon = L.icon({
+            const shardIcon = L.icon({
                 iconUrl:
                     "//commondatastorage.googleapis.com/ingress.com/img/map_icons/marker_images/abaddon1_shard.png",
                 iconSize: [30, 30],
                 iconAnchor: [15, 15],
             });
 
-            var shard_singulars = [
-                "🇦🇺 Hervey Bay, Australia",
-                "🇦🇺 Hobart, Australia",
-                "🇯🇵 Niigata, Japan",
-                "🇯🇵 Shizuoka, Japan",
-                "🇨🇳 Shanghai (Baoshan District), China",
-                "🇲🇾 Kota Kinabalu, Malaysia",
-                "🇭🇰 Tuen Mun, Hong Kong",
-                "🇸🇬 Bedok, Singapore",
-                "🇨🇱 Santiago, Chile",
-                "🇵🇪 Lima, Peru",
-                "🇨🇦 Toronto, Canada",
-                "🇨🇷 San Jose, Costa Rica",
-                "🇲🇽 Monterrey, Mexico",
-                "🇺🇸 Salt Lake City, UT, USA",
-                "🇺🇸 Las Vegas, NV, USA",
-                "🇺🇸 San Diego, CA, USA",
-                "🇳🇿 Greymouth, New Zealand",
-                "🇯🇵 Shimonoseki, Japan",
-                "🇰🇷 Incheon, South Korea",
-                "🇮🇩 Makassar, Indonesia",
-                "🇹🇼 Kinmen, Taiwan",
-                "🇨🇳 Tianjin, China",
-                "🇲🇴 Macao",
-                "🇲🇻 Male, Maldives",
-                "🇦🇪 Dubai, United Arab Emirates",
-                "🇧🇬 Sofia, Bulgaria",
-                "🇨🇿 Ostrava, Czechia",
-                "🇸🇰 Bratislava, Slovakia",
-                "🇳🇱 Delfzijl, Netherlands",
-                "🇳🇴 Stavanger, Norway",
-                "🇧🇪 Ghent, Belgium",
-                "🇪🇸 Zaragoza, Spain",
-                "🇱🇻 Riga, Latvia",
-                "🇿🇦 Cape Town, South Africa",
-                "🇵🇱 Poznań, Poland",
-                "🇮🇹 Fiumicino, Italy",
-                "🇩🇪 Nürnberg, Germany",
-                "🇫🇷 Lyon, France",
-                "🇬🇧 Plymouth, UK",
-                "🇵🇹 Lisboa, Portugal",
-                "🇧🇷 Recife, Brazil",
-                "🇧🇷 Rio de Janeiro, Brazil",
-                "🇨🇴 Cartagena, Colombia",
-                "🇺🇸 Orlando, FL, USA",
-                "🇺🇸 Columbus, OH, USA",
-                "🇺🇸 Milwaukee, WI, USA",
-                "🇺🇸 Fort Worth, TX, USA",
-                "🇨🇦 Vancouver, Canada",
+            const shardSeriesNames = [
+                "Shared Memories 2024 APAC",
+                "Erased Memories 2024 AMER",
+                "+Alpha 2025 EMEA",
+                "+Alpha 2025 APAC",
+                "+Alpha 2025 AMER",
+                "+Theta 2025-05-24 Shard Singular",
+                "+Theta 2025 EMEA",
+                "+Theta 2025-05-31 Shard Singular",
+                "+Theta 2025 AMER",
+                "+Theta 2025-06-07 Shard Singular",
+                "+Theta 2025 APAC",
+                "+Theta 2025-06-14",
+                "+Delta 2025-08-16",
+                "+Delta 2025-08-23",
             ];
-            const linkScoringRules = new Map()
-                .set(shardEventType.SINGULAR, {
-                    rules: [
-                        {
-                            description:
-                                "3 points for a single jump over a Link longer than 100km. No further points will be given for subsequent jumps by that Shard.",
-                            jumpPoints: 0,
-                            minDistance: 100000,
-                            maxDistance: Infinity,
-                            linkLengthPoints: 3,
-                            allowFurtherPoints: false,
-                        },
-                        {
-                            description: "1 point for each jump over a Link between 1km and 5km in length.",
-                            jumpPoints: 0,
-                            minDistance: 1000,
-                            maxDistance: 5000,
-                            linkLengthPoints: 1,
-                            allowFurtherPoints: true,
-                        },
-                    ],
-                })
-                .set(shardEventType.SKIRMISH, {
-                    rules: [
-                        {
-                            description: "1 point for a single jump over a Link longer than 249.5m.",
-                            jumpPoints: 0,
-                            minDistance: 249.5,
-                            maxDistance: Infinity,
-                            linkLengthPoints: 1,
-                            allowFurtherPoints: true,
-                        },
-                    ],
-                })
-                .set(shardEventType.ANOMALY, {
-                    rules: [
-                        {
-                            description: "1 point for a single jump.",
-                            jumpPoints: 1,
-                            minDistance: 0,
-                            maxDistance: Infinity,
-                            linkLengthPoints: 0,
-                            allowFurtherPoints: true,
-                        },
-                    ],
-                });
 
             window.layer_lookup = {};
             let currentActiveSeriesLayer = null;
 
-            let _shardEventData = {};
+            let _shardSeriesData = {};
 
             // Web Worker instance
             let jsonParserWorker = null;
 
             // UI elements
             const loadingOverlay = document.getElementById("loading-overlay");
+            const loadingMessage = document.getElementById("loading-message");
             const loadingProgress = document.getElementById("loading-progress");
-
-            // A function to convert Niantic's shard jump times json into a more usable format for display on a map.
-            function processShardEventData(name, json) {
-                const artifacts = json.artifact.filter((d) => d.fragment);
-                if (!artifacts.length) {
-                    console.warn(`No artifacts found with shards for ${name}. Skipping processing.`);
-                    return new Map();
-                }
-
-                artifacts.sort((a, b) => a.name.localeCompare(b.name));
-                let eventData = new Map();
-                for (const artifact of artifacts) {
-                    if (!artifact.city && !name.includes("singular")) {
-                        console.debug(`Skipping shard singular event ${artifact.id} to separate in drop down box`);
-                        continue;
-                    }
-                    if (artifact.city && name.includes("singular")) {
-                        console.debug(
-                            `Skipping shard skirmish ${artifact.id} (${artifact.city}) to separate in drop down box`
-                        );
-                        continue;
-                    }
-
-                    const anomalyEventNames = [
-                        "theta_2025_06_14",
-                        "delta_2025_08_16",
-                        "delta_2025_08_23",
-                        "delta_2025_09_20",
-                    ];
-
-                    const sortedFragments = artifact.fragment.sort((a, b) => a.id.localeCompare(b.id));
-                    let site;
-                    for (const [index, fragment] of sortedFragments.entries()) {
-                        let siteDetails;
-                        if (artifact.city) {
-                            const eventType = anomalyEventNames.some((nameToFind) => name.includes(nameToFind))
-                                ? shardEventType.ANOMALY
-                                : shardEventType.SKIRMISH;
-                            siteDetails = {
-                                ...artifact,
-                                eventType,
-                            };
-                        } else {
-                            siteDetails = {
-                                ...fragment,
-                                city: getShardSingularCity(name, index),
-                                eventType: shardEventType.SINGULAR,
-                            };
-                        }
-                        site = getOrCreateSite(eventData, siteDetails);
-
-                        const shardHistory = fragment.history.sort((a, b) => a.moveTimeMs.localeCompare(b.moveTimeMs));
-                        let mostRecentShardPortalKey;
-                        let shardEntries = [];
-                        let allowFurtherPoints = true;
-                        for (const historyItem of shardHistory) {
-                            const originPortalKey =
-                                historyItem.originPortalInfo &&
-                                `${historyItem.originPortalInfo.latE6}_${historyItem.originPortalInfo.lngE6}`;
-                            const destinationPortalKey =
-                                historyItem.destinationPortalInfo &&
-                                `${historyItem.destinationPortalInfo.latE6}_${historyItem.destinationPortalInfo.lngE6}`;
-
-                            let originPortal;
-                            switch (historyItem.reason) {
-                                case historyReasons.SPAWN:
-                                    /*
-                                        Create a new shard entry if a spawn entry is found.
-                                        This covers the instances where Niantic reuse shards within an event
-                                        i.e. 65 shards for a 78 shard anomaly!
-                                    */
-                                    shardEntries.push({
-                                        id: fragment.id,
-                                        links: new Map(),
-                                    });
-
-                                    const destinationPortal = getOrCreatePortalForSite(
-                                        site,
-                                        destinationPortalKey,
-                                        historyItem.destinationPortalInfo,
-                                        historyItem.destinationCapturerTeam
-                                    );
-
-                                    addToPortalHistory(destinationPortal, fragment.id, historyItem);
-                                    mostRecentShardPortalKey = destinationPortalKey;
-                                    break;
-                                case historyReasons.NO_MOVE:
-                                    originPortal = getOrCreatePortalForSite(
-                                        site,
-                                        mostRecentShardPortalKey,
-                                        historyItem.originPortalInfo,
-                                        historyItem.originCapturerTeam
-                                    );
-
-                                    addToPortalHistory(originPortal, fragment.id, historyItem);
-                                    break;
-                                case historyReasons.LINK:
-                                case historyReasons.JUMP:
-                                    originPortal = getOrCreatePortalForSite(
-                                        site,
-                                        originPortalKey,
-                                        historyItem.originPortalInfo,
-                                        historyItem.originCapturerTeam
-                                    );
-                                    const destPortal = getOrCreatePortalForSite(
-                                        site,
-                                        destinationPortalKey,
-                                        historyItem.destinationPortalInfo,
-                                        historyItem.destinationCapturerTeam
-                                    );
-                                    const originLatLng = L.latLng(originPortal.lat, originPortal.lng);
-                                    const destLatLng = L.latLng(destPortal.lat, destPortal.lng);
-                                    const distance = originLatLng.distanceTo(destLatLng);
-
-                                    let points = 0;
-                                    if (allowFurtherPoints) {
-                                        const linkRule = getLinkRule(linkScoringRules.get(site.eventType), distance);
-                                        if (linkRule) {
-                                            points = linkRule.jumpPoints + linkRule.linkLengthPoints;
-                                            allowFurtherPoints = linkRule.allowFurtherPoints;
-                                        }
-                                    }
-
-                                    const linkKey = `${originPortalKey}_${destinationPortalKey}`;
-                                    if (!shardEntries[shardEntries.length - 1].links.has(linkKey)) {
-                                        shardEntries[shardEntries.length - 1].links.set(linkKey, {
-                                            originPortal: originPortalKey,
-                                            destinationPortal: destinationPortalKey,
-                                            linkCreatorTeam: historyItem.linkCreatorTeam,
-                                            linkCreationTimeMs: historyItem.linkCreationTimeMs,
-                                            moveTimeMs: historyItem.moveTimeMs,
-                                            distance,
-                                            points,
-                                        });
-                                    } else {
-                                        console.warn(`Link already exists for key: ${linkKey}`);
-                                    }
-
-                                    if (points > 0) {
-                                        const moveTimeMs = new Date(parseInt(historyItem.moveTimeMs)).toLocaleString(
-                                            navigator.language,
-                                            {
-                                                timeZone: site.timezone,
-                                            }
-                                        );
-
-                                        console.debug(
-                                            `${artifact.id}: Adding ${historyItem.linkCreatorTeam} link from ${originPortalKey} to ${destinationPortalKey} (${distance}m) at ${moveTimeMs} with points: ${points}`
-                                        );
-
-                                        switch (historyItem.linkCreatorTeam) {
-                                            case "RESISTANCE":
-                                                site.linkScores.RESISTANCE += points;
-                                                break;
-                                            case "MACHINA":
-                                                site.linkScores.MACHINA += points;
-                                                break;
-                                            case "ENLIGHTENED":
-                                                site.linkScores.ENLIGHTENED += points;
-                                                break;
-                                            default:
-                                                site.linkScores.NEUTRAL += points;
-                                        }
-                                    }
-
-                                    mostRecentShardPortalKey = destinationPortalKey;
-                                    break;
-                                case historyReasons.DESPAWN:
-                                    originPortal = getOrCreatePortalForSite(
-                                        site,
-                                        originPortalKey,
-                                        historyItem.originPortalInfo,
-                                        historyItem.originCapturerTeam
-                                    );
-                                    addToPortalHistory(originPortal, fragment.id, historyItem);
-                                    break;
-                                default:
-                                    console.warn(`Unknown reason for ${shard.id}: ${historyItem.reason}`);
-                            }
-                        }
-                        site.shards.push(...shardEntries);
-                    }
-                    const linkCount = site.shards.reduce((totalLinks, shard) => totalLinks + shard.links.size, 0);
-                    console.debug(
-                        `Site ${site.name} has ${site.shards.length} shards, ${site.portals.size} portals and ${linkCount} links.`
-                    );
-                }
-                console.debug(calculateJsonSizeReduction(name, json, eventData));
-                return eventData;
-            }
-
-            function getOrCreateSite(eventData, siteDetails) {
-                const siteId = siteDetails.id;
-                if (!eventData.has(siteId)) {
-                    console.debug("Creating new site: ", siteDetails);
-                    eventData.set(siteId, {
-                        name: siteDetails.city || "Unknown",
-                        timezone: siteDetails.timezone || "UTC",
-                        eventType: siteDetails.eventType,
-                        portals: new Map(),
-                        shards: [],
-                        linkScores: {
-                            RESISTANCE: 0,
-                            ENLIGHTENED: 0,
-                            MACHINA: 0,
-                            NEUTRAL: 0,
-                        },
-                    });
-                }
-                return eventData.get(siteId);
-            }
-
-            function getShardSingularCity(name, index) {
-                let lookupId = index;
-                if (name == "_theta_2025_05_31_shard_singular") lookupId += 16;
-                if (name == "_theta_2025_06_07_shard_singular") lookupId += 32;
-                return shard_singulars[lookupId];
-            }
-
-            function getOrCreatePortalForSite(site, portalKey, portalInfo, capturerTeam) {
-                if (!site.portals.has(portalKey)) {
-                    site.portals.set(portalKey, {
-                        title: portalInfo.title,
-                        lat: portalInfo.latE6 / 1e6,
-                        lng: portalInfo.lngE6 / 1e6,
-                        team: capturerTeam,
-                        history: new Map(),
-                    });
-                }
-                return site.portals.get(portalKey);
-            }
-
-            function addToPortalHistory(portal, shardId, historyItem) {
-                if (!portal.history.has(shardId)) {
-                    portal.history.set(shardId, []);
-                }
-                portal.history.get(shardId).push({
-                    moveTimeMs: historyItem.moveTimeMs,
-                    reason: historyItem.reason,
-                });
-            }
-
-            function getLinkRule(rules, distance) {
-                for (const rule of rules.rules) {
-                    if (distance >= rule.minDistance && distance < rule.maxDistance) {
-                        return rule;
-                    }
-                }
-                return null;
-            }
-
-            function calculateJsonSizeReduction(name, originalJson, shardEventDataJson) {
-                const originalSize = JSON.stringify(originalJson).length;
-                const plottableSize = JSON.stringify(Array.from(shardEventDataJson.values())).length;
-                return `${name} - original JSON size: ${originalSize} bytes, converted Shard Event Data size: ${plottableSize} bytes, Reduction: ${(
-                    (1 - plottableSize / originalSize) *
-                    100
-                ).toFixed(2)}%`;
-            }
-
-            function renderShardEventData(name, shardEventData) {
-                const seriesLayer = L.featureGroup();
-                layer_lookup[name] = seriesLayer;
-                layerControl.addOverlay(seriesLayer, name);
-
-                let controlsHtml = `<div id="${name}" class="series" style="display:none">`;
-
-                shardEventData.forEach((site, siteId) => {
-                    console.debug(`Rendering site: ${site.name} (${siteId})`);
-                    const layer = L.featureGroup().addTo(seriesLayer);
-                    layer.data = site;
-
-                    const linkedPortalColors = new Map();
-                    site.shards.forEach((shard) => {
-                        const renderedLinks = renderShardLinks({
-                            shard,
-                            site,
-                            linkedPortalColors,
-                        });
-
-                        if (renderedLinks.length > 0) {
-                            const movingShard = renderMovingShard(renderedLinks);
-                            movingShard.forEach((shard) => shard.addTo(layer));
-                            renderedLinks.forEach((polyline) => polyline.addTo(layer));
-                        }
-                    });
-
-                    site.portals.forEach((portal, key) => {
-                        renderPortal({
-                            key,
-                            portal,
-                            color: linkedPortalColors.get(key) || factionColors[portal.team] || factionColors.NEUTRAL,
-                            timezone: site.timezone,
-                            hasUnmovedShard: !linkedPortalColors.has(key),
-                        }).forEach((marker) => marker.addTo(layer));
-                    });
-
-                    const uniqueSiteId = name + "_" + siteId.replace(" ", "_");
-                    layer_lookup[uniqueSiteId] = layer;
-                    const scoresHtml = `<span style="color:${factionColors.RESISTANCE}">${site.linkScores.RESISTANCE}</span>:<span style="color:${factionColors.ENLIGHTENED}">${site.linkScores.ENLIGHTENED}</span>:<span style="color:${factionColors.MACHINA}">${site.linkScores.MACHINA}</span>:<span style="color:${factionColors.NEUTRAL}">${site.linkScores.NEUTRAL}</span>`;
-                    controlsHtml += `<button id="${uniqueSiteId}">${site.name}</button> ${scoresHtml}<br>`;
-                });
-                controlsHtml += "</div>";
-                $("#controls").append(controlsHtml);
-            }
-
-            function renderShardLinks(shardDetails) {
-                const site = shardDetails.site;
-                const shard = shardDetails.shard;
-                const linkedPortalColors = shardDetails.linkedPortalColors;
-
-                return (
-                    Array.from(shard.links.values()).map((link) => {
-                        const originPortal = site.portals.get(link.originPortal);
-                        const destPortal = site.portals.get(link.destinationPortal);
-                        if (!originPortal || !destPortal) {
-                            console.warn(
-                                `Missing portal data for link: ${link.originPortal} to ${link.destinationPortal}`
-                            );
-                            return;
-                        }
-
-                        const linkColor = factionColors[link.linkCreatorTeam] || factionColors.NEUTRAL;
-                        const polyline = L.polyline(
-                            [L.latLng(originPortal.lat, originPortal.lng), L.latLng(destPortal.lat, destPortal.lng)],
-                            {
-                                color: linkColor,
-                                dashArray: ["10,5,5,5,5,5,5,5,100000"],
-                            }
-                        );
-
-                        const linkCreationTimeMs = new Date(parseInt(link.linkCreationTimeMs)).toLocaleString(
-                            navigator.language,
-                            {
-                                timeZone: site.timezone,
-                            }
-                        );
-                        const moveTimeMs = new Date(parseInt(link.moveTimeMs)).toLocaleString(navigator.language, {
-                            timeZone: site.timezone,
-                        });
-                        const linkTooltip = `<strong>${shard.id}</strong><br />${originPortal.title} -> ${
-                            destPortal.title
-                        }<br>Link time: ${linkCreationTimeMs}<br />Jump time: ${moveTimeMs}<br />Distance: ${(
-                            Math.round((link.distance + Number.EPSILON) * 100) / 100
-                        ).toLocaleString()}m<br />Points: ${link.points}`;
-                        polyline.bindTooltip(linkTooltip, { sticky: true });
-                        polyline.bindPopup(linkTooltip, { sticky: true });
-
-                        linkedPortalColors.set(link.originPortal, linkColor);
-                        linkedPortalColors.set(link.destinationPortal, linkColor);
-
-                        return polyline;
-                    }) || null
-                );
-            }
-
-            function renderMovingShard(renderedLinks) {
-                const coords = renderedLinks.map((line) => line.getLatLngs()).flat();
-                const animatedShards = [
-                    L.motion.polyline(
-                        coords,
-                        {
-                            color: "transparent",
-                            interactive: false,
-                        },
-                        { auto: true, duration: renderedLinks.length * 1000 },
-                        {
-                            showMarker: true,
-                            removeOnEnd: false,
-                            icon: shardIcon,
-                            interactive: false,
-                        }
-                    ),
-                ];
-                for (const polyline of renderedLinks) {
-                    polyline.animatedShards = animatedShards;
-                    polyline.on("mouseover", function (e) {
-                        this.animatedShards.forEach((s) => s.motionStart());
-                    });
-                }
-                return animatedShards;
-            }
-
-            function renderPortal(portalDetails) {
-                const portal = portalDetails.portal;
-                const latLng = L.latLng(portal.lat, portal.lng);
-                let portalTooltip = `<strong>${portal.title}</strong><br />`;
-                portal.history.forEach((shardHistory, shardId) => {
-                    portalTooltip += `<hr /><strong>${shardId}</strong><br />`;
-                    shardHistory.forEach((historyItem) => {
-                        portalTooltip += `${historyItem.reason} at ${new Date(
-                            parseInt(historyItem.moveTimeMs)
-                        ).toLocaleString(navigator.language, {
-                            timeZone: portalDetails.timezone,
-                        })}<br />`;
-                    });
-                });
-
-                const markers = [L.circleMarker(latLng, { color: portalDetails.color }).bindTooltip(portalTooltip)];
-                // render a shard which didn't move from this portal
-                if (portalDetails.hasUnmovedShard) {
-                    markers.push(L.marker(latLng, { icon: shardIcon }).bindTooltip(portalTooltip));
-                }
-                return markers;
-            }
-
-            var json_files = {
-                "Shared Memories 2024 APAC": "shard-jump-times-2024.09.01.18.10.48.json",
-                "Erased Memories 2024 AMER": "shard-jump-times-2024.11.17.09.14.04.json",
-                "+Alpha 2025 EMEA": "shard-jump-times-2025.03.01.20.11.38.json",
-                "+Alpha 2025 APAC": "shard-jump-times-2025.03.09.08.41.46.json",
-                "+Alpha 2025 AMER": "shard-jump-times-2025.03.17.09.45.57.json",
-                "+Theta 2025-05-24 Shard Singular": "shard-jump-times-2025.05.25.13.14.05.json",
-                "+Theta 2025 EMEA": "shard-jump-times-2025.05.25.13.14.05.json",
-                "+Theta 2025-05-31 Shard Singular": "shard-jump-times-2025.06.03.15.20.36.json",
-                "+Theta 2025 AMER": "shard-jump-times-2025.06.03.15.20.36.json",
-                "+Theta 2025-06-07 Shard Singular": "shard-jump-times-2025.06.08.12.07.39.json",
-                "+Theta 2025 APAC": "shard-jump-times-2025.06.08.12.07.39.json",
-                "+Theta 2025-06-14": "shard-jump-times-2025.06.16.17.47.43.json",
-                "+Delta 2025-08-16": "shard-jump-times-2025.08.18.12.11.03.json",
-                "+Delta 2025-08-23": "shard-jump-times-2025.08.23.22.03.28.json",
-                "+Delta 2025-09-20": "shard-jump-times-2025.09.20.17.45.44.json"
-            };
 
             async function initDataPipeline() {
                 try {
-                    _shardEventData = await loadAndParseShardData();
-                    console.debug("Shard data loaded successfully:", _shardEventData);
-                    loadingProgress.value = 66;
-                    await new Promise(requestAnimationFrame);
+                    _shardSeriesData = await loadAndParseShardData();
+                    console.debug(
+                        `Shard data loaded successfully: ${_shardSeriesData.length} series, ${
+                            _shardSeriesData.flatMap((event) => event.sites || []).length
+                        } sites`
+                    );
+                    renderSeriesSelection();
 
-                    await processAndRenderShards();
+                    const seriesToRenderFirst = getPrioritySeries();
+                    seriesToRenderFirst.data = _shardSeriesData.find((e) => e.name === seriesToRenderFirst.seriesName);
 
-                    loadingProgress.value = 100;
-                    await new Promise(requestAnimationFrame);
+                    // 4. Render the priority data IMMEDIATELY
+                    if (seriesToRenderFirst.data) {
+                        console.log(`Rendering priority series: ${seriesToRenderFirst.seriesName}`);
+                        renderSeriesData(seriesToRenderFirst.seriesName, seriesToRenderFirst.data);
 
-                    initMapState();
+                        $("#series").one("seriesDisplayComplete", () => {
+                            console.debug(
+                                `Series display complete. ${
+                                    location.hash.length > 0 ? `Displaying site ${location.hash}` : ""
+                                }`
+                            );
+                            if ($(location.hash).length > 0) {
+                                $(location.hash).click();
+                            }
+                        });
 
-                    setTimeout(() => (loadingOverlay.style.display = "none"), 500);
+                        $("#series").val(seriesToRenderFirst.seriesName);
+                        displaySeries(seriesToRenderFirst.seriesName, "pageLoad");
+                    }
+
+                    renderBackgroundSeries();
                 } catch (error) {
                     console.error("Error loading shard data:", error);
                     loadingProgress.value = 0;
@@ -714,13 +219,13 @@
                 const startTime = performance.now();
                 loadingProgress.value = 0;
 
-                const response = await fetch("all_data.json");
+                const response = await fetch("processed_shard_series.json");
                 if (!response.ok) {
-                    console.error("Failed to fetch all_data.json:", response.statusText);
+                    console.error("Failed to fetch processed_shard_series.json:", response.statusText);
                     return;
                 }
                 const fetchTime = performance.now();
-                console.log(`fetch time is : ${fetchTime - startTime} milliseconds`);
+                console.log(`Data fetch time is : ${fetchTime - startTime} milliseconds`);
 
                 const contentLength = response.headers.get("content-length");
                 const total = parseInt(contentLength, 10);
@@ -742,7 +247,7 @@
                 const combinedChunks = concatUint8Arrays(chunks);
                 const rawJsonString = new TextDecoder().decode(combinedChunks);
 
-                loadingProgress.value = 33; // Move to 33% for parsing
+                loadingProgress.value = 33;
 
                 return new Promise((resolve, reject) => {
                     jsonParserWorker = new Worker("json-parser-worker.js");
@@ -750,7 +255,8 @@
                     jsonParserWorker.onmessage = (event) => {
                         if (event.data.status === "complete") {
                             const parseTime = performance.now();
-                            console.log(`parse time is : ${parseTime - fetchTime} milliseconds`);
+                            console.log(`Data parse time is : ${parseTime - fetchTime} milliseconds`);
+                            loadingProgress.value = 66;
 
                             resolve(event.data.data);
                         } else if (event.data.status === "error") {
@@ -787,54 +293,269 @@
                 return result;
             }
 
-            async function processAndRenderShards() {
-                const startTime = performance.now();
-                const filesArray = Object.keys(json_files);
-                for (let i = 0; i < filesArray.length; i++) {
-                    const name = filesArray[i];
-                    const safeName = name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
-
-                    $("#series").append(`<option value="${safeName}">${name}</option>`);
-
-                    const json = _shardEventData[json_files[name]];
-                    console.debug("Processing shard event data:", safeName);
-
-                    const shardEventData = processShardEventData(safeName, json);
-                    renderShardEventData(safeName, shardEventData);
-
-                    loadingProgress.value = 66 + ((i + 1) / filesArray.length) * 34;
-                    await new Promise(requestAnimationFrame);
+            function renderSeriesSelection() {
+                for (const seriesName of shardSeriesNames) {
+                    $("#series").append(`<option value="${getSafeName(seriesName)}">${seriesName}</option>`);
                 }
-                const endTime = performance.now();
-                console.log(`process and render time is : ${startTime - endTime} milliseconds`);
             }
 
-            function initMapState() {
+            function getSafeName(seriesName) {
+                return seriesName.replace(/[^a-z0-9]/gi, "_").toLowerCase();
+            }
+
+            function getPrioritySeries() {
                 const hash = location.hash.substring(1).replace("Abaddon_1", "").replace("abaddon1_", "");
-                let seriesName = "_delta_2025_08_16";
+                let seriesName = getSafeName(shardSeriesNames.at(-1));
                 if (hash) {
                     seriesName = hash.split("_").slice(0, -1).join("_");
                 }
+                return {
+                    seriesName,
+                    siteName: hash,
+                };
+            }
 
-                // We can use a one-time event listener to ensure the button click happens
-                // after the layers are displayed.
-                $("#series").one("seriesDisplayComplete", () => {
-                    console.debug(`Series display complete. Checking hash: ${location.hash}`);
-                    if ($(location.hash).length > 0) {
-                        $(location.hash).click();
+            async function renderSeriesData(name, shardEventData) {
+                const startTime = performance.now();
+                loadingMessage.textContent = "Rendering shard data...";
+
+                const seriesLayer = L.featureGroup();
+                layer_lookup[name] = seriesLayer;
+                layerControl.addOverlay(seriesLayer, name);
+
+                let controlsHtml = `<div id="${name}" class="series" style="display:none">`;
+
+                console.debug(`Rendering sites for series: ${name}`);
+                for (const [index, site] of shardEventData.sites.entries()) {
+                    console.debug(`Rendering site: ${site.name} (${site.id})`);
+                    const siteLayer = L.featureGroup().addTo(seriesLayer);
+                    siteLayer.data = site;
+
+                    const linkedPortalColors = new Map();
+                    for (const shard of site.movingShards) {
+                        const renderedLinks = renderShardLinks({
+                            shard,
+                            site,
+                            linkedPortalColors,
+                        });
+
+                        if (renderedLinks.length > 0) {
+                            const movingShard = renderMovingShard(renderedLinks);
+                            movingShard.forEach((shard) => shard.addTo(siteLayer));
+                            renderedLinks.forEach((polyline) => polyline.addTo(siteLayer));
+                        }
                     }
+
+                    for (const portal of site.portals) {
+                        const lastKnownTeam = getLastKnownTeam(portal);
+                        renderPortal({
+                            portal,
+                            color: factionColors[lastKnownTeam] || factionColors.NEU,
+                            timezone: site.timezone,
+                            hasUnmovedShard: !linkedPortalColors.has(portal.id),
+                        }).forEach((marker) => marker.addTo(siteLayer));
+                    }
+
+                    const uniqueSiteId = name + "_" + site.id.replace(" ", "_");
+                    layer_lookup[uniqueSiteId] = siteLayer;
+                    const scoresHtml = `<span style="color:${factionColors.RES}">${site.linkScores.RES}</span>:<span style="color:${factionColors.ENL}">${site.linkScores.ENL}</span>:<span style="color:${factionColors.MAC}">${site.linkScores.MAC}</span>:<span style="color:${factionColors.NEU}">${site.linkScores.NEU}</span>`;
+                    controlsHtml += `<button id="${uniqueSiteId}">${site.name}</button> ${scoresHtml}<br>`;
+                }
+                controlsHtml += "</div>";
+                $("#controls").append(controlsHtml);
+
+                const endTime = performance.now();
+                console.log(
+                    `Render of ${name} (${shardEventData.sites.length} sites) complete in ${
+                        endTime - startTime
+                    } milliseconds`
+                );
+            }
+
+            function renderShardLinks(shardDetails) {
+                const site = shardDetails.site;
+                const shard = shardDetails.shard;
+                const linkedPortalColors = shardDetails.linkedPortalColors;
+
+                return (
+                    shard.links.map((link) => {
+                        const originPortal = site.portals.find((portal) => portal.id === link.origin);
+                        const destPortal = site.portals.find((portal) => portal.id === link.dest);
+                        if (!originPortal || !destPortal) {
+                            console.warn(`Missing portal data for link: ${link.origin} to ${link.dest}`);
+                            return;
+                        }
+
+                        const linkColor = factionColors[link.linkTeam] || factionColors.NEU;
+                        const polyline = L.polyline(
+                            [L.latLng(originPortal.lat, originPortal.lng), L.latLng(destPortal.lat, destPortal.lng)],
+                            {
+                                color: linkColor,
+                                dashArray: ["10,5,5,5,5,5,5,5,100000"],
+                            }
+                        );
+
+                        const linkCreationTimeMs = new Date(parseInt(link.link) * 1000).toLocaleString(
+                            navigator.language,
+                            {
+                                timeZone: site.timezone,
+                            }
+                        );
+                        const moveTimeMs = new Date(parseInt(link.move) * 1000).toLocaleString(navigator.language, {
+                            timeZone: site.timezone,
+                        });
+                        const linkTooltip = `<strong>Shard ${shard.id}</strong><br />${originPortal.title} -> ${
+                            destPortal.title
+                        }<br>Link time: ${linkCreationTimeMs}<br />Jump time: ${moveTimeMs}<br />Distance: ${(
+                            Math.round((link.distance + Number.EPSILON) * 100) / 100
+                        ).toLocaleString()}m<br />Points: ${link.points}`;
+                        polyline.bindTooltip(linkTooltip, { sticky: true });
+                        polyline.bindPopup(linkTooltip, { sticky: true });
+
+                        linkedPortalColors.set(link.origin, linkColor);
+                        linkedPortalColors.set(link.dest, linkColor);
+
+                        return polyline;
+                    }) || null
+                );
+            }
+
+            function getLastKnownTeam(portal) {
+                if (!portal || !portal.shardHistory) {
+                    return undefined;
+                }
+
+                const allHistoryEntries = portal.shardHistory
+                    .flatMap((shard) => shard.history || [])
+                    .sort((a, b) => b.time - a.time);
+
+                for (const entry of allHistoryEntries) {
+                    if (entry.reason === "despawn") {
+                        return entry.team;
+                    }
+
+                    // Rule: If not a despawn event, return team if it exists
+                    if (entry.team) {
+                        return entry.team;
+                    }
+                }
+                return undefined;
+            }
+
+            function renderMovingShard(renderedLinks) {
+                const coords = renderedLinks.map((line) => line.getLatLngs()).flat();
+                const animatedShards = [
+                    L.motion.polyline(
+                        coords,
+                        {
+                            color: "transparent",
+                            interactive: false,
+                        },
+                        { auto: true, duration: renderedLinks.length * 1000 },
+                        {
+                            showMarker: true,
+                            removeOnEnd: false,
+                            icon: shardIcon,
+                            interactive: false,
+                        }
+                    ),
+                ];
+                for (const polyline of renderedLinks) {
+                    polyline.animatedShards = animatedShards;
+                    polyline.on("mouseover", function (e) {
+                        this.animatedShards.forEach((s) => s.motionStart());
+                    });
+                }
+                return animatedShards;
+            }
+
+            function renderPortal(portalDetails) {
+                const portal = portalDetails.portal;
+                const latLng = L.latLng(portal.lat, portal.lng);
+                let portalTooltip = `<strong>${portal.title}</strong><br />`;
+                for (const shardHistoryItem of portal.shardHistory || []) {
+                    portalTooltip += `<hr /><strong>Shard ${shardHistoryItem.id}</strong><br />`;
+                    for (const historyItem of shardHistoryItem.history) {
+                        let teamToDisplay;
+                        if (historyItem.reason !== "no move") {
+                            teamToDisplay = historyItem.team || "NEU";
+                        }
+                        portalTooltip += `${historyItem.reason === "link" ? "jump" : historyItem.reason} at ${new Date(
+                            parseInt(historyItem.time) * 1000
+                        ).toLocaleString(navigator.language, {
+                            timeZone: portalDetails.timezone,
+                        })}${
+                            teamToDisplay
+                                ? ` - <span style="color:${factionColors[teamToDisplay]}">${teamToDisplay}</span>`
+                                : ""
+                        } <br />`;
+                    }
+                }
+
+                const markers = [L.circleMarker(latLng, { color: portalDetails.color }).bindTooltip(portalTooltip)];
+                if (portalDetails.hasUnmovedShard) {
+                    markers.push(L.marker(latLng, { icon: shardIcon }).bindTooltip(portalTooltip));
+                }
+                return markers;
+            }
+
+            let backgroundRenderQueue = [];
+            let totalSeriesToRender = 0;
+            let seriesRendered = 0;
+
+            async function renderBackgroundSeries() {
+                const prioritySeries = getPrioritySeries();
+                const seriesToRender = _shardSeriesData.filter((event) => {
+                    return getSafeName(event.name) !== prioritySeries.seriesName;
                 });
 
-                $("#series").val(seriesName);
-                displaySeries(seriesName, "pageLoad");
+                seriesToRender.forEach((event) => {
+                    backgroundRenderQueue.push({ event, safeName: getSafeName(event.name) });
+                });
+                totalSeriesToRender = backgroundRenderQueue.length;
+                console.log(`Total series to render in background: ${totalSeriesToRender}`);
+                seriesRendered = 0;
+
+                // Start the background rendering process
+                requestIdleCallback(renderNextSeries);
+            }
+
+            async function renderNextSeries(deadline) {
+                while (deadline.timeRemaining() > 0 && backgroundRenderQueue.length > 0) {
+                    const nextItem = backgroundRenderQueue.shift();
+                    const { event, safeName } = nextItem;
+
+                    renderSeriesData(safeName, event);
+                    seriesRendered++;
+
+                    const progress = seriesRendered / totalSeriesToRender;
+                    loadingProgress.value = 66 + progress * 34;
+
+                    if (seriesRendered % 2 === 0) {
+                        await new Promise(requestAnimationFrame);
+                    }
+                }
+
+                if (backgroundRenderQueue.length > 0) {
+                    requestIdleCallback(renderNextSeries);
+                } else {
+                    console.log("Background rendering complete.");
+                    loadingOverlay.style.display = "none";
+                }
             }
 
             async function displaySeries(seriesName, source = "user") {
                 console.debug(`Displaying series layer for: ${seriesName}`);
                 $(".series").hide();
 
+                if (!layer_lookup[seriesName]) {
+                    console.debug(`Series layer not found, rendering: ${seriesName}`);
+                    const shardEventData = _shardSeriesData.find((event) => event.name === seriesName);
+                    await renderSeriesData(seriesName, shardEventData);
+                }
+
                 $(`#${seriesName}`).show();
-                $("button").off("click").on("click", buttonHandler);
+                $("button").off("click").on("click", buttonHandler).css("font-weight", "normal");
 
                 if (currentActiveSeriesLayer && map.hasLayer(currentActiveSeriesLayer)) {
                     map.removeLayer(currentActiveSeriesLayer);
@@ -861,6 +582,9 @@
             }
 
             function buttonHandler() {
+                $(this).css("font-weight", "bold");
+                $(this).siblings("button").css("font-weight", "normal");
+
                 var layer = layer_lookup[this.id];
                 map.fitBounds(layer.getBounds());
                 location.hash = this.id;
@@ -870,7 +594,6 @@
                     }
                 });
                 var d = layer.data;
-                //console.log(d.fragment.map(f => f.history.map(h => new Date(parseInt(h.moveTimeMs)))))
             }
 
             async function handleCustomFile() {
@@ -897,8 +620,8 @@
                             const name = file.name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
                             const shardEventData = processShardEventData(name, parsedJson);
 
-                            _shardEventData[name] = shardEventData;
-                            renderShardEventData(name, shardEventData);
+                            _shardSeriesData[name] = shardEventData;
+                            renderSeriesData(name, shardEventData);
 
                             $("#series").append(`<option value="${name}">${file.name}</option>`);
                             $("#series").val(name).change();
