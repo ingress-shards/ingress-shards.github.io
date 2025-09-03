@@ -427,19 +427,10 @@
 
                 const allHistoryEntries = portal.shardHistory
                     .flatMap((shard) => shard.history || [])
+                    .filter((entry) => entry.reason !== "despawn" && entry.team)
                     .sort((a, b) => b.time - a.time);
 
-                for (const entry of allHistoryEntries) {
-                    if (entry.reason === "despawn") {
-                        return entry.team;
-                    }
-
-                    // Rule: If not a despawn event, return team if it exists
-                    if (entry.team) {
-                        return entry.team;
-                    }
-                }
-                return undefined;
+                return allHistoryEntries[0]?.team;
             }
 
             function renderMovingShard(renderedLinks) {
