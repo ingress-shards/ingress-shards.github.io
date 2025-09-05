@@ -1,0 +1,62 @@
+export const shardSeries = [
+    {
+        seriesName: "Shared Memories 2024 APAC",
+        fileName: "shard-jump-times-2024.09.01.18.10.48.json"
+    },
+    {
+        seriesName: "Erased Memories 2024 AMER",
+        fileName: "shard-jump-times-2024.11.17.09.14.04.json"
+    },
+    {
+        seriesName: "+Alpha 2025 EMEA",
+        fileName: "shard-jump-times-2025.03.01.20.11.38.json"
+    },
+    {
+        seriesName: "+Alpha 2025 APAC",
+        fileName: "shard-jump-times-2025.03.09.08.41.46.json"
+    },
+    {
+        seriesName: "+Alpha 2025 AMER",
+        fileName: "shard-jump-times-2025.03.17.09.45.57.json"
+    },
+    {
+        seriesName: "+Theta 2025-05-24 Shard Singular",
+        fileName: "shard-jump-times-2025.05.25.13.14.05.json"
+    },
+    {
+        seriesName: "+Theta 2025 EMEA",
+        fileName: "shard-jump-times-2025.05.25.13.14.05.json"
+    },
+    {
+        seriesName: "+Theta 2025-05-31 Shard Singular",
+        fileName: "shard-jump-times-2025.06.03.15.20.36.json"
+    },
+    {
+        seriesName: "+Theta 2025 AMER",
+        fileName: "shard-jump-times-2025.06.03.15.20.36.json"
+    },
+    {
+        seriesName: "+Theta 2025-06-07 Shard Singular",
+        fileName: "shard-jump-times-2025.06.08.12.07.39.json"
+    },
+    {
+        seriesName: "+Theta 2025 APAC",
+        fileName: "shard-jump-times-2025.06.08.12.07.39.json"
+    },
+    {
+        seriesName: "+Theta 2025-06-14",
+        fileName: "shard-jump-times-2025.06.16.17.47.43.json"
+    },
+    {
+        seriesName: "+Delta 2025-08-16",
+        fileName: "shard-jump-times-2025.08.18.12.11.03.json"
+    },
+    {
+        seriesName: "+Delta 2025-08-23",
+        fileName: "shard-jump-times-2025.08.23.22.03.28.json"
+    },
+];
+
+export function getSeriesSafeName(seriesName) {
+    return seriesName.replace(/[^a-z0-9]/gi, "_").toLowerCase();
+}

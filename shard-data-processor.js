@@ -1,16 +1,14 @@
-import { readFileSync, writeFileSync } from 'fs';
-
-const SHARD_EVENT_TYPE = {
+export const SHARD_EVENT_TYPE = {
     SKIRMISH: "skirmish",
     SINGULAR: "singular",
     ANOMALY: "anomaly",
 };
-const TEAM_ABBREVIATIONS = {
+export const TEAM_ABBREVIATIONS = {
     "RESISTANCE": "RES",
     "ENLIGHTENED": "ENL",
     "MACHINA": "MAC",
 }
-const HISTORY_REASONS = {
+export const HISTORY_REASONS = {
     SPAWN: "spawn",
     NO_MOVE: "no move",
     LINK: "link",
@@ -18,11 +16,11 @@ const HISTORY_REASONS = {
     DESPAWN: "despawn",
 };
 
-function getAbbreviatedTeam(fullTeamName) {
+export function getAbbreviatedTeam(fullTeamName) {
     return TEAM_ABBREVIATIONS[fullTeamName];
 }
 
-var shard_singulars = [
+export var shard_singulars = [
     "🇦🇺 Hervey Bay, Australia",
     "🇦🇺 Hobart, Australia",
     "🇯🇵 Niigata, Japan",
@@ -72,7 +70,7 @@ var shard_singulars = [
     "🇺🇸 Fort Worth, TX, USA",
     "🇨🇦 Vancouver, Canada",
 ];
-const linkScoringRules = new Map()
+export const linkScoringRules = new Map()
     .set(SHARD_EVENT_TYPE.SINGULAR, {
         rules: [
             {
@@ -120,7 +118,7 @@ const linkScoringRules = new Map()
     });
 
 // A function to convert Niantic's shard jump times json into a more usable format for display on a map.
-function processShardSeriesData(name, json) {
+export function processShardSeriesData(name, json) {
     const artifacts = json.artifact.filter((d) => d.fragment);
     if (!artifacts.length) {
         console.warn(`No artifacts found with shards for ${name}. Skipping processing.`);
@@ -450,48 +448,3 @@ function calculateJsonSizeReduction(name, originalJson, shardEventDataJson) {
         100
     ).toFixed(2)}%`;
 }
-
-function main() {
-    console.log('Pre-processing shard series data...');
-    const startTime = performance.now();
-
-    try {
-        const allData = JSON.parse(readFileSync('all_data.json', 'utf8'));
-
-        const processedData = [];
-        const json_files = {
-            "Shared Memories 2024 APAC": "shard-jump-times-2024.09.01.18.10.48.json",
-            "Erased Memories 2024 AMER": "shard-jump-times-2024.11.17.09.14.04.json",
-            "+Alpha 2025 EMEA": "shard-jump-times-2025.03.01.20.11.38.json",
-            "+Alpha 2025 APAC": "shard-jump-times-2025.03.09.08.41.46.json",
-            "+Alpha 2025 AMER": "shard-jump-times-2025.03.17.09.45.57.json",
-            "+Theta 2025-05-24 Shard Singular": "shard-jump-times-2025.05.25.13.14.05.json",
-            "+Theta 2025 EMEA": "shard-jump-times-2025.05.25.13.14.05.json",
-            "+Theta 2025-05-31 Shard Singular": "shard-jump-times-2025.06.03.15.20.36.json",
-            "+Theta 2025 AMER": "shard-jump-times-2025.06.03.15.20.36.json",
-            "+Theta 2025-06-07 Shard Singular": "shard-jump-times-2025.06.08.12.07.39.json",
-            "+Theta 2025 APAC": "shard-jump-times-2025.06.08.12.07.39.json",
-            "+Theta 2025-06-14": "shard-jump-times-2025.06.16.17.47.43.json",
-            "+Delta 2025-08-16": "shard-jump-times-2025.08.18.12.11.03.json",
-            "+Delta 2025-08-23": "shard-jump-times-2025.08.23.22.03.28.json",
-        };
-
-        for (const name in json_files) {
-            const fileName = json_files[name];
-            const safeName = name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
-            const json = allData[fileName];
-            processedData.push(processShardSeriesData(safeName, json));
-        }
-
-        writeFileSync('processed_shard_series.json', JSON.stringify(processedData), 'utf8');
-
-        const endTime = performance.now();
-        console.log(`Successfully generated processed_shard_series.json: ${processedData.length} series, ${processedData.flatMap(event => event.sites || []).length} sites in ${(endTime - startTime) / 1000} seconds`);
-
-    } catch (error) {
-        console.error('Error in preprocessing script:', error);
-        process.exit(1);
-    }
-}
-
-main();
