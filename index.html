@@ -115,6 +115,8 @@
         >
 
         <script type="module">
+            import { shardSeries, getSeriesSafeName } from "./shard-series-metadata.js";
+
             window.map = L.map("map", {
                 worldCopyJump: true,
             }).fitWorld();
@@ -145,35 +147,10 @@
                 iconAnchor: [15, 15],
             });
 
-            const shardSeriesNames = [
-                "Shared Memories 2024 APAC",
-                "Erased Memories 2024 AMER",
-                "+Alpha 2025 EMEA",
-                "+Alpha 2025 APAC",
-                "+Alpha 2025 AMER",
-                "+Theta 2025-05-24 Shard Singular",
-                "+Theta 2025 EMEA",
-                "+Theta 2025-05-31 Shard Singular",
-                "+Theta 2025 AMER",
-                "+Theta 2025-06-07 Shard Singular",
-                "+Theta 2025 APAC",
-                "+Theta 2025-06-14",
-                "+Delta 2025-08-16",
-                "+Delta 2025-08-23",
-            ];
-
             window.layer_lookup = {};
             let currentActiveSeriesLayer = null;
-
             let _shardSeriesData = {};
-
-            // Web Worker instance
             let jsonParserWorker = null;
-
-            // UI elements
-            const loadingOverlay = document.getElementById("loading-overlay");
-            const loadingMessage = document.getElementById("loading-message");
-            const loadingProgress = document.getElementById("loading-progress");
 
             async function initDataPipeline() {
                 try {
@@ -185,13 +162,20 @@
                     );
                     renderSeriesSelection();
 
-                    const seriesToRenderFirst = getPrioritySeries();
-                    seriesToRenderFirst.data = _shardSeriesData.find((e) => e.name === seriesToRenderFirst.seriesName);
+                    let prioritySeriesDetails = getPrioritySeriesDetails(location.hash);
+                    let data = _shardSeriesData.find((e) => e.name === prioritySeriesDetails.seriesSafeName);
+                    if (!data) {
+                        console.warn(
+                            `Priority series ${prioritySeriesDetails.seriesSafeName} not found, defaulting to latest series`
+                        );
+                        prioritySeriesDetails = getPrioritySeriesDetails();
+                        data = _shardSeriesData.find((e) => e.name === prioritySeriesDetails.seriesSafeName);
+                    }
+                    prioritySeriesDetails.data = data;
 
-                    // 4. Render the priority data IMMEDIATELY
-                    if (seriesToRenderFirst.data) {
-                        console.log(`Rendering priority series: ${seriesToRenderFirst.seriesName}`);
-                        renderSeriesData(seriesToRenderFirst.seriesName, seriesToRenderFirst.data);
+                    if (prioritySeriesDetails.data) {
+                        console.log(`Rendering priority series: ${prioritySeriesDetails.seriesSafeName}`);
+                        renderSeriesData(prioritySeriesDetails.seriesSafeName, prioritySeriesDetails.data);
 
                         $("#series").one("seriesDisplayComplete", () => {
                             console.debug(
@@ -204,11 +188,11 @@
                             }
                         });
 
-                        $("#series").val(seriesToRenderFirst.seriesName);
-                        displaySeries(seriesToRenderFirst.seriesName, "pageLoad");
+                        $("#series").val(prioritySeriesDetails.seriesSafeName);
+                        displaySeries(prioritySeriesDetails.seriesSafeName, "page_load");
                     }
 
-                    renderBackgroundSeries();
+                    renderBackgroundSeries(prioritySeriesDetails);
                 } catch (error) {
                     console.error("Error loading shard data:", error);
                     loadingProgress.value = 0;
@@ -217,7 +201,7 @@
 
             async function loadAndParseShardData() {
                 const startTime = performance.now();
-                loadingProgress.value = 0;
+                updateLoadingDetails(0, "Loading Shard Data...");
 
                 const response = await fetch("processed_shard_series.json");
                 if (!response.ok) {
@@ -225,7 +209,7 @@
                     return;
                 }
                 const fetchTime = performance.now();
-                console.log(`Data fetch time is : ${fetchTime - startTime} milliseconds`);
+                console.debug(`Data fetch time is : ${fetchTime - startTime} milliseconds`);
 
                 const contentLength = response.headers.get("content-length");
                 const total = parseInt(contentLength, 10);
@@ -241,40 +225,37 @@
                     }
                     chunks.push(value);
                     loaded += value.length;
-                    loadingProgress.value = (loaded / total) * 33; // 0-33% for download
+                    updateLoadingDetails((loaded / total) * 33);
                 }
 
                 const combinedChunks = concatUint8Arrays(chunks);
                 const rawJsonString = new TextDecoder().decode(combinedChunks);
-
-                loadingProgress.value = 33;
+                updateLoadingDetails(33);
 
                 return new Promise((resolve, reject) => {
-                    jsonParserWorker = new Worker("json-parser-worker.js");
+                    jsonParserWorker = new Worker("json-parser-worker.js", { type: "module" });
 
                     jsonParserWorker.onmessage = (event) => {
                         if (event.data.status === "complete") {
                             const parseTime = performance.now();
-                            console.log(`Data parse time is : ${parseTime - fetchTime} milliseconds`);
-                            loadingProgress.value = 66;
+                            console.debug(`Data parse time is : ${parseTime - fetchTime} milliseconds`);
+                            updateLoadingDetails(66, "Rendering shard data...");
 
                             resolve(event.data.data);
                         } else if (event.data.status === "error") {
                             console.error("Web Worker error:", event.data.message);
-                            loadingProgress.value = 0; // Reset progress
-                            loadingOverlay.style.display = "flex"; // Keep overlay visible on error
+                            updateLoadingDetails(0, "Error loading shard data.");
                             reject(new Error(event.data.message));
                         }
                     };
 
                     jsonParserWorker.onerror = (error) => {
                         console.error("Web Worker general error:", error);
-                        loadingProgress.value = 0; // Reset progress
-                        loadingOverlay.style.display = "flex"; // Keep overlay visible on error
+                        updateLoadingDetails(0, "Error loading shard data.");
                         reject(error);
                     };
 
-                    jsonParserWorker.postMessage(rawJsonString);
+                    jsonParserWorker.postMessage({ rawData: rawJsonString });
                 });
             }
 
@@ -294,31 +275,45 @@
             }
 
             function renderSeriesSelection() {
+                const shardSeriesNames = shardSeries.flatMap((s) => s.seriesName);
                 for (const seriesName of shardSeriesNames) {
-                    $("#series").append(`<option value="${getSafeName(seriesName)}">${seriesName}</option>`);
+                    $("#series").append(`<option value="${getSeriesSafeName(seriesName)}">${seriesName}</option>`);
                 }
             }
 
-            function getSafeName(seriesName) {
-                return seriesName.replace(/[^a-z0-9]/gi, "_").toLowerCase();
+            function updateLoadingDetails(progress, message) {
+                const loadingOverlay = document.getElementById("loading-overlay");
+                const loadingMessage = document.getElementById("loading-message");
+                const loadingProgress = document.getElementById("loading-progress");
+
+                if (progress !== undefined) {
+                    loadingProgress.value = progress;
+                }
+                if (message) {
+                    loadingMessage.textContent = message;
+                }
+                if (progress >= 100) {
+                    setTimeout(() => (loadingOverlay.style.display = "none"), 500);
+                } else {
+                    loadingOverlay.style.display = "flex";
+                }
             }
 
-            function getPrioritySeries() {
-                const hash = location.hash.substring(1).replace("Abaddon_1", "").replace("abaddon1_", "");
-                let seriesName = getSafeName(shardSeriesNames.at(-1));
-                if (hash) {
-                    seriesName = hash.split("_").slice(0, -1).join("_");
+            function getPrioritySeriesDetails(locationHash) {
+                let siteName =
+                    locationHash && locationHash.substring(1).replace("Abaddon_1", "").replace("abaddon1_", "");
+                let seriesSafeName = getSeriesSafeName(shardSeries.at(-1).seriesName);
+                if (siteName) {
+                    seriesSafeName = siteName.split("_").slice(0, -1).join("_");
                 }
                 return {
-                    seriesName,
-                    siteName: hash,
+                    seriesSafeName,
+                    siteName,
                 };
             }
 
             async function renderSeriesData(name, shardEventData) {
                 const startTime = performance.now();
-                loadingMessage.textContent = "Rendering shard data...";
-
                 const seriesLayer = L.featureGroup();
                 layer_lookup[name] = seriesLayer;
                 layerControl.addOverlay(seriesLayer, name);
@@ -365,7 +360,7 @@
                 $("#controls").append(controlsHtml);
 
                 const endTime = performance.now();
-                console.log(
+                console.debug(
                     `Render of ${name} (${shardEventData.sites.length} sites) complete in ${
                         endTime - startTime
                     } milliseconds`
@@ -494,20 +489,18 @@
             let totalSeriesToRender = 0;
             let seriesRendered = 0;
 
-            async function renderBackgroundSeries() {
-                const prioritySeries = getPrioritySeries();
+            async function renderBackgroundSeries(prioritySeries) {
                 const seriesToRender = _shardSeriesData.filter((event) => {
-                    return getSafeName(event.name) !== prioritySeries.seriesName;
+                    return getSeriesSafeName(event.name) !== prioritySeries.seriesSafeName;
                 });
 
                 seriesToRender.forEach((event) => {
-                    backgroundRenderQueue.push({ event, safeName: getSafeName(event.name) });
+                    backgroundRenderQueue.push({ event, safeName: getSeriesSafeName(event.name) });
                 });
                 totalSeriesToRender = backgroundRenderQueue.length;
                 console.log(`Total series to render in background: ${totalSeriesToRender}`);
                 seriesRendered = 0;
 
-                // Start the background rendering process
                 requestIdleCallback(renderNextSeries);
             }
 
@@ -518,9 +511,7 @@
 
                     renderSeriesData(safeName, event);
                     seriesRendered++;
-
-                    const progress = seriesRendered / totalSeriesToRender;
-                    loadingProgress.value = 66 + progress * 34;
+                    updateLoadingDetails(66 + (seriesRendered / totalSeriesToRender) * 34);
 
                     if (seriesRendered % 2 === 0) {
                         await new Promise(requestAnimationFrame);
@@ -531,19 +522,13 @@
                     requestIdleCallback(renderNextSeries);
                 } else {
                     console.log("Background rendering complete.");
-                    loadingOverlay.style.display = "none";
+                    updateLoadingDetails(100);
                 }
             }
 
             async function displaySeries(seriesName, source = "user") {
                 console.debug(`Displaying series layer for: ${seriesName}`);
                 $(".series").hide();
-
-                if (!layer_lookup[seriesName]) {
-                    console.debug(`Series layer not found, rendering: ${seriesName}`);
-                    const shardEventData = _shardSeriesData.find((event) => event.name === seriesName);
-                    await renderSeriesData(seriesName, shardEventData);
-                }
 
                 $(`#${seriesName}`).show();
                 $("button").off("click").on("click", buttonHandler).css("font-weight", "normal");
@@ -556,7 +541,7 @@
                     layer_lookup[seriesName].addTo(map);
                     currentActiveSeriesLayer = newSeriesLayer;
 
-                    if (source === "user" || location.hash === "") {
+                    if (source === "user" || location.hash === "" || !layer_lookup[location.hash.substring(1)]) {
                         map.fitBounds(currentActiveSeriesLayer.getBounds());
                     }
 
@@ -564,12 +549,6 @@
                 } else {
                     console.warn(`No layer found for series: ${seriesName}`);
                 }
-
-                $("#series")
-                    .off("change")
-                    .on("change", function () {
-                        displaySeries(this.value);
-                    });
             }
 
             function buttonHandler() {
@@ -591,35 +570,36 @@
                 var file = this.files[0];
                 if (!file) return;
 
-                loadingOverlay.style.display = "flex";
-                loadingProgress.value = 0;
+                updateLoadingDetails(0, "Loading custom shard data...");
                 await new Promise(requestAnimationFrame);
 
                 let reader = new FileReader();
                 reader.onload = async function (e) {
                     const localRawJsonString = e.target.result;
-                    loadingProgress.value = 33;
+                    updateLoadingDetails(33);
                     await new Promise(requestAnimationFrame);
 
-                    jsonParserWorker.postMessage(localRawJsonString);
+                    const seriesSafeName = getSeriesSafeName(file.name);
+                    jsonParserWorker.postMessage({
+                        rawData: localRawJsonString,
+                        seriesSafeName,
+                        processType: "custom_file",
+                    });
                     jsonParserWorker.onmessage = async (workerEvent) => {
                         if (workerEvent.data.status === "complete") {
-                            loadingProgress.value = 66;
+                            updateLoadingDetails(66, "Rendering shard data...");
                             await new Promise(requestAnimationFrame);
 
-                            const parsedJson = workerEvent.data.data;
-                            const name = file.name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
-                            const shardEventData = processShardEventData(name, parsedJson);
+                            const customShardSeriesData = workerEvent.data.data;
 
-                            _shardSeriesData[name] = shardEventData;
-                            renderSeriesData(name, shardEventData);
+                            _shardSeriesData[seriesSafeName] = customShardSeriesData;
+                            renderSeriesData(seriesSafeName, customShardSeriesData);
 
-                            $("#series").append(`<option value="${name}">${file.name}</option>`);
-                            $("#series").val(name).change();
+                            $("#series").append(`<option value="${seriesSafeName}">${file.name}</option>`);
+                            $("#series").val(seriesSafeName).change();
                             $("button").off("click").on("click", buttonHandler);
 
-                            loadingProgress.value = 100;
-                            setTimeout(() => (loadingOverlay.style.display = "none"), 500);
+                            updateLoadingDetails(100);
                         }
                     };
                 };
@@ -628,6 +608,10 @@
 
             $(() => {
                 $("#custom").change(handleCustomFile);
+                $("#series").on("change", function () {
+                    displaySeries(this.value);
+                });
+
                 initDataPipeline();
             });
         </script>

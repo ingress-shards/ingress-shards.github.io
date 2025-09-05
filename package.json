@@ -2,8 +2,8 @@
     "name": "ingress-event-shards",
     "version": "1.0.0",
     "type": "module",
-    "main": "preprocess-shard-series.js",
+    "main": "run-preprocessor.js",
     "scripts": {
-        "start": "node preprocess-shard-series.js"
+        "start": "run-preprocessor.js"
     }
 }
