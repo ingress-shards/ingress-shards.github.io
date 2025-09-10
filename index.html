@@ -116,6 +116,7 @@
 
         <script type="module">
             import { shardSeries, getSeriesSafeName } from "./shard-series-metadata.js";
+            import { HISTORY_REASONS } from "./shard-data-processor.js";
 
             window.map = L.map("map", {
                 worldCopyJump: true,
@@ -320,36 +321,23 @@
 
                 let controlsHtml = `<div id="${name}" class="series" style="display:none">`;
 
-                console.debug(`Rendering sites for series: ${name}`);
-                for (const [index, site] of shardEventData.sites.entries()) {
-                    console.debug(`Rendering site: ${site.name} (${site.id})`);
+                console.log(`Rendering sites for series: ${name}`);
+                for (const site of shardEventData.sites) {
                     const siteLayer = L.featureGroup().addTo(seriesLayer);
                     siteLayer.data = site;
 
-                    const linkedPortalColors = new Map();
-                    for (const shard of site.movingShards) {
-                        const renderedLinks = renderShardLinks({
-                            shard,
-                            site,
-                            linkedPortalColors,
-                        });
+                    const shardDetails = renderShardData(site.shards, site.portals);
+                    shardDetails.links.forEach((link) => link.addTo(siteLayer));
+                    shardDetails.paths.forEach((path) => path.addTo(siteLayer));
 
-                        if (renderedLinks.length > 0) {
-                            const movingShard = renderMovingShard(renderedLinks);
-                            movingShard.forEach((shard) => shard.addTo(siteLayer));
-                            renderedLinks.forEach((polyline) => polyline.addTo(siteLayer));
-                        }
-                    }
+                    const portalHistoryMap = shardDetails.portalHistoryMap;
+                    const portalDetails = renderPortalData(site.portals, portalHistoryMap, site.timezone);
+                    portalDetails.markers.forEach((marker) => marker.addTo(siteLayer));
+                    portalDetails.staticShards.forEach((marker) => marker.addTo(siteLayer));
 
-                    for (const portal of site.portals) {
-                        const lastKnownTeam = getLastKnownTeam(portal);
-                        renderPortal({
-                            portal,
-                            color: factionColors[lastKnownTeam] || factionColors.NEU,
-                            timezone: site.timezone,
-                            hasUnmovedShard: !linkedPortalColors.has(portal.id),
-                        }).forEach((marker) => marker.addTo(siteLayer));
-                    }
+                    console.debug(
+                        `${site.name} site details: ${shardDetails.portalHistoryMap.size} portals, ${site.shards.length} shards (${portalDetails.staticShards.length} static), ${shardDetails.links.length} links.`
+                    );
 
                     const uniqueSiteId = name + "_" + site.id.replace(" ", "_");
                     layer_lookup[uniqueSiteId] = siteLayer;
@@ -367,122 +355,188 @@
                 );
             }
 
-            function renderShardLinks(shardDetails) {
-                const site = shardDetails.site;
-                const shard = shardDetails.shard;
-                const linkedPortalColors = shardDetails.linkedPortalColors;
+            function renderLink(linkMetadata) {
+                const originPortal = linkMetadata.originPortal;
+                const destPortal = linkMetadata.destPortal;
+                const linkColor = factionColors[linkMetadata.team] || factionColors.NEU;
 
-                return (
-                    shard.links.map((link) => {
-                        const originPortal = site.portals.find((portal) => portal.id === link.origin);
-                        const destPortal = site.portals.find((portal) => portal.id === link.dest);
-                        if (!originPortal || !destPortal) {
-                            console.warn(`Missing portal data for link: ${link.origin} to ${link.dest}`);
-                            return;
-                        }
-
-                        const linkColor = factionColors[link.linkTeam] || factionColors.NEU;
-                        const polyline = L.polyline(
-                            [L.latLng(originPortal.lat, originPortal.lng), L.latLng(destPortal.lat, destPortal.lng)],
-                            {
-                                color: linkColor,
-                                dashArray: ["10,5,5,5,5,5,5,5,100000"],
-                            }
-                        );
-
-                        const linkCreationTimeMs = new Date(parseInt(link.link) * 1000).toLocaleString(
-                            navigator.language,
-                            {
-                                timeZone: site.timezone,
-                            }
-                        );
-                        const moveTimeMs = new Date(parseInt(link.move) * 1000).toLocaleString(navigator.language, {
-                            timeZone: site.timezone,
-                        });
-                        const linkTooltip = `<strong>Shard ${shard.id}</strong><br />${originPortal.title} -> ${
-                            destPortal.title
-                        }<br>Link time: ${linkCreationTimeMs}<br />Jump time: ${moveTimeMs}<br />Distance: ${(
-                            Math.round((link.distance + Number.EPSILON) * 100) / 100
-                        ).toLocaleString()}m<br />Points: ${link.points}`;
-                        polyline.bindTooltip(linkTooltip, { sticky: true });
-                        polyline.bindPopup(linkTooltip, { sticky: true });
-
-                        linkedPortalColors.set(link.origin, linkColor);
-                        linkedPortalColors.set(link.dest, linkColor);
-
-                        return polyline;
-                    }) || null
+                const polyline = L.polyline(
+                    [L.latLng(originPortal.lat, originPortal.lng), L.latLng(destPortal.lat, destPortal.lng)],
+                    {
+                        color: linkColor,
+                        dashArray: ["10,5,5,5,5,5,5,5,100000"],
+                    }
                 );
+
+                const linkCreationTimeMs = new Date(parseInt(linkMetadata.linkTime) * 1000).toLocaleString(
+                    navigator.language,
+                    {
+                        timeZone: originPortal.timezone,
+                    }
+                );
+                const moveTimeMs = new Date(parseInt(linkMetadata.moveTime) * 1000).toLocaleString(navigator.language, {
+                    timeZone: originPortal.timezone,
+                });
+                const linkTooltip = `<strong>Shard ${linkMetadata.shardId}</strong><br />${originPortal.title} -> ${
+                    destPortal.title
+                }<br>Link time: ${linkCreationTimeMs}<br />Jump time: ${moveTimeMs}<br />Distance: ${(
+                    Math.round((linkMetadata.distance + Number.EPSILON) * 100) / 100
+                ).toLocaleString()}m<br />Points: ${linkMetadata.points}`;
+                polyline.bindTooltip(linkTooltip, { sticky: true });
+                polyline.bindPopup(linkTooltip, { sticky: true });
+
+                return polyline;
             }
 
-            function getLastKnownTeam(portal) {
-                if (!portal || !portal.shardHistory) {
+            function getLastKnownTeam(portalHistory) {
+                if (!portalHistory) {
                     return undefined;
                 }
 
-                const allHistoryEntries = portal.shardHistory
-                    .flatMap((shard) => shard.history || [])
-                    .filter((entry) => entry.reason !== "despawn" && entry.team)
-                    .sort((a, b) => b.time - a.time);
+                const portalHistoryEntries = [...portalHistory.values()]
+                    .flatMap((historyItem) => historyItem || [])
+                    .filter(
+                        (historyItem) =>
+                            historyItem.reason !== "despawn" && (historyItem.team || historyItem.linkDetails?.team)
+                    )
+                    .sort((a, b) => b.moveTime - a.moveTime);
 
-                return allHistoryEntries[0]?.team;
+                return portalHistoryEntries[0]?.team || portalHistoryEntries[0]?.linkDetails?.team;
             }
 
-            function renderMovingShard(renderedLinks) {
-                const coords = renderedLinks.map((line) => line.getLatLngs()).flat();
-                const animatedShards = [
-                    L.motion.polyline(
-                        coords,
-                        {
-                            color: "transparent",
-                            interactive: false,
-                        },
-                        { auto: true, duration: renderedLinks.length * 1000 },
-                        {
-                            showMarker: true,
-                            removeOnEnd: false,
-                            icon: shardIcon,
-                            interactive: false,
-                        }
-                    ),
-                ];
-                for (const polyline of renderedLinks) {
-                    polyline.animatedShards = animatedShards;
-                    polyline.on("mouseover", function (e) {
-                        this.animatedShards.forEach((s) => s.motionStart());
-                    });
-                }
-                return animatedShards;
-            }
+            function renderShardData(shards, portalsMap) {
+                const portalHistoryMap = new Map();
+                const allLinks = [];
+                const shardPaths = [];
 
-            function renderPortal(portalDetails) {
-                const portal = portalDetails.portal;
-                const latLng = L.latLng(portal.lat, portal.lng);
-                let portalTooltip = `<strong>${portal.title}</strong><br />`;
-                for (const shardHistoryItem of portal.shardHistory || []) {
-                    portalTooltip += `<hr /><strong>Shard ${shardHistoryItem.id}</strong><br />`;
-                    for (const historyItem of shardHistoryItem.history) {
-                        let teamToDisplay;
-                        if (historyItem.reason !== "no move") {
-                            teamToDisplay = historyItem.team || "NEU";
+                for (const shard of shards) {
+                    const shardLinks = [];
+                    for (const historyItem of shard.history) {
+                        let portalIds = [];
+                        switch (historyItem.reason) {
+                            case HISTORY_REASONS.LINK:
+                            case HISTORY_REASONS.JUMP:
+                                portalIds.push(historyItem.linkDetails.origin, historyItem.linkDetails.dest);
+                                const originPortal = portalsMap.get(historyItem.linkDetails.origin);
+                                const destPortal = portalsMap.get(historyItem.linkDetails.dest);
+
+                                shardLinks.push(
+                                    renderLink({
+                                        ...historyItem.linkDetails,
+                                        originPortal,
+                                        destPortal,
+                                        shardId: shard.id,
+                                        moveTime: historyItem.moveTime,
+                                    })
+                                );
+                                break;
+                            default:
+                                portalIds.push(historyItem.portalId);
+                                break;
                         }
-                        portalTooltip += `${historyItem.reason === "link" ? "jump" : historyItem.reason} at ${new Date(
-                            parseInt(historyItem.time) * 1000
-                        ).toLocaleString(navigator.language, {
-                            timeZone: portalDetails.timezone,
-                        })}${
-                            teamToDisplay
-                                ? ` - <span style="color:${factionColors[teamToDisplay]}">${teamToDisplay}</span>`
-                                : ""
-                        } <br />`;
+
+                        for (const portalId of portalIds) {
+                            if (!portalHistoryMap.has(portalId)) {
+                                portalHistoryMap.set(portalId, new Map());
+                            }
+                            const portalHistory = portalHistoryMap.get(portalId);
+                            if (!portalHistory.has(shard.id)) {
+                                portalHistory.set(shard.id, []);
+                            }
+                            portalHistoryMap.get(portalId).get(shard.id).push(historyItem);
+                        }
+                    }
+
+                    if (shardLinks.length > 0) {
+                        const coords = shardLinks.flatMap((link) => link.getLatLngs());
+
+                        const shardPath = [
+                            L.motion.polyline(
+                                coords,
+                                {
+                                    color: "transparent",
+                                    interactive: false,
+                                },
+                                { auto: true, duration: shardLinks.length * 1000 },
+                                {
+                                    showMarker: true,
+                                    removeOnEnd: false,
+                                    icon: shardIcon,
+                                    interactive: false,
+                                }
+                            ),
+                        ];
+
+                        for (const link of shardLinks) {
+                            link.shardPath = shardPath;
+                            link.on("mouseover", function (e) {
+                                this.shardPath.forEach((s) => s.motionStart());
+                            });
+                        }
+                        shardPaths.push(...shardPath);
+                        allLinks.push(...shardLinks);
+                    } else {
+                        const portal = portalsMap.get(shard.history[shard.history.length - 1].portalId);
+                        const latLng = L.latLng(portal.lat, portal.lng);
                     }
                 }
 
-                const markers = [L.circleMarker(latLng, { color: portalDetails.color }).bindTooltip(portalTooltip)];
-                if (portalDetails.hasUnmovedShard) {
-                    markers.push(L.marker(latLng, { icon: shardIcon }).bindTooltip(portalTooltip));
+                return {
+                    links: allLinks,
+                    paths: shardPaths,
+                    portalHistoryMap,
+                };
+            }
+
+            function renderPortalData(portals, portalHistoryMap, timeZone) {
+                const markers = [];
+                const staticShards = [];
+
+                for (const [portalId, portal] of portals) {
+                    const latLng = L.latLng(portal.lat, portal.lng);
+
+                    const portalHistory = portalHistoryMap.get(portalId);
+                    const lastKnownTeam = getLastKnownTeam(portalHistory);
+
+                    let portalTooltip = `<strong>${portal.title}</strong><br />`;
+                    for (const [shardId, shardHistory] of portalHistory || []) {
+                        portalTooltip += `<hr /><strong>Shard ${shardId}</strong><br />`;
+                        const hasStaticShard = true;
+                        for (const historyItem of shardHistory) {
+                            let teamToDisplay =
+                                historyItem.reason !== HISTORY_REASONS.NO_MOVE
+                                    ? historyItem.team || historyItem.linkDetails?.team || "NEU"
+                                    : undefined;
+
+                            portalTooltip += `${
+                                historyItem.reason === HISTORY_REASONS.LINK ? HISTORY_REASONS.JUMP : historyItem.reason
+                            } at ${new Date(parseInt(historyItem.moveTime) * 1000).toLocaleString(navigator.language, {
+                                timeZone,
+                            })}${
+                                teamToDisplay
+                                    ? ` - <span style="color:${factionColors[teamToDisplay]}">${teamToDisplay}</span>`
+                                    : ""
+                            } <br />`;
+                        }
+
+                        const shardHistoryReasons = shardHistory.flatMap((h) => h.reason);
+                        if (
+                            shardHistoryReasons.includes(HISTORY_REASONS.SPAWN) &&
+                            shardHistoryReasons.includes(HISTORY_REASONS.DESPAWN)
+                        ) {
+                            staticShards.push(L.marker(latLng, { icon: shardIcon }).bindTooltip(portalTooltip));
+                        }
+                    }
+                    markers.push(
+                        L.circleMarker(latLng, {
+                            color: factionColors[lastKnownTeam] || factionColors.NEU,
+                        }).bindTooltip(portalTooltip)
+                    );
                 }
-                return markers;
+                return {
+                    markers,
+                    staticShards,
+                };
             }
 
             let backgroundRenderQueue = [];
@@ -560,7 +614,7 @@
                 location.hash = this.id;
                 layer.eachLayer(function (l) {
                     if (l instanceof L.Polyline) {
-                        if (l.animatedShards) l.animatedShards.forEach((s) => s.motionStart());
+                        if (l.shardPath) l.shardPath.forEach((s) => s.motionStart());
                     }
                 });
                 var d = layer.data;

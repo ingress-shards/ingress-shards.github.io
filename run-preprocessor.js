@@ -14,9 +14,7 @@ function main() {
         const rawJson = readFileSync(inputFileName, 'utf-8');
         const parsedData = JSON.parse(rawJson);
 
-        console.log(`Processing series data...`);
         const processedData = [];
-
         for (const series of shardSeries) {
             const safeName = getSeriesSafeName(series.seriesName);
             const seriesData = parsedData[series.fileName];
@@ -24,7 +22,7 @@ function main() {
             processedData.push(processShardSeriesData(safeName, seriesData));
         }
 
-        writeFileSync('processed_shard_series.json', JSON.stringify(processedData), 'utf8');
+        writeFileSync('processed_shard_series.json', JSON.stringify(processedData, replacer), 'utf8');
 
         const endTime = performance.now();
         console.log(`Successfully processed data and saved to ${outputFileName}. ${processedData.length} series, ${processedData.flatMap(event => event.sites || []).length} sites in ${(endTime - startTime) / 1000} seconds`);
@@ -34,6 +32,16 @@ function main() {
         process.exit(1);
 
     }
+}
+
+function replacer(_key, value) {
+    if (value instanceof Map) {
+        return {
+            __map__: true,
+            data: Array.from(value.entries()),
+        };
+    }
+    return value;
 }
 
 main();
