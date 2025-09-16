@@ -1,9 +1,29 @@
 {
     "name": "ingress-event-shards",
     "version": "1.0.0",
+    "description": "Interactive map of shard data from Ingress events",
     "type": "module",
-    "main": "run-preprocessor.js",
+    "private": true,
     "scripts": {
-        "start": "run-preprocessor.js"
+        "start": "webpack serve --config webpack.dev.js",
+        "build": "webpack --config webpack.prod.js",
+        "preprocessor": "node scripts/run-preprocessor.js"
+    },
+    "devDependencies": {
+        "css-loader": "^7.1.2",
+        "html-webpack-plugin": "^5.6.4",
+        "style-loader": "^4.0.0",
+        "webpack": "^5.101.3",
+        "webpack-cli": "^6.0.1",
+        "webpack-dev-server": "^5.2.2",
+        "webpack-merge": "^6.0.1"
+    },
+    "dependencies": {
+        "country-flag-emoji-polyfill": "^0.1.8",
+        "github-fork-ribbon-css": "^0.2.3",
+        "jquery": "^3.7.1",
+        "leaflet": "^1.9.4",
+        "leaflet-providers": "^2.0.0",
+        "leaflet.motion": "github:neon-ninja/leaflet.motion"
     }
 }
