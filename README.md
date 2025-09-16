@@ -2,7 +2,7 @@
 
 Leaflet map of Ingress shard jump JSON
 
-[<img src="screenshot.png">](https://neon-ninja.github.io/shards)
+[<img src="src/assets/screenshot.png">](https://neon-ninja.github.io/shards)
 
 Distances are calculated with the [Haversine formula](https://rosettacode.org/wiki/Haversine_formula), using the Mean Earth Radius (6371km).
 

@@ -1,23 +1,25 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { processShardSeriesData } from './shard-data-processor.js';
-import { shardSeries, getSeriesSafeName } from "./shard-series-metadata.js";
+import { processShardSeriesData } from '../src/js/data/shard-data-processor.js';
+import { getSeriesSafeName } from "../src/js/helpers.js";
+import shardSeries from "../src/js/shard-series-metadata.json" with { type: "json" };
+import allData from '../all_data.json' with { type: "json" };
 
 function main() {
     try {
         console.log('Pre-processing shard series data...');
         const startTime = performance.now();
 
-        const inputFileName = 'all_data.json';
+        // const inputFileName = 'all_data.json';
         const outputFileName = 'processed_shard_series.json';
 
-        console.log(`Reading input file: ${inputFileName}`);
-        const rawJson = readFileSync(inputFileName, 'utf-8');
-        const parsedData = JSON.parse(rawJson);
+        // console.log(`Reading input file: ${inputFileName}`);
+        // const rawJson = readFileSync(inputFileName, 'utf-8');
+        // const parsedData = JSON.parse(rawJson);
 
         const processedData = [];
         for (const series of shardSeries) {
             const safeName = getSeriesSafeName(series.seriesName);
-            const seriesData = parsedData[series.fileName];
+            const seriesData = allData[series.fileName];
 
             processedData.push(processShardSeriesData(safeName, seriesData));
         }

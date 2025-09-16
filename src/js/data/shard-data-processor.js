@@ -1,26 +1,6 @@
-export const SHARD_EVENT_TYPE = {
-    SKIRMISH: "skirmish",
-    SINGULAR: "singular",
-    ANOMALY: "anomaly",
-};
-export const TEAM_ABBREVIATIONS = {
-    "RESISTANCE": "RES",
-    "ENLIGHTENED": "ENL",
-    "MACHINA": "MAC",
-}
-export const HISTORY_REASONS = {
-    SPAWN: "spawn",
-    NO_MOVE: "no move",
-    LINK: "link",
-    JUMP: "jump",
-    DESPAWN: "despawn",
-};
+import { HISTORY_REASONS, SHARD_EVENT_TYPE, getAbbreviatedTeam } from "../constants.js";
 
-export function getAbbreviatedTeam(fullTeamName) {
-    return TEAM_ABBREVIATIONS[fullTeamName];
-}
-
-export var shard_singulars = [
+export var SHARD_SINGULARS = [
     "🇦🇺 Hervey Bay, Australia",
     "🇦🇺 Hobart, Australia",
     "🇯🇵 Niigata, Japan",
@@ -408,7 +388,7 @@ function getShardSingularCity(name, index) {
     let lookupId = index;
     if (name == "_theta_2025_05_31_shard_singular") lookupId += 16;
     if (name == "_theta_2025_06_07_shard_singular") lookupId += 32;
-    return shard_singulars[lookupId];
+    return SHARD_SINGULARS[lookupId];
 }
 
 function getOrCreatePortalForSite(site, originalPortalKey, portalInfo) {
