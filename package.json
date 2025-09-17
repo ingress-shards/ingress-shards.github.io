@@ -4,10 +4,11 @@
     "description": "Interactive map of shard data from Ingress events",
     "type": "module",
     "private": true,
+    "main": "dist/main.bundle.js",
     "scripts": {
+        "clean": "rm -rf dist",
         "start": "webpack serve --config webpack.dev.js",
-        "build": "webpack --config webpack.prod.js",
-        "preprocessor": "node scripts/run-preprocessor.js"
+        "build": "webpack --config webpack.prod.js"
     },
     "devDependencies": {
         "css-loader": "^7.1.2",
