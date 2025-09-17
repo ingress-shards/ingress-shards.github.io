@@ -2,6 +2,7 @@
 
 from glob import glob
 import json
+import time
 from pprint import pprint
 import requests
 import requests_cache
@@ -16,6 +17,7 @@ import os
 from pprint import pprint
 tf = TimezoneFinder()
 
+start_time = time.time()
 dfs = []
 for url in ["https://ingress.com/news/2024-sharedmem", "https://ingress.com/news/2024-erasedmem", "https://ingress.com/news/2025-plusalpha", "https://ingress.com/news/2025-plustheta"]:
   r = requests.get(url)
@@ -42,7 +44,7 @@ df["lng"] = df["lng"].astype(float)
 df["date"] = pd.to_datetime(df["date"])
 df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df["lng"], df["lat"]), crs="EPSG:4326")
 print(df)
-df.drop(columns="geometry").sort_values("date").to_csv("events.csv", index=False)
+df.drop(columns="geometry").sort_values("date").to_csv("../events.csv", index=False)
 
 files = glob("jump-times/*.json")
 all_data = {}
@@ -90,6 +92,15 @@ for f in tqdm(files):
 
     all_data[filename] = data
 
-with open("all_data.json", "w", encoding="utf-8") as file:
+# Ensure the data directory exists
+data_dir_path = os.path.join(os.path.dirname(__file__), '..', 'data')
+if not os.path.exists(data_dir_path):
+    os.makedirs(data_dir_path)
+
+file_path = os.path.join(data_dir_path, 'all_data.json')
+with open(file_path, "w", encoding="utf-8") as file:
   json.dump(all_data, file, indent=2, ensure_ascii=False)
-print("Done")
+
+end_time = time.time()
+elapsed_time = end_time - start_time
+print(f'Successfully generated {file_path} in {elapsed_time:.2f} seconds.')

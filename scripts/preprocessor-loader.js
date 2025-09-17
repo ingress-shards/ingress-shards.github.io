@@ -1,7 +1,7 @@
 import { processShardSeriesData } from '../src/js/data/shard-data-processor.js';
 import { getSeriesSafeName } from "../src/js/helpers.js";
 import shardSeries from "../src/js/shard-series-metadata.json" with { type: "json" };
-import allData from '../all_data.json' with { type: "json" };
+import allData from '../data/all_data.json' with { type: "json" };
 
 function replacer(_key, value) {
     if (value instanceof Map) {
@@ -27,7 +27,7 @@ export default function () {
         }
 
         const endTime = performance.now();
-        console.log(`Successfully processed data. ${processedData.length} series, ${processedData.flatMap(event => event.sites || []).length} sites in ${(endTime - startTime) / 1000} seconds`);
+        console.log(`Successfully processed data. ${processedData.length} series, ${processedData.flatMap(event => event.sites || []).length} sites in ${((endTime - startTime) / 1000).toFixed(2)} seconds`);
 
         return JSON.stringify(processedData, replacer);
     } catch (error) {

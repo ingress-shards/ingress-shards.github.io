@@ -6,9 +6,9 @@
     "private": true,
     "main": "dist/main.bundle.js",
     "scripts": {
-        "clean": "rm -rf dist",
-        "start": "webpack serve --config webpack.dev.js",
-        "build": "webpack --config webpack.prod.js"
+        "clean": "rm -rf data && rm -rf dist",
+        "start": "python scripts/geocode.py && webpack serve --config webpack.dev.js",
+        "build": "python scripts/geocode.py && webpack --config webpack.prod.js"
     },
     "devDependencies": {
         "css-loader": "^7.1.2",
