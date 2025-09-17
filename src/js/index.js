@@ -6,7 +6,7 @@ import "leaflet.motion";
 import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
 import { reviveData } from "./helpers.js";
 import { initMapControls, initMapUI, handleCustomFile, displaySeries } from "./ui/ui-handler.js";
-import shardSeriesData from "../../processed_shard_series.json";
+import shardSeriesData from "processed_shard_series.json" with { type: "json" };
 
 $(() => {
     $("#custom").on("change", handleCustomFile);
