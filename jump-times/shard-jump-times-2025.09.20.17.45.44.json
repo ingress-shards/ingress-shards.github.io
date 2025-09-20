@@ -5558,7 +5558,9 @@
           ],
           "timezone": "Asia/Manila"
         }
-      ]
+      ],
+      "city": "Denpasar, Bali, Indonesia",
+      "timezone": "Asia/Manila"
     },
     {
       "id": "november",
