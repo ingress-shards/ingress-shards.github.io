@@ -2434,7 +2434,7 @@
         }
       ],
       "city": "Petaling Jaya, Malaysia",
-      "timezone": "Asia/Kuala_Lumpur"
+      "timezone": "Asia/Manila"
     },
     {
       "id": "shard-whiskey",
@@ -3673,7 +3673,7 @@
         }
       ],
       "city": "Almaty, Kazakhstan",
-      "timezone": "Asia/Almaty"
+      "timezone": "Asia/Karachi"
     },
     {
       "id": "shard-golf",
@@ -4824,7 +4824,7 @@
         }
       ],
       "city": "Donggang, Taiwan",
-      "timezone": "Asia/Taipei"
+      "timezone": "Asia/Manila"
     },
     {
       "id": "shard-tango",
@@ -6051,7 +6051,7 @@
         }
       ],
       "city": "Daegu, South Korea",
-      "timezone": "Asia/Seoul"
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "shard-kilo",
@@ -7280,7 +7280,7 @@
         }
       ],
       "city": "Bangkok, Thailand",
-      "timezone": "Asia/Bangkok"
+      "timezone": "Asia/Jakarta"
     },
     {
       "id": "shard-romeo",
@@ -8524,7 +8524,7 @@
         }
       ],
       "city": "Zhubei, Taiwan",
-      "timezone": "Asia/Taipei"
+      "timezone": "Asia/Manila"
     },
     {
       "id": "targetenl",
@@ -9664,7 +9664,7 @@
         }
       ],
       "city": "Galle, Sri Lanka",
-      "timezone": "Asia/Colombo"
+      "timezone": "Asia/Kolkata"
     },
     {
       "id": "abaddon2",
@@ -13284,7 +13284,7 @@
         }
       ],
       "city": "Ho Chi Minh City, Vietnam",
-      "timezone": "Asia/Ho_Chi_Minh"
+      "timezone": "Asia/Jakarta"
     },
     {
       "id": "shard-quebec",

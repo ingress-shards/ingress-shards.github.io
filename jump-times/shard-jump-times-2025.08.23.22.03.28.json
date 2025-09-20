@@ -5793,7 +5793,7 @@
         }
       ],
       "city": "Quebec City, Canada",
-      "timezone": "America/Toronto"
+      "timezone": "America/New_York"
     },
     {
       "id": "papa",
@@ -11424,7 +11424,7 @@
         }
       ],
       "city": "Gothenburg, Sweden",
-      "timezone": "Europe/Stockholm"
+      "timezone": "Europe/Paris"
     },
     {
       "id": "yankee",

@@ -3510,7 +3510,7 @@
         }
       ],
       "city": "Astana",
-      "timezone": "Asia/Almaty"
+      "timezone": "Asia/Karachi"
     },
     {
       "id": "abaddon1",
@@ -5807,7 +5807,7 @@
         }
       ],
       "city": "Chiang Mai",
-      "timezone": "Asia/Bangkok"
+      "timezone": "Asia/Jakarta"
     },
     {
       "id": "shard-bravo",
@@ -8215,7 +8215,7 @@
         }
       ],
       "city": "Busan, South Korea",
-      "timezone": "Asia/Seoul"
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "shard-india",
@@ -9409,7 +9409,7 @@
         }
       ],
       "city": "Yilan",
-      "timezone": "Asia/Taipei"
+      "timezone": "Asia/Manila"
     },
     {
       "id": "shard-charlie",
@@ -10502,7 +10502,7 @@
         }
       ],
       "city": "Melbourne, VIC",
-      "timezone": "Australia/Melbourne"
+      "timezone": "Australia/Sydney"
     },
     {
       "id": "shard-quebec",
@@ -12846,7 +12846,7 @@
         }
       ],
       "city": "Kota Kinabalu",
-      "timezone": "Asia/Kuching"
+      "timezone": "Asia/Manila"
     },
     {
       "id": "shard-echo",
@@ -15313,7 +15313,7 @@
         }
       ],
       "city": "Chiayi City",
-      "timezone": "Asia/Taipei"
+      "timezone": "Asia/Manila"
     },
     {
       "id": "abaddon2",
@@ -16574,7 +16574,7 @@
         }
       ],
       "city": "Hanoi",
-      "timezone": "Asia/Bangkok"
+      "timezone": "Asia/Jakarta"
     },
     {
       "id": "shard-zulu",
@@ -17774,7 +17774,7 @@
         }
       ],
       "city": "Colombo",
-      "timezone": "Asia/Colombo"
+      "timezone": "Asia/Kolkata"
     },
     {
       "id": "shard-golf",
@@ -19000,7 +19000,7 @@
         }
       ],
       "city": "Gwangju",
-      "timezone": "Asia/Seoul"
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "targetenl",

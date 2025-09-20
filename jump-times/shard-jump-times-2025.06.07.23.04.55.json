@@ -1176,7 +1176,7 @@
         }
       ],
       "city": "Hualien, Taiwan",
-      "timezone": "Asia/Taipei"
+      "timezone": "Asia/Manila"
     },
     {
       "id": "victor",
@@ -9877,7 +9877,7 @@
         }
       ],
       "city": "Hanoi",
-      "timezone": "Asia/Bangkok"
+      "timezone": "Asia/Jakarta"
     },
     {
       "id": "abaddon1",
@@ -9960,7 +9960,7 @@
               }
             }
           ],
-          "timezone": "Europe/Rome"
+          "timezone": "Europe/Paris"
         },
         {
           "id": "abaddon1_01",
@@ -10050,7 +10050,7 @@
               "destinationCapturerTeam": "NOT_SPECIFIED"
             }
           ],
-          "timezone": "Europe/Riga"
+          "timezone": "Europe/Athens"
         },
         {
           "id": "abaddon1_02",
@@ -10251,7 +10251,7 @@
               "destinationCapturerTeam": "NOT_SPECIFIED"
             }
           ],
-          "timezone": "Europe/Berlin"
+          "timezone": "Europe/Paris"
         },
         {
           "id": "abaddon1_03",
@@ -10316,7 +10316,7 @@
               "destinationCapturerTeam": "NOT_SPECIFIED"
             }
           ],
-          "timezone": "Europe/Warsaw"
+          "timezone": "Europe/Paris"
         }
       ]
     },
@@ -11518,7 +11518,7 @@
         }
       ],
       "city": "Busan, South Korea",
-      "timezone": "Asia/Seoul"
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "hotel",
@@ -12650,7 +12650,7 @@
         }
       ],
       "city": "Taichung, Taiwan",
-      "timezone": "Asia/Taipei"
+      "timezone": "Asia/Manila"
     }
   ]
 }

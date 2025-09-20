@@ -328,7 +328,7 @@
               "destinationCapturerTeam": "ENLIGHTENED"
             }
           ],
-          "timezone": "America/Vancouver"
+          "timezone": "America/Los_Angeles"
         },
         {
           "id": "abaddon1_12",
@@ -731,7 +731,7 @@
               }
             }
           ],
-          "timezone": "Europe/Rome"
+          "timezone": "Europe/Paris"
         },
         {
           "id": "abaddon1_07",
@@ -944,7 +944,7 @@
               "destinationCapturerTeam": "NOT_SPECIFIED"
             }
           ],
-          "timezone": "Europe/Berlin"
+          "timezone": "Europe/Paris"
         },
         {
           "id": "abaddon1_14",
@@ -1704,7 +1704,7 @@
               "destinationCapturerTeam": "NOT_SPECIFIED"
             }
           ],
-          "timezone": "Europe/Warsaw"
+          "timezone": "Europe/Paris"
         },
         {
           "id": "abaddon1_01",
@@ -1866,7 +1866,7 @@
               "destinationCapturerTeam": "NOT_SPECIFIED"
             }
           ],
-          "timezone": "Europe/Riga"
+          "timezone": "Europe/Athens"
         },
         {
           "id": "abaddon1_13",
@@ -2096,7 +2096,7 @@
               "destinationCapturerTeam": "RESISTANCE"
             }
           ],
-          "timezone": "America/Recife"
+          "timezone": "America/Sao_Paulo"
         },
         {
           "id": "abaddon1_11",
@@ -2224,7 +2224,7 @@
               "destinationCapturerTeam": "RESISTANCE"
             }
           ],
-          "timezone": "America/Bogota"
+          "timezone": "America/Lima"
         }
       ]
     },
@@ -5808,7 +5808,7 @@
         }
       ],
       "city": "Hualien, Taiwan",
-      "timezone": "Asia/Taipei"
+      "timezone": "Asia/Manila"
     },
     {
       "id": "victor",
@@ -14324,7 +14324,7 @@
         }
       ],
       "city": "Hanoi",
-      "timezone": "Asia/Bangkok"
+      "timezone": "Asia/Jakarta"
     },
     {
       "id": "hotel",
@@ -15490,7 +15490,7 @@
         }
       ],
       "city": "Taichung, Taiwan",
-      "timezone": "Asia/Taipei"
+      "timezone": "Asia/Manila"
     },
     {
       "id": "foxtrot",
@@ -16725,7 +16725,7 @@
         }
       ],
       "city": "Busan, South Korea",
-      "timezone": "Asia/Seoul"
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "abaddon2",

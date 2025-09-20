@@ -5621,7 +5621,7 @@
         }
       ],
       "city": "Chemnitz, DE",
-      "timezone": "Europe/Berlin"
+      "timezone": "Europe/Paris"
     },
     {
       "id": "targetenl",
@@ -10267,7 +10267,7 @@
         }
       ],
       "city": "Perth, AU",
-      "timezone": "Australia/Perth"
+      "timezone": "Asia/Manila"
     }
   ]
 }

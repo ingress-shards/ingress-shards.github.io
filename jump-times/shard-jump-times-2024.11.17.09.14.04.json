@@ -2407,7 +2407,7 @@
         }
       ],
       "city": "La Paz, Bolivia",
-      "timezone": "America/La_Paz"
+      "timezone": "America/Caracas"
     },
     {
       "id": "abaddon2",
@@ -3675,7 +3675,7 @@
         }
       ],
       "city": "Merida, YU, Mexico",
-      "timezone": "America/Merida"
+      "timezone": "America/Mexico_City"
     },
     {
       "id": "abaddon1",
@@ -7259,7 +7259,7 @@
         }
       ],
       "city": "Boise, ID, USA",
-      "timezone": "America/Boise"
+      "timezone": "America/Denver"
     },
     {
       "id": "shard-romeo",
@@ -10968,7 +10968,7 @@
         }
       ],
       "city": "Guayaquil, Ecuador",
-      "timezone": "America/Guayaquil"
+      "timezone": "America/Lima"
     },
     {
       "id": "shard-oscar",
@@ -12044,7 +12044,7 @@
         }
       ],
       "city": "San Salvador, El Salvador",
-      "timezone": "America/El_Salvador"
+      "timezone": "America/Mexico_City"
     },
     {
       "id": "shard-alpha",
@@ -14447,7 +14447,7 @@
         }
       ],
       "city": "Belém, PA, Brazil",
-      "timezone": "America/Belem"
+      "timezone": "America/Sao_Paulo"
     },
     {
       "id": "shard-india",
@@ -15647,7 +15647,7 @@
         }
       ],
       "city": "Winnipeg, MB, Canada",
-      "timezone": "America/Winnipeg"
+      "timezone": "America/Chicago"
     },
     {
       "id": "shard-uniform",

@@ -96,7 +96,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_58",
@@ -164,7 +165,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_03",
@@ -315,7 +317,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_30",
@@ -383,7 +386,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_61",
@@ -435,7 +439,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_32",
@@ -503,7 +508,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_25",
@@ -589,7 +595,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_56",
@@ -643,7 +650,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_44",
@@ -741,7 +749,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_17",
@@ -793,7 +802,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_28",
@@ -859,7 +869,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_27",
@@ -925,7 +936,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_42",
@@ -1023,7 +1035,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_41",
@@ -1107,7 +1120,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_49",
@@ -1175,7 +1189,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_36",
@@ -1243,7 +1258,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_59",
@@ -1309,7 +1325,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_63",
@@ -1375,7 +1392,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_45",
@@ -1427,7 +1445,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_64",
@@ -1495,7 +1514,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_02",
@@ -1624,7 +1644,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_46",
@@ -1676,7 +1697,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_16",
@@ -1762,7 +1784,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_15",
@@ -1828,7 +1851,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_37",
@@ -1880,7 +1904,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_24",
@@ -1962,7 +1987,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_26",
@@ -2060,7 +2086,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_01",
@@ -2175,7 +2202,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_35",
@@ -2257,7 +2285,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_29",
@@ -2327,7 +2356,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_51",
@@ -2397,7 +2427,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_14",
@@ -2465,7 +2496,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_47",
@@ -2531,7 +2563,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_62",
@@ -2613,7 +2646,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_07",
@@ -2744,7 +2778,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_34",
@@ -2828,7 +2863,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_08",
@@ -2945,7 +2981,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_50",
@@ -3041,7 +3078,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_05",
@@ -3172,7 +3210,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_60",
@@ -3224,7 +3263,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_55",
@@ -3278,7 +3318,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_53",
@@ -3362,7 +3403,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_54",
@@ -3430,7 +3472,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_10",
@@ -3561,7 +3604,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_48",
@@ -3613,7 +3657,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_06",
@@ -3774,7 +3819,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_57",
@@ -3840,7 +3886,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_21",
@@ -3936,7 +3983,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_40",
@@ -3988,7 +4036,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_38",
@@ -4054,7 +4103,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_22",
@@ -4152,7 +4202,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_43",
@@ -4220,7 +4271,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_52",
@@ -4304,7 +4356,8 @@
               "destinationCapturerTeam": "NEUTRAL",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_31",
@@ -4388,7 +4441,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_04",
@@ -4551,7 +4605,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_23",
@@ -4619,7 +4674,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_12",
@@ -4750,7 +4806,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_39",
@@ -4816,7 +4873,8 @@
               "destinationCapturerTeam": "ENLIGHTENED",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_11",
@@ -4931,7 +4989,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_18",
@@ -4999,7 +5058,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_20",
@@ -5065,7 +5125,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_33",
@@ -5133,7 +5194,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_19",
@@ -5199,7 +5261,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_13",
@@ -5330,7 +5393,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_09",
@@ -5491,7 +5555,8 @@
               "destinationCapturerTeam": "RESISTANCE",
               "linkCreatorTeam": "NEUTRAL"
             }
-          ]
+          ],
+          "timezone": "Asia/Manila"
         }
       ]
     },

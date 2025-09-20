@@ -1110,7 +1110,7 @@
         }
       ],
       "city": "Panama City, Panama",
-      "timezone": "America/Panama"
+      "timezone": "America/Lima"
     },
     {
       "id": "shard-papa",
@@ -2315,7 +2315,7 @@
         }
       ],
       "city": "Buenos Aires, Argentina",
-      "timezone": "America/Argentina/Buenos_Aires"
+      "timezone": "America/Sao_Paulo"
     },
     {
       "id": "shard-sierra",
@@ -4703,7 +4703,7 @@
         }
       ],
       "city": "Asunción, Paraguay",
-      "timezone": "America/Asuncion"
+      "timezone": "America/Sao_Paulo"
     },
     {
       "id": "shard-tango",
@@ -9697,7 +9697,7 @@
         }
       ],
       "city": "Victoria, BC, Canada",
-      "timezone": "America/Vancouver"
+      "timezone": "America/Los_Angeles"
     },
     {
       "id": "abaddon2",

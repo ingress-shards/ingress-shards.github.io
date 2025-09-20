@@ -3565,7 +3565,7 @@
         }
       ],
       "city": "Lahti, Finland",
-      "timezone": "Europe/Helsinki"
+      "timezone": "Europe/Athens"
     },
     {
       "id": "lima",
@@ -4783,7 +4783,7 @@
         }
       ],
       "city": "İstanbul, Türkiye",
-      "timezone": "Europe/Istanbul"
+      "timezone": "Europe/Moscow"
     },
     {
       "id": "kilo",
@@ -5919,7 +5919,7 @@
         }
       ],
       "city": "Drammen, Norway",
-      "timezone": "Europe/Oslo"
+      "timezone": "Europe/Paris"
     },
     {
       "id": "tango",
@@ -7080,7 +7080,7 @@
         }
       ],
       "city": "Uppsala, Sweden",
-      "timezone": "Europe/Stockholm"
+      "timezone": "Europe/Paris"
     },
     {
       "id": "charlie",
@@ -8291,7 +8291,7 @@
         }
       ],
       "city": "Belgrade, Serbia",
-      "timezone": "Europe/Belgrade"
+      "timezone": "Europe/Paris"
     },
     {
       "id": "quebec",
@@ -9633,7 +9633,7 @@
               "destinationCapturerTeam": "NOT_SPECIFIED"
             }
           ],
-          "timezone": "Asia/Hong_Kong"
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_10",
@@ -10481,7 +10481,7 @@
               "destinationCapturerTeam": "NOT_SPECIFIED"
             }
           ],
-          "timezone": "Australia/Hobart"
+          "timezone": "Australia/Sydney"
         },
         {
           "id": "abaddon1_11",
@@ -10608,7 +10608,7 @@
               }
             }
           ],
-          "timezone": "America/Toronto"
+          "timezone": "America/New_York"
         },
         {
           "id": "abaddon1_15",
@@ -10876,7 +10876,7 @@
               }
             }
           ],
-          "timezone": "Asia/Kuching"
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_13",
@@ -11044,7 +11044,7 @@
               "destinationCapturerTeam": "NOT_SPECIFIED"
             }
           ],
-          "timezone": "America/Monterrey"
+          "timezone": "America/Mexico_City"
         },
         {
           "id": "abaddon1_08",
@@ -11208,7 +11208,7 @@
               "destinationCapturerTeam": "ENLIGHTENED"
             }
           ],
-          "timezone": "Asia/Singapore"
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_12",
@@ -11293,7 +11293,7 @@
               }
             }
           ],
-          "timezone": "America/Costa_Rica"
+          "timezone": "America/Mexico_City"
         },
         {
           "id": "abaddon1_05",
@@ -11383,7 +11383,7 @@
               "destinationCapturerTeam": "RESISTANCE"
             }
           ],
-          "timezone": "Asia/Shanghai"
+          "timezone": "Asia/Manila"
         },
         {
           "id": "abaddon1_14",
@@ -12843,7 +12843,7 @@
         }
       ],
       "city": "Randers, Denmark",
-      "timezone": "Europe/Copenhagen"
+      "timezone": "Europe/Paris"
     },
     {
       "id": "hotel",
