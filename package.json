@@ -2,12 +2,24 @@
     "name": "ingress-event-shards",
     "version": "1.0.0",
     "description": "Interactive map of shard data from Ingress events",
+    "author": {
+        "name": "Nick Young"
+    },
+    "license": "MIT",
+    "homepage": "https://neon-ninja.github.io/shards/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/neon-ninja/shards.git"
+    },
+    "bugs": {
+        "url": "https://github.com/neon-ninja/shards/issues"
+    },
     "type": "module",
     "private": true,
     "main": "dist/main.bundle.js",
     "scripts": {
         "clean": "rm -rf data && rm -rf dist",
-        "start": "python scripts/geocode.py && webpack serve --config webpack.dev.js",
+        "start": "python scripts/geocode.py && webpack serve --config webpack.dev.js --env savePreprocessedDataToFile=true",
         "build": "python scripts/geocode.py && webpack --config webpack.prod.js"
     },
     "devDependencies": {

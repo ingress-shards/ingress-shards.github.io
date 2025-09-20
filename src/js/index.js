@@ -1,5 +1,6 @@
 import "leaflet/dist/leaflet.css";
 import "github-fork-ribbon-css/gh-fork-ribbon.css";
+import "../assets/main.css";
 import "leaflet";
 import "leaflet-providers";
 import "leaflet.motion";
