@@ -2,6 +2,8 @@ import { processShardSeriesData } from '../src/js/data/shard-data-processor.js';
 import { getSeriesSafeName } from "../src/js/helpers.js";
 import shardSeries from "../src/js/shard-series-metadata.json" with { type: "json" };
 import allData from '../data/all_data.json' with { type: "json" };
+import { writeFileSync } from 'fs';
+import path from 'path';
 
 function replacer(_key, value) {
     if (value instanceof Map) {
@@ -18,6 +20,9 @@ export default function () {
         console.log('Pre-processing shard series data...');
         const startTime = performance.now();
 
+        const options = this.getOptions();
+        const saveFile = options.saveFile || false;
+
         const processedData = [];
         for (const series of shardSeries) {
             const safeName = getSeriesSafeName(series.seriesName);
@@ -28,6 +33,13 @@ export default function () {
 
         const endTime = performance.now();
         console.log(`Successfully processed data. ${processedData.length} series, ${processedData.flatMap(event => event.sites || []).length} sites in ${((endTime - startTime) / 1000).toFixed(2)} seconds`);
+
+        // Saving processed data to file for inspection/debugging if required
+        if (saveFile) {
+            const outputFilePath = path.resolve(process.cwd(), 'data', 'processed_shard_series.json');
+            writeFileSync(outputFilePath, JSON.stringify(processedData, replacer), 'utf8');
+            console.log(`Successfully saved file to ${outputFilePath}.`);
+        }
 
         return JSON.stringify(processedData, replacer);
     } catch (error) {

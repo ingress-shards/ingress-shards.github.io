@@ -1,0 +1,58 @@
+html,
+body,
+#map {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+button {
+    font-family: "Twemoji Country Flags", sans-serif;
+}
+
+#controls {
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+    background-color: white;
+    z-index: 9999;
+    padding: 10px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    min-width: 15%;
+    min-height: 10%;
+}
+
+#controls #loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: 10px;
+}
+
+#controls #loading-overlay h3 {
+    margin-block: 0 0.5em;
+}
+
+#controls #loading-progress {
+    width: 80%;
+    margin-top: 5px;
+}
+
+#controls span {
+    font-weight: bold;
+}
+
+.github-fork-ribbon:before {
+    background-color: #333;
+}
