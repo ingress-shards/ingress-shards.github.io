@@ -266,16 +266,50 @@ export function processShardSeriesData(name, json) {
 
                         shard.history.push({
                             ...shardHistoryItem,
-                            linkDetails: {
-                                origin: originPortalId,
-                                dest: destPortalId,
-                                linkTime: Math.floor(historyItem.linkCreationTimeMs / 1000),
-                                team: historyItem.linkCreatorTeam && getAbbreviatedTeam(historyItem.linkCreatorTeam),
-                                distance: Math.round(distance * 100) / 100,
-                                points,
-                            }
+                            portalId: originPortalId,
+                            dest: destPortalId,
+                            team: historyItem.linkCreatorTeam && getAbbreviatedTeam(historyItem.linkCreatorTeam),
                         });
                         shard[moved] = true;
+
+                        const linkPathKey = [originPortalId, destPortalId].sort().join('-');
+                        const linkTime = Math.floor(historyItem.linkCreationTimeMs / 1000);
+                        const newLink = {
+                            linkTime,
+                            team: historyItem.linkCreatorTeam && getAbbreviatedTeam(historyItem.linkCreatorTeam),
+                            jumps: [{
+                                origin: originPortalId,
+                                dest: destPortalId,
+                                shardId,
+                                moveTime,
+                                points,
+                            }]
+                        };
+
+                        if (site.linkPaths.has(linkPathKey)) {
+                            const existingPath = site.linkPaths.get(linkPathKey);
+                            const existingLink = existingPath.links.find(link => link.linkTime === linkTime);
+                            if (existingLink) {
+                                existingLink.jumps.push({
+                                    origin: originPortalId,
+                                    dest: destPortalId,
+                                    shardId,
+                                    moveTime,
+                                    points,
+                                });
+                            } else {
+                                siteCounters.links++;
+
+                                existingPath.links.push(newLink);
+                            }
+                        } else {
+                            siteCounters.links++;
+
+                            site.linkPaths.set(linkPathKey, {
+                                links: [newLink],
+                                distance: Math.round(distance * 100) / 100,
+                            });
+                        }
 
                         if (points > 0) {
                             switch (historyItem.linkCreatorTeam) {
@@ -294,7 +328,6 @@ export function processShardSeriesData(name, json) {
                         }
 
                         mostRecentShardPortalKey = destPortalKey;
-                        siteCounters.links++;
                         break;
                     case HISTORY_REASONS.DESPAWN:
                         originPortalId = getOrCreatePortalForSite(
@@ -318,7 +351,7 @@ export function processShardSeriesData(name, json) {
         }
         const totalShards = siteCounters.shards.nonMoving + siteCounters.shards.moving;
         console.debug(
-            `${site.name} site details: ${site.portals.size} portals, ${totalShards} shards (${siteCounters.shards.nonMoving} static), ${siteCounters.links} links.`
+            `\t${site.name} site details: \n\t\t${site.portals.size} portals\n\t\t${totalShards} shards (${siteCounters.shards.nonMoving} static)\n\t\t${siteCounters.links} links, ${site.linkPaths.size} paths.`
         );
     }
     return {
@@ -370,6 +403,7 @@ function createSite(siteDetails) {
         eventType: siteDetails.eventType,
         portals: new Map(),
         shards: [],
+        linkPaths: new Map(),
         linkScores: {
             RES: 0,
             ENL: 0,
