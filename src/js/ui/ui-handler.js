@@ -6,6 +6,7 @@ let _shardSeriesData = {};
 let layer_lookup = {};
 let layerControl;
 let currentActiveSeriesLayer = null;
+let activeSite = null;
 let jsonParserWorker = null;
 
 let backgroundRenderQueue = [];
@@ -34,6 +35,9 @@ export function initMapControls(map) {
         layer_lookup[seriesSafeName] = seriesLayer;
         layerControl.addOverlay(seriesLayer, seriesSafeName);
     }
+
+    map.on('zoomend', updateAllPolylineStyles);
+    map.on('moveend', updateAllPolylineStyles);
 }
 
 export async function initMapUI(shardSeriesData) {
@@ -147,6 +151,8 @@ export async function displaySeries(seriesName, source = "user") {
     if (currentActiveSeriesLayer && map.hasLayer(currentActiveSeriesLayer)) {
         map.removeLayer(currentActiveSeriesLayer);
     }
+    activeSite = null;
+
     const newSeriesLayer = layer_lookup[seriesName];
     if (newSeriesLayer) {
         newSeriesLayer.addTo(map);
@@ -166,15 +172,15 @@ export function siteButtonHandler() {
     $(this).css("font-weight", "bold");
     $(this).siblings("button").css("font-weight", "normal");
 
-    var layer = layer_lookup[this.id];
-    map.fitBounds(layer.getBounds());
+    activeSite = layer_lookup[this.id];
+    map.fitBounds(activeSite.getBounds());
     location.hash = this.id;
-    layer.eachLayer(function (l) {
+    activeSite.eachLayer(function (l) {
         if (l instanceof L.Polyline) {
-            if (l.shardPath) l.shardPath.forEach((s) => s.motionStart());
+            if (l.shardPath) l.shardPath.motionStart();
         }
     });
-    var d = layer.data;
+    updateAllPolylineStyles();
 }
 
 export async function handleCustomFile() {
@@ -212,7 +218,7 @@ export async function handleCustomFile() {
                 addSitesToSeriesLayer(seriesSafeName, siteLayers);
 
                 $("#series").append(`<option value="${seriesSafeName}">${file.name}</option>`);
-                $("#series").val(seriesSafeName).change();
+                $("#series").val(seriesSafeName).trigger("change");
                 $("button").off("click").on("click", siteButtonHandler);
 
                 updateLoadingDetails(100);
@@ -238,4 +244,40 @@ export function updateLoadingDetails(progress, message) {
     } else {
         loadingOverlay.style.display = "flex";
     }
+}
+
+// Dynamically create the dashes on links where there are bi-directional jumps
+export function applyDynamicDashArray(polyline, map) {
+    const VISIBLE_PATTERN_PIXELS = 90;
+
+    const latlngs = polyline.getLatLngs();
+    let totalDistancePixels = 0;
+
+    for (let i = 0; i < latlngs.length - 1; i++) {
+        const startPoint = map.latLngToLayerPoint(latlngs[i]);
+        const endPoint = map.latLngToLayerPoint(latlngs[i + 1]);
+        totalDistancePixels += startPoint.distanceTo(endPoint);
+    }
+
+    const G_middle_pixels = Math.max(0, totalDistancePixels - VISIBLE_PATTERN_PIXELS);
+
+    const dashArraySegments = [
+        10, 5, 5, 5, 5, 5, 5, 5,
+        G_middle_pixels,
+        5, 5, 5, 5, 5, 5, 5, 10
+    ];
+
+    polyline.setStyle({
+        dashArray: dashArraySegments.join(',')
+    });
+}
+
+function updateAllPolylineStyles() {
+    if (!activeSite) return;
+
+    activeSite.eachLayer(function (l) {
+        if (l instanceof L.Polyline && l.biDirectionalJumps) {
+            applyDynamicDashArray(l, map);
+        }
+    });
 }
