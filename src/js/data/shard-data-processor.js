@@ -125,6 +125,9 @@ export function processShardSeriesData(name, json) {
             "delta_2025_08_16",
             "delta_2025_08_23",
             "delta_2025_09_20",
+            "beta_2025_10_18",
+            "beta_2025_10_25",
+            "beta_2025_11_15",
         ];
 
         const sortedFragments = artifact.fragment.sort((a, b) => a.id.localeCompare(b.id));
