@@ -19,7 +19,7 @@ tf = TimezoneFinder()
 
 start_time = time.time()
 dfs = []
-for url in ["https://ingress.com/news/2024-sharedmem", "https://ingress.com/news/2024-erasedmem", "https://ingress.com/news/2025-plusalpha", "https://ingress.com/news/2025-plustheta"]:
+for url in ["https://ingress.com/news/2024-sharedmem", "https://ingress.com/news/2024-erasedmem", "https://ingress.com/news/2025-plusalpha", "https://ingress.com/news/2025-plustheta", "https://ingress.com/news/2025-plusbeta"]:
   r = requests.get(url)
   df = pd.DataFrame(re.findall(r"(?P<lat>-?\d+.\d+), (?P<lng>-?\d+.\d+)]\).bindPopup\('(?P<type>Shard Skirmish|Anomaly)<br /> ?(?P<city>.+?)<br />(?P<date>.+?)'", r.text), columns=["lat", "lng", "type", "city", "date"])
   df["series"] = url.split("/")[-1]
@@ -38,6 +38,19 @@ delta_data = [
 delta_df = pd.DataFrame(delta_data)
 dfs.append(delta_df)
 
+# Hardcoded data for the +beta article data
+beta_data = [
+  {"lat": 39.47452, "lng": -0.37692, "type": "Anomaly", "city": "Valencia, Spain", "date": "18 Oct 2025", "series": "2025-plusbeta"},
+  {"lat": -23.58964, "lng": -46.66091, "type": "Anomaly", "city": "Sao Paulo, Brazil", "date": "18 Oct 2025", "series": "2025-plusbeta"},
+  {"lat": -41.28564381946367, "lng": 174.7780881775362, "type": "Anomaly", "city": "Wellington, New Zealand", "date": "25 Oct 2025", "series": "2025-plusbeta"},
+  {"lat": 29.75457725448469, "lng": -95.37087644288286, "type": "Anomaly", "city": "Houston TX, USA", "date": "25 Oct 2025", "series": "2025-plusbeta"},
+  {"lat": 24.99854600681725, "lng": 121.32464005902432, "type": "Anomaly", "city": "Taoyuan, Taiwan", "date": "15 Nov 2025", "series": "2025-plusbeta"},
+  {"lat": 52.06993723259916, "lng": 4.2947598478782165, "type": "Anomaly", "city": "The Hague, Netherlands", "date": "15 Nov 2025", "series": "2025-plusbeta"},
+]
+beta_df = pd.DataFrame(beta_data)
+dfs.append(beta_df)
+
+
 df = pd.concat(dfs)
 df["lat"] = df["lat"].astype(float)
 df["lng"] = df["lng"].astype(float)
@@ -54,6 +67,7 @@ anomaly_jump_files = {
   "shard-jump-times-2025.08.18.12.11.03.json",
   "shard-jump-times-2025.08.23.22.03.28.json",
   "shard-jump-times-2025.09.20.18.08.35.json",
+  "shard-jump-times-2025.10.18.21.05.55.json",
 }
 
 for f in tqdm(files):
