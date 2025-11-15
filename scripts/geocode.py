@@ -69,6 +69,7 @@ anomaly_jump_files = {
   "shard-jump-times-2025.09.20.18.08.35.json",
   "shard-jump-times-2025.10.18.21.05.55.json",
   "shard-jump-times-2025.10.25.23.04.33.json",
+  "shard-jump-times-2025.11.15.17.42.27.json",
 }
 
 for f in tqdm(files):
