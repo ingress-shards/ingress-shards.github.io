@@ -1,6 +1,5 @@
 cache.sqlite
 
-/data
 /dist
 /node_modules
 /venv

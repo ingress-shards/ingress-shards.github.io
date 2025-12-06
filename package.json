@@ -1,6 +1,6 @@
 {
-    "name": "ingress-event-shards",
-    "version": "1.0.0",
+    "name": "ingress-shards-map",
+    "version": "1.1.0",
     "description": "Interactive map of shard data from Ingress events",
     "author": {
         "name": "Nick Young"
@@ -18,12 +18,18 @@
     "private": true,
     "main": "dist/main.bundle.js",
     "scripts": {
-        "clean": "rm -rf data && rm -rf dist",
-        "start": "python scripts/geocode.py && webpack serve --config webpack.dev.js --env savePreprocessedDataToFile=true",
-        "build": "python scripts/geocode.py && webpack --config webpack.prod.js"
+        "clean": "rm -rf data/processed && rm -rf dist",
+        "start": "webpack serve --config webpack.dev.js",
+        "build": "webpack --config webpack.prod.js",
+        "ci-geocode": "python scripts/geocode.py",
+        "ci-data-processor": "node scripts/pre-processor-loader.js"
     },
     "devDependencies": {
+        "@eslint/js": "^9.39.1",
+        "@eslint/json": "^0.14.0",
         "css-loader": "^7.1.2",
+        "eslint": "^9.39.1",
+        "globals": "^16.5.0",
         "html-webpack-plugin": "^5.6.4",
         "style-loader": "^4.0.0",
         "webpack": "^5.101.3",
@@ -32,9 +38,9 @@
         "webpack-merge": "^6.0.1"
     },
     "dependencies": {
-        "country-flag-emoji-polyfill": "^0.1.8",
+        "copy-webpack-plugin": "^13.0.1",
+        "flag-icon-css": "^4.1.7",
         "github-fork-ribbon-css": "^0.2.3",
-        "jquery": "^3.7.1",
         "leaflet": "^1.9.4",
         "leaflet-providers": "^2.0.0",
         "leaflet.motion": "github:neon-ninja/leaflet.motion"

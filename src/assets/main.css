@@ -6,51 +6,16 @@ body,
     margin: 0;
 }
 
-button {
-    font-family: "Twemoji Country Flags", sans-serif;
-}
+.ingress-series-control .leaflet-control-layers-toggle {
+    width: 44px;
+    height: 44px;
 
-#controls {
-    position: absolute;
-    right: 10px;
-    bottom: 20px;
-    background-color: white;
-    z-index: 9999;
-    padding: 10px;
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: 1fr;
-    min-width: 15%;
-    min-height: 10%;
-}
+    background-image: url('./ingress-icon.svg');
 
-#controls #loading-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    border-radius: 10px;
-}
-
-#controls #loading-overlay h3 {
-    margin-block: 0 0.5em;
-}
-
-#controls #loading-progress {
-    width: 80%;
-    margin-top: 5px;
-}
-
-#controls span {
-    font-weight: bold;
+    background-size: 32px 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
 }
 
 .github-fork-ribbon:before {
@@ -59,4 +24,128 @@ button {
 
 hr.tooltip-sub-divider {
     width: 80%;
+}
+
+/* Custom Leaflet Details Panel Styling */
+.leaflet-details-panel {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: fit-content;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-size: 14px;
+    color: #333;
+}
+
+.details-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+    transition: border-bottom 0.3s ease-in-out, padding-bottom 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
+}
+
+.details-panel-header .details-panel-title {
+    flex-grow: 1;
+    white-space: nowrap;
+}
+
+.details-panel-header .details-panel-title h4 {
+    margin: 0;
+    line-height: 1;
+}
+
+.details-panel-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 0 0 0 10px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.details-panel-content {
+    max-height: 40vh;
+    height: auto;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    padding-right: 10px;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.details-panel-content h4 {
+    margin: 0;
+}
+
+.details-panel-content span {
+    font-weight: bold;
+}
+
+.details-panel-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-style: italic;
+    border-top: 1px solid #ccc;
+    padding-top: 5px;
+    margin-top: 8px;
+    max-height: 25px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, margin 0.3s ease-in-out, padding 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.leaflet-details-panel.collapsed .details-panel-header {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    transition: border 0.3s ease-in-out, padding 0.3s ease-in-out, margin 0.3s ease-in-out;
+}
+
+.leaflet-details-panel.collapsed .details-panel-content {
+    max-height: 0px;
+    transition:
+        max-height 0.3s ease-in-out;
+}
+
+.leaflet-details-panel.collapsed .details-panel-footer {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    max-height: 0px;
+    transition: max-height 0.3s ease-in-out, margin 0.3s ease-in-out, padding 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.group-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.group-header .toggle-icon {
+    margin-right: 5px;
+    line-height: 1;
+    transition: transform 0.3s ease-in-out;
+}
+
+.group-header.open .toggle-icon {
+    transform: rotate(90deg);
+}
+
+.group-list {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, margin 0.3s ease-in-out;
+}
+
+.group-list.collapsed-group {
+    max-height: 0;
+    margin-top: 0;
 }
