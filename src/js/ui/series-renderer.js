@@ -4,7 +4,7 @@ import { addEventInteraction } from "./event-handler.js";
 import { navigate } from "../router.js";
 import { getScoresText } from "./site-renderer.js";
 import { getSeriesMetadata, getSeriesGeocode, getSiteData, getAllSeriesIds } from "../data/data-store.js";
-import { formatSerializationToShortDate } from "../shared/date-helpers.js";
+import { formatIsoToShortDate } from "../shared/date-helpers.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
 
 const seriesLayerCache = new Map();
@@ -57,7 +57,7 @@ function renderSeriesLayer(seriesId) {
         const flagHtml = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
         let siteTooltip = `
             ${flagHtml} <strong>${site.location}</strong><br />
-            Date: ${formatSerializationToShortDate(site.date, site.timezone)}<br />
+            Date: ${formatIsoToShortDate(site.date, site.timezone)}<br />
             Type: ${SHARD_EVENT_TYPE[site.type].name}<br />`;
 
         if (siteData) {

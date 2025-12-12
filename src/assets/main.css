@@ -18,6 +18,18 @@ body,
     background-color: transparent;
 }
 
+.ingress-wave-control .leaflet-control-layers-toggle {
+    width: 44px;
+    height: 44px;
+
+    background-image: url('./shard.svg');
+
+    background-size: 32px 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
 .github-fork-ribbon:before {
     background-color: #333;
 }
@@ -148,4 +160,41 @@ hr.tooltip-sub-divider {
 .group-list.collapsed-group {
     max-height: 0;
     margin-top: 0;
+}
+
+.faction-RES {
+    color: #0088FF;
+}
+
+.faction-ENL {
+    color: #03DC03;
+}
+
+.faction-MAC {
+    color: #FF0028;
+}
+
+table.ingress-event-scores {
+    border-collapse: collapse;
+}
+
+table.ingress-event-scores thead th {
+    text-align: right;
+}
+
+table.ingress-event-scores td {
+    min-width: 40px;
+    text-align: right;
+    padding: 0 5px;
+}
+
+table.ingress-event-scores tr.highlight {
+    background-color: transparent !important;
+    border: 2px solid #00aaff;
+    transition: border 0.2s ease-out;
+    border-radius: 4px;
+}
+
+table.ingress-event-scores tfoot {
+    font-weight: bold;
 }

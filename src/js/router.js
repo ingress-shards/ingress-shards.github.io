@@ -30,14 +30,20 @@ function updateViewFromHash() {
     const hash = window.location.hash;
     const segments = hash.replace('#', '').split('/').filter(s => s.length > 0);
 
-    if (segments.length === 2) {
-        const [seriesId, siteId] = segments;
-        viewDispatchers.displaySiteDetails(seriesId, siteId);
-    } else if (segments.length === 1) {
-        const seriesId = segments[0];
-        viewDispatchers.displaySeriesDetails(seriesId);
-    } else {
-        viewDispatchers.showDefaultView();
+    const [seriesId, siteId, waveId] = segments
+    switch (segments.length) {
+        case 1:
+            viewDispatchers.displaySeriesDetails(seriesId);
+            break;
+        case 2:
+            viewDispatchers.displaySiteDetails(seriesId, siteId);
+            break;
+        case 3:
+            viewDispatchers.displayWaveDetails(seriesId, siteId, waveId);
+            break;
+        default:
+            viewDispatchers.showDefaultView();
+            break;
     }
 }
 

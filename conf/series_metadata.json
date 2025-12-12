@@ -3,25 +3,241 @@
         "id": "2024-sharedmem",
         "name": "Shared Memories",
         "year": 2024,
-        "overviewUrl": "https://ingress.com/news/2024-sharedmem"
+        "overviewUrl": "https://ingress.com/news/2024-sharedmem",
+        "eventTypes": {
+            "ANOMALY": {
+                "startTime": "14:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [
+                        { "startTime": "14:02", "endTime": "14:31", "count": 13 },
+                        { "startTime": "14:32", "endTime": "15:01", "count": 13 },
+                        { "startTime": "15:02", "endTime": "15:31", "count": 13 },
+                        { "startTime": "15:32", "endTime": "16:01", "count": 13 },
+                        { "startTime": "16:02", "endTime": "16:31", "count": 13 },
+                        { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 8 },
+                        { "type": "jump", "time": 18 },
+                        { "type": "jump", "time": 28 },
+                        { "type": "despawn", "time": 29 }
+                    ]
+                },
+                "targets": {
+                    "waves": [{ "startTime": "13:59", "endTime": "18:00", "countPerFaction": 4 }],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "despawn", "time": 241 }
+                    ]
+                }
+            },
+            "SKIRMISH": {
+                "startTime": "16:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [
+                        { "startTime": "16:00", "endTime": "16:19", "count": 3 },
+                        { "startTime": "16:20", "endTime": "16:39", "count": 4 },
+                        { "startTime": "16:40", "endTime": "16:59", "count": 5 },
+                        { "startTime": "17:00", "endTime": "17:19", "count": 6 },
+                        { "startTime": "17:20", "endTime": "17:39", "count": 7 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 15 },
+                        { "type": "despawn", "time": 19 }
+                    ]
+                }
+            }
+        }
     },
     {
         "id": "2024-erasedmem",
         "name": "Erased Memories",
         "year": 2024,
-        "overviewUrl": "https://ingress.com/news/2024-erasedmem"
+        "overviewUrl": "https://ingress.com/news/2024-erasedmem",
+        "eventTypes": {
+            "ANOMALY": {
+                "startTime": "14:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [
+                        { "startTime": "14:02", "endTime": "14:31", "count": 13 },
+                        { "startTime": "14:32", "endTime": "15:01", "count": 13 },
+                        { "startTime": "15:02", "endTime": "15:31", "count": 13 },
+                        { "startTime": "15:32", "endTime": "16:01", "count": 13 },
+                        { "startTime": "16:02", "endTime": "16:31", "count": 13 },
+                        { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 8 },
+                        { "type": "jump", "time": 18 },
+                        { "type": "jump", "time": 28 },
+                        { "type": "despawn", "time": 29 }
+                    ]
+                },
+                "targets": {
+                    "waves": [{ "startTime": "13:59", "endTime": "18:00", "countPerFaction": 4 }],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "despawn", "time": 241 }
+                    ]
+                }
+            },
+            "SKIRMISH": {
+                "startTime": "16:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [
+                        { "startTime": "16:00", "endTime": "16:19", "count": 3 },
+                        { "startTime": "16:20", "endTime": "16:39", "count": 4 },
+                        { "startTime": "16:40", "endTime": "16:59", "count": 5 },
+                        { "startTime": "17:00", "endTime": "17:19", "count": 6 },
+                        { "startTime": "17:20", "endTime": "17:39", "count": 7 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 15 },
+                        { "type": "despawn", "time": 19 }
+                    ]
+                }
+            }
+        }
     },
     {
         "id": "2025-plusalpha",
         "name": "+Alpha",
         "year": 2025,
-        "overviewUrl": "https://ingress.com/news/2025-plusalpha"
+        "overviewUrl": "https://ingress.com/news/2025-plusalpha",
+        "eventTypes": {
+            "ANOMALY": {
+                "startTime": "14:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [
+                        { "startTime": "14:02", "endTime": "14:31", "count": 13 },
+                        { "startTime": "14:32", "endTime": "15:01", "count": 13 },
+                        { "startTime": "15:02", "endTime": "15:31", "count": 13 },
+                        { "startTime": "15:32", "endTime": "16:01", "count": 13 },
+                        { "startTime": "16:02", "endTime": "16:31", "count": 13 },
+                        { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 8 },
+                        { "type": "jump", "time": 18 },
+                        { "type": "jump", "time": 28 },
+                        { "type": "despawn", "time": 29 }
+                    ]
+                },
+                "targets": {
+                    "waves": [{ "startTime": "13:59", "endTime": "18:00", "countPerFaction": 4 }],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "despawn", "time": 241 }
+                    ]
+                }
+            },
+            "SKIRMISH": {
+                "startTime": "16:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [
+                        { "startTime": "16:00", "endTime": "16:19", "count": 3 },
+                        { "startTime": "16:20", "endTime": "16:39", "count": 4 },
+                        { "startTime": "16:40", "endTime": "16:59", "count": 5 },
+                        { "startTime": "17:00", "endTime": "17:19", "count": 6 },
+                        { "startTime": "17:20", "endTime": "17:39", "count": 7 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 15 },
+                        { "type": "despawn", "time": 19 }
+                    ]
+                }
+            }
+        }
     },
     {
         "id": "2025-plustheta",
         "name": "+Theta",
         "year": 2025,
         "overviewUrl": "https://ingress.com/news/2025-plustheta",
+        "eventTypes": {
+            "ANOMALY": {
+                "startTime": "14:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [
+                        { "startTime": "14:02", "endTime": "14:31", "count": 13 },
+                        { "startTime": "14:32", "endTime": "15:01", "count": 13 },
+                        { "startTime": "15:02", "endTime": "15:31", "count": 13 },
+                        { "startTime": "15:32", "endTime": "16:01", "count": 13 },
+                        { "startTime": "16:02", "endTime": "16:31", "count": 13 },
+                        { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 8 },
+                        { "type": "jump", "time": 18 },
+                        { "type": "jump", "time": 28 },
+                        { "type": "despawn", "time": 29 }
+                    ]
+                },
+                "targets": {
+                    "waves": [
+                        { "startTime": "14:02", "endTime": "14:31", "countPerFaction": 4 },
+                        { "startTime": "14:32", "endTime": "15:01", "countPerFaction": 4 },
+                        { "startTime": "15:02", "endTime": "15:31", "countPerFaction": 4 },
+                        { "startTime": "15:32", "endTime": "16:01", "countPerFaction": 4 },
+                        { "startTime": "16:02", "endTime": "16:31", "countPerFaction": 4 },
+                        { "startTime": "16:32", "endTime": "17:01", "countPerFaction": 4 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "despawn", "time": 29 }
+                    ]
+                }
+            },
+            "SKIRMISH": {
+                "startTime": "16:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [
+                        { "startTime": "16:00", "endTime": "16:19", "count": 3 },
+                        { "startTime": "16:20", "endTime": "16:39", "count": 4 },
+                        { "startTime": "16:40", "endTime": "16:59", "count": 5 },
+                        { "startTime": "17:00", "endTime": "17:19", "count": 6 },
+                        { "startTime": "17:20", "endTime": "17:39", "count": 7 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 15 },
+                        { "type": "despawn", "time": 19 }
+                    ]
+                }
+            },
+            "SINGULAR": {
+                "startTime": "11:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [{ "startTime": "11:00", "endTime": "17:10", "count": 1 }],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 60 },
+                        { "type": "jump", "time": 120 },
+                        { "type": "jump", "time": 180 },
+                        { "type": "jump", "time": 240 },
+                        { "type": "jump", "time": 300 },
+                        { "type": "jump", "time": 360 },
+                        { "type": "despawn", "time": 370 }
+                    ]
+                }
+            }
+        },
         "otherEvents": [
             {
                 "type": "SINGULAR",
@@ -95,13 +311,102 @@
         "id": "2025-plusdelta",
         "name": "+Delta",
         "year": 2025,
-        "overviewUrl": "https://ingress.com/news/2025-plusdelta"
+        "overviewUrl": "https://ingress.com/news/2025-plusdelta",
+        "eventTypes": {
+            "ANOMALY": {
+                "startTime": "14:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [
+                        { "startTime": "14:02", "endTime": "14:31", "count": 13 },
+                        { "startTime": "14:32", "endTime": "15:01", "count": 13 },
+                        { "startTime": "15:02", "endTime": "15:31", "count": 13 },
+                        { "startTime": "15:32", "endTime": "16:01", "count": 13 },
+                        { "startTime": "16:02", "endTime": "16:31", "count": 13 },
+                        { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 8 },
+                        { "type": "jump", "time": 18 },
+                        { "type": "jump", "time": 28 },
+                        { "type": "despawn", "time": 29 }
+                    ]
+                },
+                "targets": {
+                    "waves": [
+                        { "startTime": "14:02", "endTime": "14:31", "countPerFaction": 4 },
+                        { "startTime": "14:32", "endTime": "15:01", "countPerFaction": 4 },
+                        { "startTime": "15:02", "endTime": "15:31", "countPerFaction": 4 },
+                        { "startTime": "15:32", "endTime": "16:01", "countPerFaction": 4 },
+                        { "startTime": "16:02", "endTime": "16:31", "countPerFaction": 4 },
+                        { "startTime": "16:32", "endTime": "17:01", "countPerFaction": 4 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "despawn", "time": 29 }
+                    ]
+                }
+            }
+        }
     },
     {
         "id": "2025-plusbeta",
         "name": "+Beta",
         "year": 2025,
         "overviewUrl": "https://ingress.com/news/2025-plusbeta",
+        "eventTypes": {
+            "ANOMALY": {
+                "startTime": "14:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [
+                        { "startTime": "14:02", "endTime": "14:31", "count": 13 },
+                        { "startTime": "14:32", "endTime": "15:01", "count": 13 },
+                        { "startTime": "15:02", "endTime": "15:31", "count": 13 },
+                        { "startTime": "15:32", "endTime": "16:01", "count": 13 },
+                        { "startTime": "16:02", "endTime": "16:31", "count": 13 },
+                        { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 8 },
+                        { "type": "jump", "time": 18 },
+                        { "type": "jump", "time": 28 },
+                        { "type": "despawn", "time": 29 }
+                    ]
+                },
+                "targets": {
+                    "waves": [
+                        { "startTime": "14:02", "endTime": "14:31", "countPerFaction": 4 },
+                        { "startTime": "14:32", "endTime": "15:01", "countPerFaction": 4 },
+                        { "startTime": "15:02", "endTime": "15:31", "countPerFaction": 4 },
+                        { "startTime": "15:32", "endTime": "16:01", "countPerFaction": 4 },
+                        { "startTime": "16:02", "endTime": "16:31", "countPerFaction": 4 },
+                        { "startTime": "16:32", "endTime": "17:01", "countPerFaction": 4 }
+                    ],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "despawn", "time": 29 }
+                    ]
+                }
+            },
+            "STORM": {
+                "startTime": "13:00",
+                "actionWindowMinutes": 1,
+                "shards": {
+                    "waves": [{ "startTime": "13:00", "endTime": "21:00", "count": 1 }],
+                    "waveActions": [
+                        { "type": "spawn", "time": 0 },
+                        { "type": "jump", "time": 60 },
+                        { "type": "jump", "time": 120 },
+                        { "type": "jump", "time": 180 },
+                        { "type": "jump", "time": 240 },
+                        { "type": "despawn", "time": 480 }
+                    ]
+                }
+            }
+        },
         "defaultView": true,
         "otherEvents": [
             {
@@ -141,7 +446,7 @@
                 "locations": [
                     { "lat": -41.276402, "lng": 174.778411, "location": "Wellington, New Zealand" },
                     { "lat": -37.821235, "lng": 144.964248, "location": "Melbourne, Australia" },
-                    { "lat": 35.673793, "lng": 139.754501, "location": "Toxyo, Japan" },
+                    { "lat": 35.673793, "lng": 139.754501, "location": "Tokyo, Japan" },
                     { "lat": 33.587325, "lng": 130.378273, "location": "Fukuoka, Japan" },
                     { "lat": 26.207856, "lng": 127.769824, "location": "Nishihara, Okinawa, Japan" },
                     { "lat": 1.288061, "lng": 103.851967, "location": "Singapore" },
@@ -171,6 +476,7 @@
     {
         "id": "2026-plusgamma",
         "name": "+Gamma",
-        "year": 2026
+        "year": 2026,
+        "eventTypes": {}
     }
 ]

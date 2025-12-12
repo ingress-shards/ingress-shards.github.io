@@ -74,6 +74,16 @@ def add_offset_to_date(row):
         # Fallback to the original plain ISO string
         return dt_naive.strftime('%Y-%m-%dT%H:%M:%S')
 
+def apply_start_time(row, series_config):
+    event_type = row['type']
+    event_types_config = series_config.get('eventTypes', {})
+    
+    start_time = event_types_config.get(event_type, {}).get('startTime', '00:00')
+    
+    # Combine date and start_time
+    date_str = row['date'].strftime('%Y-%m-%d')
+    return pd.to_datetime(f"{date_str} {start_time}")
+
 tf = TimezoneFinder()
 start_time = time.time()
 series_geocode = {}
@@ -98,7 +108,7 @@ for series in series_metadata:
         df = pd.DataFrame(re.findall(EVENT_MARKER_REGEX, r.text), columns=["lat", "lng", "type", "location", "date"])
         df["lat"] = df["lat"].astype(float)
         df["lng"] = df["lng"].astype(float)
-        df["type"] = df["type"].replace(type_replacement)
+        df['type'] = df['type'].replace(type_replacement)
         df["date"] = pd.to_datetime(df["date"], format='%d %b %Y')
 
     if other_events:
@@ -119,11 +129,15 @@ for series in series_metadata:
                             "lng": lng,
                             "location": location,
                             "type": event_type,
-                            "date": pd.to_datetime(event_date)
+                            "date": pd.to_datetime(event_date, format='%Y-%m-%d')
                         })
 
             if event_locations_rows:
                 df = pd.concat([df, pd.DataFrame(event_locations_rows)], ignore_index=True)
+
+    if len(df) > 0 and 'eventTypes' in series:
+        print(f'\tApplying start times for {series_name} events...')
+        df['date'] = df.apply(lambda row: apply_start_time(row, series), axis=1)
 
     if len(df) > 0:
         def calculate_base_id(row):
