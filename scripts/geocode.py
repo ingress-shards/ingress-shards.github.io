@@ -9,114 +9,167 @@ import requests_cache
 from shapely import Point
 requests_cache.install_cache('cache')
 from timezonefinder import TimezoneFinder
-from tqdm.auto import tqdm
 import re
 import pandas as pd
-import geopandas as gpd
+import reverse_geocoder as rg
+from unidecode import unidecode
 import os
-from pprint import pprint
-tf = TimezoneFinder()
 
-start_time = time.time()
-dfs = []
-for url in ["https://ingress.com/news/2024-sharedmem", "https://ingress.com/news/2024-erasedmem", "https://ingress.com/news/2025-plusalpha", "https://ingress.com/news/2025-plustheta", "https://ingress.com/news/2025-plusbeta"]:
-  r = requests.get(url)
-  df = pd.DataFrame(re.findall(r"(?P<lat>-?\d+.\d+), (?P<lng>-?\d+.\d+)]\).bindPopup\('(?P<type>Shard Skirmish|Anomaly)<br /> ?(?P<city>.+?)<br />(?P<date>.+?)'", r.text), columns=["lat", "lng", "type", "city", "date"])
-  df["series"] = url.split("/")[-1]
-  print(df)
-  dfs.append(df)
+SERIES_METADATA_FILE_PATH = 'conf/series_metadata.json'
+with open(SERIES_METADATA_FILE_PATH, 'r', encoding="utf-8") as f:
+    series_metadata = json.load(f)
 
-# Hardcoded data for the missing +delta article data
-delta_data = [
-  {"lat": 2.19, "lng": 102.25, "type": "Anomaly", "city": "Melaka, Malaysia", "date": "16 Aug 2025", "series": "2025-plusdelta"},
-  {"lat": 45.52, "lng": -122.68, "type": "Anomaly", "city": "Portland, OR, USA", "date": "16 Aug 2025", "series": "2025-plusdelta"},
-  {"lat": 46.81, "lng": -71.21, "type": "Anomaly", "city": "Quebec City, Canada", "date": "23 Aug 2025", "series": "2025-plusdelta"},
-  {"lat": 57.71, "lng": 11.97, "type": "Anomaly", "city": "Gothenburg, Sweden", "date": "23 Aug 2025", "series": "2025-plusdelta"},
-  {"lat": 52.20, "lng": 0.13, "type": "Anomaly", "city": "Cambridge, United Kingdom", "date": "20 Sep 2025", "series": "2025-plusdelta"},
-  {"lat": -8.67, "lng": 115.21, "type": "Anomaly", "city": "Denpasar, Bali, Indonesia", "date": "20 Sep 2025", "series": "2025-plusdelta"},
-]
-delta_df = pd.DataFrame(delta_data)
-dfs.append(delta_df)
+EVENT_MARKER_REGEX = r"L.marker\(\[(?P<lat>-?\d+.\d+), (?P<lng>-?\d+.\d+)\]\).bindPopup\('(?P<type>Shard Skirmish|Anomaly)<br /> ?(?P<location>.+?)<br />(?P<date>.+?)'\)"
 
-# Hardcoded data for the +beta article data
-beta_data = [
-  {"lat": 39.47452, "lng": -0.37692, "type": "Anomaly", "city": "Valencia, Spain", "date": "18 Oct 2025", "series": "2025-plusbeta"},
-  {"lat": -23.58964, "lng": -46.66091, "type": "Anomaly", "city": "Sao Paulo, Brazil", "date": "18 Oct 2025", "series": "2025-plusbeta"},
-  {"lat": -41.28564381946367, "lng": 174.7780881775362, "type": "Anomaly", "city": "Wellington, New Zealand", "date": "25 Oct 2025", "series": "2025-plusbeta"},
-  {"lat": 29.75457725448469, "lng": -95.37087644288286, "type": "Anomaly", "city": "Houston TX, USA", "date": "25 Oct 2025", "series": "2025-plusbeta"},
-  {"lat": 24.99854600681725, "lng": 121.32464005902432, "type": "Anomaly", "city": "Taoyuan, Taiwan", "date": "15 Nov 2025", "series": "2025-plusbeta"},
-  {"lat": 52.06993723259916, "lng": 4.2947598478782165, "type": "Anomaly", "city": "The Hague, Netherlands", "date": "15 Nov 2025", "series": "2025-plusbeta"},
-]
-beta_df = pd.DataFrame(beta_data)
-dfs.append(beta_df)
-
-
-df = pd.concat(dfs)
-df["lat"] = df["lat"].astype(float)
-df["lng"] = df["lng"].astype(float)
-df["date"] = pd.to_datetime(df["date"])
-df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df["lng"], df["lat"]), crs="EPSG:4326")
-print(df)
-df.drop(columns="geometry").sort_values("date").to_csv("../events.csv", index=False)
-
-files = glob("jump-times/*.json")
-all_data = {}
-
-anomaly_jump_files = {
-  "shard-jump-times-2025.06.16.17.47.43.json",
-  "shard-jump-times-2025.08.18.12.11.03.json",
-  "shard-jump-times-2025.08.23.22.03.28.json",
-  "shard-jump-times-2025.09.20.18.08.35.json",
-  "shard-jump-times-2025.10.18.21.05.55.json",
-  "shard-jump-times-2025.10.25.23.04.33.json",
-  "shard-jump-times-2025.11.15.17.42.27.json",
+# Headers to simulate a real browser request and avoid caching issues
+HEADERS = {
+    'User-Agent': 'ingress-shards-map/1.1.0',
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'Expires': '0',
+    "accept-language": "en-US,en;q=0.9",
 }
 
-for f in tqdm(files):
-  with open(f, "r", encoding="utf-8") as file:
-    filename = os.path.basename(f)
+def get_country_code_offline(row):
+    result = rg.search((row['lat'], row['lng']), mode=1)
+    country_code = result[0].get('cc')
+    return country_code.upper() if country_code else None
 
-    print(f)
-    data = json.load(file)
-    filtered_data = [d for d in data["artifact"] if d.get("fragment")]
-    for d in tqdm(filtered_data):
-      if d["id"] == "abaddon1" and filename not in anomaly_jump_files:
-        for shard in d["fragment"]:
-          samplePortal = shard["history"][-1]["destinationPortalInfo"]
-          lat = samplePortal["latE6"] / 1e6
-          lng = samplePortal["lngE6"] / 1e6
-          df["distance"] = df.distance(Point(lng, lat))
-          df = df.sort_values("distance")
-          city = df.iloc[0]["city"]
-          timezone = tf.timezone_at(lng=lng, lat=lat)
-          print(d["name"], city, timezone)
-          #shard["city"] = city
-          shard["timezone"] = timezone
-      else:
-        samplePortal = d["fragment"][0]["history"][-1]["destinationPortalInfo"]
-        lat = samplePortal["latE6"] / 1e6
-        lng = samplePortal["lngE6"] / 1e6
-        df["distance"] = df.distance(Point(lng, lat))
-        df = df.sort_values("distance")
-        city = df.iloc[0]["city"]
-        timezone = tf.timezone_at(lng=lng, lat=lat)
-        print(d["name"], city, timezone)
-        d["city"] = city
-        d["timezone"] = timezone
-  with open(f, "w", encoding="utf-8") as file:
-    json.dump(data, file, indent=2, ensure_ascii=False)
+def get_flag_emoji(country_code: str) -> str:
+    if not country_code or len(country_code) != 2:
+        return "🏳️" 
+    code = country_code.upper()
 
-    all_data[filename] = data
+    # The Unicode offset for Regional Indicator Symbols
+    RIS_BASE = 127397 
 
-# Ensure the data directory exists
-data_dir_path = os.path.join(os.path.dirname(__file__), '..', 'data')
-if not os.path.exists(data_dir_path):
-    os.makedirs(data_dir_path)
+    code_points = [
+        RIS_BASE + ord(char) 
+        for char in code
+    ]
+    return "".join(chr(cp) for cp in code_points)
 
-file_path = os.path.join(data_dir_path, 'all_data.json')
-with open(file_path, "w", encoding="utf-8") as file:
-  json.dump(all_data, file, indent=2, ensure_ascii=False)
+def add_offset_to_date(row):
+    """
+    Localizes a naive datetime object to its timezone and returns an 
+    ISO 8601 string including the correct UTC offset (+HH:MM).
+    This relies on the 'timezone' column being set first.
+    """
+    dt_naive = row["date"]
+    timezone_name = row["timezone"]
+
+    if not timezone_name:
+        return dt_naive.strftime('%Y-%m-%dT%H:%M:%S')
+
+    try:
+        dt_localized = dt_naive.tz_localize(
+            timezone_name, 
+            ambiguous='NaT', 
+            nonexistent='shift_forward'
+        )
+        return dt_localized.isoformat()
+
+    except Exception as e:
+        print(f"Error localizing date for {timezone_name}: {e}")
+        # Fallback to the original plain ISO string
+        return dt_naive.strftime('%Y-%m-%dT%H:%M:%S')
+
+tf = TimezoneFinder()
+start_time = time.time()
+series_geocode = {}
+total_sites = 0
+
+type_replacement = {
+    "Anomaly": "ANOMALY",
+    "Shard Skirmish": "SKIRMISH"
+}
+
+for series in series_metadata:
+    series_id = series.get("id")
+    series_name = series.get("name")
+    overview_url = series.get("overviewUrl")
+    other_events = series.get("otherEvents")
+    df = {}
+
+    print(f'Series {series_name}:')
+    if overview_url:
+        print(f'\tRetrieving event map data from {overview_url}...')
+        r = requests.get(overview_url, headers=HEADERS)
+        df = pd.DataFrame(re.findall(EVENT_MARKER_REGEX, r.text), columns=["lat", "lng", "type", "location", "date"])
+        df["lat"] = df["lat"].astype(float)
+        df["lng"] = df["lng"].astype(float)
+        df["type"] = df["type"].replace(type_replacement)
+        df["date"] = pd.to_datetime(df["date"], format='%d %b %Y')
+
+    if other_events:
+        for extra_events_entry in other_events:
+            event_type = extra_events_entry.get("type")
+            event_date = extra_events_entry.get("date")
+            event_locations = extra_events_entry.get("locations")
+
+            event_locations_rows = []
+            if event_locations:
+                for event_location in event_locations:
+                    lat = event_location.get("lat")
+                    lng = event_location.get("lng")
+                    location = event_location.get("location")
+                    if lat is not None and lng is not None:
+                        event_locations_rows.append({ 
+                            "lat": lat,
+                            "lng": lng,
+                            "location": location,
+                            "type": event_type,
+                            "date": pd.to_datetime(event_date)
+                        })
+
+            if event_locations_rows:
+                df = pd.concat([df, pd.DataFrame(event_locations_rows)], ignore_index=True)
+
+    if len(df) > 0:
+        def calculate_base_id(row):
+            base_location = str(row['location']).split(',')[0].strip()
+            normalized_location = unidecode(base_location).lower()
+            sanitized_location = re.sub(r'[^\w\s-]', '', normalized_location)
+            sanitized_location = re.sub(r'[\s_-]+', '-', sanitized_location)
+            sanitized_location = sanitized_location.strip('-')
+            return f"{series_id}-{sanitized_location}"
+            
+        df["base_id"] = df.apply(calculate_base_id, axis=1)
+
+        duplicate_base_ids = df["base_id"].duplicated(keep=False)
+        
+        def finalize_id(row):
+            base_id = row['base_id']
+            if duplicate_base_ids[row.name]:
+                raw_date = str(row['date'])[:10]
+                date_suffix = raw_date.replace('-', '')
+                return f"{base_id}-{date_suffix}"
+            else:
+                return base_id
+
+        df["id"] = df.apply(finalize_id, axis=1)
+        
+        df = df.drop(columns=["base_id"])
+
+        print(f'\tGeocoding {len(df)} events...')
+        df["timezone"] = df.apply(lambda row: tf.timezone_at(lng=row["lng"], lat=row["lat"]), axis=1)
+        df["date"] = df.apply(add_offset_to_date, axis=1)
+        df["country_code"] = df.apply(get_country_code_offline, axis=1)
+        df["flag"] = df["country_code"].apply(get_flag_emoji)
+
+        total_sites += len(df)
+
+    if isinstance(df, pd.DataFrame):
+        site_data = df.to_dict(orient="records")
+    else:
+        site_data = []
+
+    series_geocode[series_id] = { "sites": site_data }
+
+geocode_file_path = os.path.join(os.path.dirname(__file__), '..', 'conf', 'series_geocode.json')
+with open(geocode_file_path, 'w', encoding='utf-8') as f:
+    json.dump(series_geocode, f, indent=2, ensure_ascii=False)
 
 end_time = time.time()
 elapsed_time = end_time - start_time
-print(f'Successfully generated {file_path} in {elapsed_time:.2f} seconds.')
+print(f'Generated {geocode_file_path} with {len(series_metadata)} series and {total_sites} sites in {elapsed_time:.2f} seconds.')

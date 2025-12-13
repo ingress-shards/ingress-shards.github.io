@@ -15,10 +15,10 @@ Portal alignment at the time a shard despawns is deemed to be not relevant for d
 
 ## Adding data to project
 
-In order to ensure that new data is processed by the scripts for display on the map, the following changes are required to the project:
+In order to ensure that new data is included on the shard map, the following configuration changes are required to the project:
 
--   Add shard jump times file to the _jump-times_ folder.
--   Add a new entry to the _src/js/shard-series-metadata.json_ array, including the series name (to be displayed in the drop-down box), and the filename.
--   (_Optional_) Add the Season Overview URL to the array of URLs at the top of _scripts/geocode.py_ if required.
--   (_Optional_) Add the file name to the _anomaly_jump_files_ in _scripts/geocode.py_ if the new file contains anomalies.
--   (_Optional_) Add the Anomaly series name to _src/js/data/shard-data-processor.js_ if the new file contains anomalies.
+-   For a new series, add a new entry in _conf/series_metadata.json_. See other entries for example properties available.
+    -   Is it preferable to use the same series ID as Niantic use i.e. 2025-plusbeta for the +Beta series.
+    -   Adding a new entry will update the _conf/series_geocode.json_ file - please don't change it manually!
+-   For new shard jump data, enter it in the relevant series folder in _data_. For example, the +Beta series files are located in _data/2025-plusbeta_.
+    -   The jump files with a prefix of 'shard-jump-times-' will be automatically parsed and shards will be matched to the site (and date) within the series.
