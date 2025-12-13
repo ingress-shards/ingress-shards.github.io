@@ -1,0 +1,2132 @@
+{
+  "artifact": [
+    {
+      "id": "echo",
+      "name": "Echo"
+    },
+    {
+      "id": "sierra",
+      "name": "Sierra"
+    },
+    {
+      "id": "kilo",
+      "name": "Kilo"
+    },
+    {
+      "id": "juliet",
+      "name": "Juliet"
+    },
+    {
+      "id": "india",
+      "name": "India"
+    },
+    {
+      "id": "bravo",
+      "name": "Bravo"
+    },
+    {
+      "id": "abaddon1",
+      "name": "Abaddon 1",
+      "fragment": [
+        {
+          "id": "abaddon1_02",
+          "history": [
+            {
+              "moveTimeMs": "1765623600640",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Heritage Plow",
+                "description": "Plow Plow Plow, A herritage Listed Plow",
+                "latE6": -27495841,
+                "lngE6": 153011122,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1765609205058",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765605609274",
+              "reason": "jump",
+              "originPortalInfo": {
+                "title": "Harp & Angel Crest",
+                "description": "Crest of a Harp inside the UQ Great Court",
+                "latE6": -27497104,
+                "lngE6": 153012826,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Heritage Plow",
+                "description": "Plow Plow Plow, A herritage Listed Plow",
+                "latE6": -27495841,
+                "lngE6": 153011122,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1765602000211",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765598402115",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765594800871",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Harp & Angel Crest",
+                "description": "Crest of a Harp inside the UQ Great Court",
+                "latE6": -27497104,
+                "lngE6": 153012826,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_16",
+          "currentPortalInfo": {
+            "title": "Pro Patria 1956",
+            "description": "Az egyetemi forradalmár ifjak emlékére állíttatta 1989. október 23-án a Magyar Demokrata Fórum",
+            "latE6": 47481943,
+            "lngE6": 19053961,
+            "team": "ENLIGHTENED"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765641610650",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Arcades of St Gellert",
+                "latE6": 47489651,
+                "lngE6": 19045511,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Pro Patria 1956",
+                "description": "Az egyetemi forradalmár ifjak emlékére állíttatta 1989. október 23-án a Magyar Demokrata Fórum",
+                "latE6": 47481943,
+                "lngE6": 19053961,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765641585474",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765638008567",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "A Tüskés Torony",
+                "latE6": 47481095,
+                "lngE6": 19054185,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Arcades of St Gellert",
+                "latE6": 47489651,
+                "lngE6": 19045511,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765637918714",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765634404062",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765630802669",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Maze Water Feature",
+                "description": "Find your way out!",
+                "latE6": 47490885,
+                "lngE6": 19058429,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "A Tüskés Torony",
+                "latE6": 47481095,
+                "lngE6": 19054185,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765630791839",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765627201241",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Maze Water Feature",
+                "description": "Find your way out!",
+                "latE6": 47490885,
+                "lngE6": 19058429,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_19",
+          "currentPortalInfo": {
+            "title": "The Slacks",
+            "description": "The Slacks are home to a 23m cairn and ancient hut circles.",
+            "latE6": 57223082,
+            "lngE6": -2259340,
+            "team": "RESISTANCE"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765645201744",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "1959 Granite Boundary Stone",
+                "description": "Granite boundary stone marked with K for Kincausie Estate on the east face and C for Camphill on the west face.",
+                "latE6": 57094823,
+                "lngE6": -2235154,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "The Slacks",
+                "description": "The Slacks are home to a 23m cairn and ancient hut circles.",
+                "latE6": 57223082,
+                "lngE6": -2259340,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765645126628",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765641606371",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Welcome to Allan Park",
+                "description": "A wee hidden gem in Cults",
+                "latE6": 57114605,
+                "lngE6": -2177574,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "1959 Granite Boundary Stone",
+                "description": "Granite boundary stone marked with K for Kincausie Estate on the east face and C for Camphill on the west face.",
+                "latE6": 57094823,
+                "lngE6": -2235154,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765641518413",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765638001534",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Blue Hill Cairn and Viewpoint",
+                "description": "The top of Blue Hill has spectacular views across Aberdeen City and Shire. The cairn has a viewpoint guide detailing the prominently visible landmarks.",
+                "latE6": 57094573,
+                "lngE6": -2127003,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Welcome to Allan Park",
+                "description": "A wee hidden gem in Cults",
+                "latE6": 57114605,
+                "lngE6": -2177574,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765637965913",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765634402487",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Aberdeens around the World",
+                "latE6": 57131488,
+                "lngE6": -2103908,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Blue Hill Cairn and Viewpoint",
+                "description": "The top of Blue Hill has spectacular views across Aberdeen City and Shire. The cairn has a viewpoint guide detailing the prominently visible landmarks.",
+                "latE6": 57094573,
+                "lngE6": -2127003,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765634318966",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765630804655",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Aberdeens around the World",
+                "latE6": 57131488,
+                "lngE6": -2103908,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_05",
+          "history": [
+            {
+              "moveTimeMs": "1765627203811",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "イタセンパラ発見の地",
+                "description": "絶滅したとみられていたイタセンパラが発見された地に建つ記念碑。\n淀川水系の城北湾処はイタセンパラ最大の生息地であり保護活動も行われてはいるが、未だ絶えない無意味な開発による自然破壊で環境を維持できず、個体数が増えることもないまま今もなお絶滅危惧種である。",
+                "latE6": 34729424,
+                "lngE6": 135525439,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1765612801513",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "豊崎会館",
+                "description": "コミュニティセンター",
+                "latE6": 34712259,
+                "lngE6": 135501871,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "イタセンパラ発見の地",
+                "description": "絶滅したとみられていたイタセンパラが発見された地に建つ記念碑。\n淀川水系の城北湾処はイタセンパラ最大の生息地であり保護活動も行われてはいるが、未だ絶えない無意味な開発による自然破壊で環境を維持できず、個体数が増えることもないまま今もなお絶滅危惧種である。",
+                "latE6": 34729424,
+                "lngE6": 135525439,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765612466215",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765609207042",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765605605046",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765602002503",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "魚の化石",
+                "latE6": 34705878,
+                "lngE6": 135490102,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "豊崎会館",
+                "description": "コミュニティセンター",
+                "latE6": 34712259,
+                "lngE6": 135501871,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765601553678",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765598403822",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "魚の化石",
+                "latE6": 34705878,
+                "lngE6": 135490102,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_17",
+          "currentPortalInfo": {
+            "title": "Ca' De' Corti - Chiesa di Sant'Omobono",
+            "description": "Chiesa di Sant'Omobono",
+            "latE6": 45094125,
+            "lngE6": 10273929,
+            "team": "ENLIGHTENED"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765641609427",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Ciclovia del fiume",
+                "description": "Parco Oglio Sud: ciclovia del fiume",
+                "latE6": 45239093,
+                "lngE6": 10225176,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Ca' De' Corti - Chiesa di Sant'Omobono",
+                "description": "Chiesa di Sant'Omobono",
+                "latE6": 45094125,
+                "lngE6": 10273929,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765641605328",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765638004495",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Gabbioneta - Infopoint La Fauna dellle Aree Umide",
+                "description": "Infopoint del parco Oglio Nord riguardante la Fauna",
+                "latE6": 45218304,
+                "lngE6": 10233101,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Ciclovia del fiume",
+                "description": "Parco Oglio Sud: ciclovia del fiume",
+                "latE6": 45239093,
+                "lngE6": 10225176,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765637780743",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765634407938",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Ostiano - Playground Parco Pari",
+                "description": "Area giochi per bambini che comprende anche un percorso vita ( stazioni con attrezzature per esercizi ginnici).",
+                "latE6": 45222188,
+                "lngE6": 10253609,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Gabbioneta - Infopoint La Fauna dellle Aree Umide",
+                "description": "Infopoint del parco Oglio Nord riguardante la Fauna",
+                "latE6": 45218304,
+                "lngE6": 10233101,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765634113135",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765630802045",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765627209554",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Ostiano - Playground Parco Pari",
+                "description": "Area giochi per bambini che comprende anche un percorso vita ( stazioni con attrezzature per esercizi ginnici).",
+                "latE6": 45222188,
+                "lngE6": 10253609,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_21",
+          "currentPortalInfo": {
+            "title": "Homenaje Roberto Rodriguez",
+            "latE6": -25293151,
+            "lngE6": -57575959,
+            "team": "RESISTANCE"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765645202423",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Mural Artesana",
+                "description": "Mural homenaje a nuestras mujeres artesanas",
+                "latE6": -25294743,
+                "lngE6": -57581991,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Homenaje Roberto Rodriguez",
+                "latE6": -25293151,
+                "lngE6": -57575959,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765645184133",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765641602803",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Mural Artesana",
+                "description": "Mural homenaje a nuestras mujeres artesanas",
+                "latE6": -25294743,
+                "lngE6": -57581991,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_07",
+          "history": [
+            {
+              "moveTimeMs": "1765630811730",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "有趣涂鸦",
+                "latE6": 30610573,
+                "lngE6": 104074543,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1765616406491",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "春熙路南段路口浮雕",
+                "description": "人南立交桥下老成都民俗公园浮雕",
+                "latE6": 30621442,
+                "lngE6": 104064659,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "有趣涂鸦",
+                "latE6": 30610573,
+                "lngE6": 104074543,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765615094496",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765612808041",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765609200225",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765605601872",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "玉林街头壁画",
+                "description": "玉林街头壁画是成都市推进背街小巷改造工程的一部分，通过在墙壁上绘制精美的壁画，提升城市的文化氛围和艺术气息。",
+                "latE6": 30631969,
+                "lngE6": 104054706,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "春熙路南段路口浮雕",
+                "description": "人南立交桥下老成都民俗公园浮雕",
+                "latE6": 30621442,
+                "lngE6": 104064659,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765605428204",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765602002873",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "玉林街头壁画",
+                "description": "玉林街头壁画是成都市推进背街小巷改造工程的一部分，通过在墙壁上绘制精美的壁画，提升城市的文化氛围和艺术气息。",
+                "latE6": 30631969,
+                "lngE6": 104054706,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_20",
+          "currentPortalInfo": {
+            "title": "Beleza feminina",
+            "description": "Grafite artístico",
+            "latE6": -23528633,
+            "lngE6": -46646159,
+            "team": "RESISTANCE"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765645203577",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Parque da Água Branca Entrada",
+                "latE6": -23530019,
+                "lngE6": -46667488,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Beleza feminina",
+                "description": "Grafite artístico",
+                "latE6": -23528633,
+                "lngE6": -46646159,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765645082811",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765641610899",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Parque da Água Branca Entrada",
+                "latE6": -23530019,
+                "lngE6": -46667488,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_14",
+          "currentPortalInfo": {
+            "title": "Doubek - Obecni Urad",
+            "latE6": 50020215,
+            "lngE6": 14740800,
+            "team": "RESISTANCE"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765641604718",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Parkourové hřiště Jahodnice",
+                "description": "Veřejné parkourové hřiště Jahodnice. Provozováno městskou částí Praha 14.",
+                "latE6": 50084884,
+                "lngE6": 14564267,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Doubek - Obecni Urad",
+                "latE6": 50020215,
+                "lngE6": 14740800,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765640309990",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765638002708",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Zajíc",
+                "latE6": 50087279,
+                "lngE6": 14497623,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Parkourové hřiště Jahodnice",
+                "description": "Veřejné parkourové hřiště Jahodnice. Provozováno městskou částí Praha 14.",
+                "latE6": 50084884,
+                "lngE6": 14564267,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765637707403",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765634407162",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765630809630",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Svatý František",
+                "description": "socha sv. Františka",
+                "latE6": 50088688,
+                "lngE6": 14428944,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Zajíc",
+                "latE6": 50087279,
+                "lngE6": 14497623,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765630740160",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765627207679",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Svatý František",
+                "description": "socha sv. Františka",
+                "latE6": 50088688,
+                "lngE6": 14428944,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_12",
+          "currentPortalInfo": {
+            "title": "Viksøhjelmene - Et syn for guder",
+            "description": "Skilt ved Brøns Mose med historisk info om Viksøhjelmene, der blev fundet i Brøns Mose i 1942. Hjelmene stammer fra den tidligere bronzealder, tiden lige efter år 1000 f. Kr.",
+            "latE6": 55753910,
+            "lngE6": 12230825,
+            "team": "ENLIGHTENED"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765641602538",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Room for Rent Bird House",
+                "description": "Bird house made of logs and wood by Selsmosen Lake near bridge",
+                "latE6": 55654804,
+                "lngE6": 12298841,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Viksøhjelmene - Et syn for guder",
+                "description": "Skilt ved Brøns Mose med historisk info om Viksøhjelmene, der blev fundet i Brøns Mose i 1942. Hjelmene stammer fra den tidligere bronzealder, tiden lige efter år 1000 f. Kr.",
+                "latE6": 55753910,
+                "lngE6": 12230825,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765641570098",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765638007415",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "The Yellow Vent",
+                "latE6": 55649766,
+                "lngE6": 12271522,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Room for Rent Bird House",
+                "description": "Bird house made of logs and wood by Selsmosen Lake near bridge",
+                "latE6": 55654804,
+                "lngE6": 12298841,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765637757179",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765634403484",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Youth and culture house",
+                "description": "the new boulding 2023 build to house youth activities and culture",
+                "latE6": 55654823,
+                "lngE6": 12290183,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "The Yellow Vent",
+                "latE6": 55649766,
+                "lngE6": 12271522,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765634103430",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765630814560",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Two Circles",
+                "description": "Smily face without a smile",
+                "latE6": 55650551,
+                "lngE6": 12274338,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Youth and culture house",
+                "description": "the new boulding 2023 build to house youth activities and culture",
+                "latE6": 55654823,
+                "lngE6": 12290183,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765630717473",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765627204713",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Two Circles",
+                "description": "Smily face without a smile",
+                "latE6": 55650551,
+                "lngE6": 12274338,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_04",
+          "history": [
+            {
+              "moveTimeMs": "1765627206664",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "연주봉옹성",
+                "description": "남한산성 옹성중 하나이며, 유네스코 문화유산 입니다.",
+                "latE6": 37486618,
+                "lngE6": 127178170,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1765612802317",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "숲속의 꽃과 나비 벽화",
+                "description": "파크데일 놀이터에 있는 숲을 배경으로 한 벽화",
+                "latE6": 37498867,
+                "lngE6": 127159774,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "연주봉옹성",
+                "description": "남한산성 옹성중 하나이며, 유네스코 문화유산 입니다.",
+                "latE6": 37486618,
+                "lngE6": 127178170,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765611308912",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765609203273",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "이성산성 동문지",
+                "description": "이성산성에는 동,서,남,북 1개씩 총 4개의 문이 있었을 것으로 추정한다. 동쪽에서 조사된 동문은 사다리를 걸쳐놓고 올라가야 하는 현문식 구조이다.",
+                "latE6": 37527698,
+                "lngE6": 127185156,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "숲속의 꽃과 나비 벽화",
+                "description": "파크데일 놀이터에 있는 숲을 배경으로 한 벽화",
+                "latE6": 37498867,
+                "lngE6": 127159774,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765608618393",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765605603215",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "천마근린공원 전망 안내도",
+                "description": "천마산 전망에 있는 안내도",
+                "latE6": 37503486,
+                "lngE6": 127157544,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "이성산성 동문지",
+                "description": "이성산성에는 동,서,남,북 1개씩 총 4개의 문이 있었을 것으로 추정한다. 동쪽에서 조사된 동문은 사다리를 걸쳐놓고 올라가야 하는 현문식 구조이다.",
+                "latE6": 37527698,
+                "lngE6": 127185156,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765605374530",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765602006355",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "신탁",
+                "latE6": 37516943,
+                "lngE6": 127117784,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "천마근린공원 전망 안내도",
+                "description": "천마산 전망에 있는 안내도",
+                "latE6": 37503486,
+                "lngE6": 127157544,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765601908066",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765598401041",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "신탁",
+                "latE6": 37516943,
+                "lngE6": 127117784,
+                "team": "NEUTRAL"
+              },
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_09",
+          "history": [
+            {
+              "moveTimeMs": "1765630805729",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "新堀江",
+                "description": "新堀江入口牌樓",
+                "latE6": 22621935,
+                "lngE6": 120302338,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1765616400079",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765612806334",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "民生路圓環綠地公園",
+                "description": "位在民生路與中山路交叉口圓環，是散步、溜狗的好去處",
+                "latE6": 22627616,
+                "lngE6": 120301340,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "新堀江",
+                "description": "新堀江入口牌樓",
+                "latE6": 22621935,
+                "lngE6": 120302338,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765610624935",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765609210770",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "長頸鹿洞洞裝",
+                "latE6": 22623386,
+                "lngE6": 120300509,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "民生路圓環綠地公園",
+                "description": "位在民生路與中山路交叉口圓環，是散步、溜狗的好去處",
+                "latE6": 22627616,
+                "lngE6": 120301340,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765609199400",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765605604045",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765602006683",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "長頸鹿洞洞裝",
+                "latE6": 22623386,
+                "lngE6": 120300509,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_01",
+          "history": [
+            {
+              "moveTimeMs": "1765621801061",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Gallery on Waymouth",
+                "latE6": -34925770,
+                "lngE6": 138598499,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1765607401614",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Crafty Robot Brewery",
+                "description": "Great new craft brewery in the west side of the city",
+                "latE6": -34928886,
+                "lngE6": 138592239,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Gallery on Waymouth",
+                "latE6": -34925770,
+                "lngE6": 138598499,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765606332367",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765603801916",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Hanging Gardens",
+                "description": "Hanging garden and sculptured artwork",
+                "latE6": -34922550,
+                "lngE6": 138601888,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Crafty Robot Brewery",
+                "description": "Great new craft brewery in the west side of the city",
+                "latE6": -34928886,
+                "lngE6": 138592239,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765603793548",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765600200241",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765596600374",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765593000994",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Hanging Gardens",
+                "description": "Hanging garden and sculptured artwork",
+                "latE6": -34922550,
+                "lngE6": 138601888,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_15",
+          "currentPortalInfo": {
+            "title": "Borne pour parcours pedestre de la ville d’Elancourt #51",
+            "description": "Borne pour parcours pedestre de la ville d’Elancourt #51",
+            "latE6": 48789699,
+            "lngE6": 1960443,
+            "team": "RESISTANCE"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765641607036",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765638005045",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765634406347",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Elancourt - Cimetiere de la valle faviere",
+                "description": "Cimetiere de la valle faviere de la commune d Elancourt",
+                "latE6": 48780586,
+                "lngE6": 1962839,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Borne pour parcours pedestre de la ville d’Elancourt #51",
+                "description": "Borne pour parcours pedestre de la ville d’Elancourt #51",
+                "latE6": 48789699,
+                "lngE6": 1960443,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765633764728",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765630804625",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Borne pour parcours pedestre d’Elancourt #97",
+                "description": "Borne pour parcours pedestre d’Elancourt #97",
+                "latE6": 48779612,
+                "lngE6": 1959639,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Elancourt - Cimetiere de la valle faviere",
+                "description": "Cimetiere de la valle faviere de la commune d Elancourt",
+                "latE6": 48780586,
+                "lngE6": 1962839,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765630783665",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765627201715",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Borne pour parcours pedestre d’Elancourt #97",
+                "description": "Borne pour parcours pedestre d’Elancourt #97",
+                "latE6": 48779612,
+                "lngE6": 1959639,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_08",
+          "history": [
+            {
+              "moveTimeMs": "1765630810549",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "绿地中央广场",
+                "description": "绿地中央广场标志牌",
+                "latE6": 23166305,
+                "lngE6": 113426534,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1765616404518",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "达尔文",
+                "latE6": 23167228,
+                "lngE6": 113431906,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "绿地中央广场",
+                "description": "绿地中央广场标志牌",
+                "latE6": 23166305,
+                "lngE6": 113426534,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765614960248",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765612804043",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765609209125",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "民俗文化園坊",
+                "description": "南海神廟旁的小型展覽園。",
+                "latE6": 23084016,
+                "lngE6": 113492285,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "达尔文",
+                "latE6": 23167228,
+                "lngE6": 113431906,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765609165903",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765605608293",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "沈括",
+                "description": "沈括（1032年—1096年），字存中，晚年自号梦溪丈人、梦溪翁、岸老，本籍杭州钱塘县，自幼寄籍苏州吴县，北宋官员，官至龙图阁直学士、权三司使。",
+                "latE6": 23172147,
+                "lngE6": 113445608,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "民俗文化園坊",
+                "description": "南海神廟旁的小型展覽園。",
+                "latE6": 23084016,
+                "lngE6": 113492285,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765605572568",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765602003769",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "沈括",
+                "description": "沈括（1032年—1096年），字存中，晚年自号梦溪丈人、梦溪翁、岸老，本籍杭州钱塘县，自幼寄籍苏州吴县，北宋官员，官至龙图阁直学士、权三司使。",
+                "latE6": 23172147,
+                "lngE6": 113445608,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_18",
+          "currentPortalInfo": {
+            "title": "Monument als primers homes que van fer possible el Port d’Envalira",
+            "description": "Monument dedicat als pioners que van fer possible construir el Port d’Envalira",
+            "latE6": 42540501,
+            "lngE6": 1719328,
+            "team": "RESISTANCE"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765641601665",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Antic Edifici De Radio Andorra",
+                "description": "Antic edifici radio andorra",
+                "latE6": 42528898,
+                "lngE6": 1569944,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Monument als primers homes que van fer possible el Port d’Envalira",
+                "description": "Monument dedicat als pioners que van fer possible construir el Port d’Envalira",
+                "latE6": 42540501,
+                "lngE6": 1719328,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765635033809",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765638003781",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Hotel Arbre de Neu",
+                "description": "Hotel con bar a pie de las pistas de esqui. Importante para el barrio y lugar donde nos reunimos a hacer el cafe",
+                "latE6": 42534494,
+                "lngE6": 1587305,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Antic Edifici De Radio Andorra",
+                "description": "Antic edifici radio andorra",
+                "latE6": 42528898,
+                "lngE6": 1569944,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765634729645",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765634404543",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Camí del Roc de l’Oral",
+                "description": "Cartel que marca la dirección de un antigüo camino de montaña que lleva a una linda iglesia",
+                "latE6": 42529794,
+                "lngE6": 1570024,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Hotel Arbre de Neu",
+                "description": "Hotel con bar a pie de las pistas de esqui. Importante para el barrio y lugar donde nos reunimos a hacer el cafe",
+                "latE6": 42534494,
+                "lngE6": 1587305,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765632387321",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765630808268",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Antiga Carniseria Comunal",
+                "description": "Antiga Carniseria Comunal",
+                "latE6": 42535709,
+                "lngE6": 1582107,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Camí del Roc de l’Oral",
+                "description": "Cartel que marca la dirección de un antigüo camino de montaña que lleva a una linda iglesia",
+                "latE6": 42529794,
+                "lngE6": 1570024,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765630337143",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765627208638",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Antiga Carniseria Comunal",
+                "description": "Antiga Carniseria Comunal",
+                "latE6": 42535709,
+                "lngE6": 1582107,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_06",
+          "history": [
+            {
+              "moveTimeMs": "1765630812788",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "城市印记",
+                "latE6": 31234211,
+                "lngE6": 121447491,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1765616402957",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "铁二人",
+                "latE6": 31236746,
+                "lngE6": 121459402,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "城市印记",
+                "latE6": 31234211,
+                "lngE6": 121447491,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765616352919",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765612807247",
+              "reason": "jump",
+              "originPortalInfo": {
+                "title": "特工间的情谊",
+                "description": "红色扭曲的金属管雕塑",
+                "latE6": 31236418,
+                "lngE6": 121458607,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "铁二人",
+                "latE6": 31236746,
+                "lngE6": 121459402,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1765609205024",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765605603045",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765602007798",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "特工间的情谊",
+                "description": "红色扭曲的金属管雕塑",
+                "latE6": 31236418,
+                "lngE6": 121458607,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_10",
+          "history": [
+            {
+              "moveTimeMs": "1765630806684",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Church In The Sky Bell Tower",
+                "description": "Located on top of the hill in Taytay, Rizal where you can also see a view of Laguna Bay",
+                "latE6": 14543170,
+                "lngE6": 121151668,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1765616405547",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "The Father of Philippine Revolution",
+                "description": "A statue depicting Andres Bonifacio raising the flag of Kataastaasan, Kagalanggalangang Katipunan ng mga Anak ng Bayan (Supreme and Honorable Association of the Children of the Nation). It is in honor of the Philippine hero who's the namesake of Bonifacio Global City.",
+                "latE6": 14559276,
+                "lngE6": 121053817,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Church In The Sky Bell Tower",
+                "description": "Located on top of the hill in Taytay, Rizal where you can also see a view of Laguna Bay",
+                "latE6": 14543170,
+                "lngE6": 121151668,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765615981211",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765612808202",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Serendra Spheres",
+                "description": "Bonifacio global city",
+                "latE6": 14549586,
+                "lngE6": 121054609,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "The Father of Philippine Revolution",
+                "description": "A statue depicting Andres Bonifacio raising the flag of Kataastaasan, Kagalanggalangang Katipunan ng mga Anak ng Bayan (Supreme and Honorable Association of the Children of the Nation). It is in honor of the Philippine hero who's the namesake of Bonifacio Global City.",
+                "latE6": 14559276,
+                "lngE6": 121053817,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765611954455",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765609207585",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "The 1000th Store",
+                "description": "The Mileage Store Built by Jollibee",
+                "latE6": 14558754,
+                "lngE6": 121057870,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Serendra Spheres",
+                "description": "Bonifacio global city",
+                "latE6": 14549586,
+                "lngE6": 121054609,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765608621525",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765605610516",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "3D Street Art at BHS",
+                "latE6": 14550500,
+                "lngE6": 121050378,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "The 1000th Store",
+                "description": "The Mileage Store Built by Jollibee",
+                "latE6": 14558754,
+                "lngE6": 121057870,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765605169167",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765602008769",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "3D Street Art at BHS",
+                "latE6": 14550500,
+                "lngE6": 121050378,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_13",
+          "currentPortalInfo": {
+            "title": "Routepunt Euregio Paardrijden",
+            "description": "Onderdeel van Europas grootste paardrijroute door Euregio Rijn-Waal",
+            "latE6": 51773562,
+            "lngE6": 5594849,
+            "team": "ENLIGHTENED"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765641605770",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Amoebe Playground",
+                "latE6": 51836324,
+                "lngE6": 5818528,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Routepunt Euregio Paardrijden",
+                "description": "Onderdeel van Europas grootste paardrijroute door Euregio Rijn-Waal",
+                "latE6": 51773562,
+                "lngE6": 5594849,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765641601614",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765638004058",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765634400173",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765630801543",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Speeltuin De Gildekamp",
+                "description": "De Motor",
+                "latE6": 51829644,
+                "lngE6": 5798347,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Amoebe Playground",
+                "latE6": 51836324,
+                "lngE6": 5818528,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1765630750193",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765627202630",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Speeltuin De Gildekamp",
+                "description": "De Motor",
+                "latE6": 51829644,
+                "lngE6": 5798347,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_11",
+          "history": [
+            {
+              "moveTimeMs": "1765630809948",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Seksyen U16",
+                "description": "Signage of Section U16",
+                "latE6": 3168016,
+                "lngE6": 101512977,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1765616402053",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765612803064",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765609203007",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Starling Rooftop Park",
+                "description": "The park located at the rooftop of Starling Mall.",
+                "latE6": 3135666,
+                "lngE6": 101622957,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Seksyen U16",
+                "description": "Signage of Section U16",
+                "latE6": 3168016,
+                "lngE6": 101512977,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765608957054",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765605606046",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765602009877",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Starling Rooftop Park",
+                "description": "The park located at the rooftop of Starling Mall.",
+                "latE6": 3135666,
+                "lngE6": 101622957,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_22",
+          "currentPortalInfo": {
+            "title": "Área de Descanso Bicentenario",
+            "description": "Importante lugar de relajo, para reponer energias y seguir recorriendo este gran parque.",
+            "latE6": -33498396,
+            "lngE6": -70702426,
+            "team": "ENLIGHTENED"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1765645204561",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Zona de Descanso en Parque Bicentenario",
+                "description": "Ideal para tomar un break y luego continuar recorriendo este hermoso parque.",
+                "latE6": -33499172,
+                "lngE6": -70704768,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Área de Descanso Bicentenario",
+                "description": "Importante lugar de relajo, para reponer energias y seguir recorriendo este gran parque.",
+                "latE6": -33498396,
+                "lngE6": -70702426,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765645156649",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1765641606732",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Zona de Descanso en Parque Bicentenario",
+                "description": "Ideal para tomar un break y luego continuar recorriendo este hermoso parque.",
+                "latE6": -33499172,
+                "lngE6": -70704768,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "abaddon1_03",
+          "history": [
+            {
+              "moveTimeMs": "1765627205778",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "濁川公園案内板",
+                "description": "公園内の道標",
+                "latE6": 37937879,
+                "lngE6": 139160386,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1765612803339",
+              "reason": "jump",
+              "originPortalInfo": {
+                "title": "阿賀野川ふれあい公園　案内図",
+                "description": "ふれあい公園の案内板",
+                "latE6": 37930012,
+                "lngE6": 139150835,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "濁川公園案内板",
+                "description": "公園内の道標",
+                "latE6": 37937879,
+                "lngE6": 139160386,
+                "team": "NEUTRAL"
+              },
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1765609203062",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765605601051",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1765602005671",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "阿賀野川津島屋緑地",
+                "latE6": 37946983,
+                "lngE6": 139130525,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "阿賀野川ふれあい公園　案内図",
+                "description": "ふれあい公園の案内板",
+                "latE6": 37930012,
+                "lngE6": 139150835,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765601317107",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1765598402085",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "阿賀野川津島屋緑地",
+                "latE6": 37946983,
+                "lngE6": 139130525,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alpha",
+      "name": "Alpha"
+    },
+    {
+      "id": "lima",
+      "name": "Lima"
+    },
+    {
+      "id": "hotel",
+      "name": "Hotel"
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL"
+    },
+    {
+      "id": "uniform",
+      "name": "Uniform"
+    },
+    {
+      "id": "foxtrot",
+      "name": "Foxtrot"
+    },
+    {
+      "id": "papa",
+      "name": "Papa"
+    },
+    {
+      "id": "abaddon2",
+      "name": "Abaddon 2"
+    },
+    {
+      "id": "targetres",
+      "name": "Target RES"
+    },
+    {
+      "id": "tango",
+      "name": "Tango"
+    },
+    {
+      "id": "yankee",
+      "name": "Yankee"
+    },
+    {
+      "id": "delta",
+      "name": "Delta"
+    },
+    {
+      "id": "charlie",
+      "name": "Charlie"
+    },
+    {
+      "id": "romeo",
+      "name": "Romeo"
+    },
+    {
+      "id": "mike",
+      "name": "Mike"
+    },
+    {
+      "id": "zulu",
+      "name": "Zulu"
+    },
+    {
+      "id": "quebec",
+      "name": "Quebec"
+    },
+    {
+      "id": "oscar",
+      "name": "Oscar"
+    },
+    {
+      "id": "november",
+      "name": "November"
+    },
+    {
+      "id": "xray",
+      "name": "Xray"
+    },
+    {
+      "id": "whiskey",
+      "name": "Whiskey"
+    },
+    {
+      "id": "golf",
+      "name": "Golf"
+    },
+    {
+      "id": "victor",
+      "name": "Victor"
+    }
+  ]
+}
