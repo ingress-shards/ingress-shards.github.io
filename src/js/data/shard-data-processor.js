@@ -63,7 +63,7 @@ export const linkScoringRules = new Map()
                 jumpPoints: 0,
                 minDistance: 10000,
                 maxDistance: Infinity,
-                linkLengthPoints: 3,
+                linkLengthPoints: 10,
                 allowFurtherPoints: false,
             },
             {
