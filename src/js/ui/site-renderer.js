@@ -3,7 +3,7 @@ import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, SHARD_EVENT
 import shardIconUrl from '../../assets/abaddon1_shard.png';
 import { getSiteData, getSeriesMetadata, getSeriesGeocode } from "../data/data-store.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
-import { formatSecEpochToLocalTime, formatSerializationToShortDate } from "../shared/date-helpers.js";
+import { formatEpochToLocalTime, formatSerializationToShortDate } from "../shared/date-helpers.js";
 
 const shardIcon = L.icon({
     iconUrl: shardIconUrl,
@@ -172,10 +172,12 @@ function renderPortalData(portals, portalHistoryMap, timeZone) {
                         : undefined;
 
                 portalTooltip += `${historyItem.reason === HISTORY_REASONS.LINK ? HISTORY_REASONS.JUMP : historyItem.reason
-                    } at ${formatSecEpochToLocalTime(historyItem.moveTime, timeZone)}${teamToDisplay
+                    } at ${formatEpochToLocalTime(historyItem.moveTime, timeZone)}
+                    ${teamToDisplay
                         ? ` - <span style="color:${FACTION_COLORS[teamToDisplay]}">${teamToDisplay}</span>`
                         : ""
-                    } <br />`;
+                    }
+                    <br />`;
             }
 
             if (index !== portalHistory.length - 1) {
@@ -256,10 +258,10 @@ function renderLinkPath(linkPath, linkPathPortals, timeZone) {
         }
         linkColor = FACTION_COLORS[link.team] || FACTION_COLORS.NEU;
 
-        linkTooltip += `Linked at ${formatSecEpochToLocalTime(link.linkTime, timeZone)} by <span style="color:${linkColor}">${link.team || "NEU"}</span> <br />`;
+        linkTooltip += `Linked at ${formatEpochToLocalTime(link.linkTime, timeZone)} by <span style="color:${linkColor}">${link.team || "NEU"}</span> <br />`;
 
         for (const jump of link.jumps) {
-            const moveTime = formatSecEpochToLocalTime(jump.moveTime, timeZone);
+            const moveTime = formatEpochToLocalTime(jump.moveTime, timeZone);
             const portalJumpText = biDirectionalJumps ? jump.origin === portalA.id ? "(A -> B)" : "(B -> A)" : "";
 
             linkTooltip += `<strong>Shard ${jump.shardId}</strong> jumped ${portalJumpText} at ${moveTime} for ${jump.points} point${jump.points !== 1 ? 's' : ''}<br />`

@@ -12,14 +12,6 @@ export function convertMsEpochToSecEpoch(epochMs) {
 }
 
 /**
- * Converts a 10-digit second epoch time string/number back to a 13-digit
- * millisecond epoch time string/number.
- */
-export function convertSecEpochToMsEpoch(epochSec) {
-    return Number(epochSec) * MS_PER_SECOND;
-}
-
-/**
  * Converts a 13-digit millisecond epoch time to a simplified ISO 8601 string,
  * suitable for serialization (YYYY-MM-DDTHH:mm:ss, without milliseconds or Z).
  * This is the standard format required for the geocode storage date field.
@@ -38,27 +30,23 @@ export function formatSerializationToShortDate(isoString, timeZone, locale = nav
 }
 
 /**
- * Formats a 10-digit epoch time (seconds) for local display time.
+ * Formats an epoch time for local display time.
  */
-export function formatSecEpochToLocalTime(epochSec, timeZone, locale = navigator.language) {
-    // Must convert back to milliseconds for Date object constructor
-    const epochMs = convertSecEpochToMsEpoch(epochSec);
-
-    return new Date(epochMs).toLocaleTimeString(locale, {
+export function formatEpochToLocalTime(epochMs, timeZone, locale = navigator.language) {
+    return new Date(Number(epochMs)).toLocaleTimeString(locale, {
         timeZone,
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
+        fractionalSecondDigits: 3,
     });
 }
 
 /**
- * Formats a 10-digit epoch time (seconds) for local date and time display.
+ * Formats an epoch time for local date and time display.
  */
-export function formatSecEpochToLocalDateTime(epochSec, timeZone, locale = navigator.language) {
-    const epochMs = convertSecEpochToMsEpoch(epochSec);
-
-    return new Date(epochMs).toLocaleString(locale, {
+export function formatEpochToLocalDateTime(epochMs, timeZone, locale = navigator.language) {
+    return new Date(Number(epochMs)).toLocaleString(locale, {
         timeZone,
         year: 'numeric',
         month: 'numeric',

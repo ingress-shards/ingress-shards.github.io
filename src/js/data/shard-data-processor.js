@@ -144,7 +144,7 @@ export function processSite(site, fragments) {
             const destPortalKey =
                 historyItem.destinationPortalInfo &&
                 `${historyItem.destinationPortalInfo.latE6}_${historyItem.destinationPortalInfo.lngE6}`;
-            const moveTime = Math.floor(historyItem.moveTimeMs / 1000);
+            const moveTime = historyItem.moveTimeMs;
 
             let shardHistoryItem = {
                 reason: historyItem.reason,
@@ -247,7 +247,7 @@ export function processSite(site, fragments) {
                     shard[moved] = true;
 
                     const linkPathKey = [originPortalId, destPortalId].sort().join('-');
-                    const linkTime = Math.floor(historyItem.linkCreationTimeMs / 1000);
+                    const linkTime = historyItem.linkCreationTimeMs;
                     const newLink = {
                         linkTime,
                         team: historyItem.linkCreatorTeam && getAbbreviatedTeam(historyItem.linkCreatorTeam),
