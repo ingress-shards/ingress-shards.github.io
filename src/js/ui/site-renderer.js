@@ -1,5 +1,5 @@
 import * as L from "leaflet";
-import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, SHARD_EVENT_TYPE } from "../constants.js";
+import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, SHARD_EVENT_TYPE, RANDOM_TELEPORT_COLOR } from "../constants.js";
 import shardIconUrl from '../../assets/abaddon1_shard.png';
 import { getSiteData, getSeriesMetadata, getSeriesGeocode } from "../data/data-store.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
@@ -18,7 +18,6 @@ export function getSiteLayers(seriesId, siteId) {
     let cacheEntry = siteLayerCache.get(siteId);
     if (!cacheEntry) {
         const siteData = getSiteData(seriesId, siteId);
-        console.log('siteData', seriesId, siteId, siteData);
         if (!siteData) return null;
 
         cacheEntry = renderSiteData({ seriesId, siteId, siteData });
@@ -72,7 +71,6 @@ function renderSiteData({ seriesId, siteId, siteData }) {
 }
 
 export function getSiteControl(siteId) {
-    console.log(siteLayerCache.get(siteId));
     let controlLayers = {};
     for (const layerDetails of siteLayerCache.get(siteId)) {
         controlLayers[layerDetails.label] = layerDetails.layer;
@@ -82,49 +80,47 @@ export function getSiteControl(siteId) {
 
 function renderShardLayer({ seriesId, siteId, shardData, portals, timezone, layerType }) {
     const shardLayer = L.featureGroup();
-    console.log(shardData);
     shardLayer._layerType = layerType;
     shardLayer._siteId = siteId.replace(seriesId + "-", "");
 
-    const linkPathsMap = renderLinkPathData(shardData.linkPaths, portals, timezone);
-    linkPathsMap.values().forEach((linkPath) => linkPath.addTo(shardLayer));
+    const shardPathsMap = createShardPathLayers(shardData.shardPaths, portals, timezone);
+    shardPathsMap.values().forEach((shardPath) => shardPath.addTo(shardLayer));
 
-    const shardDetails = renderShardData(shardData.shards, portals);
+    const { portalHistoryMap, shardMotionData } = processShardData(shardData.shards, portals);
+    const shardMotionPaths = createShardMotionPaths(shardMotionData);
 
     shardLayer.shardMotionPaths = [];
-    shardDetails.shardPaths.forEach((shardPath) => {
-        shardPath.addTo(shardLayer);
+    shardMotionPaths.forEach((shardPathPoly) => {
+        shardPathPoly.addTo(shardLayer);
+        shardLayer.shardMotionPaths.push(shardPathPoly);
 
-        shardLayer.shardMotionPaths.push(shardPath);
-
-        for (const linkPath of shardPath.linkPaths) {
-            const link = linkPathsMap.get(linkPath);
-            link.shardPath = shardPath;
-            link.on("mouseover", function () {
-                shardPath.motionStart();
+        for (const shardPath of shardPathPoly.shardPaths) {
+            const path = shardPathsMap.get(shardPath);
+            if (path) path.shardPathPoly = shardPathPoly;
+            path.on("mouseover", function () {
+                shardPathPoly.motionStart();
             });
         }
     });
 
     shardLayer.startShardMotion = function () {
-        this.shardMotionPaths.forEach(shardPath => {
-            shardPath.motionStart();
+        this.shardMotionPaths.forEach(shardPathPoly => {
+            shardPathPoly.motionStart();
         });
     };
 
-    const portalHistoryMap = shardDetails.portalHistoryMap;
-    const portalDetails = renderPortalData(portals, portalHistoryMap, timezone);
-    portalDetails.markers.forEach((marker) => marker.addTo(shardLayer));
-    portalDetails.staticShards.forEach((marker) => marker.addTo(shardLayer));
+    const { portalMarkers, staticShardMarkers } = createPortalMarkers(portals, portalHistoryMap, timezone);
+    portalMarkers.forEach((marker) => marker.addTo(shardLayer));
+    staticShardMarkers.forEach((marker) => marker.addTo(shardLayer));
 
     return shardLayer;
 }
 
-function renderLinkPathData(linkPaths, portalsMap, timezone) {
-    const linkPathsMap = new Map();
+function createShardPathLayers(shardPaths, portalsMap, timezone) {
+    const shardPathsMap = new Map();
 
-    for (const [linkPathKey, linkPath] of Object.entries(linkPaths)) {
-        const linkPathPortals = linkPathKey.split("-").map(idString => {
+    for (const [shardPathKey, shardPath] of Object.entries(shardPaths)) {
+        const shardPathPortals = shardPathKey.split("-").map(idString => {
             const id = Number(idString);
             return {
                 id,
@@ -132,19 +128,19 @@ function renderLinkPathData(linkPaths, portalsMap, timezone) {
             }
         });
 
-        const linkPathDetails = renderLinkPath(linkPath, linkPathPortals, timezone);
-        linkPathsMap.set(linkPathKey, linkPathDetails);
+        const shardPathDetails = renderShardPath(shardPath, shardPathPortals, timezone);
+        shardPathsMap.set(shardPathKey, shardPathDetails);
     }
-    return linkPathsMap;
+    return shardPathsMap;
 }
 
-function renderShardData(shards, portalsMap) {
+function processShardData(shards, portalsMap) {
     const portalHistoryMap = {};
-    const shardPaths = [];
+    const shardMotionData = [];
 
     for (const shard of shards) {
         const coords = [];
-        const linkPaths = [];
+        const shardPaths = [];
 
         for (const historyItem of shard.history) {
             const portalIds = historyItem.reason === HISTORY_REASONS.LINK || historyItem.reason === HISTORY_REASONS.JUMP
@@ -155,7 +151,7 @@ function renderShardData(shards, portalsMap) {
                 const originPortal = portalsMap[historyItem.portalId];
                 const destPortal = portalsMap[historyItem.dest];
 
-                linkPaths.push([historyItem.portalId, historyItem.dest].sort().join('-'));
+                shardPaths.push([historyItem.portalId, historyItem.dest].sort().join('-'));
                 if (coords.length === 0) {
                     coords.push(L.latLng(originPortal.lat, originPortal.lng));
                 }
@@ -174,36 +170,41 @@ function renderShardData(shards, portalsMap) {
             }
         }
 
-        if (linkPaths.length > 0) {
-            const shardPath =
-                L.motion.polyline(
-                    coords,
-                    {
-                        color: "transparent",
-                        interactive: false,
-                    },
-                    { auto: false, duration: linkPaths.length * 1000 },
-                    {
-                        showMarker: true,
-                        removeOnEnd: false,
-                        icon: shardIcon,
-                        interactive: false,
-                    }
-                );
-            shardPath.linkPaths = linkPaths;
-            shardPaths.push(shardPath);
+        if (coords.length > 0 && shardPaths.length > 0) {
+            shardMotionData.push({ coords, shardPaths });
         }
     }
 
     return {
-        shardPaths,
+        shardMotionData,
         portalHistoryMap,
     };
 }
 
-function renderPortalData(portals, portalHistoryMap, timeZone) {
-    const markers = [];
-    const staticShards = [];
+function createShardMotionPaths(shardMotionData) {
+    return shardMotionData.map(({ coords, shardPaths }) => {
+        const shardPathPoly = L.motion.polyline(
+            coords,
+            {
+                color: "transparent",
+                interactive: false,
+            },
+            { auto: false, duration: shardPaths.length * 1000 },
+            {
+                showMarker: true,
+                removeOnEnd: false,
+                icon: shardIcon,
+                interactive: false,
+            }
+        );
+        shardPathPoly.shardPaths = shardPaths;
+        return shardPathPoly;
+    });
+}
+
+function createPortalMarkers(portals, portalHistoryMap, timeZone) {
+    const portalMarkers = [];
+    const staticShardMarkers = [];
 
     for (const [portalId, portal] of Object.entries(portals)) {
         const latLng = L.latLng(portal.lat, portal.lng);
@@ -212,52 +213,57 @@ function renderPortalData(portals, portalHistoryMap, timeZone) {
         if (portalHistory.length === 0) continue;
         const lastKnownTeam = getLastKnownTeam(portalHistory);
 
-        let portalTooltip = `<strong>${portal.title}</strong> <a href="${INGRESS_INTEL_PORTAL_LINK}${portal.lat},${portal.lng}" target="intel_page">Intel</a><hr />`;
+        const portalTooltip = formatPortalTooltip(portal, portalHistory, timeZone);
 
-        portalHistory.forEach(([shardId, shardHistory], index) => {
-            portalTooltip += `<strong>Shard ${shardId}</strong><br />`;
-            for (const historyItem of shardHistory) {
-                let teamToDisplay =
-                    historyItem.reason !== HISTORY_REASONS.NO_MOVE
-                        ? historyItem.team || "NEU"
-                        : undefined;
+        portalHistory.forEach(([, shardHistory]) => {
+            const shardHistoryReasons = shardHistory.flatMap(h => h.reason);
+            const isStaticSpawn = shardHistoryReasons.includes(HISTORY_REASONS.SPAWN) &&
+                !shardHistoryReasons.includes(HISTORY_REASONS.LINK) &&
+                !shardHistoryReasons.includes(HISTORY_REASONS.JUMP);
 
-                portalTooltip += `${historyItem.reason === HISTORY_REASONS.LINK ? HISTORY_REASONS.JUMP : historyItem.reason
-                    } at ${formatEpochToLocalTime(historyItem.moveTime, timeZone)}
-                    ${teamToDisplay
-                        ? ` - <span style="color:${FACTION_COLORS[teamToDisplay]}">${teamToDisplay}</span>`
-                        : ""
-                    }
-                    <br />`;
-            }
-
-            if (index !== portalHistory.length - 1) {
-                portalTooltip += `<hr class="tooltip-sub-divider" />`;
-            }
-
-            const shardHistoryReasons = shardHistory.flatMap((h) => h.reason);
-            if (
-                shardHistoryReasons.includes(HISTORY_REASONS.SPAWN) &&
-                !(shardHistoryReasons.includes(HISTORY_REASONS.LINK) || shardHistoryReasons.includes(HISTORY_REASONS.JUMP))
-            ) {
-                staticShards.push(L.marker(latLng, { icon: shardIcon }).bindTooltip(portalTooltip).bindPopup(portalTooltip));
+            if (isStaticSpawn) {
+                staticShardMarkers.push(L.marker(latLng, { icon: shardIcon }).bindTooltip(portalTooltip).bindPopup(portalTooltip));
             }
         });
-        markers.push(
+
+        portalMarkers.push(
             L.circleMarker(latLng, {
                 color: FACTION_COLORS[lastKnownTeam] || FACTION_COLORS.NEU,
             }).bindTooltip(portalTooltip, {
                 interactive: true
             }).bindPopup(portalTooltip, {
                 closeButton: false,
-                autoClose: true
+                autoClose: true,
             })
         );
     }
     return {
-        markers,
-        staticShards,
+        portalMarkers,
+        staticShardMarkers,
     };
+}
+
+function formatPortalTooltip(portal, portalHistory, timeZone) {
+    let tooltipHtml = `<strong>${portal.title}</strong> <a href="${INGRESS_INTEL_PORTAL_LINK}${portal.lat},${portal.lng}" target="intel_page">Intel</a><hr />`;
+
+    portalHistory.forEach(([shardId, shardHistory], index) => {
+        tooltipHtml += `<strong>Shard ${shardId}</strong><br />`;
+        for (const historyItem of shardHistory) {
+            const teamToDisplay = ![HISTORY_REASONS.NO_MOVE, HISTORY_REASONS.JUMP].includes(historyItem.reason) ? historyItem.team || "NEU" : undefined;
+
+            let reasonToDisplay = historyItem.reason;
+            if (historyItem.reason === HISTORY_REASONS.LINK) reasonToDisplay = HISTORY_REASONS.JUMP;
+            else if (historyItem.reason === HISTORY_REASONS.JUMP) reasonToDisplay = 'randomly teleported';
+
+            tooltipHtml += `${reasonToDisplay} at ${formatEpochToLocalTime(historyItem.moveTime, timeZone)}${teamToDisplay ? ` - <span style="color:${FACTION_COLORS[teamToDisplay]}">${teamToDisplay}</span>` : ""}<br />`;
+        }
+
+        if (index < portalHistory.length - 1) {
+            tooltipHtml += `<hr class="tooltip-sub-divider" />`;
+        }
+    });
+
+    return tooltipHtml;
 }
 
 function getLastKnownTeam(portalHistory) {
@@ -276,65 +282,83 @@ function getLastKnownTeam(portalHistory) {
     return portalHistoryEntries[0]?.team;
 }
 
-function renderLinkPath(linkPath, linkPathPortals, timeZone) {
-    const [portalA, portalB] = linkPathPortals;
-    let linkTooltip;
+function renderShardPath(shardPath, shardPathPortals, timeZone) {
+    let polyline;
 
-    const jumpOrigins = new Set(linkPath.links.flatMap(link => link.jumps).map(jump => jump.origin));
-    const biDirectionalJumps = jumpOrigins.size > 1;
-    const distanceDisplay = linkPath.distance < 1000 ? `${linkPath.distance}m` : `${(linkPath.distance / 1000).toFixed(2)}km`;
-    let coords;
-    if (biDirectionalJumps) {
-        coords = [L.latLng(portalA.lat, portalA.lng), L.latLng(portalB.lat, portalB.lng)];
-        linkTooltip = `<strong>${portalA.title} (A) <-> ${portalB.title} (B) (${distanceDisplay})</strong><hr />`;
-    } else {
-        const [originPortal] = [...jumpOrigins];
-        const fromPortal = originPortal === portalA.id ? portalA : portalB;
-        const toPortal = originPortal === portalA.id ? portalB : portalA;
-        coords = [L.latLng(fromPortal.lat, fromPortal.lng), L.latLng(toPortal.lat, toPortal.lng)];
-        linkTooltip = `<strong>${fromPortal.title} -> ${toPortal.title} (${distanceDisplay})</strong><hr />`;
-    }
+    if (shardPath.links && shardPath.links.length > 0) {
+        const { tooltip, coords, biDirectionalMoves } = formatLinkPathTooltip(shardPath, shardPathPortals, timeZone);
+        const linkColor = FACTION_COLORS[shardPath.links[shardPath.links.length - 1].team] || FACTION_COLORS.NEU;
 
-    let linkColor;
-    const sortedLinks = linkPath.links.sort((a, b) => a.linkTime - b.linkTime);
-    for (const [index, link] of sortedLinks.entries()) {
-        if (linkColor && FACTION_COLORS[link.team] !== linkColor) {
-            let multipleLinkDifferentFactionWarningMessage = `New link with different team!
-            \t${portalA.title} (${portalA.lat},${portalA.lng}) -> ${portalB.title} (${portalB.lat},${portalB.lng})
-            \tPrevious ${linkColor}, current ${FACTION_COLORS[link.team]} (${link.team})`;
-            if (biDirectionalJumps) {
-                multipleLinkDifferentFactionWarningMessage += "\nThere are bidirectional jumps too!";
-            }
-            console.debug(multipleLinkDifferentFactionWarningMessage);
-        }
-        linkColor = FACTION_COLORS[link.team] || FACTION_COLORS.NEU;
-
-        linkTooltip += `Linked at ${formatEpochToLocalTime(link.linkTime, timeZone)} by <span style="color:${linkColor}">${link.team || "NEU"}</span> <br />`;
-
-        for (const jump of link.jumps) {
-            const moveTime = formatEpochToLocalTime(jump.moveTime, timeZone);
-            const portalJumpText = biDirectionalJumps ? jump.origin === portalA.id ? "(A -> B)" : "(B -> A)" : "";
-
-            linkTooltip += `<strong>Shard ${jump.shardId}</strong> jumped ${portalJumpText} at ${moveTime} for ${jump.points} point${jump.points !== 1 ? 's' : ''}<br />`
-        }
-
-        if (index !== sortedLinks.length - 1) {
-            linkTooltip += `<hr class="tooltip-sub-divider" />`;
-        }
-    }
-
-    const polyline = L.polyline(
-        coords,
-        {
+        polyline = L.polyline(coords, {
             color: linkColor,
             dashArray: ["10,5,5,5,5,5,5,5,10000"],
-        }
-    );
-    polyline.biDirectionalJumps = biDirectionalJumps;
-    polyline.bindTooltip(linkTooltip, { sticky: true });
-    polyline.bindPopup(linkTooltip, { sticky: true });
+        });
+        polyline.biDirectionalJumps = biDirectionalMoves;
+        polyline.bindTooltip(tooltip, { sticky: true }).bindPopup(tooltip, { sticky: true });
+    } else if (shardPath.jumps && shardPath.jumps.length > 0) {
+        const { tooltip, coords } = formatJumpPathTooltip(shardPath, shardPathPortals, timeZone);
+
+        polyline = L.polyline(coords, {
+            color: RANDOM_TELEPORT_COLOR,
+            dashArray: ["10,10"],
+        });
+        polyline.bindTooltip(tooltip, { sticky: true }).bindPopup(tooltip, { sticky: true });
+    }
 
     return polyline;
+}
+
+function formatLinkPathTooltip(shardPath, shardPathPortals, timeZone) {
+    const [portalA, portalB] = shardPathPortals;
+    const moveOrigins = new Set(shardPath.links.flatMap(link => link.moves).map(move => move.origin));
+    const biDirectionalMoves = moveOrigins.size > 1;
+    const distanceDisplay = shardPath.distance < 1000 ? `${shardPath.distance}m` : `${(shardPath.distance / 1000).toFixed(2)}km`;
+
+    let fromPortal, toPortal, coords, tooltip;
+
+    if (biDirectionalMoves) {
+        coords = [L.latLng(portalA.lat, portalA.lng), L.latLng(portalB.lat, portalB.lng)];
+        tooltip = `<strong>${portalA.title} (A) <-> ${portalB.title} (B) (${distanceDisplay})</strong><hr />`;
+    } else {
+        const [originPortalId] = [...moveOrigins];
+        fromPortal = originPortalId === portalA.id ? portalA : portalB;
+        toPortal = originPortalId === portalA.id ? portalB : portalA;
+        coords = [L.latLng(fromPortal.lat, fromPortal.lng), L.latLng(toPortal.lat, toPortal.lng)];
+        tooltip = `<strong>${fromPortal.title} -> ${toPortal.title} (${distanceDisplay})</strong><hr />`;
+    }
+
+    const sortedLinks = [...shardPath.links].sort((a, b) => a.linkTime - b.linkTime);
+    sortedLinks.forEach((link, index) => {
+        const linkColor = FACTION_COLORS[link.team] || FACTION_COLORS.NEU;
+        tooltip += `Linked at ${formatEpochToLocalTime(link.linkTime, timeZone)} by <span style="color:${linkColor}">${link.team || "NEU"}</span> <br />`;
+
+        for (const move of link.moves) {
+            const moveTime = formatEpochToLocalTime(move.moveTime, timeZone);
+            const portalJumpText = biDirectionalMoves ? (move.origin === portalA.id ? "(A -> B)" : "(B -> A)") : "";
+            tooltip += `<strong>Shard ${move.shardId}</strong> jumped ${portalJumpText} at ${moveTime} for ${move.points} point${move.points !== 1 ? 's' : ''}<br />`;
+        }
+
+        if (index < sortedLinks.length - 1) {
+            tooltip += `<hr class="tooltip-sub-divider" />`;
+        }
+    });
+
+    return { tooltip, coords, biDirectionalMoves };
+}
+
+function formatJumpPathTooltip(shardPath, shardPathPortals, distanceDisplay, timeZone) {
+    const [portalA, portalB] = shardPathPortals;
+    const jump = shardPath.jumps[0];
+
+    const fromPortal = jump.origin === portalA.id ? portalA : portalB;
+    const toPortal = jump.origin === portalA.id ? portalB : portalA;
+    const coords = [L.latLng(fromPortal.lat, fromPortal.lng), L.latLng(toPortal.lat, toPortal.lng)];
+    const moveTime = formatEpochToLocalTime(jump.moveTime, timeZone);
+
+    const tooltip = `<strong>${fromPortal.title} -> ${toPortal.title} (${distanceDisplay})</strong><hr />
+        <strong>Shard ${jump.shardId}</strong> randomly teleported at ${moveTime}<br />`;
+
+    return { tooltip, coords };
 }
 
 export function getDetailsPanelContent(seriesId, siteId, waveId) {
@@ -352,7 +376,9 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
         }
         content += '<br />';
     }
-    content += `Links: ${siteData.fullEvent.counters.links} links<br />`;
+    if (siteData.fullEvent.counters.links > 0) {
+        content += `Links: ${siteData.fullEvent.counters.links}<br />`;
+    }
     content += getScoresText({ seriesId, siteId, waveId, siteData, type: 'table' });
 
     const flagHtml = siteGeocode?.country_code ? getFlagTooltipHtml(siteGeocode?.country_code.toLowerCase()) : '';
@@ -371,60 +397,66 @@ export function getScoresText({ seriesId, siteId, waveId, siteData, type = 'full
         type = 'full';
     }
 
-    let fulLEventScores = siteData?.fullEvent.scores;
-    let scoresHtml = '';
-    if (fulLEventScores) {
+    const fullEventScores = siteData?.fullEvent.scores;
+    if (fullEventScores) {
         switch (type) {
             case 'simple':
-                scoresHtml = `
-                <span style="color:${FACTION_COLORS.RES}">${fulLEventScores.RES}</span>:<span style="color:${FACTION_COLORS.ENL}">${fulLEventScores.ENL}</span>:<span style="color:${FACTION_COLORS.MAC}">${fulLEventScores.MAC}</span>`;
-                break;
+                return renderSimpleScores(fullEventScores);
             case 'full':
-                scoresHtml = `
-                <span style="color:${FACTION_COLORS.RES}">RES: ${fulLEventScores.RES} </span>
-                <span style="color:${FACTION_COLORS.ENL}">ENL: ${fulLEventScores.ENL} </span>
-                <span style="color:${FACTION_COLORS.MAC}">MAC: ${fulLEventScores.MAC}</span>`;
-                break;
+                return renderFullScores(fullEventScores);
             case 'table':
-                if (siteData.waves && siteData.waves.length > 1) {
-                    scoresHtml = `<table class='ingress-event-scores'>
-                    <thead>
-                        <tr>
-                            <th>Wave</th>
-                            <th class='faction-RES'>RES</th>
-                            <th class='faction-ENL'>ENL</th>
-                            <th class='faction-MAC'>MAC</th>
-                        </tr>
-                    </thead>`;
-                    scoresHtml += '<tbody>';
-                    siteData.waves.forEach((wave, index) => {
-                        const waveNumber = index + 1;
-                        if (waveId === `wave-${waveNumber}`) {
-                            scoresHtml += '<tr class="highlight">';
-                        } else {
-                            scoresHtml += '<tr>';
-                        }
-                        scoresHtml += `
-                        <th>${waveNumber}</th>
-                        <td>${wave.scores.RES}</td>
-                        <td>${wave.scores.ENL}</td>
-                        <td>${wave.scores.MAC}</td>
-                    </tr>`;
-                    });
-                    scoresHtml += '</tbody>';
-                    scoresHtml += `<tfoot>
-                    <tr>
-                        <th>Total</th>
-                        <td class='faction-RES'>${fulLEventScores.RES}</td>
-                        <td class='faction-ENL'>${fulLEventScores.ENL}</td>
-                        <td class='faction-MAC'>${fulLEventScores.MAC}</td>
-                    </tr>
-                </tfoot>`;
-                    scoresHtml += '</table>';
-                }
-                break;
+                return renderTableScores(siteData.waves, fullEventScores, waveId);
         }
     }
+    return '';
+}
+
+function renderSimpleScores(scores) {
+    return `<span style="color:${FACTION_COLORS.RES}">${scores.RES}</span>:<span style="color:${FACTION_COLORS.ENL}">${scores.ENL}</span>:<span style="color:${FACTION_COLORS.MAC}">${scores.MAC}</span>`;
+}
+
+function renderFullScores(scores) {
+    return `<span style="color:${FACTION_COLORS.RES}">RES: ${scores.RES} </span>
+            <span style="color:${FACTION_COLORS.ENL}">ENL: ${scores.ENL} </span>
+            <span style="color:${FACTION_COLORS.MAC}">MAC: ${scores.MAC}</span>`;
+}
+
+function renderTableScores(waves, totalScores, activeWaveId) {
+    if (!waves || waves.length <= 1) return renderFullScores(totalScores);
+
+    let scoresHtml = `<table class='ingress-event-scores'>
+        <thead>
+            <tr>
+                <th>Wave</th>
+                <th class='faction-RES'>RES</th>
+                <th class='faction-ENL'>ENL</th>
+                <th class='faction-MAC'>MAC</th>
+            </tr>
+        </thead>
+        <tbody>`;
+
+    waves.forEach((wave, index) => {
+        const waveNumber = index + 1;
+        const isHighlighted = activeWaveId === `wave-${waveNumber}`;
+        scoresHtml += `<tr${isHighlighted ? ' class="highlight"' : ''}>
+            <th>${waveNumber}</th>
+            <td>${wave.scores.RES}</td>
+            <td>${wave.scores.ENL}</td>
+            <td>${wave.scores.MAC}</td>
+        </tr>`;
+    });
+
+    scoresHtml += `</tbody>
+        <tfoot>
+            <tr>
+                <th>Total</th>
+                <td class='faction-RES'>${totalScores.RES}</td>
+                <td class='faction-ENL'>${totalScores.ENL}</td>
+                <td class='faction-MAC'>${totalScores.MAC}</td>
+            </tr>
+        </tfoot>
+    </table>`;
+
     return scoresHtml;
 }
 

@@ -1,11 +1,12 @@
-import { HISTORY_REASONS, SHARD_EVENT_TYPE, SITE_AGGREGATION_DISTANCE, getAbbreviatedTeam } from "../constants.js";
+import { FACTION_COLORS, HISTORY_REASONS, SHARD_EVENT_TYPE, SITE_AGGREGATION_DISTANCE, getAbbreviatedTeam } from "../constants.js";
 import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from "./shard-data-helpers.js";
 import { haversineDistance } from "../shared/math-helpers.js";
-import { createWaveDate, isWithin24Hours } from "../shared/date-helpers.js";
+import { createWaveDate, formatEpochToLocalTime, isWithin24Hours } from "../shared/date-helpers.js";
 
 const portalLookupByOriginalKey = Symbol('portalLookupByOriginalKey');
 const portalIdCounter = Symbol('portalIdCounter');
 const moved = Symbol('moved');
+const INDENT = '    ';
 
 const basicRules = {
     rules: [
@@ -150,7 +151,7 @@ export function processSeriesData(seriesDataPackage) {
     validateSites(processedSites, config);
 
     const seriesData = Object.fromEntries(processedSites.map(site => [site.geocode.id, site]));
-    console.log(`\t${Object.keys(seriesData).length} sites processed.`);
+    console.log(`ℹ️ Processed ${Object.keys(seriesData).length} sites processed.`);
     return seriesData;
 }
 
@@ -161,7 +162,14 @@ export function processSite(site, fragments, seriesConfig) {
     const siteEventType = site.geocode.type;
     const seriesEventConfig = seriesConfig?.eventTypes?.[siteEventType];
 
-    site.fullEvent = processFragments(fragments, site[portalLookupByOriginalKey], site.portals, siteEventType);
+    site.fullEvent = processFragments({
+        fragments,
+        portalLookup: site[portalLookupByOriginalKey],
+        sitePortals: site.portals,
+        eventType: siteEventType,
+        geocode: site.geocode,
+        fullEvent: true,
+    });
 
     if (seriesEventConfig && seriesEventConfig.shards.waves && seriesEventConfig.shards.waves.length > 1) {
         site.waves = [];
@@ -174,16 +182,25 @@ export function processSite(site, fragments, seriesConfig) {
                 const spawnTime = getFragmentSpawnTimeMs(fragment);
                 return spawnTime >= waveStart.getTime() && spawnTime <= waveEnd.getTime();
             });
-            site.waves.push(processFragments(waveFragments, site[portalLookupByOriginalKey], site.portals, siteEventType));
+            const waveViewData = processFragments({
+                fragments: waveFragments,
+                portalLookup: site[portalLookupByOriginalKey],
+                sitePortals: site.portals,
+                eventType: siteEventType,
+                geocode: site.geocode,
+                fullEvent: false,
+            });
+            site.waves.push(waveViewData);
         });
     }
     return site;
 }
 
-function processFragments(fragments, portalLookup, sitePortals, eventType) {
+function processFragments({ fragments, portalLookup, sitePortals, eventType, geocode, fullEvent }) {
+    const location = geocode.location;
     const viewData = {
         shards: [],
-        linkPaths: {},
+        shardPaths: {},
         scores: {
             RES: 0,
             ENL: 0,
@@ -247,17 +264,89 @@ function processFragments(fragments, portalLookup, sitePortals, eventType) {
                     });
                     break;
                 }
-                case HISTORY_REASONS.LINK:
                 case HISTORY_REASONS.JUMP: {
+                    if (historyItem.linkCreationTimeMs) {
+                        console.log(`⚠️  Shard ${shardId} (${location}) should random jump, but has a link time. Could this be a link jump instead?`);
+                        continue;
+                    }
+
                     if (!originPortalKey || !destPortalKey) {
-                        console.errror(`Warning: Missing portal info for LINK/JUMP history item in shardId ${shardId}.`);
+                        console.log(`⚠️  Missing portal info for JUMP history item in shardId ${shardId} (${location}).`);
                         continue;
                     }
 
                     const originPortalObj = sitePortals[originPortalId];
                     const destPortalObj = sitePortals[destPortalId];
                     if (!originPortalObj || !destPortalObj) {
-                        console.error(`Error: Could not find portal objects for IDs ${originPortalId} or ${destPortalId}.`);
+                        console.log(`❌ Could not find portal objects for IDs ${originPortalId} or ${destPortalId} at site ${location}.`);
+                        continue;
+                    }
+
+                    const distance = haversineDistance(
+                        { latitude: originPortalObj.lat, longitude: originPortalObj.lng },
+                        { latitude: destPortalObj.lat, longitude: destPortalObj.lng }
+                    );
+
+                    shard.history.push({
+                        ...shardHistoryItem,
+                        portalId: originPortalId,
+                        dest: destPortalId,
+                    });
+                    shard[moved] = true;
+
+                    const pathKey = [originPortalId, destPortalId].sort().join('-');
+                    const newJump = {
+                        origin: originPortalId,
+                        dest: destPortalId,
+                        shardId,
+                        moveTime,
+                    };
+
+                    const existingPath = viewData.shardPaths[pathKey];
+                    if (existingPath) {
+                        if (existingPath.jumps) {
+                            existingPath.jumps.push(newJump);
+                        } else {
+                            existingPath.jumps = [newJump];
+                        }
+                    } else {
+                        viewData.shardPaths[pathKey] = {
+                            jumps: [newJump],
+                            distance,
+                        };
+                    }
+
+                    mostRecentShardPortalKey = destPortalKey;
+                    break;
+                }
+                case HISTORY_REASONS.LINK: {
+                    if (!historyItem.linkCreationTimeMs) {
+                        console.log(`⚠️  Missing link creation time for shard ${shardId} (${location}). Could this be a random jump instead?`);
+                        continue;
+                    }
+
+                    if (!originPortalKey || !destPortalKey) {
+                        console.log(`⚠️  Missing portal info for LINK history item in shardId ${shardId} (${location}).`);
+                        continue;
+                    }
+                    if (historyItem.linkCreatorTeam !== historyItem.originPortalInfo.team || historyItem.linkCreatorTeam !== historyItem.destinationPortalInfo.team) {
+                        if (fullEvent) {
+                            const localTime = formatEpochToLocalTime(moveTime, geocode.timezone);
+                            const teamInfo = {
+                                origin: getAbbreviatedTeam(historyItem.originPortalInfo.team),
+                                link: getAbbreviatedTeam(historyItem.linkCreatorTeam),
+                                dest: getAbbreviatedTeam(historyItem.destinationPortalInfo.team),
+                            }
+                            console.log(
+                                `⚠️ Shard ${shardId} (${location}) alignment mismatch at ${localTime}:`, teamInfo);
+                        }
+                    }
+
+
+                    const originPortalObj = sitePortals[originPortalId];
+                    const destPortalObj = sitePortals[destPortalId];
+                    if (!originPortalObj || !destPortalObj) {
+                        console.error(`❌ Could not find portal objects for IDs ${originPortalId} or ${destPortalId} at site ${location}.`);
                         continue;
                     }
 
@@ -283,12 +372,12 @@ function processFragments(fragments, portalLookup, sitePortals, eventType) {
                     });
                     shard[moved] = true;
 
-                    const linkPathKey = [originPortalId, destPortalId].sort().join('-');
+                    const pathKey = [originPortalId, destPortalId].sort().join('-');
                     const linkTime = historyItem.linkCreationTimeMs;
                     const newLink = {
                         linkTime,
                         team: historyItem.linkCreatorTeam && getAbbreviatedTeam(historyItem.linkCreatorTeam),
-                        jumps: [{
+                        moves: [{
                             origin: originPortalId,
                             dest: destPortalId,
                             shardId,
@@ -297,11 +386,11 @@ function processFragments(fragments, portalLookup, sitePortals, eventType) {
                         }]
                     };
 
-                    const existingPath = viewData.linkPaths[linkPathKey];
+                    const existingPath = viewData.shardPaths[pathKey];
                     if (existingPath) {
                         const existingLink = existingPath.links.find(link => link.linkTime === linkTime);
                         if (existingLink) {
-                            existingLink.jumps.push({
+                            existingLink.moves.push({
                                 origin: originPortalId,
                                 dest: destPortalId,
                                 shardId,
@@ -316,7 +405,7 @@ function processFragments(fragments, portalLookup, sitePortals, eventType) {
                     } else {
                         viewData.counters.links++;
 
-                        viewData.linkPaths[linkPathKey] = {
+                        viewData.shardPaths[pathKey] = {
                             links: [newLink],
                             distance,
                         };
@@ -348,7 +437,7 @@ function processFragments(fragments, portalLookup, sitePortals, eventType) {
                     break;
                 }
                 default:
-                    console.warn(`Unknown reason for ${shardId}: ${historyItem.reason}`);
+                    console.log(`⚠️ Unknown reason for ${shardId}: ${historyItem.reason}`);
             }
         }
 
@@ -356,7 +445,7 @@ function processFragments(fragments, portalLookup, sitePortals, eventType) {
         viewData.shards.push(shard);
     }
 
-    viewData.counters.paths = viewData.linkPaths.size;
+    viewData.counters.paths = viewData.shardPaths.size;
     return viewData;
 }
 
@@ -434,6 +523,7 @@ function getLinkRule(rules, distance) {
 }
 
 function validateSites(processedSites, seriesConfig) {
+    console.log(`ℹ️ Validating ${processedSites.length} sites...`);
     const seriesValidation = {
         eventTypes: {},
     };
@@ -456,11 +546,44 @@ function validateSites(processedSites, seriesConfig) {
         const siteType = site.geocode.type;
         const { totalShards, totalTargets } = seriesValidation.eventTypes[siteType];
         if (site.fullEvent.shards.length !== totalShards) {
-            console.warn(`\t⚠️ Site ${site.geocode.id}: expected ${totalShards} shards but only ${site.fullEvent.shards.length} found.`)
+            console.log(`⚠️ Site ${site.geocode.id}: expected ${totalShards} shards but only ${site.fullEvent.shards.length} found.`)
         }
         if (site.fullEvent.targets) {
             if (site.fullEvent.targets.length !== totalTargets) {
-                console.warn(`\t⚠️ Site ${site.geocode.id}: expected ${totalTargets} targets but only ${site.fullEvent.targets.length} found.`)
+                console.log(`⚠️ Site ${site.geocode.id}: expected ${totalTargets} targets but only ${site.fullEvent.targets.length} found.`)
+            }
+        }
+        for (const [shardPathKey, shardPath] of Object.entries(site.fullEvent.shardPaths)) {
+            if (shardPath.links && shardPath.jumps && shardPath.links.length > 0 && shardPath.jumps.length > 0) {
+                console.log(`⚠️ Site ${site.geocode.id}: Shard path ${shardPathKey} with ${shardPath.links.length} links and ${shardPath.jumps.length}.`);
+            }
+            if (shardPath.jumps && shardPath.jumps.length > 1) {
+                console.log(`⚠️ Site ${site.geocode.id}: ${shardPath.jumps.length} random teleports in shard path ${shardPathKey}.`);
+            }
+
+            if (shardPath.links && shardPath.links.length > 0) {
+                const moveOrigins = new Set(shardPath.links.flatMap(link => link.moves).map(move => move.origin));
+                const biDirectionalMoves = moveOrigins.size > 1;
+                const sortedLinks = shardPath.links.sort((a, b) => a.linkTime - b.linkTime);
+
+                let linkColor;
+                let previousTeam;
+                for (const [, link] of sortedLinks.entries()) {
+                    if (linkColor && FACTION_COLORS[link.team] !== linkColor) {
+                        const [portalAKey, portalBKey] = shardPathKey.split('-');
+                        const portalA = site.portals[portalAKey];
+                        const portalB = site.portals[portalBKey];
+
+                        const biDirMessage = biDirectionalMoves ? `\n${INDENT}Note: There are bidirectional jumps too!` : '';
+                        let multipleLinkDifferentFactionWarningMessage = `⚠️ Site ${site.geocode.id}: New link with different team!
+${INDENT}Portal A: ${portalA.title} (${portalA.lat},${portalA.lng})
+${INDENT}Portal B: ${portalB.title} (${portalB.lat},${portalB.lng})
+${INDENT}Previous ${previousTeam}, Current ${link.team}${biDirMessage}`;
+                        console.debug(multipleLinkDifferentFactionWarningMessage);
+                    }
+                    linkColor = FACTION_COLORS[link.team] || FACTION_COLORS.NEU;
+                    previousTeam = link.team;
+                }
             }
         }
     }
