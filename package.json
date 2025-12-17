@@ -18,11 +18,12 @@
     "private": true,
     "main": "dist/main.bundle.js",
     "scripts": {
-        "clean": "rm -rf data/processed && rm -rf dist",
-        "start": "webpack serve --config webpack.dev.js",
-        "build": "webpack --config webpack.prod.js",
+        "clean": "rm -rf gen && rm -rf dist",
+        "start": "npm run prepare:data && webpack serve --config webpack.dev.js",
+        "build": "npm run prepare:data && webpack --config webpack.prod.js",
         "ci-geocode": "python scripts/geocode.py",
-        "ci-data-processor": "node scripts/pre-processor-loader.js"
+        "ci-data-processor": "node scripts/pre-processor-loader.js",
+        "prepare:data": "mkdir gen && npm run ci-geocode && npm run ci-data-processor"
     },
     "devDependencies": {
         "@eslint/js": "^9.39.1",

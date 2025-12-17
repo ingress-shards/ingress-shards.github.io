@@ -528,29 +528,33 @@ function validateSites(processedSites, seriesConfig) {
         eventTypes: {},
     };
 
-    for (const [eventType, eventConfig] of Object.entries(seriesConfig.eventTypes)) {
-        const totalShards = eventConfig.shards?.waves.reduce((sum, wave) => sum + (wave.count || 0), 0) || 0;
+    if (seriesConfig.eventTypes) {
+        for (const [eventType, eventConfig] of Object.entries(seriesConfig.eventTypes)) {
+            const totalShards = eventConfig.shards?.waves.reduce((sum, wave) => sum + (wave.count || 0), 0) || 0;
 
-        // Assuming 2 factions (RES/ENL) for target counts.
-        const totalTargets = eventConfig.targets?.waves.reduce((sum, wave) => sum + ((wave.countPerFaction || 0) * 2), 0) || 0;
+            // Assuming 2 factions (RES/ENL) for target counts.
+            const totalTargets = eventConfig.targets?.waves.reduce((sum, wave) => sum + ((wave.countPerFaction || 0) * 2), 0) || 0;
 
-        if (totalShards > 0 || totalTargets > 0) {
-            seriesValidation.eventTypes[eventType] = {
-                totalShards,
-                totalTargets,
-            };
+            if (totalShards > 0 || totalTargets > 0) {
+                seriesValidation.eventTypes[eventType] = {
+                    totalShards,
+                    totalTargets,
+                };
+            }
         }
     }
 
     for (const site of processedSites) {
-        const siteType = site.geocode.type;
-        const { totalShards, totalTargets } = seriesValidation.eventTypes[siteType];
-        if (site.fullEvent.shards.length !== totalShards) {
-            console.log(`⚠️ Site ${site.geocode.id}: expected ${totalShards} shards but only ${site.fullEvent.shards.length} found.`)
-        }
-        if (site.fullEvent.targets) {
-            if (site.fullEvent.targets.length !== totalTargets) {
-                console.log(`⚠️ Site ${site.geocode.id}: expected ${totalTargets} targets but only ${site.fullEvent.targets.length} found.`)
+        if (Object.entries(seriesValidation.eventTypes).length > 0) {
+            const siteType = site.geocode.type;
+            const { totalShards, totalTargets } = seriesValidation.eventTypes[siteType];
+            if (site.fullEvent.shards.length !== totalShards) {
+                console.log(`⚠️ Site ${site.geocode.id}: expected ${totalShards} shards but only ${site.fullEvent.shards.length} found.`)
+            }
+            if (site.fullEvent.targets) {
+                if (site.fullEvent.targets.length !== totalTargets) {
+                    console.log(`⚠️ Site ${site.geocode.id}: expected ${totalTargets} targets but only ${site.fullEvent.targets.length} found.`)
+                }
             }
         }
         for (const [shardPathKey, shardPath] of Object.entries(site.fullEvent.shardPaths)) {

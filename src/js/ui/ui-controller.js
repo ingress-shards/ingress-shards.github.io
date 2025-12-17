@@ -89,7 +89,6 @@ const mapDispatchers = {
         cleanupLayers({ waveId });
 
         const siteLayers = getSiteLayers(seriesId, siteId);
-        console.log(siteLayers);
         if (!siteLayers) return;
 
         const waveLayerDetails = siteLayers.find(l => l.id === waveId);
@@ -152,7 +151,6 @@ function setupEventListeners(map) {
     map.on('zoomend', () => { updateAllPolylineStyles(map); });
     map.on('moveend', () => { updateAllPolylineStyles(map); });
     map.on('baselayerchange', (event) => {
-        console.log(`Base layer change:`, event);
         switch (event.layer._layerType) {
             case 'series':
                 navigate(`#/${event.layer._seriesId}`);

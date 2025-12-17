@@ -180,7 +180,7 @@ for series in series_metadata:
 
     series_geocode[series_id] = { "sites": site_data }
 
-geocode_file_path = os.path.join(os.path.dirname(__file__), '..', 'conf', 'series_geocode.json')
+geocode_file_path = os.path.join(os.path.dirname(__file__), '..', 'gen', 'series_geocode.json')
 with open(geocode_file_path, 'w', encoding='utf-8') as f:
     json.dump(series_geocode, f, indent=2, ensure_ascii=False)
 

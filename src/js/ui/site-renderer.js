@@ -346,9 +346,10 @@ function formatLinkPathTooltip(shardPath, shardPathPortals, timeZone) {
     return { tooltip, coords, biDirectionalMoves };
 }
 
-function formatJumpPathTooltip(shardPath, shardPathPortals, distanceDisplay, timeZone) {
+function formatJumpPathTooltip(shardPath, shardPathPortals, timeZone) {
     const [portalA, portalB] = shardPathPortals;
     const jump = shardPath.jumps[0];
+    const distanceDisplay = shardPath.distance < 1000 ? `${shardPath.distance}m` : `${(shardPath.distance / 1000).toFixed(2)}km`;
 
     const fromPortal = jump.origin === portalA.id ? portalA : portalB;
     const toPortal = jump.origin === portalA.id ? portalB : portalA;

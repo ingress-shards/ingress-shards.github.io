@@ -1,5 +1,5 @@
 import seriesMetadata from "../conf/series_metadata.json" with { type: "json" };
-import seriesGeocode from "../conf/series_geocode.json" with { type: "json" };
+import seriesGeocode from "../gen/series_geocode.json" with { type: "json" };
 import { processSeriesData } from '../src/js/data/shard-data-processor.js';
 import fs from 'fs';
 import path from 'path';
@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
-const OUTPUT_DIR = path.join(DATA_DIR, 'processed');
+const OUTPUT_DIR = path.join(__dirname, '..', 'gen');
 
 async function runDataProcessor() {
     try {
