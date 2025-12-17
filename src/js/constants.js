@@ -48,6 +48,7 @@ export const TEAM_ABBREVIATIONS = {
     "RESISTANCE": "RES",
     "ENLIGHTENED": "ENL",
     "MACHINA": "MAC",
+    "NEUTRAL": "NEU",
 };
 export const FACTION_COLORS = {
     NEU: "#FF6600",
@@ -57,6 +58,7 @@ export const FACTION_COLORS = {
     NOT_SPECIFIED: "#FF6600",
     undefined: "#FF6600",
 };
+export const RANDOM_TELEPORT_COLOR = "#FFCC00";
 export const HISTORY_REASONS = {
     SPAWN: "spawn",
     NO_MOVE: "no move",

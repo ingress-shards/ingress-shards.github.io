@@ -1,6 +1,6 @@
 import seriesMetadata from "../../../conf/series_metadata.json" with { type: "json" };
-import seriesGeocode from "../../../conf/series_geocode.json" with { type: "json" };
-import seriesData from "../../../data/processed/processed_series_data.json" with { type: "json" };
+import seriesGeocode from "../../../gen/series_geocode.json" with { type: "json" };
+import seriesData from "../../../gen/processed_series_data.json" with { type: "json" };
 import { CUSTOM_SERIES_ID } from "../constants.js";
 
 const seriesCache = {};
