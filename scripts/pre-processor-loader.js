@@ -1,6 +1,7 @@
 import seriesMetadata from "../conf/series_metadata.json" with { type: "json" };
 import seriesGeocode from "../gen/series_geocode.json" with { type: "json" };
 import { processSeriesData } from '../src/js/data/shard-data-processor.js';
+import { validateProcessedSeriesData } from "../src/js/data/processed-data-validator.js";
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from "url";
@@ -24,11 +25,10 @@ async function runDataProcessor() {
         const allSeriesData = {};
         for (const seriesConfig of seriesMetadata) {
             const seriesId = seriesConfig.id
-            console.log(`${seriesConfig.name}:`);
             const seriesDataFolder = path.join(DATA_DIR, seriesId);
 
             if (!fs.existsSync(seriesDataFolder)) {
-                console.log(`⚠️ No raw data folder found for series: ${seriesId}. Skipping.`);
+                console.log(`⚠️ No raw data folder found for series ${seriesConfig.name}.\n`);
                 continue;
             }
 
@@ -60,11 +60,11 @@ async function runDataProcessor() {
 
             const totalDataPoints = Object.values(rawDataMap).flat().length;
             if (totalDataPoints === 0) {
-                console.log(`⚠️ No relevant raw data found for ${seriesId}. Skipping processing.`);
+                console.log(`⚠️ No relevant raw data found for ${seriesConfig.name}.\n`);
                 continue;
             }
             if (totalDataPoints !== filesInFolder.length) {
-                console.log(`⚠️ Not all data in the folder is being processed. Please check the code or the filenames to ensure correct processing.`);
+                console.log(`⚠️ Not all data in the folder ${seriesId} is being processed. Please check the code or the filenames to ensure correct processing.`);
             };
 
             const seriesDataPackage = {
@@ -73,6 +73,8 @@ async function runDataProcessor() {
                 rawData: rawDataMap
             }
             const processedData = processSeriesData(seriesDataPackage);
+            validateProcessedSeriesData(processedData, seriesConfig);
+
             allSeriesData[seriesId] = processedData;
         }
 

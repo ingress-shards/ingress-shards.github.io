@@ -1,5 +1,8 @@
 import { DateTime } from 'luxon';
 
+// Default locale, safely checking for navigator object which only exists in browsers.
+const DEFAULT_LOCALE = typeof navigator !== 'undefined' ? navigator.language : 'en-GB';
+
 const MS_PER_SECOND = 1000;
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
@@ -26,7 +29,7 @@ export function formatEpochToSerializationString(epochTimeMs) {
 /**
  * Formats the serialized ISO 8601 string (YYYY-MM-DDTHH:mm:ss) into a locale-specific short date string (e.g., 3/15/2023).
  */
-export function formatIsoToShortDate(isoString, timeZone, locale = navigator.language) {
+export function formatIsoToShortDate(isoString, timeZone, locale = DEFAULT_LOCALE) {
     const dateObject = new Date(isoString);
     return dateObject.toLocaleDateString(locale, { timeZone, dateStyle: 'short' });
 }
@@ -34,7 +37,7 @@ export function formatIsoToShortDate(isoString, timeZone, locale = navigator.lan
 /**
  * Formats an epoch time for local display time.
  */
-export function formatEpochToLocalTime(epochMs, timeZone, locale = navigator.language) {
+export function formatEpochToLocalTime(epochMs, timeZone, locale = DEFAULT_LOCALE) {
     return new Date(Number(epochMs)).toLocaleTimeString(locale, {
         timeZone,
         hour: '2-digit',
@@ -47,7 +50,7 @@ export function formatEpochToLocalTime(epochMs, timeZone, locale = navigator.lan
 /**
  * Formats an epoch time for local date and time display.
  */
-export function formatEpochToLocalDateTime(epochMs, timeZone, locale = navigator.language) {
+export function formatEpochToLocalDateTime(epochMs, timeZone, locale = DEFAULT_LOCALE) {
     return new Date(Number(epochMs)).toLocaleString(locale, {
         timeZone,
         year: 'numeric',

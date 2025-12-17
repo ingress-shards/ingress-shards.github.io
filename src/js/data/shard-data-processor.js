@@ -1,4 +1,4 @@
-import { FACTION_COLORS, HISTORY_REASONS, SHARD_EVENT_TYPE, SITE_AGGREGATION_DISTANCE, getAbbreviatedTeam } from "../constants.js";
+import { HISTORY_REASONS, SHARD_EVENT_TYPE, SITE_AGGREGATION_DISTANCE, getAbbreviatedTeam } from "../constants.js";
 import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from "./shard-data-helpers.js";
 import { haversineDistance } from "../shared/math-helpers.js";
 import { createWaveDate, formatEpochToLocalTime, isWithin24Hours } from "../shared/date-helpers.js";
@@ -6,7 +6,6 @@ import { createWaveDate, formatEpochToLocalTime, isWithin24Hours } from "../shar
 const portalLookupByOriginalKey = Symbol('portalLookupByOriginalKey');
 const portalIdCounter = Symbol('portalIdCounter');
 const moved = Symbol('moved');
-const INDENT = '    ';
 
 const basicRules = {
     rules: [
@@ -87,6 +86,8 @@ export function processSeriesData(seriesDataPackage) {
     const sitesGeocode = geocode.sites;
     const { shardJumpTimes } = rawData;
 
+    console.log(`ℹ️ Processing series ${config.name}:`);
+
     const allSites = {};
     sitesGeocode.forEach(siteGeocode => {
         allSites[siteGeocode.id] = {
@@ -148,10 +149,8 @@ export function processSeriesData(seriesDataPackage) {
         processSite(allSites[siteId], fragments, config)
     );
 
-    validateSites(processedSites, config);
-
     const seriesData = Object.fromEntries(processedSites.map(site => [site.geocode.id, site]));
-    console.log(`ℹ️ Processed ${Object.keys(seriesData).length} sites processed.`);
+    console.log(`ℹ️ ${Object.keys(seriesData).length} sites processed.\n`);
     return seriesData;
 }
 
@@ -520,75 +519,4 @@ function getLinkRule(rules, distance) {
         }
     }
     return null;
-}
-
-function validateSites(processedSites, seriesConfig) {
-    console.log(`ℹ️ Validating ${processedSites.length} sites...`);
-    const seriesValidation = {
-        eventTypes: {},
-    };
-
-    if (seriesConfig.eventTypes) {
-        for (const [eventType, eventConfig] of Object.entries(seriesConfig.eventTypes)) {
-            const totalShards = eventConfig.shards?.waves.reduce((sum, wave) => sum + (wave.count || 0), 0) || 0;
-
-            // Assuming 2 factions (RES/ENL) for target counts.
-            const totalTargets = eventConfig.targets?.waves.reduce((sum, wave) => sum + ((wave.countPerFaction || 0) * 2), 0) || 0;
-
-            if (totalShards > 0 || totalTargets > 0) {
-                seriesValidation.eventTypes[eventType] = {
-                    totalShards,
-                    totalTargets,
-                };
-            }
-        }
-    }
-
-    for (const site of processedSites) {
-        if (Object.entries(seriesValidation.eventTypes).length > 0) {
-            const siteType = site.geocode.type;
-            const { totalShards, totalTargets } = seriesValidation.eventTypes[siteType];
-            if (site.fullEvent.shards.length !== totalShards) {
-                console.log(`⚠️ Site ${site.geocode.id}: expected ${totalShards} shards but only ${site.fullEvent.shards.length} found.`)
-            }
-            if (site.fullEvent.targets) {
-                if (site.fullEvent.targets.length !== totalTargets) {
-                    console.log(`⚠️ Site ${site.geocode.id}: expected ${totalTargets} targets but only ${site.fullEvent.targets.length} found.`)
-                }
-            }
-        }
-        for (const [shardPathKey, shardPath] of Object.entries(site.fullEvent.shardPaths)) {
-            if (shardPath.links && shardPath.jumps && shardPath.links.length > 0 && shardPath.jumps.length > 0) {
-                console.log(`⚠️ Site ${site.geocode.id}: Shard path ${shardPathKey} with ${shardPath.links.length} links and ${shardPath.jumps.length}.`);
-            }
-            if (shardPath.jumps && shardPath.jumps.length > 1) {
-                console.log(`⚠️ Site ${site.geocode.id}: ${shardPath.jumps.length} random teleports in shard path ${shardPathKey}.`);
-            }
-
-            if (shardPath.links && shardPath.links.length > 0) {
-                const moveOrigins = new Set(shardPath.links.flatMap(link => link.moves).map(move => move.origin));
-                const biDirectionalMoves = moveOrigins.size > 1;
-                const sortedLinks = shardPath.links.sort((a, b) => a.linkTime - b.linkTime);
-
-                let linkColor;
-                let previousTeam;
-                for (const [, link] of sortedLinks.entries()) {
-                    if (linkColor && FACTION_COLORS[link.team] !== linkColor) {
-                        const [portalAKey, portalBKey] = shardPathKey.split('-');
-                        const portalA = site.portals[portalAKey];
-                        const portalB = site.portals[portalBKey];
-
-                        const biDirMessage = biDirectionalMoves ? `\n${INDENT}Note: There are bidirectional jumps too!` : '';
-                        let multipleLinkDifferentFactionWarningMessage = `⚠️ Site ${site.geocode.id}: New link with different team!
-${INDENT}Portal A: ${portalA.title} (${portalA.lat},${portalA.lng})
-${INDENT}Portal B: ${portalB.title} (${portalB.lat},${portalB.lng})
-${INDENT}Previous ${previousTeam}, Current ${link.team}${biDirMessage}`;
-                        console.debug(multipleLinkDifferentFactionWarningMessage);
-                    }
-                    linkColor = FACTION_COLORS[link.team] || FACTION_COLORS.NEU;
-                    previousTeam = link.team;
-                }
-            }
-        }
-    }
 }
