@@ -98,7 +98,7 @@ for series in series_metadata:
     series_id = series.get("id")
     series_name = series.get("name")
     overview_url = series.get("overviewUrl")
-    other_events = series.get("otherEvents")
+    event_types = series.get("eventTypes")
     df = {}
 
     print(f'Series {series_name}:')
@@ -111,29 +111,36 @@ for series in series_metadata:
         df['type'] = df['type'].replace(type_replacement)
         df["date"] = pd.to_datetime(df["date"], format='%d %b %Y')
 
-    if other_events:
-        for extra_events_entry in other_events:
-            event_type = extra_events_entry.get("type")
-            event_date = extra_events_entry.get("date")
-            event_locations = extra_events_entry.get("locations")
+    if event_types:
+        for event_type, event_data in event_types.items():
+            events = event_data.get("events")
+            
+            if events:
+                event_locations_rows = []
+                for event in events:
+                    event_date = event.get("date")
+                    event_locations = event.get("locations")
 
-            event_locations_rows = []
-            if event_locations:
-                for event_location in event_locations:
-                    lat = event_location.get("lat")
-                    lng = event_location.get("lng")
-                    location = event_location.get("location")
-                    if lat is not None and lng is not None:
-                        event_locations_rows.append({ 
-                            "lat": lat,
-                            "lng": lng,
-                            "location": location,
-                            "type": event_type,
-                            "date": pd.to_datetime(event_date, format='%Y-%m-%d')
-                        })
+                    if event_locations:
+                        for event_location in event_locations:
+                            lat = event_location.get("lat")
+                            lng = event_location.get("lng")
+                            location = event_location.get("location")
+                            if lat is not None and lng is not None:
+                                event_locations_rows.append({ 
+                                    "lat": lat,
+                                    "lng": lng,
+                                    "location": location,
+                                    "type": event_type,
+                                    "date": pd.to_datetime(event_date, format='%Y-%m-%d')
+                                })
 
-            if event_locations_rows:
-                df = pd.concat([df, pd.DataFrame(event_locations_rows)], ignore_index=True)
+                if event_locations_rows:
+                    new_rows = pd.DataFrame(event_locations_rows)
+                    if isinstance(df, pd.DataFrame):
+                        df = pd.concat([df, new_rows], ignore_index=True)
+                    else:
+                        df = new_rows
 
     if len(df) > 0 and 'eventTypes' in series:
         print(f'\tApplying start times for {series_name} events...')
