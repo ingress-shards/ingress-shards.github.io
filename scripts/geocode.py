@@ -7,7 +7,7 @@ from pprint import pprint
 import requests
 import requests_cache
 from shapely import Point
-requests_cache.install_cache('cache')
+requests_cache.install_cache('cache', expire_after=3600) # Cache for 1 hour
 from timezonefinder import TimezoneFinder
 import re
 import pandas as pd
@@ -21,12 +21,14 @@ with open(SERIES_METADATA_FILE_PATH, 'r', encoding="utf-8") as f:
 
 EVENT_MARKER_REGEX = r"L.marker\(\[(?P<lat>-?\d+.\d+), (?P<lng>-?\d+.\d+)\]\).bindPopup\('(?P<type>Shard Skirmish|Anomaly)<br /> ?(?P<location>.+?)<br />(?P<date>.+?)'\)"
 
-# Headers to simulate a real browser request and avoid caching issues
+PACKAGE_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'package.json')
+with open(PACKAGE_JSON_PATH, 'r', encoding='utf-8') as f:
+    package_version = json.load(f).get('version', '0.0.0')
+
+print(f'Package version: {package_version}:')
+# Headers to simulate a real browser request
 HEADERS = {
-    'User-Agent': 'ingress-shards-map/1.1.0',
-    'Cache-Control': 'no-cache',
-    'Pragma': 'no-cache',
-    'Expires': '0',
+    'User-Agent': f'ingress-shards-map/{package_version}',
     "accept-language": "en-US,en;q=0.9",
 }
 
@@ -37,21 +39,21 @@ def get_country_code_offline(row):
 
 def get_flag_emoji(country_code: str) -> str:
     if not country_code or len(country_code) != 2:
-        return "🏳️" 
+        return "🏳️"
     code = country_code.upper()
 
     # The Unicode offset for Regional Indicator Symbols
-    RIS_BASE = 127397 
+    RIS_BASE = 127397
 
     code_points = [
-        RIS_BASE + ord(char) 
+        RIS_BASE + ord(char)
         for char in code
     ]
     return "".join(chr(cp) for cp in code_points)
 
 def add_offset_to_date(row):
     """
-    Localizes a naive datetime object to its timezone and returns an 
+    Localizes a naive datetime object to its timezone and returns an
     ISO 8601 string including the correct UTC offset (+HH:MM).
     This relies on the 'timezone' column being set first.
     """
@@ -63,8 +65,8 @@ def add_offset_to_date(row):
 
     try:
         dt_localized = dt_naive.tz_localize(
-            timezone_name, 
-            ambiguous='NaT', 
+            timezone_name,
+            ambiguous='NaT',
             nonexistent='shift_forward'
         )
         return dt_localized.isoformat()
@@ -77,9 +79,9 @@ def add_offset_to_date(row):
 def apply_start_time(row, series_config):
     event_type = row['type']
     event_types_config = series_config.get('eventTypes', {})
-    
+
     start_time = event_types_config.get(event_type, {}).get('startTime', '00:00')
-    
+
     # Combine date and start_time
     date_str = row['date'].strftime('%Y-%m-%d')
     return pd.to_datetime(f"{date_str} {start_time}")
@@ -94,7 +96,7 @@ type_replacement = {
     "Shard Skirmish": "SKIRMISH"
 }
 
-for series in series_metadata:
+for series in series_metadata['series']:
     series_id = series.get("id")
     series_name = series.get("name")
     overview_url = series.get("overviewUrl")
@@ -114,7 +116,7 @@ for series in series_metadata:
     if event_types:
         for event_type, event_data in event_types.items():
             events = event_data.get("events")
-            
+
             if events:
                 event_locations_rows = []
                 for event in events:
@@ -127,7 +129,7 @@ for series in series_metadata:
                             lng = event_location.get("lng")
                             location = event_location.get("location")
                             if lat is not None and lng is not None:
-                                event_locations_rows.append({ 
+                                event_locations_rows.append({
                                     "lat": lat,
                                     "lng": lng,
                                     "location": location,
@@ -154,11 +156,11 @@ for series in series_metadata:
             sanitized_location = re.sub(r'[\s_-]+', '-', sanitized_location)
             sanitized_location = sanitized_location.strip('-')
             return f"{series_id}-{sanitized_location}"
-            
+
         df["base_id"] = df.apply(calculate_base_id, axis=1)
 
         duplicate_base_ids = df["base_id"].duplicated(keep=False)
-        
+
         def finalize_id(row):
             base_id = row['base_id']
             if duplicate_base_ids[row.name]:
@@ -169,7 +171,7 @@ for series in series_metadata:
                 return base_id
 
         df["id"] = df.apply(finalize_id, axis=1)
-        
+
         df = df.drop(columns=["base_id"])
 
         print(f'\tGeocoding {len(df)} events...')
@@ -193,4 +195,4 @@ with open(geocode_file_path, 'w', encoding='utf-8') as f:
 
 end_time = time.time()
 elapsed_time = end_time - start_time
-print(f'Generated {geocode_file_path} with {len(series_metadata)} series and {total_sites} sites in {elapsed_time:.2f} seconds.')
+print(f'Generated {geocode_file_path} with {len(series_metadata["series"])} series and {total_sites} sites in {elapsed_time:.2f} seconds.')

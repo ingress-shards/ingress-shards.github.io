@@ -102,15 +102,21 @@ hr.tooltip-sub-divider {
 
 .details-panel-footer {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     font-style: italic;
     border-top: 1px solid #ccc;
     padding-top: 5px;
     margin-top: 8px;
-    max-height: 25px;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out, margin 0.3s ease-in-out, padding 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.app-version {
+    font-size: 0.75rem;
+    color: #666;
+    font-family: monospace;
+    align-self: flex-end;
 }
 
 .leaflet-details-panel.collapsed .details-panel-header {

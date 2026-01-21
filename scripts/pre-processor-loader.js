@@ -16,14 +16,14 @@ const OUTPUT_DIR = path.join(__dirname, '..', 'gen');
 async function runDataProcessor() {
     try {
         const startTime = performance.now();
-        console.log(`ℹ️ Processing shard data for ${seriesMetadata.length} series...`);
+        console.log(`ℹ️ Processing shard data for ${seriesMetadata.series.length} series...`);
 
         if (!fs.existsSync(OUTPUT_DIR)) {
             fs.mkdirSync(OUTPUT_DIR, { recursive: true });
         }
 
         const allSeriesData = {};
-        for (const seriesConfig of seriesMetadata) {
+        for (const seriesConfig of seriesMetadata.series) {
             const seriesId = seriesConfig.id
             const seriesDataFolder = path.join(DATA_DIR, seriesId);
 

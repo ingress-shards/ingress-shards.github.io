@@ -1,7 +1,7 @@
-/gen
+/node_modules
+/venv
 
 cache.sqlite
 
+/gen
 /dist
-/node_modules
-/venv

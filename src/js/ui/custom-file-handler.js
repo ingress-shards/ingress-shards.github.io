@@ -1,5 +1,3 @@
-// import * as L from "leaflet";
-
 import { CUSTOM_SERIES_ID } from "../constants.js";
 import { addCustomData } from "../data/data-store.js";
 import { navigate } from "../router.js";
