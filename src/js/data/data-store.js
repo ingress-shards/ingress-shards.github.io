@@ -19,7 +19,7 @@ export async function initDataStore() {
         data: {},
     };
 
-    for (const sm of seriesMetadata) {
+    for (const sm of seriesMetadata.series) {
         seriesCache[sm.id] = {
             metadata: sm,
             geocode: null,
@@ -47,8 +47,8 @@ export async function initDataStore() {
         seriesCache[seriesId].data = data;
     }
 
-    if (!defaultSeriesId && seriesMetadata.length > 0) {
-        defaultSeriesId = seriesMetadata[0].id;
+    if (!defaultSeriesId && seriesMetadata.series.length > 0) {
+        defaultSeriesId = seriesMetadata.series[0].id;
     }
 }
 

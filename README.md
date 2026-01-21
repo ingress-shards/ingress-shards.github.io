@@ -35,3 +35,11 @@ In order to ensure that new data is included on the shard map, the following con
     -   Is it preferable to use the same series ID as Niantic use i.e. 2025-plusbeta for the +Beta series.
 -   For new shard jump data, enter it in the relevant series folder in _data_. For example, the +Beta series files are located in _data/2025-plusbeta_.
     -   The jump files with a prefix of 'shard-jump-times-' will be automatically parsed and shards will be matched to the site (and date) within the series.
+
+## Shards configuration
+
+The configuration of the shards are available at the following locations:
+
+-   [Series metadata](https://neon-ninja.github.io/shards/public/conf/series_metadata.json)
+-   [Series geocode](https://neon-ninja.github.io/shards/public/conf/series_geocode.json)
+-   [Map version](https://neon-ninja.github.io/shards/public/conf/version.json) (used to check for configuration updates)

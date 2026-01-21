@@ -85,8 +85,42 @@ export default (env) => {
                         from: path.join(resolvePackage('leaflet'), 'dist', 'images'),
                         to: 'images/markers',
                     },
+                    {
+                        from: path.resolve(__dirname, 'conf/series_metadata.json'),
+                        to: 'public/conf/',
+                        transform(content) {
+                            const metadata = JSON.parse(content.toString());
+                            metadata.version = appVersion;
+                            return JSON.stringify(metadata, null, 2);
+                        },
+                    },
+                    {
+                        from: path.resolve(__dirname, 'gen/series_geocode.json'),
+                        to: 'public/conf/',
+                        transform(content) {
+                            const geocode = JSON.parse(content.toString());
+                            geocode.version = appVersion;
+                            return JSON.stringify(geocode, null, 2);
+                        },
+                    },
                 ]
-            })
+            }),
+            {
+                apply: (compiler) => {
+                    compiler.hooks.thisCompilation.tap('GenerateVersionFile', (compilation) => {
+                        compilation.hooks.processAssets.tap(
+                            {
+                                name: 'GenerateVersionFile',
+                                stage: webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
+                            },
+                            (assets) => {
+                                const content = JSON.stringify({ version: appVersion }, null, 2);
+                                assets['public/conf/version.json'] = new webpack.sources.RawSource(content);
+                            }
+                        );
+                    });
+                }
+            }
         ],
         resolve: {
             alias: {
