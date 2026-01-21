@@ -84,6 +84,7 @@
                 }
             }
         ],
+        "semantic-release-export-data",
         [
             "@semantic-release/npm",
             {

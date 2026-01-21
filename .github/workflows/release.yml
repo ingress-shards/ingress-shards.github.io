@@ -19,8 +19,6 @@ permissions:
 jobs:
     release:
         runs-on: ubuntu-latest
-        outputs:
-            new_release_published: ${{ steps.semantic.outputs.new_release_published }}
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,14 +48,16 @@ jobs:
               run: npx semantic-release --repository-url "https://github.com/${{ github.repository }}.git"
 
             - name: Upload Pages Artifact
-              if: steps.semantic.outputs.new_release_published == 'true'
+              if: steps.semantic.outputs.new-release-published == 'true'
               uses: actions/upload-pages-artifact@v3
               with:
                   path: "./dist"
+        outputs:
+            new-release-published: ${{ steps.semantic.outputs.new-release-published }}
 
     deploy_pages:
         needs: [release]
-        if: needs.release.outputs.new_release_published == 'true'
+        if: needs.release.outputs.new-release-published == 'true'
         runs-on: ubuntu-latest
         environment:
             name: github-pages
