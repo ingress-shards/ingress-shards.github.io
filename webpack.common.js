@@ -2,12 +2,27 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { fileURLToPath } from 'url';
+import webpack from 'webpack';
+import fs from 'fs';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const resolvePackage = (pkg) => path.dirname(fileURLToPath(import.meta.resolve(`${pkg}/package.json`)));
+
+const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'package.json'), 'utf-8'));
+let gitCommitHash = '';
+try {
+    gitCommitHash = execSync('git rev-parse --short HEAD').toString().trim();
+} catch (e) {
+    console.warn('Could not get git commit hash: ', e);
+}
+
 // eslint-disable-next-line no-unused-vars
 export default (env) => {
+    const appVersion = gitCommitHash ? `${packageJson.version}-${gitCommitHash}` : packageJson.version;
+
     return {
         entry: './src/js/index.js',
         module: {
@@ -22,7 +37,7 @@ export default (env) => {
                 {
                     test: /\.css$/,
                     include: [
-                        path.resolve(__dirname, 'node_modules', 'flag-icon-css')
+                        resolvePackage('flag-icon-css')
                     ],
                     use: [
                         'style-loader',
@@ -35,7 +50,7 @@ export default (env) => {
                     test: /\.css$/,
                     use: ['style-loader', 'css-loader'],
                     exclude: [
-                        path.resolve(__dirname, 'node_modules', 'flag-icon-css')
+                        resolvePackage('flag-icon-css')
                     ],
                 },
                 {
@@ -52,6 +67,9 @@ export default (env) => {
             ],
         },
         plugins: [
+            new webpack.DefinePlugin({
+                __APP_VERSION__: JSON.stringify(appVersion),
+            }),
             new HtmlWebpackPlugin({
                 template: './index.html',
                 favicon: './src/assets/abaddon1_shard.png',
@@ -64,23 +82,15 @@ export default (env) => {
             new CopyWebpackPlugin({
                 patterns: [
                     {
-                        from: path.resolve(__dirname, 'node_modules/leaflet/dist/images'),
+                        from: path.join(resolvePackage('leaflet'), 'dist', 'images'),
                         to: 'images/markers',
-                    },
-                    {
-                        from: "node_modules/flag-icon-css/flags/4x3",
-                        to: "flags/4x3",
-                    },
-                    {
-                        from: "node_modules/flag-icon-css/flags/1x1",
-                        to: "flags/1x1",
                     },
                 ]
             })
         ],
         resolve: {
             alias: {
-                'leaflet.motion': path.resolve(__dirname, 'node_modules/leaflet.motion/dist/leaflet.motion.min.js'),
+                'leaflet.motion': fileURLToPath(import.meta.resolve('leaflet.motion/dist/leaflet.motion.min.js')),
             }
         },
         output: {
