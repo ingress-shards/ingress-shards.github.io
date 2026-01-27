@@ -16,10 +16,14 @@ function validateSites(processedSites, seriesConfig) {
 
     if (seriesConfig.eventTypes) {
         for (const [eventType, eventConfig] of Object.entries(seriesConfig.eventTypes)) {
-            const totalShards = eventConfig.shards?.waves.reduce((sum, wave) => sum + (wave.count || 0), 0) || 0;
+            const totalShards = eventConfig.shards?.waves.reduce((sum, wave) => sum + (wave.quantity || 0), 0) || 0;
 
-            // Assuming 2 factions (RES/ENL) for target counts.
-            const totalTargets = eventConfig.targets?.waves.reduce((sum, wave) => sum + ((wave.countPerFaction || 0) * 2), 0) || 0;
+            const totalTargets =
+                eventConfig.targets?.waves.reduce((sum, wave) => {
+                    const factions = wave.factionQuantity || {};
+                    const waveTotal = Object.values(factions).reduce((a, b) => a + b, 0);
+                    return sum + waveTotal;
+                }, 0) || 0;
 
             if (totalShards > 0 || totalTargets > 0) {
                 seriesValidation.eventTypes[eventType] = {
