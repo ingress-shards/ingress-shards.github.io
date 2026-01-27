@@ -11,12 +11,12 @@
                     "actionWindowMinutes": 1,
                     "shards": {
                         "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "count": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "count": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "count": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "count": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "count": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
+                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
+                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
+                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
+                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
+                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -27,7 +27,9 @@
                         ]
                     },
                     "targets": {
-                        "waves": [{ "startTime": "13:59", "endTime": "18:00", "countPerFaction": 4 }],
+                        "waves": [
+                            { "startTime": "13:59", "endTime": "18:00", "factionQuantity": { "RES": 4, "ENL": 4 } }
+                        ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
                             { "type": "despawn", "time": 241 }
@@ -39,11 +41,11 @@
                     "actionWindowMinutes": 1,
                     "shards": {
                         "waves": [
-                            { "startTime": "16:00", "endTime": "16:19", "count": 3 },
-                            { "startTime": "16:20", "endTime": "16:39", "count": 4 },
-                            { "startTime": "16:40", "endTime": "16:59", "count": 5 },
-                            { "startTime": "17:00", "endTime": "17:19", "count": 6 },
-                            { "startTime": "17:20", "endTime": "17:39", "count": 7 }
+                            { "startTime": "16:00", "endTime": "16:19", "quantity": 3 },
+                            { "startTime": "16:20", "endTime": "16:39", "quantity": 4 },
+                            { "startTime": "16:40", "endTime": "16:59", "quantity": 5 },
+                            { "startTime": "17:00", "endTime": "17:19", "quantity": 6 },
+                            { "startTime": "17:20", "endTime": "17:39", "quantity": 7 }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -65,12 +67,12 @@
                     "actionWindowMinutes": 1,
                     "shards": {
                         "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "count": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "count": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "count": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "count": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "count": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
+                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
+                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
+                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
+                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
+                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -81,7 +83,9 @@
                         ]
                     },
                     "targets": {
-                        "waves": [{ "startTime": "13:59", "endTime": "18:00", "countPerFaction": 4 }],
+                        "waves": [
+                            { "startTime": "13:59", "endTime": "18:00", "factionQuantity": { "RES": 4, "ENL": 4 } }
+                        ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
                             { "type": "despawn", "time": 241 }
@@ -93,11 +97,11 @@
                     "actionWindowMinutes": 1,
                     "shards": {
                         "waves": [
-                            { "startTime": "16:00", "endTime": "16:19", "count": 3 },
-                            { "startTime": "16:20", "endTime": "16:39", "count": 4 },
-                            { "startTime": "16:40", "endTime": "16:59", "count": 5 },
-                            { "startTime": "17:00", "endTime": "17:19", "count": 6 },
-                            { "startTime": "17:20", "endTime": "17:39", "count": 7 }
+                            { "startTime": "16:00", "endTime": "16:19", "quantity": 3 },
+                            { "startTime": "16:20", "endTime": "16:39", "quantity": 4 },
+                            { "startTime": "16:40", "endTime": "16:59", "quantity": 5 },
+                            { "startTime": "17:00", "endTime": "17:19", "quantity": 6 },
+                            { "startTime": "17:20", "endTime": "17:39", "quantity": 7 }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -119,12 +123,12 @@
                     "actionWindowMinutes": 1,
                     "shards": {
                         "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "count": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "count": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "count": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "count": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "count": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
+                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
+                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
+                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
+                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
+                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -135,7 +139,9 @@
                         ]
                     },
                     "targets": {
-                        "waves": [{ "startTime": "13:59", "endTime": "18:00", "countPerFaction": 4 }],
+                        "waves": [
+                            { "startTime": "13:59", "endTime": "18:00", "factionQuantity": { "RES": 4, "ENL": 4 } }
+                        ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
                             { "type": "despawn", "time": 241 }
@@ -147,11 +153,11 @@
                     "actionWindowMinutes": 1,
                     "shards": {
                         "waves": [
-                            { "startTime": "16:00", "endTime": "16:19", "count": 3 },
-                            { "startTime": "16:20", "endTime": "16:39", "count": 4 },
-                            { "startTime": "16:40", "endTime": "16:59", "count": 5 },
-                            { "startTime": "17:00", "endTime": "17:19", "count": 6 },
-                            { "startTime": "17:20", "endTime": "17:39", "count": 7 }
+                            { "startTime": "16:00", "endTime": "16:19", "quantity": 3 },
+                            { "startTime": "16:20", "endTime": "16:39", "quantity": 4 },
+                            { "startTime": "16:40", "endTime": "16:59", "quantity": 5 },
+                            { "startTime": "17:00", "endTime": "17:19", "quantity": 6 },
+                            { "startTime": "17:20", "endTime": "17:39", "quantity": 7 }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -173,12 +179,12 @@
                     "actionWindowMinutes": 1,
                     "shards": {
                         "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "count": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "count": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "count": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "count": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "count": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
+                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
+                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
+                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
+                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
+                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -190,12 +196,12 @@
                     },
                     "targets": {
                         "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "countPerFaction": 4 },
-                            { "startTime": "14:32", "endTime": "15:01", "countPerFaction": 4 },
-                            { "startTime": "15:02", "endTime": "15:31", "countPerFaction": 4 },
-                            { "startTime": "15:32", "endTime": "16:01", "countPerFaction": 4 },
-                            { "startTime": "16:02", "endTime": "16:31", "countPerFaction": 4 },
-                            { "startTime": "16:32", "endTime": "17:01", "countPerFaction": 4 }
+                            { "startTime": "14:02", "endTime": "14:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "14:32", "endTime": "15:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "15:02", "endTime": "15:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "15:32", "endTime": "16:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "16:02", "endTime": "16:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "16:32", "endTime": "17:01", "factionQuantity": { "RES": 4, "ENL": 4 } }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -208,11 +214,11 @@
                     "actionWindowMinutes": 1,
                     "shards": {
                         "waves": [
-                            { "startTime": "16:00", "endTime": "16:19", "count": 3 },
-                            { "startTime": "16:20", "endTime": "16:39", "count": 4 },
-                            { "startTime": "16:40", "endTime": "16:59", "count": 5 },
-                            { "startTime": "17:00", "endTime": "17:19", "count": 6 },
-                            { "startTime": "17:20", "endTime": "17:39", "count": 7 }
+                            { "startTime": "16:00", "endTime": "16:19", "quantity": 3 },
+                            { "startTime": "16:20", "endTime": "16:39", "quantity": 4 },
+                            { "startTime": "16:40", "endTime": "16:59", "quantity": 5 },
+                            { "startTime": "17:00", "endTime": "17:19", "quantity": 6 },
+                            { "startTime": "17:20", "endTime": "17:39", "quantity": 7 }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -225,7 +231,7 @@
                     "startTime": "11:00",
                     "actionWindowMinutes": 1,
                     "shards": {
-                        "waves": [{ "startTime": "11:00", "endTime": "17:10", "count": 1 }],
+                        "waves": [{ "startTime": "11:00", "endTime": "17:10", "quantity": 1 }],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
                             { "type": "jump", "time": 60 },
@@ -320,12 +326,12 @@
                     "actionWindowMinutes": 1,
                     "shards": {
                         "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "count": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "count": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "count": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "count": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "count": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
+                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
+                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
+                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
+                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
+                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -337,12 +343,12 @@
                     },
                     "targets": {
                         "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "countPerFaction": 4 },
-                            { "startTime": "14:32", "endTime": "15:01", "countPerFaction": 4 },
-                            { "startTime": "15:02", "endTime": "15:31", "countPerFaction": 4 },
-                            { "startTime": "15:32", "endTime": "16:01", "countPerFaction": 4 },
-                            { "startTime": "16:02", "endTime": "16:31", "countPerFaction": 4 },
-                            { "startTime": "16:32", "endTime": "17:01", "countPerFaction": 4 }
+                            { "startTime": "14:02", "endTime": "14:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "14:32", "endTime": "15:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "15:02", "endTime": "15:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "15:32", "endTime": "16:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "16:02", "endTime": "16:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "16:32", "endTime": "17:01", "factionQuantity": { "RES": 4, "ENL": 4 } }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -363,12 +369,12 @@
                     "actionWindowMinutes": 1,
                     "shards": {
                         "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "count": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "count": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "count": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "count": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "count": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "count": 13 }
+                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
+                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
+                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
+                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
+                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
+                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -380,12 +386,12 @@
                     },
                     "targets": {
                         "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "countPerFaction": 4 },
-                            { "startTime": "14:32", "endTime": "15:01", "countPerFaction": 4 },
-                            { "startTime": "15:02", "endTime": "15:31", "countPerFaction": 4 },
-                            { "startTime": "15:32", "endTime": "16:01", "countPerFaction": 4 },
-                            { "startTime": "16:02", "endTime": "16:31", "countPerFaction": 4 },
-                            { "startTime": "16:32", "endTime": "17:01", "countPerFaction": 4 }
+                            { "startTime": "14:02", "endTime": "14:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "14:32", "endTime": "15:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "15:02", "endTime": "15:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "15:32", "endTime": "16:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "16:02", "endTime": "16:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "16:32", "endTime": "17:01", "factionQuantity": { "RES": 4, "ENL": 4 } }
                         ],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
@@ -397,7 +403,7 @@
                     "startTime": "13:00",
                     "actionWindowMinutes": 1,
                     "shards": {
-                        "waves": [{ "startTime": "13:00", "endTime": "21:00", "count": 1 }],
+                        "waves": [{ "startTime": "13:00", "endTime": "21:00", "quantity": 1 }],
                         "waveActions": [
                             { "type": "spawn", "time": 0 },
                             { "type": "jump", "time": 60 },
@@ -480,6 +486,39 @@
             "overviewUrl": "https://ingress.com/news/2026-plusgamma",
             "eventTypes": {
                 "ANOMALY": {
+                    "startTime": "14:00",
+                    "actionWindowMinutes": 1,
+                    "shards": {
+                        "waves": [
+                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
+                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
+                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
+                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
+                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
+                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
+                        ],
+                        "waveActions": [
+                            { "type": "spawn", "time": 0 },
+                            { "type": "jump", "time": 8 },
+                            { "type": "jump", "time": 18 },
+                            { "type": "jump", "time": 28 },
+                            { "type": "despawn", "time": 29 }
+                        ]
+                    },
+                    "targets": {
+                        "waves": [
+                            { "startTime": "14:02", "endTime": "14:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "14:32", "endTime": "15:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "15:02", "endTime": "15:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "15:32", "endTime": "16:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "16:02", "endTime": "16:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
+                            { "startTime": "16:32", "endTime": "17:01", "factionQuantity": { "RES": 4, "ENL": 4 } }
+                        ],
+                        "waveActions": [
+                            { "type": "spawn", "time": 0 },
+                            { "type": "despawn", "time": 29 }
+                        ]
+                    },
                     "events": [
                         {
                             "date": "2026-02-28",
