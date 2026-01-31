@@ -5,3 +5,6 @@ cache.sqlite
 
 /gen
 /dist
+
+# Act secrets
+.secrets

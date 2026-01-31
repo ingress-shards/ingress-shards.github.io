@@ -37,25 +37,11 @@ def get_country_code_offline(row):
     country_code = result[0].get('cc')
     return country_code.upper() if country_code else None
 
-def get_flag_emoji(country_code: str) -> str:
-    if not country_code or len(country_code) != 2:
-        return "🏳️"
-    code = country_code.upper()
-
-    # The Unicode offset for Regional Indicator Symbols
-    RIS_BASE = 127397
-
-    code_points = [
-        RIS_BASE + ord(char)
-        for char in code
-    ]
-    return "".join(chr(cp) for cp in code_points)
-
-def add_offset_to_date(row):
+def add_timezone_to_date(row):
     """
-    Localizes a naive datetime object to its timezone and returns an
-    ISO 8601 string including the correct UTC offset (+HH:MM).
-    This relies on the 'timezone' column being set first.
+    Formats a naive datetime object with its IANA timezone identifier
+    in ISO 8601 extended format: YYYY-MM-DDTHH:MM:SS[Timezone/Name]
+    This format is compatible with Temporal.ZonedDateTime.from()
     """
     dt_naive = row["date"]
     timezone_name = row["timezone"]
@@ -64,15 +50,13 @@ def add_offset_to_date(row):
         return dt_naive.strftime('%Y-%m-%dT%H:%M:%S')
 
     try:
-        dt_localized = dt_naive.tz_localize(
-            timezone_name,
-            ambiguous='NaT',
-            nonexistent='shift_forward'
-        )
-        return dt_localized.isoformat()
+        # Format as ISO 8601 with timezone identifier in brackets
+        # Example: 2024-08-17T14:00:00[Asia/Singapore]
+        iso_string = dt_naive.strftime('%Y-%m-%dT%H:%M:%S')
+        return f"{iso_string}[{timezone_name}]"
 
     except Exception as e:
-        print(f"Error localizing date for {timezone_name}: {e}")
+        print(f"Error formatting date for {timezone_name}: {e}")
         # Fallback to the original plain ISO string
         return dt_naive.strftime('%Y-%m-%dT%H:%M:%S')
 
@@ -176,9 +160,8 @@ for series in series_metadata['series']:
 
         print(f'\tGeocoding {len(df)} events...')
         df["timezone"] = df.apply(lambda row: tf.timezone_at(lng=row["lng"], lat=row["lat"]), axis=1)
-        df["date"] = df.apply(add_offset_to_date, axis=1)
+        df["date"] = df.apply(add_timezone_to_date, axis=1)
         df["country_code"] = df.apply(get_country_code_offline, axis=1)
-        df["flag"] = df["country_code"].apply(get_flag_emoji)
 
         total_sites += len(df)
 

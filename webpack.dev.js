@@ -1,8 +1,17 @@
 import { merge } from 'webpack-merge';
-import common from './webpack.common.js';
+import { execSync } from 'child_process';
+import common, { packageJson } from './webpack.common.js';
+
+let gitCommitHash = '';
+try {
+    gitCommitHash = execSync('git rev-parse --short HEAD').toString().trim();
+} catch (e) {
+    console.warn('Could not get git commit hash: ', e);
+}
 
 export default (env) => {
-    return merge(common(env), {
+    const appVersion = gitCommitHash ? `${packageJson.version}-${gitCommitHash}` : packageJson.version;
+    return merge(common(env, { appVersion }), {
         mode: 'development',
         devtool: 'eval-source-map',
         devServer: {

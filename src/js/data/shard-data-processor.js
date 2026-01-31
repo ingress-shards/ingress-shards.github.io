@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import { HISTORY_REASONS, SHARD_EVENT_TYPE, SITE_AGGREGATION_DISTANCE, getAbbreviatedTeam } from "../constants.js";
 import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from "./shard-data-helpers.js";
 import { haversineDistance } from "../shared/math-helpers.js";
@@ -457,7 +458,8 @@ function findSiteForFragment(fragment, sitesGeocode) {
             longitude: site.lng,
         };
         const distance = haversineDistance(fragmentCoords, siteCoords);
-        const siteDate = new Date(site.date).getTime();
+        const isoPart = site.date.split('[')[0];
+        const siteDate = DateTime.fromISO(isoPart, { zone: site.timezone }).toMillis();
         const matchingDate = isWithin24Hours(getFragmentSpawnTimeMs(fragment), siteDate);
 
         return (distance < SITE_AGGREGATION_DISTANCE && matchingDate);

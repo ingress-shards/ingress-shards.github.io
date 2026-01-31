@@ -4,25 +4,15 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { fileURLToPath } from 'url';
 import webpack from 'webpack';
 import fs from 'fs';
-import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const resolvePackage = (pkg) => path.dirname(fileURLToPath(import.meta.resolve(`${pkg}/package.json`)));
 
-const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'package.json'), 'utf-8'));
-let gitCommitHash = '';
-try {
-    gitCommitHash = execSync('git rev-parse --short HEAD').toString().trim();
-} catch (e) {
-    console.warn('Could not get git commit hash: ', e);
-}
+export const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'package.json'), 'utf-8'));
 
-// eslint-disable-next-line no-unused-vars
-export default (env) => {
-    const appVersion = gitCommitHash ? `${packageJson.version}-${gitCommitHash}` : packageJson.version;
-
+export default (env, { appVersion }) => {
     return {
         entry: './src/js/index.js',
         module: {
