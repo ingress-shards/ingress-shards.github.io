@@ -30,7 +30,8 @@ export function formatEpochToSerializationString(epochTimeMs) {
  * Formats the serialized ISO 8601 string (YYYY-MM-DDTHH:mm:ss) into a locale-specific short date string (e.g., 3/15/2023).
  */
 export function formatIsoToShortDate(isoString, timeZone, locale = DEFAULT_LOCALE) {
-    const dateObject = new Date(isoString);
+    const isoPart = isoString.split('[')[0];
+    const dateObject = new Date(isoPart);
     return dateObject.toLocaleDateString(locale, { timeZone, dateStyle: 'short' });
 }
 
@@ -86,7 +87,8 @@ export function createWaveDate(siteDateIso, siteTimezone, timeStr) {
     const [hour, minute] = timeStr.split(':').map(Number);
 
     // 1. Create a Luxon DateTime object from the ISO string, ensuring it's in the correct IANA timezone.
-    const siteDateTime = DateTime.fromISO(siteDateIso, { zone: siteTimezone });
+    const isoPart = siteDateIso.split('[')[0];
+    const siteDateTime = DateTime.fromISO(isoPart, { zone: siteTimezone });
 
     // 2. Create a new DateTime by setting the desired time. Luxon handles all timezone and DST logic.
     const waveDateTime = siteDateTime.set({ hour, minute, second: 0, millisecond: 0 });
