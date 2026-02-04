@@ -10,7 +10,7 @@ body,
     width: 44px;
     height: 44px;
 
-    background-image: url('./ingress-icon.svg');
+    background-image: url('../images/ingress-icon.svg');
 
     background-size: 32px 32px;
     background-position: center;
@@ -22,7 +22,7 @@ body,
     width: 44px;
     height: 44px;
 
-    background-image: url('./shard.svg');
+    background-image: url('../images/shard.svg');
 
     background-size: 32px 32px;
     background-position: center;

@@ -1,6 +1,6 @@
 import * as L from "leaflet";
 import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, EVENT_BRANDS, RANDOM_TELEPORT_COLOR } from "../constants.js";
-import shardIconUrl from '../../assets/abaddon1_shard.png';
+import shardIconUrl from '../../images/abaddon1_shard.png';
 import { getSiteData, getSeriesMetadata, getSeriesGeocode } from "../data/data-store.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
 import { formatEpochToLocalTime, formatIsoToShortDate } from "../shared/date-helpers.js";

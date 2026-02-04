@@ -1,5 +1,5 @@
 import * as L from "leaflet";
-import { SHARD_EVENT_TYPE } from "../constants.js";
+import { EVENT_BRANDS } from "../constants.js";
 import { addEventInteraction } from "./event-handler.js";
 import { navigate } from "../router.js";
 import { getScoresText } from "./site-renderer.js";
@@ -46,7 +46,7 @@ function renderSeriesLayer(seriesId) {
 
         let siteMarkerFilter = 'grayscale(1)';
         if (siteData) {
-            siteMarkerFilter = SHARD_EVENT_TYPE[site.type].markerFilter;
+            siteMarkerFilter = EVENT_BRANDS[site.brand].markerFilter;
         }
         const siteIcon = new SiteIcon({ filter: siteMarkerFilter });
 
@@ -56,9 +56,9 @@ function renderSeriesLayer(seriesId) {
 
         const flagHtml = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
         let siteTooltip = `
-            ${flagHtml} <strong>${site.location}</strong><br />
+            ${flagHtml} <strong>${site.name}</strong><br />
             Date: ${formatIsoToShortDate(site.date, site.timezone)}<br />
-            Type: ${SHARD_EVENT_TYPE[site.type].name}<br />`;
+            Type: ${EVENT_BRANDS[site.brand].name}<br />`;
 
         if (siteData) {
             const scoresText = getScoresText({ seriesId, siteId: site.id, type: 'full' });
@@ -129,16 +129,14 @@ export function getDetailsPanelContent(seriesId) {
     }
 
     const sites = Object.values(geocode.sites);
-    const sitesByType = sites.reduce((groups, site) => {
-        const type = site.type || 'Other';
-        if (!groups[type]) groups[type] = [];
-        groups[type].push(site);
+    const sitesByBrand = sites.reduce((groups, site) => {
+        const brand = site.brand || 'Other';
+        if (!groups[brand]) groups[brand] = [];
+        groups[brand].push(site);
         return groups;
     }, {});
 
-    const typeOrder = Object.entries(SHARD_EVENT_TYPE)
-        .sort(([, a], [, b]) => a.typeOrder - b.typeOrder)
-        .map(([key]) => key);
+    const typeOrder = Object.keys(EVENT_BRANDS);
 
     let content = '';
     if (metadata.year) {
@@ -150,16 +148,16 @@ export function getDetailsPanelContent(seriesId) {
 
     content += `<div class="series-sites-list">`;
 
-    typeOrder.forEach(type => {
-        if (sitesByType[type]) {
-            const sitesOfType = sitesByType[type];
+    typeOrder.forEach(brand => {
+        if (sitesByBrand[brand]) {
+            const sitesOfBrand = sitesByBrand[brand];
 
             content += `<h4 class="group-header group-toggle">
                     <span class="toggle-icon">▶</span>
-                    ${sitesOfType.length} ${SHARD_EVENT_TYPE[type].name} Sites</h4>`;
+                    ${sitesOfBrand.length} ${EVENT_BRANDS[brand].name} Sites</h4>`;
             content += `<div class="group-list collapsed-group">`;
 
-            sitesOfType.forEach(site => {
+            sitesOfBrand.forEach(site => {
                 const flag = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
                 const siteUrl = `#/${metadata.id}/${site.id.replace(metadata.id + "-", "")}`;
 
@@ -171,7 +169,7 @@ export function getDetailsPanelContent(seriesId) {
                                 data-site-id="${site.id}"
                                 id="${site.id}"
                                 ${!scoresText ? 'disabled="disabled"' : ''}>
-                            ${flag} ${site.location}
+                            ${flag} ${site.name}
                         </button>
                         ${scoresText && ` ${scoresText}`}<br />`;
             });
