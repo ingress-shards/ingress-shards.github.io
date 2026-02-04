@@ -1,3 +1,4 @@
+import eventBlueprints from "../conf/event_blueprints.json" with { type: "json" };
 import seriesMetadata from "../conf/series_metadata.json" with { type: "json" };
 import seriesGeocode from "../gen/series_geocode.json" with { type: "json" };
 import { processSeriesData } from '../src/js/data/shard-data-processor.js';
@@ -70,10 +71,11 @@ async function runDataProcessor() {
             const seriesDataPackage = {
                 config: seriesConfig,
                 geocode: seriesGeocode[seriesId],
+                blueprints: eventBlueprints,
                 rawData: rawDataMap
             }
             const processedData = processSeriesData(seriesDataPackage);
-            validateProcessedSeriesData(processedData, seriesConfig);
+            validateProcessedSeriesData(processedData, seriesConfig, eventBlueprints);
 
             allSeriesData[seriesId] = processedData;
         }

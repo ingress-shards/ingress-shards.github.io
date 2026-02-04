@@ -2,44 +2,65 @@ import { FACTION_COLORS } from "../constants.js";
 
 const INDENT = '    ';
 
-export function validateProcessedSeriesData(processedSeriesData, seriesConfig) {
+export function validateProcessedSeriesData(processedSeriesData, seriesConfig, blueprints) {
     console.log(`ℹ️ Validating processed data: ${seriesConfig.name}, ${Object.keys(processedSeriesData).length} sites...`);
     const processedSites = Object.values(processedSeriesData);
-    validateSites(processedSites, seriesConfig);
+    validateSites(processedSites, seriesConfig, blueprints);
     console.log(`ℹ️ Validation complete.\n`);
 }
 
-function validateSites(processedSites, seriesConfig) {
+function validateSites(processedSites, seriesConfig, blueprints) {
     const seriesValidation = {
-        eventTypes: {},
+        brandConfigs: {},
     };
 
-    if (seriesConfig.eventTypes) {
-        for (const [eventType, eventConfig] of Object.entries(seriesConfig.eventTypes)) {
-            const totalShards = eventConfig.shards?.waves.reduce((sum, wave) => sum + (wave.quantity || 0), 0) || 0;
+    if (seriesConfig.shardComponents) {
+        seriesConfig.shardComponents.forEach((componentConfig) => {
+            const shardMechanic = blueprints.shardMechanics[componentConfig.shardMechanics];
+            const targetMechanic = blueprints.targetMechanics[componentConfig.targetMechanics];
+
+            const totalShards = shardMechanic?.waves.reduce((sum, wave) => sum + (wave.quantity || 0), 0) || 0;
 
             const totalTargets =
-                eventConfig.targets?.waves.reduce((sum, wave) => {
+                targetMechanic?.waves.reduce((sum, wave) => {
                     const factions = wave.factionQuantity || {};
                     const waveTotal = Object.values(factions).reduce((a, b) => a + b, 0);
                     return sum + waveTotal;
                 }, 0) || 0;
 
             if (totalShards > 0 || totalTargets > 0) {
-                seriesValidation.eventTypes[eventType] = {
+                seriesValidation.brandConfigs[componentConfig.brand] = {
                     totalShards,
                     totalTargets,
                 };
             }
-        }
+        });
     }
 
     for (const site of processedSites) {
-        if (Object.entries(seriesValidation.eventTypes).length > 0) {
-            const siteType = site.geocode.type;
-            const { totalShards, totalTargets } = seriesValidation.eventTypes[siteType];
-            if (site.fullEvent.shards.length !== totalShards) {
-                console.log(`⚠️ Site ${site.geocode.id}: expected ${totalShards} shards but only ${site.fullEvent.shards.length} found.`)
+        if (Object.entries(seriesValidation.brandConfigs).length > 0) {
+            const siteBrandId = site.geocode.brand;
+            const componentConfig = seriesConfig.shardComponents?.find(et => et.brand === siteBrandId);
+
+            // Resolve site override
+            let siteConfig = null;
+            componentConfig?.schedule?.forEach(sched => {
+                const found = sched.sites?.find(s => s.name === site.geocode.name);
+                if (found) siteConfig = found;
+            });
+
+            const { totalTargets } = seriesValidation.brandConfigs[siteBrandId];
+
+            // Calculate expected shards (with per-site wave overrides support)
+            let expectedShards;
+            if (siteConfig && siteConfig.shardCounts) {
+                expectedShards = siteConfig.shardCounts.reduce((sum, count) => sum + count, 0);
+            } else {
+                expectedShards = seriesValidation.brandConfigs[siteBrandId].totalShards;
+            }
+
+            if (site.fullEvent.shards.length !== expectedShards) {
+                console.log(`⚠️ Site ${site.geocode.id}: expected ${expectedShards} shards but only ${site.fullEvent.shards.length} found.`)
             }
             if (site.fullEvent.targets) {
                 if (site.fullEvent.targets.length !== totalTargets) {

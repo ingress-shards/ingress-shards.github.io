@@ -65,8 +65,8 @@ const mapDispatchers = {
         const seriesMetadata = getSeriesMetadata(seriesId);
         const seriesName = seriesMetadata?.name;
         const siteGeocode = getSeriesGeocode(seriesId)?.sites?.[siteId];
-        const location = siteGeocode?.location;
-        document.title = `${seriesName}: ${location} | Ingress Shards Map`;
+        const siteName = siteGeocode?.name;
+        document.title = `${seriesName}: ${siteName} | Ingress Shards Map`;
         detailsPanel.update(getSiteDetailsContent(seriesId, siteId));
 
         const siteBounds = defaultLayerDetails.layer.getBounds();
@@ -107,8 +107,8 @@ const mapDispatchers = {
         const seriesMetadata = getSeriesMetadata(seriesId);
         const seriesName = seriesMetadata?.name;
         const siteGeocode = getSeriesGeocode(seriesId)?.sites?.[siteId];
-        const location = siteGeocode?.location;
-        document.title = `${seriesName}: ${location} | Ingress Shards Map`;
+        const siteName = siteGeocode?.name;
+        document.title = `${seriesName}: ${siteName} | Ingress Shards Map`;
         detailsPanel.update(getSiteDetailsContent(seriesId, siteId, waveId));
 
         const siteBounds = waveLayerDetails.layer.getBounds();

@@ -5,545 +5,345 @@
             "name": "Shared Memories",
             "year": 2024,
             "overviewUrl": "https://ingress.com/news/2024-sharedmem",
-            "eventTypes": {
-                "ANOMALY": {
+            "shardComponents": [
+                {
+                    "brand": "ANOMALY",
                     "startTime": "14:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 8 },
-                            { "type": "jump", "time": 18 },
-                            { "type": "jump", "time": 28 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    },
-                    "targets": {
-                        "waves": [
-                            { "startTime": "13:59", "endTime": "18:00", "factionQuantity": { "RES": 4, "ENL": 4 } }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "despawn", "time": 241 }
-                        ]
-                    }
+                    "shardMechanics": "6w_30m_3j",
+                    "targetMechanics": "1w_241m"
                 },
-                "SKIRMISH": {
+                {
+                    "brand": "SKIRMISH",
                     "startTime": "16:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "16:00", "endTime": "16:19", "quantity": 3 },
-                            { "startTime": "16:20", "endTime": "16:39", "quantity": 4 },
-                            { "startTime": "16:40", "endTime": "16:59", "quantity": 5 },
-                            { "startTime": "17:00", "endTime": "17:19", "quantity": 6 },
-                            { "startTime": "17:20", "endTime": "17:39", "quantity": 7 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 15 },
-                            { "type": "despawn", "time": 19 }
-                        ]
-                    }
+                    "shardMechanics": "5w_20m_1j"
                 }
-            }
+            ]
         },
         {
             "id": "2024-erasedmem",
             "name": "Erased Memories",
             "year": 2024,
             "overviewUrl": "https://ingress.com/news/2024-erasedmem",
-            "eventTypes": {
-                "ANOMALY": {
+            "shardComponents": [
+                {
+                    "brand": "ANOMALY",
                     "startTime": "14:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 8 },
-                            { "type": "jump", "time": 18 },
-                            { "type": "jump", "time": 28 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    },
-                    "targets": {
-                        "waves": [
-                            { "startTime": "13:59", "endTime": "18:00", "factionQuantity": { "RES": 4, "ENL": 4 } }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "despawn", "time": 241 }
-                        ]
-                    }
+                    "shardMechanics": "6w_30m_3j",
+                    "targetMechanics": "1w_241m"
                 },
-                "SKIRMISH": {
+                {
+                    "brand": "SKIRMISH",
                     "startTime": "16:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "16:00", "endTime": "16:19", "quantity": 3 },
-                            { "startTime": "16:20", "endTime": "16:39", "quantity": 4 },
-                            { "startTime": "16:40", "endTime": "16:59", "quantity": 5 },
-                            { "startTime": "17:00", "endTime": "17:19", "quantity": 6 },
-                            { "startTime": "17:20", "endTime": "17:39", "quantity": 7 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 15 },
-                            { "type": "despawn", "time": 19 }
-                        ]
-                    }
+                    "shardMechanics": "5w_20m_1j"
                 }
-            }
+            ]
         },
         {
             "id": "2025-plusalpha",
             "name": "+Alpha",
             "year": 2025,
             "overviewUrl": "https://ingress.com/news/2025-plusalpha",
-            "eventTypes": {
-                "ANOMALY": {
+            "shardComponents": [
+                {
+                    "brand": "ANOMALY",
                     "startTime": "14:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 8 },
-                            { "type": "jump", "time": 18 },
-                            { "type": "jump", "time": 28 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    },
-                    "targets": {
-                        "waves": [
-                            { "startTime": "13:59", "endTime": "18:00", "factionQuantity": { "RES": 4, "ENL": 4 } }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "despawn", "time": 241 }
-                        ]
-                    }
+                    "shardMechanics": "6w_30m_3j",
+                    "targetMechanics": "1w_241m"
                 },
-                "SKIRMISH": {
+                {
+                    "brand": "SKIRMISH",
                     "startTime": "16:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "16:00", "endTime": "16:19", "quantity": 3 },
-                            { "startTime": "16:20", "endTime": "16:39", "quantity": 4 },
-                            { "startTime": "16:40", "endTime": "16:59", "quantity": 5 },
-                            { "startTime": "17:00", "endTime": "17:19", "quantity": 6 },
-                            { "startTime": "17:20", "endTime": "17:39", "quantity": 7 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 15 },
-                            { "type": "despawn", "time": 19 }
-                        ]
-                    }
+                    "shardMechanics": "5w_20m_1j"
                 }
-            }
+            ]
         },
         {
             "id": "2025-plustheta",
             "name": "+Theta",
             "year": 2025,
             "overviewUrl": "https://ingress.com/news/2025-plustheta",
-            "eventTypes": {
-                "ANOMALY": {
+            "shardComponents": [
+                {
+                    "brand": "ANOMALY",
                     "startTime": "14:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 8 },
-                            { "type": "jump", "time": 18 },
-                            { "type": "jump", "time": 28 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    },
-                    "targets": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "14:32", "endTime": "15:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "15:02", "endTime": "15:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "15:32", "endTime": "16:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "16:02", "endTime": "16:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "16:32", "endTime": "17:01", "factionQuantity": { "RES": 4, "ENL": 4 } }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    }
+                    "shardMechanics": "6w_30m_3j",
+                    "targetMechanics": "6w_30m"
                 },
-                "SKIRMISH": {
+                {
+                    "brand": "SKIRMISH",
                     "startTime": "16:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "16:00", "endTime": "16:19", "quantity": 3 },
-                            { "startTime": "16:20", "endTime": "16:39", "quantity": 4 },
-                            { "startTime": "16:40", "endTime": "16:59", "quantity": 5 },
-                            { "startTime": "17:00", "endTime": "17:19", "quantity": 6 },
-                            { "startTime": "17:20", "endTime": "17:39", "quantity": 7 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 15 },
-                            { "type": "despawn", "time": 19 }
-                        ]
-                    }
+                    "shardMechanics": "5w_20m_1j"
                 },
-                "SINGULAR": {
+                {
+                    "brand": "SINGULAR",
                     "startTime": "11:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [{ "startTime": "11:00", "endTime": "17:10", "quantity": 1 }],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 60 },
-                            { "type": "jump", "time": 120 },
-                            { "type": "jump", "time": 180 },
-                            { "type": "jump", "time": 240 },
-                            { "type": "jump", "time": 300 },
-                            { "type": "jump", "time": 360 },
-                            { "type": "despawn", "time": 370 }
-                        ]
-                    },
-                    "events": [
+                    "shardMechanics": "1w_370m_6j",
+                    "schedule": [
                         {
                             "date": "2025-05-24",
-                            "locations": [
-                                { "lat": -25.276576, "lng": 152.759054, "location": "Hervey Bay, Australia" },
-                                { "lat": -42.880779, "lng": 147.33247, "location": "Hobart, Australia" },
-                                { "lat": 37.918587, "lng": 139.020104, "location": "Niigata, Japan" },
-                                { "lat": 34.932387, "lng": 138.398162, "location": "Shizuoka, Japan" },
-                                {
-                                    "lat": 31.396765,
-                                    "lng": 121.508254,
-                                    "location": "Shanghai (Baoshan District), China"
-                                },
-                                { "lat": 5.988274, "lng": 116.078676, "location": "Kota Kinabalu, Malaysia" },
-                                { "lat": 22.372985, "lng": 113.971144, "location": "Tuen Mun, Hong Kong" },
-                                { "lat": 1.305578, "lng": 103.929822, "location": "Bedok, Singapore" },
-                                { "lat": -33.458729, "lng": -70.663691, "location": "Santiago, Chile" },
-                                { "lat": -12.087701, "lng": -77.032791, "location": "Lima, Peru" },
-                                { "lat": 43.668127, "lng": -79.292193, "location": "Toronto, Canada" },
-                                { "lat": 9.939679, "lng": -84.10088, "location": "San Jose, Costa Rica" },
-                                { "lat": 25.708295, "lng": -100.327602, "location": "Monterrey, Mexico" },
-                                { "lat": 40.771899, "lng": -111.905166, "location": "Salt Lake City, UT, USA" },
-                                { "lat": 36.163786, "lng": -115.289995, "location": "Las Vegas, NV, USA" },
-                                { "lat": 32.708118, "lng": -117.170089, "location": "San Diego, CA, USA" }
+                            "sites": [
+                                { "name": "Hervey Bay, Australia", "lat": -25.276576, "lng": 152.759054 },
+                                { "name": "Hobart, Australia", "lat": -42.880779, "lng": 147.33247 },
+                                { "name": "Niigata, Japan", "lat": 37.918587, "lng": 139.020104 },
+                                { "name": "Shizuoka, Japan", "lat": 34.932387, "lng": 138.398162 },
+                                { "name": "Shanghai (Baoshan District), China", "lat": 31.396765, "lng": 121.508254 },
+                                { "name": "Kota Kinabalu, Malaysia", "lat": 5.988274, "lng": 116.078676 },
+                                { "name": "Tuen Mun, Hong Kong", "lat": 22.372985, "lng": 113.971144 },
+                                { "name": "Bedok, Singapore", "lat": 1.305578, "lng": 103.929822 },
+                                { "name": "Santiago, Chile", "lat": -33.458729, "lng": -70.663691 },
+                                { "name": "Lima, Peru", "lat": -12.087701, "lng": -77.032791 },
+                                { "name": "Toronto, Canada", "lat": 43.668127, "lng": -79.292193 },
+                                { "name": "San Jose, Costa Rica", "lat": 9.939679, "lng": -84.10088 },
+                                { "name": "Monterrey, Mexico", "lat": 25.708295, "lng": -100.327602 },
+                                { "name": "Salt Lake City, UT, USA", "lat": 40.771899, "lng": -111.905166 },
+                                { "name": "Las Vegas, NV, USA", "lat": 36.163786, "lng": -115.289995 },
+                                { "name": "San Diego, CA, USA", "lat": 32.708118, "lng": -117.170089 }
                             ]
                         },
                         {
                             "date": "2025-05-31",
-                            "locations": [
-                                { "lat": -42.459892, "lng": 171.188888, "location": "Greymouth, New Zealand" },
-                                { "lat": 33.968082, "lng": 130.922424, "location": "Shimonoseki, Japan" },
-                                { "lat": 37.473785, "lng": 126.596846, "location": "Incheon, South Korea" },
-                                { "lat": -5.122288, "lng": 119.407636, "location": "Makassar, Indonesia" },
-                                { "lat": 24.415211, "lng": 118.287035, "location": "Kinmen, Taiwan" },
-                                { "lat": 38.931285, "lng": 117.695426, "location": "Tianjin, China" },
-                                { "lat": 22.213466, "lng": 113.55513, "location": "Macao" },
-                                { "lat": 4.17292, "lng": 73.505152, "location": "Male, Maldives" },
-                                { "lat": 25.226669, "lng": 55.256325, "location": "Dubai, United Arab Emirates" },
-                                { "lat": 42.694622, "lng": 23.325489, "location": "Sofia, Bulgaria" },
-                                { "lat": 49.832194, "lng": 18.297721, "location": "Ostrava, Czechia" },
-                                { "lat": 48.144939, "lng": 17.211458, "location": "Bratislava, Slovakia" },
-                                { "lat": 53.336426, "lng": 6.928437, "location": "Delfzijl, Netherlands" },
-                                { "lat": 58.973682, "lng": 5.723618, "location": "Stavanger, Norway" },
-                                { "lat": 51.034742, "lng": 3.73923, "location": "Ghent, Belgium" },
-                                { "lat": 41.654911, "lng": -0.866423, "location": "Zaragoza, Spain" }
+                            "sites": [
+                                { "name": "Greymouth, New Zealand", "lat": -42.459892, "lng": 171.188888 },
+                                { "name": "Shimonoseki, Japan", "lat": 33.968082, "lng": 130.922424 },
+                                { "name": "Incheon, South Korea", "lat": 37.473785, "lng": 126.596846 },
+                                { "name": "Makassar, Indonesia", "lat": -5.122288, "lng": 119.407636 },
+                                { "name": "Kinmen, Taiwan", "lat": 24.415211, "lng": 118.287035 },
+                                { "name": "Tianjin, China", "lat": 38.931285, "lng": 117.695426 },
+                                { "name": "Macao", "lat": 22.213466, "lng": 113.55513 },
+                                { "name": "Male, Maldives", "lat": 4.17292, "lng": 73.505152 },
+                                { "name": "Dubai, United Arab Emirates", "lat": 25.226669, "lng": 55.256325 },
+                                { "name": "Sofia, Bulgaria", "lat": 42.694622, "lng": 23.325489 },
+                                { "name": "Ostrava, Czechia", "lat": 49.832194, "lng": 18.297721 },
+                                { "name": "Bratislava, Slovakia", "lat": 48.144939, "lng": 17.211458 },
+                                { "name": "Delfzijl, Netherlands", "lat": 53.336426, "lng": 6.928437 },
+                                { "name": "Stavanger, Norway", "lat": 58.973682, "lng": 5.723618 },
+                                { "name": "Ghent, Belgium", "lat": 51.034742, "lng": 3.73923 },
+                                { "name": "Zaragoza, Spain", "lat": 41.654911, "lng": -0.866423 }
                             ]
                         },
                         {
                             "date": "2025-06-07",
-                            "locations": [
-                                { "lat": 56.948074, "lng": 24.092924, "location": "Riga, Latvia" },
-                                { "lat": -33.904627, "lng": 18.400743, "location": "Cape Town, South Africa" },
-                                { "lat": 52.349598, "lng": 16.871287, "location": "Poznań, Poland" },
-                                { "lat": 41.775968, "lng": 12.226146, "location": "Fiumicino, Italy" },
-                                { "lat": 49.402317, "lng": 11.098584, "location": "Nürnberg, Germany" },
-                                { "lat": 45.726344, "lng": 4.779117, "location": "Lyon, France" },
-                                { "lat": 50.361347, "lng": -4.16704, "location": "Plymouth, UK" },
-                                { "lat": 38.744501, "lng": -9.097674, "location": "Lisboa, Portugal" },
-                                { "lat": -8.068132, "lng": -34.876334, "location": "Recife, Brazil" },
-                                { "lat": -22.936512, "lng": -43.169418, "location": "Rio de Janeiro, Brazil" },
-                                { "lat": 10.40928, "lng": -75.551662, "location": "Cartagena, Colombia" },
-                                { "lat": 28.5313, "lng": -81.376395, "location": "Orlando, FL, USA" },
-                                { "lat": 39.965646, "lng": -83.018901, "location": "Columbus, OH, USA" },
-                                { "lat": 42.993764, "lng": -87.88105, "location": "Milwaukee, WI, USA" },
-                                { "lat": 32.763671, "lng": -97.314069, "location": "Fort Worth, TX, USA" },
-                                { "lat": 49.20397, "lng": -122.906085, "location": "Vancouver, Canada" }
+                            "sites": [
+                                { "name": "Riga, Latvia", "lat": 56.948074, "lng": 24.092924 },
+                                { "name": "Cape Town, South Africa", "lat": -33.904627, "lng": 18.400743 },
+                                { "name": "Poznań, Poland", "lat": 52.349598, "lng": 16.871287 },
+                                { "name": "Fiumicino, Italy", "lat": 41.775968, "lng": 12.226146 },
+                                { "name": "Nürnberg, Germany", "lat": 49.402317, "lng": 11.098584 },
+                                { "name": "Lyon, France", "lat": 45.726344, "lng": 4.779117 },
+                                { "name": "Plymouth, UK", "lat": 50.361347, "lng": -4.16704 },
+                                { "name": "Lisboa, Portugal", "lat": 38.744501, "lng": -9.097674 },
+                                { "name": "Recife, Brazil", "lat": -8.068132, "lng": -34.876334 },
+                                { "name": "Rio de Janeiro, Brazil", "lat": -22.936512, "lng": -43.169418 },
+                                { "name": "Cartagena, Colombia", "lat": 10.40928, "lng": -75.551662 },
+                                { "name": "Orlando, FL, USA", "lat": 28.5313, "lng": -81.376395 },
+                                { "name": "Columbus, OH, USA", "lat": 39.965646, "lng": -83.018901 },
+                                { "name": "Milwaukee, WI, USA", "lat": 42.993764, "lng": -87.88105 },
+                                { "name": "Fort Worth, TX, USA", "lat": 32.763671, "lng": -97.314069 },
+                                { "name": "Vancouver, Canada", "lat": 49.20397, "lng": -122.906085 }
                             ]
                         }
                     ]
                 }
-            }
+            ]
         },
         {
             "id": "2025-plusdelta",
             "name": "+Delta",
             "year": 2025,
             "overviewUrl": "https://ingress.com/news/2025-plusdelta",
-            "eventTypes": {
-                "ANOMALY": {
+            "shardComponents": [
+                {
+                    "brand": "ANOMALY",
                     "startTime": "14:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 8 },
-                            { "type": "jump", "time": 18 },
-                            { "type": "jump", "time": 28 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    },
-                    "targets": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "14:32", "endTime": "15:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "15:02", "endTime": "15:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "15:32", "endTime": "16:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "16:02", "endTime": "16:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "16:32", "endTime": "17:01", "factionQuantity": { "RES": 4, "ENL": 4 } }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    }
+                    "shardMechanics": "6w_30m_3j",
+                    "targetMechanics": "6w_30m"
                 }
-            }
+            ]
         },
         {
             "id": "2025-plusbeta",
             "name": "+Beta",
             "year": 2025,
             "overviewUrl": "https://ingress.com/news/2025-plusbeta",
-            "eventTypes": {
-                "ANOMALY": {
+            "shardComponents": [
+                {
+                    "brand": "ANOMALY",
                     "startTime": "14:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 8 },
-                            { "type": "jump", "time": 18 },
-                            { "type": "jump", "time": 28 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    },
-                    "targets": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "14:32", "endTime": "15:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "15:02", "endTime": "15:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "15:32", "endTime": "16:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "16:02", "endTime": "16:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "16:32", "endTime": "17:01", "factionQuantity": { "RES": 4, "ENL": 4 } }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    }
+                    "shardMechanics": "6w_30m_3j",
+                    "targetMechanics": "6w_30m"
                 },
-                "STORM": {
+                {
+                    "brand": "STORM",
                     "startTime": "13:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [{ "startTime": "13:00", "endTime": "21:00", "quantity": 1 }],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 60 },
-                            { "type": "jump", "time": 120 },
-                            { "type": "jump", "time": 180 },
-                            { "type": "jump", "time": 240 },
-                            { "type": "despawn", "time": 480 }
-                        ]
-                    },
-                    "events": [
+                    "shardMechanics": "1w_480m_4j",
+                    "schedule": [
                         {
                             "date": "2025-12-13",
-                            "locations": [
-                                { "lat": -34.92255, "lng": 138.601888, "location": "Adelaide, Australia" },
-                                { "lat": -27.497104, "lng": 153.012826, "location": "Brisbane, Australia" },
-                                { "lat": 34.705878, "lng": 135.490102, "location": "Osaka, Japan" },
-                                { "lat": 37.946983, "lng": 139.130525, "location": "Niigata, Japan" },
-                                { "lat": 37.516943, "lng": 127.117784, "location": "Seoul, South Korea" },
-                                { "lat": 14.5505, "lng": 121.050378, "location": "Manilla, Philippines" },
-                                { "lat": 22.623386, "lng": 120.300509, "location": "Kaohsiung, Taiwan" },
-                                { "lat": 31.236418, "lng": 121.458607, "location": "Shanghai, China" },
-                                { "lat": 23.172147, "lng": 113.445608, "location": "Guangzhou, China" },
-                                { "lat": 30.631969, "lng": 104.054706, "location": "Chengdu, China" },
-                                { "lat": 3.135666, "lng": 101.622957, "location": "Kuala Lumpur, Malaysia" },
-                                { "lat": 45.222188, "lng": 10.253609, "location": "Ostiano, Italy" },
-                                { "lat": 55.650551, "lng": 12.274338, "location": "Taastrup, Denmark" },
-                                { "lat": 47.490885, "lng": 19.058429, "location": "Budapest, Hungary" },
-                                { "lat": 50.088688, "lng": 14.428944, "location": "Prague, Czech Republic" },
-                                { "lat": 51.829644, "lng": 5.798347, "location": "Nijmegen, The Netherlands" },
-                                { "lat": 48.779612, "lng": 1.959639, "location": "Élancourt, France" },
-                                { "lat": 42.535709, "lng": 1.582107, "location": "Encamp, Andorra" },
-                                { "lat": 57.131488, "lng": -2.103908, "location": "Aberdeen, Scotland" },
-                                { "lat": -23.530019, "lng": -46.667488, "location": "São Paulo, Brazil" },
-                                { "lat": -25.294743, "lng": -57.581991, "location": "Asuncion, Paraguay" },
-                                { "lat": -33.499172, "lng": -70.704768, "location": "Santiago, Chile" },
-                                { "lat": 27.768118, "lng": -82.660363, "location": "St. Petersburg, FL, USA" },
-                                { "lat": 40.738902, "lng": -73.806467, "location": "New York City, NY, USA" },
-                                { "lat": 37.692087, "lng": -122.088108, "location": "Castro Valley, CA, USA" }
+                            "sites": [
+                                { "name": "Adelaide, Australia", "lat": -34.92255, "lng": 138.601888 },
+                                { "name": "Brisbane, Australia", "lat": -27.497104, "lng": 153.012826 },
+                                { "name": "Osaka, Japan", "lat": 34.705878, "lng": 135.490102 },
+                                { "name": "Niigata, Japan", "lat": 37.946983, "lng": 139.130525 },
+                                { "name": "Seoul, South Korea", "lat": 37.516943, "lng": 127.117784 },
+                                { "name": "Manilla, Philippines", "lat": 14.5505, "lng": 121.050378 },
+                                { "name": "Kaohsiung, Taiwan", "lat": 22.623386, "lng": 120.300509 },
+                                { "name": "Shanghai, China", "lat": 31.236418, "lng": 121.458607 },
+                                { "name": "Guangzhou, China", "lat": 23.172147, "lng": 113.445608 },
+                                { "name": "Chengdu, China", "lat": 30.631969, "lng": 104.054706 },
+                                { "name": "Kuala Lumpur, Malaysia", "lat": 3.135666, "lng": 101.622957 },
+                                { "name": "Ostiano, Italy", "lat": 45.222188, "lng": 10.253609 },
+                                { "name": "Taastrup, Denmark", "lat": 55.650551, "lng": 12.274338 },
+                                { "name": "Budapest, Hungary", "lat": 47.490885, "lng": 19.058429 },
+                                { "name": "Prague, Czech Republic", "lat": 50.088688, "lng": 14.428944 },
+                                { "name": "Nijmegen, The Netherlands", "lat": 51.829644, "lng": 5.798347 },
+                                { "name": "Élancourt, France", "lat": 48.779612, "lng": 1.959639 },
+                                { "name": "Encamp, Andorra", "lat": 42.535709, "lng": 1.582107 },
+                                { "name": "Aberdeen, Scotland", "lat": 57.131488, "lng": -2.103908 },
+                                { "name": "São Paulo, Brazil", "lat": -23.530019, "lng": -46.667488 },
+                                { "name": "Asuncion, Paraguay", "lat": -25.294743, "lng": -57.581991 },
+                                { "name": "Santiago, Chile", "lat": -33.499172, "lng": -70.704768 },
+                                { "name": "St. Petersburg, FL, USA", "lat": 27.768118, "lng": -82.660363 },
+                                { "name": "New York City, NY, USA", "lat": 40.738902, "lng": -73.806467 },
+                                { "name": "Castro Valley, CA, USA", "lat": 37.692087, "lng": -122.088108 }
                             ]
                         },
                         {
                             "date": "2025-12-14",
-                            "locations": [
-                                { "lat": -41.276402, "lng": 174.778411, "location": "Wellington, New Zealand" },
-                                { "lat": -37.821235, "lng": 144.964248, "location": "Melbourne, Australia" },
-                                { "lat": 35.673793, "lng": 139.754501, "location": "Tokyo, Japan" },
-                                { "lat": 33.587325, "lng": 130.378273, "location": "Fukuoka, Japan" },
-                                { "lat": 26.207856, "lng": 127.769824, "location": "Nishihara, Okinawa, Japan" },
-                                { "lat": 1.288061, "lng": 103.851967, "location": "Singapore" },
-                                { "lat": 24.534758, "lng": 118.159324, "location": "Xiamen, China" },
-                                { "lat": 39.982822, "lng": 116.489705, "location": "Bejing, China" },
-                                { "lat": 13.733875, "lng": 100.531087, "location": "Bangkok, Thailand" },
-                                { "lat": 60.201003, "lng": 24.861644, "location": "Helsinki, Finland" },
-                                { "lat": 59.914956, "lng": 10.733085, "location": "Oslo, Norway" },
-                                { "lat": 49.449566, "lng": 7.770247, "location": "Kaiserslautern, Germany" },
-                                { "lat": 53.075904, "lng": 8.822793, "location": "Bremen, Germany" },
-                                { "lat": 52.675691, "lng": 13.588255, "location": "Bernau bei Berlin, Germany" },
-                                { "lat": 49.193149, "lng": 16.608733, "location": "Brno, Czech Republic" },
-                                { "lat": 44.060507, "lng": 12.565574, "location": "Rimini, Italy" },
-                                { "lat": 52.19348, "lng": 0.135185, "location": "Cambridge, UK" },
-                                { "lat": 54.979022, "lng": -1.614817, "location": "Newcastle upon Tyne, UK" },
-                                { "lat": 38.896679, "lng": -9.039432, "location": "Alverca do Ribatejo, Portugal" },
-                                { "lat": -34.909343, "lng": -56.190921, "location": "Montevideo, Uruguay" },
-                                { "lat": -12.088177, "lng": -77.03901, "location": "Lima, Peru" },
-                                { "lat": 4.698384, "lng": -74.090503, "location": "Bogotá, Colombia" },
-                                { "lat": 41.56082, "lng": -81.443, "location": "Cleveland, OH, USA" },
-                                { "lat": 40.522836, "lng": -111.854209, "location": "Draper, UT, USA" },
-                                { "lat": 48.460327, "lng": -123.317879, "location": "Victoria, BC, Canada" }
+                            "sites": [
+                                { "name": "Wellington, New Zealand", "lat": -41.276402, "lng": 174.778411 },
+                                { "name": "Melbourne, Australia", "lat": -37.821235, "lng": 144.964248 },
+                                { "name": "Tokyo, Japan", "lat": 35.673793, "lng": 139.754501 },
+                                { "name": "Fukuoka, Japan", "lat": 33.587325, "lng": 130.378273 },
+                                { "name": "Nishihara, Okinawa, Japan", "lat": 26.207856, "lng": 127.769824 },
+                                { "name": "Singapore", "lat": 1.288061, "lng": 103.851967 },
+                                { "name": "Xiamen, China", "lat": 24.534758, "lng": 118.159324 },
+                                { "name": "Bejing, China", "lat": 39.982822, "lng": 116.489705 },
+                                { "name": "Bangkok, Thailand", "lat": 13.733875, "lng": 100.531087 },
+                                { "name": "Helsinki, Finland", "lat": 60.201003, "lng": 24.861644 },
+                                { "name": "Oslo, Norway", "lat": 59.914956, "lng": 10.733085 },
+                                { "name": "Kaiserslautern, Germany", "lat": 49.449566, "lng": 7.770247 },
+                                { "name": "Bremen, Germany", "lat": 53.075904, "lng": 8.822793 },
+                                { "name": "Bernau bei Berlin, Germany", "lat": 52.675691, "lng": 13.588255 },
+                                { "name": "Brno, Czech Republic", "lat": 49.193149, "lng": 16.608733 },
+                                { "name": "Rimini, Italy", "lat": 44.060507, "lng": 12.565574 },
+                                { "name": "Cambridge, UK", "lat": 52.19348, "lng": 0.135185 },
+                                { "name": "Newcastle upon Tyne, UK", "lat": 54.979022, "lng": -1.614817 },
+                                { "name": "Alverca do Ribatejo, Portugal", "lat": 38.896679, "lng": -9.039432 },
+                                { "name": "Montevideo, Uruguay", "lat": -34.909343, "lng": -56.190921 },
+                                { "name": "Lima, Peru", "lat": -12.088177, "lng": -77.03901 },
+                                { "name": "Bogotá, Colombia", "lat": 4.698384, "lng": -74.090503 },
+                                { "name": "Cleveland, OH, USA", "lat": 41.56082, "lng": -81.443 },
+                                { "name": "Draper, UT, USA", "lat": 40.522836, "lng": -111.854209 },
+                                { "name": "Victoria, BC, Canada", "lat": 48.460327, "lng": -123.317879 }
                             ]
                         }
                     ]
                 }
-            },
-            "defaultView": true
+            ]
         },
         {
             "id": "2026-plusgamma",
             "name": "+Gamma",
             "year": 2026,
             "overviewUrl": "https://ingress.com/news/2026-plusgamma",
-            "eventTypes": {
-                "ANOMALY": {
+            "defaultView": true,
+            "shardComponents": [
+                {
+                    "brand": "ANOMALY",
                     "startTime": "14:00",
-                    "actionWindowMinutes": 1,
-                    "shards": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "quantity": 13 },
-                            { "startTime": "14:32", "endTime": "15:01", "quantity": 13 },
-                            { "startTime": "15:02", "endTime": "15:31", "quantity": 13 },
-                            { "startTime": "15:32", "endTime": "16:01", "quantity": 13 },
-                            { "startTime": "16:02", "endTime": "16:31", "quantity": 13 },
-                            { "startTime": "16:32", "endTime": "17:01", "quantity": 13 }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "jump", "time": 8 },
-                            { "type": "jump", "time": 18 },
-                            { "type": "jump", "time": 28 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    },
-                    "targets": {
-                        "waves": [
-                            { "startTime": "14:02", "endTime": "14:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "14:32", "endTime": "15:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "15:02", "endTime": "15:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "15:32", "endTime": "16:01", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "16:02", "endTime": "16:31", "factionQuantity": { "RES": 4, "ENL": 4 } },
-                            { "startTime": "16:32", "endTime": "17:01", "factionQuantity": { "RES": 4, "ENL": 4 } }
-                        ],
-                        "waveActions": [
-                            { "type": "spawn", "time": 0 },
-                            { "type": "despawn", "time": 29 }
-                        ]
-                    },
-                    "events": [
+                    "shardMechanics": "6w_30m_3j",
+                    "targetMechanics": "6w_30m",
+                    "schedule": [
                         {
                             "date": "2026-02-28",
-                            "locations": [
-                                { "lat": 38.707008, "lng": -9.13564, "location": "Lisbon, Portugal" },
-                                { "lat": 35.223789, "lng": -80.841141, "location": "Charlotte, NC, USA" }
+                            "sites": [
+                                { "name": "Lisbon, Portugal", "lat": 38.7222524, "lng": -9.1393366 },
+                                { "name": "Charlotte, NC, USA", "lat": 35.2270768, "lng": -80.8408933 }
                             ]
                         },
                         {
                             "date": "2026-03-14",
-                            "locations": [
-                                { "lat": 22.396427, "lng": 114.109497, "location": "Hong Kong" },
-                                { "lat": 45.81501, "lng": 15.981919, "location": "Zagreb, Croatia" }
+                            "sites": [
+                                { "name": "Hong Kong", "lat": 22.3193039, "lng": 114.1693611 },
+                                { "name": "Zagreb, Croatia", "lat": 45.8150108, "lng": 15.9819189 }
                             ]
                         },
                         {
                             "date": "2026-03-21",
-                            "locations": [
-                                { "lat": 17.361719, "lng": 78.475166, "location": "Hyderabad, Telangana, India" },
-                                { "lat": -34.609558, "lng": -58.38879, "location": "Buenos Aires, Argentina" }
+                            "sites": [
+                                { "name": "Hyderabad, Telangana, India", "lat": 17.406498, "lng": 78.4772439 },
+                                { "name": "Buenos Aires, Argentina", "lat": -34.6036739, "lng": -58.3821215 }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "brand": "INVESTIGATION",
+                    "startTime": "14:00",
+                    "shardMechanics": "6w_16m_1j",
+                    "schedule": [
+                        {
+                            "date": "2026-02-08",
+                            "sites": [
+                                {
+                                    "name": "Shenyang, China",
+                                    "lat": 41.78476,
+                                    "lng": 123.416287,
+                                    "shardCounts": [6, 6, 6, 6, 6, 6]
+                                },
+                                {
+                                    "name": "Galle, Sri Lanka",
+                                    "lat": 6.024583,
+                                    "lng": 80.219353,
+                                    "shardCounts": [10, 10, 10, 10, 10, 10]
+                                },
+                                {
+                                    "name": "Jelgava, Latvia",
+                                    "lat": 56.64746,
+                                    "lng": 23.716628,
+                                    "shardCounts": [5, 5, 5, 5, 5, 5]
+                                },
+                                {
+                                    "name": "Karlovy Vary, Czechia",
+                                    "lat": 50.23043,
+                                    "lng": 12.867171,
+                                    "shardCounts": [7, 7, 7, 7, 7, 7]
+                                },
+                                {
+                                    "name": "Mexico City, Mexico",
+                                    "lat": 19.436198,
+                                    "lng": -99.154643,
+                                    "shardCounts": [8, 8, 8, 8, 8, 8]
+                                },
+                                {
+                                    "name": "Parepare, Indonesia",
+                                    "lat": -4.012578,
+                                    "lng": 119.621994,
+                                    "shardCounts": [9, 9, 9, 9, 9, 9]
+                                },
+                                {
+                                    "name": "Rouen, France",
+                                    "lat": 49.442104,
+                                    "lng": 1.076852,
+                                    "shardCounts": [7, 7, 7, 7, 7, 7]
+                                },
+                                {
+                                    "name": "Santiago, Chile",
+                                    "lat": -33.487538,
+                                    "lng": -70.650751,
+                                    "shardCounts": [6, 6, 6, 6, 6, 6]
+                                },
+                                {
+                                    "name": "Toronto, Canada",
+                                    "lat": 43.641359,
+                                    "lng": -79.37736,
+                                    "shardCounts": [4, 4, 4, 4, 4, 4]
+                                }
                             ]
                         }
                     ]
                 }
-            }
+            ]
         }
     ]
 }

@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon';
-import { HISTORY_REASONS, SHARD_EVENT_TYPE, SITE_AGGREGATION_DISTANCE, getAbbreviatedTeam } from "../constants.js";
+import { HISTORY_REASONS, SITE_AGGREGATION_DISTANCE, getAbbreviatedTeam } from "../constants.js";
 import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from "./shard-data-helpers.js";
 import { haversineDistance } from "../shared/math-helpers.js";
-import { createWaveDate, formatEpochToLocalTime, isWithin24Hours } from "../shared/date-helpers.js";
+import { formatEpochToLocalTime, isWithin24Hours } from "../shared/date-helpers.js";
 
 const portalLookupByOriginalKey = Symbol('portalLookupByOriginalKey');
 const portalIdCounter = Symbol('portalIdCounter');
@@ -22,8 +22,8 @@ const basicRules = {
 };
 
 export const linkScoringRules = new Map()
-    .set(SHARD_EVENT_TYPE.ANOMALY, basicRules)
-    .set(SHARD_EVENT_TYPE.SKIRMISH, {
+    .set("ANOMALY", basicRules)
+    .set("SKIRMISH", {
         rules: [
             {
                 description: "1 point for a single jump over a Link longer than 249.5m.",
@@ -35,7 +35,7 @@ export const linkScoringRules = new Map()
             },
         ],
     })
-    .set(SHARD_EVENT_TYPE.SINGULAR, {
+    .set("SINGULAR", {
         rules: [
             {
                 description:
@@ -56,7 +56,7 @@ export const linkScoringRules = new Map()
             },
         ],
     })
-    .set(SHARD_EVENT_TYPE.STORM, {
+    .set("STORM", {
         rules: [
             {
                 description:
@@ -77,13 +77,33 @@ export const linkScoringRules = new Map()
             },
         ],
     })
-    .set(SHARD_EVENT_TYPE.SINGLE_SHARD, basicRules)
-    .set(SHARD_EVENT_TYPE.MULTIPLE_SHARDS, basicRules)
-    .set(SHARD_EVENT_TYPE.UNKNOWN, basicRules);
+    .set("INVESTIGATION", {
+        rules: [
+            {
+                description: "5 CI for Links between 200 and 500 meters",
+                jumpPoints: 0,
+                minDistance: 200,
+                maxDistance: 500,
+                linkLengthPoints: 5,
+                allowFurtherPoints: true,
+            },
+            {
+                description: "10 CI for Links less than 200 meters",
+                jumpPoints: 0,
+                minDistance: 0,
+                maxDistance: 200,
+                linkLengthPoints: 10,
+                allowFurtherPoints: true,
+            },
+        ],
+    })
+    .set("SINGLE_SHARD", basicRules)
+    .set("MULTIPLE_SHARDS", basicRules)
+    .set("UNKNOWN", basicRules);
 
 
 export function processSeriesData(seriesDataPackage) {
-    const { config, geocode, rawData } = seriesDataPackage;
+    const { config, geocode, blueprints, rawData } = seriesDataPackage;
     const sitesGeocode = geocode.sites;
     const { shardJumpTimes } = rawData;
 
@@ -147,7 +167,7 @@ export function processSeriesData(seriesDataPackage) {
     }
 
     const processedSites = Array.from(siteFragmentsMap.entries()).map(([siteId, fragments]) =>
-        processSite(allSites[siteId], fragments, config)
+        processSite(allSites[siteId], fragments, config, blueprints)
     );
 
     const seriesData = Object.fromEntries(processedSites.map(site => [site.geocode.id, site]));
@@ -155,40 +175,62 @@ export function processSeriesData(seriesDataPackage) {
     return seriesData;
 }
 
-export function processSite(site, fragments, seriesConfig) {
+export function processSite(site, fragments, seriesConfig, blueprints) {
     site.centroid = calculateCentroid(fragments);
     site.portals = getPortalsFromFragments(site, fragments);
 
-    const siteEventType = site.geocode.type;
-    const seriesEventConfig = seriesConfig?.eventTypes?.[siteEventType];
+    const siteBrandId = site.geocode.brand;
+    const shardComponents = seriesConfig.shardComponents || [];
+    const seriesEventConfig = shardComponents.find(et => et.brand === siteBrandId);
+
+    // Find site-specific config for overrides
+    let siteConfig = null;
+    seriesEventConfig?.schedule?.forEach(sched => {
+        const found = sched.sites?.find(s => s.name === site.geocode.name);
+        if (found) siteConfig = found;
+    });
+
+    // Resolve blueprints
+    const shardMechanic = seriesEventConfig ? blueprints.shardMechanics[seriesEventConfig.shardMechanics] : null;
 
     site.fullEvent = processFragments({
         fragments,
         portalLookup: site[portalLookupByOriginalKey],
         sitePortals: site.portals,
-        eventType: siteEventType,
+        brandId: siteBrandId,
         geocode: site.geocode,
         fullEvent: true,
     });
 
-    if (seriesEventConfig && seriesEventConfig.shards.waves && seriesEventConfig.shards.waves.length > 1) {
+    if (shardMechanic && shardMechanic.waves && shardMechanic.waves.length > 1) {
         site.waves = [];
 
-        seriesEventConfig.shards.waves.forEach((wave) => {
-            const waveStart = createWaveDate(site.geocode.date, site.geocode.timezone, wave.startTime)
-            const waveEnd = createWaveDate(site.geocode.date, site.geocode.timezone, wave.endTime);
+        const isoPart = site.geocode.date.split('[')[0];
+        const baseline = DateTime.fromISO(isoPart, { zone: site.geocode.timezone });
+
+        shardMechanic.waves.forEach((wave, index) => {
+            const waveStart = baseline.plus({ minutes: wave.startOffset }).toJSDate();
+            // endOffset is inclusive of the minute, so we look until the start of the next minute
+            const waveEnd = baseline.plus({ minutes: wave.endOffset + 1 }).toJSDate();
 
             const waveFragments = fragments.filter(fragment => {
                 const spawnTime = getFragmentSpawnTimeMs(fragment);
-                return spawnTime >= waveStart.getTime() && spawnTime <= waveEnd.getTime();
+                return spawnTime >= waveStart.getTime() && spawnTime < waveEnd.getTime();
             });
+
+            // Apply site-specific wave quantity override if provided
+            const expectedQuantity = (siteConfig?.shardCounts && siteConfig.shardCounts[index] !== undefined)
+                ? siteConfig.shardCounts[index]
+                : wave.quantity;
+
             const waveViewData = processFragments({
                 fragments: waveFragments,
                 portalLookup: site[portalLookupByOriginalKey],
                 sitePortals: site.portals,
-                eventType: siteEventType,
+                brandId: siteBrandId,
                 geocode: site.geocode,
                 fullEvent: false,
+                expectedQuantity: expectedQuantity,
             });
             site.waves.push(waveViewData);
         });
@@ -196,8 +238,8 @@ export function processSite(site, fragments, seriesConfig) {
     return site;
 }
 
-function processFragments({ fragments, portalLookup, sitePortals, eventType, geocode, fullEvent }) {
-    const location = geocode.location;
+function processFragments({ fragments, portalLookup, sitePortals, brandId, geocode, fullEvent }) {
+    const siteName = geocode.name;
     const viewData = {
         shards: [],
         shardPaths: {},
@@ -266,19 +308,19 @@ function processFragments({ fragments, portalLookup, sitePortals, eventType, geo
                 }
                 case HISTORY_REASONS.JUMP: {
                     if (historyItem.linkCreationTimeMs) {
-                        console.log(`⚠️  Shard ${shardId} (${location}) should random jump, but has a link time. Could this be a link jump instead?`);
+                        console.log(`⚠️  Shard ${shardId} (${siteName}) should random jump, but has a link time. Could this be a link jump instead?`);
                         continue;
                     }
 
                     if (!originPortalKey || !destPortalKey) {
-                        console.log(`⚠️  Missing portal info for JUMP history item in shardId ${shardId} (${location}).`);
+                        console.log(`⚠️  Missing portal info for JUMP history item in shardId ${shardId} (${siteName}).`);
                         continue;
                     }
 
                     const originPortalObj = sitePortals[originPortalId];
                     const destPortalObj = sitePortals[destPortalId];
                     if (!originPortalObj || !destPortalObj) {
-                        console.log(`❌ Could not find portal objects for IDs ${originPortalId} or ${destPortalId} at site ${location}.`);
+                        console.log(`❌ Could not find portal objects for IDs ${originPortalId} or ${destPortalId} at site ${siteName}.`);
                         continue;
                     }
 
@@ -321,12 +363,12 @@ function processFragments({ fragments, portalLookup, sitePortals, eventType, geo
                 }
                 case HISTORY_REASONS.LINK: {
                     if (!historyItem.linkCreationTimeMs) {
-                        console.log(`⚠️  Missing link creation time for shard ${shardId} (${location}). Could this be a random jump instead?`);
+                        console.log(`⚠️  Missing link creation time for shard ${shardId} (${siteName}). Could this be a random jump instead?`);
                         continue;
                     }
 
                     if (!originPortalKey || !destPortalKey) {
-                        console.log(`⚠️  Missing portal info for LINK history item in shardId ${shardId} (${location}).`);
+                        console.log(`⚠️  Missing portal info for LINK history item in shardId ${shardId} (${siteName}).`);
                         continue;
                     }
                     if (historyItem.linkCreatorTeam !== historyItem.originPortalInfo.team || historyItem.linkCreatorTeam !== historyItem.destinationPortalInfo.team) {
@@ -338,7 +380,7 @@ function processFragments({ fragments, portalLookup, sitePortals, eventType, geo
                                 dest: getAbbreviatedTeam(historyItem.destinationPortalInfo.team),
                             }
                             console.log(
-                                `⚠️ Shard ${shardId} (${location}) alignment mismatch at ${localTime}:`, teamInfo);
+                                `⚠️ Shard ${shardId} (${siteName}) alignment mismatch at ${localTime}:`, teamInfo);
                         }
                     }
 
@@ -346,7 +388,7 @@ function processFragments({ fragments, portalLookup, sitePortals, eventType, geo
                     const originPortalObj = sitePortals[originPortalId];
                     const destPortalObj = sitePortals[destPortalId];
                     if (!originPortalObj || !destPortalObj) {
-                        console.error(`❌ Could not find portal objects for IDs ${originPortalId} or ${destPortalId} at site ${location}.`);
+                        console.error(`❌ Could not find portal objects for IDs ${originPortalId} or ${destPortalId} at site ${siteName}.`);
                         continue;
                     }
 
@@ -357,7 +399,8 @@ function processFragments({ fragments, portalLookup, sitePortals, eventType, geo
 
                     let points = 0;
                     if (allowFurtherPoints) {
-                        const linkRule = getLinkRule(linkScoringRules.get(SHARD_EVENT_TYPE[eventType]), distance);
+                        const brandRules = linkScoringRules.get(brandId);
+                        const linkRule = getLinkRule(brandRules, distance);
                         if (linkRule) {
                             points = linkRule.jumpPoints + linkRule.linkLengthPoints;
                             allowFurtherPoints = linkRule.allowFurtherPoints;
@@ -515,6 +558,9 @@ function createPortalForSite(site, originalPortalKey, portalInfo) {
 }
 
 function getLinkRule(rules, distance) {
+    if (!rules || !rules.rules) {
+        return null;
+    }
     for (const rule of rules.rules) {
         if (distance >= rule.minDistance && distance < rule.maxDistance) {
             return rule;
