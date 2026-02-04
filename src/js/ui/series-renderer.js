@@ -67,7 +67,7 @@ function renderSeriesLayer(seriesId) {
             }
             const siteUrl = `#/${seriesId}/${site.id.replace(seriesId + "-", "")}`;
             addEventInteraction(siteMarker, 'click', () => { navigate(siteUrl); });
-        } else if (new Date(site.date).getTime() < nowDate.getTime()) {
+        } else if (new Date(site.date.split("[")[0]).getTime() < nowDate.getTime()) {
             siteTooltip += `<em>No data available</em>`;
         }
         siteMarker.bindTooltip(siteTooltip, { permanent: false });
