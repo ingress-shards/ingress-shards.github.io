@@ -49,7 +49,7 @@ L.Control.DetailsPanel = L.Control.extend({
     update: function ({ title = this.options.title, content = '', footer = '' }) {
         this._title.innerHTML = `<h4>${title}</h4>`;
         this._content.innerHTML = content;
-        this._footer.innerHTML = `${footer}<div class="app-version">v${__APP_VERSION__}</div>`;
+        this._footer.innerHTML = `${footer}<div class="app-version"><a href="https://github.com/neon-ninja/shards/releases" target="ism-releases">v${__APP_VERSION__}</a></div>`;
     },
 
     clear: function () {
