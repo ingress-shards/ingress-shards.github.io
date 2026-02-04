@@ -3,6 +3,7 @@ import { processSeriesData } from './shard-data-processor.js';
 import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from './shard-data-helpers.js';
 import { haversineDistance } from "../shared/math-helpers.js";
 import { formatEpochToSerializationString, isWithin24Hours } from '../shared/date-helpers.js';
+import eventBlueprints from '../../../conf/event_blueprints.json' with { type: 'json' };
 
 const siteCounter = Symbol("siteCounter");
 const rawFragments = Symbol("rawFragments");
@@ -16,8 +17,9 @@ self.onmessage = function (event) {
         const rawDataMap = {}; rawDataMap['shardJumpTimes'] = [parsedData];
         const customGeocode = getCustomGeocode({ fileName: customFile.fileName, parsedData });
         const seriesDataPackage = {
-            config: {},
+            config: { name: 'Custom Series' },
             geocode: customGeocode,
+            blueprints: eventBlueprints,
             rawData: rawDataMap,
         }
         const processedData = processSeriesData(seriesDataPackage);
@@ -68,9 +70,9 @@ function getCustomGeocode({ fileName, parsedData }) {
                     id: siteId,
                     lat: fragmentCoords.latitude,
                     lng: fragmentCoords.longitude,
-                    type: 'UNKNOWN',
+                    brand: 'UNKNOWN',
                     date: formatEpochToSerializationString(fragmentSpawnTimeMs),
-                    location: `${fileName}-${customGeocode[siteCounter]}`,
+                    name: `${fileName}-${customGeocode[siteCounter]}`,
 
                     [rawFragments]: []
                 };
@@ -81,7 +83,7 @@ function getCustomGeocode({ fileName, parsedData }) {
         }
     }
     for (const site of customGeocode.sites) {
-        site.type = site[rawFragments].length > 1 ? 'MULTIPLE_SHARDS' : 'SINGLE_SHARD';
+        site.brand = site[rawFragments].length > 1 ? 'MULTIPLE_SHARDS' : 'SINGLE_SHARD';
         const centroid = calculateCentroid(site[rawFragments]);
         site.lat = centroid.lat;
         site.lng = centroid.lng;
