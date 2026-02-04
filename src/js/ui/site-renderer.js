@@ -1,5 +1,5 @@
 import * as L from "leaflet";
-import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, SHARD_EVENT_TYPE, RANDOM_TELEPORT_COLOR } from "../constants.js";
+import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, EVENT_BRANDS, RANDOM_TELEPORT_COLOR } from "../constants.js";
 import shardIconUrl from '../../assets/abaddon1_shard.png';
 import { getSiteData, getSeriesMetadata, getSeriesGeocode } from "../data/data-store.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
@@ -367,7 +367,7 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     const siteGeocode = getSeriesGeocode(seriesId)?.sites[siteId];
     const siteData = getSiteData(seriesId, siteId);
 
-    let content = `Date: ${formatIsoToShortDate(siteGeocode.date, siteGeocode.timezone)}<br />Type: ${SHARD_EVENT_TYPE[siteGeocode.type].name}<br />`;
+    let content = `Date: ${formatIsoToShortDate(siteGeocode.date, siteGeocode.timezone)}<br />Type: ${EVENT_BRANDS[siteGeocode.brand].name}<br />`;
 
     const totalShards = siteData.fullEvent.counters.shards.nonMoving + siteData.fullEvent.counters.shards.moving;
     if (totalShards > 1) {
@@ -385,7 +385,7 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     const flagHtml = siteGeocode?.country_code ? getFlagTooltipHtml(siteGeocode?.country_code.toLowerCase()) : '';
 
     return {
-        title: `${seriesMetadata?.name}: ${flagHtml} ${siteGeocode?.location} Details`,
+        title: `${seriesMetadata?.name}: ${flagHtml} ${siteGeocode?.name} Details`,
         content
     };
 }
@@ -413,17 +413,26 @@ export function getScoresText({ seriesId, siteId, waveId, siteData, type = 'full
 }
 
 function renderSimpleScores(scores) {
-    return `<span style="color:${FACTION_COLORS.RES}">${scores.RES}</span>:<span style="color:${FACTION_COLORS.ENL}">${scores.ENL}</span>:<span style="color:${FACTION_COLORS.MAC}">${scores.MAC}</span>`;
+    let html = `<span style="color:${FACTION_COLORS.RES}">${scores.RES}</span>:<span style="color:${FACTION_COLORS.ENL}">${scores.ENL}</span>`;
+    if (scores.MAC > 0) {
+        html += `:<span style="color:${FACTION_COLORS.MAC}">${scores.MAC}</span>`;
+    }
+    return html;
 }
 
 function renderFullScores(scores) {
-    return `<span style="color:${FACTION_COLORS.RES}">RES: ${scores.RES} </span>
-            <span style="color:${FACTION_COLORS.ENL}">ENL: ${scores.ENL} </span>
-            <span style="color:${FACTION_COLORS.MAC}">MAC: ${scores.MAC}</span>`;
+    let html = `<span style="color:${FACTION_COLORS.RES}">RES: ${scores.RES} </span>
+            <span style="color:${FACTION_COLORS.ENL}">ENL: ${scores.ENL} </span>`;
+    if (scores.MAC > 0) {
+        html += `<span style="color:${FACTION_COLORS.MAC}">MAC: ${scores.MAC}</span>`;
+    }
+    return html;
 }
 
 function renderTableScores(waves, totalScores, activeWaveId) {
     if (!waves || waves.length <= 1) return renderFullScores(totalScores);
+
+    const hasMachinaScores = totalScores.MAC > 0 || waves.some(wave => wave.scores.MAC > 0);
 
     let scoresHtml = `<table class='ingress-event-scores'>
         <thead>
@@ -431,7 +440,7 @@ function renderTableScores(waves, totalScores, activeWaveId) {
                 <th>Wave</th>
                 <th class='faction-RES'>RES</th>
                 <th class='faction-ENL'>ENL</th>
-                <th class='faction-MAC'>MAC</th>
+                ${hasMachinaScores ? `<th class='faction-MAC'>MAC</th>` : ''}
             </tr>
         </thead>
         <tbody>`;
@@ -443,7 +452,7 @@ function renderTableScores(waves, totalScores, activeWaveId) {
             <th>${waveNumber}</th>
             <td>${wave.scores.RES}</td>
             <td>${wave.scores.ENL}</td>
-            <td>${wave.scores.MAC}</td>
+            ${hasMachinaScores ? `<td>${wave.scores.MAC}</td>` : ''}
         </tr>`;
     });
 
@@ -453,7 +462,7 @@ function renderTableScores(waves, totalScores, activeWaveId) {
                 <th>Total</th>
                 <td class='faction-RES'>${totalScores.RES}</td>
                 <td class='faction-ENL'>${totalScores.ENL}</td>
-                <td class='faction-MAC'>${totalScores.MAC}</td>
+                ${hasMachinaScores ? `<td class='faction-MAC'>${totalScores.MAC}</td>` : ''}
             </tr>
         </tfoot>
     </table>`;
