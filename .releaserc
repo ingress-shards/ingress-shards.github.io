@@ -5,6 +5,10 @@
         {
             "name": "feat/*",
             "prerelease": "alpha"
+        },
+        {
+            "name": "fix/*",
+            "prerelease": "alpha"
         }
     ],
     "plugins": [
