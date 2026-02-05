@@ -18,13 +18,6 @@ export default (env, { appVersion }) => {
         module: {
             rules: [
                 {
-                    test: path.resolve(__dirname, 'src/js/data/json-parser-worker.js'),
-                    type: 'asset/resource',
-                    generator: {
-                        filename: 'workers/[name][ext]',
-                    },
-                },
-                {
                     test: /\.css$/,
                     include: [
                         resolvePackage('flag-icon-css')
