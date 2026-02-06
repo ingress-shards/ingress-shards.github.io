@@ -19,7 +19,14 @@ export async function processSingleFile(customFile) {
     reader.onload = async function (e) {
         const localRawJsonString = e.target.result;
 
-        const jsonParserWorker = new Worker(new URL('../data/json-parser-worker.js', import.meta.url), { type: "module" });
+        const jsonParserWorker = new Worker(
+            new URL(
+                /* webpackChunkName: "json-parser.worker" */
+                '../data/json-parser-worker.js',
+                import.meta.url
+            ),
+            { type: "module" }
+        );
         jsonParserWorker.postMessage({
             seriesId: CUSTOM_SERIES_ID,
             customFile: {
