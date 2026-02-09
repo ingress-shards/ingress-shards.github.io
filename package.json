@@ -1,6 +1,6 @@
 {
     "name": "ingress-shards-map",
-    "version": "0.0.0-semantically-released",
+    "version": "1.0.0",
     "description": "Interactive map of shard data from Ingress events",
     "author": {
         "name": "Nick Young"
