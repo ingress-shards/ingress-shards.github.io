@@ -84,6 +84,7 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
   - `BREAKING CHANGE:` in footer triggers a **major** version bump (e.g., 1.16.0 → 2.0.0)
   - `refactor:`, `ci:`, `docs(README):` trigger **patch** bumps (custom rules in `.releaserc`)
   - Other types like `chore:`, `docs:`, `style:`, `test:` do NOT trigger releases
+  - **To manually trigger a release:** Use `fix:` for a patch, `feat:` for minor, or commit with `BREAKING CHANGE:` footer for major
 - **Finding current version:** Always check git tags with `git fetch --tags && git tag --list | tail -5` to see the latest released version
 - **Branch strategy:**
   - `main` branch: stable releases
