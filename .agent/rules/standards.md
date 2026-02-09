@@ -71,12 +71,13 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
 
 ## Version Management & Releases
 
-- **Semantic Release:** This project uses [semantic-release](https://github.com/semantic-release/semantic-release) for automated version management and package publishing.
+- **Semantic Release:** This project uses [semantic-release](https://github.com/semantic-release/semantic-release) for automated version management and publishing.
 - **How it works:**
   - Versions are automatically determined based on commit messages following [Conventional Commits](https://www.conventionalcommits.org/)
   - The semantic-release workflow runs on CI after merges to `main` branch
-  - **NEVER manually edit the version in `package.json`** - semantic-release manages this automatically
-  - The current version is tracked via git tags (e.g., `v1.16.1`)
+  - Version tracking is done via **git tags** (e.g., `v1.16.1`) - this is the source of truth for versions
+  - **IMPORTANT:** `package.json` version should remain as `0.0.0-semantically-released` (placeholder) because `npmPublish: false` is configured
+  - The version in package.json is NOT updated by semantic-release when npmPublish is disabled
 - **Commit message format:**
   - `feat:` triggers a **minor** version bump (e.g., 1.16.0 → 1.17.0)
   - `fix:` triggers a **patch** version bump (e.g., 1.16.0 → 1.16.1)
