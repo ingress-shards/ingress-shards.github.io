@@ -1,7 +1,7 @@
 import { merge } from 'webpack-merge';
 import common, { packageJson } from './webpack.common.js';
 
-const REPO_NAME = '/shards/';
+const REPO_NAME = '/';
 
 export default (env) => {
     return merge(common(env, { appVersion: packageJson.version }), {
