@@ -9,13 +9,13 @@
         "Lewis Keen"
     ],
     "license": "MIT",
-    "homepage": "https://neon-ninja.github.io/shards/",
+    "homepage": "https://ingress-shards.github.io/",
     "repository": {
         "type": "git",
-        "url": "https://github.com/neon-ninja/shards.git"
+        "url": "https://github.com/ingress-shards/ingress-shards.github.io.git"
     },
     "bugs": {
-        "url": "https://github.com/neon-ninja/shards/issues"
+        "url": "https://github.com/ingress-shards/ingress-shards.github.io/issues"
     },
     "type": "module",
     "private": true,

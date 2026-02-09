@@ -8,13 +8,13 @@ Leaflet map of Ingress shard data. This consists of the following data:
 
 Displays the sites of shard events for a particular series.
 
-[<img src="docs/assets/shard-series.png">](https://neon-ninja.github.io/shards)
+[<img src="docs/assets/shard-series.png">](https://ingress-shards.github.io/)
 
 ## Site View
 
 Displays the detail of an individual shard site. Sites with multiple shards can be filtered on a per wave basis.
 
-[<img src="docs/assets/shard-site.png">](https://neon-ninja.github.io/shards)
+[<img src="docs/assets/shard-site.png">](https://ingress-shards.github.io/)
 
 ## Assumptions made
 
@@ -40,6 +40,6 @@ In order to ensure that new data is included on the shard map, the following con
 
 The configuration of the shards are available at the following locations:
 
--   [Series metadata](https://neon-ninja.github.io/shards/public/conf/series_metadata.json)
--   [Series geocode](https://neon-ninja.github.io/shards/public/conf/series_geocode.json)
--   [Map version](https://neon-ninja.github.io/shards/public/conf/version.json) (used to check for configuration updates)
+-   [Series metadata](https://ingress-shards.github.io/public/conf/series_metadata.json)
+-   [Series geocode](https://ingress-shards.github.io/public/conf/series_geocode.json)
+-   [Map version](https://ingress-shards.github.io/public/conf/version.json) (used to check for configuration updates)
