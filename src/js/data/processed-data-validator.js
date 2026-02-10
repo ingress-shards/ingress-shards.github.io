@@ -28,12 +28,10 @@ function validateSites(processedSites, seriesConfig, blueprints) {
                     return sum + waveTotal;
                 }, 0) || 0;
 
-            if (totalShards > 0 || totalTargets > 0) {
-                seriesValidation.brandConfigs[componentConfig.brand] = {
-                    totalShards,
-                    totalTargets,
-                };
-            }
+            seriesValidation.brandConfigs[componentConfig.brand] = {
+                totalShards,
+                totalTargets,
+            };
         });
     }
 
