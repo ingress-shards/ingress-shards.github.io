@@ -184,6 +184,22 @@ function setupEventListeners(map) {
         }
     });
 
+    document.addEventListener('click', (e) => {
+        const target = e.target.closest('tr');
+        if (target && 
+            target.closest('table.ingress-event-scores') &&
+            target.dataset.seriesId && 
+            target.dataset.siteId) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const { seriesId, siteId, waveId } = target.dataset;
+            // If waveId exists (tbody row), navigate to specific wave, otherwise navigate to all waves (thead/tfoot)
+            const url = waveId ? `#/${seriesId}/${siteId}/${waveId}` : `#/${seriesId}/${siteId}`;
+            navigate(url);
+        }
+    });
+
     document.addEventListener('change', (e) => {
         const target = e.target.closest(`#${CUSTOM_SERIES_ID}-file-input`);
         if (target) {
