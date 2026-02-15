@@ -49,16 +49,17 @@ jobs:
               run: npx semantic-release --repository-url "https://github.com/${{ github.repository }}.git"
 
             - name: Upload Pages Artifact
-              if: steps.semantic.outputs.new-release-published == 'true'
+              if: steps.semantic.outputs.new-release-published == 'true' || github.event_name == 'workflow_dispatch'
               uses: actions/upload-pages-artifact@v3
               with:
                   path: "./dist"
         outputs:
             new-release-published: ${{ steps.semantic.outputs.new-release-published }}
+            is-manual-trigger: ${{ github.event_name == 'workflow_dispatch' }}
 
     deploy_pages:
         needs: [release]
-        if: needs.release.outputs.new-release-published == 'true'
+        if: needs.release.outputs.new-release-published == 'true' || needs.release.outputs.is-manual-trigger == 'true'
         runs-on: ubuntu-latest
         environment:
             name: github-pages
