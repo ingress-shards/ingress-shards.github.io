@@ -438,7 +438,7 @@ function renderTableScores(waves, totalScores, activeWaveId, seriesId, siteId) {
 
     let scoresHtml = `<table class='ingress-event-scores'>
         <thead>
-            <tr>
+            <tr data-series-id="${seriesId}" data-site-id="${siteNavigationId}">
                 <th>Wave</th>
                 <th class='faction-RES'>RES</th>
                 <th class='faction-ENL'>ENL</th>
@@ -461,7 +461,7 @@ function renderTableScores(waves, totalScores, activeWaveId, seriesId, siteId) {
 
     scoresHtml += `</tbody>
         <tfoot>
-            <tr>
+            <tr data-series-id="${seriesId}" data-site-id="${siteNavigationId}">
                 <th>Total</th>
                 <td class='faction-RES'>${totalScores.RES}</td>
                 <td class='faction-ENL'>${totalScores.ENL}</td>

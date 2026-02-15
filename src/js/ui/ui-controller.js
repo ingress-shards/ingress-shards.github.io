@@ -187,15 +187,16 @@ function setupEventListeners(map) {
     document.addEventListener('click', (e) => {
         const target = e.target.closest('tr');
         if (target && 
-            target.closest('table.ingress-event-scores tbody') &&
+            target.closest('table.ingress-event-scores') &&
             target.dataset.seriesId && 
-            target.dataset.siteId && 
-            target.dataset.waveId) {
+            target.dataset.siteId) {
             e.preventDefault();
             e.stopPropagation();
 
             const { seriesId, siteId, waveId } = target.dataset;
-            navigate(`#/${seriesId}/${siteId}/${waveId}`);
+            // If waveId exists (tbody row), navigate to specific wave, otherwise navigate to all waves (thead/tfoot)
+            const url = waveId ? `#/${seriesId}/${siteId}/${waveId}` : `#/${seriesId}/${siteId}`;
+            navigate(url);
         }
     });
 
