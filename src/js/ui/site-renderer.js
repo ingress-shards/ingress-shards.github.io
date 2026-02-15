@@ -433,7 +433,8 @@ function renderTableScores(waves, totalScores, activeWaveId, seriesId, siteId) {
     if (!waves || waves.length <= 1) return renderFullScores(totalScores);
 
     const hasMachinaScores = totalScores.MAC > 0 || waves.some(wave => wave.scores.MAC > 0);
-    const siteNavigationId = siteId.replace(seriesId + "-", "");
+    const prefix = seriesId + "-";
+    const siteNavigationId = siteId.startsWith(prefix) ? siteId.substring(prefix.length) : siteId;
 
     let scoresHtml = `<table class='ingress-event-scores'>
         <thead>

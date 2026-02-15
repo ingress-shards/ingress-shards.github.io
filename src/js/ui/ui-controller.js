@@ -185,8 +185,12 @@ function setupEventListeners(map) {
     });
 
     document.addEventListener('click', (e) => {
-        const target = e.target.closest('table.ingress-event-scores > tbody > tr');
-        if (target && target.dataset.seriesId && target.dataset.siteId && target.dataset.waveId) {
+        const target = e.target.closest('tr');
+        if (target && 
+            target.closest('table.ingress-event-scores tbody') &&
+            target.dataset.seriesId && 
+            target.dataset.siteId && 
+            target.dataset.waveId) {
             e.preventDefault();
             e.stopPropagation();
 
