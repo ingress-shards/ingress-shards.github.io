@@ -406,7 +406,7 @@ export function getScoresText({ seriesId, siteId, waveId, siteData, type = 'full
             case 'full':
                 return renderFullScores(fullEventScores);
             case 'table':
-                return renderTableScores(siteData.waves, fullEventScores, waveId);
+                return renderTableScores(siteData.waves, fullEventScores, waveId, seriesId, siteId);
         }
     }
     return '';
@@ -429,10 +429,11 @@ function renderFullScores(scores) {
     return html;
 }
 
-function renderTableScores(waves, totalScores, activeWaveId) {
+function renderTableScores(waves, totalScores, activeWaveId, seriesId, siteId) {
     if (!waves || waves.length <= 1) return renderFullScores(totalScores);
 
     const hasMachinaScores = totalScores.MAC > 0 || waves.some(wave => wave.scores.MAC > 0);
+    const siteNavigationId = siteId.replace(seriesId + "-", "");
 
     let scoresHtml = `<table class='ingress-event-scores'>
         <thead>
@@ -447,8 +448,9 @@ function renderTableScores(waves, totalScores, activeWaveId) {
 
     waves.forEach((wave, index) => {
         const waveNumber = index + 1;
-        const isHighlighted = activeWaveId === `wave-${waveNumber}`;
-        scoresHtml += `<tr${isHighlighted ? ' class="highlight"' : ''}>
+        const waveId = `wave-${waveNumber}`;
+        const isHighlighted = activeWaveId === waveId;
+        scoresHtml += `<tr${isHighlighted ? ' class="highlight"' : ''} data-series-id="${seriesId}" data-site-id="${siteNavigationId}" data-wave-id="${waveId}">
             <th>${waveNumber}</th>
             <td>${wave.scores.RES}</td>
             <td>${wave.scores.ENL}</td>

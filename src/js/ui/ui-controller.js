@@ -184,6 +184,17 @@ function setupEventListeners(map) {
         }
     });
 
+    document.addEventListener('click', (e) => {
+        const target = e.target.closest('table.ingress-event-scores > tbody > tr');
+        if (target && target.dataset.seriesId && target.dataset.siteId && target.dataset.waveId) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const { seriesId, siteId, waveId } = target.dataset;
+            navigate(`#/${seriesId}/${siteId}/${waveId}`);
+        }
+    });
+
     document.addEventListener('change', (e) => {
         const target = e.target.closest(`#${CUSTOM_SERIES_ID}-file-input`);
         if (target) {
