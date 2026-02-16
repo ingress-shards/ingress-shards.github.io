@@ -3,7 +3,8 @@ import eventBlueprints from "../../conf/event_blueprints.json" with { type: "jso
 export const INGRESS_INTEL_PORTAL_LINK = 'https://intel.ingress.com/intel?pll='
 
 // Direct reference to blueprint brands
-export const EVENT_BRANDS = eventBlueprints.brands;
+export const EVENT_BRANDS = eventBlueprints.branding.events;
+export const ORNAMENT_BRANDS = eventBlueprints.branding.ornaments;
 export const TEAM_ABBREVIATIONS = {
     "RESISTANCE": "RES",
     "ENLIGHTENED": "ENL",
@@ -18,7 +19,10 @@ export const FACTION_COLORS = {
     NOT_SPECIFIED: "#FF6600",
     undefined: "#FF6600",
 };
-export const RANDOM_TELEPORT_COLOR = "#FFCC00";
+export const TIE_COLOR = "#AF00FF";
+export const SIGNAL_COLOR = "#FFCC00";
+export const NO_DATA_COLOR = "#777777";
+export const ORNAMENT_ONLY_COLOR = "#BDBDBD";
 export const HISTORY_REASONS = {
     SPAWN: "spawn",
     NO_MOVE: "no move",
@@ -36,4 +40,5 @@ export function getAbbreviatedTeam(fullTeamName) {
 
 export const FILE_PATTERNS = [
     { type: 'shardJumpTimes', pattern: /^shard-jump-times.*\.json$/i },
+    { type: 'ornamentedPortals', pattern: /^ornamented-portals.*\.json$/i },
 ];
