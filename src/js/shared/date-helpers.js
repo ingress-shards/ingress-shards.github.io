@@ -96,3 +96,69 @@ export function createWaveDate(siteDateIso, siteTimezone, timeStr) {
     // 3. Convert back to a native Date object for use in the rest of your application.
     return waveDateTime.toJSDate();
 }
+
+/**
+ * Calculates the time remaining until a site starts and returns a formatted string.
+ * - > 24 hours: "X days"
+ * - < 24 hours: "X hours"
+ * - < 60 minutes: "X minutes"
+ * Returns null if the event has already started.
+ */
+export function getTimeRemaining(siteDateIso, siteTimezone) {
+    const isoPart = siteDateIso.split('[')[0];
+    const startTime = DateTime.fromISO(isoPart, { zone: siteTimezone });
+    const now = DateTime.now().setZone(siteTimezone);
+
+    if (startTime <= now) {
+        return null;
+    }
+
+    const totalMinutes = startTime.diff(now, 'minutes').minutes;
+    const totalHours = startTime.diff(now, 'hours').hours;
+    const totalDays = startTime.diff(now, 'days').days;
+
+    if (totalDays >= 1) {
+        const days = Math.floor(totalDays);
+        return `${days} day${days === 1 ? '' : 's'}`;
+    }
+
+    if (totalHours >= 1) {
+        const hours = Math.floor(totalHours);
+        return `${hours} hour${hours === 1 ? '' : 's'}`;
+    }
+
+    if (totalMinutes >= 1) {
+        const minutes = Math.floor(totalMinutes);
+        return `${minutes} minute${minutes === 1 ? '' : 's'}`;
+    }
+
+    return 'less than a minute';
+}
+
+/**
+ * Calculates the remaining time for an active event.
+ * @param {string} siteDateIso - The start date of the site.
+ * @param {string} siteTimezone - The timezone of the site.
+ * @param {number} durationMins - The total duration of the event in minutes.
+ * @returns {string|null} Formatted string "X hours Y minutes" or null if not active.
+ */
+export function getActiveEventRemaining(siteDateIso, siteTimezone, durationMins) {
+    const isoPart = siteDateIso.split('[')[0];
+    const startTime = DateTime.fromISO(isoPart, { zone: siteTimezone });
+    const endTime = startTime.plus({ minutes: durationMins });
+    const now = DateTime.now().setZone(siteTimezone);
+
+    if (now < startTime || now > endTime) {
+        return null;
+    }
+
+    const diff = endTime.diff(now, ['hours', 'minutes']).toObject();
+    const hours = Math.floor(diff.hours || 0);
+    const minutes = Math.floor(diff.minutes || 0);
+
+    const parts = [];
+    if (hours > 0) parts.push(`${hours} hour${hours === 1 ? '' : 's'}`);
+    if (minutes > 0 || parts.length === 0) parts.push(`${minutes} minute${minutes === 1 ? '' : 's'}`);
+
+    return parts.join(' ');
+}
