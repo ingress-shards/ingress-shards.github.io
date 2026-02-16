@@ -133,6 +133,10 @@ export default (env, { appVersion }) => {
                         from: path.resolve(__dirname, 'docs/assets/shard-site.png'),
                         to: 'images/',
                     },
+                    {
+                        from: path.resolve(__dirname, 'src/images/ornament-icons'),
+                        to: 'images/ornament-icons',
+                    },
                 ]
             }),
             {

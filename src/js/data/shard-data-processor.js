@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 import { HISTORY_REASONS, SITE_AGGREGATION_DISTANCE, getAbbreviatedTeam } from "../constants.js";
-import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from "./shard-data-helpers.js";
+import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs, getPortalKey } from "./shard-data-helpers.js";
 import { haversineDistance } from "../shared/math-helpers.js";
 import { formatEpochToLocalTime, isWithin24Hours } from "../shared/date-helpers.js";
 
@@ -104,10 +104,41 @@ export const linkScoringRules = new Map()
 
 export function processSeriesData(seriesDataPackage) {
     const { config, geocode, blueprints, rawData } = seriesDataPackage;
-    const sitesGeocode = geocode.sites;
-    const { shardJumpTimes } = rawData;
-
     console.log(`ℹ️ Processing series ${config.name}:`);
+    const sitesGeocode = geocode.sites;
+
+    const { shardJumpTimes, ornamentedPortals } = rawData;
+    console.log(`ℹ️ Processing ${shardJumpTimes.length} shard jump times files and ${ornamentedPortals?.length || 0} ornamented portals files.`);
+
+    const allObservedOrnamentedPortals = ornamentedPortals?.flatMap(exportObj =>
+        exportObj.portals.map(p => ({ ...p, observedAt: DateTime.fromISO(exportObj.timestamp).toMillis() }))
+    ) || [];
+
+    const ornamentsBySite = new Map();
+    if (allObservedOrnamentedPortals.length > 0) {
+        const loggedAmbiguous = new Set();
+        for (const o of allObservedOrnamentedPortals) {
+            const matches = sitesGeocode.filter(site => {
+                const distance = haversineDistance(
+                    { latitude: o.lat, longitude: o.lng },
+                    { latitude: site.lat, longitude: site.lng }
+                );
+                return distance <= SITE_AGGREGATION_DISTANCE;
+            });
+
+            if (matches.length === 1) {
+                const siteId = matches[0].id;
+                if (!ornamentsBySite.has(siteId)) ornamentsBySite.set(siteId, []);
+                ornamentsBySite.get(siteId).push(o);
+            } else if (matches.length > 1) {
+                const portalKey = `${o.title}@${o.lat},${o.lng}`;
+                if (!loggedAmbiguous.has(portalKey)) {
+                    console.error(`❌ Ornament "${o.title}" at ${o.lat}, ${o.lng} matches multiple sites: ${matches.map(m => m.name).join(', ')}. Skipping.`);
+                    loggedAmbiguous.add(portalKey);
+                }
+            }
+        }
+    }
 
     const allSites = {};
     sitesGeocode.forEach(siteGeocode => {
@@ -166,19 +197,41 @@ export function processSeriesData(seriesDataPackage) {
         }
     }
 
-    const processedSites = Array.from(siteFragmentsMap.entries()).map(([siteId, fragments]) =>
-        processSite(allSites[siteId], fragments, config, blueprints)
-    );
+    const processedSites = Object.keys(allSites).map((siteId) => {
+        const site = allSites[siteId];
+        const fragments = siteFragmentsMap.get(siteId) || [];
+
+        // Spatial Discovery:
+        // Match ornaments assigned to this site during pre-grouping
+        const siteOrnamentedPortals = ornamentsBySite.get(siteId) || [];
+
+        if (fragments.length === 0 && siteOrnamentedPortals.length === 0) {
+            return null;
+        }
+
+        return processSite(site, siteOrnamentedPortals, fragments, config, blueprints);
+    }).filter(site => site !== null);
 
     const seriesData = Object.fromEntries(processedSites.map(site => [site.geocode.id, site]));
     console.log(`ℹ️ ${Object.keys(seriesData).length} sites processed.\n`);
     return seriesData;
 }
 
-export function processSite(site, fragments, seriesConfig, blueprints) {
-    site.centroid = calculateCentroid(fragments);
-    site.portals = getPortalsFromFragments(site, fragments);
+export function processSite(site, siteOrnamentedPortals, fragments, seriesConfig, blueprints) {
+    if (siteOrnamentedPortals && siteOrnamentedPortals.length > 0) {
+        applyOrnamentedPortalsToSite(site, siteOrnamentedPortals);
+        site.centroid = calculateCentroid(site.portals);
+    }
 
+    if (fragments && fragments.length > 0) {
+        applyFragmentPortalsToSite(site, fragments);
+        applyFragmentsToSite(site, fragments, seriesConfig, blueprints);
+    }
+
+    return site;
+}
+
+function applyFragmentsToSite(site, fragments, seriesConfig, blueprints) {
     const siteBrandId = site.geocode.brand;
     const shardComponents = seriesConfig.shardComponents || [];
     const seriesEventConfig = shardComponents.find(et => et.brand === siteBrandId);
@@ -191,7 +244,7 @@ export function processSite(site, fragments, seriesConfig, blueprints) {
     });
 
     // Resolve blueprints
-    const shardMechanic = seriesEventConfig ? blueprints.shardMechanics[seriesEventConfig.shardMechanics] : null;
+    const shardMechanic = seriesEventConfig ? blueprints.mechanics.shards[seriesEventConfig.shardMechanics] : null;
 
     site.fullEvent = processFragments({
         fragments,
@@ -232,10 +285,15 @@ export function processSite(site, fragments, seriesConfig, blueprints) {
                 fullEvent: false,
                 expectedQuantity: expectedQuantity,
             });
+
+            waveViewData.period = {
+                start: waveStart.getTime(),
+                end: waveEnd.getTime()
+            };
+
             site.waves.push(waveViewData);
         });
     }
-    return site;
 }
 
 function processFragments({ fragments, portalLookup, sitePortals, brandId, geocode, fullEvent }) {
@@ -265,12 +323,8 @@ function processFragments({ fragments, portalLookup, sitePortals, brandId, geoco
         let shard;
         let allowFurtherPoints = true;
         for (const historyItem of fragment.history.sort((a, b) => a.moveTimeMs.localeCompare(b.moveTimeMs))) {
-            const originPortalKey =
-                historyItem.originPortalInfo &&
-                `${historyItem.originPortalInfo.latE6}_${historyItem.originPortalInfo.lngE6}`;
-            const destPortalKey =
-                historyItem.destinationPortalInfo &&
-                `${historyItem.destinationPortalInfo.latE6}_${historyItem.destinationPortalInfo.lngE6}`;
+            const originPortalKey = getPortalKey(historyItem.originPortalInfo);
+            const destPortalKey = getPortalKey(historyItem.destinationPortalInfo);
             const moveTime = historyItem.moveTimeMs;
 
             let originPortalId = originPortalKey && portalLookup[originPortalKey];
@@ -510,32 +564,47 @@ function findSiteForFragment(fragment, sitesGeocode) {
     return matchedSite;
 }
 
-function getPortalsFromFragments(site, fragments) {
-    const portals = {}
+function applyFragmentPortalsToSite(site, fragments) {
     for (const fragment of fragments.sort((a, b) => a.id.localeCompare(b.id))) {
         for (const historyItem of fragment.history.sort((a, b) => a.moveTimeMs.localeCompare(b.moveTimeMs))) {
-            const originPortalKey =
-                historyItem.originPortalInfo &&
-                `${historyItem.originPortalInfo.latE6}_${historyItem.originPortalInfo.lngE6}`;
-            const destPortalKey =
-                historyItem.destinationPortalInfo &&
-                `${historyItem.destinationPortalInfo.latE6}_${historyItem.destinationPortalInfo.lngE6}`;
+            const originPortalKey = getPortalKey(historyItem.originPortalInfo);
+            const destPortalKey = getPortalKey(historyItem.destinationPortalInfo);
 
             if (originPortalKey) {
                 const originPortal = createPortalForSite(site, originPortalKey, historyItem.originPortalInfo);
                 if (originPortal) {
-                    portals[originPortal.id] = originPortal.obj;
+                    site.portals[originPortal.id] = originPortal.obj;
                 }
             }
             if (destPortalKey) {
                 const destPortal = createPortalForSite(site, destPortalKey, historyItem.destinationPortalInfo);
                 if (destPortal) {
-                    portals[destPortal.id] = destPortal.obj;
+                    site.portals[destPortal.id] = destPortal.obj;
                 }
             }
         }
     }
-    return portals;
+}
+
+function applyOrnamentedPortalsToSite(site, siteOrnamentedPortals) {
+    for (const p of siteOrnamentedPortals) {
+        const key = getPortalKey(p);
+
+        let portalId = site[portalLookupByOriginalKey][key];
+        if (portalId === undefined) {
+            const created = createPortalForSite(site, key, p);
+            if (created) {
+                portalId = created.id;
+                site.portals[portalId] = created.obj;
+            }
+        }
+
+        if (portalId !== undefined) {
+            const portalObj = site.portals[portalId];
+            portalObj.ornamentId = p.ornamentId;
+            portalObj.guid = p.guid;
+        }
+    }
 }
 
 function createPortalForSite(site, originalPortalKey, portalInfo) {
@@ -544,12 +613,15 @@ function createPortalForSite(site, originalPortalKey, portalInfo) {
         const portalId = site[portalIdCounter];
         site[portalLookupByOriginalKey][originalPortalKey] = portalId;
 
+        const lat = portalInfo.latE6 !== undefined ? portalInfo.latE6 / 1e6 : portalInfo.lat;
+        const lng = portalInfo.lngE6 !== undefined ? portalInfo.lngE6 / 1e6 : portalInfo.lng;
+
         newPortal = {
             id: portalId,
             obj: {
                 title: portalInfo.title,
-                lat: portalInfo.latE6 / 1e6,
-                lng: portalInfo.lngE6 / 1e6,
+                lat,
+                lng,
             }
         };
         site[portalIdCounter]++;

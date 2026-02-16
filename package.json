@@ -53,6 +53,7 @@
         "github-fork-ribbon-css": "^0.2.3",
         "leaflet": "^1.9.4",
         "leaflet-providers": "^2.0.0",
+        "leaflet-relief": "^1.4.0",
         "leaflet.motion": "github:neon-ninja/leaflet.motion",
         "luxon": "^3.7.2"
     }

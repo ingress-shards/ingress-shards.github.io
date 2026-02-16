@@ -26,20 +26,42 @@ export function getFragmentSpawnTimeMs(fragment) {
     return spawnHistoryItem ? Number(spawnHistoryItem.moveTimeMs) : null;
 }
 
-export function calculateCentroid(fragments) {
+export function calculateCentroid(portalsMap) {
+    const portalIds = Object.keys(portalsMap || {});
+    if (portalIds.length === 0) return null;
+
     let totalLatitude = 0;
     let totalLongitude = 0;
 
-    for (const fragment of fragments) {
-        const coords = getCoordsForFragment(fragment);
-        totalLatitude += coords.latitude;
-        totalLongitude += coords.longitude;
+    for (const id of portalIds) {
+        const portal = portalsMap[id];
+        totalLatitude += portal.lat;
+        totalLongitude += portal.lng;
     }
 
-    const centroid = {
-        lat: truncateToDecimalPlaces(totalLatitude / fragments.length, 6),
-        lng: truncateToDecimalPlaces(totalLongitude / fragments.length, 6),
+    return {
+        lat: truncateToDecimalPlaces(totalLatitude / portalIds.length, 6),
+        lng: truncateToDecimalPlaces(totalLongitude / portalIds.length, 6),
     };
-    return centroid;
+}
+
+/**
+ * Generates a consistent E6 string key for a portal lookup.
+ * Handles both portal objects with lat/lng and those with latE6/lngE6.
+ */
+export function getPortalKey(portal) {
+    if (!portal) return null;
+
+    let latE6, lngE6;
+
+    if (portal.latE6 !== undefined && portal.lngE6 !== undefined) {
+        latE6 = portal.latE6;
+        lngE6 = portal.lngE6;
+    } else {
+        latE6 = Math.round(portal.lat * 1e6);
+        lngE6 = Math.round(portal.lng * 1e6);
+    }
+
+    return `${latE6}_${lngE6}`;
 }
 

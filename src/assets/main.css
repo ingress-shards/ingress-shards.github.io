@@ -70,7 +70,9 @@ hr.tooltip-sub-divider {
 
 .details-panel-header .details-panel-title h4 {
     margin: 0;
-    line-height: 1;
+    line-height: 1.2;
+    text-align: center;
+    width: 100%;
 }
 
 .details-panel-toggle {
@@ -193,23 +195,133 @@ table.ingress-event-scores {
     border-collapse: collapse;
 }
 
-table.ingress-event-scores thead th {
-    text-align: right;
-}
-
-table.ingress-event-scores td {
+table.ingress-event-scores td,
+table.ingress-event-scores th {
     min-width: 40px;
     text-align: right;
     padding: 0 5px;
 }
 
+table.ingress-event-scores thead th {
+    text-align: right;
+}
+
+table.ingress-event-scores tr[data-site-id] {
+    cursor: pointer;
+}
+
+table.ingress-event-scores tr[data-site-id]:hover {
+    background-color: rgba(255, 204, 0, 0.05);
+}
+
 table.ingress-event-scores tr.highlight {
-    background-color: transparent !important;
-    border: 2px solid #00aaff;
-    transition: border 0.2s ease-out;
-    border-radius: 4px;
+    background-color: rgba(255, 204, 0, 0.05) !important;
+    box-shadow: inset 0 0 0 2px var(--color-signal);
+    transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+table.ingress-event-scores tr.highlight:hover {
+    background-color: rgba(255, 204, 0, 0.1) !important;
 }
 
 table.ingress-event-scores tfoot {
     font-weight: bold;
+}
+
+/* Team Color Variables */
+:root {
+    --color-res: #0088ff;
+    --color-enl: #03dc03;
+    --color-neu: #ff6600;
+    --color-signal: #ffcc00;
+    --color-nodata: #777777;
+    --color-tie: #AF00FF;
+}
+
+/* Marker Radar Sweep Animation */
+@keyframes marker-radar-sweep {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.marker-radar-container {
+    position: relative;
+    width: 25px;
+    height: 41px;
+    display: block;
+}
+
+.marker-radar-beam {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background: conic-gradient(from 0deg,
+            rgba(255, 102, 0, 0.7) 0deg,
+            rgba(255, 102, 0, 0.3) 15deg,
+            transparent 25deg);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+    transform-origin: center;
+    animation: marker-radar-sweep var(--radar-speed, 2s) infinite linear;
+}
+
+/* SVG Pin Styling */
+.marker-svg-pin {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+.marker-pin-body {
+    fill: var(--pin-color, #777);
+    stroke: rgba(0, 0, 0, 0.2);
+    stroke-width: 1;
+    transition: fill 0.3s ease;
+}
+
+.marker-pin-inner {
+    fill: var(--pin-inner-color, #fff);
+    transition: fill 0.3s ease;
+}
+
+/* Specific Phase States */
+.is-phase-discovery {
+    --radar-speed: 4s;
+    --pin-color: var(--color-signal);
+}
+
+.is-phase-active {
+    --radar-speed: 1s;
+    --pin-color: var(--color-signal);
+}
+
+.is-phase-nodata {
+    --pin-color: var(--color-nodata);
+}
+
+/* Outcome Branding (Formerly Completed States) */
+.outcome-res {
+    --pin-color: var(--color-res);
+    --pin-inner-color: #fff;
+}
+
+.outcome-enl {
+    --pin-color: var(--color-enl);
+    --pin-inner-color: #fff;
+}
+
+.outcome-tie {
+    --pin-color: var(--color-tie);
+    --pin-inner-color: #fff;
+}
+
+.outcome-none {
+    --pin-color: var(--color-neu);
+    --pin-inner-color: #fff;
 }
