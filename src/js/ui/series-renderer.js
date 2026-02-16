@@ -4,8 +4,11 @@ import { addEventInteraction } from "./event-handler.js";
 import { navigate } from "../router.js";
 import { getScoresText } from "./site-renderer.js";
 import { getSeriesMetadata, getSeriesGeocode, getSiteData, getAllSeriesIds } from "../data/data-store.js";
-import { formatIsoToShortDate } from "../shared/date-helpers.js";
-import { getFlagTooltipHtml } from "./ui-formatters.js"
+import { formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
+import { getFlagTooltipHtml } from "./ui-formatters.js";
+import { DateTime } from "luxon";
+import eventBlueprints from "../../../conf/event_blueprints.json" with { type: "json" };
+import { TACTICAL_MARKER_SVG } from "./marker-template.js";
 
 const seriesLayerCache = new Map();
 
@@ -16,19 +19,58 @@ L.Icon.Default.mergeOptions({
     shadowUrl: 'images/markers/marker-shadow.png',
 });
 
-const SiteIcon = L.Icon.Default.extend({
-    options: {
-        filter: ''
-    },
+function getOutcome(siteData) {
+    const scores = siteData?.fullEvent?.scores;
+    if (!scores) return 'NONE';
+    if (scores.RES > scores.ENL) return 'RES';
+    if (scores.ENL > scores.RES) return 'ENL';
+    if (scores.RES > 0 || scores.ENL > 0) return 'TIE';
+    return 'NONE';
+}
 
-    createIcon: function (oldIcon) {
-        const icon = L.Icon.Default.prototype.createIcon.call(this, oldIcon);
-        if (this.options.filter) {
-            icon.style.filter = this.options.filter;
-        }
-        return icon;
+function getEventDuration(site, seriesId) {
+    const metadata = getSeriesMetadata(seriesId);
+    if (!metadata?.shardComponents) return 240;
+
+    const component = metadata.shardComponents.find(c => c.brand === site.brand);
+    if (!component) return 240;
+
+    const mechanicsId = component.shardMechanics || component.targetMechanics;
+    const mechanics = eventBlueprints.mechanics.shards[mechanicsId] || eventBlueprints.mechanics.targets[mechanicsId];
+
+    if (!mechanics) return 240;
+
+    const lastWaveStart = mechanics.waves ? Math.max(...mechanics.waves.map(w => w.startOffset || 0)) : 0;
+
+    // Based on requirement: Active time = last jump within a shards blueprint + 1 hour
+    const jumpActions = mechanics.waveActions?.filter(a => a.action === 'jump') || [];
+    if (jumpActions.length > 0) {
+        const lastJumpOffset = Math.max(...jumpActions.map(a => a.time));
+        return lastWaveStart + lastJumpOffset + 1; // +1 minute
     }
-});
+
+    const despawnAction = mechanics.waveActions?.find(a => a.action === 'despawn');
+    if (despawnAction) {
+        return lastWaveStart + despawnAction.time;
+    }
+
+    if (mechanics.waves) {
+        return Math.max(...mechanics.waves.map(w => w.endOffset || 0));
+    }
+
+    return 240;
+}
+
+function isEventActive(site, seriesId) {
+    const durationMins = getEventDuration(site, seriesId);
+
+    const isoDate = site.date.split("[")[0];
+    const startTime = DateTime.fromISO(isoDate, { zone: site.timezone });
+    const endTime = startTime.plus({ minutes: durationMins });
+    const now = DateTime.now().setZone(site.timezone);
+
+    return now >= startTime && now <= endTime;
+}
 
 function renderSeriesLayer(seriesId) {
     const seriesLayer = L.featureGroup();
@@ -40,37 +82,93 @@ function renderSeriesLayer(seriesId) {
         return seriesLayer;
     }
 
-    const nowDate = new Date();
     for (const site of Object.values(geocode.sites)) {
         const siteData = getSiteData(seriesId, site.id);
+        const hasFragments = siteData?.fullEvent?.shards?.length > 0;
+        const hasOrnaments = Object.values(siteData?.portals || {}).some(p => p.ornamentId);
 
-        let siteMarkerFilter = 'grayscale(1)';
-        if (siteData) {
-            siteMarkerFilter = EVENT_BRANDS[site.brand].markerFilter;
+        const isoDate = site.date.split("[")[0];
+        const startTime = DateTime.fromISO(isoDate, { zone: site.timezone });
+        const now = DateTime.now().setZone(site.timezone);
+
+        let phaseClass = '';
+        let outcome = 'NONE';
+
+        if (hasFragments) {
+            // Outcome phase: Shard jump data is available
+            outcome = getOutcome(siteData);
+            phaseClass = `is-phase-outcome outcome-${outcome.toLowerCase()}`;
+        } else if (isEventActive(site, seriesId)) {
+            // Active phase: Event is happening now
+            phaseClass = 'is-phase-active';
+        } else if (now < startTime) {
+            // Future sites
+            if (hasOrnaments) {
+                // Discovery phase: Future and information available
+                phaseClass = 'is-phase-discovery';
+            } else {
+                // No data: Future and no information
+                phaseClass = 'is-phase-nodata';
+            }
+        } else {
+            // Past sites with no outcome data yet
+            phaseClass = 'is-phase-nodata';
         }
-        const siteIcon = new SiteIcon({ filter: siteMarkerFilter });
+
+        const markerOptions = {
+            icon: L.divIcon({
+                className: `marker-radar-container ${phaseClass}`,
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                tooltipAnchor: [13, -28],
+                html: `
+                    ${phaseClass.includes('phase-active') || phaseClass.includes('phase-discovery') ? '<div class="marker-radar-beam"></div>' : ''}
+                    ${TACTICAL_MARKER_SVG}
+                `
+            })
+        };
 
         const latLng = L.latLng(site.lat, site.lng);
-        const siteMarker = L.marker(latLng, { icon: siteIcon });
+        const siteMarker = L.marker(latLng, markerOptions);
         siteMarker._siteId = site.id;
 
         const flagHtml = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
-        let siteTooltip = `
+        const remainingTime = getTimeRemaining(site.date, site.timezone);
+        const timeRemainingText = remainingTime ? ` (${remainingTime})` : '';
+
+        const eventDuration = getEventDuration(site, seriesId);
+        const endTime = startTime.plus({ minutes: eventDuration });
+        const completionGraceEnd = endTime.plus({ days: 1 });
+        const isComplete = now > endTime;
+        const isWithinCompletionGrace = now <= completionGraceEnd;
+        const activeRemaining = getActiveEventRemaining(site.date, site.timezone, eventDuration);
+
+        let siteTooltip = '';
+        if (activeRemaining) {
+            siteTooltip += `<strong>Site Active</strong> - ${activeRemaining} remaining<hr />`;
+        } else if (isComplete && isWithinCompletionGrace && !hasFragments) {
+            siteTooltip += `<strong>Site Complete</strong> - <em>compiling XM telemetry.</em><hr />`;
+        }
+
+        siteTooltip += `
             ${flagHtml} <strong>${site.name}</strong><br />
-            Date: ${formatIsoToShortDate(site.date, site.timezone)}<br />
+            Date: ${formatIsoToShortDate(site.date, site.timezone)}${timeRemainingText}<br />
             Type: ${EVENT_BRANDS[site.brand].name}<br />`;
 
         if (siteData) {
             const scoresText = getScoresText({ seriesId, siteId: site.id, type: 'full' });
             if (scoresText) {
                 siteTooltip += scoresText;
+            } else if (hasOrnaments) {
+                const count = Object.values(siteData.portals || {}).filter(portal => portal.ornamentId).length;
+                siteTooltip += `<em>${count} ornamented portal${count === 1 ? '' : 's'}</em>`;
             }
             const siteUrl = `#/${seriesId}/${site.id.replace(seriesId + "-", "")}`;
             addEventInteraction(siteMarker, 'click', () => { navigate(siteUrl); });
-        } else if (new Date(site.date.split("[")[0]).getTime() < nowDate.getTime()) {
+        } else if (startTime.toJSDate().getTime() < now.toJSDate().getTime()) {
             siteTooltip += `<em>No data available</em>`;
         }
-        siteMarker.bindTooltip(siteTooltip, { permanent: false });
+        siteMarker.bindTooltip(siteTooltip, { permanent: false, direction: 'auto' });
         siteMarker.addTo(seriesLayer);
     }
     return seriesLayer;
@@ -161,7 +259,12 @@ export function getDetailsPanelContent(seriesId) {
                 const flag = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
                 const siteUrl = `#/${metadata.id}/${site.id.replace(metadata.id + "-", "")}`;
 
-                const scoresText = getScoresText({ seriesId: metadata.id, siteId: site.id, type: 'simple' });
+                const scoresText = getScoresText({
+                    seriesId: metadata.id,
+                    siteId: site.id,
+                    type: 'simple',
+                    timezone: site.timezone
+                });
                 content += `
                         <button 
                                 class="nav-item"

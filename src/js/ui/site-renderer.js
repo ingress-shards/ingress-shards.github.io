@@ -1,14 +1,15 @@
 import * as L from "leaflet";
-import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, EVENT_BRANDS, RANDOM_TELEPORT_COLOR } from "../constants.js";
+import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, EVENT_BRANDS, ORNAMENT_BRANDS, SIGNAL_COLOR, ORNAMENT_ONLY_COLOR } from "../constants.js";
 import shardIconUrl from '../../images/abaddon1_shard.png';
 import { getSiteData, getSeriesMetadata, getSeriesGeocode } from "../data/data-store.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
-import { formatEpochToLocalTime, formatIsoToShortDate } from "../shared/date-helpers.js";
+import { formatEpochToLocalTime, formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
+import { getHexagonSVG } from "./marker-template.js";
 
 const shardIcon = L.icon({
     iconUrl: shardIconUrl,
-    iconSize: [30, 30],
-    iconAnchor: [15, 15],
+    iconSize: [24, 24], // Source image is 48x48 with a 32x32 active area (8px padding). 24px icon size results in a 16px visual shard.
+    iconAnchor: [12, 12],
 });
 
 const siteLayerCache = new Map();
@@ -32,50 +33,134 @@ export function setActiveSiteLayer(siteLayer) {
 
 function renderSiteData({ seriesId, siteId, siteData }) {
     const layersDetails = [];
+    const hasShards = siteData.fullEvent?.shards?.length > 0;
 
-    const fullEventLayer = renderShardLayer({
-        seriesId,
-        siteId,
-        shardData: siteData.fullEvent,
-        portals: siteData.portals,
-        timezone: siteData.geocode.timezone,
-        layerType: 'site',
-    });
-    fullEventLayer._seriesId = seriesId;
-    layersDetails.push({
-        id: "all",
-        label: "All",
-        layer: fullEventLayer,
-    });
+    const ornamentLayer = L.featureGroup();
+    ornamentLayer._layerType = 'site-overlay';
+    ornamentLayer._siteId = siteId;
+    let ornamentCount = 0;
+    for (const portal of Object.values(siteData.portals || {})) {
+        if (portal.ornamentId) {
+            ornamentCount++;
+            const latLng = L.latLng(portal.lat, portal.lng);
+            const brand = ORNAMENT_BRANDS[portal.ornamentId];
+            const style = brand?.style || {};
+            const ornamentColor = style.color || SIGNAL_COLOR;
 
-    siteData.waves && siteData.waves.forEach((wave, index) => {
-        const waveNumber = index + 1;
-        const waveId = `wave-${waveNumber}`;
-        const waveLayer = renderShardLayer({
+            let markerIcon;
+            let pane = 'ornamentPane';
+
+            if (style.icon) {
+                // 1a. The Visual Image Ornament
+                markerIcon = L.icon({
+                    iconUrl: style.icon,
+                    iconSize: style.size || [40, 40],
+                    iconAnchor: style.size ? [style.size[0] / 2, style.size[1] / 2] : [20, 20]
+                });
+                pane = 'ornamentFrontPane';
+            } else {
+                // 1b. The Visual Hexagon Frame (using custom color)
+                markerIcon = L.divIcon({
+                    className: 'ornament-hexagon-marker',
+                    html: getHexagonSVG(ornamentColor),
+                    iconSize: [40, 40],
+                    iconAnchor: [20, 20]
+                });
+            }
+
+            L.marker(latLng, {
+                icon: markerIcon,
+                interactive: false,
+                pane: pane
+            }).addTo(ornamentLayer);
+
+            // 2. The Interactive Anchor Pin (Opt-in)
+            const tooltipHtml = formatPortalTooltip(portal, [], siteData.geocode.timezone);
+            L.circleMarker(latLng, {
+                radius: 6,
+                color: ORNAMENT_ONLY_COLOR,
+                fillOpacity: 0.4,
+                weight: 1,
+                interactive: true,
+                pane: 'ornamentPane'
+            }).bindTooltip(tooltipHtml, { interactive: true })
+                .bindPopup(tooltipHtml, { closeButton: false, autoClose: true })
+                .addTo(ornamentLayer);
+        }
+    }
+
+    if (ornamentLayer.getLayers().length > 0) {
+        layersDetails.push({
+            id: "ornaments",
+            label: "Ornaments",
+            layer: ornamentLayer,
+            isOverlay: true,
+            showByDefault: !hasShards || ornamentCount < 10
+        });
+    }
+
+    const isSingularEvent = !siteData.waves || siteData.waves.length <= 1;
+
+    if (hasShards) {
+        const fullEventLayer = renderShardLayer({
             seriesId,
             siteId,
-            shardData: wave,
+            shardData: siteData.fullEvent,
             portals: siteData.portals,
             timezone: siteData.geocode.timezone,
-            layerType: 'wave',
+            layerType: 'site',
         });
-        waveLayer._seriesId = seriesId;
-        waveLayer._waveId = waveId;
+        fullEventLayer._seriesId = seriesId;
         layersDetails.push({
-            id: waveId,
-            label: `Wave ${waveNumber}`,
-            layer: waveLayer,
+            id: "all",
+            label: isSingularEvent ? "Shards" : "All waves",
+            layer: fullEventLayer,
+            hideFromControl: isSingularEvent
         });
-    });
+
+        if (!isSingularEvent) {
+            siteData.waves.forEach((wave, index) => {
+                const waveNumber = index + 1;
+                const waveId = `wave-${waveNumber}`;
+                const waveLayer = renderShardLayer({
+                    seriesId,
+                    siteId,
+                    shardData: wave,
+                    portals: siteData.portals,
+                    timezone: siteData.geocode.timezone,
+                    layerType: 'wave',
+                });
+                waveLayer._seriesId = seriesId;
+                waveLayer._waveId = waveId;
+                layersDetails.push({
+                    id: waveId,
+                    label: `Wave ${waveNumber}`,
+                    layer: waveLayer,
+                });
+            });
+        }
+    }
     return layersDetails;
 }
 
 export function getSiteControl(siteId) {
     let controlLayers = {};
-    for (const layerDetails of siteLayerCache.get(siteId)) {
-        controlLayers[layerDetails.label] = layerDetails.layer;
+    let overlays = {};
+    const cacheEntry = siteLayerCache.get(siteId);
+    if (!cacheEntry) return null;
+
+    for (const layerDetails of cacheEntry) {
+        if (layerDetails.hideFromControl) continue;
+        if (layerDetails.isOverlay) {
+            overlays[layerDetails.label] = layerDetails.layer;
+        } else {
+            controlLayers[layerDetails.label] = layerDetails.layer;
+        }
     }
-    return L.control.layers(controlLayers, {}, { collapsed: true, position: "bottomright" });
+    if (Object.keys(controlLayers).length === 0 && Object.keys(overlays).length === 0) {
+        return null;
+    }
+    return L.control.layers(controlLayers, overlays, { collapsed: true, position: "bottomright" });
 }
 
 function renderShardLayer({ seriesId, siteId, shardData, portals, timezone, layerType }) {
@@ -83,10 +168,11 @@ function renderShardLayer({ seriesId, siteId, shardData, portals, timezone, laye
     shardLayer._layerType = layerType;
     shardLayer._siteId = siteId.replace(seriesId + "-", "");
 
-    const shardPathsMap = createShardPathLayers(shardData.shardPaths, portals, timezone);
-    shardPathsMap.values().forEach((shardPath) => shardPath.addTo(shardLayer));
+    const safeShardData = shardData || {};
+    const shardPathsMap = createShardPathLayers(safeShardData.shardPaths || {}, portals, timezone);
+    shardPathsMap.forEach((shardPath) => shardPath.addTo(shardLayer));
 
-    const { portalHistoryMap, shardMotionData } = processShardData(shardData.shards, portals);
+    const { portalHistoryMap, shardMotionData } = processShardData(safeShardData.shards || [], portals);
     const shardMotionPaths = createShardMotionPaths(shardMotionData);
 
     shardLayer.shardMotionPaths = [];
@@ -118,6 +204,7 @@ function renderShardLayer({ seriesId, siteId, shardData, portals, timezone, laye
 
 function createShardPathLayers(shardPaths, portalsMap, timezone) {
     const shardPathsMap = new Map();
+    if (!shardPaths) return shardPathsMap;
 
     for (const [shardPathKey, shardPath] of Object.entries(shardPaths)) {
         const shardPathPortals = shardPathKey.split("-").map(idString => {
@@ -137,6 +224,7 @@ function createShardPathLayers(shardPaths, portalsMap, timezone) {
 function processShardData(shards, portalsMap) {
     const portalHistoryMap = {};
     const shardMotionData = [];
+    if (!shards) return { portalHistoryMap, shardMotionData };
 
     for (const shard of shards) {
         const coords = [];
@@ -195,6 +283,7 @@ function createShardMotionPaths(shardMotionData) {
                 removeOnEnd: false,
                 icon: shardIcon,
                 interactive: false,
+                pane: 'shardPane'
             }
         );
         shardPathPoly.shardPaths = shardPaths;
@@ -211,8 +300,8 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone) {
 
         const portalHistory = Array.from(portalHistoryMap[portalId] || []);
         if (portalHistory.length === 0) continue;
-        const lastKnownTeam = getLastKnownTeam(portalHistory);
 
+        const lastKnownTeam = getLastKnownTeam(portalHistory);
         const portalTooltip = formatPortalTooltip(portal, portalHistory, timeZone);
 
         portalHistory.forEach(([, shardHistory]) => {
@@ -222,13 +311,17 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone) {
                 !shardHistoryReasons.includes(HISTORY_REASONS.JUMP);
 
             if (isStaticSpawn) {
-                staticShardMarkers.push(L.marker(latLng, { icon: shardIcon }).bindTooltip(portalTooltip).bindPopup(portalTooltip));
+                staticShardMarkers.push(L.marker(latLng, {
+                    icon: shardIcon,
+                    pane: 'shardPane'
+                }).bindTooltip(portalTooltip).bindPopup(portalTooltip));
             }
         });
 
         portalMarkers.push(
             L.circleMarker(latLng, {
                 color: FACTION_COLORS[lastKnownTeam] || FACTION_COLORS.NEU,
+                pane: 'markerPane'
             }).bindTooltip(portalTooltip, {
                 interactive: true
             }).bindPopup(portalTooltip, {
@@ -244,7 +337,10 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone) {
 }
 
 function formatPortalTooltip(portal, portalHistory, timeZone) {
-    let tooltipHtml = `<strong>${portal.title}</strong> <a href="${INGRESS_INTEL_PORTAL_LINK}${portal.lat},${portal.lng}" target="intel_page">Intel</a><hr />`;
+    const ornamentLabel = ORNAMENT_BRANDS[portal.ornamentId]?.label || `Ornament: ${portal.ornamentId}`;
+    const ornamentHtml = portal.ornamentId ? `<i>${ornamentLabel}</i><br/>` : '';
+    const separator = portalHistory.length > 0 ? '<hr />' : '';
+    let tooltipHtml = `<strong>${portal.title}</strong> <a href="${INGRESS_INTEL_PORTAL_LINK}${portal.lat},${portal.lng}" target="intel_page">Intel</a><br/>${ornamentHtml}${separator}`;
 
     portalHistory.forEach(([shardId, shardHistory], index) => {
         tooltipHtml += `<strong>Shard ${shardId}</strong><br />`;
@@ -299,7 +395,7 @@ function renderShardPath(shardPath, shardPathPortals, timeZone) {
         const { tooltip, coords } = formatJumpPathTooltip(shardPath, shardPathPortals, timeZone);
 
         polyline = L.polyline(coords, {
-            color: RANDOM_TELEPORT_COLOR,
+            color: SIGNAL_COLOR,
             dashArray: ["10,10"],
         });
         polyline.bindTooltip(tooltip, { sticky: true }).bindPopup(tooltip, { sticky: true });
@@ -366,31 +462,93 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     const seriesMetadata = getSeriesMetadata(seriesId);
     const siteGeocode = getSeriesGeocode(seriesId)?.sites[siteId];
     const siteData = getSiteData(seriesId, siteId);
+    if (!siteData) return { title: '', content: '' };
 
-    let content = `Date: ${formatIsoToShortDate(siteGeocode.date, siteGeocode.timezone)}<br />Type: ${EVENT_BRANDS[siteGeocode.brand].name}<br />`;
+    const siteBrand = EVENT_BRANDS[siteGeocode.brand];
+    const now = Date.now();
+    const siteStartTime = new Date(siteGeocode.date.split('[')[0]).getTime();
+    const siteEndTime = siteStartTime + (siteBrand.durationMins || 241) * 60000;
+    let countdownSuffix = '';
 
-    const totalShards = siteData.fullEvent.counters.shards.nonMoving + siteData.fullEvent.counters.shards.moving;
-    if (totalShards > 1) {
-        content += `Shards: ${totalShards}`;
-        if (siteData.fullEvent.counters.shards.nonMoving > 0) {
-            content += ` (${siteData.fullEvent.counters.shards.nonMoving} static)`;
+    if (now < siteStartTime) {
+        const remaining = getTimeRemaining(siteGeocode.date, siteGeocode.timezone);
+        countdownSuffix = ` (Starts in ${remaining})`;
+    } else if (now >= siteStartTime && now <= siteEndTime) {
+        const remaining = getActiveEventRemaining(siteGeocode.date, siteGeocode.timezone, siteBrand.durationMins || 241);
+        countdownSuffix = ` (Active: ${remaining} remaining)`;
+    }
+
+    const ornamentCount = Object.values(siteData.portals || {}).filter(p => p.ornamentId).length;
+    const hasShards = siteData?.fullEvent?.shards?.length > 0;
+    const isSingularEvent = !siteData.waves || siteData.waves.length <= 1;
+
+    const contextPrefix = waveId ? `Wave ${waveId.replace('wave-', '')}: ` : (isSingularEvent ? '' : 'All waves: ');
+
+    let content = `
+        <div style="margin-bottom: 8px">
+            Date: ${formatIsoToShortDate(siteGeocode.date, siteGeocode.timezone)}${countdownSuffix}${ornamentCount > 0 ? `<br/>Ornaments: ${ornamentCount}` : ''}
+        </div>`;
+
+    if (hasShards) {
+        // Use specific wave counters if viewing a wave, otherwise use full event counters
+        let currentCounters;
+        if (waveId) {
+            const waveIndex = parseInt(waveId.replace('wave-', '')) - 1;
+            currentCounters = siteData.waves?.[waveIndex]?.counters;
+        } else {
+            currentCounters = siteData?.fullEvent?.counters;
         }
-        content += '<br />';
+
+        let stats = [];
+        if (currentCounters) {
+            const shardCounters = currentCounters.shards || { nonMoving: 0, moving: 0 };
+            const totalShards = (shardCounters.nonMoving || 0) + (shardCounters.moving || 0);
+            if (totalShards > 0) {
+                stats.push(`${totalShards} Shard${totalShards > 1 ? 's' : ''}`);
+            }
+            if (currentCounters.links > 0) stats.push(`${currentCounters.links} Link${currentCounters.links > 1 ? 's' : ''}`);
+        }
+
+        content += `
+            <div style="margin-bottom: 12px; font-size: 0.9em; opacity: 0.8">
+                <strong>${contextPrefix}</strong>${stats.join(' • ')}
+            </div>
+        `;
     }
-    if (siteData.fullEvent.counters.links > 0) {
-        content += `Links: ${siteData.fullEvent.counters.links}<br />`;
+
+    // Determine the actual time window of the shards event
+    let actualStart = siteStartTime;
+    let actualEnd = siteEndTime;
+
+    if (siteData.waves && siteData.waves.length > 0) {
+        const firstWave = siteData.waves[0];
+        const lastWave = siteData.waves[siteData.waves.length - 1];
+        if (firstWave.period && lastWave.period) {
+            actualStart = firstWave.period.start;
+            actualEnd = lastWave.period.end;
+        }
     }
-    content += getScoresText({ seriesId, siteId, waveId, siteData, type: 'table' });
+
+    content += getScoresText({
+        seriesId,
+        siteId,
+        waveId,
+        siteData,
+        type: 'table',
+        timezone: siteGeocode.timezone,
+        eventStart: actualStart,
+        eventEnd: actualEnd
+    });
 
     const flagHtml = siteGeocode?.country_code ? getFlagTooltipHtml(siteGeocode?.country_code.toLowerCase()) : '';
 
     return {
-        title: `${seriesMetadata?.name}: ${flagHtml} ${siteGeocode?.name} Details`,
+        title: `<div style="text-align: center">${seriesMetadata?.name} ${siteBrand.name}<br/>${flagHtml} ${siteGeocode?.name}</div>`,
         content
     };
 }
 
-export function getScoresText({ seriesId, siteId, waveId, siteData, type = 'full' }) {
+export function getScoresText({ seriesId, siteId, waveId, siteData, type = 'full', timezone, eventStart, eventEnd }) {
     if (!siteData) {
         siteData = getSiteData(seriesId, siteId);
     }
@@ -398,7 +556,7 @@ export function getScoresText({ seriesId, siteId, waveId, siteData, type = 'full
         type = 'full';
     }
 
-    const fullEventScores = siteData?.fullEvent.scores;
+    const fullEventScores = siteData?.fullEvent?.scores;
     if (fullEventScores) {
         switch (type) {
             case 'simple':
@@ -406,7 +564,7 @@ export function getScoresText({ seriesId, siteId, waveId, siteData, type = 'full
             case 'full':
                 return renderFullScores(fullEventScores);
             case 'table':
-                return renderTableScores(siteData.waves, fullEventScores, waveId, seriesId, siteId);
+                return renderTableScores(siteData.waves, fullEventScores, waveId, seriesId, siteId, timezone, eventStart, eventEnd);
         }
     }
     return '';
@@ -429,17 +587,24 @@ function renderFullScores(scores) {
     return html;
 }
 
-function renderTableScores(waves, totalScores, activeWaveId, seriesId, siteId) {
+function renderTableScores(waves, totalScores, activeWaveId, seriesId, siteId, timezone, eventStart, eventEnd) {
     if (!waves || waves.length <= 1) return renderFullScores(totalScores);
 
     const hasMachinaScores = totalScores.MAC > 0 || waves.some(wave => wave.scores.MAC > 0);
     const prefix = seriesId + "-";
     const siteNavigationId = siteId.startsWith(prefix) ? siteId.substring(prefix.length) : siteId;
 
+    let eventTimeRange = '';
+    if (eventStart && eventEnd) {
+        const start = formatEpochToLocalTime(eventStart, timezone);
+        const end = formatEpochToLocalTime(eventEnd, timezone);
+        eventTimeRange = `${start.split(':')[0]}:${start.split(':')[1]} - ${end.split(':')[0]}:${end.split(':')[1]}`;
+    }
+
     let scoresHtml = `<table class='ingress-event-scores'>
         <thead>
             <tr data-series-id="${seriesId}" data-site-id="${siteNavigationId}">
-                <th>Wave</th>
+                <th style="text-align: center">Wave</th>
                 <th class='faction-RES'>RES</th>
                 <th class='faction-ENL'>ENL</th>
                 ${hasMachinaScores ? `<th class='faction-MAC'>MAC</th>` : ''}
@@ -451,8 +616,16 @@ function renderTableScores(waves, totalScores, activeWaveId, seriesId, siteId) {
         const waveNumber = index + 1;
         const waveId = `wave-${waveNumber}`;
         const isHighlighted = activeWaveId === waveId;
+
+        let waveTime = '';
+        if (wave.period) {
+            const start = formatEpochToLocalTime(wave.period.start, timezone);
+            const end = formatEpochToLocalTime(wave.period.end, timezone);
+            waveTime = `${start.split(':')[0]}:${start.split(':')[1]} - ${end.split(':')[0]}:${end.split(':')[1]}`;
+        }
+
         scoresHtml += `<tr${isHighlighted ? ' class="highlight"' : ''} data-series-id="${seriesId}" data-site-id="${siteNavigationId}" data-wave-id="${waveId}">
-            <th>${waveNumber}</th>
+            <th style="text-align: center" title="${waveTime}">${waveNumber}</th>
             <td>${wave.scores.RES}</td>
             <td>${wave.scores.ENL}</td>
             ${hasMachinaScores ? `<td>${wave.scores.MAC}</td>` : ''}
@@ -462,7 +635,7 @@ function renderTableScores(waves, totalScores, activeWaveId, seriesId, siteId) {
     scoresHtml += `</tbody>
         <tfoot>
             <tr data-series-id="${seriesId}" data-site-id="${siteNavigationId}">
-                <th>Total</th>
+                <th style="text-align: center" title="${eventTimeRange}">Total</th>
                 <td class='faction-RES'>${totalScores.RES}</td>
                 <td class='faction-ENL'>${totalScores.ENL}</td>
                 ${hasMachinaScores ? `<td class='faction-MAC'>${totalScores.MAC}</td>` : ''}

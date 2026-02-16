@@ -10,6 +10,7 @@ let IS_MAP_INTERACTION_ACTIVE = false;
 
 let map = null;
 let detailsPanel, seriesControlPanel, waveControlPanel;
+let isOrnamentVisible = false;
 
 const mapDispatchers = {
     displaySeriesDetails: (seriesId) => {
@@ -55,11 +56,18 @@ const mapDispatchers = {
             setActiveSiteLayer(defaultLayerDetails.layer);
         }
 
-        if (siteLayers.length > 1) {
+        const ornamentLayerDetails = siteLayers.find(l => l.id === "ornaments");
+        if (ornamentLayerDetails && (isOrnamentVisible || ornamentLayerDetails.showByDefault)) {
+            map.addLayer(ornamentLayerDetails.layer);
+        }
+
+        if (siteLayers.length > 0) {
             waveControlPanel = getSiteControl(siteId);
-            map.addControl(waveControlPanel);
-            const controlContainer = waveControlPanel.getContainer();
-            controlContainer.classList.add('ingress-wave-control');
+            if (waveControlPanel) {
+                map.addControl(waveControlPanel);
+                const controlContainer = waveControlPanel.getContainer();
+                controlContainer.classList.add('ingress-wave-control');
+            }
         }
 
         const seriesMetadata = getSeriesMetadata(seriesId);
@@ -69,10 +77,23 @@ const mapDispatchers = {
         document.title = `${seriesName}: ${siteName} | Ingress Shards Map`;
         detailsPanel.update(getSiteDetailsContent(seriesId, siteId));
 
-        const siteBounds = defaultLayerDetails.layer.getBounds();
-        const flyAction = () => { map.flyToBounds(siteBounds, { duration: 1 }); }
-        const viewAction = () => { map.fitBounds(siteBounds, 2, { duration: 0 }); }
-        performMapMoveAction(flyAction, viewAction);
+        // Calculate bounds accurately: merge shards (all) and ornaments if present
+        let siteBounds = null;
+        if (defaultLayerDetails && defaultLayerDetails.layer.getLayers().length > 0) {
+            siteBounds = defaultLayerDetails.layer.getBounds();
+        }
+        if (ornamentLayerDetails && map.hasLayer(ornamentLayerDetails.layer)) {
+            const oBounds = ornamentLayerDetails.layer.getBounds();
+            if (oBounds.isValid()) {
+                siteBounds = siteBounds ? siteBounds.extend(oBounds) : oBounds;
+            }
+        }
+
+        if (siteBounds && siteBounds.isValid()) {
+            const flyAction = () => { map.flyToBounds(siteBounds, { duration: 1 }); }
+            const viewAction = () => { map.fitBounds(siteBounds, 2, { duration: 0 }); }
+            performMapMoveAction(flyAction, viewAction);
+        }
 
         map.once('moveend', (event) => {
             event.target.eachLayer(shardLayer => {
@@ -86,7 +107,7 @@ const mapDispatchers = {
         if (!map) return;
 
         let siteId = seriesId + "-" + siteNavigationId;
-        cleanupLayers({ waveId });
+        cleanupLayers({ siteId, waveId });
 
         const siteLayers = getSiteLayers(seriesId, siteId);
         if (!siteLayers) return;
@@ -95,6 +116,11 @@ const mapDispatchers = {
         if (waveLayerDetails) {
             map.addLayer(waveLayerDetails.layer);
             setActiveSiteLayer(waveLayerDetails.layer);
+        }
+
+        const ornamentLayerDetails = siteLayers.find(l => l.id === "ornaments");
+        if (ornamentLayerDetails && (isOrnamentVisible || ornamentLayerDetails.showByDefault)) {
+            map.addLayer(ornamentLayerDetails.layer);
         }
 
         if (siteLayers.length > 1) {
@@ -111,10 +137,22 @@ const mapDispatchers = {
         document.title = `${seriesName}: ${siteName} | Ingress Shards Map`;
         detailsPanel.update(getSiteDetailsContent(seriesId, siteId, waveId));
 
-        const siteBounds = waveLayerDetails.layer.getBounds();
-        const flyAction = () => { map.flyToBounds(siteBounds, { duration: 1 }); }
-        const viewAction = () => { map.fitBounds(siteBounds, 2, { duration: 0 }); }
-        performMapMoveAction(flyAction, viewAction);
+        let siteBounds = null;
+        if (waveLayerDetails && waveLayerDetails.layer.getLayers().length > 0) {
+            siteBounds = waveLayerDetails.layer.getBounds();
+        }
+        if (ornamentLayerDetails && map.hasLayer(ornamentLayerDetails.layer)) {
+            const oBounds = ornamentLayerDetails.layer.getBounds();
+            if (oBounds.isValid()) {
+                siteBounds = siteBounds ? siteBounds.extend(oBounds) : oBounds;
+            }
+        }
+
+        if (siteBounds && siteBounds.isValid()) {
+            const flyAction = () => { map.flyToBounds(siteBounds, { duration: 1 }); }
+            const viewAction = () => { map.fitBounds(siteBounds, 2, { duration: 0 }); }
+            performMapMoveAction(flyAction, viewAction);
+        }
 
         map.once('moveend', (event) => {
             event.target.eachLayer(shardLayer => {
@@ -163,6 +201,16 @@ function setupEventListeners(map) {
                 break;
         }
     });
+    map.on('overlayadd', (event) => {
+        if (event.layer._layerType === 'site-overlay') {
+            isOrnamentVisible = true;
+        }
+    });
+    map.on('overlayremove', (event) => {
+        if (event.layer._layerType === 'site-overlay') {
+            isOrnamentVisible = false;
+        }
+    });
 
     map.on('movestart', function () {
         IS_MAP_INTERACTION_ACTIVE = true;
@@ -186,9 +234,9 @@ function setupEventListeners(map) {
 
     document.addEventListener('click', (e) => {
         const target = e.target.closest('tr');
-        if (target && 
+        if (target &&
             target.closest('table.ingress-event-scores') &&
-            target.dataset.seriesId && 
+            target.dataset.seriesId &&
             target.dataset.siteId) {
             e.preventDefault();
             e.stopPropagation();
@@ -226,6 +274,11 @@ function cleanupLayers(target) {
                 break;
             case 'wave':
                 if (!target.siteId || layer._waveId !== target.waveId) {
+                    map.removeLayer(layer);
+                }
+                break;
+            case 'site-overlay':
+                if (!target.siteId || layer._siteId !== target.siteId) {
                     map.removeLayer(layer);
                 }
                 break;
