@@ -1,5 +1,5 @@
 {
-    "name": "ingress-shards-map",
+    "name": "@ingress-shards/ingress-shards-map",
     "version": "0.0.0-semantically-released",
     "description": "Interactive map of shard data from Ingress events",
     "author": {

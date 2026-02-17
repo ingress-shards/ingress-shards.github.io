@@ -15,6 +15,10 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
 - **Naming:** Use `camelCase` for variables/functions. Use `kebab-case` for source files to match existing project convention.
 - **Errors:** Always wrap async calls in try/catch blocks with clear console logging.
 
+## UI & Styling
+
+- **CSS:** Do not use inline styles. Always create a new class in a css file and assign the styling to that.
+
 ## Tools
 
 - **Build:** Use npm (as configured in package.json). Ensure the project-specific version is used.
@@ -40,55 +44,53 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
 - Keep components under 150 lines. If they get larger, suggest a refactor.
 - Never delete comments in my code unless they are objectively outdated.
 
-## Maintenance (Clean Slate Sync)
+## Maintenance (Post-Release Workspace Sync)
 
-- **Clean Slate Sync:** To sync the fork with upstream after a release, prune stale tags/branches, and clear alpha releases:
+- **Post-Release Workspace Sync:** To sync with origin and tidy the local environment after a release:
 
     ```bash
-    # 1. Fetch latest from all remotes and prune deleted references
-    git fetch upstream --tags --prune --prune-tags
-    git fetch origin --prune --prune-tags
+    # 1. Fetch latest and prune deleted references
+    git fetch origin --tags --prune --prune-tags
 
-    # 2. Reset main to upstream
+    # 2. Update main (safe fast-forward only)
     git checkout main
-    git reset --hard upstream/main
+    git pull --ff-only
 
-    # 3. Purge local tags and re-sync with upstream
+    # 3. Purge local tags and re-sync with origin
     git tag -l | xargs git tag -d
-    git fetch upstream --tags
+    git fetch origin --tags
 
     # 4. Remove alpha tags from origin
     git tag -l "*-alpha*" | xargs -I {} git push origin :refs/tags/{}
 
-    # 5. Force update origin main and tags
-    git push origin main --force
-    git push origin --tags --force
+    # 5. Prune local branches already merged into main
+    git branch --merged main | grep -v '^\*' | grep -v 'main' | xargs -r git branch -d
 
-    # 6. Final prune of stale tracking branches
+    # 6. Final prune
     git remote prune origin
-    git remote prune upstream
     ```
 
 ## Version Management & Releases
 
 - **Semantic Release:** This project uses [semantic-release](https://github.com/semantic-release/semantic-release) for automated version management and publishing.
 - **How it works:**
-  - Versions are automatically determined based on commit messages following [Conventional Commits](https://www.conventionalcommits.org/)
-  - The semantic-release workflow runs on CI after merges to `main` branch
-  - Version tracking is done via **git tags** (e.g., `v1.16.1`) - this is the source of truth for versions
-  - **IMPORTANT:** `package.json` version should remain as `0.0.0-semantically-released` (placeholder) because `npmPublish: false` is configured
-  - The version in package.json is NOT updated by semantic-release when npmPublish is disabled
+    - Versions are automatically determined based on commit messages following [Conventional Commits](https://www.conventionalcommits.org/)
+    - The semantic-release workflow runs on CI after merges to `main` branch
+    - Version tracking is done via **git tags** (e.g., `v1.16.1`) - this is the source of truth for versions
+    - **IMPORTANT:** `package.json` version should remain as `0.0.0-semantically-released` (placeholder) because `npmPublish: false` is configured
+    - The version in package.json is NOT updated by semantic-release when npmPublish is disabled
 - **Commit message format:**
-  - `feat:` triggers a **minor** version bump (e.g., 1.16.0 → 1.17.0)
-  - `fix:` triggers a **patch** version bump (e.g., 1.16.0 → 1.16.1)
-  - `BREAKING CHANGE:` in footer triggers a **major** version bump (e.g., 1.16.0 → 2.0.0)
-  - `refactor:`, `ci:`, `docs(README):` trigger **patch** bumps (custom rules in `.releaserc`)
-  - Other types like `chore:`, `docs:`, `style:`, `test:` do NOT trigger releases
-  - **To manually trigger a release:** Use `fix:` for a patch, `feat:` for minor, or commit with `BREAKING CHANGE:` footer for major
+    - `feat:` triggers a **minor** version bump (e.g., 1.16.0 → 1.17.0)
+    - `fix:` triggers a **patch** version bump (e.g., 1.16.0 → 1.16.1)
+    - `BREAKING CHANGE:` in footer triggers a **major** version bump (e.g., 1.16.0 → 2.0.0)
+    - `refactor:`, `ci:`, `docs(README):` trigger **patch** bumps (custom rules in `.releaserc`)
+    - Other types like `chore:`, `docs:`, `style:`, `test:` do NOT trigger releases
+    - **To manually trigger a release:** Use `fix:` for a patch, `feat:` for minor, or commit with `BREAKING CHANGE:` footer for major
 - **Finding current version:** Always check git tags with `git fetch --tags && git tag --list | tail -5` to see the latest released version
 - **Branch strategy:**
-  - `main` branch: stable releases
-  - `feat/*` and `fix/*` branches: alpha pre-releases
+    - `main` branch: Stable releases & production deployment
+    - `feat/*` and `fix/*` branches: Feature development (triggers unversioned development previews)
+- **Previews:** Every push to a non-main branch generates a downloadable `dist` artifact in GitHub Actions for verification.
 - **Configuration:** See `.releaserc` for the complete semantic-release configuration
 
 ## Deployment Vibe
