@@ -1,11 +1,9 @@
-name: Release Map Application
+name: Release & Deploy
 
 on:
     push:
         branches:
             - main
-            - "feat/*"
-            - "fix/*"
     workflow_dispatch:
 
 permissions:
@@ -44,7 +42,14 @@ jobs:
             - name: Install node dependencies
               run: npm install
 
-            - name: Tag release
+            - name: Initial Build (Fallback/Manual)
+              run: |
+                  # Get latest tag (e.g. v1.16.1) or fallback to 0.0.0
+                  LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
+                  # Strip the 'v' prefix for the build
+                  APP_VERSION=${LATEST_TAG#v} npm run build
+
+            - name: Tag & Release
               id: semantic
               run: npx semantic-release --repository-url "https://github.com/${{ github.repository }}.git"
 
@@ -55,11 +60,10 @@ jobs:
                   path: "./dist"
         outputs:
             new-release-published: ${{ steps.semantic.outputs.new-release-published }}
-            is-manual-trigger: ${{ github.event_name == 'workflow_dispatch' }}
 
-    deploy_pages:
+    deploy:
         needs: [release]
-        if: needs.release.outputs.new-release-published == 'true' || needs.release.outputs.is-manual-trigger == 'true'
+        if: needs.release.outputs.new-release-published == 'true' || github.event_name == 'workflow_dispatch'
         runs-on: ubuntu-latest
         environment:
             name: github-pages
