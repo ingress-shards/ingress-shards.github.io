@@ -8,3 +8,5 @@ cache.sqlite
 
 # Act secrets
 .secrets
+# Preview artifacts
+.preview/

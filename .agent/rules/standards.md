@@ -91,6 +91,8 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
     - `main` branch: Stable releases & production deployment
     - `feat/*` and `fix/*` branches: Feature development (triggers unversioned development previews)
 - **Previews:** Every push to a non-main branch generates a downloadable `dist` artifact in GitHub Actions for verification.
+- **Local Verification:**
+    - Use `npm run preview` to automatically download and test the latest CI build for your branch (requires GitHub CLI `gh`).
 - **Configuration:** See `.releaserc` for the complete semantic-release configuration
 
 ## Deployment Vibe
