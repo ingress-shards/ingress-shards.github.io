@@ -1,15 +1,6 @@
 {
     "branches": [
-        "main",
-        "next",
-        {
-            "name": "feat/*",
-            "prerelease": "alpha"
-        },
-        {
-            "name": "fix/*",
-            "prerelease": "alpha"
-        }
+        "main"
     ],
     "plugins": [
         [
@@ -98,13 +89,18 @@
         [
             "@semantic-release/exec",
             {
-                "publishCmd": "npm run build"
+                "publishCmd": "APP_VERSION=${nextRelease.version} npm run build && zip -r ingress-shards-map-${nextRelease.version}.zip dist"
             }
         ],
         [
             "@semantic-release/github",
             {
-                "assets": []
+                "assets": [
+                    {
+                        "path": "ingress-shards-map-*.zip",
+                        "label": "Ingress Shards Map (${nextRelease.version})"
+                    }
+                ]
             }
         ]
     ]
