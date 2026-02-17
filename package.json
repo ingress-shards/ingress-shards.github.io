@@ -28,7 +28,8 @@
         "ci-data-processor": "node scripts/pre-processor-loader.js",
         "mkdir:gen": "node -e \"if (!require('fs').existsSync('gen')) require('fs').mkdirSync('gen', { recursive: true })\"",
         "prepare:data": "npm run mkdir:gen && npm run ci-geocode && npm run ci-data-processor",
-        "validate": "npm run clean && npm run build"
+        "validate": "npm run clean && npm run build",
+        "preview": "node scripts/preview-ci-artifact.js"
     },
     "devDependencies": {
         "@eslint/js": "^9.39.1",
