@@ -34,9 +34,13 @@ jobs:
                   LATEST_VERSION=$(git describe --tags --always --dirty | sed 's/^v//')
                   APP_VERSION=$LATEST_VERSION npm run build
 
+            - name: Sanitize branch name
+              id: sanitize
+              run: echo "branch=${GITHUB_REF_NAME//\//-}" >> $GITHUB_OUTPUT
+
             - name: Upload Preview Artifact
               uses: actions/upload-artifact@v4
               with:
-                  name: preview-${{ github.ref_name }}
+                  name: preview-${{ steps.sanitize.outputs.branch }}
                   path: "./dist"
                   if-no-files-found: error
