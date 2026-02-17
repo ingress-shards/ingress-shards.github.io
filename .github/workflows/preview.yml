@@ -1,0 +1,46 @@
+name: Development Preview
+
+on:
+    push:
+        branches-ignore:
+            - main
+    workflow_dispatch:
+
+jobs:
+    build_preview:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v2
+
+            - name: Install python dependencies
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install -r requirements.txt
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: "lts/*"
+
+            - name: Install node dependencies
+              run: npm install
+
+            - name: Build
+              run: |
+                  # Get accurate version string for the preview (e.g. 1.16.1-2-g1234abc)
+                  # If no tags exist, defaults to 0.0.0-git_hash
+                  LATEST_VERSION=$(git describe --tags --always --dirty | sed 's/^v//')
+                  APP_VERSION=$LATEST_VERSION npm run build
+
+            - name: Sanitize branch name
+              id: sanitize
+              run: echo "branch=${GITHUB_REF_NAME//\//-}" >> $GITHUB_OUTPUT
+
+            - name: Upload Preview Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: preview-${{ steps.sanitize.outputs.branch }}
+                  path: "./dist"
+                  if-no-files-found: error

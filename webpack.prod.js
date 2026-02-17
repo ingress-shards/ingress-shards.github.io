@@ -4,7 +4,8 @@ import common, { packageJson } from './webpack.common.js';
 const REPO_NAME = '/';
 
 export default (env) => {
-    return merge(common(env, { appVersion: packageJson.version }), {
+    const appVersion = process.env.APP_VERSION || packageJson.version;
+    return merge(common(env, { appVersion }), {
         mode: 'production',
         output: {
             publicPath: REPO_NAME,
