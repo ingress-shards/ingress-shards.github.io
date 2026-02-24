@@ -7,13 +7,13 @@
             "overviewUrl": "https://ingress.com/news/2024-sharedmem",
             "shardComponents": [
                 {
-                    "brand": "ANOMALY",
+                    "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
                     "targetMechanics": "1w_241m"
                 },
                 {
-                    "brand": "SKIRMISH",
+                    "eventType": "SKIRMISH",
                     "startTime": "16:00",
                     "shardMechanics": "5w_20m_1j"
                 }
@@ -26,13 +26,13 @@
             "overviewUrl": "https://ingress.com/news/2024-erasedmem",
             "shardComponents": [
                 {
-                    "brand": "ANOMALY",
+                    "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
                     "targetMechanics": "1w_241m"
                 },
                 {
-                    "brand": "SKIRMISH",
+                    "eventType": "SKIRMISH",
                     "startTime": "16:00",
                     "shardMechanics": "5w_20m_1j"
                 }
@@ -45,13 +45,13 @@
             "overviewUrl": "https://ingress.com/news/2025-plusalpha",
             "shardComponents": [
                 {
-                    "brand": "ANOMALY",
+                    "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
                     "targetMechanics": "1w_241m"
                 },
                 {
-                    "brand": "SKIRMISH",
+                    "eventType": "SKIRMISH",
                     "startTime": "16:00",
                     "shardMechanics": "5w_20m_1j"
                 }
@@ -64,18 +64,18 @@
             "overviewUrl": "https://ingress.com/news/2025-plustheta",
             "shardComponents": [
                 {
-                    "brand": "ANOMALY",
+                    "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
                     "targetMechanics": "6w_30m"
                 },
                 {
-                    "brand": "SKIRMISH",
+                    "eventType": "SKIRMISH",
                     "startTime": "16:00",
                     "shardMechanics": "5w_20m_1j"
                 },
                 {
-                    "brand": "SINGULAR",
+                    "eventType": "SINGULAR",
                     "startTime": "11:00",
                     "shardMechanics": "1w_370m_6j",
                     "schedule": [
@@ -153,7 +153,7 @@
             "overviewUrl": "https://ingress.com/news/2025-plusdelta",
             "shardComponents": [
                 {
-                    "brand": "ANOMALY",
+                    "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
                     "targetMechanics": "6w_30m"
@@ -167,13 +167,13 @@
             "overviewUrl": "https://ingress.com/news/2025-plusbeta",
             "shardComponents": [
                 {
-                    "brand": "ANOMALY",
+                    "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
                     "targetMechanics": "6w_30m"
                 },
                 {
-                    "brand": "STORM",
+                    "eventType": "STORM",
                     "startTime": "13:00",
                     "shardMechanics": "1w_480m_4j",
                     "schedule": [
@@ -249,7 +249,7 @@
             "defaultView": true,
             "shardComponents": [
                 {
-                    "brand": "ANOMALY",
+                    "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
                     "targetMechanics": "6w_30m",
@@ -257,14 +257,14 @@
                         {
                             "date": "2026-02-28",
                             "sites": [
-                                { "name": "Lisbon, Portugal", "lat": 38.7222524, "lng": -9.1393366 },
+                                { "name": "Lisbon, Portugal", "lat": 38.735457, "lng": -9.146392 },
                                 { "name": "Charlotte, NC, USA", "lat": 35.2270768, "lng": -80.8408933 }
                             ]
                         },
                         {
                             "date": "2026-03-14",
                             "sites": [
-                                { "name": "Hong Kong", "lat": 22.3193039, "lng": 114.1693611 },
+                                { "name": "Hong Kong", "lat": 22.378599, "lng": 114.190263 },
                                 { "name": "Zagreb, Croatia", "lat": 45.8150108, "lng": 15.9819189 }
                             ]
                         },
@@ -272,13 +272,13 @@
                             "date": "2026-03-21",
                             "sites": [
                                 { "name": "Hyderabad, Telangana, India", "lat": 17.406498, "lng": 78.4772439 },
-                                { "name": "Buenos Aires, Argentina", "lat": -34.6036739, "lng": -58.3821215 }
+                                { "name": "Buenos Aires, Argentina", "lat": -34.588391, "lng": -58.424828 }
                             ]
                         }
                     ]
                 },
                 {
-                    "brand": "INVESTIGATION",
+                    "eventType": "INVESTIGATION",
                     "startTime": "14:00",
                     "shardMechanics": "6w_16m_1j",
                     "schedule": [

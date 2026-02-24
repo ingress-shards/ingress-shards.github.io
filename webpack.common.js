@@ -15,6 +15,12 @@ export const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'p
 export default (env, { appVersion }) => {
     return {
         entry: './src/js/index.js',
+        cache: {
+            type: 'filesystem',
+            buildDependencies: {
+                config: [fileURLToPath(import.meta.url)],
+            },
+        },
         module: {
             rules: [
                 {

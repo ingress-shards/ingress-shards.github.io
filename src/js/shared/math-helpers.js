@@ -18,9 +18,7 @@ export function haversineDistance(coords1, coords2) {
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-    const distance = R * c;
-
-    return roundToDecimalPlaces(distance, 2);
+    return R * c;
 }
 
 export function roundToDecimalPlaces(num, decimals) {

@@ -32,7 +32,7 @@ function getEventDuration(site, seriesId) {
     const metadata = getSeriesMetadata(seriesId);
     if (!metadata?.shardComponents) return 240;
 
-    const component = metadata.shardComponents.find(c => c.brand === site.brand);
+    const component = metadata.shardComponents.find(c => c.eventType === site.eventType);
     if (!component) return 240;
 
     const mechanicsId = component.shardMechanics || component.targetMechanics;
@@ -153,7 +153,7 @@ function renderSeriesLayer(seriesId) {
         siteTooltip += `
             ${flagHtml} <strong>${site.name}</strong><br />
             Date: ${formatIsoToShortDate(site.date, site.timezone)}${timeRemainingText}<br />
-            Type: ${EVENT_BRANDS[site.brand].name}<br />`;
+            Type: ${EVENT_BRANDS[site.eventType].label}<br />`;
 
         if (siteData) {
             const scoresText = getScoresText({ seriesId, siteId: site.id, type: 'full' });
@@ -227,10 +227,10 @@ export function getDetailsPanelContent(seriesId) {
     }
 
     const sites = Object.values(geocode.sites);
-    const sitesByBrand = sites.reduce((groups, site) => {
-        const brand = site.brand || 'Other';
-        if (!groups[brand]) groups[brand] = [];
-        groups[brand].push(site);
+    const sitesByEventType = sites.reduce((groups, site) => {
+        const eventType = site.eventType || 'Other';
+        if (!groups[eventType]) groups[eventType] = [];
+        groups[eventType].push(site);
         return groups;
     }, {});
 
@@ -246,16 +246,16 @@ export function getDetailsPanelContent(seriesId) {
 
     content += `<div class="series-sites-list">`;
 
-    typeOrder.forEach(brand => {
-        if (sitesByBrand[brand]) {
-            const sitesOfBrand = sitesByBrand[brand];
+    typeOrder.forEach(eventType => {
+        if (sitesByEventType[eventType]) {
+            const sitesOfEventType = sitesByEventType[eventType];
 
             content += `<h4 class="group-header group-toggle">
                     <span class="toggle-icon">▶</span>
-                    ${sitesOfBrand.length} ${EVENT_BRANDS[brand].name} Sites</h4>`;
+                    ${sitesOfEventType.length} ${EVENT_BRANDS[eventType].label} Sites</h4>`;
             content += `<div class="group-list collapsed-group">`;
 
-            sitesOfBrand.forEach(site => {
+            sitesOfEventType.forEach(site => {
                 const flag = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
                 const siteUrl = `#/${metadata.id}/${site.id.replace(metadata.id + "-", "")}`;
 

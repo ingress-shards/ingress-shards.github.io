@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { HISTORY_REASONS, SITE_AGGREGATION_DISTANCE, getAbbreviatedTeam } from "../constants.js";
 import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs, getPortalKey } from "./shard-data-helpers.js";
-import { haversineDistance } from "../shared/math-helpers.js";
+import { haversineDistance, roundToDecimalPlaces } from "../shared/math-helpers.js";
 import { formatEpochToLocalTime, isWithin24Hours } from "../shared/date-helpers.js";
 
 const portalLookupByOriginalKey = Symbol('portalLookupByOriginalKey');
@@ -103,7 +103,7 @@ export const linkScoringRules = new Map()
 
 
 export function processSeriesData(seriesDataPackage) {
-    const { config, geocode, blueprints, rawData } = seriesDataPackage;
+    const { config, geocode, blueprints, rawData, verbose = false } = seriesDataPackage;
     console.log(`ℹ️ Processing series ${config.name}:`);
     const sitesGeocode = geocode.sites;
 
@@ -119,10 +119,10 @@ export function processSeriesData(seriesDataPackage) {
         const loggedAmbiguous = new Set();
         for (const o of allObservedOrnamentedPortals) {
             const matches = sitesGeocode.filter(site => {
-                const distance = haversineDistance(
+                const distance = roundToDecimalPlaces(haversineDistance(
                     { latitude: o.lat, longitude: o.lng },
                     { latitude: site.lat, longitude: site.lng }
-                );
+                ), 2);
                 return distance <= SITE_AGGREGATION_DISTANCE;
             });
 
@@ -209,15 +209,31 @@ export function processSeriesData(seriesDataPackage) {
             return null;
         }
 
-        return processSite(site, siteOrnamentedPortals, fragments, config, blueprints);
+        return processSite(site, siteOrnamentedPortals, fragments, config, blueprints, verbose);
     }).filter(site => site !== null);
 
     const seriesData = Object.fromEntries(processedSites.map(site => [site.geocode.id, site]));
+
+    let totalAlignmentMismatches = 0;
+    processedSites.forEach(site => {
+        totalAlignmentMismatches += site.fullEvent?.counters?.alignmentMismatches || 0;
+
+        // Remove alignmentMismatches from the final data as it's an internal flag only
+        if (site.fullEvent?.counters) delete site.fullEvent.counters.alignmentMismatches;
+        site.waves?.forEach(wave => {
+            if (wave.counters) delete wave.counters.alignmentMismatches;
+        });
+    });
+
+    if (totalAlignmentMismatches > 0 && !verbose) {
+        console.warn(`⚠️ Alignment mismatches found: ${totalAlignmentMismatches}. Use --verbose for more details.`);
+    }
+
     console.log(`ℹ️ ${Object.keys(seriesData).length} sites processed.\n`);
     return seriesData;
 }
 
-export function processSite(site, siteOrnamentedPortals, fragments, seriesConfig, blueprints) {
+export function processSite(site, siteOrnamentedPortals, fragments, seriesConfig, blueprints, verbose = false) {
     if (siteOrnamentedPortals && siteOrnamentedPortals.length > 0) {
         applyOrnamentedPortalsToSite(site, siteOrnamentedPortals);
         site.centroid = calculateCentroid(site.portals);
@@ -225,16 +241,16 @@ export function processSite(site, siteOrnamentedPortals, fragments, seriesConfig
 
     if (fragments && fragments.length > 0) {
         applyFragmentPortalsToSite(site, fragments);
-        applyFragmentsToSite(site, fragments, seriesConfig, blueprints);
+        applyFragmentsToSite(site, fragments, seriesConfig, blueprints, verbose);
     }
 
     return site;
 }
 
-function applyFragmentsToSite(site, fragments, seriesConfig, blueprints) {
-    const siteBrandId = site.geocode.brand;
+function applyFragmentsToSite(site, fragments, seriesConfig, blueprints, verbose) {
+    const siteEventType = site.geocode.eventType;
     const shardComponents = seriesConfig.shardComponents || [];
-    const seriesEventConfig = shardComponents.find(et => et.brand === siteBrandId);
+    const seriesEventConfig = shardComponents.find(et => et.eventType === siteEventType);
 
     // Find site-specific config for overrides
     let siteConfig = null;
@@ -250,9 +266,10 @@ function applyFragmentsToSite(site, fragments, seriesConfig, blueprints) {
         fragments,
         portalLookup: site[portalLookupByOriginalKey],
         sitePortals: site.portals,
-        brandId: siteBrandId,
+        eventType: siteEventType,
         geocode: site.geocode,
         fullEvent: true,
+        verbose,
     });
 
     if (shardMechanic && shardMechanic.waves && shardMechanic.waves.length > 1) {
@@ -280,10 +297,11 @@ function applyFragmentsToSite(site, fragments, seriesConfig, blueprints) {
                 fragments: waveFragments,
                 portalLookup: site[portalLookupByOriginalKey],
                 sitePortals: site.portals,
-                brandId: siteBrandId,
+                eventType: siteEventType,
                 geocode: site.geocode,
                 fullEvent: false,
                 expectedQuantity: expectedQuantity,
+                verbose,
             });
 
             waveViewData.period = {
@@ -296,7 +314,7 @@ function applyFragmentsToSite(site, fragments, seriesConfig, blueprints) {
     }
 }
 
-function processFragments({ fragments, portalLookup, sitePortals, brandId, geocode, fullEvent }) {
+function processFragments({ fragments, portalLookup, sitePortals, eventType, geocode, fullEvent, verbose = false }) {
     const siteName = geocode.name;
     const viewData = {
         shards: [],
@@ -313,6 +331,7 @@ function processFragments({ fragments, portalLookup, sitePortals, brandId, geoco
             },
             links: 0,
             paths: 0,
+            alignmentMismatches: 0,
         },
     };
 
@@ -378,10 +397,10 @@ function processFragments({ fragments, portalLookup, sitePortals, brandId, geoco
                         continue;
                     }
 
-                    const distance = haversineDistance(
+                    const distance = roundToDecimalPlaces(haversineDistance(
                         { latitude: originPortalObj.lat, longitude: originPortalObj.lng },
                         { latitude: destPortalObj.lat, longitude: destPortalObj.lng }
-                    );
+                    ), 2);
 
                     shard.history.push({
                         ...shardHistoryItem,
@@ -426,7 +445,8 @@ function processFragments({ fragments, portalLookup, sitePortals, brandId, geoco
                         continue;
                     }
                     if (historyItem.linkCreatorTeam !== historyItem.originPortalInfo.team || historyItem.linkCreatorTeam !== historyItem.destinationPortalInfo.team) {
-                        if (fullEvent) {
+                        viewData.counters.alignmentMismatches++;
+                        if (fullEvent && verbose) {
                             const localTime = formatEpochToLocalTime(moveTime, geocode.timezone);
                             const teamInfo = {
                                 origin: getAbbreviatedTeam(historyItem.originPortalInfo.team),
@@ -453,8 +473,8 @@ function processFragments({ fragments, portalLookup, sitePortals, brandId, geoco
 
                     let points = 0;
                     if (allowFurtherPoints) {
-                        const brandRules = linkScoringRules.get(brandId);
-                        const linkRule = getLinkRule(brandRules, distance);
+                        const eventTypeRules = linkScoringRules.get(eventType);
+                        const linkRule = getLinkRule(eventTypeRules, distance);
                         if (linkRule) {
                             points = linkRule.jumpPoints + linkRule.linkLengthPoints;
                             allowFurtherPoints = linkRule.allowFurtherPoints;
@@ -554,7 +574,7 @@ function findSiteForFragment(fragment, sitesGeocode) {
             latitude: site.lat,
             longitude: site.lng,
         };
-        const distance = haversineDistance(fragmentCoords, siteCoords);
+        const distance = roundToDecimalPlaces(haversineDistance(fragmentCoords, siteCoords), 2);
         const isoPart = site.date.split('[')[0];
         const siteDate = DateTime.fromISO(isoPart, { zone: site.timezone }).toMillis();
         const matchingDate = isWithin24Hours(getFragmentSpawnTimeMs(fragment), siteDate);
