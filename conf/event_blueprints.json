@@ -2,28 +2,28 @@
     "branding": {
         "events": {
             "ANOMALY": {
-                "name": "Anomaly"
+                "label": "Anomaly"
             },
             "SKIRMISH": {
-                "name": "Shard Skirmish"
+                "label": "Shard Skirmish"
             },
             "INVESTIGATION": {
-                "name": "Shard Investigation"
+                "label": "Shard Investigation"
             },
             "SINGULAR": {
-                "name": "Shard Singular"
+                "label": "Shard Singular"
             },
             "STORM": {
-                "name": "Shard Storm"
+                "label": "Shard Storm"
             },
             "SINGLE_SHARD": {
-                "name": "Single Shard"
+                "label": "Single Shard"
             },
             "MULTIPLE_SHARDS": {
-                "name": "Multiple Shards"
+                "label": "Multiple Shards"
             },
             "UNKNOWN": {
-                "name": "Unknown"
+                "label": "Unknown"
             }
         },
         "ornaments": {

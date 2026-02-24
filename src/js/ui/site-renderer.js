@@ -464,17 +464,17 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     const siteData = getSiteData(seriesId, siteId);
     if (!siteData) return { title: '', content: '' };
 
-    const siteBrand = EVENT_BRANDS[siteGeocode.brand];
+    const siteEventType = EVENT_BRANDS[siteGeocode.eventType];
     const now = Date.now();
     const siteStartTime = new Date(siteGeocode.date.split('[')[0]).getTime();
-    const siteEndTime = siteStartTime + (siteBrand.durationMins || 241) * 60000;
+    const siteEndTime = siteStartTime + (siteEventType.durationMins || 241) * 60000;
     let countdownSuffix = '';
 
     if (now < siteStartTime) {
         const remaining = getTimeRemaining(siteGeocode.date, siteGeocode.timezone);
         countdownSuffix = ` (Starts in ${remaining})`;
     } else if (now >= siteStartTime && now <= siteEndTime) {
-        const remaining = getActiveEventRemaining(siteGeocode.date, siteGeocode.timezone, siteBrand.durationMins || 241);
+        const remaining = getActiveEventRemaining(siteGeocode.date, siteGeocode.timezone, siteEventType.durationMins || 241);
         countdownSuffix = ` (Active: ${remaining} remaining)`;
     }
 
@@ -543,7 +543,7 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     const flagHtml = siteGeocode?.country_code ? getFlagTooltipHtml(siteGeocode?.country_code.toLowerCase()) : '';
 
     return {
-        title: `<div style="text-align: center">${seriesMetadata?.name} ${siteBrand.name}<br/>${flagHtml} ${siteGeocode?.name}</div>`,
+        title: `<div style="text-align: center">${seriesMetadata?.name} ${siteEventType.label}<br/>${flagHtml} ${siteGeocode?.name}</div>`,
         content
     };
 }
