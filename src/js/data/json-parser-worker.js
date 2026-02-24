@@ -1,7 +1,7 @@
 import { CUSTOM_SERIES_ID, SITE_AGGREGATION_DISTANCE } from '../constants.js';
 import { processSeriesData } from './shard-data-processor.js';
 import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from './shard-data-helpers.js';
-import { haversineDistance } from "../shared/math-helpers.js";
+import { haversineDistance, roundToDecimalPlaces } from "../shared/math-helpers.js";
 import { formatEpochToSerializationString, isWithin24Hours } from '../shared/date-helpers.js';
 import eventBlueprints from '../../../conf/event_blueprints.json' with { type: 'json' };
 
@@ -54,7 +54,7 @@ function getCustomGeocode({ fileName, parsedData }) {
                     longitude: site.lng,
                 };
 
-                const distance = haversineDistance(fragmentCoords, siteCoords);
+                const distance = roundToDecimalPlaces(haversineDistance(fragmentCoords, siteCoords), 2);
                 const siteDate = new Date(site.date).getTime();
                 const matchingDate = isWithin24Hours(getFragmentSpawnTimeMs(fragment), siteDate);
 
@@ -70,7 +70,7 @@ function getCustomGeocode({ fileName, parsedData }) {
                     id: siteId,
                     lat: fragmentCoords.latitude,
                     lng: fragmentCoords.longitude,
-                    brand: 'UNKNOWN',
+                    eventType: 'UNKNOWN',
                     date: formatEpochToSerializationString(fragmentSpawnTimeMs),
                     name: `${fileName}-${customGeocode[siteCounter]}`,
 
@@ -83,7 +83,7 @@ function getCustomGeocode({ fileName, parsedData }) {
         }
     }
     for (const site of customGeocode.sites) {
-        site.brand = site[rawFragments].length > 1 ? 'MULTIPLE_SHARDS' : 'SINGLE_SHARD';
+        site.eventType = site[rawFragments].length > 1 ? 'MULTIPLE_SHARDS' : 'SINGLE_SHARD';
         const centroid = calculateCentroid(site[rawFragments]);
         site.lat = centroid.lat;
         site.lng = centroid.lng;

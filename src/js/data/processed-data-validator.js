@@ -2,16 +2,16 @@ import { FACTION_COLORS } from "../constants.js";
 
 const INDENT = '    ';
 
-export function validateProcessedSeriesData(processedSeriesData, seriesConfig, blueprints) {
+export function validateProcessedSeriesData(processedSeriesData, seriesConfig, blueprints, verbose = false) {
     console.log(`ℹ️ Validating processed data: ${seriesConfig.name}, ${Object.keys(processedSeriesData).length} sites...`);
     const processedSites = Object.values(processedSeriesData);
-    validateSites(processedSites, seriesConfig, blueprints);
+    validateSites(processedSites, seriesConfig, blueprints, verbose);
     console.log(`ℹ️ Validation complete.\n`);
 }
 
-function validateSites(processedSites, seriesConfig, blueprints) {
+function validateSites(processedSites, seriesConfig, blueprints, verbose = false) {
     const seriesValidation = {
-        brandConfigs: {},
+        eventTypeConfigs: {},
     };
 
     if (seriesConfig.shardComponents) {
@@ -28,7 +28,7 @@ function validateSites(processedSites, seriesConfig, blueprints) {
                     return sum + waveTotal;
                 }, 0) || 0;
 
-            seriesValidation.brandConfigs[componentConfig.brand] = {
+            seriesValidation.eventTypeConfigs[componentConfig.eventType] = {
                 totalShards,
                 totalTargets,
             };
@@ -36,9 +36,9 @@ function validateSites(processedSites, seriesConfig, blueprints) {
     }
 
     for (const site of processedSites) {
-        if (Object.entries(seriesValidation.brandConfigs).length > 0) {
-            const siteBrandId = site.geocode.brand;
-            const componentConfig = seriesConfig.shardComponents?.find(et => et.brand === siteBrandId);
+        if (Object.entries(seriesValidation.eventTypeConfigs).length > 0) {
+            const siteEventType = site.geocode.eventType;
+            const componentConfig = seriesConfig.shardComponents?.find(et => et.eventType === siteEventType);
 
             // Resolve site override
             let siteConfig = null;
@@ -47,15 +47,15 @@ function validateSites(processedSites, seriesConfig, blueprints) {
                 if (found) siteConfig = found;
             });
 
-            const brandConfig = seriesValidation.brandConfigs[siteBrandId];
-            if (brandConfig && site.fullEvent) {
-                const { totalTargets } = brandConfig;
+            const eventTypeConfig = seriesValidation.eventTypeConfigs[siteEventType];
+            if (eventTypeConfig && site.fullEvent) {
+                const { totalTargets } = eventTypeConfig;
                 // Calculate expected shards (with per-site wave overrides support)
                 let expectedShards;
                 if (siteConfig && siteConfig.shardCounts) {
                     expectedShards = siteConfig.shardCounts.reduce((sum, count) => sum + count, 0);
                 } else {
-                    expectedShards = brandConfig.totalShards;
+                    expectedShards = eventTypeConfig.totalShards;
                 }
 
                 if (site.fullEvent.shards.length !== expectedShards) {
@@ -92,11 +92,15 @@ function validateSites(processedSites, seriesConfig, blueprints) {
                             const portalB = site.portals[portalBKey];
 
                             const biDirMessage = biDirectionalMoves ? `\n${INDENT}Note: There are bidirectional jumps too!` : '';
-                            let multipleLinkDifferentFactionWarningMessage = `⚠️ Site ${site.geocode.id}: New link with different team!
+                            const siteHeader = `⚠️ Site ${site.geocode.id}: New link with different team!`;
+                            if (verbose) {
+                                console.warn(`${siteHeader}
 ${INDENT}Portal A: ${portalA.title} (${portalA.lat},${portalA.lng})
 ${INDENT}Portal B: ${portalB.title} (${portalB.lat},${portalB.lng})
-${INDENT}Previous ${previousTeam}, Current ${link.team}${biDirMessage}`;
-                            console.debug(multipleLinkDifferentFactionWarningMessage);
+${INDENT}Previous ${previousTeam}, Current ${link.team}${biDirMessage}`);
+                            } else {
+                                console.warn(siteHeader);
+                            }
                         }
                         linkColor = FACTION_COLORS[link.team] || FACTION_COLORS.NEU;
                         previousTeam = link.team;
