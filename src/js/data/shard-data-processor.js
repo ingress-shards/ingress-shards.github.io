@@ -107,12 +107,36 @@ export function processSeriesData(seriesDataPackage) {
     console.log(`ℹ️ Processing series ${config.name}:`);
     const sitesGeocode = geocode.sites;
 
-    const { shardJumpTimes, ornamentedPortals } = rawData;
-    console.log(`ℹ️ Processing ${shardJumpTimes.length} shard jump times files and ${ornamentedPortals?.length || 0} ornamented portals files.`);
+    const { shardJumpTimes, ornamentedPortals, targetPortals } = rawData;
+    console.log(`ℹ️ Processing ${shardJumpTimes.length} shard jump times files, ${ornamentedPortals?.length || 0} ornamented portals files and ${targetPortals?.length || 0} target portals files.`);
 
     const allObservedOrnamentedPortals = ornamentedPortals?.flatMap(exportObj =>
         exportObj.portals.map(p => ({ ...p, observedAt: DateTime.fromISO(exportObj.timestamp).toMillis() }))
     ) || [];
+
+    const allObservedTargetPortalsByFaction = {
+        RES: [],
+        ENL: [],
+    };
+
+    targetPortals?.forEach(exportObj => {
+        exportObj.artifact.forEach(artifact => {
+            const abbreviatedTeam = artifact.id === 'targetres' ? 'RES' : artifact.id === 'targetenl' ? 'ENL' : null;
+            if (!abbreviatedTeam) return;
+
+            artifact.target.forEach(t => {
+                allObservedTargetPortalsByFaction[abbreviatedTeam].push({
+                    title: t.portalInfo.title,
+                    lat: t.portalInfo.latE6 / 1e6,
+                    lng: t.portalInfo.lngE6 / 1e6,
+                    latE6: t.portalInfo.latE6,
+                    lngE6: t.portalInfo.lngE6,
+                    observedAt: t.observedAt,
+                    faction: abbreviatedTeam,
+                });
+            });
+        });
+    });
 
     const ornamentsBySite = new Map();
     if (allObservedOrnamentedPortals.length > 0) {
@@ -139,6 +163,26 @@ export function processSeriesData(seriesDataPackage) {
             }
         }
     }
+
+    const targetsBySite = new Map();
+    Object.keys(allObservedTargetPortalsByFaction).forEach(faction => {
+        for (const t of allObservedTargetPortalsByFaction[faction]) {
+            const matches = sitesGeocode.filter(site => {
+                const distance = roundToDecimalPlaces(haversineDistance(
+                    { latitude: t.lat, longitude: t.lng },
+                    { latitude: site.lat, longitude: site.lng }
+                ), 2);
+                return distance <= SITE_AGGREGATION_DISTANCE;
+            });
+
+            if (matches.length === 1) {
+                const siteId = matches[0].id;
+                if (!targetsBySite.has(siteId)) targetsBySite.set(siteId, []);
+                targetsBySite.get(siteId).push(t);
+            }
+        }
+    });
+
 
     const allSites = {};
     sitesGeocode.forEach(siteGeocode => {
@@ -202,14 +246,15 @@ export function processSeriesData(seriesDataPackage) {
         const fragments = siteFragmentsMap.get(siteId) || [];
 
         // Spatial Discovery:
-        // Match ornaments assigned to this site during pre-grouping
+        // Match ornaments/targets assigned to this site during pre-grouping
         const siteOrnamentedPortals = ornamentsBySite.get(siteId) || [];
+        const siteTargetPortals = targetsBySite.get(siteId) || [];
 
-        if (fragments.length === 0 && siteOrnamentedPortals.length === 0) {
+        if (fragments.length === 0 && siteOrnamentedPortals.length === 0 && siteTargetPortals.length === 0) {
             return null;
         }
 
-        return processSite(site, siteOrnamentedPortals, fragments, config, blueprints, verbose);
+        return processSite(site, siteOrnamentedPortals, siteTargetPortals, fragments, config, blueprints, verbose);
     }).filter(site => site !== null);
 
     const seriesData = Object.fromEntries(processedSites.map(site => [site.geocode.id, site]));
@@ -233,21 +278,39 @@ export function processSeriesData(seriesDataPackage) {
     return seriesData;
 }
 
-export function processSite(site, siteOrnamentedPortals, fragments, seriesConfig, blueprints, verbose = false) {
+export function processSite(site, siteOrnamentedPortals, siteTargetPortals, fragments, seriesConfig, blueprints, verbose = false) {
+    site.hasTargetData = siteTargetPortals && siteTargetPortals.length > 0;
     if (siteOrnamentedPortals && siteOrnamentedPortals.length > 0) {
         applyOrnamentedPortalsToSite(site, siteOrnamentedPortals);
+    }
+
+    if (siteTargetPortals && siteTargetPortals.length > 0) {
+        applyTargetPortalsToSite(site, siteTargetPortals);
+    }
+
+    if (siteOrnamentedPortals?.length > 0 || siteTargetPortals?.length > 0) {
         site.centroid = calculateCentroid(site.portals);
     }
 
     if (fragments && fragments.length > 0) {
         applyFragmentPortalsToSite(site, fragments);
-        applyFragmentsToSite(site, fragments, seriesConfig, blueprints, verbose);
+        applyFragmentsToSite(site, fragments, siteTargetPortals, seriesConfig, blueprints, verbose);
     }
 
     return site;
 }
 
-function applyFragmentsToSite(site, fragments, seriesConfig, blueprints, verbose) {
+function applyTargetPortalsToSite(site, siteTargetPortals) {
+    siteTargetPortals.forEach(t => {
+        const key = getPortalKey(t);
+        const created = createPortalForSite(site, key, t);
+        if (created) {
+            site.portals[created.id] = created.obj;
+        }
+    });
+}
+
+function applyFragmentsToSite(site, fragments, siteTargetPortals, seriesConfig, blueprints, verbose) {
     const siteEventType = site.geocode.eventType;
     const shardComponents = seriesConfig.shardComponents || [];
     const seriesEventConfig = shardComponents.find(et => et.eventType === siteEventType);
@@ -266,6 +329,7 @@ function applyFragmentsToSite(site, fragments, seriesConfig, blueprints, verbose
         fragments,
         portalLookup: site[portalLookupByOriginalKey],
         sitePortals: site.portals,
+        siteTargetPortals,
         eventType: siteEventType,
         geocode: site.geocode,
         fullEvent: true,
@@ -297,6 +361,7 @@ function applyFragmentsToSite(site, fragments, seriesConfig, blueprints, verbose
                 fragments: waveFragments,
                 portalLookup: site[portalLookupByOriginalKey],
                 sitePortals: site.portals,
+                siteTargetPortals: siteTargetPortals.filter(t => t.observedAt >= waveStart.getTime() && t.observedAt < waveEnd.getTime()),
                 eventType: siteEventType,
                 geocode: site.geocode,
                 fullEvent: false,
@@ -314,11 +379,15 @@ function applyFragmentsToSite(site, fragments, seriesConfig, blueprints, verbose
     }
 }
 
-function processFragments({ fragments, portalLookup, sitePortals, eventType, geocode, fullEvent, verbose = false }) {
+function processFragments({ fragments, portalLookup, sitePortals, siteTargetPortals, eventType, geocode, fullEvent, verbose = false }) {
     const siteName = geocode.name;
     const viewData = {
         shards: [],
         shardPaths: {},
+        targets: {
+            RES: [],
+            ENL: [],
+        },
         scores: {
             RES: 0,
             ENL: 0,
@@ -331,9 +400,36 @@ function processFragments({ fragments, portalLookup, sitePortals, eventType, geo
             },
             links: 0,
             paths: 0,
+            targets: {
+                RES: 0,
+                ENL: 0,
+            },
             alignmentMismatches: 0,
         },
     };
+
+    // Populate targets if available
+    if (siteTargetPortals) {
+        // Unique targets for this view
+        const uniqueTargets = new Map();
+
+        siteTargetPortals.forEach(t => {
+            const portalKey = getPortalKey({ title: t.title, latE6: Number(t.latE6), lngE6: Number(t.lngE6) });
+            const portalId = portalLookup[portalKey];
+
+            if (portalId && !uniqueTargets.has(`${portalId}-${t.faction}`)) {
+                viewData.targets[t.faction].push(portalId);
+                uniqueTargets.set(`${portalId}-${t.faction}`, true);
+            }
+        });
+
+        // Ensure IDs are unique and sorted
+        viewData.targets.RES = [...new Set(viewData.targets.RES)].sort((a, b) => a - b);
+        viewData.targets.ENL = [...new Set(viewData.targets.ENL)].sort((a, b) => a - b);
+
+        viewData.counters.targets.RES = viewData.targets.RES.length;
+        viewData.counters.targets.ENL = viewData.targets.ENL.length;
+    }
 
     for (const fragment of fragments.sort((a, b) => a.id.localeCompare(b.id))) {
         const shardId = parseInt(fragment.id.includes('_') ? fragment.id.slice(fragment.id.lastIndexOf('_') + 1) : fragment.id, 10);
@@ -466,10 +562,10 @@ function processFragments({ fragments, portalLookup, sitePortals, eventType, geo
                         continue;
                     }
 
-                    const distance = haversineDistance(
+                    const distance = roundToDecimalPlaces(haversineDistance(
                         { latitude: originPortalObj.lat, longitude: originPortalObj.lng },
                         { latitude: destPortalObj.lat, longitude: destPortalObj.lng }
-                    );
+                    ), 2);
 
                     let points = 0;
                     if (allowFurtherPoints) {
@@ -562,7 +658,7 @@ function processFragments({ fragments, portalLookup, sitePortals, eventType, geo
         viewData.shards.push(shard);
     }
 
-    viewData.counters.paths = viewData.shardPaths.size;
+    viewData.counters.paths = Object.keys(viewData.shardPaths).length;
     return viewData;
 }
 

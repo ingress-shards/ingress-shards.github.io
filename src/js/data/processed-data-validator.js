@@ -62,8 +62,23 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                     console.log(`⚠️ Site ${site.geocode.id}: expected ${expectedShards} shards but only ${site.fullEvent.shards.length} found.`)
                 }
                 if (site.fullEvent.targets) {
-                    if (site.fullEvent.targets.length !== totalTargets) {
-                        console.log(`⚠️ Site ${site.geocode.id}: expected ${totalTargets} targets but only ${site.fullEvent.targets.length} found.`)
+                    const foundTargetsCount = Object.values(site.fullEvent.targets).flat().length;
+                    if (foundTargetsCount !== totalTargets && totalTargets > 0) {
+                        const targetMechId = componentConfig?.targetMechanics;
+                        const targetMechanic = targetMechId ? (blueprints.mechanics?.targets || blueprints.targetMechanics)[targetMechId] : null;
+
+                        if (targetMechanic) {
+                            const lastWave = targetMechanic.waves?.[targetMechanic.waves.length - 1];
+                            const durationMins = lastWave ? (lastWave.endOffset + 1) : 241;
+
+                            const [isoPart] = site.geocode.date.split('[');
+                            const siteStartTime = new Date(isoPart).getTime();
+                            const siteEndTime = siteStartTime + durationMins * 60000;
+
+                            if (Date.now() > siteEndTime && site.hasTargetData) {
+                                console.log(`⚠️ Site ${site.geocode.id}: expected ${totalTargets} targets but only ${foundTargetsCount} found.`)
+                            }
+                        }
                     }
                 }
             }
