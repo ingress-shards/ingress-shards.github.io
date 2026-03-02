@@ -225,6 +225,10 @@ function createCustomPanes(map) {
     map.getPane('ornamentFrontPane').style.zIndex = 625;
     map.getPane('ornamentFrontPane').style.pointerEvents = 'none';
 
+    map.createPane('targetPane');
+    map.getPane('targetPane').style.zIndex = 630;
+    map.getPane('targetPane').style.pointerEvents = 'none';
+
     map.createPane('shardPane');
     map.getPane('shardPane').style.zIndex = 640;
     map.getPane('shardPane').style.pointerEvents = 'none';
