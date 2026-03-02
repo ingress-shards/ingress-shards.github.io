@@ -32,6 +32,7 @@ const mapDispatchers = {
                 title: customDetailsContent.title,
                 content: customDetailsContent.content + "<br />" + detailsPanelContent.content,
                 footer: detailsPanelContent.footer,
+                flagHtml: detailsPanelContent.flagHtml,
             };
         }
         detailsPanel.update(detailsPanelContent);

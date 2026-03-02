@@ -281,7 +281,8 @@ export function getDetailsPanelContent(seriesId) {
     });
 
     return {
-        title: `${metadata.name} Series Details`,
+        title: metadata.name,
+        flagHtml: '',
         content,
         footer: sites.length > 0 ? 'Select a specific site for details.' : 'No Sites found.',
     };
