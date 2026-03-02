@@ -1,0 +1,527 @@
+{
+  "siteId": "2026-plusgamma-lisbon",
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Escultura para Espaço Urbano I",
+            "description": "Da autoria do arquitecto e escultor Artur Rosa, este um arco metálico empilha cubos de inox vermelhos numa progressão geométrica. A obra, de teor construtivista, foi concebida em 1971, mas só em 1999 foi aqui colocada.",
+            "latE6": 38738028,
+            "lngE6": -9152358,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772287331000
+        },
+        {
+          "portalInfo": {
+            "title": "Parque Infantil da Praça de Londres",
+            "description": "Um espaço para as crianças usufruirem e brincarem sem segurança. Espaço da responsabilidade da Junta de Freguesia do Areeiro",
+            "latE6": 38741063,
+            "lngE6": -9138488,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772287331000
+        },
+        {
+          "portalInfo": {
+            "title": "Fonte São Sebastião",
+            "latE6": 38731103,
+            "lngE6": -9150503,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772287331000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural I Love Lebanon",
+            "latE6": 38731853,
+            "lngE6": -9141374,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772287331000
+        },
+        {
+          "portalInfo": {
+            "title": "Nu de Mulher",
+            "latE6": 38736459,
+            "lngE6": -9153220,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772289233000
+        },
+        {
+          "portalInfo": {
+            "title": "Stone Flowers",
+            "latE6": 38740804,
+            "lngE6": -9143872,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772289233000
+        },
+        {
+          "portalInfo": {
+            "title": "Villa Luís José Nunes",
+            "description": "Do ano de 1890, faz parte de uma série de Vilas criadas em Lisboa para dar resposta à corrente migratória para a capital. Donos de fábricas criaram estas habitações, para os seus empregados.",
+            "latE6": 38732129,
+            "lngE6": -9138136,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772289233000
+        },
+        {
+          "portalInfo": {
+            "title": "Caravela Portuguesa",
+            "description": "Acima da entrada de um hotel, encontramos uma peça escultórica em mármore de uma caravela Portuguesa, símbolo intemporal da época dos Descobrimentos.",
+            "latE6": 38728161,
+            "lngE6": -9149522,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772289233000
+        },
+        {
+          "portalInfo": {
+            "title": "Parque Infantil de Arroios",
+            "latE6": 38730326,
+            "lngE6": -9143957,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772291047000
+        },
+        {
+          "portalInfo": {
+            "title": "Lago Circular",
+            "description": "Lago ornamental que decora os jardins do Centro de Arte Moderna.",
+            "latE6": 38735332,
+            "lngE6": -9152930,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772291047000
+        },
+        {
+          "portalInfo": {
+            "title": "Igreja de São João de Deus",
+            "latE6": 38740461,
+            "lngE6": -9137639,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772291047000
+        },
+        {
+          "portalInfo": {
+            "title": "Delegação Económica e Comercial de Macau",
+            "description": "É na sua sede que a DECM promove a realização de inúmeras acções de divulgação cultural e patrimonial de Macau, nomeadamente exposições, conferências e lançamentos de livros ou de outras publicações.",
+            "latE6": 38739416,
+            "lngE6": -9148490,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772291047000
+        },
+        {
+          "portalInfo": {
+            "title": "Porta da Natureza",
+            "description": "Símbolos da natureza",
+            "latE6": 38729489,
+            "lngE6": -9150196,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772292854000
+        },
+        {
+          "portalInfo": {
+            "title": "Escultura de Entalado - Soares Branco",
+            "description": "Uma peça de escultura artística num prédio da Av. Marconi.",
+            "latE6": 38741594,
+            "lngE6": -9139854,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772292854000
+        },
+        {
+          "portalInfo": {
+            "title": "Half Bear",
+            "description": "Obra original de BORDALO II, da série Big Trash Animals.\nArte inserida em 2018 no jardim da Fundação Calouste Gulbenkian.",
+            "latE6": 38738229,
+            "lngE6": -9153941,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772292854000
+        },
+        {
+          "portalInfo": {
+            "title": "O Pescador e a Ninfa",
+            "description": "Uma curiosa escultura em cobre (já oxidado) na entrada de um prédio, na zona da Estefânia, em Lisboa.",
+            "latE6": 38732572,
+            "lngE6": -9141196,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772292854000
+        },
+        {
+          "portalInfo": {
+            "title": "Entrada Azul - Picoas",
+            "description": "Porta azul trabalhada em Picoas",
+            "latE6": 38729907,
+            "lngE6": -9148611,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772294782000
+        },
+        {
+          "portalInfo": {
+            "title": "A Guitarra Clássica",
+            "description": "A guitarra clássica é mais uma obra executada pelos calceteiros da Junta de Freguesia de Arroios num conjunto de melhoramentos realizado no Jardim Cesário Verde. Um magnífico exemplo desta arte.",
+            "latE6": 38732830,
+            "lngE6": -9140589,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772294782000
+        },
+        {
+          "portalInfo": {
+            "title": "Jardim dos Espelhos d’Água",
+            "description": "Jardim Oeste da Fundação Calouste Gulbenkian, caracterizado pelos espelhos d’água que o compõem.",
+            "latE6": 38736530,
+            "lngE6": -9155303,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772294782000
+        },
+        {
+          "portalInfo": {
+            "title": "Jardins Caixa - Entrada 1",
+            "description": "Entrada 1 dos Jardins Caixa, o espaço verde que rodeia a fachada principal do edifício-sede da CGD, em Lisboa. Com uma área de 5000m2, os Jardins Caixa dispõem de duas entradas, espaço livre, esplanadas e obras de arte no exterior.",
+            "latE6": 38741600,
+            "lngE6": -9143083,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772294782000
+        },
+        {
+          "portalInfo": {
+            "title": "Amália Rodrigues - Rainha do Fado",
+            "latE6": 38739681,
+            "lngE6": -9145941,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772296582000
+        },
+        {
+          "portalInfo": {
+            "title": "Parque Área de Lazer",
+            "latE6": 38739827,
+            "lngE6": -9138773,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772296582000
+        },
+        {
+          "portalInfo": {
+            "title": "Sapateiro & Chaves",
+            "latE6": 38728982,
+            "lngE6": -9143832,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772296582000
+        },
+        {
+          "portalInfo": {
+            "title": "Torre do Parque José Maria Eugénio",
+            "latE6": 38735034,
+            "lngE6": -9152253,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772296582000
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Religious Symbols",
+            "description": "Catholic theme on Portuguese street stone art",
+            "latE6": 38739716,
+            "lngE6": -9150358,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772287331000
+        },
+        {
+          "portalInfo": {
+            "title": "Gato Assanhado",
+            "latE6": 38739857,
+            "lngE6": -9136707,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1772287331000
+        },
+        {
+          "portalInfo": {
+            "title": "Jardim Henrique Lopes de Mendonça",
+            "latE6": 38730305,
+            "lngE6": -9144477,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1772287331000
+        },
+        {
+          "portalInfo": {
+            "title": "Portões do Antigo Quartel",
+            "latE6": 38734663,
+            "lngE6": -9152738,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1772287331000
+        },
+        {
+          "portalInfo": {
+            "title": "Menina com Ânfora",
+            "description": "Porta de entrada de prédio.",
+            "latE6": 38730952,
+            "lngE6": -9151986,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772289233000
+        },
+        {
+          "portalInfo": {
+            "title": "Entrada Este da Gulbenkian",
+            "description": "A Fundação Calouste Gulbenkian é uma instituição portuguesa de utilidade pública geral com caráter perpétuo, cujos fins estatutários são a Arte, a Beneficência, a Ciência e a Educação.",
+            "latE6": 38737235,
+            "lngE6": -9152528,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772289233000
+        },
+        {
+          "portalInfo": {
+            "title": "Liga Portuguesa dos Direitos do Animal",
+            "description": "Originalmente fundada em 6 de março de 1923, constituiu-se como Liga Portuguesa dos Direitos do Animal em 1981 e é hoje uma das mais importantes instituições que luta pela defesa e bem-estar dos animais. As suas actividades incluem a divulgação de boas práticas com os animais, organização de eventos e provas.",
+            "latE6": 38741218,
+            "lngE6": -9139142,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772289233000
+        },
+        {
+          "portalInfo": {
+            "title": "A Borboleta - Calçada Portuguesa",
+            "description": "A borboleta é mais uma obra executada pelos calceteiros da Junta de Freguesia de Arroios num conjunto de melhoramentos realizado no Jardim Cesário Verde. Um magnífico exemplo desta arte.",
+            "latE6": 38732404,
+            "lngE6": -9140918,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772289233000
+        },
+        {
+          "portalInfo": {
+            "title": "Portico do Palácio Sotto Mayor",
+            "description": "Entrada para o Sotto Mayor",
+            "latE6": 38728694,
+            "lngE6": -9147774,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772291047000
+        },
+        {
+          "portalInfo": {
+            "title": "Galeria de Arte - Chumbo",
+            "description": "\"chumbo\" é uma das mais recentes galerias de arte contemporânea de Lisboa. No seu espaço físico, na Rua de Ponta Delgada, apoia artias que exploram as questões sociais, filosóficas e políticas através da investigação criativa.",
+            "latE6": 38732791,
+            "lngE6": -9139181,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772291047000
+        },
+        {
+          "portalInfo": {
+            "title": "Ponto Gira 430 - Av. Barbosa du Bocage",
+            "description": "Sistema de bicicletas públicas e iniciativa da Câmara Municipal de Lisboa para promover o exercício físico, a mobilidade urbana e a exploração da cidade pela crescente rede de ciclovias e circuitos na zona de Lisboa.",
+            "latE6": 38740895,
+            "lngE6": -9143194,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772291047000
+        },
+        {
+          "portalInfo": {
+            "title": "Castelo do Olho III",
+            "description": "Escultura em mármore de Minoru Niizuma (1930-1998).",
+            "latE6": 38735594,
+            "lngE6": -9154120,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772291047000
+        },
+        {
+          "portalInfo": {
+            "title": "Separated Sculpture",
+            "description": "Seems to be some sort of rudimental portal, from when the exact blueprints on how to build a circle where still being developed and researched.",
+            "latE6": 38740008,
+            "lngE6": -9137633,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772292854000
+        },
+        {
+          "portalInfo": {
+            "title": "Coreto da Praça José Fontana",
+            "latE6": 38730079,
+            "lngE6": -9144028,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772292854000
+        },
+        {
+          "portalInfo": {
+            "title": "Cinemas UCI",
+            "description": "Cinema na cidade de Lisboa dentro do Centro Comercial El Corte Inglés, que conta com 14 salas de cinema.",
+            "latE6": 38732970,
+            "lngE6": -9153011,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772292854000
+        },
+        {
+          "portalInfo": {
+            "title": "Vila Santos",
+            "description": "Com 24 habituações, a Vila Santos foi construída em 1931, pelo Arq. Francisco dos Santos. A vila é composta por dois blocos paralelos de dois pisos. É uma prova do património histórico e arquitectónico da cidade do início do Sec. XX.",
+            "latE6": 38741385,
+            "lngE6": -9145539,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772292854000
+        },
+        {
+          "portalInfo": {
+            "title": "Federação Portuguesa de Esgrima",
+            "description": "Criada em 1922, a Federação Portuguesa de Esgrima é o organismo responsável para a promoção e difusão da esgrima a nível nacional.",
+            "latE6": 38739557,
+            "lngE6": -9151600,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772294782000
+        },
+        {
+          "portalInfo": {
+            "title": "As Três Graças",
+            "description": "\"As Três Graças\", uma escultura em mármore de Fernando Fernandes, foi inaugurada em 1973 na Praça de Londres, mas foi temporariamente removida devido à construção de um parque de estacionamento subterrâneo. Após reparos e a construção de uma nova base de betão armado, a obra foi reinstalada na mesma praça, próximo ao Parque Infantil, no início de 2009.",
+            "latE6": 38741201,
+            "lngE6": -9138475,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772294782000
+        },
+        {
+          "portalInfo": {
+            "title": "Costela-de-Adão - Arte em Calçada Portuguesa",
+            "description": "A planta Costela-de-adão é mais uma obra executada pelos calceteiros da Junta de Freguesia de Arroios num conjunto de melhoramentos realizado no Jardim Cesário Verde. Um magnífico exemplo desta arte.",
+            "latE6": 38732393,
+            "lngE6": -9140553,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772294782000
+        },
+        {
+          "portalInfo": {
+            "title": "Puzzle Room",
+            "description": "O Puzzle Room baseia-se no conceito dos “escape room”, concebido para grupos de 2 a 10 pessoas, em que terão 60 minutos para sair de uma casa cheia de surpresas onde ficaram fechados, e terão de resolver em grupo, puzzles e quebra cabeças para escapar.",
+            "latE6": 38730376,
+            "lngE6": -9149518,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772294782000
+        },
+        {
+          "portalInfo": {
+            "title": "Meninos",
+            "latE6": 38728429,
+            "lngE6": -9149780,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1772296582000
+        },
+        {
+          "portalInfo": {
+            "title": "Culturgest",
+            "latE6": 38740929,
+            "lngE6": -9142726,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1772296582000
+        },
+        {
+          "portalInfo": {
+            "title": "Asilo de Arroios",
+            "latE6": 38733462,
+            "lngE6": -9139796,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1772296582000
+        },
+        {
+          "portalInfo": {
+            "title": "Fundação Calouste Gulbenkian",
+            "latE6": 38737059,
+            "lngE6": -9155893,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1772296582000
+        }
+      ]
+    }
+  ]
+}
