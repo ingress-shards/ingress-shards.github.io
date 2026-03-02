@@ -32,7 +32,7 @@ export const TACTICAL_MARKER_SVG = `
     </svg>`;
 
 export const getHexagonSVG = (color) => `
-    <svg width="40" height="40" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+    <svg width="40" height="40" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" style="display: block;" opacity="0.6">
         <polygon points="15,2 27,8.5 27,21.5 15,28 3,21.5 3,8.5" 
                  fill="${color}" fill-opacity="0.1" 
                  stroke="${color}" stroke-width="2" 
