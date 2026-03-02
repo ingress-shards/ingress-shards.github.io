@@ -41,4 +41,10 @@ export function getAbbreviatedTeam(fullTeamName) {
 export const FILE_PATTERNS = [
     { type: 'shardJumpTimes', pattern: /^shard-jump-times.*\.json$/i },
     { type: 'ornamentedPortals', pattern: /^ornamented-portals.*\.json$/i },
+    { type: 'targetPortals', pattern: /^target-portals.*\.json$/i },
 ];
+
+export const TARGET_ARTIFACT_IDS = {
+    RES: 'targetres',
+    ENL: 'targetenl',
+};

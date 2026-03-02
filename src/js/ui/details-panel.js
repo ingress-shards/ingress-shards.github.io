@@ -11,6 +11,8 @@ L.Control.DetailsPanel = L.Control.extend({
 
         this._header = L.DomUtil.create('div', 'details-panel-header', this._container);
 
+        this._flagContainer = L.DomUtil.create('div', 'details-panel-flag', this._header);
+
         this._title = L.DomUtil.create('div', 'details-panel-title', this._header);
         this._title.innerHTML = `<h4>${this.options.title}</h4>`;
 
@@ -46,7 +48,9 @@ L.Control.DetailsPanel = L.Control.extend({
         }
     },
 
-    update: function ({ title = this.options.title, content = '', footer = '' }) {
+    update: function ({ title = this.options.title, content = '', footer = '', flagHtml = '' }) {
+        this._flagContainer.innerHTML = flagHtml;
+        this._flagContainer.style.display = flagHtml ? 'flex' : 'none';
         this._title.innerHTML = `<h4>${title}</h4>`;
         this._content.innerHTML = content;
         this._footer.innerHTML = `${footer}<div class="app-version"><a href="https://github.com/ingress-shards/ingress-shards.github.io/releases" target="ism-releases">v${__APP_VERSION__}</a></div>`;

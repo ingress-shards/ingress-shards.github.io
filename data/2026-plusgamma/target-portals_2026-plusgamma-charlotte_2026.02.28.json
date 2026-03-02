@@ -1,0 +1,522 @@
+{
+  "siteId": "2026-plusgamma-charlotte",
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "El Caballo",
+            "latE6": 35226305,
+            "lngE6": -80848360,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772305691000
+        },
+        {
+          "portalInfo": {
+            "title": "Kompan Fitness Zone",
+            "description": "Fitness equipment free for public use in First Ward Park",
+            "latE6": 35228030,
+            "lngE6": -80836436,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772305691000
+        },
+        {
+          "portalInfo": {
+            "title": "Aquatic Vectors",
+            "description": "By John T. Young",
+            "latE6": 35217731,
+            "lngE6": -80839959,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772305691000
+        },
+        {
+          "portalInfo": {
+            "title": "Flamenco D. Birdhouse",
+            "latE6": 35232414,
+            "lngE6": -80841996,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772305691000
+        },
+        {
+          "portalInfo": {
+            "title": "Sculpture of Books Stretching",
+            "latE6": 35223452,
+            "lngE6": -80846489,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772307711000
+        },
+        {
+          "portalInfo": {
+            "title": "Jim Crockett and Knights Painting",
+            "latE6": 35228741,
+            "lngE6": -80849303,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772307711000
+        },
+        {
+          "portalInfo": {
+            "title": "Ninth Street Park",
+            "latE6": 35234011,
+            "lngE6": -80841578,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772307711000
+        },
+        {
+          "portalInfo": {
+            "title": "1st Ward Beverage Co.",
+            "description": "Hidden Gem. Beer, Wine, Urban Provisions. Est. 2016",
+            "latE6": 35222999,
+            "lngE6": -80832374,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772307711000
+        },
+        {
+          "portalInfo": {
+            "title": "Miss Bonnie",
+            "description": "A sculpture of Bonnie Cone, founder of UNC Charlotte, created by Timothy Schmalz and presented to the university by the Rotary Club of Charlotte.",
+            "latE6": 35228404,
+            "lngE6": -80835510,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772309987000
+        },
+        {
+          "portalInfo": {
+            "title": "Branch U.S. Mint",
+            "latE6": 35229879,
+            "lngE6": -80846355,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772309987000
+        },
+        {
+          "portalInfo": {
+            "title": "Dr. Martin Luther King Jr. Statue",
+            "latE6": 35219403,
+            "lngE6": -80838375,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772309987000
+        },
+        {
+          "portalInfo": {
+            "title": "Twisted Metal Art",
+            "description": "Levine center art sculpture",
+            "latE6": 35224396,
+            "lngE6": -80847017,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772309987000
+        },
+        {
+          "portalInfo": {
+            "title": "Hummingbird House",
+            "latE6": 35232045,
+            "lngE6": -80842530,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772312375000
+        },
+        {
+          "portalInfo": {
+            "title": "Spaceship Fountain",
+            "latE6": 35228051,
+            "lngE6": -80835674,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772312375000
+        },
+        {
+          "portalInfo": {
+            "title": "Ally One Art",
+            "latE6": 35225859,
+            "lngE6": -80848697,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772312375000
+        },
+        {
+          "portalInfo": {
+            "title": "Colorful Wall",
+            "latE6": 35219001,
+            "lngE6": -80843248,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772312375000
+        },
+        {
+          "portalInfo": {
+            "title": "Tree Artwork",
+            "description": "Who said trees don’t grow out of metal?",
+            "latE6": 35231611,
+            "lngE6": -80838884,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772313892000
+        },
+        {
+          "portalInfo": {
+            "title": "Little Rock AME Zion Church",
+            "latE6": 35223268,
+            "lngE6": -80831666,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772313892000
+        },
+        {
+          "portalInfo": {
+            "title": "Carl & Varene Anderson Memorial Plaque",
+            "description": "Plaque in memory of Carl & Varene Anderson, founders of the National Square Dance Convention. June 2007",
+            "latE6": 35222728,
+            "lngE6": -80845389,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772313892000
+        },
+        {
+          "portalInfo": {
+            "title": "Bearden Park",
+            "description": "\n",
+            "latE6": 35227385,
+            "lngE6": -80848317,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772313892000
+        },
+        {
+          "portalInfo": {
+            "title": "The Bagley-Mullen House",
+            "description": "circa 1895. This site, in part, formerly the location of three tenement houses known as Fox's row.",
+            "latE6": 35229828,
+            "lngE6": -80844148,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772314519000
+        },
+        {
+          "portalInfo": {
+            "title": "Dry Fountain",
+            "latE6": 35220908,
+            "lngE6": -80839030,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772314519000
+        },
+        {
+          "portalInfo": {
+            "title": "Bechtler Museum of Modern Art",
+            "description": "Fine arts museum in Uptown Charlotte",
+            "latE6": 35224618,
+            "lngE6": -80847359,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772314519000
+        },
+        {
+          "portalInfo": {
+            "title": "Treetop Sculptures",
+            "latE6": 35231019,
+            "lngE6": -80839056,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1772314519000
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "At Peace",
+            "latE6": 35230880,
+            "lngE6": -80838562,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772305691000
+        },
+        {
+          "portalInfo": {
+            "title": "C.F.D. #4",
+            "description": "Built in 1926, this former firehouse served Charlotte’s Fourth Ward until 1972, when it was decommissioned and no longer used as an active station. Fun fact: scenes from Homeland Season 2 were filmed here, adding Hollywood flair to its storied past. Now owned by Vue Apartments and preserved as a historic building, it occasionally hosts community events, standing as a tribute to Charlotte’s firefighting legacy and one of the city’s last pre-WWII fire stations.",
+            "latE6": 35231231,
+            "lngE6": -80845461,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772305691000
+        },
+        {
+          "portalInfo": {
+            "title": "Persistence of Vision",
+            "description": "By Ralph Helmick.\n\n\"Persistence of Vision is at once an artwork, an event, and a reflection of community.\n\nThe building blocks of the piece are small pewter portraits of Charlotte citizens. These heads precisely reflect the demographic makeup of Mecklenburg County, and are individually controlled by 1600 discrete motors.\n\nAt the start of a workweek the heads are gathered into a porous cloud. Gradually, gracefully, they move one by one to create an epic three-dimensional face. This likeness then slowly reverts back into a cloud.\n\nThe following week a different portrait builds and dissolves. In a cycle of assembly and dispersion, new faces are continually formed over time.\n\nFor example, one sequence portrays an elderly Latina. Reaching an optical crescendo on Wednesday afternoon, her face gradually disappears by Friday evening.\n\nSubsequent weeks witness the formation of a 25-year-old African-American man, an Asian boy, a middle-aged Caucasian woman, and so on. Persistence of Vision is not “of” anyone in particular; it is “of everyone”.\n\nAn allegory for the justice system on both the macrocosmic and microcosmic levels, the sculpture reflects the organic process of the law and the society it serves.\"",
+            "latE6": 35219524,
+            "lngE6": -80837007,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772305691000
+        },
+        {
+          "portalInfo": {
+            "title": "Duke Energy Bulbs",
+            "description": "Duke Energy plaza sculptures / Lights.",
+            "latE6": 35223785,
+            "lngE6": -80847816,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772305691000
+        },
+        {
+          "portalInfo": {
+            "title": "El Toro",
+            "description": "El Toro statue outside of the residential buildings in Uptown Charlotte.",
+            "latE6": 35226101,
+            "lngE6": -80848677,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772307711000
+        },
+        {
+          "portalInfo": {
+            "title": "First Ward Park",
+            "latE6": 35227132,
+            "lngE6": -80836687,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772307711000
+        },
+        {
+          "portalInfo": {
+            "title": "Second Ward School",
+            "description": "Site of the first black public high school",
+            "latE6": 35218956,
+            "lngE6": -80840904,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772307711000
+        },
+        {
+          "portalInfo": {
+            "title": "Traces of Fourth Ward",
+            "latE6": 35231668,
+            "lngE6": -80842437,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772307711000
+        },
+        {
+          "portalInfo": {
+            "title": "McNinch House",
+            "description": "High end restaurant in house of former Charlotte Mayor.",
+            "latE6": 35231620,
+            "lngE6": -80839490,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772309987000
+        },
+        {
+          "portalInfo": {
+            "title": "Little Rock A.M.E Zion Church",
+            "latE6": 35223688,
+            "lngE6": -80832656,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772309987000
+        },
+        {
+          "portalInfo": {
+            "title": "Paper Mill Pub",
+            "description": "Great drinks, outstanding view, in the heart of uptown Charlotte next to the romare bearden park",
+            "latE6": 35227554,
+            "lngE6": -80848522,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772309987000
+        },
+        {
+          "portalInfo": {
+            "title": "Tears Poem Plaque",
+            "description": "\"What is a tear?\" This poem asks the reader to think what tears are for.",
+            "latE6": 35223608,
+            "lngE6": -80846136,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772309987000
+        },
+        {
+          "portalInfo": {
+            "title": "Charles R. Jonas Federal Courthouse",
+            "latE6": 35229681,
+            "lngE6": -80846139,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772312375000
+        },
+        {
+          "portalInfo": {
+            "title": "Sideways Comma",
+            "description": "Art",
+            "latE6": 35219952,
+            "lngE6": -80839063,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772312375000
+        },
+        {
+          "portalInfo": {
+            "title": "First Ward Park Entrance",
+            "description": "A Park to relax in",
+            "latE6": 35228366,
+            "lngE6": -80836412,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772312375000
+        },
+        {
+          "portalInfo": {
+            "title": "Mint Museum",
+            "description": "The Mint Museum of Uptown Charlotte.",
+            "latE6": 35224174,
+            "lngE6": -80848028,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772312375000
+        },
+        {
+          "portalInfo": {
+            "title": "Play Fountain",
+            "description": "Where the uptown kids come to cool off",
+            "latE6": 35227683,
+            "lngE6": -80836807,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772313892000
+        },
+        {
+          "portalInfo": {
+            "title": "Mecklenburg County Aquatic Center",
+            "latE6": 35216948,
+            "lngE6": -80840659,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772313892000
+        },
+        {
+          "portalInfo": {
+            "title": "Ally Catalyst Wall Art",
+            "latE6": 35225882,
+            "lngE6": -80849221,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772313892000
+        },
+        {
+          "portalInfo": {
+            "title": "Butterfly Highway: Pollinators Bee Pollinating",
+            "description": "Butterfly Garden of Fourth Ward Park provides food and habitat for native insects and wildlife that help pollinate and protect North Carolina's plant and food sources. This site has been designated a Pollinator Friendly Habitat by the North Carolina Wildlife Federation and is part of The Butterfly Highway connecting green spaces and pollinator gardens throughout our State.",
+            "latE6": 35231768,
+            "lngE6": -80842824,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772313892000
+        },
+        {
+          "portalInfo": {
+            "title": "Jambo",
+            "latE6": 35224790,
+            "lngE6": -80834469,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772314519000
+        },
+        {
+          "portalInfo": {
+            "title": "Charlotte Baseball Hall of Fame @ Truist Field",
+            "description": "hall of fame members to the charlotte baseball hall and the charlotte knights baseball team",
+            "latE6": 35228275,
+            "lngE6": -80849760,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772314519000
+        },
+        {
+          "portalInfo": {
+            "title": "The Frederick",
+            "description": "Historic Charlotte landmark built in the Italian Renaissance Revival style in 1927. Home to Newspaperman W.J. Cash while writing his book \"Mind of the South\" from 1939-40.",
+            "latE6": 35231698,
+            "lngE6": -80839257,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772314519000
+        },
+        {
+          "portalInfo": {
+            "title": "The Queens Hopscotch",
+            "latE6": 35223655,
+            "lngE6": -80846530,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1772314519000
+        }
+      ]
+    }
+  ]
+}

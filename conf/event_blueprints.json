@@ -44,6 +44,20 @@
                 "style": {
                     "icon": "images/ornament-icons/nl_1331_2026.png"
                 }
+            },
+            "targetres": {
+                "label": "RES Target Portal",
+                "style": {
+                    "icon": "images/ornament-icons/target-res.png",
+                    "size": [40, 40]
+                }
+            },
+            "targetenl": {
+                "label": "ENL Target Portal",
+                "style": {
+                    "icon": "images/ornament-icons/target-enl.png",
+                    "size": [40, 40]
+                }
             }
         }
     },

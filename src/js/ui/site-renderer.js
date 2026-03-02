@@ -1,5 +1,5 @@
 import * as L from "leaflet";
-import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, EVENT_BRANDS, ORNAMENT_BRANDS, SIGNAL_COLOR, ORNAMENT_ONLY_COLOR } from "../constants.js";
+import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, EVENT_BRANDS, ORNAMENT_BRANDS, SIGNAL_COLOR, ORNAMENT_ONLY_COLOR, TARGET_ARTIFACT_IDS } from "../constants.js";
 import shardIconUrl from '../../images/abaddon1_shard.png';
 import { getSiteData, getSeriesMetadata, getSeriesGeocode } from "../data/data-store.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
@@ -71,7 +71,8 @@ function renderSiteData({ seriesId, siteId, siteData }) {
             L.marker(latLng, {
                 icon: markerIcon,
                 interactive: false,
-                pane: pane
+                pane: pane,
+                opacity: 0.6
             }).addTo(ornamentLayer);
 
             // 2. The Interactive Anchor Pin (Opt-in)
@@ -79,7 +80,8 @@ function renderSiteData({ seriesId, siteId, siteData }) {
             L.circleMarker(latLng, {
                 radius: 6,
                 color: ORNAMENT_ONLY_COLOR,
-                fillOpacity: 0.4,
+                fillOpacity: 0.6,
+                opacity: 0.6,
                 weight: 1,
                 interactive: true,
                 pane: 'ornamentPane'
@@ -195,9 +197,16 @@ function renderShardLayer({ seriesId, siteId, shardData, portals, timezone, laye
         });
     };
 
-    const { portalMarkers, staticShardMarkers } = createPortalMarkers(portals, portalHistoryMap, timezone);
+    const { portalMarkers, staticShardMarkers } = createPortalMarkers(portals, portalHistoryMap, timezone, layerType === 'wave' ? shardData.targets : null);
     portalMarkers.forEach((marker) => marker.addTo(shardLayer));
     staticShardMarkers.forEach((marker) => marker.addTo(shardLayer));
+
+    if (layerType === 'wave' && shardData.targets) {
+        const targetLayer = L.featureGroup();
+        targetLayer._layerType = 'target-layer';
+        renderTargetMarkers(portals, shardData.targets).forEach(m => m.addTo(targetLayer));
+        targetLayer.addTo(shardLayer);
+    }
 
     return shardLayer;
 }
@@ -291,7 +300,7 @@ function createShardMotionPaths(shardMotionData) {
     });
 }
 
-function createPortalMarkers(portals, portalHistoryMap, timeZone) {
+function createPortalMarkers(portals, portalHistoryMap, timeZone, targets) {
     const portalMarkers = [];
     const staticShardMarkers = [];
 
@@ -299,10 +308,12 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone) {
         const latLng = L.latLng(portal.lat, portal.lng);
 
         const portalHistory = Array.from(portalHistoryMap[portalId] || []);
-        if (portalHistory.length === 0) continue;
+        const targetFaction = getTargetFaction(portalId, targets);
+
+        if (portalHistory.length === 0 && !targetFaction) continue;
 
         const lastKnownTeam = getLastKnownTeam(portalHistory);
-        const portalTooltip = formatPortalTooltip(portal, portalHistory, timeZone);
+        const portalTooltip = formatPortalTooltip(portal, portalHistory, timeZone, targetFaction);
 
         portalHistory.forEach(([, shardHistory]) => {
             const shardHistoryReasons = shardHistory.flatMap(h => h.reason);
@@ -336,11 +347,12 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone) {
     };
 }
 
-function formatPortalTooltip(portal, portalHistory, timeZone) {
+function formatPortalTooltip(portal, portalHistory, timeZone, targetFaction) {
     const ornamentLabel = ORNAMENT_BRANDS[portal.ornamentId]?.label || `Ornament: ${portal.ornamentId}`;
     const ornamentHtml = portal.ornamentId ? `<i>${ornamentLabel}</i><br/>` : '';
+    const targetHtml = targetFaction ? `<strong><span style="color:${FACTION_COLORS[targetFaction]}">${targetFaction}</span></strong> <i>Target Portal</i><br/>` : '';
     const separator = portalHistory.length > 0 ? '<hr />' : '';
-    let tooltipHtml = `<strong>${portal.title}</strong> <a href="${INGRESS_INTEL_PORTAL_LINK}${portal.lat},${portal.lng}" target="intel_page">Intel</a><br/>${ornamentHtml}${separator}`;
+    let tooltipHtml = `<strong>${portal.title}</strong> <a href="${INGRESS_INTEL_PORTAL_LINK}${portal.lat},${portal.lng}" target="intel_page">Intel</a><br/>${targetHtml}${ornamentHtml}${separator}`;
 
     portalHistory.forEach(([shardId, shardHistory], index) => {
         tooltipHtml += `<strong>Shard ${shardId}</strong><br />`;
@@ -543,7 +555,8 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     const flagHtml = siteGeocode?.country_code ? getFlagTooltipHtml(siteGeocode?.country_code.toLowerCase()) : '';
 
     return {
-        title: `<div style="text-align: center">${seriesMetadata?.name} ${siteEventType.label}<br/>${flagHtml} ${siteGeocode?.name}</div>`,
+        title: `${seriesMetadata?.name} ${siteEventType.label}<br/>${siteGeocode?.name}`,
+        flagHtml,
         content
     };
 }
@@ -680,4 +693,51 @@ function applyDynamicDashArray(polyline, map) {
     polyline.setStyle({
         dashArray: dashArraySegments.join(',')
     });
+}
+
+function getTargetFaction(portalId, targets) {
+    if (!targets) return null;
+    const pid = Number(portalId);
+    if (targets.RES?.includes(pid)) return 'RES';
+    if (targets.ENL?.includes(pid)) return 'ENL';
+    return null;
+}
+
+function renderTargetMarkers(portals, targets) {
+    const markers = [];
+    if (!targets) return markers;
+
+    const factionIcons = {
+        'RES': TARGET_ARTIFACT_IDS.RES,
+        'ENL': TARGET_ARTIFACT_IDS.ENL
+    };
+
+    for (const [faction, portalIds] of Object.entries(targets)) {
+        const ornamentId = factionIcons[faction];
+        const brand = ORNAMENT_BRANDS[ornamentId];
+        if (!brand) continue;
+
+        const style = brand.style || {};
+
+        portalIds.forEach(id => {
+            const portal = portals[id];
+            if (!portal) return;
+
+            const latLng = L.latLng(portal.lat, portal.lng);
+
+            // 1. The Visual Target Icon
+            if (style.icon) {
+                markers.push(L.marker(latLng, {
+                    icon: L.icon({
+                        iconUrl: style.icon,
+                        iconSize: style.size || [40, 40],
+                        iconAnchor: style.size ? [style.size[0] / 2, style.size[1] / 2] : [20, 20]
+                    }),
+                    interactive: false,
+                    pane: 'targetPane'
+                }));
+            }
+        });
+    }
+    return markers;
 }
