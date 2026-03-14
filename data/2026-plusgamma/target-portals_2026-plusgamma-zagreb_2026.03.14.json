@@ -1,0 +1,525 @@
+{
+  "siteId": "2026-plusgamma-zagreb",
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Gavella",
+            "description": "Gradsko dramsko kazaliste \"Gavella\". Famous Zagreb theatar \"Gavella\".",
+            "latE6": 45812169,
+            "lngE6": 15968973,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773493512000
+        },
+        {
+          "portalInfo": {
+            "title": "Observatory in Zagreb",
+            "description": "Zagreb astronomical observatory, founded in 1903.",
+            "latE6": 45819064,
+            "lngE6": 15975013,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773493512000
+        },
+        {
+          "portalInfo": {
+            "title": "Kozmički ciklus vode",
+            "description": "Fontana i bazen Kozmički ciklus vode djelo je Josipa Seissela izgrađeno 1935. Zamišljeno je kao dio parka za odmor od svakodnevnog užurbanog života sa izrazitim meditativnim obilježjima.",
+            "latE6": 45808347,
+            "lngE6": 15990206,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773493512000
+        },
+        {
+          "portalInfo": {
+            "title": "Old Railway Building",
+            "latE6": 45805786,
+            "lngE6": 15975355,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773493512000
+        },
+        {
+          "portalInfo": {
+            "title": "Stanko Vraz House",
+            "latE6": 45818163,
+            "lngE6": 15974755,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773495416000
+        },
+        {
+          "portalInfo": {
+            "title": "The song of angels",
+            "description": "Relief of musical angels in Palmotićeva",
+            "latE6": 45806090,
+            "lngE6": 15982223,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773495416000
+        },
+        {
+          "portalInfo": {
+            "title": "Josip Kozarac Bust",
+            "description": "Bust of Josip Kozarac famous Croatian writer.",
+            "latE6": 45807473,
+            "lngE6": 15969190,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773495416000
+        },
+        {
+          "portalInfo": {
+            "title": "Tužni balon medvjedić",
+            "description": "Mural na staroj kući oštećenoj u potresu 2020. godine",
+            "latE6": 45814297,
+            "lngE6": 15982828,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773495416000
+        },
+        {
+          "portalInfo": {
+            "title": "Nada Dimic Industrial Heritage",
+            "latE6": 45805813,
+            "lngE6": 15988152,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773497147000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural \"Boss Cat\"",
+            "description": "mural of a corporate cat",
+            "latE6": 45817918,
+            "lngE6": 15978784,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773497147000
+        },
+        {
+          "portalInfo": {
+            "title": "Hrvatski povijesni muzej",
+            "latE6": 45816007,
+            "lngE6": 15972412,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773497147000
+        },
+        {
+          "portalInfo": {
+            "title": "Vjekoslav Klaić House",
+            "latE6": 45805643,
+            "lngE6": 15972473,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773497147000
+        },
+        {
+          "portalInfo": {
+            "title": "Twisted Pillars",
+            "description": "... and six ladies on-a-top",
+            "latE6": 45809445,
+            "lngE6": 15988271,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773498983000
+        },
+        {
+          "portalInfo": {
+            "title": "Stube Bartola Felbingera",
+            "latE6": 45818177,
+            "lngE6": 15976255,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773498983000
+        },
+        {
+          "portalInfo": {
+            "title": "Gradski Komitet SKH Zagreb",
+            "description": "Spomen ploča",
+            "latE6": 45813421,
+            "lngE6": 15969291,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773498983000
+        },
+        {
+          "portalInfo": {
+            "title": "Glavni Kolodvor",
+            "description": "Zagreb Railway Station",
+            "latE6": 45804849,
+            "lngE6": 15978800,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773498983000
+        },
+        {
+          "portalInfo": {
+            "title": "Xxl Guitar 2",
+            "latE6": 45813715,
+            "lngE6": 15984208,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773500892000
+        },
+        {
+          "portalInfo": {
+            "title": "Stuck Here Reading Statue",
+            "latE6": 45807567,
+            "lngE6": 15967986,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773500892000
+        },
+        {
+          "portalInfo": {
+            "title": "Milka Trnina house",
+            "description": "House of opera diva, Milka Trnina",
+            "latE6": 45817426,
+            "lngE6": 15972886,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773500892000
+        },
+        {
+          "portalInfo": {
+            "title": "Uspavani div",
+            "description": "Projekt Okolo, autori Ella & Pitr",
+            "latE6": 45807061,
+            "lngE6": 15981953,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773500892000
+        },
+        {
+          "portalInfo": {
+            "title": "Rat's World",
+            "latE6": 45805672,
+            "lngE6": 15971172,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773502434000
+        },
+        {
+          "portalInfo": {
+            "title": "Kulušić",
+            "latE6": 45807618,
+            "lngE6": 15988916,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773502434000
+        },
+        {
+          "portalInfo": {
+            "title": "Tadija Smičiklas Memorial Plaque",
+            "latE6": 45816030,
+            "lngE6": 15971583,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773502434000
+        },
+        {
+          "portalInfo": {
+            "title": "Honorary Consulate Of The Syrian Arab Republic",
+            "description": "Honorary Consulate Of The Syrian Arab Republic",
+            "latE6": 45817716,
+            "lngE6": 15977996,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773502434000
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "PMP - Marija Jurić Zagorka",
+            "description": "Pumpa za vodu ukrašena po uzoru na Mariju Jurić Zagorku, poznatu Zagrebačku spisateljicu i autoricu mnogih romana i drama te boriteljica za prava žena. Oslikao PmP",
+            "latE6": 45807181,
+            "lngE6": 15989720,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773493512000
+        },
+        {
+          "portalInfo": {
+            "title": "Ivan Goran Kovacic Monument",
+            "description": "Ova skulptura je napravljena I. G. K. u čast a,predstavlja njegovu glavu.",
+            "latE6": 45817746,
+            "lngE6": 15979452,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773493512000
+        },
+        {
+          "portalInfo": {
+            "title": "Wisdom owls",
+            "description": "Statues of owl representing wisdom and knowledge",
+            "latE6": 45805976,
+            "lngE6": 15970764,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773493512000
+        },
+        {
+          "portalInfo": {
+            "title": "Bronze Age Tools",
+            "description": "Location of the archeological Bronze age site from the 12th century BCE, excavated in 1949.",
+            "latE6": 45814321,
+            "lngE6": 15969797,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773493512000
+        },
+        {
+          "portalInfo": {
+            "title": "Musical Chick",
+            "latE6": 45818895,
+            "lngE6": 15976455,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773495416000
+        },
+        {
+          "portalInfo": {
+            "title": "Marble Fountain",
+            "description": "Marble fountain in the underground passage",
+            "latE6": 45805139,
+            "lngE6": 15977580,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773495416000
+        },
+        {
+          "portalInfo": {
+            "title": "Dr. Milan Šufflay",
+            "latE6": 45811650,
+            "lngE6": 15969069,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773495416000
+        },
+        {
+          "portalInfo": {
+            "title": "Playground Petra Kresimira IV",
+            "description": "Playground for kids",
+            "latE6": 45808270,
+            "lngE6": 15991025,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773495416000
+        },
+        {
+          "portalInfo": {
+            "title": "Natural History Museum",
+            "latE6": 45817140,
+            "lngE6": 15972302,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773497147000
+        },
+        {
+          "portalInfo": {
+            "title": "Twins",
+            "description": "Relief of twin brothers in Šenoa street.",
+            "latE6": 45806399,
+            "lngE6": 15982164,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773497147000
+        },
+        {
+          "portalInfo": {
+            "title": "Stube Kalasancija Schlossera",
+            "latE6": 45814324,
+            "lngE6": 15983474,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773497147000
+        },
+        {
+          "portalInfo": {
+            "title": "HND",
+            "description": "Memorial plaque in memory of thirty journalists who established Croatian Journalist Society",
+            "latE6": 45807449,
+            "lngE6": 15968440,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773497147000
+        },
+        {
+          "portalInfo": {
+            "title": "Kapelica na Kaptolu",
+            "description": "Chapel on Kaptol",
+            "latE6": 45818608,
+            "lngE6": 15977955,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773498983000
+        },
+        {
+          "portalInfo": {
+            "title": "Hrvatski zavod za mirovinsko osiguranje",
+            "latE6": 45806719,
+            "lngE6": 15988892,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773498983000
+        },
+        {
+          "portalInfo": {
+            "title": "Ante Starčević Plaque",
+            "description": "Ante Starčević - otac domovine plate.",
+            "latE6": 45814817,
+            "lngE6": 15970778,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773498983000
+        },
+        {
+          "portalInfo": {
+            "title": "Glorie Van Weleer",
+            "latE6": 45805713,
+            "lngE6": 15973313,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773498983000
+        },
+        {
+          "portalInfo": {
+            "title": "Leksikografski zavod Miroslava Krleže",
+            "latE6": 45810380,
+            "lngE6": 15969004,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773500892000
+        },
+        {
+          "portalInfo": {
+            "title": "Balkon Art",
+            "latE6": 45809953,
+            "lngE6": 15988474,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773500892000
+        },
+        {
+          "portalInfo": {
+            "title": "Medieval Door",
+            "description": "Old dooooor in old town of Old Zagreb",
+            "latE6": 45817802,
+            "lngE6": 15975530,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773500892000
+        },
+        {
+          "portalInfo": {
+            "title": "Krokodil Frajer",
+            "description": "Naslikao: Inka Agil",
+            "latE6": 45804733,
+            "lngE6": 15976367,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773500892000
+        },
+        {
+          "portalInfo": {
+            "title": "Eyes in the Corner Graffiti",
+            "latE6": 45813783,
+            "lngE6": 15984554,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773502434000
+        },
+        {
+          "portalInfo": {
+            "title": "Tiny Builders",
+            "description": "Ukrasni reljef na zgradi.",
+            "latE6": 45808266,
+            "lngE6": 15968461,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773502434000
+        },
+        {
+          "portalInfo": {
+            "title": "Hrvatska Starokatolička Crkva",
+            "description": "The Church of the Holy Cross, belonging to the Old Catholic Church of Croatia.",
+            "latE6": 45805671,
+            "lngE6": 15981405,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773502434000
+        },
+        {
+          "portalInfo": {
+            "title": "Muzej Grada Zagreba",
+            "description": "Zagreb city museum",
+            "latE6": 45818409,
+            "lngE6": 15974711,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773502434000
+        }
+      ]
+    }
+  ]
+}
