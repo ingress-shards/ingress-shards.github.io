@@ -1,0 +1,521 @@
+{
+  "siteId": "2026-plusgamma-hong-kong",
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "曾大屋遊樂場",
+            "description": "Tsang Tai Uk Recreation Ground.\n\n沙田沙角街2號",
+            "latE6": 22375301,
+            "lngE6": 114190677,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773469086000
+        },
+        {
+          "portalInfo": {
+            "title": "A One and a Two",
+            "description": "The artist - Zhang Yu’s initial concept uses ancient bamboo scores as the basic motif, and leverages on their special quality of separation and integration to spread out the scores continuously to form the structure of horse sculpture.",
+            "latE6": 22381572,
+            "lngE6": 114189433,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773469086000
+        },
+        {
+          "portalInfo": {
+            "title": "Shatin Baptist Chrch",
+            "description": "沙田浸信會",
+            "latE6": 22385540,
+            "lngE6": 114193348,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773469086000
+        },
+        {
+          "portalInfo": {
+            "title": "Kong Pui Street Rest Garden Braille and Tactile Floor Plan",
+            "latE6": 22379599,
+            "lngE6": 114198608,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773469086000
+        },
+        {
+          "portalInfo": {
+            "title": "Yuen Chau kok Park Wall Painting",
+            "latE6": 22381508,
+            "lngE6": 114200040,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773470039000
+        },
+        {
+          "portalInfo": {
+            "title": "乒乓球檯",
+            "description": "乒乓球檯，運動好地方！",
+            "latE6": 22385194,
+            "lngE6": 114191207,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773470039000
+        },
+        {
+          "portalInfo": {
+            "title": "無帶遮隨手執碌蘑菇擋雨的小姑娘",
+            "description": "木製雕塑",
+            "latE6": 22379331,
+            "lngE6": 114189089,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773470039000
+        },
+        {
+          "portalInfo": {
+            "title": "博達樓 · 雙羽毛球場",
+            "description": "位於近博達樓一側，博康邨其中一個雙連羽毛球場，為附近嘅市民提供一個打羽毛球嘅地方，可以強身健體；多做運動更可紓緩神經緊張，也可改善睡眠質素。",
+            "latE6": 22374979,
+            "lngE6": 114193856,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773470039000
+        },
+        {
+          "portalInfo": {
+            "title": "Tai Chi Wheel",
+            "latE6": 22382351,
+            "lngE6": 114200465,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773471965000
+        },
+        {
+          "portalInfo": {
+            "title": "過河橋",
+            "description": "城門河Brige",
+            "latE6": 22377098,
+            "lngE6": 114188418,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773471965000
+        },
+        {
+          "portalInfo": {
+            "title": "博康邨 · 滾軸溜冰場",
+            "description": "位於博康社區會堂旁，沙田博康邨其中一個滾軸溜冰場，為附近嘅市民提供一個玩滾軸溜冰嘅地方，可以強身健體；多做運動更可紓緩神經緊張，也可改善睡眠質素。",
+            "latE6": 22375524,
+            "lngE6": 114194618,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773471965000
+        },
+        {
+          "portalInfo": {
+            "title": "Lek Yuen Public Library",
+            "latE6": 22384520,
+            "lngE6": 114190453,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773471965000
+        },
+        {
+          "portalInfo": {
+            "title": "City Art",
+            "latE6": 22380986,
+            "lngE6": 114188742,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773473672000
+        },
+        {
+          "portalInfo": {
+            "title": "瀝源邨位置指示圖",
+            "latE6": 22385835,
+            "lngE6": 114193033,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773473672000
+        },
+        {
+          "portalInfo": {
+            "title": "崗背街籃球場",
+            "latE6": 22378974,
+            "lngE6": 114199262,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773473672000
+        },
+        {
+          "portalInfo": {
+            "title": "Tsang Tai Uk Information Sign",
+            "latE6": 22374306,
+            "lngE6": 114190040,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773473672000
+        },
+        {
+          "portalInfo": {
+            "title": "小博安公園",
+            "description": "博康邨休閒活動小公園",
+            "latE6": 22374513,
+            "lngE6": 114192807,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773475449000
+        },
+        {
+          "portalInfo": {
+            "title": "殘奧牛",
+            "latE6": 22380122,
+            "lngE6": 114188753,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773475449000
+        },
+        {
+          "portalInfo": {
+            "title": "瀝源邨涼亭",
+            "description": "休憩設施",
+            "latE6": 22385805,
+            "lngE6": 114191352,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773475449000
+        },
+        {
+          "portalInfo": {
+            "title": "路標",
+            "latE6": 22381940,
+            "lngE6": 114200349,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773475449000
+        },
+        {
+          "portalInfo": {
+            "title": "紅馬藝術",
+            "latE6": 22382311,
+            "lngE6": 114189555,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773477450000
+        },
+        {
+          "portalInfo": {
+            "title": "博康邨公園",
+            "latE6": 22375664,
+            "lngE6": 114194762,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773477450000
+        },
+        {
+          "portalInfo": {
+            "title": "圓州角公園涼亭",
+            "latE6": 22382103,
+            "lngE6": 114200577,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773477450000
+        },
+        {
+          "portalInfo": {
+            "title": "沙公庭園",
+            "latE6": 22378508,
+            "lngE6": 114187525,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1773477450000
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "城門河畔展示牌3-大涌橋和曾大屋圍村",
+            "description": "曾大屋圍村，原名山廈圍，是沙田唯一現存的完整大型圍牆村落。\n二十世紀初，村民建議由左岸的白鶴汀連接右岸的吳園大涌兩岸。於1915年以石塊鋪成，是第一條連接沙田兩岸的行人橋。",
+            "latE6": 22376662,
+            "lngE6": 114188524,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773469086000
+        },
+        {
+          "portalInfo": {
+            "title": "瀝源公共圖書館平面圖",
+            "description": "圖書館藏書分佈圖",
+            "latE6": 22384281,
+            "lngE6": 114190363,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773469086000
+        },
+        {
+          "portalInfo": {
+            "title": "博士之路",
+            "latE6": 22382251,
+            "lngE6": 114200797,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773469086000
+        },
+        {
+          "portalInfo": {
+            "title": "博智樓 · 舊式鐵柱涼亭",
+            "description": "此涼亭位於沙田博康邨內，近博智樓一側，頂部為80年代公屋舊式鐵柱涼亭設計，並只配合石壆作簡易座座，提供了一個休憩空間可以讓附近嘅市民在此乘涼歇息，但非平頂下市民不能避雨，只好離開。",
+            "latE6": 22375537,
+            "lngE6": 114195991,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773469086000
+        },
+        {
+          "portalInfo": {
+            "title": "流星馬7號",
+            "description": "Zenith (Bronze and Aluminium Sculpture)\nby Mimmo Paladino (Italy)",
+            "latE6": 22381216,
+            "lngE6": 114188948,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773470039000
+        },
+        {
+          "portalInfo": {
+            "title": "曾大屋遊樂場摸讀平面圖",
+            "description": "曾大屋遊樂場",
+            "latE6": 22374639,
+            "lngE6": 114190467,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773470039000
+        },
+        {
+          "portalInfo": {
+            "title": "Little Climbing Wall",
+            "latE6": 22386038,
+            "lngE6": 114192887,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773470039000
+        },
+        {
+          "portalInfo": {
+            "title": "Kong Pui Street Rest Garden",
+            "latE6": 22379662,
+            "lngE6": 114198791,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773470039000
+        },
+        {
+          "portalInfo": {
+            "title": "圓州角公園入口",
+            "latE6": 22381010,
+            "lngE6": 114200284,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773471965000
+        },
+        {
+          "portalInfo": {
+            "title": "石片千層椅",
+            "description": "使用石头片堆起来的艺术座椅",
+            "latE6": 22380300,
+            "lngE6": 114188679,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773471965000
+        },
+        {
+          "portalInfo": {
+            "title": "Shatin Football Court",
+            "description": "Mini sport place",
+            "latE6": 22385993,
+            "lngE6": 114191048,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773471965000
+        },
+        {
+          "portalInfo": {
+            "title": "綠悠悠滑梯",
+            "description": "博康博達樓",
+            "latE6": 22374440,
+            "lngE6": 114193408,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773471965000
+        },
+        {
+          "portalInfo": {
+            "title": "Wall Mural (Pok Hong)",
+            "latE6": 22376466,
+            "lngE6": 114195576,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773473672000
+        },
+        {
+          "portalInfo": {
+            "title": "優質健行 標誌9",
+            "latE6": 22377591,
+            "lngE6": 114187411,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773473672000
+        },
+        {
+          "portalInfo": {
+            "title": "The Playground",
+            "latE6": 22382526,
+            "lngE6": 114200612,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773473672000
+        },
+        {
+          "portalInfo": {
+            "title": "沙田街市",
+            "description": "沙田友買餸的地方",
+            "latE6": 22384056,
+            "lngE6": 114190246,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773473672000
+        },
+        {
+          "portalInfo": {
+            "title": "kong pu street rest garden map site",
+            "description": "the map kong pu street",
+            "latE6": 22379365,
+            "lngE6": 114198020,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773475449000
+        },
+        {
+          "portalInfo": {
+            "title": "Lek Yuen Estate Fountain",
+            "latE6": 22385639,
+            "lngE6": 114192521,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773475449000
+        },
+        {
+          "portalInfo": {
+            "title": "曾大屋球場",
+            "description": "People play soccer there",
+            "latE6": 22375528,
+            "lngE6": 114189244,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773475449000
+        },
+        {
+          "portalInfo": {
+            "title": "1972 Linsenhoff, Liselott West Germany Piaff",
+            "description": "燈柱晚上照明",
+            "latE6": 22381707,
+            "lngE6": 114189357,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773475449000
+        },
+        {
+          "portalInfo": {
+            "title": "福海樓涼亭",
+            "description": "紅色小涼亭",
+            "latE6": 22385395,
+            "lngE6": 114191490,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773477450000
+        },
+        {
+          "portalInfo": {
+            "title": "沙田公園長者健身園地",
+            "latE6": 22378947,
+            "lngE6": 114188631,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773477450000
+        },
+        {
+          "portalInfo": {
+            "title": "鞦韆",
+            "latE6": 22381460,
+            "lngE6": 114200267,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773477450000
+        },
+        {
+          "portalInfo": {
+            "title": "樹下休憩小公園",
+            "description": "樹下休憩小公園讓居民聚集休息",
+            "latE6": 22374714,
+            "lngE6": 114192369,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1773477450000
+        }
+      ]
+    }
+  ]
+}
