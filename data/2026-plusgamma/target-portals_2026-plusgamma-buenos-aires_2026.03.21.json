@@ -1,0 +1,519 @@
+{
+  "siteId": "2026-plusgamma-buenos-aires",
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Carlitos Pura Sonrisa",
+            "latE6": -34590543,
+            "lngE6": -58414054,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774112897000
+        },
+        {
+          "portalInfo": {
+            "title": "Homenaje a Luca Prodan",
+            "latE6": -34586489,
+            "lngE6": -58430710,
+            "team": "ENLIGHTENED",
+            "description": "Placa de la legislatura en homenaje al musico Luca Prodan, integrando de Sumo, banda emblemática del rock nacional"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774112897000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural Cnel Cabrer",
+            "latE6": -34590243,
+            "lngE6": -58430884,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774112897000
+        },
+        {
+          "portalInfo": {
+            "title": "El Bicho Loco Ese",
+            "latE6": -34581254,
+            "lngE6": -58425041,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774112897000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural NOB",
+            "latE6": -34588294,
+            "lngE6": -58432756,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774114702000
+        },
+        {
+          "portalInfo": {
+            "title": "Indice Arriba",
+            "latE6": -34582395,
+            "lngE6": -58425897,
+            "team": "RESISTANCE",
+            "description": "Mural"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774114702000
+        },
+        {
+          "portalInfo": {
+            "title": "Plaza Guemes",
+            "latE6": -34589529,
+            "lngE6": -58416703,
+            "team": "ENLIGHTENED",
+            "description": "Plaza guemes"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774114702000
+        },
+        {
+          "portalInfo": {
+            "title": "Colores",
+            "latE6": -34595340,
+            "lngE6": -58424327,
+            "team": "RESISTANCE",
+            "description": "Arte en persianas"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774114702000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural Señora",
+            "latE6": -34583821,
+            "lngE6": -58427499,
+            "team": "ENLIGHTENED",
+            "description": "Guatemala 5031"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774116379000
+        },
+        {
+          "portalInfo": {
+            "title": "Jarron chino loco",
+            "latE6": -34595267,
+            "lngE6": -58421203,
+            "team": "ENLIGHTENED",
+            "description": "Gorriti esq Figueroa"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774116379000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural Mafalda",
+            "latE6": -34589976,
+            "lngE6": -58434191,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774116379000
+        },
+        {
+          "portalInfo": {
+            "title": "Conmemoración a las militantes desaparecidas",
+            "latE6": -34586968,
+            "lngE6": -58416136,
+            "team": "ENLIGHTENED",
+            "description": "Colocación de baldosas por la memoria, escuela Normal Superior N°6 en conmemoración a las estudiantes detenidas desaparecidas durante la última dictadura militar"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774116379000
+        },
+        {
+          "portalInfo": {
+            "title": "Iglesia Evangelica El Buen Jesus",
+            "latE6": -34592516,
+            "lngE6": -58428790,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774118003000
+        },
+        {
+          "portalInfo": {
+            "title": "capitel italiano",
+            "latE6": -34593090,
+            "lngE6": -58416191,
+            "team": "RESISTANCE",
+            "description": "edificio antiguo, típico de la zona de Palermo, casa de inmigrantes, declarado edificio histórico con prohibición de demolición."
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774118003000
+        },
+        {
+          "portalInfo": {
+            "title": "Rostro Femenino",
+            "latE6": -34585472,
+            "lngE6": -58429169,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774118003000
+        },
+        {
+          "portalInfo": {
+            "title": "Paddle y futbol 5",
+            "latE6": -34583708,
+            "lngE6": -58420776,
+            "team": "NEUTRAL",
+            "description": "Canchitas de paddle y futbol 5 en palermo"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774118003000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural En Mosaico Virgen Nuestra Señora De Narek",
+            "latE6": -34590022,
+            "lngE6": -58414749,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774120382000
+        },
+        {
+          "portalInfo": {
+            "title": "Esquina Libertad",
+            "latE6": -34588136,
+            "lngE6": -58432959,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774120382000
+        },
+        {
+          "portalInfo": {
+            "title": "Women Mural",
+            "latE6": -34582294,
+            "lngE6": -58425637,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774120382000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural Ciudad De La Furia",
+            "latE6": -34593810,
+            "lngE6": -58426656,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774120382000
+        },
+        {
+          "portalInfo": {
+            "title": "Calavera y Carabelas Piratas",
+            "latE6": -34583654,
+            "lngE6": -58427906,
+            "team": "ENLIGHTENED",
+            "description": "Hermosa imagen de una Calavera con Barcos Pirata en sus ojos."
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774121929000
+        },
+        {
+          "portalInfo": {
+            "title": "Cara De Mujer De Piedra",
+            "latE6": -34596326,
+            "lngE6": -58421396,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774121929000
+        },
+        {
+          "portalInfo": {
+            "title": "El Rey León",
+            "latE6": -34590143,
+            "lngE6": -58431884,
+            "team": "RESISTANCE",
+            "description": "Obra de Arte"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774121929000
+        },
+        {
+          "portalInfo": {
+            "title": "Comunidad musulmana Ahmadía",
+            "latE6": -34584927,
+            "lngE6": -58418989,
+            "team": "ENLIGHTENED",
+            "description": "Centro cultural musulmán. Musulmanes por la paz."
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774121929000
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Parroquia Santa Lucía",
+            "latE6": -34594543,
+            "lngE6": -58423015,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774112897000
+        },
+        {
+          "portalInfo": {
+            "title": "Núcleo Geomorfo",
+            "latE6": -34587358,
+            "lngE6": -58417512,
+            "team": "ENLIGHTENED",
+            "description": "Nucléideo"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774112897000
+        },
+        {
+          "portalInfo": {
+            "title": "Pájaro",
+            "latE6": -34584644,
+            "lngE6": -58427667,
+            "team": "RESISTANCE",
+            "description": "Mural."
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774112897000
+        },
+        {
+          "portalInfo": {
+            "title": "Vintage Rock",
+            "latE6": -34589647,
+            "lngE6": -58432789,
+            "team": "ENLIGHTENED",
+            "description": "Mural"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774112897000
+        },
+        {
+          "portalInfo": {
+            "title": "Graffiti Anteojos psicodélicos",
+            "latE6": -34582193,
+            "lngE6": -58423019,
+            "team": "RESISTANCE",
+            "description": "Graffiti colorido en Palermo, a una cuadra de Plaza Italia"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774114702000
+        },
+        {
+          "portalInfo": {
+            "title": "Palermo finest",
+            "latE6": -34590863,
+            "lngE6": -58430987,
+            "team": "ENLIGHTENED",
+            "description": "TAttoo shop pintado por un artista local en palermo Soho"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774114702000
+        },
+        {
+          "portalInfo": {
+            "title": "Chicken brothers",
+            "latE6": -34586850,
+            "lngE6": -58429092,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774114702000
+        },
+        {
+          "portalInfo": {
+            "title": "mural plantas",
+            "latE6": -34593379,
+            "lngE6": -58416333,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774114702000
+        },
+        {
+          "portalInfo": {
+            "title": "La Plata Vive",
+            "latE6": -34595079,
+            "lngE6": -58425492,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774116379000
+        },
+        {
+          "portalInfo": {
+            "title": "Pitufo Negro",
+            "latE6": -34588299,
+            "lngE6": -58433167,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774116379000
+        },
+        {
+          "portalInfo": {
+            "title": "Placa a la Congregación del Verso Divino",
+            "latE6": -34589172,
+            "lngE6": -58416467,
+            "team": "NEUTRAL"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774116379000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural Gato Te Mira",
+            "latE6": -34582096,
+            "lngE6": -58425653,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774116379000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural Tigre Blanco",
+            "latE6": -34589043,
+            "lngE6": -58433332,
+            "team": "NEUTRAL",
+            "description": "Mural Tigre Blanco hermoso mural en excelentes condiciones de Villa Crespo"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774118003000
+        },
+        {
+          "portalInfo": {
+            "title": "Caras",
+            "latE6": -34595375,
+            "lngE6": -58419147,
+            "team": "ENLIGHTENED",
+            "description": "Risa Llanto"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774118003000
+        },
+        {
+          "portalInfo": {
+            "title": "Placa Ministerio De Educacion",
+            "latE6": -34585550,
+            "lngE6": -58418133,
+            "team": "ENLIGHTENED",
+            "description": "Ministerio de educacion de buenos aires. Place where bs as helps people with down syndrome"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774118003000
+        },
+        {
+          "portalInfo": {
+            "title": "Buenos Aires Charango Style",
+            "latE6": -34583838,
+            "lngE6": -58427268,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774118003000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural ALPI",
+            "latE6": -34591828,
+            "lngE6": -58417320,
+            "team": "ENLIGHTENED",
+            "description": "Detalles en cerámica"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774120382000
+        },
+        {
+          "portalInfo": {
+            "title": "The Face in the Wall",
+            "latE6": -34582374,
+            "lngE6": -58424736,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774120382000
+        },
+        {
+          "portalInfo": {
+            "title": "Iglesia San Jorge",
+            "latE6": -34593497,
+            "lngE6": -58428609,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774120382000
+        },
+        {
+          "portalInfo": {
+            "title": "Mis Queridos Pollitos",
+            "latE6": -34586952,
+            "lngE6": -58430602,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774120382000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural Niño Sobre Tapir",
+            "latE6": -34594935,
+            "lngE6": -58423358,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774121929000
+        },
+        {
+          "portalInfo": {
+            "title": "Monte Ararat",
+            "latE6": -34589416,
+            "lngE6": -58415530,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774121929000
+        },
+        {
+          "portalInfo": {
+            "title": "Arbol Pinguino",
+            "latE6": -34581723,
+            "lngE6": -58425621,
+            "team": "RESISTANCE",
+            "description": "Pinguino"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774121929000
+        },
+        {
+          "portalInfo": {
+            "title": "Club Social Eros",
+            "latE6": -34587466,
+            "lngE6": -58431857,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774121929000
+        }
+      ]
+    }
+  ]
+}
