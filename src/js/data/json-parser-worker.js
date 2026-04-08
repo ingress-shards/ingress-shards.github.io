@@ -17,7 +17,7 @@ self.onmessage = function (event) {
         const rawDataMap = {}; rawDataMap['shardJumpTimes'] = [parsedData];
         const customGeocode = getCustomGeocode({ fileName: customFile.fileName, parsedData });
         const seriesDataPackage = {
-            config: { name: 'Custom Series' },
+            config: { name: 'Custom Season' },
             geocode: customGeocode,
             blueprints: eventBlueprints,
             rawData: rawDataMap,

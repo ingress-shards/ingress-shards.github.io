@@ -1,0 +1,535 @@
+{
+  "siteId": "2026-plusgamma-hyderabad",
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Burger King",
+            "latE6": 17401522,
+            "lngE6": 78486084,
+            "team": "ENLIGHTENED",
+            "description": "The famous king of burgers.. Burger King"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774082254000
+        },
+        {
+          "portalInfo": {
+            "title": "Sitting Women Mural",
+            "latE6": 17407177,
+            "lngE6": 78489741,
+            "team": "RESISTANCE",
+            "description": "In the mural the women is sitting with the chatta"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774082254000
+        },
+        {
+          "portalInfo": {
+            "title": "Temple In Chikkadpally",
+            "latE6": 17401972,
+            "lngE6": 78493697,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774082254000
+        },
+        {
+          "portalInfo": {
+            "title": "Thikkana Somayaji Statue",
+            "latE6": 17410547,
+            "lngE6": 78476534,
+            "team": "RESISTANCE",
+            "description": "Statue on tankbund"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774082254000
+        },
+        {
+          "portalInfo": {
+            "title": "ST Paul's Degree College",
+            "latE6": 17400620,
+            "lngE6": 78488775,
+            "team": "ENLIGHTENED",
+            "description": "One of the famous degree college chains in Hyderabad"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774084463000
+        },
+        {
+          "portalInfo": {
+            "title": "DR. B. R. Ambedkar Statue",
+            "latE6": 17408760,
+            "lngE6": 78475497,
+            "team": "ENLIGHTENED",
+            "description": "Father of the Indian Constitution"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774084463000
+        },
+        {
+          "portalInfo": {
+            "title": "Dr. B R Ambedkar's Bust",
+            "latE6": 17409449,
+            "lngE6": 78484161,
+            "team": "ENLIGHTENED",
+            "description": "Bust of Ambedkar at Dr. B. R.  Ambedkar committee hall."
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774084463000
+        },
+        {
+          "portalInfo": {
+            "title": "Ammavari Temple",
+            "latE6": 17405318,
+            "lngE6": 78493695,
+            "team": "ENLIGHTENED",
+            "description": "Park temple visited and worshipped by locals on regular festivals."
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774084463000
+        },
+        {
+          "portalInfo": {
+            "title": "Mata Temple",
+            "latE6": 17401187,
+            "lngE6": 78492126,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774086705000
+        },
+        {
+          "portalInfo": {
+            "title": "Pendekanti College",
+            "latE6": 17405370,
+            "lngE6": 78494548,
+            "team": "RESISTANCE",
+            "description": "Pendekanti law college"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774086705000
+        },
+        {
+          "portalInfo": {
+            "title": "Gagan Mahal Temple",
+            "latE6": 17406229,
+            "lngE6": 78481887,
+            "team": "ENLIGHTENED",
+            "description": "Temple at Gagan Mahal, Himayatnagar"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774086705000
+        },
+        {
+          "portalInfo": {
+            "title": "Indira Park",
+            "latE6": 17412260,
+            "lngE6": 78480316,
+            "team": "ENLIGHTENED",
+            "description": "Indira park inagurated by Fakhruddin Ali Ahmed , 5th president of India on 1st September 1975."
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774086705000
+        },
+        {
+          "portalInfo": {
+            "title": "Vemana",
+            "description": "Vemana, a great poet. His poetry ends with ' viswadhaabi rama vinura vema'",
+            "latE6": 17412312,
+            "lngE6": 78477710,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774087500000
+        },
+        {
+          "portalInfo": {
+            "title": "KFC",
+            "description": "KFC is an American fast food restaurant chain headquartered in Louisville, Kentucky that specializes in fried chicken.",
+            "latE6": 17401492,
+            "lngE6": 78485866,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774087500000
+        },
+        {
+          "portalInfo": {
+            "title": "Devi Arch",
+            "description": "Entrance Arch to devi temple",
+            "latE6": 17408867,
+            "lngE6": 78490626,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774087500000
+        },
+        {
+          "portalInfo": {
+            "title": "Venkateswara Temple Entrance",
+            "description": "\n",
+            "latE6": 17402684,
+            "lngE6": 78495245,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774087500000
+        },
+        {
+          "portalInfo": {
+            "title": "Working Farmers Mural",
+            "latE6": 17400209,
+            "lngE6": 78487724,
+            "team": "ENLIGHTENED",
+            "description": "A farmer working hard for growing crops in the painting on wall"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774089133000
+        },
+        {
+          "portalInfo": {
+            "title": "Sri Renuka Ellamma Devalayam",
+            "latE6": 17410770,
+            "lngE6": 78485087,
+            "team": "ENLIGHTENED",
+            "description": "Famous temple of local Goddess which was built 25 years ago."
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774089133000
+        },
+        {
+          "portalInfo": {
+            "title": "Mata Temple",
+            "latE6": 17407915,
+            "lngE6": 78477695,
+            "team": "ENLIGHTENED",
+            "description": "Mata temple"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774089133000
+        },
+        {
+          "portalInfo": {
+            "title": "Hanumanth Roa Park",
+            "latE6": 17405213,
+            "lngE6": 78493433,
+            "team": "ENLIGHTENED",
+            "description": "Park built for locals for morning and evening walks and well build and safe play area."
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774090850000
+        },
+        {
+          "portalInfo": {
+            "title": "Panchamukhi Anjaneya Devasthanamu",
+            "latE6": 17406759,
+            "lngE6": 78496184,
+            "team": "ENLIGHTENED",
+            "description": "Srungeri samsthana aalayamu"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774092038000
+        },
+        {
+          "portalInfo": {
+            "title": "Religious Structure on Himayatnagar Road",
+            "latE6": 17404762,
+            "lngE6": 78481068,
+            "team": "ENLIGHTENED",
+            "description": "Temple on Himayath nagar road just opposite bus stop"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774092038000
+        },
+        {
+          "portalInfo": {
+            "title": "Manikeshwara Temple",
+            "latE6": 17399485,
+            "lngE6": 78491407,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774092038000
+        },
+        {
+          "portalInfo": {
+            "title": "Tanisha",
+            "latE6": 17413271,
+            "lngE6": 78478462,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1774092038000
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Maisama Temple",
+            "latE6": 17412920,
+            "lngE6": 78478306,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774082254000
+        },
+        {
+          "portalInfo": {
+            "title": "Lord Hanuman Temple Chikadpally",
+            "latE6": 17406307,
+            "lngE6": 78493323,
+            "team": "ENLIGHTENED",
+            "description": "Hanuman temple established over 40 years ago."
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774082254000
+        },
+        {
+          "portalInfo": {
+            "title": "Bird And Nest Mural",
+            "latE6": 17398217,
+            "lngE6": 78493838,
+            "team": "RESISTANCE",
+            "description": "An amazing art demonstration of the artists across hyderabad. Showcasing their skills of art magic and painting the streets the city to make it beautiful. Newly painted murals across the as beautification initiative."
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774082254000
+        },
+        {
+          "portalInfo": {
+            "title": "Mata temple on Himayathnagar Road",
+            "latE6": 17403924,
+            "lngE6": 78481629,
+            "team": "ENLIGHTENED",
+            "description": "Little mata temple assembled by the local to offer prayers to lakshmi mata"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774082254000
+        },
+        {
+          "portalInfo": {
+            "title": "Tweety Graffiti",
+            "latE6": 17402414,
+            "lngE6": 78486080,
+            "team": "ENLIGHTENED",
+            "description": "Singing Duckling graffiti"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774084463000
+        },
+        {
+          "portalInfo": {
+            "title": "Annamayya Statue",
+            "latE6": 17411418,
+            "lngE6": 78477127,
+            "team": "RESISTANCE"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774084463000
+        },
+        {
+          "portalInfo": {
+            "title": "Bust of Sri Nandamuri Taraka Ramarao",
+            "latE6": 17409119,
+            "lngE6": 78489779,
+            "team": "RESISTANCE",
+            "description": "Bust inaugurated in honor of late CM of unified AP, Sri Nandamuri Taraka Rama Rao."
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774084463000
+        },
+        {
+          "portalInfo": {
+            "title": "Ganesh Temple",
+            "latE6": 17403469,
+            "lngE6": 78493315,
+            "team": "ENLIGHTENED",
+            "description": "Ganesh Temple in Ashoknagar"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774084463000
+        },
+        {
+          "portalInfo": {
+            "title": "Mata Temple On The Road",
+            "latE6": 17410900,
+            "lngE6": 78483675,
+            "team": "ENLIGHTENED",
+            "description": "Newly mata temple build on the road side,"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774086705000
+        },
+        {
+          "portalInfo": {
+            "title": "Jahnavi College",
+            "latE6": 17404498,
+            "lngE6": 78494361,
+            "team": "RESISTANCE",
+            "description": "Jahnavi Women's College"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774086705000
+        },
+        {
+          "portalInfo": {
+            "title": "The Thickshake Factory",
+            "latE6": 17401239,
+            "lngE6": 78486581,
+            "team": "ENLIGHTENED",
+            "description": "The Thickshake Factory,is an Indian food and beverage brand which was founded in late 2013, headquartered in Hyderabad, India"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774086705000
+        },
+        {
+          "portalInfo": {
+            "title": "Tankbund Arch",
+            "latE6": 17409411,
+            "lngE6": 78475826,
+            "team": "ENLIGHTENED",
+            "description": "Tank bund"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774086705000
+        },
+        {
+          "portalInfo": {
+            "title": "Pooh and His Friends",
+            "latE6": 17399585,
+            "lngE6": 78490876,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774087500000
+        },
+        {
+          "portalInfo": {
+            "title": "Agarwal's Family Dhaba Resturant",
+            "description": "A vegetarian family restaurant",
+            "latE6": 17405566,
+            "lngE6": 78479713,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774087500000
+        },
+        {
+          "portalInfo": {
+            "title": "Gautam Buddha",
+            "latE6": 17413072,
+            "lngE6": 78477946,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774087500000
+        },
+        {
+          "portalInfo": {
+            "title": "Ashta Lakshmi Temple",
+            "description": "Place where Hindus worship ashtalakshmi ammavaru",
+            "latE6": 17406999,
+            "lngE6": 78493278,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774087500000
+        },
+        {
+          "portalInfo": {
+            "title": "Kali Mata Gudi",
+            "latE6": 17402005,
+            "lngE6": 78494491,
+            "team": "ENLIGHTENED",
+            "description": "Kali Mata Gudi a temple of kali mata located in chikkadpally"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774089133000
+        },
+        {
+          "portalInfo": {
+            "title": "Veerashankar Statue",
+            "latE6": 17408353,
+            "lngE6": 78492426,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774089133000
+        },
+        {
+          "portalInfo": {
+            "title": "Siddhendra Yogi",
+            "latE6": 17412784,
+            "lngE6": 78478040,
+            "team": "ENLIGHTENED"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774089133000
+        },
+        {
+          "portalInfo": {
+            "title": "Minerva Coffee Shop",
+            "latE6": 17401276,
+            "lngE6": 78485248,
+            "team": "RESISTANCE",
+            "description": "One of the most famous breakfast destinations of Hyderabad. This coffee shop has been established over 30 years ago."
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774090850000
+        },
+        {
+          "portalInfo": {
+            "title": "Shiva Temple",
+            "latE6": 17406979,
+            "lngE6": 78476676,
+            "team": "ENLIGHTENED",
+            "description": "Powerful god."
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774092038000
+        },
+        {
+          "portalInfo": {
+            "title": "Sri Nalla Pochamma Devalayamu",
+            "latE6": 17410773,
+            "lngE6": 78484329,
+            "team": "ENLIGHTENED",
+            "description": "temple of nalla pochamma devi"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774092038000
+        },
+        {
+          "portalInfo": {
+            "title": "Ammavari Temple",
+            "latE6": 17404418,
+            "lngE6": 78493999,
+            "team": "ENLIGHTENED",
+            "description": "Ammavari Temple at ashoknagar"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774092038000
+        },
+        {
+          "portalInfo": {
+            "title": "Village Woman Mural",
+            "latE6": 17400534,
+            "lngE6": 78488222,
+            "team": "ENLIGHTENED",
+            "description": "Mural of a village woman working"
+          },
+          "targetAlignment": "ALIENS",
+          "observedAt": 1774092038000
+        }
+      ]
+    }
+  ]
+}

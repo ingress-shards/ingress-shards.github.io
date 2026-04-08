@@ -52,7 +52,7 @@ export function getDetailsPanelContent() {
     let content = `<input id="${CUSTOM_SERIES_ID}-file-input" class="series" type="file" accept="application/json" />`;
 
     return {
-        title: `Custom Series Details`,
+        title: `Custom Season Details`,
         content,
     };
 }

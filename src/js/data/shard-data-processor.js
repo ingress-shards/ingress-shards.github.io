@@ -438,7 +438,7 @@ function processFragments({ fragments, portalLookup, sitePortals, siteTargetPort
         let shard;
         let allowFurtherPoints = true;
         for (const historyItem of fragment.history.sort((a, b) => a.moveTimeMs.localeCompare(b.moveTimeMs))) {
-            const originPortalKey = getPortalKey(historyItem.originPortalInfo);
+            let originPortalKey = getPortalKey(historyItem.originPortalInfo);
             const destPortalKey = getPortalKey(historyItem.destinationPortalInfo);
             const moveTime = historyItem.moveTimeMs;
 
@@ -481,8 +481,20 @@ function processFragments({ fragments, portalLookup, sitePortals, siteTargetPort
                         continue;
                     }
 
+                    if (!originPortalKey) {
+                        originPortalKey = mostRecentShardPortalKey;
+                        originPortalId = originPortalKey && portalLookup[originPortalKey];
+                        console.log(`ℹ️  Origin portal missing from data, reverting to portal ${originPortalId} for shardId ${shardId} (${siteName}).`);
+                    }
                     if (!originPortalKey || !destPortalKey) {
-                        console.log(`⚠️  Missing portal info for JUMP history item in shardId ${shardId} (${siteName}).`);
+                        console.log(`⚠️  Missing portal info for JUMP - reverting to despawn. shardId ${shardId} (${siteName}).`);
+
+                        shardHistoryItem.reason = HISTORY_REASONS.DESPAWN;
+                        shard.history.push({
+                            ...shardHistoryItem,
+                            portalId: originPortalId,
+                            team: historyItem.originCapturerTeam && getAbbreviatedTeam(historyItem.originCapturerTeam)
+                        });
                         continue;
                     }
 
@@ -536,18 +548,24 @@ function processFragments({ fragments, portalLookup, sitePortals, siteTargetPort
                         continue;
                     }
 
+                    if (!originPortalKey) {
+                        originPortalKey = mostRecentShardPortalKey;
+                        originPortalId = originPortalKey && portalLookup[originPortalKey];
+                        console.log(`ℹ️  Origin portal missing from data, reverting to portal ${originPortalId} for shardId ${shardId} (${siteName}).`);
+                    }
                     if (!originPortalKey || !destPortalKey) {
                         console.log(`⚠️  Missing portal info for LINK history item in shardId ${shardId} (${siteName}).`);
                         continue;
                     }
-                    if (historyItem.linkCreatorTeam !== historyItem.originPortalInfo.team || historyItem.linkCreatorTeam !== historyItem.destinationPortalInfo.team) {
+                    if ((historyItem.originPortalInfo && historyItem.linkCreatorTeam !== historyItem.originPortalInfo.team) ||
+                        (historyItem.destinationPortalInfo && historyItem.linkCreatorTeam !== historyItem.destinationPortalInfo.team)) {
                         viewData.counters.alignmentMismatches++;
                         if (fullEvent && verbose) {
                             const localTime = formatEpochToLocalTime(moveTime, geocode.timezone);
                             const teamInfo = {
-                                origin: getAbbreviatedTeam(historyItem.originPortalInfo.team),
+                                origin: getAbbreviatedTeam(historyItem.originPortalInfo?.team),
                                 link: getAbbreviatedTeam(historyItem.linkCreatorTeam),
-                                dest: getAbbreviatedTeam(historyItem.destinationPortalInfo.team),
+                                dest: getAbbreviatedTeam(historyItem.destinationPortalInfo?.team),
                             }
                             console.log(
                                 `⚠️ Shard ${shardId} (${siteName}) alignment mismatch at ${localTime}:`, teamInfo);

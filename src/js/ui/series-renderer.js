@@ -223,7 +223,7 @@ export function getDetailsPanelContent(seriesId) {
     const geocode = getSeriesGeocode(seriesId);
 
     if (!metadata || !geocode || !geocode.sites) {
-        return { title: metadata?.name || 'Details', content: '<p><em>Series information not available.</em></p>' };
+        return { title: metadata?.name ? `${metadata.name} Season` : 'Details', content: '<p><em>Season information not available.</em></p>' };
     }
 
     const sites = Object.values(geocode.sites);
@@ -241,7 +241,7 @@ export function getDetailsPanelContent(seriesId) {
         content += `Year: ${metadata.year}<br />`;
     }
     if (metadata.overviewUrl) {
-        content += `<a href="${metadata.overviewUrl}" target="_blank">Series Overview</a><br /><br />`;
+        content += `<a href="${metadata.overviewUrl}" target="_blank">Season Overview</a><br /><br />`;
     }
 
     content += `<div class="series-sites-list">`;
@@ -281,7 +281,7 @@ export function getDetailsPanelContent(seriesId) {
     });
 
     return {
-        title: metadata.name,
+        title: `${metadata.name} Season`,
         flagHtml: '',
         content,
         footer: sites.length > 0 ? 'Select a specific site for details.' : 'No Sites found.',
