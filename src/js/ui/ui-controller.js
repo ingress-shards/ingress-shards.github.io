@@ -23,7 +23,7 @@ const mapDispatchers = {
         }
 
         const metadata = getSeriesMetadata(seriesId);
-        document.title = `${metadata?.name} Series | Ingress Shards Map`;
+        document.title = `${metadata?.name} Season | Ingress Shards Map`;
 
         let detailsPanelContent = getSeriesDetailsContent(seriesId);
         if (seriesId === CUSTOM_SERIES_ID) {
