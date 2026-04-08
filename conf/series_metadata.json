@@ -246,7 +246,6 @@
             "name": "+Gamma",
             "year": 2026,
             "overviewUrl": "https://ingress.com/news/2026-plusgamma",
-            "defaultView": true,
             "shardComponents": [
                 {
                     "eventType": "ANOMALY",
@@ -339,6 +338,44 @@
                                     "lng": -79.37736,
                                     "shardCounts": [4, 4, 4, 4, 4, 4]
                                 }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2026-orion",
+            "name": "Orion",
+            "year": 2026,
+            "overviewUrl": "https://ingress.com/news/2026-orion",
+            "defaultView": true,
+            "shardComponents": [
+                {
+                    "eventType": "ANOMALY",
+                    "startTime": "14:00",
+                    "shardMechanics": "6w_30m_3j",
+                    "targetMechanics": "6w_30m",
+                    "schedule": [
+                        {
+                            "date": "2026-05-16",
+                            "sites": [
+                                { "name": "Sydney, NSW, Australia", "lat": -33.8622503, "lng": 151.207684 },
+                                { "name": "Prague, Czechia", "lat": 50.0755381, "lng": 14.4378005 }
+                            ]
+                        },
+                        {
+                            "date": "2026-05-30",
+                            "sites": [
+                                { "name": "Kure City, Hiroshima Pref, Japan", "lat": 34.2489485, "lng": 132.5655271 },
+                                { "name": "Jersey City, New Jersey, USA", "lat": 40.7195342, "lng": -74.0430133 }
+                            ]
+                        },
+                        {
+                            "date": "2026-06-20",
+                            "sites": [
+                                { "name": "Geneva, Switzerland", "lat": 46.2043907, "lng": 6.1431577 },
+                                { "name": "Lima, Peru", "lat": -12.0466888, "lng": -77.0430886 }
                             ]
                         }
                     ]
