@@ -34,6 +34,12 @@ jobs:
                   LATEST_VERSION=$(git describe --tags --always --dirty | sed 's/^v//')
                   APP_VERSION=$LATEST_VERSION npm run build
 
+            - name: Upload Processed Data Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: processed-data
+                  path: gen/processed_series_data.json
+
             - name: Sanitize branch name
               id: sanitize
               run: echo "branch=${GITHUB_REF_NAME//\//-}" >> $GITHUB_OUTPUT
@@ -44,3 +50,28 @@ jobs:
                   name: preview-${{ steps.sanitize.outputs.branch }}
                   path: "./dist"
                   if-no-files-found: error
+
+    diagnostics:
+        needs: [build_preview]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: "lts/*"
+
+            - name: Install node dependencies
+              run: npm install
+
+            - name: Download Processed Data Artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: processed-data
+                  path: gen
+
+            - name: Validate Shard Jumps
+              run: npm run data:validate -- --verbose
+
+            - name: Calculate Season Statistics
+              run: npm run data:statistics

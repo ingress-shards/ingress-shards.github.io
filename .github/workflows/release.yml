@@ -49,6 +49,12 @@ jobs:
                   # Strip the 'v' prefix for the build
                   APP_VERSION=${LATEST_TAG#v} npm run build
 
+            - name: Upload Processed Data Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: processed-data
+                  path: gen/processed_series_data.json
+
             - name: Tag & Release
               id: semantic
               run: npx semantic-release --repository-url "https://github.com/${{ github.repository }}.git"
@@ -60,6 +66,31 @@ jobs:
                   path: "./dist"
         outputs:
             new-release-published: ${{ steps.semantic.outputs.new-release-published }}
+
+    diagnostics:
+        needs: [release]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: "lts/*"
+
+            - name: Install node dependencies
+              run: npm install
+
+            - name: Download Processed Data Artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: processed-data
+                  path: gen
+
+            - name: Validate Shard Jumps
+              run: npm run data:validate -- --verbose
+
+            - name: Calculate Season Statistics
+              run: npm run data:statistics
 
     deploy:
         needs: [release]
