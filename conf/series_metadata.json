@@ -67,7 +67,7 @@
                     "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
-                    "targetMechanics": "6w_30m"
+                    "targetMechanics": "6w_30m_4t"
                 },
                 {
                     "eventType": "SKIRMISH",
@@ -156,7 +156,7 @@
                     "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
-                    "targetMechanics": "6w_30m"
+                    "targetMechanics": "6w_30m_4t"
                 }
             ]
         },
@@ -170,7 +170,7 @@
                     "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
-                    "targetMechanics": "6w_30m"
+                    "targetMechanics": "6w_30m_4t"
                 },
                 {
                     "eventType": "STORM",
@@ -251,7 +251,7 @@
                     "eventType": "ANOMALY",
                     "startTime": "14:00",
                     "shardMechanics": "6w_30m_3j",
-                    "targetMechanics": "6w_30m",
+                    "targetMechanics": "6w_30m_4t",
                     "schedule": [
                         {
                             "date": "2026-02-28",
@@ -354,8 +354,8 @@
                 {
                     "eventType": "ANOMALY",
                     "startTime": "14:00",
-                    "shardMechanics": "6w_30m_3j",
-                    "targetMechanics": "6w_30m",
+                    "shardMechanics": "6w_30m_4j",
+                    "targetMechanics": "6w_30m_6t",
                     "schedule": [
                         {
                             "date": "2026-05-16",

@@ -1,4 +1,6 @@
-import { DateTime } from 'luxon';
+import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
+import * as Now from "temporal-polyfill/fns/now";
+import * as Duration from "temporal-polyfill/fns/duration";
 
 // Default locale, safely checking for navigator object which only exists in browsers.
 const DEFAULT_LOCALE = typeof navigator !== 'undefined' ? navigator.language : 'en-GB';
@@ -30,9 +32,9 @@ export function formatEpochToSerializationString(epochTimeMs) {
  * Formats the serialized ISO 8601 string (YYYY-MM-DDTHH:mm:ss) into a locale-specific short date string (e.g., 3/15/2023).
  */
 export function formatIsoToShortDate(isoString, timeZone, locale = DEFAULT_LOCALE) {
-    const isoPart = isoString.split('[')[0];
-    const dateObject = new Date(isoPart);
-    return dateObject.toLocaleDateString(locale, { timeZone, dateStyle: 'short' });
+    const zdt = ZonedDateTime.fromString(isoString);
+    const epochMillis = ZonedDateTime.epochMilliseconds(zdt);
+    return new Date(epochMillis).toLocaleDateString(locale, { timeZone: ZonedDateTime.timeZoneId(zdt), dateStyle: 'short' });
 }
 
 /**
@@ -86,15 +88,14 @@ export function isWithin24Hours(targetTimeMs, referenceTimeMs) {
 export function createWaveDate(siteDateIso, siteTimezone, timeStr) {
     const [hour, minute] = timeStr.split(':').map(Number);
 
-    // 1. Create a Luxon DateTime object from the ISO string, ensuring it's in the correct IANA timezone.
-    const isoPart = siteDateIso.split('[')[0];
-    const siteDateTime = DateTime.fromISO(isoPart, { zone: siteTimezone });
+    // 1. Create a ZonedDateTime object directly from the ISO string.
+    const zdt = ZonedDateTime.fromString(siteDateIso);
 
-    // 2. Create a new DateTime by setting the desired time. Luxon handles all timezone and DST logic.
-    const waveDateTime = siteDateTime.set({ hour, minute, second: 0, millisecond: 0 });
+    // 2. Create a new DateTime by setting the desired time.
+    const waveZdt = ZonedDateTime.withFields(zdt, { hour, minute, second: 0, millisecond: 0 });
 
     // 3. Convert back to a native Date object for use in the rest of your application.
-    return waveDateTime.toJSDate();
+    return new Date(ZonedDateTime.epochMilliseconds(waveZdt));
 }
 
 /**
@@ -105,17 +106,17 @@ export function createWaveDate(siteDateIso, siteTimezone, timeStr) {
  * Returns null if the event has already started.
  */
 export function getTimeRemaining(siteDateIso, siteTimezone) {
-    const isoPart = siteDateIso.split('[')[0];
-    const startTime = DateTime.fromISO(isoPart, { zone: siteTimezone });
-    const now = DateTime.now().setZone(siteTimezone);
+    const startTime = ZonedDateTime.fromString(siteDateIso);
+    const now = Now.zonedDateTimeISO(siteTimezone);
 
-    if (startTime <= now) {
+    if (ZonedDateTime.compare(startTime, now) <= 0) {
         return null;
     }
 
-    const totalMinutes = startTime.diff(now, 'minutes').minutes;
-    const totalHours = startTime.diff(now, 'hours').hours;
-    const totalDays = startTime.diff(now, 'days').days;
+    const diff = ZonedDateTime.until(now, startTime, { largestUnit: 'days' });
+    const totalDays = diff.days;
+    const totalHours = diff.hours;
+    const totalMinutes = diff.minutes;
 
     if (totalDays >= 1) {
         const days = Math.floor(totalDays);
@@ -143,16 +144,15 @@ export function getTimeRemaining(siteDateIso, siteTimezone) {
  * @returns {string|null} Formatted string "X hours Y minutes" or null if not active.
  */
 export function getActiveEventRemaining(siteDateIso, siteTimezone, durationMins) {
-    const isoPart = siteDateIso.split('[')[0];
-    const startTime = DateTime.fromISO(isoPart, { zone: siteTimezone });
-    const endTime = startTime.plus({ minutes: durationMins });
-    const now = DateTime.now().setZone(siteTimezone);
+    const startTime = ZonedDateTime.fromString(siteDateIso);
+    const endTime = ZonedDateTime.add(startTime, Duration.fromFields({ minutes: durationMins }));
+    const now = Now.zonedDateTimeISO(siteTimezone);
 
-    if (now < startTime || now > endTime) {
+    if (ZonedDateTime.compare(now, startTime) < 0 || ZonedDateTime.compare(now, endTime) > 0) {
         return null;
     }
 
-    const diff = endTime.diff(now, ['hours', 'minutes']).toObject();
+    const diff = ZonedDateTime.until(now, endTime, { largestUnit: 'hours' });
     const hours = Math.floor(diff.hours || 0);
     const minutes = Math.floor(diff.minutes || 0);
 

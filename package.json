@@ -24,10 +24,12 @@
         "clean": "node -e \"const fs = require('fs'); ['gen', 'dist'].forEach(p => fs.rmSync(p, { recursive: true, force: true }))\"",
         "start": "npm run prepare:data && webpack serve --config webpack.dev.js",
         "build": "npm run prepare:data && webpack --config webpack.prod.js",
-        "ci-geocode": "python scripts/geocode.py",
-        "ci-data-processor": "node scripts/pre-processor-loader.js",
+        "geocode": "python scripts/geocode.py",
+        "data:process": "node scripts/pre-processor-loader.js",
+        "data:validate": "node scripts/validator-loader.js",
+        "data:statistics": "node scripts/statistics-loader.js",
         "mkdir:gen": "node -e \"if (!require('fs').existsSync('gen')) require('fs').mkdirSync('gen', { recursive: true })\"",
-        "prepare:data": "npm run mkdir:gen && npm run ci-geocode && npm run ci-data-processor",
+        "prepare:data": "npm run mkdir:gen && npm run geocode && npm run data:process",
         "validate": "npm run clean && npm run build",
         "preview": "node scripts/preview-ci-artifact.js"
     },
@@ -56,6 +58,6 @@
         "leaflet-providers": "^2.0.0",
         "leaflet-relief": "^1.4.0",
         "leaflet.motion": "github:neon-ninja/leaflet.motion",
-        "luxon": "^3.7.2"
+        "temporal-polyfill": "^0.3.2"
     }
 }

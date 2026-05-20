@@ -19,6 +19,7 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
 - **Dryness:** If you see me repeating logic, suggest a helper function or a custom hook.
 - **Constraints:** Do not add new dependencies without asking first. Keep components under 150 lines. Never delete comments unless objectively outdated. *Do not guess file paths; verify file existence before editing.*
 - **Vibe:** This is a PERSONAL project. Tone should be concise. No conversational filler. Just code and "Why" it works.
+- **Peer Review:** To ensure changes match requirements and standards, the AI must simulate/trigger a 'Standards Review' (as if by a different agent) for all proposed and executed changes. This review must be documented in the implementation plan and walkthrough.
 
 ## 4. General Tooling (Global)
 - **ESLint:** Always ensure the project follows the rules defined in `eslint.config.js` (this automatically handles enforcing camelCase for variables/functions).

@@ -1,0 +1,665 @@
+{
+  "siteId": "2026-orion-prague",
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Moorage 5. Vltava",
+            "latE6": 50092006,
+            "lngE6": 14416653
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Národní Třída, Nové Město",
+            "latE6": 50081518,
+            "lngE6": 14415034
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Poštovní Muzeum",
+            "latE6": 50092261,
+            "lngE6": 14428647
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Secesní malby ve Valentinské",
+            "latE6": 50088080,
+            "lngE6": 14416406
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Socha naproti Bílé labuti",
+            "latE6": 50089973,
+            "lngE6": 14435393
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Základní kámen Bredovský dvůr",
+            "latE6": 50082730,
+            "lngE6": 14430258
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "A fresco Dell Aacensione",
+            "latE6": 50091684,
+            "lngE6": 14424959
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "Dva býci",
+            "latE6": 50088564,
+            "lngE6": 14415296
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "History Of Czechoslovakia",
+            "latE6": 50084844,
+            "lngE6": 14414836
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "Pamatnik Ceskoslovenske Lidobrany",
+            "latE6": 50082777,
+            "lngE6": 14417376
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "Rudolf a Zděnka Abeles Kleinovi",
+            "latE6": 50086030,
+            "lngE6": 14433714
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "Vousáč nad vchodem",
+            "latE6": 50091250,
+            "lngE6": 14433202
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "Astronomická věž Klementina",
+            "latE6": 50086658,
+            "lngE6": 14416490
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "ČVUT - Fakulta jaderná a fyzikálně inženýrská",
+            "latE6": 50091068,
+            "lngE6": 14416342
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Film and TV School",
+            "latE6": 50081723,
+            "lngE6": 14413150
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Ozdoba",
+            "latE6": 50088743,
+            "lngE6": 14434348
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Socha na žlutým baráku",
+            "latE6": 50081110,
+            "lngE6": 14429562
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Statues",
+            "latE6": 50092735,
+            "lngE6": 14430550
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Fontána",
+            "latE6": 50089132,
+            "lngE6": 14414170
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "Hotel Thalia",
+            "latE6": 50081813,
+            "lngE6": 14416485
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "Krannerova kašna, Staré Město",
+            "latE6": 50082974,
+            "lngE6": 14413545
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural",
+            "latE6": 50091871,
+            "lngE6": 14424187
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "Památník povodní",
+            "latE6": 50091232,
+            "lngE6": 14436317
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "Zdobený Vchod A Prďácká Fasáda",
+            "latE6": 50084460,
+            "lngE6": 14431622
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "Kostel sv. Klimenta",
+            "latE6": 50091965,
+            "lngE6": 14429056
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Masaryčka",
+            "latE6": 50088491,
+            "lngE6": 14433768
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Opičí džungle",
+            "latE6": 50083004,
+            "lngE6": 14431910
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Plastika na narozi",
+            "latE6": 50091344,
+            "lngE6": 14417805
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Románské sloupy, Staré město",
+            "latE6": 50082488,
+            "lngE6": 14414652
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Socha Ženy",
+            "latE6": 50088558,
+            "lngE6": 14414465
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Autoklub České republiky",
+            "latE6": 50083689,
+            "lngE6": 14432481
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778941920000
+        },
+        {
+          "portalInfo": {
+            "title": "Myslbekova busta",
+            "latE6": 50084958,
+            "lngE6": 14413917
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778941920000
+        },
+        {
+          "portalInfo": {
+            "title": "OC Bílá Labuť",
+            "latE6": 50090003,
+            "lngE6": 14434061
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778941920000
+        },
+        {
+          "portalInfo": {
+            "title": "Socha anděla bez hlavy",
+            "latE6": 50088612,
+            "lngE6": 14414810
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778941920000
+        },
+        {
+          "portalInfo": {
+            "title": "U Medvídků",
+            "latE6": 50082789,
+            "lngE6": 14418886
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778941920000
+        },
+        {
+          "portalInfo": {
+            "title": "Verejne Hriste",
+            "latE6": 50092468,
+            "lngE6": 14422339
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1778941920000
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Asekurační Spolek Průmyslu Cukrovarnického",
+            "latE6": 50085769,
+            "lngE6": 14431287
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Music Club Vagon + Metro Theatre",
+            "latE6": 50082177,
+            "lngE6": 14418128
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Pamětní dlaždice",
+            "latE6": 50092461,
+            "lngE6": 14434832
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Rudolfinum's Sky",
+            "latE6": 50089687,
+            "lngE6": 14415332
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Stoned Aries",
+            "latE6": 50092538,
+            "lngE6": 14425515
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Totem",
+            "latE6": 50083973,
+            "lngE6": 14415885
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778932920000
+        },
+        {
+          "portalInfo": {
+            "title": "Jindřich Honzl",
+            "latE6": 50092771,
+            "lngE6": 14431839
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "kavárna u Čechova mostu",
+            "latE6": 50092211,
+            "lngE6": 14417315
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "Lion",
+            "latE6": 50082659,
+            "lngE6": 14414212
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "Pět soch na fasádě",
+            "latE6": 50083457,
+            "lngE6": 14430566
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "Plastika Zeny",
+            "latE6": 50089689,
+            "lngE6": 14437211
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "Two Watching Statues",
+            "latE6": 50087289,
+            "lngE6": 14416176
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778934720000
+        },
+        {
+          "portalInfo": {
+            "title": "Dveře s andělíčky",
+            "latE6": 50084756,
+            "lngE6": 14433241
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Flower Alternative Sculpture",
+            "latE6": 50083441,
+            "lngE6": 14413827
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Mánesův most",
+            "latE6": 50089273,
+            "lngE6": 14413866
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Panna s pohárem na hlavě",
+            "latE6": 50091622,
+            "lngE6": 14422075
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Svaz letců RČS",
+            "latE6": 50090381,
+            "lngE6": 14435903
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Wall Art",
+            "latE6": 50082570,
+            "lngE6": 14419243
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778936520000
+        },
+        {
+          "portalInfo": {
+            "title": "Architektonický prvek - Vodorovná Římsa",
+            "latE6": 50080540,
+            "lngE6": 14429520
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "Bust",
+            "latE6": 50091203,
+            "lngE6": 14430099
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "Palace Archa",
+            "latE6": 50089774,
+            "lngE6": 14433589
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "Pitko",
+            "latE6": 50082497,
+            "lngE6": 14415222
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "U Prvni Reduty",
+            "latE6": 50090602,
+            "lngE6": 14418158
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "Žák",
+            "latE6": 50087954,
+            "lngE6": 14414985
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778938320000
+        },
+        {
+          "portalInfo": {
+            "title": "F.Topič",
+            "latE6": 50081599,
+            "lngE6": 14415686
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Iacolius Gallus",
+            "latE6": 50084742,
+            "lngE6": 14414366
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Kostel sv. Petra",
+            "latE6": 50091145,
+            "lngE6": 14434041
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Ministerstvo průmyslu a obchodu",
+            "latE6": 50093029,
+            "lngE6": 14425763
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "místo narození J. Heyrovského",
+            "latE6": 50088607,
+            "lngE6": 14415677
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Plowing",
+            "latE6": 50086576,
+            "lngE6": 14434858
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778940120000
+        },
+        {
+          "portalInfo": {
+            "title": "Antica Figura",
+            "latE6": 50086453,
+            "lngE6": 14416453
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778941920000
+        },
+        {
+          "portalInfo": {
+            "title": "Dvorana Knihovny Akademie věd",
+            "latE6": 50081889,
+            "lngE6": 14414309
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778941920000
+        },
+        {
+          "portalInfo": {
+            "title": "Metro B elevator",
+            "latE6": 50090330,
+            "lngE6": 14437374
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778941920000
+        },
+        {
+          "portalInfo": {
+            "title": "Svatý v okně",
+            "latE6": 50092196,
+            "lngE6": 14432353
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778941920000
+        },
+        {
+          "portalInfo": {
+            "title": "Template",
+            "latE6": 50090350,
+            "lngE6": 14418206
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778941920000
+        },
+        {
+          "portalInfo": {
+            "title": "U Staré pošty",
+            "latE6": 50082511,
+            "lngE6": 14431317
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1778941920000
+        }
+      ]
+    }
+  ]
+}

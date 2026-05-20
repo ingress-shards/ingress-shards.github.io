@@ -6,7 +6,9 @@ import { getScoresText } from "./site-renderer.js";
 import { getSeriesMetadata, getSeriesGeocode, getSiteData, getAllSeriesIds } from "../data/data-store.js";
 import { formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js";
-import { DateTime } from "luxon";
+import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
+import * as Now from "temporal-polyfill/fns/now";
+import * as Duration from "temporal-polyfill/fns/duration";
 import eventBlueprints from "../../../conf/event_blueprints.json" with { type: "json" };
 import { TACTICAL_MARKER_SVG } from "./marker-template.js";
 
@@ -64,12 +66,11 @@ function getEventDuration(site, seriesId) {
 function isEventActive(site, seriesId) {
     const durationMins = getEventDuration(site, seriesId);
 
-    const isoDate = site.date.split("[")[0];
-    const startTime = DateTime.fromISO(isoDate, { zone: site.timezone });
-    const endTime = startTime.plus({ minutes: durationMins });
-    const now = DateTime.now().setZone(site.timezone);
+    const startTime = ZonedDateTime.fromString(site.date);
+    const endTime = ZonedDateTime.add(startTime, Duration.fromFields({ minutes: durationMins }));
+    const now = Now.zonedDateTimeISO(site.timezone);
 
-    return now >= startTime && now <= endTime;
+    return ZonedDateTime.compare(now, startTime) >= 0 && ZonedDateTime.compare(now, endTime) <= 0;
 }
 
 function renderSeriesLayer(seriesId) {
@@ -87,9 +88,8 @@ function renderSeriesLayer(seriesId) {
         const hasFragments = siteData?.fullEvent?.shards?.length > 0;
         const hasOrnaments = Object.values(siteData?.portals || {}).some(p => p.ornamentId);
 
-        const isoDate = site.date.split("[")[0];
-        const startTime = DateTime.fromISO(isoDate, { zone: site.timezone });
-        const now = DateTime.now().setZone(site.timezone);
+        const startTime = ZonedDateTime.fromString(site.date);
+        const now = Now.zonedDateTimeISO(site.timezone);
 
         let phaseClass = '';
         let outcome = 'NONE';
@@ -101,7 +101,7 @@ function renderSeriesLayer(seriesId) {
         } else if (isEventActive(site, seriesId)) {
             // Active phase: Event is happening now
             phaseClass = 'is-phase-active';
-        } else if (now < startTime) {
+        } else if (ZonedDateTime.compare(now, startTime) < 0) {
             // Future sites
             if (hasOrnaments) {
                 // Discovery phase: Future and information available
@@ -137,10 +137,10 @@ function renderSeriesLayer(seriesId) {
         const timeRemainingText = remainingTime ? ` (${remainingTime})` : '';
 
         const eventDuration = getEventDuration(site, seriesId);
-        const endTime = startTime.plus({ minutes: eventDuration });
-        const completionGraceEnd = endTime.plus({ days: 1 });
-        const isComplete = now > endTime;
-        const isWithinCompletionGrace = now <= completionGraceEnd;
+        const endTime = ZonedDateTime.add(startTime, Duration.fromFields({ minutes: eventDuration }));
+        const completionGraceEnd = ZonedDateTime.add(endTime, Duration.fromFields({ days: 1 }));
+        const isComplete = ZonedDateTime.compare(now, endTime) > 0;
+        const isWithinCompletionGrace = ZonedDateTime.compare(now, completionGraceEnd) <= 0;
         const activeRemaining = getActiveEventRemaining(site.date, site.timezone, eventDuration);
 
         let siteTooltip = '';
@@ -165,7 +165,7 @@ function renderSeriesLayer(seriesId) {
             }
             const siteUrl = `#/${seriesId}/${site.id.replace(seriesId + "-", "")}`;
             addEventInteraction(siteMarker, 'click', () => { navigate(siteUrl); });
-        } else if (startTime.toJSDate().getTime() < now.toJSDate().getTime()) {
+        } else if (ZonedDateTime.compare(startTime, now) < 0) {
             siteTooltip += `<em>No data available</em>`;
         }
         siteMarker.bindTooltip(siteTooltip, { permanent: false, direction: 'auto' });

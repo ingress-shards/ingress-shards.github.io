@@ -1,8 +1,7 @@
 import eventBlueprints from "../conf/event_blueprints.json" with { type: "json" };
 import seriesMetadata from "../conf/series_metadata.json" with { type: "json" };
 import seriesGeocode from "../gen/series_geocode.json" with { type: "json" };
-import { processSeriesData } from '../src/js/data/shard-data-processor.js';
-import { validateProcessedSeriesData } from "../src/js/data/processed-data-validator.js";
+import { processSeriesData } from '../src/js/data/shard-jumps/data-processor.js';
 import fs from 'fs/promises';
 import { existsSync, mkdirSync } from 'fs';
 import path from 'path';
@@ -20,7 +19,9 @@ async function processSingleSeries(seriesConfig, verbose = false) {
     const seriesDataFolder = path.join(DATA_DIR, seriesId);
 
     if (!existsSync(seriesDataFolder)) {
-        console.log(`⚠️ No raw data folder found for series ${seriesConfig.name}.\n`);
+        if (verbose) {
+            console.log(`⚠️ No raw data folder found for series ${seriesConfig.name}.\n`);
+        }
         return null;
     }
 
@@ -62,7 +63,9 @@ async function processSingleSeries(seriesConfig, verbose = false) {
 
     const totalDataPoints = Object.values(rawDataMap).flat().length;
     if (totalDataPoints === 0) {
-        console.log(`⚠️ No relevant raw data found for ${seriesConfig.name}.\n`);
+        if (verbose) {
+            console.log(`⚠️ No relevant raw data found for ${seriesConfig.name}.\n`);
+        }
         return null;
     }
 
@@ -75,8 +78,6 @@ async function processSingleSeries(seriesConfig, verbose = false) {
     };
 
     const processedData = processSeriesData(seriesDataPackage);
-    validateProcessedSeriesData(processedData, seriesConfig, eventBlueprints, verbose);
-
     return { seriesId, processedData };
 }
 
@@ -105,9 +106,10 @@ async function runDataProcessor() {
         try {
             await fs.writeFile(outputFilePath, JSON.stringify(allSeriesData), 'utf-8');
             const endTime = performance.now();
-            console.log(`✅ Series data successfully saved to ${outputFilePath} in ${((endTime - startTime) / 1000).toFixed(2)} seconds`);
+            console.log(`✅ Series data successfully processed and saved to ${outputFilePath} in ${((endTime - startTime) / 1000).toFixed(2)} seconds`);
         } catch (e) {
             console.error(`❌ Failed to write output file.`, e);
+            process.exit(1);
         }
     } catch (error) {
         console.error('❌ Error during processing:', error);
