@@ -58,7 +58,6 @@
         "leaflet-providers": "^2.0.0",
         "leaflet-relief": "^1.4.0",
         "leaflet.motion": "github:neon-ninja/leaflet.motion",
-        "luxon": "^3.7.2",
         "temporal-polyfill": "^0.3.2"
     }
 }
