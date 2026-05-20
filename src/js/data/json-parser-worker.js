@@ -1,6 +1,6 @@
 import { CUSTOM_SERIES_ID, SITE_AGGREGATION_DISTANCE } from '../constants.js';
-import { processSeriesData } from './shard-data-processor.js';
-import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from './shard-data-helpers.js';
+import { processSeriesData } from './shard-jumps/data-processor.js';
+import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from './shard-jumps/data-helpers.js';
 import { haversineDistance, roundToDecimalPlaces } from "../shared/math-helpers.js";
 import { formatEpochToSerializationString, isWithin24Hours } from '../shared/date-helpers.js';
 import eventBlueprints from '../../../conf/event_blueprints.json' with { type: 'json' };
