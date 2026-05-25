@@ -29,7 +29,7 @@
         "data:validate": "node scripts/validator-loader.js",
         "data:statistics": "node scripts/statistics-loader.js",
         "mkdir:gen": "node -e \"if (!require('fs').existsSync('gen')) require('fs').mkdirSync('gen', { recursive: true })\"",
-        "prepare:data": "npm run mkdir:gen && npm run geocode && npm run data:process",
+        "prepare:data": "npm run mkdir:gen && npm run geocode && npm run data:process && npm run data:validate && npm run data:statistics",
         "validate": "npm run clean && npm run build",
         "preview": "node scripts/preview-ci-artifact.js"
     },

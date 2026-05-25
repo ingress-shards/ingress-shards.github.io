@@ -2,18 +2,25 @@ import * as Instant from "temporal-polyfill/fns/instant";
 import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
 
 import { FACTION_COLORS } from "../../constants.js";
-import { printTable, calculateShardActionSchedule } from "./data-helpers.js";
+import { calculateShardActionSchedule, convertToCsv, formatTimeWithMs, formatDurationMs, formatZonedDateTimeWithMs } from "./data-helpers.js";
 
 const INDENT = '    ';
+
 
 export function validateProcessedSeriesData(processedSeriesData, seriesConfig, blueprints, verbose = false) {
     console.log(`ℹ️ Validating processed data: ${seriesConfig.name}, ${Object.keys(processedSeriesData).length} sites...`);
     const processedSites = Object.values(processedSeriesData);
-    validateSites(processedSites, seriesConfig, blueprints, verbose);
+    const results = validateSites(processedSites, seriesConfig, blueprints, verbose);
     console.log(`ℹ️ Validation complete.\n`);
+    return results;
 }
 
 function validateSites(processedSites, seriesConfig, blueprints, verbose = false) {
+    const seriesMissing = [];
+    const seriesOutsideWindow = [];
+    const seriesInvalidSequences = [];
+    const seriesMismatches = [];
+
     const seriesValidation = {
         eventTypeConfigs: {},
     };
@@ -167,61 +174,80 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                             let currentLocationId = null;
                             let hasJumpMismatch = false;
                             let hasDespawnMismatch = false;
-                            const actionDetails = [];
+                            const allRows = [];
 
                             for (const historyItem of shard.history) {
                                 const originPortal = historyItem.portalId !== undefined ? site.portals[historyItem.portalId] : null;
                                 const destPortal = historyItem.dest !== undefined ? site.portals[historyItem.dest] : null;
 
-                                let detailStr = "";
+                                let isMismatch = false;
+                                let originStr = "-";
+                                let destStr = "-";
+
                                 if (historyItem.reason === "spawn") {
-                                    detailStr = `   spawn => "${originPortal?.title || 'Unknown'}"`;
+                                    destStr = originPortal?.title || 'Unknown';
                                     currentLocationId = historyItem.portalId;
                                 } else if (historyItem.reason === "link" || historyItem.reason === "jump") {
-                                    let isMismatch = false;
                                     if (currentLocationId !== null && historyItem.portalId !== undefined) {
                                         if (currentLocationId !== historyItem.portalId) {
                                             hasJumpMismatch = true;
                                             isMismatch = true;
                                         }
                                     }
-                                    if (isMismatch) {
-                                        detailStr = `❌ \x1b[31m"${originPortal?.title || 'Unknown'}"\x1b[0m => "${destPortal?.title || 'Unknown'}"`;
-                                    } else {
-                                        detailStr = `   "${originPortal?.title || 'Unknown'}" => "${destPortal?.title || 'Unknown'}"`;
-                                    }
+                                    originStr = originPortal?.title || 'Unknown';
+                                    destStr = destPortal?.title || 'Unknown';
                                     if (historyItem.dest !== undefined) {
                                         currentLocationId = historyItem.dest;
                                     }
                                 } else if (historyItem.reason === "despawn") {
-                                    let isMismatch = false;
                                     if (currentLocationId !== null && historyItem.portalId !== undefined) {
                                         if (currentLocationId !== historyItem.portalId) {
                                             hasDespawnMismatch = true;
                                             isMismatch = true;
                                         }
                                     }
-                                    if (isMismatch) {
-                                        detailStr = `❌ \x1b[31m"${originPortal?.title || 'Unknown'}"\x1b[0m => despawn`;
-                                    } else {
-                                        detailStr = `   "${originPortal?.title || 'Unknown'}" => despawn`;
-                                    }
+                                    originStr = originPortal?.title || 'Unknown';
+                                    destStr = "-";
                                     currentLocationId = null;
+                                } else if (historyItem.reason === "no move") {
+                                    if (currentLocationId !== null && historyItem.portalId !== undefined) {
+                                        if (currentLocationId !== historyItem.portalId) {
+                                            hasJumpMismatch = true;
+                                            isMismatch = true;
+                                        }
+                                    }
+                                    originStr = originPortal?.title || 'Unknown';
+                                    destStr = "-";
+                                    if (historyItem.portalId !== undefined) {
+                                        currentLocationId = historyItem.portalId;
+                                    }
                                 }
 
-                                if (detailStr) {
-                                    actionDetails.push(detailStr);
-                                }
+                                const moveTimeStr = formatTimeWithMs(historyItem.moveTime, site.geocode.timezone);
+                                const linkTimeStr = historyItem.linkTime ? formatTimeWithMs(historyItem.linkTime, site.geocode.timezone) : "-";
+
+                                const row = {
+                                    'Season': seriesConfig.id,
+                                    'Site': site.geocode.id,
+                                    'Wave': waveIndex + 1,
+                                    'Shard ID': shard.id,
+                                    'Action': historyItem.reason,
+                                    'Valid': isMismatch ? 0 : 1,
+                                    'Origin': originStr,
+                                    'Destination': destStr,
+                                    'Link Time': linkTimeStr,
+                                    'Move Time': moveTimeStr
+                                };
+
+                                allRows.push(row);
                             }
 
-                            if (hasJumpMismatch) {
+                            if (hasJumpMismatch || hasDespawnMismatch) {
                                 invalidShardSequences.push({
                                     shardId: shard.id,
                                     wave: waveIndex + 1,
-                                    details: actionDetails
+                                    rows: allRows
                                 });
-                            } else if (hasDespawnMismatch) {
-                                invalidDespawnsCount++;
                             }
                         }
                     }
@@ -237,19 +263,17 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
 
                         console.log(`⚠️ Site ${site.geocode.id}: has ${missingShardActions.length} missing shard actions:`);
                         const tableData = missingShardActions.map(action => {
-                            const formattedTime = ZonedDateTime.toLocaleString(action.time, 'en-US', {
-                                hour: '2-digit',
-                                minute: '2-digit',
-                                hourCycle: 'h23'
-                            });
+                            const formattedTime = formatZonedDateTimeWithMs(action.time);
                             return {
+                                'Season': seriesConfig.id,
+                                'Site': site.geocode.id,
                                 'Wave': action.wave,
                                 'Shard ID': action.shardId,
                                 'Action': action.action,
-                                'Scheduled at': formattedTime
+                                'Scheduled': formattedTime
                             };
                         });
-                        printTable(tableData);
+                        seriesMissing.push(...tableData);
                     }
                     if (shardActionsOutsideJumpWindow.length > 0) {
                         shardActionsOutsideJumpWindow.sort((a, b) => {
@@ -258,23 +282,13 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
 
                         console.log(`⚠️ Site ${site.geocode.id}: has ${shardActionsOutsideJumpWindow.length} shard actions outside the expected 1-minute window:`);
                         const tableData = shardActionsOutsideJumpWindow.map(action => {
-                            const formattedActualTime = ZonedDateTime.toLocaleString(action.actualTime, 'en-US', {
-                                hour: '2-digit',
-                                minute: '2-digit',
-                                second: '2-digit',
-                                hourCycle: 'h23'
-                            });
-                            const formattedScheduledTime = ZonedDateTime.toLocaleString(action.scheduledTime, 'en-US', {
-                                hour: '2-digit',
-                                minute: '2-digit',
-                                hourCycle: 'h23'
-                            });
-                            const totalSeconds = Math.round(action.diffMs / 1000);
-                            const minutes = Math.floor(totalSeconds / 60);
-                            const seconds = totalSeconds % 60;
-                            const offByStr = minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`;
+                            const formattedActualTime = formatZonedDateTimeWithMs(action.actualTime);
+                            const formattedScheduledTime = formatZonedDateTimeWithMs(action.scheduledTime);
+                            const offByStr = formatDurationMs(action.diffMs, false);
 
                             return {
+                                'Season': seriesConfig.id,
+                                'Site': site.geocode.id,
                                 'Wave': action.wave,
                                 'Shard ID': action.shardId,
                                 'Action': action.action,
@@ -283,30 +297,19 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                                 'Delta': offByStr
                             };
                         });
-                        printTable(tableData);
+                        seriesOutsideWindow.push(...tableData);
                     }
                     if (invalidShardSequences.length > 0) {
                         console.log(`⚠️ Site ${site.geocode.id}: has ${invalidShardSequences.length} invalid shard jump sequences:`);
-                        const sequencesByWave = {};
+                        const tableData = [];
+                        invalidShardSequences.sort((a, b) => {
+                            if (a.wave !== b.wave) return a.wave - b.wave;
+                            return a.shardId - b.shardId;
+                        });
                         for (const seq of invalidShardSequences) {
-                            if (!sequencesByWave[seq.wave]) {
-                                sequencesByWave[seq.wave] = [];
-                            }
-                            sequencesByWave[seq.wave].push(seq);
+                            tableData.push(...seq.rows);
                         }
-
-                        const sortedWaves = Object.keys(sequencesByWave).sort((a, b) => Number(a) - Number(b));
-                        for (const waveNum of sortedWaves) {
-                            console.log(`${INDENT}- Wave ${waveNum}:`);
-                            for (const seq of sequencesByWave[waveNum]) {
-                                const header = `Shard ${seq.shardId}: `;
-                                console.log(`${INDENT}${INDENT}${header}${seq.details[0]}`);
-                                const padding = " ".repeat(header.length);
-                                seq.details.slice(1).forEach(detail => {
-                                    console.log(`${INDENT}${INDENT}${padding}${detail}`);
-                                });
-                            }
-                        }
+                        seriesInvalidSequences.push(...tableData);
                     }
                     if (invalidDespawnsCount > 0) {
                         console.log(`⚠️ Site ${site.geocode.id}: has ${invalidDespawnsCount} invalid despawn actions.`);
@@ -354,6 +357,32 @@ ${INDENT}Previous ${previousTeam}, Current ${link.team}${biDirMessage}`);
                 }
             }
         }
+
+        if (site.fullEvent?.alignmentMismatches?.length > 0) {
+            const tableData = site.fullEvent.alignmentMismatches.map(mismatch => {
+                const waveIndex = site.waves ? site.waves.findIndex(w => w.shards.some(s => s.id === mismatch.shardId)) : -1;
+                const waveNumber = waveIndex !== -1 ? waveIndex + 1 : 1;
+                return {
+                    'Season': seriesConfig.id,
+                    'Site': site.geocode.id,
+                    'Wave': waveNumber,
+                    'Shard ID': mismatch.shardId,
+                    'Time': mismatch.time,
+                    'Origin Portal': mismatch.originPortal,
+                    'Destination Portal': mismatch.destPortal,
+                    'Origin Team': mismatch.originTeam,
+                    'Link Team': mismatch.linkTeam,
+                    'Destination Team': mismatch.destTeam
+                };
+            });
+            seriesMismatches.push(...tableData);
+        }
     }
 
+    return {
+        missingShardActions: seriesMissing,
+        shardActionsOutsideJumpWindow: seriesOutsideWindow,
+        invalidShardSequences: seriesInvalidSequences,
+        linkAlignmentMismatches: seriesMismatches
+    };
 }

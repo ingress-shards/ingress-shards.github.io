@@ -1,5 +1,6 @@
 import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
 import * as Duration from "temporal-polyfill/fns/duration";
+import * as Instant from "temporal-polyfill/fns/instant";
 import { HISTORY_REASONS } from "../../constants.js";
 import { truncateToDecimalPlaces } from "../../shared/math-helpers.js";
 
@@ -128,5 +129,56 @@ export function calculateShardActionSchedule(shardMechanic, siteGeocode) {
         schedule.waves.push(waveSchedule);
     }
     return schedule;
+}
+
+export function convertToCsv(data) {
+    if (!data || data.length === 0) return '';
+    const headers = Object.keys(data[0]);
+    const lines = [headers.join(',')];
+    for (const row of data) {
+        const line = headers.map(header => {
+            const val = row[header] !== undefined && row[header] !== null ? String(row[header]) : '';
+            const shouldQuote = header.includes('Origin') || 
+                                header.includes('Destination') || 
+                                header.includes('Portal') || 
+                                val.includes(',') || 
+                                val.includes('"') || 
+                                val.includes('\n');
+            if (shouldQuote) {
+                return `"${val.replace(/"/g, '""')}"`;
+            }
+            return val;
+        });
+        lines.push(line.join(','));
+    }
+    return lines.join('\n');
+}
+
+export function formatZonedDateTimeWithMs(zdt) {
+    if (!zdt) return '-';
+    return ZonedDateTime.toLocaleString(zdt, 'en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        fractionalSecondDigits: 3,
+        hourCycle: 'h23'
+    });
+}
+
+export function formatTimeWithMs(epochMs, timezone) {
+    if (!epochMs) return '-';
+    const inst = Instant.fromEpochMilliseconds(Number(epochMs));
+    const zdt = Instant.toZonedDateTimeISO(inst, timezone);
+    return formatZonedDateTimeWithMs(zdt);
+}
+
+export function formatDurationMs(durationMs, showDecimals = true) {
+    const seconds = durationMs / 1000;
+    const absSeconds = Math.abs(seconds);
+    const minutes = Math.floor(absSeconds / 60);
+    const remainingSeconds = absSeconds % 60;
+    const formattedSeconds = showDecimals ? remainingSeconds.toFixed(1) : Math.round(remainingSeconds).toString();
+    const sign = seconds < 0 ? "-" : "";
+    return minutes > 0 ? `${sign}${minutes}m ${formattedSeconds}s` : `${sign}${formattedSeconds}s`;
 }
 

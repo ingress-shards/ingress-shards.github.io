@@ -1,6 +1,6 @@
 import * as Instant from "temporal-polyfill/fns/instant";
 import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
-import { printTable, calculateShardActionSchedule } from "./data-helpers.js";
+import { printTable, calculateShardActionSchedule, formatZonedDateTimeWithMs, formatDurationMs } from "./data-helpers.js";
 
 /**
  * Calculates statistics for the entire season/series.
@@ -11,10 +11,15 @@ import { printTable, calculateShardActionSchedule } from "./data-helpers.js";
 export function calculateStatisticsForSeason(seriesHistory, seriesConfig, blueprints) {
     const sites = Object.values(seriesHistory);
     console.log(`ℹ️ Calculating statistics for ${seriesConfig.name}, ${sites.length} sites...`);
+    const allStats = [];
     sites.forEach(site => {
-        calculateSiteStatistics(site, seriesConfig, blueprints);
+        const siteStats = calculateSiteStatistics(site, seriesConfig, blueprints);
+        if (siteStats) {
+            allStats.push(...siteStats);
+        }
     });
     console.log(`ℹ️ Statistics complete.\n`);
+    return allStats;
 }
 
 /**
@@ -29,10 +34,10 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
 
         const siteEventType = site.geocode.eventType;
         const componentConfig = seriesConfig.shardComponents?.find(et => et.eventType === siteEventType);
-        if (!componentConfig) return;
+        if (!componentConfig) return null;
 
         const shardMechanic = (blueprints.mechanics?.shards || blueprints.shardMechanics)[componentConfig.shardMechanics];
-        if (!shardMechanic) return;
+        if (!shardMechanic) return null;
 
         const shardActionSchedule = calculateShardActionSchedule(shardMechanic, site.geocode);
         const actionStats = {};
@@ -117,43 +122,20 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
             const firstTime = stats.times[0];
             const lastTime = stats.times[stats.times.length - 1];
 
-            const formattedFirst = ZonedDateTime.toLocaleString(firstTime, "en-US", {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                fractionalSecondDigits: 3,
-                hourCycle: "h23"
-            });
-
-            const formattedLast = ZonedDateTime.toLocaleString(lastTime, "en-US", {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                fractionalSecondDigits: 3,
-                hourCycle: "h23"
-            });
+            const formattedFirst = formatZonedDateTimeWithMs(firstTime);
+            const formattedLast = formatZonedDateTimeWithMs(lastTime);
 
             const durationMs = ZonedDateTime.epochMilliseconds(lastTime) - ZonedDateTime.epochMilliseconds(firstTime);
             const avgIntervalMs = durationMs / stats.times.length;
-            const avgIntervalSeconds = avgIntervalMs / 1000;
-            const intMinutes = Math.floor(Math.abs(avgIntervalSeconds) / 60);
-            const intSeconds = Math.abs(avgIntervalSeconds) % 60;
-            const formattedIntSeconds = intSeconds.toFixed(1);
-
-            const signInt = avgIntervalSeconds < 0 ? "-" : "";
-            const avgIntervalStr = intMinutes > 0 ? `${signInt}${intMinutes}m ${formattedIntSeconds}s` : `${signInt}${formattedIntSeconds}s`;
+            const avgIntervalStr = formatDurationMs(avgIntervalMs, true);
 
             const sumLatencyMs = stats.latencies.reduce((sum, val) => sum + Math.abs(val), 0);
             const avgLatencyMs = sumLatencyMs / stats.latencies.length;
-            const avgLatencySeconds = avgLatencyMs / 1000;
-            const latMinutes = Math.floor(Math.abs(avgLatencySeconds) / 60);
-            const latSeconds = Math.abs(avgLatencySeconds) % 60;
-            const formattedLatSeconds = latSeconds.toFixed(1);
-
-            const signLat = avgLatencySeconds < 0 ? "-" : "";
-            const avgLatencyStr = latMinutes > 0 ? `${signLat}${latMinutes}m ${formattedLatSeconds}s` : `${signLat}${formattedLatSeconds}s`;
+            const avgLatencyStr = formatDurationMs(avgLatencyMs, true);
 
             tableData.push({
+                "Season": seriesConfig.id,
+                "Site": site.geocode.id,
                 "Wave": stats.wave,
                 "Scheduled": stats.scheduledTimeStr,
                 "Action": stats.action,
@@ -176,8 +158,12 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
         }
 
         if (tableData.length > 0) {
-            printTable(tableData);
+            printTable(tableData.map(({ Season, Site, ...rest }) => rest));
             console.log(`Total Actions: ${totalActualActions} / Expected: ${totalExpectedActions}\n`);
         }
+
+        return tableData;
     }
+    return null;
 }
+

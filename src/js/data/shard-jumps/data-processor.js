@@ -273,16 +273,10 @@ export function processSeriesData(seriesDataPackage) {
     let totalAlignmentMismatches = 0;
     processedSites.forEach(site => {
         totalAlignmentMismatches += site.fullEvent?.counters?.alignmentMismatches || 0;
-
-        // Remove alignmentMismatches from the final data as it's an internal flag only
-        if (site.fullEvent?.counters) delete site.fullEvent.counters.alignmentMismatches;
-        site.waves?.forEach(wave => {
-            if (wave.counters) delete wave.counters.alignmentMismatches;
-        });
     });
 
-    if (totalAlignmentMismatches > 0 && !verbose) {
-        console.warn(`⚠️ Alignment mismatches found: ${totalAlignmentMismatches}. Use --verbose for more details.`);
+    if (totalAlignmentMismatches > 0) {
+        console.warn(`⚠️ Alignment mismatches found: ${totalAlignmentMismatches}.`);
     }
 
     console.log(`ℹ️ ${Object.keys(seriesData).length} sites processed.\n`);
@@ -570,15 +564,20 @@ function processFragments({ fragments, portalLookup, sitePortals, siteTargetPort
                     if ((historyItem.originPortalInfo && historyItem.linkCreatorTeam !== historyItem.originPortalInfo.team) ||
                         (historyItem.destinationPortalInfo && historyItem.linkCreatorTeam !== historyItem.destinationPortalInfo.team)) {
                         viewData.counters.alignmentMismatches++;
-                        if (fullEvent && verbose) {
+                        if (fullEvent) {
                             const localTime = formatEpochToLocalTime(moveTime, geocode.timezone);
-                            const teamInfo = {
-                                origin: getAbbreviatedTeam(historyItem.originPortalInfo?.team),
-                                link: getAbbreviatedTeam(historyItem.linkCreatorTeam),
-                                dest: getAbbreviatedTeam(historyItem.destinationPortalInfo?.team),
+                            if (!viewData.alignmentMismatches) {
+                                viewData.alignmentMismatches = [];
                             }
-                            console.log(
-                                `⚠️ Shard ${shardId} (${siteName}) alignment mismatch at ${localTime}:`, teamInfo);
+                            viewData.alignmentMismatches.push({
+                                shardId,
+                                time: localTime,
+                                linkTeam: getAbbreviatedTeam(historyItem.linkCreatorTeam),
+                                originPortal: historyItem.originPortalInfo?.title || 'Unknown',
+                                originTeam: getAbbreviatedTeam(historyItem.originPortalInfo?.team),
+                                destPortal: historyItem.destinationPortalInfo?.title || 'Unknown',
+                                destTeam: getAbbreviatedTeam(historyItem.destinationPortalInfo?.team)
+                            });
                         }
                     }
 
@@ -610,6 +609,7 @@ function processFragments({ fragments, portalLookup, sitePortals, siteTargetPort
                         portalId: originPortalId,
                         dest: destPortalId,
                         team: historyItem.linkCreatorTeam && getAbbreviatedTeam(historyItem.linkCreatorTeam),
+                        linkTime: historyItem.linkCreationTimeMs,
                     });
                     shard[moved] = true;
 

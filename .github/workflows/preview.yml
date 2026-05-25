@@ -52,6 +52,13 @@ jobs:
                   name: processed-data
                   path: gen/processed_series_data.json
 
+            - name: Upload Validation Reports Artifact
+              uses: actions/upload-artifact@v7
+              with:
+                  name: validation-reports
+                  path: gen/reports/
+                  if-no-files-found: ignore
+
             - name: Sanitize branch name
               id: sanitize
               run: echo "branch=${GITHUB_REF_NAME//\//-}" >> $GITHUB_OUTPUT
@@ -63,28 +70,4 @@ jobs:
                   path: "./dist"
                   if-no-files-found: error
 
-    diagnostics:
-        needs: [build_preview]
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v6
 
-            - uses: actions/setup-node@v6
-              with:
-                  node-version: "lts/*"
-                  cache: "npm"
-
-            - name: Install node dependencies
-              run: npm install
-
-            - name: Download Processed Data Artifact
-              uses: actions/download-artifact@v8
-              with:
-                  name: processed-data
-                  path: gen
-
-            - name: Validate Shard Jumps
-              run: npm run data:validate -- --verbose
-
-            - name: Calculate Season Statistics
-              run: npm run data:statistics
