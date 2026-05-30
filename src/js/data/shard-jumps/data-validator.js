@@ -261,7 +261,7 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                             return a.shardId - b.shardId;
                         });
 
-                        console.log(`⚠️ Site ${site.geocode.id}: has ${missingShardActions.length} missing shard actions:`);
+                        console.log(`⚠️ Site ${site.geocode.id}: has ${missingShardActions.length} missing shard actions.`);
                         const tableData = missingShardActions.map(action => {
                             const formattedTime = formatZonedDateTimeWithMs(action.time);
                             return {
@@ -280,7 +280,7 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                             return ZonedDateTime.epochMilliseconds(a.actualTime) - ZonedDateTime.epochMilliseconds(b.actualTime);
                         });
 
-                        console.log(`⚠️ Site ${site.geocode.id}: has ${shardActionsOutsideJumpWindow.length} shard actions outside the expected 1-minute window:`);
+                        console.log(`⚠️ Site ${site.geocode.id}: has ${shardActionsOutsideJumpWindow.length} shard actions outside the expected 1-minute window.`);
                         const tableData = shardActionsOutsideJumpWindow.map(action => {
                             const formattedActualTime = formatZonedDateTimeWithMs(action.actualTime);
                             const formattedScheduledTime = formatZonedDateTimeWithMs(action.scheduledTime);
@@ -300,7 +300,7 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                         seriesOutsideWindow.push(...tableData);
                     }
                     if (invalidShardSequences.length > 0) {
-                        console.log(`⚠️ Site ${site.geocode.id}: has ${invalidShardSequences.length} invalid shard jump sequences:`);
+                        console.log(`⚠️ Site ${site.geocode.id}: has ${invalidShardSequences.length} invalid shard jump sequences.`);
                         const tableData = [];
                         invalidShardSequences.sort((a, b) => {
                             if (a.wave !== b.wave) return a.wave - b.wave;
@@ -327,34 +327,7 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                     console.log(`⚠️ Site ${site.geocode.id}: ${shardPath.jumps.length} random teleports in shard path ${shardPathKey}.`);
                 }
 
-                if (shardPath.links && shardPath.links.length > 0) {
-                    const moveOrigins = new Set(shardPath.links.flatMap(link => link.moves).map(move => move.origin));
-                    const biDirectionalMoves = moveOrigins.size > 1;
-                    const sortedLinks = shardPath.links.sort((a, b) => a.linkTime - b.linkTime);
 
-                    let linkColor;
-                    let previousTeam;
-                    for (const [, link] of sortedLinks.entries()) {
-                        if (linkColor && FACTION_COLORS[link.team] !== linkColor) {
-                            const [portalAKey, portalBKey] = shardPathKey.split('-');
-                            const portalA = site.portals[portalAKey];
-                            const portalB = site.portals[portalBKey];
-
-                            const biDirMessage = biDirectionalMoves ? `\n${INDENT}Note: There are bidirectional jumps too!` : '';
-                            const siteHeader = `⚠️ Site ${site.geocode.id}: New link with different team!`;
-                            if (verbose) {
-                                console.warn(`${siteHeader}
-${INDENT}Portal A: ${portalA.title} (${portalA.lat},${portalA.lng})
-${INDENT}Portal B: ${portalB.title} (${portalB.lat},${portalB.lng})
-${INDENT}Previous ${previousTeam}, Current ${link.team}${biDirMessage}`);
-                            } else {
-                                console.warn(siteHeader);
-                            }
-                        }
-                        linkColor = FACTION_COLORS[link.team] || FACTION_COLORS.NEU;
-                        previousTeam = link.team;
-                    }
-                }
             }
         }
 

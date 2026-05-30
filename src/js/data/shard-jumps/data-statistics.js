@@ -154,6 +154,24 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
             }
         }
 
+        const spawnLatencies = [];
+        const jumpLatencies = [];
+        for (const stats of Object.values(actionStats)) {
+            if (stats.action === 'spawn') {
+                spawnLatencies.push(...stats.latencies);
+            } else if (stats.action === 'jump') {
+                jumpLatencies.push(...stats.latencies);
+            }
+        }
+
+        const avgSpawnMs = spawnLatencies.length > 0 ? (spawnLatencies.reduce((sum, val) => sum + Math.abs(val), 0) / spawnLatencies.length) : null;
+        const avgJumpMs = jumpLatencies.length > 0 ? (jumpLatencies.reduce((sum, val) => sum + Math.abs(val), 0) / jumpLatencies.length) : null;
+
+        const avgSpawnStr = avgSpawnMs !== null ? formatDurationMs(avgSpawnMs, true) : 'N/A';
+        const avgJumpStr = avgJumpMs !== null ? formatDurationMs(avgJumpMs, true) : 'N/A';
+
+        console.log(`ℹ️ Site ${site.geocode.id} average times - Spawn: ${avgSpawnStr}, Jump: ${avgJumpStr}`);
+
         return tableData;
     }
     return null;
