@@ -4,7 +4,11 @@ import shardIconUrl from '../../images/abaddon1_shard.png';
 import { getSiteData, getSeriesMetadata, getSeriesGeocode } from "../data/data-store.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
 import { formatEpochToLocalTime, formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
+import { getEventDuration } from "../shared/event-helpers.js";
 import { getHexagonSVG } from "./marker-template.js";
+import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
+import * as Now from "temporal-polyfill/fns/now";
+import * as Duration from "temporal-polyfill/fns/duration";
 
 const shardIcon = L.icon({
     iconUrl: shardIconUrl,
@@ -477,16 +481,17 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     if (!siteData) return { title: '', content: '' };
 
     const siteEventType = EVENT_BRANDS[siteGeocode.eventType];
-    const now = Date.now();
-    const siteStartTime = new Date(siteGeocode.date.split('[')[0]).getTime();
-    const siteEndTime = siteStartTime + (siteEventType.durationMins || 241) * 60000;
+    const startTime = ZonedDateTime.fromString(siteGeocode.date);
+    const durationMins = getEventDuration(siteGeocode, seriesId);
+    const endTime = ZonedDateTime.add(startTime, Duration.fromFields({ minutes: durationMins }));
+    const now = Now.zonedDateTimeISO(siteGeocode.timezone);
     let countdownSuffix = '';
 
-    if (now < siteStartTime) {
+    if (ZonedDateTime.compare(now, startTime) < 0) {
         const remaining = getTimeRemaining(siteGeocode.date, siteGeocode.timezone);
         countdownSuffix = ` (Starts in ${remaining})`;
-    } else if (now >= siteStartTime && now <= siteEndTime) {
-        const remaining = getActiveEventRemaining(siteGeocode.date, siteGeocode.timezone, siteEventType.durationMins || 241);
+    } else if (ZonedDateTime.compare(now, startTime) >= 0 && ZonedDateTime.compare(now, endTime) <= 0) {
+        const remaining = getActiveEventRemaining(siteGeocode.date, siteGeocode.timezone, durationMins);
         countdownSuffix = ` (Active: ${remaining} remaining)`;
     }
 
@@ -529,8 +534,8 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     }
 
     // Determine the actual time window of the shards event
-    let actualStart = siteStartTime;
-    let actualEnd = siteEndTime;
+    let actualStart = ZonedDateTime.epochMilliseconds(startTime);
+    let actualEnd = ZonedDateTime.epochMilliseconds(endTime);
 
     if (siteData.waves && siteData.waves.length > 0) {
         const firstWave = siteData.waves[0];
