@@ -1,0 +1,2598 @@
+{
+  "siteId": "2026-apollo-helsinki",
+  "exportedAt": 1781993076,
+  "portals": [
+    {
+      "title": "Tuomiokirkon kellotapuli",
+      "lat": 60.17003,
+      "lng": 24.951121,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Senaatintori",
+      "lat": 60.169307,
+      "lng": 24.952296,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kuparikonstruktio, Suomen Pankin suihkukaivo",
+      "lat": 60.171466,
+      "lng": 24.952034,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sarastus",
+      "lat": 60.171587,
+      "lng": 24.951039,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Espan Café Kioski",
+      "lat": 60.167257,
+      "lng": 24.945986,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Taru ja Totuus",
+      "lat": 60.167495,
+      "lng": 24.944636,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Svenska Teatern",
+      "lat": 60.167473,
+      "lng": 24.942951,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Pyöröpenkit",
+      "lat": 60.167512,
+      "lng": 24.942554,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Oravat",
+      "lat": 60.168277,
+      "lng": 24.945752,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Woman in Brick",
+      "lat": 60.169856,
+      "lng": 24.945658,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Aikatalon kello",
+      "lat": 60.169737,
+      "lng": 24.945117,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Coat of Arms in Stone",
+      "lat": 60.169385,
+      "lng": 24.945674,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Rautatalo",
+      "lat": 60.168099,
+      "lng": 24.943317,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Venue of the first Finnish Parliament",
+      "lat": 60.169622,
+      "lng": 24.943026,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Albert Edelfelt",
+      "lat": 60.169917,
+      "lng": 24.943114,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kirjatalo",
+      "lat": 60.16773,
+      "lng": 24.943558,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kirahvi Giraffen",
+      "lat": 60.169044,
+      "lng": 24.949573,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Atlas",
+      "lat": 60.169003,
+      "lng": 24.945453,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Domus Litonii",
+      "lat": 60.168733,
+      "lng": 24.943142,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "REMOTE Streetart",
+      "lat": 60.168108,
+      "lng": 24.940415,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tursas ja vedenneito",
+      "lat": 60.167459,
+      "lng": 24.939347,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Odottamaton vieras",
+      "lat": 60.167632,
+      "lng": 24.939184,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Lönnrot 3",
+      "lat": 60.167256,
+      "lng": 24.940811,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "The Kosmos Ball",
+      "lat": 60.167875,
+      "lng": 24.939829,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Yrjönkatu 22",
+      "lat": 60.167311,
+      "lng": 24.939667,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ten Years Fearing",
+      "lat": 60.170863,
+      "lng": 24.950623,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Church of the Holy Trinity",
+      "lat": 60.17113,
+      "lng": 24.951092,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Johan Ludvig Runebergin muistomerkki",
+      "lat": 60.167491,
+      "lng": 24.947646,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Bryggeri Helsinki",
+      "lat": 60.168287,
+      "lng": 24.952123,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "SPL perustettiin täällä",
+      "lat": 60.167842,
+      "lng": 24.946409,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Esplanadin puisto",
+      "lat": 60.167463,
+      "lng": 24.946795,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kehruu",
+      "lat": 60.169028,
+      "lng": 24.946422,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vuolukivinaamiot",
+      "lat": 60.16883,
+      "lng": 24.946042,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Matti Pohdon hautamuistomerkki",
+      "lat": 60.17005,
+      "lng": 24.950199,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Aleksanteri II -patsas",
+      "lat": 60.169523,
+      "lng": 24.952269,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Porthania Cultural Heritage",
+      "lat": 60.170123,
+      "lng": 24.948594,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ateneum",
+      "lat": 60.170292,
+      "lng": 24.944052,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Heavy Load Dudes",
+      "lat": 60.168502,
+      "lng": 24.945522,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Esplanadinpuiston opaskyltti",
+      "lat": 60.167677,
+      "lng": 24.950847,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Seppo Hiltunen Memorial Plaque",
+      "lat": 60.168786,
+      "lng": 24.952085,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Helsingin yliopiston kirjasto",
+      "lat": 60.17132,
+      "lng": 24.94773,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Metsästys",
+      "lat": 60.168949,
+      "lng": 24.94596,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ateneumin taidemuseon info",
+      "lat": 60.170256,
+      "lng": 24.943473,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "KISS <3 HERE",
+      "lat": 60.170789,
+      "lng": 24.949302,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Fabiania",
+      "lat": 60.169987,
+      "lng": 24.94941,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kuluttajaperhe",
+      "lat": 60.169058,
+      "lng": 24.947706,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Guardian Medusa",
+      "lat": 60.17052,
+      "lng": 24.949047,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Hotel Kämp",
+      "lat": 60.167912,
+      "lng": 24.947418,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "University of Helsinki Vuorikatu 5",
+      "lat": 60.170808,
+      "lng": 24.947688,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Hei vaan / Ilmaiskyyti",
+      "lat": 60.167705,
+      "lng": 24.950008,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Lotura I",
+      "lat": 60.170029,
+      "lng": 24.948486,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Helsingin tuomiokirkko",
+      "lat": 60.170103,
+      "lng": 24.952249,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Apteekin Talo",
+      "lat": 60.167993,
+      "lng": 24.951795,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kluuvinlahden fossiilit",
+      "lat": 60.168938,
+      "lng": 24.948743,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Runebergin Esplanadin kioski",
+      "lat": 60.167704,
+      "lng": 24.949242,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Smolna",
+      "lat": 60.167147,
+      "lng": 24.949968,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kobolttikanuunan muistolaatta",
+      "lat": 60.170844,
+      "lng": 24.949832,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Leikki II / Aallottaria",
+      "lat": 60.16773,
+      "lng": 24.95058,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Heimolan talon muistolaatta",
+      "lat": 60.169928,
+      "lng": 24.947125,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vanha Kaisaniemenkatu",
+      "lat": 60.171226,
+      "lng": 24.947403,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Entrance Snakes",
+      "lat": 60.170931,
+      "lng": 24.949026,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Wuorion talon julkisivuveistokset",
+      "lat": 60.16851,
+      "lng": 24.950882,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Esplanadin puiston opastaulu",
+      "lat": 60.167617,
+      "lng": 24.944344,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Pörssitalo",
+      "lat": 60.16835,
+      "lng": 24.949318,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Guardian Lion",
+      "lat": 60.169211,
+      "lng": 24.942684,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Porthania Tortoise",
+      "lat": 60.1699,
+      "lng": 24.948074,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kaksitoista apostolia",
+      "lat": 60.170133,
+      "lng": 24.952119,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Molly Malone's",
+      "lat": 60.170892,
+      "lng": 24.946379,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Fazerin kukko",
+      "lat": 60.168482,
+      "lng": 24.947495,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Risto Rytin Asianajotoimisto",
+      "lat": 60.167832,
+      "lng": 24.945863,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Peikot",
+      "lat": 60.16868,
+      "lng": 24.94571,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ulrika Eleonoran kirkon muistomedaljonki",
+      "lat": 60.169567,
+      "lng": 24.951559,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "LOVE - Street Art",
+      "lat": 60.170723,
+      "lng": 24.951069,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Argos",
+      "lat": 60.167749,
+      "lng": 24.942242,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ateneum rear entrance",
+      "lat": 60.169849,
+      "lng": 24.944108,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "HOLY CRAB",
+      "lat": 60.169451,
+      "lng": 24.947491,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Eino Leino",
+      "lat": 60.16757,
+      "lng": 24.945179,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Hirvimaalaus",
+      "lat": 60.17023,
+      "lng": 24.947851,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Valtiontalo Info",
+      "lat": 60.167179,
+      "lng": 24.950998,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Amarillon Kallo",
+      "lat": 60.168887,
+      "lng": 24.944813,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ravintola Kappeli",
+      "lat": 60.16746,
+      "lng": 24.950335,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Stockan kello",
+      "lat": 60.16872,
+      "lng": 24.941852,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Unicorn Sign",
+      "lat": 60.16978,
+      "lng": 24.947549,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ehrenström ja Engel",
+      "lat": 60.169994,
+      "lng": 24.950598,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "1893 Flower House",
+      "lat": 60.167418,
+      "lng": 24.949272,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Balcony Carriers",
+      "lat": 60.168743,
+      "lng": 24.945487,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "You are a soul",
+      "lat": 60.170699,
+      "lng": 24.945472,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Helsinki university museum",
+      "lat": 60.16947,
+      "lng": 24.949489,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kansalliskirjasto",
+      "lat": 60.170331,
+      "lng": 24.950675,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tatuoitu nainen",
+      "lat": 60.167997,
+      "lng": 24.951225,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Henrik Forsius",
+      "lat": 60.169923,
+      "lng": 24.948818,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Aschan Café Jugend",
+      "lat": 60.167973,
+      "lng": 24.950732,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "University of Helsinki Main Building",
+      "lat": 60.169451,
+      "lng": 24.950843,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Cafe Engel",
+      "lat": 60.168986,
+      "lng": 24.951812,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "The Dots",
+      "lat": 60.15828,
+      "lng": 24.948907,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Saslik",
+      "lat": 60.158524,
+      "lng": 24.948926,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Leikkipaikka Vuorimiehenpuistikko",
+      "lat": 60.159386,
+      "lng": 24.948266,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ilmari",
+      "lat": 60.16014,
+      "lng": 24.948401,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kirurgisen sairaalan veistospuisto",
+      "lat": 60.160771,
+      "lng": 24.948924,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Helsingin Palvelijataryhdistys",
+      "lat": 60.161092,
+      "lng": 24.947803,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kasvot portissa",
+      "lat": 60.158176,
+      "lng": 24.952312,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Guardian Gargoyles",
+      "lat": 60.161182,
+      "lng": 24.956005,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Muurarit",
+      "lat": 60.160966,
+      "lng": 24.948228,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Poltto- ja kauramoottori",
+      "lat": 60.159106,
+      "lng": 24.946769,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Aztec masks",
+      "lat": 60.161488,
+      "lng": 24.94632,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sea Horsen lippakioski",
+      "lat": 60.159303,
+      "lng": 24.94722,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "We Love Ullanlinna",
+      "lat": 60.160813,
+      "lng": 24.94642,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Suvantola",
+      "lat": 60.157623,
+      "lng": 24.949659,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "KOM-Teatteri",
+      "lat": 60.15869,
+      "lng": 24.946102,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kapteeninpuistikon leikkipaikka",
+      "lat": 60.158003,
+      "lng": 24.945513,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Flower Power",
+      "lat": 60.157914,
+      "lng": 24.951037,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Spiral Horns",
+      "lat": 60.157953,
+      "lng": 24.952045,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kointähti",
+      "lat": 60.15751,
+      "lng": 24.948611,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vesilinna",
+      "lat": 60.157086,
+      "lng": 24.946818,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Me olemme luonto",
+      "lat": 60.157038,
+      "lng": 24.944951,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Alppi",
+      "lat": 60.15703,
+      "lng": 24.945998,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Mullo House",
+      "lat": 60.160183,
+      "lng": 24.946367,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Café Succès",
+      "lat": 60.159866,
+      "lng": 24.946543,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Purjelaivamedaljonki",
+      "lat": 60.160628,
+      "lng": 24.952569,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tähtitorninkadun suihkulähde",
+      "lat": 60.161106,
+      "lng": 24.952929,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Silitysrautatalo",
+      "lat": 60.16047,
+      "lng": 24.954366,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Terassengallerie",
+      "lat": 60.161249,
+      "lng": 24.954929,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Leikkipaikka Ullanpuistikko",
+      "lat": 60.160931,
+      "lng": 24.95261,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kaaret",
+      "lat": 60.160606,
+      "lng": 24.953932,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Pergola",
+      "lat": 60.160792,
+      "lng": 24.951791,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Lähetyskirkko - Evangelical Lutheran Mission",
+      "lat": 60.160457,
+      "lng": 24.949876,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Eiran sairaala",
+      "lat": 60.157645,
+      "lng": 24.941549,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Villa Johanna",
+      "lat": 60.15742,
+      "lng": 24.941746,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "White Mural",
+      "lat": 60.157103,
+      "lng": 24.942488,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Spider Web Gate",
+      "lat": 60.159936,
+      "lng": 24.94982,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kansallisromanttiset kivikoristeet",
+      "lat": 60.161322,
+      "lng": 24.943851,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Pelle ja lintu",
+      "lat": 60.160972,
+      "lng": 24.944436,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Alvar Aalto 1919-1921",
+      "lat": 60.160802,
+      "lng": 24.94356,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vanha rukoushuone",
+      "lat": 60.160253,
+      "lng": 24.945291,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tammi",
+      "lat": 60.158244,
+      "lng": 24.946759,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Yhtenä elokuun aamuna",
+      "lat": 60.159458,
+      "lng": 24.941896,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Domus",
+      "lat": 60.158289,
+      "lng": 24.948055,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Oy G. W. Sohlberg Ab perustettu 1876",
+      "lat": 60.159418,
+      "lng": 24.945602,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Runoseinä",
+      "lat": 60.159243,
+      "lng": 24.942182,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Koivu",
+      "lat": 60.15821,
+      "lng": 24.94284,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Fenix",
+      "lat": 60.157897,
+      "lng": 24.943009,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Rounded",
+      "lat": 60.158508,
+      "lng": 24.941641,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Lentävä kala",
+      "lat": 60.158215,
+      "lng": 24.94428,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Fanni Luukkonen",
+      "lat": 60.158161,
+      "lng": 24.941754,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Pulu",
+      "lat": 60.159926,
+      "lng": 24.950189,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Leikkipaikka Tähtitornin Vuori",
+      "lat": 60.161202,
+      "lng": 24.950248,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kapteeninmuistikko",
+      "lat": 60.157913,
+      "lng": 24.945052,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sohlbergin muistolaatta",
+      "lat": 60.160217,
+      "lng": 24.944869,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Laivurinrinteen pinnaakkeli",
+      "lat": 60.161243,
+      "lng": 24.942708,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Mauri Sariola",
+      "lat": 60.159126,
+      "lng": 24.942667,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "von Wright Residence",
+      "lat": 60.157054,
+      "lng": 24.941582,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "What Are You Staring At?",
+      "lat": 60.158351,
+      "lng": 24.946292,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Simpukka seinällä",
+      "lat": 60.160644,
+      "lng": 24.942227,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Spikey",
+      "lat": 60.160858,
+      "lng": 24.944996,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Lazy Dog",
+      "lat": 60.156805,
+      "lng": 24.942999,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Epique record store",
+      "lat": 60.16126,
+      "lng": 24.942211,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vuorenlinna",
+      "lat": 60.158371,
+      "lng": 24.946291,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tanssivat riikinkukot",
+      "lat": 60.160123,
+      "lng": 24.942552,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Torches",
+      "lat": 60.159191,
+      "lng": 24.944136,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Fairytale Castle",
+      "lat": 60.160037,
+      "lng": 24.94184,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tähtitorninvuoren obeliski",
+      "lat": 60.161094,
+      "lng": 24.951568,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Komisario Palmun kotitalo",
+      "lat": 60.171676,
+      "lng": 24.955866,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Mestaritalo",
+      "lat": 60.157826,
+      "lng": 24.933965,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Punavuoren Ahven",
+      "lat": 60.160978,
+      "lng": 24.93753,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Haaksirikkoiset",
+      "lat": 60.161854,
+      "lng": 24.955406,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kohottava voima",
+      "lat": 60.159361,
+      "lng": 24.932715,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Päin merta myrskyävää",
+      "lat": 60.164736,
+      "lng": 24.952436,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Suuri Panimoyhtiö 1756",
+      "lat": 60.164575,
+      "lng": 24.952574,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Albertsgatan Jugend Skulpturer",
+      "lat": 60.160715,
+      "lng": 24.938229,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kulmakotka",
+      "lat": 60.164635,
+      "lng": 24.951388,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Hiding Fish",
+      "lat": 60.164701,
+      "lng": 24.951389,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Museum of Finnish Architecture",
+      "lat": 60.163019,
+      "lng": 24.947935,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ritarihuoneenpuistikon suihkukaivo",
+      "lat": 60.169416,
+      "lng": 24.956303,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Päivälehti Museo",
+      "lat": 60.165738,
+      "lng": 24.945247,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "G-Rex",
+      "lat": 60.162385,
+      "lng": 24.946222,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sudenpää",
+      "lat": 60.162209,
+      "lng": 24.946479,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kortteli Tikka",
+      "lat": 60.161623,
+      "lng": 24.940709,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sinebrychoffin talli",
+      "lat": 60.161974,
+      "lng": 24.93169,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ulf Roossin lehmuspuu",
+      "lat": 60.162247,
+      "lng": 24.932444,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Negis",
+      "lat": 60.161441,
+      "lng": 24.93345,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Green Man",
+      "lat": 60.164048,
+      "lng": 24.933504,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Faces On Electric Box",
+      "lat": 60.164154,
+      "lng": 24.937382,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Bulevardi Guidance Sign",
+      "lat": 60.162265,
+      "lng": 24.931493,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Koffin panimo",
+      "lat": 60.161353,
+      "lng": 24.930584,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Shine On!",
+      "lat": 60.16293,
+      "lng": 24.945749,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Panda",
+      "lat": 60.163264,
+      "lng": 24.934707,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sähkötipu",
+      "lat": 60.162345,
+      "lng": 24.931725,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sinebrychoffin puiston pyöreä allas",
+      "lat": 60.162035,
+      "lng": 24.932782,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Topelius ja lapset",
+      "lat": 60.163413,
+      "lng": 24.945742,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Riviera Punavuori",
+      "lat": 60.158824,
+      "lng": 24.93302,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Keltainen Kuumailmapallo",
+      "lat": 60.163516,
+      "lng": 24.944928,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Apostoli Johannes",
+      "lat": 60.161542,
+      "lng": 24.945939,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Aleksanterin Teatteri",
+      "lat": 60.163582,
+      "lng": 24.933749,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kiltakellari",
+      "lat": 60.161768,
+      "lng": 24.931438,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Bird Street Art",
+      "lat": 60.163074,
+      "lng": 24.93388,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Summer day",
+      "lat": 60.162618,
+      "lng": 24.935179,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sinebrychoffin puiston koira-aitaus",
+      "lat": 60.162239,
+      "lng": 24.931993,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Punavuorenkatu 18",
+      "lat": 60.160274,
+      "lng": 24.935515,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Telakkapuistikon leikkipaikka",
+      "lat": 60.159865,
+      "lng": 24.933605,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Rouvat 30",
+      "lat": 60.160085,
+      "lng": 24.934065,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Abstract seasons",
+      "lat": 60.160439,
+      "lng": 24.935957,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Talk to the Trees",
+      "lat": 60.162057,
+      "lng": 24.936601,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Pelikaanitorni",
+      "lat": 60.162668,
+      "lng": 24.935787,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kansallisarkiston infolaatta",
+      "lat": 60.171672,
+      "lng": 24.953179,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Johan Vilhelm Snellman",
+      "lat": 60.171205,
+      "lng": 24.953011,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kansallisarkisto (Riksarkivet)",
+      "lat": 60.171604,
+      "lng": 24.952707,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Svenska litteratursällskapet i Finland",
+      "lat": 60.170739,
+      "lng": 24.955754,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Cordula",
+      "lat": 60.170814,
+      "lng": 24.956176,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "The House of Zachris (Sakari) Topelius",
+      "lat": 60.171676,
+      "lng": 24.955108,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "The house of Johan Vilhelm Snellman",
+      "lat": 60.170838,
+      "lng": 24.95539,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Coat Of Arms",
+      "lat": 60.164664,
+      "lng": 24.948068,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tove Jansson asui täällä",
+      "lat": 60.163405,
+      "lng": 24.947789,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Soldiers Are Ready",
+      "lat": 60.16469,
+      "lng": 24.948907,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kaartin kasarmi",
+      "lat": 60.164733,
+      "lng": 24.949621,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kings Balcony",
+      "lat": 60.167006,
+      "lng": 24.947829,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Rikhardinkadun kirjasto",
+      "lat": 60.166135,
+      "lng": 24.946473,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Johan Ludvig Runeberg's home",
+      "lat": 60.165403,
+      "lng": 24.947787,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Nylands Nations Nationshus",
+      "lat": 60.165701,
+      "lng": 24.947668,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "New Man",
+      "lat": 60.164827,
+      "lng": 24.947693,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Square Tower",
+      "lat": 60.165208,
+      "lng": 24.946132,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Helsingin Ilmapuolustuskeskus",
+      "lat": 60.165398,
+      "lng": 24.945848,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Glass Fragments",
+      "lat": 60.166175,
+      "lng": 24.947657,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Torilinna",
+      "lat": 60.164998,
+      "lng": 24.949878,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Neodomus Oy",
+      "lat": 60.164731,
+      "lng": 24.946156,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Against the flow",
+      "lat": 60.166575,
+      "lng": 24.945991,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kasarmitori Posti",
+      "lat": 60.16491,
+      "lng": 24.948413,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Demoni",
+      "lat": 60.166785,
+      "lng": 24.944404,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kalat",
+      "lat": 60.166852,
+      "lng": 24.944855,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Erottaja",
+      "lat": 60.16697,
+      "lng": 24.9443,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kaksi maata, yksi tulevaisuus",
+      "lat": 60.166981,
+      "lng": 24.943622,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Helsinki Savoy-teatteri",
+      "lat": 60.166533,
+      "lng": 24.947568,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Korkein hallinto-oikeus",
+      "lat": 60.165218,
+      "lng": 24.94989,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Taistelevat metsot",
+      "lat": 60.16233,
+      "lng": 24.948075,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Johanneksenkenttä",
+      "lat": 60.162755,
+      "lng": 24.945601,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Balder House",
+      "lat": 60.169077,
+      "lng": 24.954744,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Riikinkukkoja oven päällä",
+      "lat": 60.164963,
+      "lng": 24.939165,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vanha kirkkopuisto",
+      "lat": 60.165359,
+      "lng": 24.939276,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vuoden 1710 ruttoepidemian uhrien muistotaulu",
+      "lat": 60.165605,
+      "lng": 24.940485,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Suomalaisten sotilaiden hauta",
+      "lat": 60.16582,
+      "lng": 24.940458,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Fish Windows",
+      "lat": 60.165985,
+      "lng": 24.93434,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Suomen Yleisradio 1934-1981",
+      "lat": 60.165165,
+      "lng": 24.949794,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Johanneksenpuiston ulkokuntosali",
+      "lat": 60.162126,
+      "lng": 24.943976,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Johanneksenpuiston leikkipaikka",
+      "lat": 60.161645,
+      "lng": 24.943016,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Korkeavuorenkatu",
+      "lat": 60.162544,
+      "lng": 24.946405,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "SUN = GOD",
+      "lat": 60.16531,
+      "lng": 24.942987,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Plenty Of Good Luck",
+      "lat": 60.165039,
+      "lng": 24.94265,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kirkon talo",
+      "lat": 60.164334,
+      "lng": 24.952523,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Andreaskyrkan",
+      "lat": 60.164544,
+      "lng": 24.945939,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Spider and Other bugs",
+      "lat": 60.166645,
+      "lng": 24.936204,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Chel I Muz",
+      "lat": 60.166021,
+      "lng": 24.942403,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Space Snake",
+      "lat": 60.162912,
+      "lng": 24.935405,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Helsinki City Museum",
+      "lat": 60.169066,
+      "lng": 24.954142,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Hurja Bee",
+      "lat": 60.169108,
+      "lng": 24.956554,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Surveillance Birds",
+      "lat": 60.169102,
+      "lng": 24.956008,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Mermaid With A Rose",
+      "lat": 60.161255,
+      "lng": 24.941032,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vapaakirkko",
+      "lat": 60.162781,
+      "lng": 24.942843,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ankeriaat",
+      "lat": 60.163673,
+      "lng": 24.951365,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Gripholm",
+      "lat": 60.163634,
+      "lng": 24.950179,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Helsinki Design Museum",
+      "lat": 60.16309,
+      "lng": 24.94641,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Auringonkukat",
+      "lat": 60.162929,
+      "lng": 24.943807,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Demoner",
+      "lat": 60.166584,
+      "lng": 24.94299,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Willhed de Besche",
+      "lat": 60.16595,
+      "lng": 24.941259,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Hypoteekkiyhdistyksen talo",
+      "lat": 60.166215,
+      "lng": 24.941491,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Astoria",
+      "lat": 60.163501,
+      "lng": 24.942393,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Helsinki Design Museum Sign",
+      "lat": 60.162913,
+      "lng": 24.946837,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Decorative Balcony",
+      "lat": 60.163799,
+      "lng": 24.946046,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Frog Nose",
+      "lat": 60.165586,
+      "lng": 24.949877,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Rake-talo",
+      "lat": 60.166389,
+      "lng": 24.943211,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Gate Guardian",
+      "lat": 60.163748,
+      "lng": 24.943096,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Saksalainen kirkko / German Church",
+      "lat": 60.16329,
+      "lng": 24.951657,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Two Snakes With Wings",
+      "lat": 60.161805,
+      "lng": 24.942138,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ludviginkadun Kello",
+      "lat": 60.16571,
+      "lng": 24.944785,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Gloria",
+      "lat": 60.164122,
+      "lng": 24.945256,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Laivurinrinteen koira-aitaus",
+      "lat": 60.162516,
+      "lng": 24.942828,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Bearded Pillars",
+      "lat": 60.164443,
+      "lng": 24.94436,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Adventtikirkko",
+      "lat": 60.163746,
+      "lng": 24.941443,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Leijona",
+      "lat": 60.164055,
+      "lng": 24.945937,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Eero Järnefelt asui täällä",
+      "lat": 60.163655,
+      "lng": 24.950641,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Atlantes",
+      "lat": 60.165481,
+      "lng": 24.943476,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Suomalainen Alkeisopisto Memorial",
+      "lat": 60.163161,
+      "lng": 24.944544,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Helsinki Observatory",
+      "lat": 60.162039,
+      "lng": 24.951678,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Johanneksenkirkko",
+      "lat": 60.161732,
+      "lng": 24.944801,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Fasaani",
+      "lat": 60.164755,
+      "lng": 24.941439,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Dragon guarding 10",
+      "lat": 60.165719,
+      "lng": 24.944237,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Viheltävä helsinkiläinen",
+      "lat": 60.164015,
+      "lng": 24.943637,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "No 168 electric box art",
+      "lat": 60.163272,
+      "lng": 24.942066,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Peili",
+      "lat": 60.164057,
+      "lng": 24.944531,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ilmahyökkäys 8.11.1942",
+      "lat": 60.16408,
+      "lng": 24.944067,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Säästäjä",
+      "lat": 60.165797,
+      "lng": 24.949817,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tähtitorni",
+      "lat": 60.161699,
+      "lng": 24.952389,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Teatteri Avoimet Ovet",
+      "lat": 60.164602,
+      "lng": 24.9435,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Electric box art by Fabulospires",
+      "lat": 60.163651,
+      "lng": 24.942781,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Face on the Wall",
+      "lat": 60.166401,
+      "lng": 24.944067,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tellervo, Tapion tytär (Diana)",
+      "lat": 60.165055,
+      "lng": 24.943596,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "TM Galleria",
+      "lat": 60.164931,
+      "lng": 24.944302,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ratakatu 11-13",
+      "lat": 60.162932,
+      "lng": 24.943392,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Unionin Akselin Taidegalleria - Koroke",
+      "lat": 60.162883,
+      "lng": 24.951574,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Liikenne- ja viestintäministeriö",
+      "lat": 60.167069,
+      "lng": 24.946746,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Bird Art",
+      "lat": 60.165699,
+      "lng": 24.941761,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "J.L. Runeberg Memorial Plaque",
+      "lat": 60.165611,
+      "lng": 24.943481,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Amanda",
+      "lat": 60.167009,
+      "lng": 24.949225,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Deteriorated Murals",
+      "lat": 60.163415,
+      "lng": 24.947129,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Fasaanilinna",
+      "lat": 60.163944,
+      "lng": 24.943237,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Johannes Kastaja",
+      "lat": 60.161947,
+      "lng": 24.945432,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Taideboxi",
+      "lat": 60.164357,
+      "lng": 24.943777,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Georg Henrik von Wrightin terassi",
+      "lat": 60.157244,
+      "lng": 24.941002,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Eiranpuisto",
+      "lat": 60.157771,
+      "lng": 24.940496,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tehtaanpuisto",
+      "lat": 60.15864,
+      "lng": 24.940576,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tehtaanpuiston koira-aitaus",
+      "lat": 60.158148,
+      "lng": 24.937545,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kolme astiaa kantavaa poikaa",
+      "lat": 60.157481,
+      "lng": 24.940247,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vihu loves you",
+      "lat": 60.160852,
+      "lng": 24.934322,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Leikkipuisto Haukka",
+      "lat": 60.161327,
+      "lng": 24.93461,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Mikael Agricolan kirkko",
+      "lat": 60.158255,
+      "lng": 24.939292,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "536",
+      "lat": 60.160005,
+      "lng": 24.939263,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tehtaankadun lippakioski",
+      "lat": 60.157928,
+      "lng": 24.940919,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vihtilä 1931",
+      "lat": 60.159194,
+      "lng": 24.937043,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Padat",
+      "lat": 60.159633,
+      "lng": 24.938399,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tehtaankadun tähdet",
+      "lat": 60.157961,
+      "lng": 24.935957,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Punavuorenkatu 5 Plaque",
+      "lat": 60.161418,
+      "lng": 24.938623,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Merimieskirkko",
+      "lat": 60.159479,
+      "lng": 24.939915,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "The Web",
+      "lat": 60.158319,
+      "lng": 24.940513,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tehtaankatu 34C ornamentit",
+      "lat": 60.157708,
+      "lng": 24.936772,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sinebrychoffin torni",
+      "lat": 60.161246,
+      "lng": 24.934479,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Leikkipuisto Seppä",
+      "lat": 60.15881,
+      "lng": 24.939216,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kalastajatupa",
+      "lat": 60.157665,
+      "lng": 24.935127,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Koff park mosaic painting",
+      "lat": 60.158764,
+      "lng": 24.935833,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Betania Plaque",
+      "lat": 60.159477,
+      "lng": 24.934378,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Mikael Agricolan kirkon ilmoitustaulu",
+      "lat": 60.158607,
+      "lng": 24.938432,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "The temple of the Rose Cross",
+      "lat": 60.16021,
+      "lng": 24.937314,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Nautinnot",
+      "lat": 60.160397,
+      "lng": 24.940569,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "N:3",
+      "lat": 60.160659,
+      "lng": 24.941174,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Betania",
+      "lat": 60.15966,
+      "lng": 24.934236,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tehtaanpuiston jalkapallokenttä",
+      "lat": 60.159158,
+      "lng": 24.940227,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Laakeriseppele",
+      "lat": 60.158689,
+      "lng": 24.934846,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tiedonpuu",
+      "lat": 60.161329,
+      "lng": 24.938673,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kuninkaallisen Suomen tykistörykmentin muistomerkki",
+      "lat": 60.163574,
+      "lng": 24.953512,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tähtitornin vuori",
+      "lat": 60.161925,
+      "lng": 24.954579,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tähtitorninvuoren leikkipaikka",
+      "lat": 60.16186,
+      "lng": 24.953407,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tähtitorninvuoren kivikehä",
+      "lat": 60.16276,
+      "lng": 24.954517,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Juutalaispakolaisten muistomerkki / Apua anovat kädet",
+      "lat": 60.163141,
+      "lng": 24.953628,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Habsburg-höyrylaivan muistomerkki",
+      "lat": 60.163451,
+      "lng": 24.95283,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Lintu tähyilee merelle",
+      "lat": 60.164109,
+      "lng": 24.952588,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Maa- ja metsätalousministeriö",
+      "lat": 60.170043,
+      "lng": 24.954545,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Crypt of Helsinki Cathedral",
+      "lat": 60.170728,
+      "lng": 24.952603,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Heleniuksen talo",
+      "lat": 60.168994,
+      "lng": 24.952641,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Suomalaisen Kirjallisuuden Seura",
+      "lat": 60.170133,
+      "lng": 24.956198,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Suomen Pankin Rahamuseo",
+      "lat": 60.170118,
+      "lng": 24.953373,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Lennart Meri memorial plaque",
+      "lat": 60.170474,
+      "lng": 24.956598,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Pihlfycktin Talo",
+      "lat": 60.170102,
+      "lng": 24.955699,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Arppeanum",
+      "lat": 60.170272,
+      "lng": 24.95369,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sederholmin Talo",
+      "lat": 60.169013,
+      "lng": 24.953671,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Ritarihuone - Riddarhuset",
+      "lat": 60.169674,
+      "lng": 24.956604,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Bockin talo",
+      "lat": 60.169044,
+      "lng": 24.953204,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kilpimies",
+      "lat": 60.170439,
+      "lng": 24.955078,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Iso Roban Viljelijät",
+      "lat": 60.162741,
+      "lng": 24.940225,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Lönnrotinkatu 7",
+      "lat": 60.166338,
+      "lng": 24.938234,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Bulevardi 12",
+      "lat": 60.165403,
+      "lng": 24.940415,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Feliks Olamo 1878-1948",
+      "lat": 60.165229,
+      "lng": 24.9356,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Colourful People",
+      "lat": 60.164616,
+      "lng": 24.930432,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Aquila / Kotka",
+      "lat": 60.166175,
+      "lng": 24.937783,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "WW 1904",
+      "lat": 60.163206,
+      "lng": 24.938447,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Olutravintola Pikkulintu Ruttopuisto",
+      "lat": 60.165963,
+      "lng": 24.93693,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sammakot Sienissä",
+      "lat": 60.162942,
+      "lng": 24.939113,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Avaruuden säihkettä",
+      "lat": 60.162315,
+      "lng": 24.940006,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Owls",
+      "lat": 60.163916,
+      "lng": 24.939328,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Parrot",
+      "lat": 60.162855,
+      "lng": 24.933163,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Metodistikirkko",
+      "lat": 60.161661,
+      "lng": 24.939896,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vigilant Guardian",
+      "lat": 60.163758,
+      "lng": 24.938464,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Paplan psykedeeliset pallot",
+      "lat": 60.163704,
+      "lng": 24.938045,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Saarikosken talo",
+      "lat": 60.162382,
+      "lng": 24.939577,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Freda 32",
+      "lat": 60.165639,
+      "lng": 24.93503,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "The Drain Tunnel",
+      "lat": 60.161755,
+      "lng": 24.93693,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Lähetysseurakunta",
+      "lat": 60.162987,
+      "lng": 24.941025,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kuin pöllö ajovaloissa",
+      "lat": 60.163731,
+      "lng": 24.938923,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Äiti ja lapset",
+      "lat": 60.16688,
+      "lng": 24.939752,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Fila Church",
+      "lat": 60.164963,
+      "lng": 24.932591,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Marttojen muistokivi",
+      "lat": 60.166763,
+      "lng": 24.939328,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Svenska flicklyceet minnestavla",
+      "lat": 60.164631,
+      "lng": 24.938349,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Pro Teekkari",
+      "lat": 60.162851,
+      "lng": 24.930889,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Hietalahden Tori",
+      "lat": 60.162543,
+      "lng": 24.930258,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sinebrychoff Museum of Art",
+      "lat": 60.162602,
+      "lng": 24.93243,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Hotellin Omena",
+      "lat": 60.165808,
+      "lng": 24.936478,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Elias Lönnrot",
+      "lat": 60.166783,
+      "lng": 24.938809,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Simpukka seinällä",
+      "lat": 60.163844,
+      "lng": 24.931118,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "But Life Still Goes On",
+      "lat": 60.164623,
+      "lng": 24.933704,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tree Relief",
+      "lat": 60.166107,
+      "lng": 24.934675,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Former Home of Elias Lönnrot",
+      "lat": 60.164221,
+      "lng": 24.936405,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Posti Punavuori",
+      "lat": 60.163844,
+      "lng": 24.94096,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kaksi lasta",
+      "lat": 60.166991,
+      "lng": 24.940066,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "GLO Art Hotel",
+      "lat": 60.164196,
+      "lng": 24.932109,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Saksalaisten sotilaiden hauta",
+      "lat": 60.165612,
+      "lng": 24.939766,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vanha kirkko",
+      "lat": 60.1663,
+      "lng": 24.938882,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Old Church Cemetery",
+      "lat": 60.165823,
+      "lng": 24.940007,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vanhan kirkkopuiston obeliski",
+      "lat": 60.165882,
+      "lng": 24.939505,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vironkävijäin muistomerkki",
+      "lat": 60.166287,
+      "lng": 24.940754,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kauneus",
+      "lat": 60.165603,
+      "lng": 24.938996,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Techno",
+      "lat": 60.163553,
+      "lng": 24.930666,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Takomo",
+      "lat": 60.162056,
+      "lng": 24.939575,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "A pelican in the pelicanblock",
+      "lat": 60.162045,
+      "lng": 24.937787,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Pelikaani",
+      "lat": 60.162337,
+      "lng": 24.938679,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Playground Climbing and Slide",
+      "lat": 60.161795,
+      "lng": 24.934184,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Trophy",
+      "lat": 60.163769,
+      "lng": 24.935729,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Woodcutter and his Friend",
+      "lat": 60.162825,
+      "lng": 24.940465,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kalevalalainen työmies",
+      "lat": 60.164602,
+      "lng": 24.937506,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Poro Ihmemaassa",
+      "lat": 60.162897,
+      "lng": 24.936559,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tuuliviiri",
+      "lat": 60.164396,
+      "lng": 24.940251,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Tyttö",
+      "lat": 60.165245,
+      "lng": 24.939882,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Bulevardi 30",
+      "lat": 60.16357,
+      "lng": 24.93517,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Johan Ludvig Runeberg",
+      "lat": 60.163135,
+      "lng": 24.940707,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Suomitalon Uurnat",
+      "lat": 60.16704,
+      "lng": 24.93927,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Street art by Tatu Vuolteenaho",
+      "lat": 60.166551,
+      "lng": 24.937246,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "South Park urban art",
+      "lat": 60.162642,
+      "lng": 24.933379,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Arkkitehti Ragnar Wessman",
+      "lat": 60.165018,
+      "lng": 24.931433,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Café and Bakery Ekberg",
+      "lat": 60.164727,
+      "lng": 24.937869,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Bar Loose",
+      "lat": 60.166755,
+      "lng": 24.937318,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Two Musicians",
+      "lat": 60.164502,
+      "lng": 24.941149,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kalevalan Leijona",
+      "lat": 60.166725,
+      "lng": 24.938178,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Gyllene Pelare",
+      "lat": 60.166728,
+      "lng": 24.940792,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Asunto Oy 33",
+      "lat": 60.162258,
+      "lng": 24.938351,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Holy Tentacle",
+      "lat": 60.165556,
+      "lng": 24.935955,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Free Bird",
+      "lat": 60.16269,
+      "lng": 24.93946,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Vase Over The Door",
+      "lat": 60.16311,
+      "lng": 24.937179,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Suomen Islamilainen Yhdyskunta",
+      "lat": 60.164745,
+      "lng": 24.934124,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Johan Sederholmin hautakappeli",
+      "lat": 60.166719,
+      "lng": 24.940132,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kuu ja Aurinko",
+      "lat": 60.163349,
+      "lng": 24.937871,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Sähkölintu",
+      "lat": 60.164733,
+      "lng": 24.936629,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Pinkki apina",
+      "lat": 60.162595,
+      "lng": 24.939846,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Love n Peace",
+      "lat": 60.163773,
+      "lng": 24.9373,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kyösti Kallio asui täällä",
+      "lat": 60.165628,
+      "lng": 24.941045,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Teknillinen opisto",
+      "lat": 60.163043,
+      "lng": 24.931111,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Hietalahden kauppahalli",
+      "lat": 60.162799,
+      "lng": 24.929323,
+      "ornamentId": "ap1"
+    },
+    {
+      "title": "Kaartin Lasaretti",
+      "lat": 60.163916,
+      "lng": 24.92838,
+      "ornamentId": "ap1"
+    }
+  ]
+}

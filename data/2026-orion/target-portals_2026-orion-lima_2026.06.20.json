@@ -1,0 +1,665 @@
+{
+  "siteId": "2026-orion-lima",
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Asientos Públicos",
+            "latE6": -12118869,
+            "lngE6": -77041812
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Busto de Augusto Tamayo Vargas",
+            "latE6": -12125859,
+            "lngE6": -77036669
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Café Sama",
+            "latE6": -12122288,
+            "lngE6": -77026779
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Graffiti Estamos Contigo Perú",
+            "latE6": -12119999,
+            "lngE6": -77026832
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Pizza Papa John's Miraflores",
+            "latE6": -12116991,
+            "lngE6": -77036825
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Te Quiero Té",
+            "latE6": -12127289,
+            "lngE6": -77028776
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Aves",
+            "latE6": -12118428,
+            "lngE6": -77039624
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Juego Del Parque Del Amor",
+            "latE6": -12123643,
+            "lngE6": -77039203
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Mosaico De La Virgen",
+            "latE6": -12124611,
+            "lngE6": -77027108
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Parroquia Alemana",
+            "latE6": -12118287,
+            "lngE6": -77030864
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Street art In Garage Door",
+            "latE6": -12127443,
+            "lngE6": -77030182
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Trattoria Dei Prati",
+            "latE6": -12121336,
+            "lngE6": -77027225
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Domo Da Praia Lam",
+            "latE6": -12126378,
+            "lngE6": -77036677
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "Graffiti Se Tu Mismo",
+            "latE6": -12120467,
+            "lngE6": -77027595
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "KFC Miraflores",
+            "latE6": -12117545,
+            "lngE6": -77036838
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "La Esquina Winebar",
+            "latE6": -12119978,
+            "lngE6": -77039358
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural de las aves",
+            "latE6": -12123230,
+            "lngE6": -77025700
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "Sol 4 Ojos",
+            "latE6": -12126684,
+            "lngE6": -77027993
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "Cuádruple Asta de Banderas",
+            "latE6": -12117126,
+            "lngE6": -77032541
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "Mandala",
+            "latE6": -12117764,
+            "lngE6": -77038860
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "Pájaro Astral",
+            "latE6": -12120837,
+            "lngE6": -77027638
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "Pasteleria Les Gourmands",
+            "latE6": -12125940,
+            "lngE6": -77027104
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "Teatro Larco",
+            "latE6": -12128056,
+            "lngE6": -77029725
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "UNFV - FOPCAA",
+            "latE6": -12122220,
+            "lngE6": -77038276
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "Carreta Antigua",
+            "latE6": -12120472,
+            "lngE6": -77028292
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "CHIFA",
+            "latE6": -12119372,
+            "lngE6": -77040579
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "El Parque del Amor",
+            "latE6": -12126822,
+            "lngE6": -77036562
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "El Parrillón",
+            "latE6": -12128167,
+            "lngE6": -77026139
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "Las Tejas",
+            "latE6": -12122459,
+            "lngE6": -77027425
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "León multicolor",
+            "latE6": -12117448,
+            "lngE6": -77033616
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "Ancla De La Marina",
+            "latE6": -12123255,
+            "lngE6": -77039774
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781991120000
+        },
+        {
+          "portalInfo": {
+            "title": "Cocina Andina",
+            "latE6": -12121904,
+            "lngE6": -77027653
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781991120000
+        },
+        {
+          "portalInfo": {
+            "title": "De la selva su encanto",
+            "latE6": -12124848,
+            "lngE6": -77026586
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781991120000
+        },
+        {
+          "portalInfo": {
+            "title": "Grafiti Mujer Andina",
+            "latE6": -12116910,
+            "lngE6": -77041781
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781991120000
+        },
+        {
+          "portalInfo": {
+            "title": "Museo Casa Inclan",
+            "latE6": -12116888,
+            "lngE6": -77031240
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781991120000
+        },
+        {
+          "portalInfo": {
+            "title": "Street Art By Conrad Migue",
+            "latE6": -12127561,
+            "lngE6": -77029989
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781991120000
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Cancha De Tenis",
+            "latE6": -12122062,
+            "lngE6": -77040837
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Edificio Ceam",
+            "latE6": -12125295,
+            "lngE6": -77025363
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Leoparado Alado",
+            "latE6": -12117340,
+            "lngE6": -77038910
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural de Hombre y las Manos",
+            "latE6": -12117653,
+            "lngE6": -77032521
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural de Infantes Mirando el Cielo",
+            "latE6": -12121539,
+            "lngE6": -77027412
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural Mujer y Corazon",
+            "latE6": -12126971,
+            "lngE6": -77029675
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781982120000
+        },
+        {
+          "portalInfo": {
+            "title": "352 Gastrobar",
+            "latE6": -12122435,
+            "lngE6": -77027176
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Adidas de Espinar",
+            "latE6": -12117098,
+            "lngE6": -77037245
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "BODEGA NAKAMOTO",
+            "latE6": -12119951,
+            "lngE6": -77039070
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Hotel Leon de Oro",
+            "latE6": -12127266,
+            "lngE6": -77027133
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Memoria Luis Benjamin",
+            "latE6": -12125880,
+            "lngE6": -77036960
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Pesimo Graffiti",
+            "latE6": -12119805,
+            "lngE6": -77028525
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781983920000
+        },
+        {
+          "portalInfo": {
+            "title": "Avenida Reducto",
+            "latE6": -12128156,
+            "lngE6": -77024227
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "Colibris",
+            "latE6": -12121076,
+            "lngE6": -77038979
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "Grafiti Vallejo",
+            "latE6": -12127009,
+            "lngE6": -77031057
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "Grafitti Paseo Bicicletas",
+            "latE6": -12116995,
+            "lngE6": -77041143
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "Homenaje a la memoria del Gran Mariscal del Perú - Mariano Necochea",
+            "latE6": -12119005,
+            "lngE6": -77029800
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural del Schlaraffenland",
+            "latE6": -12120881,
+            "lngE6": -77027292
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781985720000
+        },
+        {
+          "portalInfo": {
+            "title": "Cruz Del Buen Comer",
+            "latE6": -12122800,
+            "lngE6": -77026620
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "Estacion",
+            "latE6": -12119430,
+            "lngE6": -77039911
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural Cóndor Protector",
+            "latE6": -12120355,
+            "lngE6": -77027282
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "Parque Del Amor En Miraflores",
+            "latE6": -12126808,
+            "lngE6": -77036321
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "restaurante CHé CHá",
+            "latE6": -12127421,
+            "lngE6": -77028351
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "Triple asta de banderas",
+            "latE6": -12118024,
+            "lngE6": -77036545
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781987520000
+        },
+        {
+          "portalInfo": {
+            "title": "Centro comercial El Paseo",
+            "latE6": -12121802,
+            "lngE6": -77027411
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "El Sillar",
+            "latE6": -12117696,
+            "lngE6": -77030376
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "La Picaroneria Tradicion Popular",
+            "latE6": -12127892,
+            "lngE6": -77029298
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "Mural de Gatos",
+            "latE6": -12116980,
+            "lngE6": -77038112
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "Pastelería Vekia",
+            "latE6": -12127551,
+            "lngE6": -77024331
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "Templo de Shiva",
+            "latE6": -12121167,
+            "lngE6": -77039241
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781989320000
+        },
+        {
+          "portalInfo": {
+            "title": "Alma Bar Restaurante",
+            "latE6": -12122200,
+            "lngE6": -77026508
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781991120000
+        },
+        {
+          "portalInfo": {
+            "title": "Buda Sukha",
+            "latE6": -12117654,
+            "lngE6": -77035613
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781991120000
+        },
+        {
+          "portalInfo": {
+            "title": "Familia De Belen",
+            "latE6": -12120014,
+            "lngE6": -77040964
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781991120000
+        },
+        {
+          "portalInfo": {
+            "title": "Grafitti Calavera Enamorada",
+            "latE6": -12119903,
+            "lngE6": -77026557
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781991120000
+        },
+        {
+          "portalInfo": {
+            "title": "Laberinto para niños",
+            "latE6": -12124616,
+            "lngE6": -77038144
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781991120000
+        },
+        {
+          "portalInfo": {
+            "title": "Pileta Del Hotel San Martin",
+            "latE6": -12126505,
+            "lngE6": -77028286
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781991120000
+        }
+      ]
+    }
+  ]
+}
