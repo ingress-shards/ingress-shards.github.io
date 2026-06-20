@@ -1,0 +1,665 @@
+{
+  "siteId": "2026-orion-geneva",
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Fontaine parc Malagnou",
+            "latE6": 46198814,
+            "lngE6": 6158971
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "L'arbre Aux Animaux",
+            "latE6": 46203936,
+            "lngE6": 6163750
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Le Non-Oui",
+            "latE6": 46204657,
+            "lngE6": 6146471
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Lombard Odier Bank",
+            "latE6": 46202868,
+            "lngE6": 6143546
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Ombres gravissant les marches d’un escalier",
+            "latE6": 46205355,
+            "lngE6": 6160872
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Tableau Porte de la Treille",
+            "latE6": 46199775,
+            "lngE6": 6147540
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Borne Archi",
+            "latE6": 46204978,
+            "lngE6": 6163870
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "En Commemoration",
+            "latE6": 46200657,
+            "lngE6": 6146506
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Immeuble Ancien De La Rade",
+            "latE6": 46207182,
+            "lngE6": 6161360
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Le nichoir et la Pipistrelle commune",
+            "latE6": 46198968,
+            "lngE6": 6159091
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Oeuvre Castella 1990",
+            "latE6": 46203050,
+            "lngE6": 6144584
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Portique St-Victor",
+            "latE6": 46196938,
+            "lngE6": 6152244
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Borne Archi",
+            "latE6": 46197998,
+            "lngE6": 6154404
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Ferdinand de Saussure",
+            "latE6": 46202563,
+            "lngE6": 6144411
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Fontaine de la Fusterie",
+            "latE6": 46204183,
+            "lngE6": 6146235
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Horloge du Coin",
+            "latE6": 46199909,
+            "lngE6": 6148389
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Peinture Murale 2",
+            "latE6": 46205001,
+            "lngE6": 6161695
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Statue De La Poste",
+            "latE6": 46202304,
+            "lngE6": 6161323
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Hans Leutenegger",
+            "latE6": 46205962,
+            "lngE6": 6158832
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Marcelle Moynier 1888-1980",
+            "latE6": 46197382,
+            "lngE6": 6152775
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Paroisse Eaux Vives",
+            "latE6": 46201557,
+            "lngE6": 6160760
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Plaque Bezanson Hugues",
+            "latE6": 46204534,
+            "lngE6": 6143745
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Porche De L'hôtel De Ville",
+            "latE6": 46201070,
+            "lngE6": 6146815
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Sculpture murale femme assise",
+            "latE6": 46204338,
+            "lngE6": 6162789
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Autre Fresque Vollandes",
+            "latE6": 46202648,
+            "lngE6": 6163126
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "La portique à deux têtes",
+            "latE6": 46202173,
+            "lngE6": 6145321
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "Place du Rhône",
+            "latE6": 46204860,
+            "lngE6": 6146513
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "Plaque Murale",
+            "latE6": 46200342,
+            "lngE6": 6148004
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "Portique En Pierre Gravée",
+            "latE6": 46197995,
+            "lngE6": 6154628
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "Restaurant-pizzeria du Jet D'Eau",
+            "latE6": 46205247,
+            "lngE6": 6160474
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "Arche Belle Epoque",
+            "latE6": 46204142,
+            "lngE6": 6144451
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781965920000
+        },
+        {
+          "portalInfo": {
+            "title": "Eaux-Vives 2000",
+            "latE6": 46200600,
+            "lngE6": 6159827
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781965920000
+        },
+        {
+          "portalInfo": {
+            "title": "Face du 1er Juin",
+            "latE6": 46206165,
+            "lngE6": 6161263
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781965920000
+        },
+        {
+          "portalInfo": {
+            "title": "Jh Merle d'aubigné",
+            "latE6": 46204898,
+            "lngE6": 6163599
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781965920000
+        },
+        {
+          "portalInfo": {
+            "title": "Libraire Droz",
+            "latE6": 46196889,
+            "lngE6": 6151556
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781965920000
+        },
+        {
+          "portalInfo": {
+            "title": "Pictet de Rochemont",
+            "latE6": 46200728,
+            "lngE6": 6146259
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1781965920000
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Fontaine Ocean",
+            "latE6": 46201565,
+            "lngE6": 6145936
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Godzilla Graffiti",
+            "latE6": 46199608,
+            "lngE6": 6159624
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Mascaron floral 83",
+            "latE6": 46206769,
+            "lngE6": 6162048
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Museum Fondation Baur",
+            "latE6": 46197652,
+            "lngE6": 6153476
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Passage des Lions",
+            "latE6": 46203660,
+            "lngE6": 6144298
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Street Art Vollandes",
+            "latE6": 46204444,
+            "lngE6": 6161277
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781956920000
+        },
+        {
+          "portalInfo": {
+            "title": "Fontaine De La Petite Fusterie",
+            "latE6": 46204729,
+            "lngE6": 6145344
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Ludothèque des Eaux-Vives",
+            "latE6": 46202948,
+            "lngE6": 6161653
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Memorial Fountain",
+            "latE6": 46202395,
+            "lngE6": 6143610
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Sculpture De Portique",
+            "latE6": 46205605,
+            "lngE6": 6160709
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Tour Toboggan Treille",
+            "latE6": 46200188,
+            "lngE6": 6146985
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Visage Gravé",
+            "latE6": 46197761,
+            "lngE6": 6154395
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781958720000
+        },
+        {
+          "portalInfo": {
+            "title": "Aire de jeux Malagnou",
+            "latE6": 46198757,
+            "lngE6": 6160455
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Fontaine D'eau",
+            "latE6": 46204174,
+            "lngE6": 6164578
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Fontaine des Tranchées - Genève",
+            "latE6": 46197021,
+            "lngE6": 6153236
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Maison de Cavour",
+            "latE6": 46201775,
+            "lngE6": 6144787
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Sculpture Maçons de la Cité",
+            "latE6": 46203463,
+            "lngE6": 6143767
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Vieil immeuble quai Ador",
+            "latE6": 46206572,
+            "lngE6": 6160169
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781960520000
+        },
+        {
+          "portalInfo": {
+            "title": "Borne Mascaron",
+            "latE6": 46202870,
+            "lngE6": 6162459
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Fontaine Département de la culture",
+            "latE6": 46198693,
+            "lngE6": 6159386
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Horace Benedict",
+            "latE6": 46202413,
+            "lngE6": 6144107
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Horloge Breguet 1775",
+            "latE6": 46204360,
+            "lngE6": 6146522
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Mosaique de l'arbre flottant",
+            "latE6": 46205025,
+            "lngE6": 6162250
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Robert A Ceard",
+            "latE6": 46200082,
+            "lngE6": 6148502
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781962320000
+        },
+        {
+          "portalInfo": {
+            "title": "Alberto Ginastera 1916-1983",
+            "latE6": 46205262,
+            "lngE6": 6164464
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "Bartholomé Tecia",
+            "latE6": 46204443,
+            "lngE6": 6142840
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "House of Pandit Shyamji Krishnavarma 1914",
+            "latE6": 46206089,
+            "lngE6": 6159477
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "Maison Naissance J J Rousseau",
+            "latE6": 46201432,
+            "lngE6": 6146637
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "Terrain de jeu parc Villereuse",
+            "latE6": 46200074,
+            "lngE6": 6159208
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "Vase Le Fort",
+            "latE6": 46198195,
+            "lngE6": 6152811
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781964120000
+        },
+        {
+          "portalInfo": {
+            "title": "Borne Vieux Genève",
+            "latE6": 46204843,
+            "lngE6": 6145289
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781965920000
+        },
+        {
+          "portalInfo": {
+            "title": "Chapelle De St. Léger",
+            "latE6": 46199156,
+            "lngE6": 6148061
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781965920000
+        },
+        {
+          "portalInfo": {
+            "title": "Fontaine De La Bibliothèque",
+            "latE6": 46202805,
+            "lngE6": 6144907
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781965920000
+        },
+        {
+          "portalInfo": {
+            "title": "Fresque Des Vollandes",
+            "latE6": 46203464,
+            "lngE6": 6162088
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781965920000
+        },
+        {
+          "portalInfo": {
+            "title": "Le Plus Ancien Bâtiment Des Eaux Vives",
+            "latE6": 46204899,
+            "lngE6": 6160749
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781965920000
+        },
+        {
+          "portalInfo": {
+            "title": "Tamanoir",
+            "latE6": 46198382,
+            "lngE6": 6158545
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1781965920000
+        }
+      ]
+    }
+  ]
+}
