@@ -118,8 +118,8 @@ export function processSeriesData(seriesDataPackage) {
         }
     });
 
-    const { shardJumpTimes, ornamentedPortals, targetPortals } = rawData;
-    console.log(`ℹ️ Processing ${shardJumpTimes.length} shard jump times files, ${ornamentedPortals?.length || 0} ornamented portals files and ${targetPortals?.length || 0} target portals files.`);
+    const { shardJumpTimes, ornamentedPortals, targetPortals, recursivePortals } = rawData;
+    console.log(`ℹ️ Processing ${shardJumpTimes.length} shard jump times files, ${ornamentedPortals?.length || 0} ornamented portals files, ${targetPortals?.length || 0} target portals files and ${recursivePortals?.length || 0} recursive portals files.`);
 
     const allObservedOrnamentedPortals = ornamentedPortals?.flatMap(exportObj => {
         const observedAt = exportObj.timestamp ? Instant.fromString(exportObj.timestamp).epochMilliseconds : 0;
@@ -253,6 +253,13 @@ export function processSeriesData(seriesDataPackage) {
         }
     }
 
+    const recursivePortalBySite = new Map();
+    recursivePortals?.forEach(exportObj => {
+        exportObj.sites?.forEach(s => {
+            recursivePortalBySite.set(s.id, { waves: s.waves });
+        });
+    });
+
     const processedSites = Object.keys(allSites).map((siteId) => {
         const site = allSites[siteId];
         const fragments = siteFragmentsMap.get(siteId) || [];
@@ -261,12 +268,13 @@ export function processSeriesData(seriesDataPackage) {
         // Match ornaments/targets assigned to this site during pre-grouping
         const siteOrnamentedPortals = ornamentsBySite.get(siteId) || [];
         const siteTargetPortals = targetsBySite.get(siteId) || [];
+        const siteRecursivePortals = recursivePortalBySite.get(siteId) || null;
 
-        if (fragments.length === 0 && siteOrnamentedPortals.length === 0 && siteTargetPortals.length === 0) {
+        if (fragments.length === 0 && siteOrnamentedPortals.length === 0 && siteTargetPortals.length === 0 && !siteRecursivePortals) {
             return null;
         }
 
-        return processSite(site, siteOrnamentedPortals, siteTargetPortals, fragments, config, blueprints, verbose);
+        return processSite(site, siteOrnamentedPortals, siteTargetPortals, fragments, siteRecursivePortals, config, blueprints, verbose);
     }).filter(site => site !== null);
 
     const seriesData = Object.fromEntries(processedSites.map(site => [site.geocode.id, site]));
@@ -284,7 +292,7 @@ export function processSeriesData(seriesDataPackage) {
     return seriesData;
 }
 
-export function processSite(site, siteOrnamentedPortals, siteTargetPortals, fragments, seriesConfig, blueprints, verbose = false) {
+export function processSite(site, siteOrnamentedPortals, siteTargetPortals, fragments, siteRecursivePortals, seriesConfig, blueprints, verbose = false) {
     site.hasTargetData = siteTargetPortals && siteTargetPortals.length > 0;
     if (siteOrnamentedPortals && siteOrnamentedPortals.length > 0) {
         applyOrnamentedPortalsToSite(site, siteOrnamentedPortals);
@@ -301,6 +309,10 @@ export function processSite(site, siteOrnamentedPortals, siteTargetPortals, frag
     if (fragments && fragments.length > 0) {
         applyFragmentPortalsToSite(site, fragments);
         applyFragmentsToSite(site, fragments, siteTargetPortals, seriesConfig, blueprints, verbose);
+    }
+
+    if (siteRecursivePortals && siteRecursivePortals.waves?.length > 0 && site.waves) {
+        applyRecursivePortalsToSite(site, siteRecursivePortals);
     }
 
     return site;
@@ -747,6 +759,27 @@ function applyOrnamentedPortalsToSite(site, siteOrnamentedPortals) {
             const portalObj = site.portals[portalId];
             portalObj.ornamentId = p.ornamentId;
             portalObj.guid = p.guid;
+        }
+    }
+}
+
+function applyRecursivePortalsToSite(site, siteRecursivePortals) {
+    for (const [index, wave] of siteRecursivePortals.waves.entries()) {
+        if (!site.waves[index]) continue;
+        for (const recursivePortal of wave.recursivePortals) {
+            const portalId = Object.entries(site.portals).find(([, value]) => value.guid === recursivePortal.guid)?.[0];
+            if (!portalId) {
+                console.log(`Recursive portal not found! ${portalId} - ${recursivePortal.value} unique hacks!`);
+                continue;
+            }
+
+            if (!site.waves[index].recursivePortals) {
+                site.waves[index].recursivePortals = [];
+            }
+            site.waves[index].recursivePortals.push({
+                id: portalId,
+                value: recursivePortal.value,
+            });
         }
     }
 }

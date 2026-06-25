@@ -1,0 +1,2314 @@
+{
+    "sites": [
+        {
+            "id": "2026-orion-sydney",
+            "waves": [
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "14bcca91d6c934a38904e7b7288d1c28.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "3de15afa8e4a401da20cb36e519d708e.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "2246e1a1cb2332b6bfd0260306b0d40d.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "9b3533760f004171ab02091616e270b6.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "30bb4bca9215324ba94f2850fac124f6.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "4013aab814054a6eaf02fa37d459aa09.11",
+                            "value": 10
+                        },
+                        {
+                            "guid": "d07b28dcdab54b53ad254c38513f017f.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "ccfdee3d0d3a4f21b1f50b991907ed94.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "1db6c08ce9414420adb31237e058a237.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "39411fa7c95b4738986abff5b5ad2d98.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "537b86b70acd4802a2bf662eb68dc824.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "8b6bad38325a4f1a959b62929603784c.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "99d806d0063b43febaf758a4a6fba77d.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "c8d1719ed8d046bdb2ca2b60c0f771f4.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "f46d7bef03b83305ae2515a063cef815.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "885d93147eee47a98910bcfbf99056df.16",
+                            "value": 13
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "11e44c531f164456b40039b2ba2da526.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "5e65493946eb4552b977306d52cfd4f1.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "7790df81d3024fa19aab2cbe0f32d7c4.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "867ae63b44fe41f7b9db2ef4618a338f.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "f4e04cbbc6a84a9ea6a1d08750f95e98.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "ff89becc51ad4c3ab0017b5cd2a2c326.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "fff72034de9844ec959d8c1d75bf5eaf.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "92d13e2c76e84032b8071ccd59873d9b.16",
+                            "value": 13
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "a955aa8ef13845e69a8c3c61d165fb96.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "d4657f5f641d40dca2900e829bf9e1e3.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "dbca8700d7dd3bf7a11f0a16d34220b1.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "f54f7082e15944ec9581ce2f777bda2b.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "2b1c75d9c42e44faa47f01099861c3af.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "2eee297805fb443a9d9e0b5784ffe5b4.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "3ed8c7ffbf1b35d2a8ad54ff4dc06472.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "8650fad6e794329aa9eab001ffda8f05.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "9ad2154c727047b7a8ac4810b04a76f9.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "c0b617544c6c366d9c6707e455af3b00.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "cf5249f18f0d4de39d5f0dafc643ba42.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "3da630c47eb94596b726df28519ff097.16",
+                            "value": 13
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2026-orion-prague",
+            "waves": [
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "3a1310ee07e7474f8ee3f6c8d061f65f.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "4df6e17ae2564ec5abd80cce195568fc.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "8b824a5268ed4b149446be63d01386b6.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "acc48e60bf014564b9f3807d4d8ae422.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "b2def53bdc90471ebb4150ee74c3af31.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "c653e62816ad4b148fd9c4f1cc9e61fb.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "dcfa756411a04b5fa9f15601e828c0a2.16",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "7448e842973448b388a6ec4a4e33f4ff.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "8b10820615c548c49ef7dee9a35cc94a.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "bfe9b9b75d53405db4370d5aa562fa54.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "e159d4caef4841af9139e3569fa91d41.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "e477e886a9f946be89f86a5464be561c.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "eb0c0e04f1ff4a7bade85acec5f84c6d.11",
+                            "value": 10
+                        },
+                        {
+                            "guid": "fb32b38166483f83a0a8881493216133.16",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "0e4966487aac478484294c97aa8ed1e3.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "0f452919452e42e6b86fb0877cb8aa9a.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "31e3f61ac75a42d5912fdcb7bca5ebf4.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "7eb5efccc8c24409886c8a37ef91115e.12",
+                            "value": 10
+                        },
+                        {
+                            "guid": "a278c654831f360b84ae7c6db8d49470.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "d8a1459f3fc64c1a8b4fe9dfc9761af6.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "db4b62d326184ee59310f175b06f287f.12",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "07ab807bb6464335ade325be8eb6bcb5.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "2f9d1c2adf224890aa673e78e481bee1.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "387c933fa62e3f5394ef16986cce028f.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "4ccfd2a5b40c4d4cb9f71126104c551c.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "7ac8885b738b4efcb28185b41a24c642.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "bb05c95f9e9a35e480fcc2462db4987b.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "f447a5640ae54bd6a209476e11e733c3.16",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "05db2b200bb14a099962455b7c922e6c.12",
+                            "value": 10
+                        },
+                        {
+                            "guid": "26299f085d79425384b6f81c3a0d8220.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "4a0bfe7aa439462385d5e4249e657372.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "60ab46b520b74a7bb595718fd0910928.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "6a873ee99a6d448681b6156f34593dce.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "7f8ce7d03cf642888fa5464fae57375e.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "d5a8453b300a4906b2a6cb1d4c73f0a3.16",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "0497d5a6ce254946a1891f0407d38429.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "1e4bbe8bbe3b4cbba5941bb3492bf709.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "2e0a15d7514c416bbe63fe7ace02e2df.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "3e3244ffe44843f3b9e1cab0b0113c9c.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "48f8759faede4331a435a2abc0b65a09.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "937a1ecf03e04eb5aafb9891573f5e6b.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "ef4811d25fb948239cd283ba87d39945.16",
+                            "value": 10
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2026-orion-jersey-city",
+            "waves": [
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "1da551d5c64c4e3ca4dd204a1c0328dd.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "2a74c6cf1cdc38e088c64dd215f72fb2.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "4588e9797ad13da9a94fef3f873bb865.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "46a5100df1b14608b172a193df8a9169.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "99c5430aa52b45b1aa3c58638f63a2a4.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "b81e3019322d44caa3b99eccefda2beb.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "d0f5fef954424f53a7a40ca98ce65e22.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "d290eeac42974be7b515ec77e61fbd61.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "fe96dbb4cec33466a182d21169578e32.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "46f9e714c65048d2bcfe4e51d9035afe.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "4c1b81e0ba7d44108202cef011638058.11",
+                            "value": 13
+                        },
+                        {
+                            "guid": "83704f8380944a6882c0d98594e59d7e.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "b637e9d07c0540dba556737fb1e58cfb.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "e4eb884c599c4a18abf04b2e3d5608b0.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "305f7318fadc471981d0d3398afbca18.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "9e3f2b6905fe41148026a173c54a321b.16",
+                            "value": 31
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "af100224539a43e4a57323c3c2fabc04.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "5396387e0554401c98df925cb8040b04.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "837862373929453eb6648ad313f8256a.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "c5a3c3e4c3bc49e4b23eb4bcd6a70851.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "d20ca4c9fe0646ebafe4e783f03c924b.12",
+                            "value": 50
+                        },
+                        {
+                            "guid": "da29b4c367784d5dbd201e54d0ddca47.11",
+                            "value": 50
+                        },
+                        {
+                            "guid": "fcb501c06a21460985032e17196feb81.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "54323247cef54676b36e256d6b2289a7.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "bb6883d8f3604d0fa300004c62acb7dd.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "cc2e96d28be94ca4b6f88a7e4284fbfa.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "f4f71025552f44079445ca70bac20c26.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "6bf40570384c386e8abeea98ca6e2c09.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "dce6d731fe054e9eb3aa2b2f4789b69f.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "fd8c70a3634a45898f969b30c73501a1.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "06dd31549ff84aa4be321cd23fd3480b.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "5dbf94e2b63c46e88a12db81a0a71aa1.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "7102db739009310da3ecb64ad7250670.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "92decb76ea3743ddadfc8530a783f554.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "9e2517a487e547049e143ea1f550dba7.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "a15f40f133de45c1b0abc3d7840034f0.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "b1dc4b5d592d499091df57f25bc56013.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "eb45e42cb5fd456fb4f845f97a6b02f8.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "ecaa7f7c2fef47e690d8719a60e6e0d7.11",
+                            "value": 10
+                        },
+                        {
+                            "guid": "4d4f3055ae974ba8a5db233f236886c3.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "91896c9cee04420b92b1139e12f146a2.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "a3aa203b8a804495942faf0dcfd41ab5.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "a9c49a15f722401faabb3c2fcdbd1d34.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "b9e0a55a02b6493b8307367f63194ef7.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "5719adc12900375bb760ab5ac408b924.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "744ce0056da939bcb23096185e71391b.16",
+                            "value": 31
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "6716a0651c8a4000a567e289b4cc57c7.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "a3a122c934cf4b908902d5713ab40318.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "dd79ea62b6d74c31a99b70fd3fa80647.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "e981c054cd25471bad932e5db5fb5326.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "1da551d5c64c4e3ca4dd204a1c0328dd.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "5396387e0554401c98df925cb8040b04.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "adcd2fa54b144fd5acc3dda2e04c4151.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "3b318acc4b5a490197ea5dd67a4e136e.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "410bdf1a9fd13a67902476a1440509a7.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "538d702feff0478599326391d90445a1.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "5b18e0fdded94db6927e3848c5cd4c6a.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "8036fd88672442fcbd5e2b41b6b04f5d.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "c4eeda9a3c1b4f5abfca05f2be87a693.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "ef27ea5813ff48d1996ee1e8d507c1e5.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "f281ad45225442fead5969d08942765b.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "facb07b4aebc4fc585d4577d73bfaa45.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "7102db739009310da3ecb64ad7250670.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "83704f8380944a6882c0d98594e59d7e.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "aea2c366717f4c8cbc03d1d7148109ac.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "cca6dc5e4bef4b08b22c0c28a79a948e.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "e410270692fc4ca181a9b50a7bc90ddb.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "33d649f9cd0947c7a109355bff3a18f7.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "589d731b2b114d169275a0d660ad0dcf.11",
+                            "value": 31
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2026-orion-kure-city",
+            "waves": [
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "1f02b59e7fbb3457be0643de5b004b3c.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "c5f393280086371b87289eb66978acc8.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "1d573615450c3006b514ac950de27443.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "28e8f27af9ce4312ad29f20f6d393e07.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "416fad9e28ec327c975ea34773c6dfaf.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "65c4abeeeca333e1a1d7c8d5f5276038.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "6838076fabf23e90ababa53256b02235.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "6b5c89586b5a3f209f7df7439c1c3acd.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "8006e9a12fd83e2f9779154c03091bb4.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "844123b0d0433df8abd583b9fc61cca7.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "912ada3fe4e239429ce92c2023f46fe5.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9812ae18693849fcaebed6498be2e1a1.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9c57113c819c40dbb2bbb94e37cc7027.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "a3c91c01c74930a887c10491c397ac28.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "aadacd58b3884c03bb1d89434c8e2e96.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "da3c247d179d3e66b104dfa8374e0cfc.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "de6d904a7ab73d5bae314a220b8187ad.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "f0223103a06b411f9924e5059276c5fc.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "f3e8f8191dc336698dc0947147ad2f56.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "ff717c99ba673badb7c7d8872ac3f0ed.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "3a810ffc5f9548949d62fab7a1094149.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "48b8bd2da4153a6aba806cd521e28d7a.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "5ad8d231ad0f351b9b55ec3627015168.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "851716086dfb383a9715ec31c0d23ba1.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "03764212f0ce30ae9c97fed926788a36.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "039bbad36fde34e4a43a870ae88f7c75.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "050621d4b43f383bade444e52b300d28.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "0f5508b1f76e32a9962a950d7636e432.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "2f714f1709eb4fbca4dfa45dd11474c7.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "312347e02ff4309f914df72b3731ea52.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "62703ea17b0c4bb1896f9c1a2f96f4ba.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "64035739952e4ff39b5fce2602e200a1.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "6986a9aeb8bd4165bcb64f857b757afa.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "7100c77506eb3054a912c1a03fc134b5.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "87019a6fe2b23a0ea78a222a607cd2ed.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "8933f7635c3437a0a0d0198d7872cde7.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "bec6e6dadf8e30f0ad660ea1c608f319.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "d89fa3d09c704e2d8842988011c69841.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "e12f2cb45b9f35f9be30b1d5bb27d6ca.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "fca9ce8f8862399699a4cf56b4d7a2c7.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "147a58078faf36139ddd278cc588c96e.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "2deaa9a531423712aeecd41df2344b77.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "5695bf8dcb1431109601cea4ce424159.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "758d56a99d9539b99cf6a82f5d59da23.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "8e002182dc073e3e9bf6faa363abc42e.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "aade5dbc8d80420bb14dbd640c5386ea.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "c887409a0adc42a3851bae21416c897f.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "da9e687d93ab372aa1e8e34365b68989.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "de19a39548583c799d606102ffb89bc0.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "64e710ffc927417bbc5f4097831282f8.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "c947fbe22be64cd5ab4a796d2a787829.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "0414228fef6637d6b8ddaa7e81a3ed38.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "2a1d0cbf734d335c8940ca1cad81add3.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "33575721e2214bb18b458db7de9d0e92.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "3df1a84248f53cb5817c61fa0da51ec2.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "41f2f6abeb8138c7929f180e8baea487.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "5c8ade6792f73e1bac4ce93abede6c9e.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "5e450ce3f3b43d0492a1d1a079f5f2d8.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "6d389309f4d235d3987e451063fafcbd.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "6eb6f20f34dc3eab8107d9960fb9e4f1.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "72d2d4761a86403bbab92271874edf02.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "80a3bdeea6ab3be997e60a617a5ae16f.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "89337eee3bee3f85b5cce812e260f6e4.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9c777968ed9e416d83827020f2ea93b1.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "a617b674c7953f61b0660fb4687d8bc5.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "a62f94f3b92934a3914b8aae4079774b.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "dbf4cab161fd3e49be469fa9d51f381f.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "e1d208f7c63443eea97ad28bc2d06231.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "ea94f78a1503326bbddca59e9b8bea6b.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "f273e0f640603ba180fc94f95ed0b27c.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "1614e40449483bcba7e757c977e1f347.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "509822da4a103f3399656a906263688e.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "730d66d4e3634baa87485ce5fa83f5bb.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "19490e134742371ca4f87e138512769d.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "1a36caa975c337dd8162641ba1beec9a.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "36e4067137774439b0e37c387801741c.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "47ae6921b0d83691952484195a297b24.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "49125c23a70f356296f361664168b1f6.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "61e86345b6aa334a996aa005436c4c45.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "81db04cb14bb41ac856a50789b14f19c.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "86f7688404393eb4bf8aeb5dacb14fa4.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "96ce70608e574c6e8b63e38631cfeef9.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "9b46e2adaffb30ea912fc0529651d01e.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "9f42f2b5ab7c40b9bd1f9ac56fac3e2e.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "ad060ceb8a8b4e4ca4fed7ad5e7cb9d8.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "d11d46d0564c326692452ff7d924f83d.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "d68adbefab3d382e89215918ad8880db.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "dae7e9d4223c4a09bed8a304ef406eb5.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "de8c4fb5258037568e906499ea01c64c.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "3ed52faefa634c4bad34d8762a64eaf9.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "511e0385bc233c7cb7d4a90bb3ceb17e.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "6bae797adfa447f39c343370aa28ce9b.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "76155f319baa46a891bdb3d03d9b96f8.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9d56254522ef4b3bbca9cac517108073.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "bcb367d94b4649ebb23cfcfedcaf5be9.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "e82002c8db6b4aeabd5f3d5c06720f79.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "f565204a8d003692b9d0e942ed4b3847.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "fac71b182e99374db5496c9e5fe545e5.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "81571e3cb4ec43d292422469e0fce592.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "9080122921a03aff989d4ccf4d0a3c2a.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "0531a4e29a9a441e9a0530e1d35302b6.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "0f913f5c8e9a480690f1861384143d43.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "4408ebd60b1242bb880feb95d7b3d483.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "55cd0147dd8345e29df66519d894de20.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "6a45e004c8b1385ebc4fc9f518ace644.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9a758c00c8b137f4b6c639d04b7056ad.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9dd63ce878674025a4da438ac1aef9df.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "a7e54d7465a531199d6af04111e5578e.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "a939ce6aa91640888d87283c788b27f6.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "abd47db1b8bd36c9b8a191f5e8278950.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "af7df6efe16b3c328fb9e6ae41b32470.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "b1d30b6340263d87acaf3a8387044f3a.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "b838fda5593949ce8fe2e0df1a2a3726.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "bb4747fc58934788aae504829a830e73.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "c5a5e5f033443c1d94db1730472e025f.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "e28db6b040ae4007a98aef1e16e69f13.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "e5f2bbc178803341951077bbaa4dc97d.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "fe250621d1993465bb84c9b695d59392.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9a4d80c98b173b4892975c67a4e0a1f3.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "1b5626f000b9429da880728d86287acf.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "35cc1b93b67333cfaeb71f5a9b63bbfd.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "c1541c8691133660b41f828d5e68a071.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "04cf69eac3b639929768c5994cc193c4.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "08d28264d0cf3edd9420f20ecbb57437.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "5669f52b6845495fa62c5fe261a0e4bb.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "923c8966ea40484da09ec3e2c82380f7.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "925ae1981f6a4f569d70ee5bd5e03cbc.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "94452af1cd2431ebab3387f67a662b73.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "9b1694a4295737d99344b8f2d284e470.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "ad01a6b67e154046845b6fd39319c3c0.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "b1426b78958a328185ecc6794ed249ae.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "c12d9429b3e23e36b04162cd0cf7d271.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "c18100801bca4777bd9793a11a0eb454.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "cde6c81980893fa0990f151e7aab98a8.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "d6fe57ebbfb14352ad23b5011d4eab4f.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "da9ee72608534bd18e5a884312b2c216.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "ed345c77cb6f4ea99cbc34fcdb5e28e6.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "f429f8d5da7734deb25b58c4d4990028.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "0b8892ea0c8943f7bacc561f9415f387.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "2f714f1709eb4fbca4dfa45dd11474c7.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "3bd50247e46a4629bd6623722cc8fb83.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "4cfc95da24803afa8d438da1e6a1164d.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "64b2c1d06e363f4d84068fd34623ea2e.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9be825375a4d4b0da6269fb6415fb338.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9ee2808ba7ca39c0bca7d15424515d37.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "a4d53e4f9e263a7ab1ae9d74e6a0fe7c.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "b57414c3d8f74eda88aa8c556292e818.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "813add4d59a93343974bca5f4276a98e.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "d7a2f741197b3c628d0779dddcbffb63.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "0fd1f7de7c8133ba934b2897940cc8de.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "144fc761f3103b7bb2c301aae311f724.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "1fcce3599f374593aa62533a6b04b1df.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "282e20ffac1c36a79158b8aa7462b0a8.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "49c6fe17f79c31979d06fa0eda0d0f7f.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "6247eddf33ff416a9fd10f9af2e9b9f7.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "638b448b3c9b3f09b75d39140e407477.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "77e24eb8f9633a8fa8c118a8350f99a5.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "8eeb1b84983b4dbfbc720300725b12db.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "913748db5393341dba6d3daa8c6f8b7c.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9e6648e1a77e311ba3a83e54b4121da8.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9efb5210d5813896bdc92994f9ecbe15.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "a14a3fa2fdd541d4a7cc6bbc652acf28.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "b6b92a91756234feab20701072cc27f3.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "c2e4cafb65e630efaba61b9050043c9f.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "dabbeaa359d830ac9416ef89efbbfe35.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "f88b5926781c4f9b9d225435f1fda5d2.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "fe0d4c6790603dc68a94619e2d8916a7.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "e91fd36f010545bfa50672b5008f9165.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "108d82ea72943f319021c733984f28ca.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "1633496a362f3e7d93c1d32be740fbde.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "1a500d45bfc64f83a8ab12baf8b5d2a3.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "0e9b8577a58031579aa6a8947a347b75.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "0f39358fba9848429096cc09e8c5e9ce.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "163b63b7599937ce966ecc8e6201a21e.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "180522e7b48635ad9cce04a604f4081f.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "2e0c543042c83709a66b0d158cba7035.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "33b08728b2653279a2b176959a20b4d5.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "38c15bca3d69318f93b6898606618062.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "4cef9a7316df4a13aeb319e81ceafcda.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "67b51fab9fa534d5a0c1e1eaaceda560.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "7b1ed407ed8c3bb0bd56928d23f9b3f0.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "a3e37df4304d35cdac0b305eb0ed777b.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "ac0f592234894528b8057757a24ba598.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "b8ef5e8ea48a321684345e9bd47e61e5.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "c56077e0d81a309087921dffa1ffedd6.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "dd20225234113fa3b12e621e3f14078f.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "df9209fda3124227b1ae3499b6ce6fff.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "2d888303f3b1317292dcab69addb1fe3.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "2d997a6e3537375f9ff64e0ad5c53341.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "6f825c3f627a352f85bb32da1305f740.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "788944782db333dbbfc7ed71081a05d0.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "84989b4abd5a438595b86903410e360e.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9944c7171c51423c85c9570409a526f4.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "afd9f6442d893d0581f2f18df128e53a.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "c2078a59a9f03d5ea814b40c130e6d38.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "e46ad3f96f344076bfe16e2d539332a4.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "34394fd4b9ee43baa521eda9461cc62a.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "8521a0a4308a374fbe6b9037f1c1bc0a.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "01a2f6a06820459c90fa690240f657e3.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "216632e8d43d3f2fa9a37ec9715fc613.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "39de486fa0813d2eb8c4a5d5f385c753.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "47076bb389b039ed84b39779b04b0cd7.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "517574aa59c330e5bebf56a7a1c78665.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "55ac88f5e0613a49a9193c22c70bbebc.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "5622a7ff0bad3447bc331be56e4b6ab8.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "5aef19bfa3bb4701b7e4bb6e25e107fc.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "72b5a357c87946b8add64e25701cf44b.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "b92a26ec25e0390097bc14361641bc34.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "bd7a87b0589f3d4e9345fab49da9cf89.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "c1ece0d4f6d8442da09baa4a999b7fe6.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "c742685bb062310e80f451c0b65198a7.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "ceb725376d9840a3a4f5e0055fe2063e.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "d69b6a63c3ac4313b0581f9432939953.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "e00ce3b64d613c299de87ecd65189515.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "eb1b0a4551c749cdb488e14e7cc3adb0.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "ee1cd4f9ea7032c8a27bc5b7876e4f2f.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "7ab9ce6e36b83ac69584b91612f140d6.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "00fe3e05584438c2ae146a76064ed9f6.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "1830ccc2a1b03bd59c6f6021adf2f95b.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "c5c2c78f93f33fa3a9e29892240c2fa2.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "0e0d728b17363d5e99e26d5cce7f5cd3.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "18cf3a12fbc332eab7314736b21da9d4.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "19dd8f1ed24d4bc9ae1ded56f3dfc8a2.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "19e6cc790cbe36598197874e4aa1ac9f.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "363e0234899f4161a5a7e0a58ba1b849.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "4466b465266e4dc198b1b0edbafe7663.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "49014d0d530133b488107d3c396e7422.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "4ab3bbd42fc543b38bbb342de3a8a2d3.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "5a17d680d1ff3d29950864fd0a278d6b.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "60223880d64d3e8c987f05d2b0071a05.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "89bae71dd997335aa795314901bb64e6.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "89e488881bce34a3adf228f5f67d2206.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "b0fe2d7c3002409197a6f192dc50d1dd.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "c447853ccc2f426db7c5b49d0686236b.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "c5116e118f33334c98ea09e15e60149b.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "da296aeb58ff423bb33eceb585f23dbf.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "03f744348d463296845f29313e38742b.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "04be153778bd304491a19c947e7ba57d.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "1856091b00eb48e2aa4faa1d6f0e78e0.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "5ad8afb078593e0ca484506d83b093b5.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "5f64356034734b4c922e5e394a1cf6d0.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "7a1b7511917048ceab23d448ee72f849.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "a6b69d5e28fb421598948ccfafa200cd.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "da9a5d475ec73176aec904b90fbfd78b.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "eea38046a8633df3817458e5ed2752c2.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "9dad7e6f60ac4617b4f0a223212b7702.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "bf2c657d0edb47af87f6ab5e3a7364d6.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "0bad97d4bbbd4021a55a2b6aad120b1e.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "0cb885729ea930a79f89dea44a366fa4.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "12bbab77e5f03f778162e371a2079474.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "15e43eeeb6cd416fb6c14f114d13ea43.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "26c6cc1f7a52355ca94274cf020f6b98.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "2a70e7d849113e12af17b5762f3256c7.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "31e53561c68131acb0a0b4a03209dd74.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "3e9ef07ebd7f4283bb28a3c411f65988.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "5f9e1310c9cd374faae4a57a09162da5.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "6fe337b203484deeac8d6686d310c632.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "8d1cb198e14a3c30a7972484d961de71.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "a4756eb3b3b83cbb8310a3ed37d6192c.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "a673f5a17c5b318eabe7f1a4b1f27c33.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "b3b89282132a3ddcb3567a86653c6325.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "b5636e02624e4b66a64e7a3dcd725178.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "f7b409e53c284d3092b21343e567b202.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "fad6ea0c424c451ea13e74ea025e2e4e.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "fbe23f4c3d2e3cf194e83240c47cf2b4.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "4e3e98544074490fa6779fa3f178d098.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "0dd9e7eb96c13d7ba527fd070a705a44.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "78573f009efe3d61bc3b77d84ed0f658.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "b9875e3b338e453f832b888daab08a08.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "08b75967668f3099901ff72778f20e91.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "0fc95a44265b492d826ba68c9b65ce52.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "1546f9e1c94c3e2f84c290f146ec9855.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "186c134f129445278d17bb96498744a3.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "23fbfc50dfc53e539f0464d719333e02.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "2cb54bd0df5d4345abe38c1ae542d9b4.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "3bc18262f9563d04a0129b9b4cf02799.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "423163e046693c2e940981d53472326d.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "571841a04f9f494ab610a79d0850b251.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "6c26410394fe406c9caf065b7c4519a6.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "6dd294c2cb4a3f8ba6ca76d385b7bf60.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "c05789e7093c4333921b6b1da5b179c1.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "c1feb46f13a94fd6a7de355eb30cd8b9.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "d195fd1b29a845c9b350e49bde37fe7b.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "e4368f321880343887eda9d2e11c1eab.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "f399aece16a137c58653f391547be5ca.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "2abe19b212fb46d991eddb97a681671c.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "620e0c6eb3e331998b9707fdfa3dab02.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "882c60aa4e1731df828bfa108d8b8937.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "8f9a8dd9bd2342a5a927fa857784592f.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "b7b20bc3b3f74cf184f089c13ad533db.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "bd050b44164f3876916ae8bf792ec08a.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "d2dbd72b3b164df5aba0a79668aa3f7d.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "eb5a7cd2423536aaa6ba37a8aaf82d2c.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "ff1cdf9331c64529bb7c27c71020f9b4.16",
+                            "value": 50
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2026-orion-geneva",
+            "waves": [
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "72e816d82a224a9ebe6e6b8523736c22.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "76af0bcc11753168b5b1bebaf6c3d096.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "bd6bb4c7942949b1a9c29324355cb1d3.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "d289114e63784f0d8a7dc69f1ce5c64a.16",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "06ee277a5d574406ad2d94898b178e99.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "16fdd436823a4f21ba945bd8b0aeb47b.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "51056dbfec3b4ed8b90e5ffc865c9f91.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "fa4fff6ab3b13a148ac5bef79be165e6.16",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "6fb2e9e91aa44fe4997897040bcdcd76.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "75adbffef73b4dd79bf545108c8bfbd1.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "ba8393f3c14b4b66b877fb94e40a7e18.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "e0eb06d9cbb93c14aa2f55d5af99f5df.16",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "21f589415c59442fae6276231f1d78af.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "7e8704b83a724c289ff5ad2ffe8c1c7a.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "91d32e6dd1c6445fb5b7451c8f8af883.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "b444b7eb5437481d8bbee8bc8e238c6f.16",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "3799525aad4c4a3a82d0f363e2ab3380.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "77998f7d477f4509beb639e366df3bff.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "a69a43c5c10e4825985460539d29e56e.12",
+                            "value": 10
+                        },
+                        {
+                            "guid": "d75d9a1de3a449b9877eac46187afcab.16",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "189e0702137b4a57994a2d41be38454b.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "859d0f0082f742589a7feffe0fbda8f9.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "d8de60268cc540a5bf6a4c2487e02cf2.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "e62a94a9be0a4a71983bdc952df63461.16",
+                            "value": 10
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2026-orion-lima",
+            "waves": [
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "030b74e3c8244559815b10b3bb9fb9b8.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "5d153b7473bf4c08844b3c1870a84e05.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "a6de2dd0499e482b91987655566edc71.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "b68c716d200b485dae59f3e4407323f9.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "bba6ed72e32c46d4802d753bd4d2242d.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "c8497c805c5f41deb05a10b298ac2607.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "c8ee23b14e454caea5f241651ae2288e.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "24fd0d53fbe24dc1a7227ab9dcbbb4a9.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "3ba8cf2c406c358185a9fff4d877d136.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "40bd3330f8c84f8ca924bc587bb74e33.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "636e1f4063d63c75842ed4d23d9cd790.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "d86f8e024c49471991d4ebc3e2768652.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "56177e05688448d19183f34cdfd2cc73.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "ff154dbcf11c3558ac1bbb04c3a2af56.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "54657a32fcf2472b8f951f0ac00ec888.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "36d8708ec9283d8391296b2035afd73c.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "dc52ab6bcd7b45b395b115e27efbb898.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "4d1c31ef0b284165bdc77b90a0490366.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "7150a0d2be28341d924e2af63e66a444.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "44ee3fef72cc41b28accda81db197962.11",
+                            "value": 50
+                        },
+                        {
+                            "guid": "540b98fe98de3fddb7ebc9cd4bb056bf.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9cb6a886853f3357a4cba9c576afe37a.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "d48770cb662643a3bdee13f1786b4157.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "09dc3ebfb0324128b30704282297cd41.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "1bbba8ccb3bd4365b8f5dd459ba4e881.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "1f08af665708437ba524982235fdb33f.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "33485f91d4a846f9ad06ccef336d4e08.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "7d333ca662364c16b355d147f4fcc5d1.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "a8efa25519474219a69c37b10201aab1.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "b4897ee1756c40509ea66317fcc9a93f.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "04494a21af5b37cdb0023e3168cde192.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "14e36e6a3192446a8428c2da5f457279.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "4990439ae76f4600aad964a4ab4eedf9.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "5aafdf0da2e8371dabcc2b0ab94c50a4.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "66bbb2ba85863673a4a662e39ab9c3cf.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "3e57d5c6f8c93d6480e29f0c32f62786.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "917646682dc4321584e3b976d8d60dcb.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "054a90df340b3634aaf247983d61be07.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "44772ea60b3a426bbdc2c4504cf7a24f.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "9deaee102aa5431da9bf938d1e4952a1.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "37862f60575f44e88cf92d44fd08508b.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "4f7e7fc607a54b529ec4d6efd1d6c5eb.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "3550a95e4bb744efbc9200efa5102c70.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "64fbc53ad9793dd5a439de2f3abcfda7.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "7df6e5d0c4b849d599d0e90c500aa8a2.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "9a75339b15e3461597b320f9b583fd00.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "02f50ee772ab4e60a7ec7463012cd488.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "1f4194d9150f382a84911e9645149af3.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "53802b496298362686d6901526ed8f34.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "581d2955992c3512b06340308ad0abc8.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "77117a538d56455ba612627e8126e8f6.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "9281728b89413f5eb0fa80a8c1686e19.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "bf80c4cc6477434b9514675a99c8d596.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "002b1713a48434cebae2494be610e629.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "70abc479af3930e793c73a158570e52e.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "860c766e1f413c888d96d2a9c2905633.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "a7931daa9bb243619dbead0738b3f990.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "f11a921f9f4a3697a7212e9bbf0f8583.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "16304bb6e1fd4aef9dda530a8e8a6744.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "9f19968cb6893f38a79f393b3eafaeba.16",
+                            "value": 31
+                        },
+                        {
+                            "guid": "81c9d01615c1412ea2d54df716184172.16",
+                            "value": 50
+                        }
+                    ]
+                },
+                {
+                    "recursivePortals": [
+                        {
+                            "guid": "66364ffc0a7240e2ac434f8dd98395c4.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "933bb2e35e644ce486b5e19f6a1c2ae2.16",
+                            "value": 10
+                        },
+                        {
+                            "guid": "93268deaff683774b3b447c1205267a2.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "b50e4e8e278c41bfa6e92541ad90763e.16",
+                            "value": 13
+                        },
+                        {
+                            "guid": "7017cb0e13f03d0ab47bd3405dfe0b10.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "bbd16ab2c4474f588e555afdd151cda0.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "bf99d53f934042339a120849ed9baeaf.16",
+                            "value": 50
+                        },
+                        {
+                            "guid": "e9c2b3774104460fb06d6f06f7e5d762.16",
+                            "value": 50
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

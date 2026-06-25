@@ -213,6 +213,13 @@ function renderShardLayer({ seriesId, siteId, shardData, portals, timezone, laye
         targetLayer.addTo(shardLayer);
     }
 
+    if (layerType === 'wave' && shardData.recursivePortals) {
+        const recursivePortalLayer = L.featureGroup();
+        recursivePortalLayer._layerType = 'recursive-portal-layer';
+        renderRecursivePortalMarkers(portals, shardData.recursivePortals).forEach(m => m.addTo(recursivePortalLayer));
+        recursivePortalLayer.addTo(shardLayer);
+    }
+
     return shardLayer;
 }
 
@@ -745,5 +752,39 @@ function renderTargetMarkers(portals, targets) {
             }
         });
     }
+    return markers;
+}
+
+function renderRecursivePortalMarkers(portals, recursivePortals) {
+    const markers = [];
+    if (!recursivePortals) return markers;
+
+    const colourValueMap = new Map();
+    colourValueMap.set(10, "#FFE600");
+    colourValueMap.set(13, "#FF8C00");
+    colourValueMap.set(31, "#A636FB");
+    colourValueMap.set(50, "#FF0077");
+
+    recursivePortals.forEach(recursivePortal => {
+        const portal = portals[recursivePortal.id];
+        if (!portal) return;
+
+        const latLng = L.latLng(portal.lat, portal.lng);
+
+        // 1. The Visual Recursive Portal Icon
+        const markerIcon = L.divIcon({
+            className: 'ornament-hexagon-marker',
+            html: getHexagonSVG(colourValueMap.get(recursivePortal.value)),
+            iconSize: [40, 40],
+            iconAnchor: [20, 20]
+        });
+
+        markers.push(L.marker(latLng, {
+            icon: markerIcon,
+            interactive: false,
+            opacity: 1.0,
+            pane: 'recursivePortalPane'
+        }));
+    });
     return markers;
 }
