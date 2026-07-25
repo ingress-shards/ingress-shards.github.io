@@ -98,7 +98,7 @@ function renderSiteData({ seriesId, siteId, siteData }) {
     if (ornamentLayer.getLayers().length > 0) {
         layersDetails.push({
             id: "ornaments",
-            label: "Ornaments",
+            label: "Anomaly Zone Portals",
             layer: ornamentLayer,
             isOverlay: true,
             showByDefault: !hasShards || ornamentCount < 10
@@ -503,7 +503,7 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
 
     let content = `
         <div style="margin-bottom: 8px">
-            Date: ${formatIsoToShortDate(siteGeocode.date, siteGeocode.timezone)}${countdownSuffix}${ornamentCount > 0 ? `<br/>Ornaments: ${ornamentCount}` : ''}
+            Date: ${formatIsoToShortDate(siteGeocode.date, siteGeocode.timezone)}${countdownSuffix}${ornamentCount > 0 ? `<br/>Anomaly Zone Portals: ${ornamentCount}` : ''}
         </div>`;
 
     if (hasShards) {

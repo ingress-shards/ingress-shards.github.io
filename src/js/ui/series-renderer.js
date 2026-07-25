@@ -129,7 +129,7 @@ function renderSeriesLayer(seriesId) {
                 siteTooltip += scoresText;
             } else if (hasOrnaments) {
                 const count = Object.values(siteData.portals || {}).filter(portal => portal.ornamentId).length;
-                siteTooltip += `<em>${count} ornamented portal${count === 1 ? '' : 's'}</em>`;
+                siteTooltip += `<em>${count} Anomaly Zone Portal${count === 1 ? '' : 's'}</em>`;
             }
             const siteUrl = `#/${seriesId}/${site.id.replace(seriesId + "-", "")}`;
             addEventInteraction(siteMarker, 'click', () => { navigate(siteUrl); });
