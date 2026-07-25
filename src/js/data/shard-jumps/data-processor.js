@@ -604,11 +604,12 @@ function processFragments({ fragments, portalLookup, sitePortals, siteTargetPort
                         }
                     }
 
+                    const linkTeam = historyItem?.linkCreatorTeam && getAbbreviatedTeam(historyItem.linkCreatorTeam);
                     shard.history.push({
                         ...shardHistoryItem,
                         portalId: originPortalId,
                         dest: destPortalId,
-                        team: historyItem.linkCreatorTeam && getAbbreviatedTeam(historyItem.linkCreatorTeam),
+                        team: linkTeam,
                         linkTime: historyItem.linkCreationTimeMs,
                     });
                     shard[moved] = true;
@@ -617,7 +618,7 @@ function processFragments({ fragments, portalLookup, sitePortals, siteTargetPort
                     const linkTime = historyItem.linkCreationTimeMs;
                     const newLink = {
                         linkTime,
-                        team: historyItem.linkCreatorTeam && getAbbreviatedTeam(historyItem.linkCreatorTeam),
+                        team: linkTeam,
                         moves: [{
                             origin: originPortalId,
                             dest: destPortalId,
@@ -629,7 +630,7 @@ function processFragments({ fragments, portalLookup, sitePortals, siteTargetPort
 
                     const existingPath = viewData.shardPaths[pathKey];
                     if (existingPath) {
-                        const existingLink = existingPath.links.find(link => link.linkTime === linkTime);
+                        const existingLink = existingPath.links.find(link => link.linkTime === linkTime && link.team === linkTeam);
                         if (existingLink) {
                             existingLink.moves.push({
                                 origin: originPortalId,
