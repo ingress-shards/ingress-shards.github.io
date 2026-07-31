@@ -66,13 +66,6 @@
       "guid": "80bb92a9634c42fab5f72a310b92d247.16"
     },
     {
-      "title": "Estatua De León",
-      "lat": -12.119016,
-      "lng": -77.029362,
-      "ornamentId": "ap1",
-      "guid": "ddccde22906c43c79e0beac7f73cc94f.16"
-    },
-    {
       "title": "Placa Obra Realizada Miraflores",
       "lat": -12.124432,
       "lng": -77.033063,
@@ -318,13 +311,6 @@
       "guid": "064cf33cf89a4ac59cf7253663c617b1.16"
     },
     {
-      "title": "Embajada de Canadá",
-      "lat": -12.120759,
-      "lng": -77.035894,
-      "ornamentId": "ap1",
-      "guid": "bfb8890c851a46ad947d52eb9ca4363d.16"
-    },
-    {
       "title": "Mass - minimarket",
       "lat": -12.11876,
       "lng": -77.033651,
@@ -521,20 +507,6 @@
       "guid": "fc62080f1b89414aac572de3f3bcfd99.16"
     },
     {
-      "title": "Parque 7 De Junio",
-      "lat": -12.120367,
-      "lng": -77.02964,
-      "ornamentId": "ap1",
-      "guid": "74448dc1c35d4f28bf8491e3700db218.16"
-    },
-    {
-      "title": "Embajada de Brasil en Lima",
-      "lat": -12.118256,
-      "lng": -77.037273,
-      "ornamentId": "ap1",
-      "guid": "2c5d0042ae70362882b30f69688f812a.16"
-    },
-    {
       "title": "Virgen De La Hostia",
       "lat": -12.120111,
       "lng": -77.032148,
@@ -675,13 +647,6 @@
       "guid": "7c04248ce8eb49bfa75f08875077f565.16"
     },
     {
-      "title": "Embajada De Brasil",
-      "lat": -12.118881,
-      "lng": -77.037633,
-      "ornamentId": "ap1",
-      "guid": "65d7e5c6cb224cce8ae271f187763157.16"
-    },
-    {
       "title": "Escultura de Fierro en Edificio Pardo",
       "lat": -12.119252,
       "lng": -77.033614,
@@ -708,13 +673,6 @@
       "lng": -77.0257,
       "ornamentId": "ap1",
       "guid": "86823a07b58039aeb1140f9686423228.16"
-    },
-    {
-      "title": "Plaza De Ajedrez",
-      "lat": -12.120244,
-      "lng": -77.030064,
-      "ornamentId": "ap1",
-      "guid": "4412d44186254f95867e2bd465a21ec0.16"
     },
     {
       "title": "Kaldis",
@@ -871,13 +829,6 @@
       "guid": "c0f4cd9ef66e48b6aebf0c854615ce38.16"
     },
     {
-      "title": "Mural - Embajada de Brasil",
-      "lat": -12.118888,
-      "lng": -77.037423,
-      "ornamentId": "ap1",
-      "guid": "37ec11b7d2cb37d88783919de561c2f8.16"
-    },
-    {
       "title": "La Castellana",
       "lat": -12.123847,
       "lng": -77.025964,
@@ -1030,13 +981,6 @@
       "lng": -77.039624,
       "ornamentId": "ap1",
       "guid": "969bf4bd141d3aad9d8b3a261b571b5e.16"
-    },
-    {
-      "title": "Placa De Inauguración De Elementos Lumínicos",
-      "lat": -12.120225,
-      "lng": -77.029879,
-      "ornamentId": "ap1",
-      "guid": "3d65d15721a842469debc20bdee52ecf.16"
     },
     {
       "title": "Tropicana",
@@ -1256,13 +1200,6 @@
       "guid": "fbf6f1bf75d049318625a964fab2482b.16"
     },
     {
-      "title": "Tribunal Fiscal",
-      "lat": -12.122674,
-      "lng": -77.02818,
-      "ornamentId": "ap1",
-      "guid": "cb82590d1494387587348523ff77c143.16"
-    },
-    {
       "title": "Torito De Pucará",
       "lat": -12.120192,
       "lng": -77.029342,
@@ -1326,13 +1263,6 @@
       "guid": "319a71ba31a531209e33e7a209722f35.16"
     },
     {
-      "title": "Coronel Francisco Bolognesi",
-      "lat": -12.123441,
-      "lng": -77.035877,
-      "ornamentId": "ap1",
-      "guid": "75110b733a7a47e183e1cc0d5ee2419e.16"
-    },
-    {
       "title": "Banco BCP",
       "lat": -12.123138,
       "lng": -77.029017,
@@ -1345,13 +1275,6 @@
       "lng": -77.028817,
       "ornamentId": "ap1",
       "guid": "7e998eb1f7b43a67990e938c51bcd563.16"
-    },
-    {
-      "title": "Arma Ambev",
-      "lat": -12.121156,
-      "lng": -77.03071,
-      "ornamentId": "ap1",
-      "guid": "eb8785ea798146b587fd7c33df0a91af.16"
     },
     {
       "title": "Parque Raúl Porras Barranechea",
@@ -1471,13 +1394,6 @@
       "lng": -77.027136,
       "ornamentId": "ap1",
       "guid": "24fd0d53fbe24dc1a7227ab9dcbbb4a9.16"
-    },
-    {
-      "title": "Chola Peruana",
-      "lat": -12.120103,
-      "lng": -77.028244,
-      "ornamentId": "ap1",
-      "guid": "475a4c7e2cb34e33acaf3105464b0fd2.16"
     },
     {
       "title": "El Virrey",
@@ -1683,20 +1599,6 @@
       "guid": "f60234b25f0b4134a31b61700a161fde.11"
     },
     {
-      "title": "Entrada al Parque Kennedy",
-      "lat": -12.119766,
-      "lng": -77.029189,
-      "ornamentId": "ap1",
-      "guid": "af64ca5b47704d9489d3d12ba07b6259.11"
-    },
-    {
-      "title": "Titan Gym",
-      "lat": -12.122664,
-      "lng": -77.028733,
-      "ornamentId": "ap1",
-      "guid": "5bc121261be43bb9b2e23ab7ebfc21ae.16"
-    },
-    {
       "title": "BODEGA NAKAMOTO",
       "lat": -12.119951,
       "lng": -77.03907,
@@ -1837,13 +1739,6 @@
       "guid": "3bbd3a1f69a9425ea6018b6940bd30f0.16"
     },
     {
-      "title": "Rotary Club De Miraflores",
-      "lat": -12.126938,
-      "lng": -77.035905,
-      "ornamentId": "ap1",
-      "guid": "e2b5de88e806463cafc5b190e8544be1.16"
-    },
-    {
       "title": "Casino La Hacienda",
       "lat": -12.126769,
       "lng": -77.0295,
@@ -1977,13 +1872,6 @@
       "guid": "493fc689e1bb46ffbaa4662d637c57ff.16"
     },
     {
-      "title": "Placa Puente Villena Rey",
-      "lat": -12.127111,
-      "lng": -77.036036,
-      "ornamentId": "ap1",
-      "guid": "0cc85771df17459dab16190558027fd3.16"
-    },
-    {
       "title": "Street art In Garage Door",
       "lat": -12.127443,
       "lng": -77.030182,
@@ -2040,20 +1928,6 @@
       "guid": "540b98fe98de3fddb7ebc9cd4bb056bf.16"
     },
     {
-      "title": "Parque Juan Carosio",
-      "lat": -12.126908,
-      "lng": -77.035127,
-      "ornamentId": "ap1",
-      "guid": "c008946765e745fd9151eeded081608a.16"
-    },
-    {
-      "title": "Puente De Bajada Intihuatana",
-      "lat": -12.127196,
-      "lng": -77.034882,
-      "ornamentId": "ap1",
-      "guid": "12dfdcd27b6a4f129440c3a5421ac9d2.16"
-    },
-    {
       "title": "Asientos Públicos",
       "lat": -12.118869,
       "lng": -77.041812,
@@ -2066,13 +1940,6 @@
       "lng": -77.041781,
       "ornamentId": "ap1",
       "guid": "b2ae6d3126e041b6b655719229f4438b.16"
-    },
-    {
-      "title": "Parque Julio Ramón Ribeyro",
-      "lat": -12.11901,
-      "lng": -77.040067,
-      "ornamentId": "ap1",
-      "guid": "8388e6157ef4494587696e1807805ae0.16"
     },
     {
       "title": "Cancha De Tenis",
