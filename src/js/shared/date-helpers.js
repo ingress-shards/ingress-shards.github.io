@@ -1,6 +1,7 @@
-import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
-import * as Now from "temporal-polyfill/fns/now";
-import * as Duration from "temporal-polyfill/fns/duration";
+import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
+import * as Now from "temporal-polyfill/fns/Now";
+import * as Duration from "temporal-polyfill/fns/Duration";
+import { getBasic } from "temporal-polyfill/fns/Calendar";
 
 // Default locale, safely checking for navigator object which only exists in browsers.
 const DEFAULT_LOCALE = typeof navigator !== 'undefined' ? navigator.language : 'en-GB';
@@ -32,9 +33,9 @@ export function formatEpochToSerializationString(epochTimeMs) {
  * Formats the serialized ISO 8601 string (YYYY-MM-DDTHH:mm:ss) into a locale-specific short date string (e.g., 3/15/2023).
  */
 export function formatIsoToShortDate(isoString, timeZone, locale = DEFAULT_LOCALE) {
-    const zdt = ZonedDateTime.fromString(isoString);
-    const epochMillis = ZonedDateTime.epochMilliseconds(zdt);
-    return new Date(epochMillis).toLocaleDateString(locale, { timeZone: ZonedDateTime.timeZoneId(zdt), dateStyle: 'short' });
+    const zdt = ZonedDateTime.fromString(isoString, getBasic);
+    const epochMillis = zdt.epochMilliseconds;
+    return new Date(epochMillis).toLocaleDateString(locale, { timeZone: zdt.timeZoneId, dateStyle: 'short' });
 }
 
 /**
@@ -89,13 +90,13 @@ export function createWaveDate(siteDateIso, siteTimezone, timeStr) {
     const [hour, minute] = timeStr.split(':').map(Number);
 
     // 1. Create a ZonedDateTime object directly from the ISO string.
-    const zdt = ZonedDateTime.fromString(siteDateIso);
+    const zdt = ZonedDateTime.fromString(siteDateIso, getBasic);
 
     // 2. Create a new DateTime by setting the desired time.
     const waveZdt = ZonedDateTime.withFields(zdt, { hour, minute, second: 0, millisecond: 0 });
 
     // 3. Convert back to a native Date object for use in the rest of your application.
-    return new Date(ZonedDateTime.epochMilliseconds(waveZdt));
+    return new Date(waveZdt.epochMilliseconds);
 }
 
 /**
@@ -106,14 +107,14 @@ export function createWaveDate(siteDateIso, siteTimezone, timeStr) {
  * Returns null if the event has already started.
  */
 export function getTimeRemaining(siteDateIso, siteTimezone) {
-    const startTime = ZonedDateTime.fromString(siteDateIso);
+    const startTime = ZonedDateTime.fromString(siteDateIso, getBasic);
     const now = Now.zonedDateTimeISO(siteTimezone);
 
     if (ZonedDateTime.compare(startTime, now) <= 0) {
         return null;
     }
 
-    const diff = ZonedDateTime.until(now, startTime, { largestUnit: 'days' });
+    const diff = ZonedDateTime.diff(now, startTime, { largestUnit: 'days' });
     const totalDays = diff.days;
     const totalHours = diff.hours;
     const totalMinutes = diff.minutes;
@@ -144,7 +145,7 @@ export function getTimeRemaining(siteDateIso, siteTimezone) {
  * @returns {string|null} Formatted string "X hours Y minutes" or null if not active.
  */
 export function getActiveEventRemaining(siteDateIso, siteTimezone, durationMins) {
-    const startTime = ZonedDateTime.fromString(siteDateIso);
+    const startTime = ZonedDateTime.fromString(siteDateIso, getBasic);
     const endTime = ZonedDateTime.add(startTime, Duration.fromFields({ minutes: durationMins }));
     const now = Now.zonedDateTimeISO(siteTimezone);
 
@@ -152,7 +153,7 @@ export function getActiveEventRemaining(siteDateIso, siteTimezone, durationMins)
         return null;
     }
 
-    const diff = ZonedDateTime.until(now, endTime, { largestUnit: 'hours' });
+    const diff = ZonedDateTime.diff(now, endTime, { largestUnit: 'hours' });
     const hours = Math.floor(diff.hours || 0);
     const minutes = Math.floor(diff.minutes || 0);
 

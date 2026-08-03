@@ -6,9 +6,10 @@ import { getScoresText } from "./site-renderer.js";
 import { getSeriesMetadata, getSeriesGeocode, getSiteData, getAllSeriesIds } from "../data/data-store.js";
 import { formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js";
-import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
-import * as Now from "temporal-polyfill/fns/now";
-import * as Duration from "temporal-polyfill/fns/duration";
+import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
+import * as Now from "temporal-polyfill/fns/Now";
+import * as Duration from "temporal-polyfill/fns/Duration";
+import { getBasic } from "temporal-polyfill/fns/Calendar";
 import { getEventDuration } from "../shared/event-helpers.js";
 import { TACTICAL_MARKER_SVG } from "./marker-template.js";
 
@@ -34,7 +35,7 @@ function getOutcome(siteData) {
 function isEventActive(site, seriesId) {
     const durationMins = getEventDuration(site, seriesId);
 
-    const startTime = ZonedDateTime.fromString(site.date);
+    const startTime = ZonedDateTime.fromString(site.date, getBasic);
     const endTime = ZonedDateTime.add(startTime, Duration.fromFields({ minutes: durationMins }));
     const now = Now.zonedDateTimeISO(site.timezone);
 
@@ -56,7 +57,7 @@ function renderSeriesLayer(seriesId) {
         const hasFragments = siteData?.fullEvent?.shards?.length > 0;
         const hasOrnaments = Object.values(siteData?.portals || {}).some(p => p.ornamentId);
 
-        const startTime = ZonedDateTime.fromString(site.date);
+        const startTime = ZonedDateTime.fromString(site.date, getBasic);
         const now = Now.zonedDateTimeISO(site.timezone);
 
         let phaseClass = '';
