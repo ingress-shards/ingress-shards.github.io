@@ -6,9 +6,10 @@ import { getFlagTooltipHtml } from "./ui-formatters.js"
 import { formatEpochToLocalTime, formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
 import { getEventDuration } from "../shared/event-helpers.js";
 import { getHexagonSVG } from "./marker-template.js";
-import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
-import * as Now from "temporal-polyfill/fns/now";
-import * as Duration from "temporal-polyfill/fns/duration";
+import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
+import * as Now from "temporal-polyfill/fns/Now";
+import * as Duration from "temporal-polyfill/fns/Duration";
+import { getBasic } from "temporal-polyfill/fns/Calendar";
 
 const shardIcon = L.icon({
     iconUrl: shardIconUrl,
@@ -481,7 +482,7 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     if (!siteData) return { title: '', content: '' };
 
     const siteEventType = EVENT_BRANDS[siteGeocode.eventType];
-    const startTime = ZonedDateTime.fromString(siteGeocode.date);
+    const startTime = ZonedDateTime.fromString(siteGeocode.date, getBasic);
     const durationMins = getEventDuration(siteGeocode, seriesId);
     const endTime = ZonedDateTime.add(startTime, Duration.fromFields({ minutes: durationMins }));
     const now = Now.zonedDateTimeISO(siteGeocode.timezone);
@@ -534,8 +535,8 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     }
 
     // Determine the actual time window of the shards event
-    let actualStart = ZonedDateTime.epochMilliseconds(startTime);
-    let actualEnd = ZonedDateTime.epochMilliseconds(endTime);
+    let actualStart = startTime.epochMilliseconds;
+    let actualEnd = endTime.epochMilliseconds;
 
     if (siteData.waves && siteData.waves.length > 0) {
         const firstWave = siteData.waves[0];

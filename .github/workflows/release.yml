@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -76,10 +79,11 @@ jobs:
 
       - name: Tag & Release
         id: semantic
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: npx semantic-release --repository-url "https://github.com/${{ github.repository }}.git"
 
       - name: Upload Pages Artifact
-        if: steps.semantic.outputs.new-release-published == 'true' || github.event_name == 'workflow_dispatch'
+        if: github.event_name != 'pull_request' && steps.semantic.outputs.new-release-published == 'true'
         uses: actions/upload-pages-artifact@v5
         with:
           path: "./dist"
@@ -88,7 +92,7 @@ jobs:
 
   deploy:
     needs: [release]
-    if: needs.release.outputs.new-release-published == 'true' || github.event_name == 'workflow_dispatch'
+    if: github.event_name != 'pull_request' && needs.release.outputs.new-release-published == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

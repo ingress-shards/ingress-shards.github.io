@@ -1,5 +1,5 @@
-import * as Instant from "temporal-polyfill/fns/instant";
-import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
+import * as Instant from "temporal-polyfill/fns/Instant";
+import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
 import { calculateShardActionSchedule, formatZonedDateTimeWithMs, formatDurationMs } from "./data-helpers.js";
 
 /**
@@ -58,8 +58,8 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
                         if (!isActionMatch) return null;
 
                         const diffMs = Math.abs(
-                            ZonedDateTime.epochMilliseconds(zonedDateTime) -
-                            ZonedDateTime.epochMilliseconds(scheduledItem.time)
+                            zonedDateTime.epochMilliseconds -
+                            scheduledItem.time.epochMilliseconds
                         );
                         return diffMs <= 1800000 ? { index, diffMs, scheduledItem } : null;
                     }).filter(m => m !== null);
@@ -68,7 +68,7 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
                         matches.sort((a, b) => a.diffMs - b.diffMs);
                         const bestMatch = matches[0];
                         const matchedScheduledItem = scheduleCopy.splice(bestMatch.index, 1)[0];
-                        const diffMs = ZonedDateTime.epochMilliseconds(zonedDateTime) - ZonedDateTime.epochMilliseconds(matchedScheduledItem.time);
+                        const diffMs = zonedDateTime.epochMilliseconds - matchedScheduledItem.time.epochMilliseconds;
 
                         const reason = matchedScheduledItem.action;
                         const waveNumber = waveIndex + 1;
@@ -102,8 +102,8 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
             if (statsA.wave !== statsB.wave) {
                 return statsA.wave - statsB.wave;
             }
-            const timeA = ZonedDateTime.epochMilliseconds(statsA.scheduledTimeZoned);
-            const timeB = ZonedDateTime.epochMilliseconds(statsB.scheduledTimeZoned);
+            const timeA = statsA.scheduledTimeZoned.epochMilliseconds;
+            const timeB = statsB.scheduledTimeZoned.epochMilliseconds;
             if (timeA !== timeB) {
                 return timeA - timeB;
             }
@@ -114,7 +114,7 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
             const stats = actionStats[key];
             if (stats.times.length === 0) continue;
 
-            stats.times.sort((a, b) => ZonedDateTime.epochMilliseconds(a) - ZonedDateTime.epochMilliseconds(b));
+            stats.times.sort((a, b) => a.epochMilliseconds - b.epochMilliseconds);
 
             const firstTime = stats.times[0];
             const lastTime = stats.times[stats.times.length - 1];
@@ -122,7 +122,7 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
             const formattedFirst = formatZonedDateTimeWithMs(firstTime);
             const formattedLast = formatZonedDateTimeWithMs(lastTime);
 
-            const durationMs = ZonedDateTime.epochMilliseconds(lastTime) - ZonedDateTime.epochMilliseconds(firstTime);
+            const durationMs = lastTime.epochMilliseconds - firstTime.epochMilliseconds;
             const avgIntervalMs = durationMs / stats.times.length;
             const avgIntervalStr = formatDurationMs(avgIntervalMs, true);
 

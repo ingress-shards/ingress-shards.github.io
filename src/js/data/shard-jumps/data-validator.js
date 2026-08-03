@@ -1,5 +1,5 @@
-import * as Instant from "temporal-polyfill/fns/instant";
-import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
+import * as Instant from "temporal-polyfill/fns/Instant";
+import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
 
 import { FACTION_COLORS } from "../../constants.js";
 import { calculateShardActionSchedule, convertToCsv, formatTimeWithMs, formatDurationMs, formatZonedDateTimeWithMs } from "./data-helpers.js";
@@ -120,8 +120,8 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                                         );
                                         if (!actionMatches) return false;
 
-                                        const actualMs = ZonedDateTime.epochMilliseconds(zonedDateTime);
-                                        const scheduledMs = ZonedDateTime.epochMilliseconds(wsa.time);
+                                        const actualMs = zonedDateTime.epochMilliseconds;
+                                        const scheduledMs = wsa.time.epochMilliseconds;
                                         return Math.abs(actualMs - scheduledMs) <= 60000;
                                     });
                                     if (expectedIndex !== -1) {
@@ -153,8 +153,8 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                                     );
 
                                     if (actionMatches) {
-                                        const actualMs = ZonedDateTime.epochMilliseconds(zonedDateTime);
-                                        const scheduledMs = ZonedDateTime.epochMilliseconds(scheduledItem.time);
+                                        const actualMs = zonedDateTime.epochMilliseconds;
+                                        const scheduledMs = scheduledItem.time.epochMilliseconds;
                                         const diffMs = Math.abs(actualMs - scheduledMs);
                                         if (diffMs > 60000) {
                                             shardActionsOutsideJumpWindow.push({
@@ -253,8 +253,8 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                     }
                     if (missingShardActions.length > 0) {
                         missingShardActions.sort((a, b) => {
-                            const timeA = ZonedDateTime.epochMilliseconds(a.time);
-                            const timeB = ZonedDateTime.epochMilliseconds(b.time);
+                            const timeA = a.time.epochMilliseconds;
+                            const timeB = b.time.epochMilliseconds;
                             if (timeA !== timeB) {
                                 return timeA - timeB;
                             }
@@ -277,7 +277,7 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                     }
                     if (shardActionsOutsideJumpWindow.length > 0) {
                         shardActionsOutsideJumpWindow.sort((a, b) => {
-                            return ZonedDateTime.epochMilliseconds(a.actualTime) - ZonedDateTime.epochMilliseconds(b.actualTime);
+                            return a.actualTime.epochMilliseconds - b.actualTime.epochMilliseconds;
                         });
 
                         console.log(`⚠️ Site ${site.geocode.id}: has ${shardActionsOutsideJumpWindow.length} shard actions outside the expected 1-minute window.`);

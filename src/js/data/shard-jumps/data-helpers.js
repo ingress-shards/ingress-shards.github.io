@@ -1,6 +1,7 @@
-import * as ZonedDateTime from "temporal-polyfill/fns/zoneddatetime";
-import * as Duration from "temporal-polyfill/fns/duration";
-import * as Instant from "temporal-polyfill/fns/instant";
+import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
+import * as Duration from "temporal-polyfill/fns/Duration";
+import * as Instant from "temporal-polyfill/fns/Instant";
+import { getBasic } from "temporal-polyfill/fns/Calendar";
 import { HISTORY_REASONS } from "../../constants.js";
 import { truncateToDecimalPlaces } from "../../shared/math-helpers.js";
 
@@ -101,7 +102,7 @@ export function printTable(data) {
 }
 
 export function calculateShardActionSchedule(shardMechanic, siteGeocode) {
-    const startTimeZoned = ZonedDateTime.fromString(siteGeocode.date);
+    const startTimeZoned = ZonedDateTime.fromString(siteGeocode.date, getBasic);
     let schedule = {
         startTime: startTimeZoned,
         waves: []
