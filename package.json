@@ -37,9 +37,9 @@
         "@eslint/js": "^10.0.1",
         "@eslint/json": "^2.0.1",
         "@semantic-release/exec": "^7.1.0",
-        "conventional-changelog-conventionalcommits": "^10.2.1",
+        "conventional-changelog-conventionalcommits": "^10.3.0",
         "css-loader": "^7.1.4",
-        "eslint": "^10.8.0",
+        "eslint": "^10.8.1",
         "globals": "^16.5.0",
         "html-webpack-plugin": "^5.6.8",
         "semantic-release": "^25.0.2",
@@ -58,6 +58,6 @@
         "leaflet-providers": "^3.0.0",
         "leaflet-relief": "^1.5.2",
         "leaflet.motion": "github:neon-ninja/leaflet.motion",
-        "temporal-polyfill": "^1.0.2"
+        "temporal-polyfill": "^1.0.4"
     }
 }
