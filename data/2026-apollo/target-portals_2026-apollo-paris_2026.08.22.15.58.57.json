@@ -1,0 +1,666 @@
+{
+  "siteId": "2026-apollo-paris",
+  "exportedAt": 1787410737,
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Vaine Gloriole - Roger Souchère",
+            "latE6": 48845048,
+            "lngE6": 2302226
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "Bibliothèque Gutenberg",
+            "latE6": 48840216,
+            "lngE6": 2278786
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "Mosaïque sens dessus-dessous.",
+            "latE6": 48839427,
+            "lngE6": 2279335
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Your Portals Are Too Close Each Other to Be Safely Hacked",
+            "latE6": 48837609,
+            "lngE6": 2281696
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "Plaque Commémorative FFI",
+            "latE6": 48832089,
+            "lngE6": 2297430
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "Têtes de Lion",
+            "latE6": 48838813,
+            "lngE6": 2307363
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Fronton Sculpté Bargue",
+            "latE6": 48838671,
+            "lngE6": 2307881
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "Cube Monfort",
+            "latE6": 48830379,
+            "lngE6": 2301465
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "Académie du Flamenco",
+            "latE6": 48845449,
+            "lngE6": 2284923
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Têtes De Génies",
+            "latE6": 48846735,
+            "lngE6": 2291420
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "Portail Décoré Feuilles De Laurier",
+            "latE6": 48846040,
+            "lngE6": 2284925
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "Immeuble Art Déco",
+            "latE6": 48846307,
+            "lngE6": 2294721
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Façade Montauffier",
+            "latE6": 48842125,
+            "lngE6": 2304326
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "3 rockets on a wall",
+            "latE6": 48847128,
+            "lngE6": 2297079
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "Hommes Gravés Dans La Pierre",
+            "latE6": 48847034,
+            "lngE6": 2301818
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "La Poste Bonvin",
+            "latE6": 48845718,
+            "lngE6": 2305075
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Art Mural Abstract",
+            "latE6": 48843619,
+            "lngE6": 2305520
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "Plaque historique Lambert 1888",
+            "latE6": 48835668,
+            "lngE6": 2304077
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Horloge de la Fondation",
+            "latE6": 48834883,
+            "lngE6": 2302254
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "Square Necker - Fontaine",
+            "latE6": 48839563,
+            "lngE6": 2306080
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "Roses on Door",
+            "latE6": 48835432,
+            "lngE6": 2302905
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Buste Georges Brassens",
+            "latE6": 48831260,
+            "lngE6": 2301158
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Plaque commémorative Émile Plaisant",
+            "latE6": 48832200,
+            "lngE6": 2302069
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "La Ruche",
+            "latE6": 48832268,
+            "lngE6": 2297073
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Parc Georges Brassens : Le Rucher",
+            "latE6": 48831014,
+            "lngE6": 2299358
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Invader Street Art Copreaux",
+            "latE6": 48842348,
+            "lngE6": 2306569
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Porte décorée",
+            "latE6": 48842200,
+            "lngE6": 2307346
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "Unum Punctum",
+            "latE6": 48843536,
+            "lngE6": 2306596
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Ostium Florae",
+            "latE6": 48841457,
+            "lngE6": 2307611
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Fontaine Publique",
+            "latE6": 48842188,
+            "lngE6": 2273584
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Église Saint Christophe",
+            "latE6": 48844542,
+            "lngE6": 2279542
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "La Tulipe Du 26",
+            "latE6": 48844538,
+            "lngE6": 2278403
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Jardin bleu",
+            "latE6": 48842045,
+            "lngE6": 2275252
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Portail Orné De Fleurs Diverses",
+            "latE6": 48846119,
+            "lngE6": 2279542
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Pigeonnier Du Parc De JAVEL",
+            "latE6": 48843514,
+            "lngE6": 2274823
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "Pastille Crue 1910",
+            "latE6": 48842958,
+            "lngE6": 2279466
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787402048766
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Mosaïque Les Acrobates",
+            "latE6": 48839056,
+            "lngE6": 2280231
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Plaque de construction",
+            "latE6": 48837730,
+            "lngE6": 2280043
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Fontaine des Polypores",
+            "latE6": 48838431,
+            "lngE6": 2278697
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "La Poste Vouillé",
+            "latE6": 48834778,
+            "lngE6": 2305149
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "Au Jean Bart",
+            "latE6": 48839550,
+            "lngE6": 2309499
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "Les Martyrs de la Bargue",
+            "latE6": 48839892,
+            "lngE6": 2307045
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Colonnes Sculptées Marnez",
+            "latE6": 48838783,
+            "lngE6": 2306783
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Mémoire Charles Michel",
+            "latE6": 48846432,
+            "lngE6": 2285754
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "Orné, Porte Vernie",
+            "latE6": 48846518,
+            "lngE6": 2286545
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "Chapelle Orthodoxe",
+            "latE6": 48846916,
+            "lngE6": 2304285
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "Square de l'Oiseau Lunaire - Les Sauterelles",
+            "latE6": 48841787,
+            "lngE6": 2305873
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "Labyrinthe Poirier",
+            "latE6": 48844790,
+            "lngE6": 2303630
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "Green Building - Emile Zola",
+            "latE6": 48846924,
+            "lngE6": 2295251
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Dôme ouvragé avec visage Gaulois",
+            "latE6": 48846977,
+            "lngE6": 2295704
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Décoration De Porte",
+            "latE6": 48842732,
+            "lngE6": 2302879
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "La Maison de l'escargot",
+            "latE6": 48846402,
+            "lngE6": 2297678
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "Fresque Laquin 69-78",
+            "latE6": 48846898,
+            "lngE6": 2303439
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Colonne Morris Lecourbe",
+            "latE6": 48842980,
+            "lngE6": 2303681
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Rochers d'escalade",
+            "latE6": 48832868,
+            "lngE6": 2298981
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "Les amoureux des bancs publics",
+            "latE6": 48832015,
+            "lngE6": 2300791
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Les Démons De Cronstadt",
+            "latE6": 48834047,
+            "lngE6": 2301894
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Globargue",
+            "latE6": 48840623,
+            "lngE6": 2306194
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Rosa Corona",
+            "latE6": 48840739,
+            "lngE6": 2306115
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "Porte du Parc Georges Brassens",
+            "latE6": 48832065,
+            "lngE6": 2302773
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787409127533
+        },
+        {
+          "portalInfo": {
+            "title": "Parc Georges Brassens - Deuxième Taureaux",
+            "latE6": 48832585,
+            "lngE6": 2300842
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "Aire De Jeux Brassens",
+            "latE6": 48832583,
+            "lngE6": 2299134
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Parc Georges Brassens - Cheval 1907",
+            "latE6": 48830458,
+            "lngE6": 2301876
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Parc Georges Brassens Kiosque A Musique",
+            "latE6": 48832085,
+            "lngE6": 2299302
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "Moulures Lecourbe",
+            "latE6": 48843770,
+            "lngE6": 2306342
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "La Gorgone",
+            "latE6": 48845324,
+            "lngE6": 2278880
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787400663619
+        },
+        {
+          "portalInfo": {
+            "title": "Pont Du Rer",
+            "latE6": 48841852,
+            "lngE6": 2272838
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787409262418
+        },
+        {
+          "portalInfo": {
+            "title": "La porte de la Sainte",
+            "latE6": 48845833,
+            "lngE6": 2279036
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787403788722
+        },
+        {
+          "portalInfo": {
+            "title": "Manufacture Du Comte D'Artois",
+            "latE6": 48843461,
+            "lngE6": 2274438
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787405640832
+        },
+        {
+          "portalInfo": {
+            "title": "Parc Andre Citroen",
+            "latE6": 48843087,
+            "lngE6": 2274170
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787402048766
+        },
+        {
+          "portalInfo": {
+            "title": "Entrée Du Presbytère Saint Christophe",
+            "latE6": 48844939,
+            "lngE6": 2279197
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787407406217
+        },
+        {
+          "portalInfo": {
+            "title": "André Favory",
+            "latE6": 48846049,
+            "lngE6": 2279251
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787405640832
+        }
+      ]
+    }
+  ]
+}

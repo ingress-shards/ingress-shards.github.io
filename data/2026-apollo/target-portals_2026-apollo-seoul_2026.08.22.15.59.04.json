@@ -1,0 +1,666 @@
+{
+  "siteId": "2026-apollo-seoul",
+  "exportedAt": 1787410744,
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "혼천의",
+            "latE6": 37526973,
+            "lngE6": 126925160
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "Youido development history",
+            "latE6": 37528977,
+            "lngE6": 126930544
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "반구",
+            "latE6": 37529537,
+            "lngE6": 126931604
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "날으는 사람",
+            "latE6": 37527027,
+            "lngE6": 126924060
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "여의도공원 안내도 (관리사무소 앞)",
+            "latE6": 37526954,
+            "lngE6": 126922560
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "측우기",
+            "latE6": 37527074,
+            "lngE6": 126924578
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "여의대방로 우편취급국",
+            "latE6": 37518901,
+            "lngE6": 126931042
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "진주아파트석",
+            "latE6": 37518131,
+            "lngE6": 126933107
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "앙카라 서측 운동시설",
+            "latE6": 37517111,
+            "lngE6": 126929426
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "KBS Broadcasting Building Pillar",
+            "latE6": 37518626,
+            "lngE6": 126930440
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "사학연금 건물 앞 조형물2",
+            "latE6": 37521252,
+            "lngE6": 126923074
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "The Space",
+            "latE6": 37518690,
+            "lngE6": 126925203
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "95 박동희 #2",
+            "latE6": 37518927,
+            "lngE6": 126927950
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "미성아파트 C동옆 놀이터",
+            "latE6": 37519511,
+            "lngE6": 126924402
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "여의도복지관",
+            "latE6": 37518250,
+            "lngE6": 126930708
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "낙원",
+            "latE6": 37518957,
+            "lngE6": 126926190
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "여의도 한강공원 파크골프장",
+            "latE6": 37519132,
+            "lngE6": 126941859
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "강가에서",
+            "latE6": 37524120,
+            "lngE6": 126938926
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "새로운 별",
+            "latE6": 37528000,
+            "lngE6": 126934469
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "괴물상",
+            "latE6": 37526648,
+            "lngE6": 126935648
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "차이와 공존 - 콴리",
+            "latE6": 37526636,
+            "lngE6": 126934323
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "은하 놀이터",
+            "latE6": 37518793,
+            "lngE6": 126934920
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "쉼터",
+            "latE6": 37518053,
+            "lngE6": 126934387
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "한화생명 태양열집열판형 꽃",
+            "latE6": 37519696,
+            "lngE6": 126940576
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "구립 시범아파트 경로당",
+            "latE6": 37521039,
+            "lngE6": 126938699
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "시범아파트 조형물",
+            "latE6": 37519722,
+            "lngE6": 126937919
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "한강 오두막 쉼터",
+            "latE6": 37520151,
+            "lngE6": 126942071
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "큐빅 박힌 빨간 조형물",
+            "latE6": 37522721,
+            "lngE6": 126920255
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "여의도공원 2번출구",
+            "latE6": 37522565,
+            "lngE6": 126918482
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "여의도공원 농구코트",
+            "latE6": 37524166,
+            "lngE6": 126919766
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "여의도 블루가든 표시",
+            "latE6": 37526081,
+            "lngE6": 126921455
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "만남의 장소",
+            "latE6": 37524672,
+            "lngE6": 126920893
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "Metal Paper Ship",
+            "latE6": 37531479,
+            "lngE6": 126929263
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "새마을공원 쉼터",
+            "latE6": 37520609,
+            "lngE6": 126919006
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "여의도 통풍구에 우주인투구",
+            "latE6": 37522057,
+            "lngE6": 126920079
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "여의샛강마을도서관",
+            "latE6": 37521588,
+            "lngE6": 126920164
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1787374980586
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "여의도공원 안내도",
+            "latE6": 37526176,
+            "lngE6": 126923778
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "Pavilion by the Pond",
+            "latE6": 37528067,
+            "lngE6": 126925365
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "깨깨로 파밀리에 (2019)",
+            "latE6": 37528319,
+            "lngE6": 126924547
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "뽀뽀",
+            "latE6": 37527953,
+            "lngE6": 126924971
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "새들과 곤충들의 안식처",
+            "latE6": 37528137,
+            "lngE6": 126932852
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "White Flame",
+            "latE6": 37529505,
+            "lngE6": 126929231
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "해태상",
+            "latE6": 37527820,
+            "lngE6": 126933433
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "둥지",
+            "latE6": 37529088,
+            "lngE6": 126933222
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "화가 최영림 표석",
+            "latE6": 37517709,
+            "lngE6": 126930555
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "앙카라하우스 공원 내 쉼터",
+            "latE6": 37517534,
+            "lngE6": 126931304
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "앙카라 중앙 운동시설",
+            "latE6": 37517265,
+            "lngE6": 126930206
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "샛강역 2번출구",
+            "latE6": 37517714,
+            "lngE6": 126929165
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "미성아파트 테니스장",
+            "latE6": 37519685,
+            "lngE6": 126923846
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "주한 인도네시아 대사관",
+            "latE6": 37518609,
+            "lngE6": 126931580
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "샛강역 쉼터",
+            "latE6": 37517223,
+            "lngE6": 126929209
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "생각을 그리다",
+            "latE6": 37524529,
+            "lngE6": 126938427
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "천사의 날개",
+            "latE6": 37528111,
+            "lngE6": 126934903
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "재활용된 백호",
+            "latE6": 37525553,
+            "lngE6": 126935498
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "은하아파트 A동 입구비석",
+            "latE6": 37517955,
+            "lngE6": 126934942
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "Shark Mural",
+            "latE6": 37520168,
+            "lngE6": 126939665
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "시범 농구장",
+            "latE6": 37521227,
+            "lngE6": 126938338
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "63빌딩 우체국",
+            "latE6": 37519699,
+            "lngE6": 126940326
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "Loops and Whorls",
+            "latE6": 37518691,
+            "lngE6": 126940158
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "여의동 주민센터",
+            "latE6": 37517515,
+            "lngE6": 126934635
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "은하아파트 시계탑",
+            "latE6": 37518701,
+            "lngE6": 126936444
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "눈송이벽",
+            "latE6": 37520381,
+            "lngE6": 126941697
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "여의도공원 지도",
+            "latE6": 37525511,
+            "lngE6": 126920449
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "여의도공원 안내판",
+            "latE6": 37523636,
+            "lngE6": 126918558
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "여의도공원 자연 생태의숲 표지판",
+            "latE6": 37523482,
+            "lngE6": 126918228
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787379360970
+        },
+        {
+          "portalInfo": {
+            "title": "공군 창군 60주년 기념탑",
+            "latE6": 37525715,
+            "lngE6": 126921377
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "여의도공원 안내도",
+            "latE6": 37523242,
+            "lngE6": 126916725
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787382181023
+        },
+        {
+          "portalInfo": {
+            "title": "맥문동 안내문",
+            "latE6": 37519698,
+            "lngE6": 126920861
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787374980586
+        },
+        {
+          "portalInfo": {
+            "title": "도망의 굴레",
+            "latE6": 37522268,
+            "lngE6": 126920261
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787384505084
+        },
+        {
+          "portalInfo": {
+            "title": "Gold-Full",
+            "latE6": 37522075,
+            "lngE6": 126919829
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787376786295
+        },
+        {
+          "portalInfo": {
+            "title": "여의도 KT빌딩 웨딩컨벤션",
+            "latE6": 37521539,
+            "lngE6": 126919160
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787380503910
+        },
+        {
+          "portalInfo": {
+            "title": "새마을공원 기념비",
+            "latE6": 37519736,
+            "lngE6": 126920232
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1787379360970
+        }
+      ]
+    }
+  ]
+}
