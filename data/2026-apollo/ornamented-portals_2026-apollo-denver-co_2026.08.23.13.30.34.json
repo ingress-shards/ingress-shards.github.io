@@ -1,0 +1,2463 @@
+{
+  "siteId": "2026-apollo-denver-co",
+  "exportedAt": 1787488234,
+  "portals": [
+    {
+      "title": "Paper Dolls dibond",
+      "lat": 39.742592,
+      "lng": -104.990547,
+      "ornamentId": "ap1",
+      "guid": "e83d5d4b58863dfea846dc70dc1bddec.16"
+    },
+    {
+      "title": "Constitution Hall",
+      "lat": 39.749722,
+      "lng": -105.000252,
+      "ornamentId": "ap1",
+      "guid": "af23d56e1a6b45119af0bd5cdad9f75f.12"
+    },
+    {
+      "title": "Geometric Utility Box",
+      "lat": 39.749749,
+      "lng": -104.998381,
+      "ornamentId": "ap1",
+      "guid": "b358fa2093cc3692957ab207ae4a431a.16"
+    },
+    {
+      "title": "Manny's Bridge",
+      "lat": 39.750118,
+      "lng": -105.003272,
+      "ornamentId": "ap1",
+      "guid": "e5f0fccfda49435b9ec86878ef8ed6d2.16"
+    },
+    {
+      "title": "15th & Wazee Street",
+      "lat": 39.750268,
+      "lng": -105.001472,
+      "ornamentId": "ap1",
+      "guid": "14b112cd41ce42e58bae9c6f788932ba.16"
+    },
+    {
+      "title": "Spratlen-Anderson Building",
+      "lat": 39.750802,
+      "lng": -105.002134,
+      "ornamentId": "ap1",
+      "guid": "a3186fabf81d47f69e1433f4928b273c.16"
+    },
+    {
+      "title": "Cruise Room",
+      "lat": 39.752515,
+      "lng": -104.997089,
+      "ornamentId": "ap1",
+      "guid": "0649c903fd4e45538b851ac56548ed17.16"
+    },
+    {
+      "title": "Mountain View",
+      "lat": 39.751977,
+      "lng": -104.997682,
+      "ornamentId": "ap1",
+      "guid": "2bb53cf07ba84a18af7b84b5dc625524.16"
+    },
+    {
+      "title": "St. Elmo Hotel Building",
+      "lat": 39.751481,
+      "lng": -104.99778,
+      "ornamentId": "ap1",
+      "guid": "70d5ba5ccd5347d98f5d9d0882584de4.16"
+    },
+    {
+      "title": "The Barth Hotel",
+      "lat": 39.751482,
+      "lng": -104.998146,
+      "ornamentId": "ap1",
+      "guid": "c1eef919174f41cab88d0bd28b7847af.16"
+    },
+    {
+      "title": "Euclid Hall",
+      "lat": 39.747662,
+      "lng": -105.000119,
+      "ornamentId": "ap1",
+      "guid": "2475d8e40bd64d3a9312f7331b33ccca.11"
+    },
+    {
+      "title": "Dog Savvy",
+      "lat": 39.74747,
+      "lng": -104.999513,
+      "ornamentId": "ap1",
+      "guid": "8250366e9a4f4867b080845135d9a051.16"
+    },
+    {
+      "title": "Beehive Sculpture",
+      "lat": 39.748709,
+      "lng": -104.996952,
+      "ornamentId": "ap1",
+      "guid": "6b7cdc04c7313cc780419db0d4542520.16"
+    },
+    {
+      "title": "The Enduring Navajo by Martha Pettigrew",
+      "lat": 39.748627,
+      "lng": -104.997536,
+      "ornamentId": "ap1",
+      "guid": "7a68d5ce52a84a51a42efcffaadb3f4c.16"
+    },
+    {
+      "title": "Falling Water",
+      "lat": 39.748604,
+      "lng": -104.997162,
+      "ornamentId": "ap1",
+      "guid": "7020c246c87042ffa6aa042d8d8b0063.16"
+    },
+    {
+      "title": "All Together Now",
+      "lat": 39.745508,
+      "lng": -104.997298,
+      "ornamentId": "ap1",
+      "guid": "d8d4cdbe16644cbf86350cc5033a57df.16"
+    },
+    {
+      "title": "Art at The Four Seasons",
+      "lat": 39.746422,
+      "lng": -104.998436,
+      "ornamentId": "ap1",
+      "guid": "f9c6ef08af0348ea83f70d91712d48a2.16"
+    },
+    {
+      "title": "Rhein Haus Denver",
+      "lat": 39.748297,
+      "lng": -105.000614,
+      "ornamentId": "ap1",
+      "guid": "4d32cabac3373eb29c88d70572da64e9.16"
+    },
+    {
+      "title": "Historic Engine House No. 5",
+      "lat": 39.75255,
+      "lng": -104.994276,
+      "ornamentId": "ap1",
+      "guid": "2d154567cc4c4a90abcf7143ce346252.16"
+    },
+    {
+      "title": "Colorado Fourteener Collection",
+      "lat": 39.752015,
+      "lng": -104.995135,
+      "ornamentId": "ap1",
+      "guid": "7cab05fee0b23579a484d47a6d8814ae.16"
+    },
+    {
+      "title": "Sakura Square",
+      "lat": 39.751962,
+      "lng": -104.993614,
+      "ornamentId": "ap1",
+      "guid": "61727491fecd4d768f028f5d518b4803.16"
+    },
+    {
+      "title": "Yoshitaka Tamai Memorial",
+      "lat": 39.75196,
+      "lng": -104.993226,
+      "ornamentId": "ap1",
+      "guid": "e795f1418f804e08a9681b7e08f9f9fa.16"
+    },
+    {
+      "title": "The Curtis",
+      "lat": 39.745608,
+      "lng": -104.997043,
+      "ornamentId": "ap1",
+      "guid": "9ccf7840139443938ac4b5d4c7174544.16"
+    },
+    {
+      "title": "WXYZ Lounge",
+      "lat": 39.744932,
+      "lng": -104.99453,
+      "ornamentId": "ap1",
+      "guid": "61c878c76469459aa2a35de523f590d7.16"
+    },
+    {
+      "title": "Tarantula Billiards",
+      "lat": 39.745026,
+      "lng": -104.994044,
+      "ornamentId": "ap1",
+      "guid": "a53d7ba8e50d48bbaf364ac0ddea677d.16"
+    },
+    {
+      "title": "Sam's #3 Hammer Bar",
+      "lat": 39.746114,
+      "lng": -104.995495,
+      "ornamentId": "ap1",
+      "guid": "8562aee65424486783d848bd829b7ec4.16"
+    },
+    {
+      "title": "The Pony Express",
+      "lat": 39.745371,
+      "lng": -104.99676,
+      "ornamentId": "ap1",
+      "guid": "7e1e7fc8345b48fbb4180c2bc283ff9b.16"
+    },
+    {
+      "title": "Nails",
+      "lat": 39.745989,
+      "lng": -104.996602,
+      "ornamentId": "ap1",
+      "guid": "9ca08f32d57c44fa8c7c57dc716d3107.16"
+    },
+    {
+      "title": "The Smoke Signal",
+      "lat": 39.74585,
+      "lng": -104.997011,
+      "ornamentId": "ap1",
+      "guid": "ff03d6b2569f42b8a6fbeecb1e256d31.16"
+    },
+    {
+      "title": "City Telephone Construction",
+      "lat": 39.74527,
+      "lng": -104.996966,
+      "ornamentId": "ap1",
+      "guid": "f65600107caa4dd5863e43a39df52a0c.11"
+    },
+    {
+      "title": "Sitting Garden Area",
+      "lat": 39.747877,
+      "lng": -104.993513,
+      "ornamentId": "ap1",
+      "guid": "43c19a99b5d7491396e4fb53281bd674.16"
+    },
+    {
+      "title": "17th St: Don't Panic",
+      "lat": 39.748172,
+      "lng": -104.993788,
+      "ornamentId": "ap1",
+      "guid": "e3531eed426f4aaaa68589f45af877de.16"
+    },
+    {
+      "title": "Street Art",
+      "lat": 39.747176,
+      "lng": -104.995073,
+      "ornamentId": "ap1",
+      "guid": "45fb339fd077409eae2ebd898b3ad145.16"
+    },
+    {
+      "title": "Metal Bug Frame Door",
+      "lat": 39.745356,
+      "lng": -104.995234,
+      "ornamentId": "ap1",
+      "guid": "1704cc8d7371483a92bd6488d9feeaf7.16"
+    },
+    {
+      "title": "Spire Building",
+      "lat": 39.744505,
+      "lng": -104.996034,
+      "ornamentId": "ap1",
+      "guid": "598689489aa044b6bdbe4d66f14a11b6.16"
+    },
+    {
+      "title": "\"Surely You Jest\" Sculpture",
+      "lat": 39.746268,
+      "lng": -104.996217,
+      "ornamentId": "ap1",
+      "guid": "4a7c04308bc64a40ac535a0cab822779.16"
+    },
+    {
+      "title": "The Old Prospector",
+      "lat": 39.746462,
+      "lng": -104.99659,
+      "ornamentId": "ap1",
+      "guid": "f363edfb347140c7a468741d997eb132.11"
+    },
+    {
+      "title": "Garden Block Denver Botanical Gardens",
+      "lat": 39.746667,
+      "lng": -104.99398,
+      "ornamentId": "ap1",
+      "guid": "528c2410f34f48a7807693b10b15defa.16"
+    },
+    {
+      "title": "Sincerely Yours",
+      "lat": 39.746691,
+      "lng": -104.994671,
+      "ornamentId": "ap1",
+      "guid": "d08df905870a4ec48173a95e054e1322.16"
+    },
+    {
+      "title": "University Building",
+      "lat": 39.746649,
+      "lng": -104.994295,
+      "ornamentId": "ap1",
+      "guid": "8a872748cc3b4203a110fbe84014269f.16"
+    },
+    {
+      "title": "Tropical Treasures",
+      "lat": 39.746945,
+      "lng": -104.994141,
+      "ornamentId": "ap1",
+      "guid": "bf160f0ad4f1499db77769291189f225.16"
+    },
+    {
+      "title": "Civic Center Station Fountain",
+      "lat": 39.741861,
+      "lng": -104.987645,
+      "ornamentId": "ap1",
+      "guid": "56525d1dce0342da9be621ead9f84afb.16"
+    },
+    {
+      "title": "The Ghost Building",
+      "lat": 39.747741,
+      "lng": -104.990871,
+      "ornamentId": "ap1",
+      "guid": "63e783f6b5304216a4633fcbbfce5d8f.11"
+    },
+    {
+      "title": "Baur's Building Historic Plaque",
+      "lat": 39.746527,
+      "lng": -104.995516,
+      "ornamentId": "ap1",
+      "guid": "5e4bccc0b2fa448da015026da068ab8f.16"
+    },
+    {
+      "title": "Blake Street Sunset Bench",
+      "lat": 39.750041,
+      "lng": -105.001014,
+      "ornamentId": "ap1",
+      "guid": "605f271a04f73144a1b23198c0120276.16"
+    },
+    {
+      "title": "MJ O’Fallon Supply Company",
+      "lat": 39.75109,
+      "lng": -105.001882,
+      "ornamentId": "ap1",
+      "guid": "58f94e14c569459a8d8718c99343245d.16"
+    },
+    {
+      "title": "1144 Fifteenth - If Superman Was a Building",
+      "lat": 39.747194,
+      "lng": -104.997431,
+      "ornamentId": "ap1",
+      "guid": "cd19ff8ae78c432db7a4f2a860881536.16"
+    },
+    {
+      "title": "University of Colorado Business School",
+      "lat": 39.747646,
+      "lng": -104.997991,
+      "ornamentId": "ap1",
+      "guid": "aaf4e5c0b690455482b3a766c4d92dd5.16"
+    },
+    {
+      "title": "City and County of Denver Landmark 63",
+      "lat": 39.75042,
+      "lng": -104.99744,
+      "ornamentId": "ap1",
+      "guid": "f1cae3cd9b50427e90474afec223c63a.16"
+    },
+    {
+      "title": "Musical Barrel 7",
+      "lat": 39.752758,
+      "lng": -104.996949,
+      "ornamentId": "ap1",
+      "guid": "600f9019e5184d1fbc79e527b1f8dd02.16"
+    },
+    {
+      "title": "The City Beautiful",
+      "lat": 39.750966,
+      "lng": -104.996538,
+      "ornamentId": "ap1",
+      "guid": "630c819d4b9447ecab58772a4698dc6c.16"
+    },
+    {
+      "title": "A Fork And The Road",
+      "lat": 39.752778,
+      "lng": -104.996167,
+      "ornamentId": "ap1",
+      "guid": "f2994068342048efb8acdb7213885ef5.16"
+    },
+    {
+      "title": "Denver Dry Goods Building",
+      "lat": 39.745852,
+      "lng": -104.993247,
+      "ornamentId": "ap1",
+      "guid": "4b0f8bd4daba4569a7129af0bde75bbb.16"
+    },
+    {
+      "title": "Greetings from Denver",
+      "lat": 39.744462,
+      "lng": -104.990613,
+      "ornamentId": "ap1",
+      "guid": "046b78d4a9914d9b83537d313962d313.16"
+    },
+    {
+      "title": "Chess Tables",
+      "lat": 39.747531,
+      "lng": -104.995277,
+      "ornamentId": "ap1",
+      "guid": "b49221f4c2614913a3072d42bd1eaf4e.16"
+    },
+    {
+      "title": "Downtown Denver Beef",
+      "lat": 39.74422,
+      "lng": -104.991075,
+      "ornamentId": "ap1",
+      "guid": "c4c501d80c6f423ba6eb9cc875e3a233.16"
+    },
+    {
+      "title": "McClintock Building, Denver",
+      "lat": 39.745037,
+      "lng": -104.992179,
+      "ornamentId": "ap1",
+      "guid": "637374187ee546cb9d8377039147b4ac.16"
+    },
+    {
+      "title": "Iron Awning",
+      "lat": 39.743453,
+      "lng": -104.992658,
+      "ornamentId": "ap1",
+      "guid": "49d63043baa740439a99336d635a9377.16"
+    },
+    {
+      "title": "Courtyard at the Marriott",
+      "lat": 39.746641,
+      "lng": -104.995341,
+      "ornamentId": "ap1",
+      "guid": "1851f32fdfc541f3944f0101710b35ac.16"
+    },
+    {
+      "title": "Soundwalk",
+      "lat": 39.746731,
+      "lng": -104.995575,
+      "ornamentId": "ap1",
+      "guid": "234d4208b61044dc8d067c357b54196c.16"
+    },
+    {
+      "title": "Triangle Reflective Art",
+      "lat": 39.746929,
+      "lng": -104.997204,
+      "ornamentId": "ap1",
+      "guid": "efce11826e2349dc864a97ef78a19521.16"
+    },
+    {
+      "title": "West Skyline Park Stone Entrance",
+      "lat": 39.746993,
+      "lng": -104.996541,
+      "ornamentId": "ap1",
+      "guid": "cea9e76f7cf5490da47aba2f8c80c4dd.16"
+    },
+    {
+      "title": "Carlos Fresquez Alley Freshener",
+      "lat": 39.746348,
+      "lng": -104.993323,
+      "ornamentId": "ap1",
+      "guid": "cff03faae3cf4b32b70cd51e00ec9d78.16"
+    },
+    {
+      "title": "Money Museum at the Denver Fed",
+      "lat": 39.74678,
+      "lng": -104.995473,
+      "ornamentId": "ap1",
+      "guid": "b1c7a25ba7ed4ee3930be6db41e1ab06.12"
+    },
+    {
+      "title": "\"The Bank That Looks Like A Bank\" Seal",
+      "lat": 39.747598,
+      "lng": -104.993076,
+      "ornamentId": "ap1",
+      "guid": "d8e91c1882bb4195ba430bcaa4d180cc.11"
+    },
+    {
+      "title": "America the Beautiful",
+      "lat": 39.745006,
+      "lng": -104.992554,
+      "ornamentId": "ap1",
+      "guid": "7864c2e8b4b640e7a2e398bd0c24ffa3.16"
+    },
+    {
+      "title": "Denver Building",
+      "lat": 39.745172,
+      "lng": -104.992383,
+      "ornamentId": "ap1",
+      "guid": "751e76efef294c1cb5142dc25eda1494.16"
+    },
+    {
+      "title": "Denver Compass",
+      "lat": 39.744651,
+      "lng": -104.99379,
+      "ornamentId": "ap1",
+      "guid": "4e6ffb3fa5df4bedaf48a166a0a1ee5d.16"
+    },
+    {
+      "title": "Quote from \"Nature Boy\" by Eden Ahbez",
+      "lat": 39.747161,
+      "lng": -104.996861,
+      "ornamentId": "ap1",
+      "guid": "db7efa2d49fd4f949979865df89193c2.11"
+    },
+    {
+      "title": "Wall Street Misery",
+      "lat": 39.745917,
+      "lng": -104.991021,
+      "ornamentId": "ap1",
+      "guid": "fe9dbe1118734ee99e48c5d3238c7f0a.16"
+    },
+    {
+      "title": "Denver Bull Statue",
+      "lat": 39.747941,
+      "lng": -104.996066,
+      "ornamentId": "ap1",
+      "guid": "545fabc2d1cf478f86f7ee18ad3a2c57.11"
+    },
+    {
+      "title": "Daniels and Fisher Tower",
+      "lat": 39.748097,
+      "lng": -104.995693,
+      "ornamentId": "ap1",
+      "guid": "d354f44de09e4c389bf682f3e6351f47.11"
+    },
+    {
+      "title": "Federal Reserve Branch Bank",
+      "lat": 39.747332,
+      "lng": -104.995228,
+      "ornamentId": "ap1",
+      "guid": "612868ffc2aa4ec7994e33ec6be57401.12"
+    },
+    {
+      "title": "Hotel Monaco",
+      "lat": 39.747797,
+      "lng": -104.992575,
+      "ornamentId": "ap1",
+      "guid": "e0525aaf738f4e2498c6e28c41d5cb15.16"
+    },
+    {
+      "title": "ALFRED A. ARRAJ UNITED STATES COURTHOUSE",
+      "lat": 39.749218,
+      "lng": -104.991737,
+      "ornamentId": "ap1",
+      "guid": "89c5225b77413081a70c4eb4b7ecc1ee.16"
+    },
+    {
+      "title": "Dedication Stone",
+      "lat": 39.751111,
+      "lng": -104.994768,
+      "ornamentId": "ap1",
+      "guid": "1507753dfa3e478fa83cb6a1923e5c2c.16"
+    },
+    {
+      "title": "Let the Buyer Beware",
+      "lat": 39.749994,
+      "lng": -104.996184,
+      "ornamentId": "ap1",
+      "guid": "1729ca48cb8b47868ab595d0e26f4a4a.12"
+    },
+    {
+      "title": "Skyline Park Renovation Plaque",
+      "lat": 39.748376,
+      "lng": -104.996023,
+      "ornamentId": "ap1",
+      "guid": "37b33694f63d4f71b3bcbb02d3b6930b.16"
+    },
+    {
+      "title": "Heritage Bank Clock Tower",
+      "lat": 39.750818,
+      "lng": -105.000662,
+      "ornamentId": "ap1",
+      "guid": "c1addadffe45319db8ca75127dd1029a.16"
+    },
+    {
+      "title": "Local Transit Through The Ages",
+      "lat": 39.752283,
+      "lng": -105.000663,
+      "ornamentId": "ap1",
+      "guid": "1c71b5b33b9042519b7d7dda4670fbfb.16"
+    },
+    {
+      "title": "Oskar Blues Downtown",
+      "lat": 39.750205,
+      "lng": -104.997711,
+      "ornamentId": "ap1",
+      "guid": "e053b17140444e04beea7bede3508e5a.16"
+    },
+    {
+      "title": "CS Morey Mercantile Building",
+      "lat": 39.751819,
+      "lng": -105.001512,
+      "ornamentId": "ap1",
+      "guid": "83433313f5884fd38d0794943ad96e72.16"
+    },
+    {
+      "title": "Victoria Beltz Library",
+      "lat": 39.753763,
+      "lng": -104.998749,
+      "ornamentId": "ap1",
+      "guid": "041e2636dfe946539aa7f89ea480c5d1.12"
+    },
+    {
+      "title": "Blue and Orange Utility Box",
+      "lat": 39.749363,
+      "lng": -104.997383,
+      "ornamentId": "ap1",
+      "guid": "9a611b4a5a0c3ec3bd122d5709f6f30c.16"
+    },
+    {
+      "title": "Comedy Works",
+      "lat": 39.747949,
+      "lng": -104.998367,
+      "ornamentId": "ap1",
+      "guid": "9246e0b7cc8c4d1c987dfcf018dac619.16"
+    },
+    {
+      "title": "City Rambler",
+      "lat": 39.7517,
+      "lng": -104.999978,
+      "ornamentId": "ap1",
+      "guid": "72cda9c3715243b2807bf1c80a7f2fc7.16"
+    },
+    {
+      "title": "Base Camp",
+      "lat": 39.750586,
+      "lng": -104.998163,
+      "ornamentId": "ap1",
+      "guid": "18f356a5acd038789fc32360613c0fc9.16"
+    },
+    {
+      "title": "Carter Rice Building",
+      "lat": 39.750994,
+      "lng": -104.998764,
+      "ornamentId": "ap1",
+      "guid": "95b5d6221a90433da5757d4a7e3fea1b.16"
+    },
+    {
+      "title": "Steel Bridge Lofts",
+      "lat": 39.750719,
+      "lng": -105.002716,
+      "ornamentId": "ap1",
+      "guid": "7a2b4f48541646f68682c1113798db3c.16"
+    },
+    {
+      "title": "Urban 24",
+      "lat": 39.748135,
+      "lng": -104.99861,
+      "ornamentId": "ap1",
+      "guid": "131722c0e2bc4c288f5567768cbb3833.16"
+    },
+    {
+      "title": "Larimer Square Fountain",
+      "lat": 39.74771,
+      "lng": -104.998839,
+      "ornamentId": "ap1",
+      "guid": "bc486a05b8a243f896efe8288c9576a2.16"
+    },
+    {
+      "title": "Barteldes Seed Co.",
+      "lat": 39.751643,
+      "lng": -105.000427,
+      "ornamentId": "ap1",
+      "guid": "5a064042a832452cb3110cefa4136436.16"
+    },
+    {
+      "title": "18th Street Atrium",
+      "lat": 39.753842,
+      "lng": -104.998203,
+      "ornamentId": "ap1",
+      "guid": "acc486118cca42258b6b46578a34c74f.16"
+    },
+    {
+      "title": "Thirsty Lion",
+      "lat": 39.752224,
+      "lng": -105.000893,
+      "ornamentId": "ap1",
+      "guid": "d39b094adfac46a9a810c7e875f2e9f2.16"
+    },
+    {
+      "title": "Elephant Corral Fountain",
+      "lat": 39.749754,
+      "lng": -105.001716,
+      "ornamentId": "ap1",
+      "guid": "2356221d757a46caa06462851122acee.16"
+    },
+    {
+      "title": "Gusterman's Guardian",
+      "lat": 39.747015,
+      "lng": -104.998589,
+      "ornamentId": "ap1",
+      "guid": "72f4ab902d5d49438104f652ca92e9b6.16"
+    },
+    {
+      "title": "Cook's Paints Ghost Sign",
+      "lat": 39.748517,
+      "lng": -104.999237,
+      "ornamentId": "ap1",
+      "guid": "71176df50040497f8f2d43f54903c82e.11"
+    },
+    {
+      "title": "Barney Ford Building",
+      "lat": 39.749622,
+      "lng": -105.00001,
+      "ornamentId": "ap1",
+      "guid": "cbd8c5eac8494bb9bf10321489bf5a9a.16"
+    },
+    {
+      "title": "Rio Cowboy",
+      "lat": 39.750403,
+      "lng": -104.999963,
+      "ornamentId": "ap1",
+      "guid": "0b418edbb0ee3c19b05374d99bc7082c.16"
+    },
+    {
+      "title": "Avian Oasis",
+      "lat": 39.750733,
+      "lng": -104.998548,
+      "ornamentId": "ap1",
+      "guid": "c3fb01a0188032cd8a493c81241a5069.16"
+    },
+    {
+      "title": "Bradford Wall Mural",
+      "lat": 39.753076,
+      "lng": -104.998431,
+      "ornamentId": "ap1",
+      "guid": "7253d7f2e51448108589e5b33a54fa2d.16"
+    },
+    {
+      "title": "Larimer Street",
+      "lat": 39.748271,
+      "lng": -104.9989,
+      "ornamentId": "ap1",
+      "guid": "86040f5dffac47d9b0ffaf7eb3e29efa.12"
+    },
+    {
+      "title": "CO JD Statue",
+      "lat": 39.74996,
+      "lng": -104.999768,
+      "ornamentId": "ap1",
+      "guid": "03d253f243594d3789210b0fbd02a9c0.16"
+    },
+    {
+      "title": "Color My World",
+      "lat": 39.74996,
+      "lng": -104.998541,
+      "ornamentId": "ap1",
+      "guid": "c9ef6c47099e3126a9c71b9c9e1167a8.16"
+    },
+    {
+      "title": "St. Elmo Motel",
+      "lat": 39.751326,
+      "lng": -104.99755,
+      "ornamentId": "ap1",
+      "guid": "6fdfa7a678234117a538ca854c5b5889.16"
+    },
+    {
+      "title": "Alley Fountain",
+      "lat": 39.747563,
+      "lng": -104.998519,
+      "ornamentId": "ap1",
+      "guid": "7bc85172002a42d9a5eb6de3031ff239.16"
+    },
+    {
+      "title": "Barteldes Hartig Building",
+      "lat": 39.751884,
+      "lng": -105.000728,
+      "ornamentId": "ap1",
+      "guid": "854aa61d1b9d4e87b018126d8ccb5427.16"
+    },
+    {
+      "title": "Cenad",
+      "lat": 39.747693,
+      "lng": -104.996552,
+      "ornamentId": "ap1",
+      "guid": "bf7627e622f142f3a0877dfdbc1a56e1.16"
+    },
+    {
+      "title": "Wynkoop Brewing Company",
+      "lat": 39.753513,
+      "lng": -104.99838,
+      "ornamentId": "ap1",
+      "guid": "5ecacc72c21945b4ad6d8fae416c803d.16"
+    },
+    {
+      "title": "Overlay 3",
+      "lat": 39.746068,
+      "lng": -104.997862,
+      "ornamentId": "ap1",
+      "guid": "a75370e208c54103bdda11fc79c1db7d.16"
+    },
+    {
+      "title": "The People Of Union Station",
+      "lat": 39.75319,
+      "lng": -104.999408,
+      "ornamentId": "ap1",
+      "guid": "00a0ded976d54fb088d8bfc1edbf584d.16"
+    },
+    {
+      "title": "Ice House, Landmark Designation",
+      "lat": 39.75411,
+      "lng": -104.998194,
+      "ornamentId": "ap1",
+      "guid": "019acc4370634e04902f207c1248aaf2.16"
+    },
+    {
+      "title": "Dairy Block Alley Mural",
+      "lat": 39.753211,
+      "lng": -104.996693,
+      "ornamentId": "ap1",
+      "guid": "9b9dab36ef034deda888e313691eb03a.16"
+    },
+    {
+      "title": "Color Blast",
+      "lat": 39.751101,
+      "lng": -104.999395,
+      "ornamentId": "ap1",
+      "guid": "3cb8a1879f9738d4918e9f92768875ad.16"
+    },
+    {
+      "title": "Larimer Street Historic Plaque",
+      "lat": 39.748137,
+      "lng": -104.99897,
+      "ornamentId": "ap1",
+      "guid": "b8bbff569341398abdcf31ac67401ad5.16"
+    },
+    {
+      "title": "Columbia Hotel, Denver",
+      "lat": 39.750566,
+      "lng": -104.996917,
+      "ornamentId": "ap1",
+      "guid": "571454d7b945474f8c55b08c7b607744.16"
+    },
+    {
+      "title": "Base Camp Wolf",
+      "lat": 39.75087,
+      "lng": -104.997883,
+      "ornamentId": "ap1",
+      "guid": "40289b687e1c38b0b917380eea7b50cd.16"
+    },
+    {
+      "title": "True Power",
+      "lat": 39.75373,
+      "lng": -104.996636,
+      "ornamentId": "ap1",
+      "guid": "6506a50a0fb03617a88ae3bf49b2d797.16"
+    },
+    {
+      "title": "Mechanical Octopus",
+      "lat": 39.751343,
+      "lng": -104.99992,
+      "ornamentId": "ap1",
+      "guid": "555ab27629754fa4909f8ca44d83bf7d.16"
+    },
+    {
+      "title": "Ice Cream art sculpture",
+      "lat": 39.753025,
+      "lng": -104.996844,
+      "ornamentId": "ap1",
+      "guid": "a9778bc9b8f43cacbeba26a6870dd694.16"
+    },
+    {
+      "title": "1930s Merchandise Mart",
+      "lat": 39.753986,
+      "lng": -104.996639,
+      "ornamentId": "ap1",
+      "guid": "b6b47142c2c9426ebac22a6b68b66fce.16"
+    },
+    {
+      "title": "Taco Mural",
+      "lat": 39.750236,
+      "lng": -104.999437,
+      "ornamentId": "ap1",
+      "guid": "80fb1699e6cd4715aa849c43c21bf181.16"
+    },
+    {
+      "title": "Wynkoop Needle Fan Sculpture",
+      "lat": 39.751034,
+      "lng": -105.000491,
+      "ornamentId": "ap1",
+      "guid": "46ac44f6429d40b3b2dd5af6caebb9cf.16"
+    },
+    {
+      "title": "Cherubic Welcome",
+      "lat": 39.747516,
+      "lng": -104.999064,
+      "ornamentId": "ap1",
+      "guid": "9a324deacd20460e9dd7fd2f1507e6bd.16"
+    },
+    {
+      "title": "Denver Union Station",
+      "lat": 39.752989,
+      "lng": -104.999985,
+      "ornamentId": "ap1",
+      "guid": "e70f2a7ebed7492c8857b7afc9639cba.12"
+    },
+    {
+      "title": "Writer Square Clocktower",
+      "lat": 39.748175,
+      "lng": -104.997283,
+      "ornamentId": "ap1",
+      "guid": "222ec0a5d74439459423b9310c052c73.16"
+    },
+    {
+      "title": "Steven Whitney Memorial Plaque",
+      "lat": 39.749615,
+      "lng": -105.002637,
+      "ornamentId": "ap1",
+      "guid": "8a5d4be02df3452397d30a05aef8a4ab.16"
+    },
+    {
+      "title": "Oxford Hotel and Annex",
+      "lat": 39.75224,
+      "lng": -104.999152,
+      "ornamentId": "ap1",
+      "guid": "3adb33021217407980274bcda3eae58f.12"
+    },
+    {
+      "title": "Landmark Designation, Oxford Annex",
+      "lat": 39.752558,
+      "lng": -104.999508,
+      "ornamentId": "ap1",
+      "guid": "3916a1ff86664e75bf2b8bf7e904dc25.16"
+    },
+    {
+      "title": "Synergy Polished Steel Sculpture",
+      "lat": 39.74793,
+      "lng": -104.996497,
+      "ornamentId": "ap1",
+      "guid": "15a46ecf5c114d02811729ea165036e3.16"
+    },
+    {
+      "title": "17th St: Mint Robbery",
+      "lat": 39.750152,
+      "lng": -104.996409,
+      "ornamentId": "ap1",
+      "guid": "dbeac798a93e4e989cf32eed35c47aa2.16"
+    },
+    {
+      "title": "Wilhem P Claus Plaque",
+      "lat": 39.75304,
+      "lng": -104.999704,
+      "ornamentId": "ap1",
+      "guid": "86fda93fd67546e6aef7c029183fe1a3.16"
+    },
+    {
+      "title": "Old Wells Fargo Building",
+      "lat": 39.748779,
+      "lng": -104.999466,
+      "ornamentId": "ap1",
+      "guid": "7fc5f439d2dc46398a911f8aea5e3ac8.16"
+    },
+    {
+      "title": "Henry Lee Building - 1907",
+      "lat": 39.751253,
+      "lng": -105.00025,
+      "ornamentId": "ap1",
+      "guid": "1520c0abe0794d5bac0ccd45a3eae3b7.12"
+    },
+    {
+      "title": "Self Made Man",
+      "lat": 39.748333,
+      "lng": -104.997777,
+      "ornamentId": "ap1",
+      "guid": "e2b44872908a419781f7bd810ce9530c.11"
+    },
+    {
+      "title": "Visions West Art Gallery",
+      "lat": 39.752758,
+      "lng": -104.997814,
+      "ornamentId": "ap1",
+      "guid": "231b7ee09acb432794173234d892c7a8.16"
+    },
+    {
+      "title": "City Bakery",
+      "lat": 39.749356,
+      "lng": -105.000267,
+      "ornamentId": "ap1",
+      "guid": "a03a158c00384c6ba840d2dcfb34bcbf.16"
+    },
+    {
+      "title": "Every Day Fish",
+      "lat": 39.752155,
+      "lng": -104.998657,
+      "ornamentId": "ap1",
+      "guid": "d9d36e3c9a53443ebdaf52f8fb675efb.16"
+    },
+    {
+      "title": "Stripped Boxes",
+      "lat": 39.753826,
+      "lng": -104.996315,
+      "ornamentId": "ap1",
+      "guid": "e19952e72e2e40b5909e067782a3bdf9.16"
+    },
+    {
+      "title": "S and H Supply Building",
+      "lat": 39.752558,
+      "lng": -104.998138,
+      "ornamentId": "ap1",
+      "guid": "b426a230fdd54d9dbc11ef7fc83f9f93.16"
+    },
+    {
+      "title": "Mud Head Art Gallery",
+      "lat": 39.752158,
+      "lng": -104.998286,
+      "ornamentId": "ap1",
+      "guid": "4a83d57e42d54f7c923dbe44a89844c4.16"
+    },
+    {
+      "title": "Fountains At Union Station",
+      "lat": 39.752528,
+      "lng": -105.000546,
+      "ornamentId": "ap1",
+      "guid": "4981a859d8494c858c5ee9efd7ad52c3.16"
+    },
+    {
+      "title": "Seahorse Chef",
+      "lat": 39.750878,
+      "lng": -104.997262,
+      "ornamentId": "ap1",
+      "guid": "36f6fbc031a136a0840cfd11e5842f35.16"
+    },
+    {
+      "title": "17th St: Rocky Mountain Fashion",
+      "lat": 39.75032,
+      "lng": -104.996262,
+      "ornamentId": "ap1",
+      "guid": "d3c5156d5c2e4031a262c8314e874f98.16"
+    },
+    {
+      "title": "Sunny Bear",
+      "lat": 39.749488,
+      "lng": -104.998008,
+      "ornamentId": "ap1",
+      "guid": "a3d8f9484ebe31af87d2078a4b175f44.16"
+    },
+    {
+      "title": "Larimer Market Clock",
+      "lat": 39.748064,
+      "lng": -104.999016,
+      "ornamentId": "ap1",
+      "guid": "28f67aa933eb4332a775e0242b0e2502.16"
+    },
+    {
+      "title": "Silas S. Soule Historical Marker",
+      "lat": 39.74742,
+      "lng": -104.996939,
+      "ornamentId": "ap1",
+      "guid": "ce45d895cf7b44d2b4a884dcc2f1e595.16"
+    },
+    {
+      "title": "Old General Electric Building",
+      "lat": 39.752342,
+      "lng": -104.996484,
+      "ornamentId": "ap1",
+      "guid": "ce227d67f6034c2ea1a1238dcf6b107d.16"
+    },
+    {
+      "title": "LoDo Historic District - Early Transportation",
+      "lat": 39.751063,
+      "lng": -104.998355,
+      "ornamentId": "ap1",
+      "guid": "329b85d182df46a1a018b99be50c8e73.11"
+    },
+    {
+      "title": "Ornamental Iron And Wire",
+      "lat": 39.74869,
+      "lng": -105.000093,
+      "ornamentId": "ap1",
+      "guid": "ce3f546d9bca42aba0310e080b2b2f49.16"
+    },
+    {
+      "title": "Legend, by William Burgess",
+      "lat": 39.75108,
+      "lng": -104.999717,
+      "ornamentId": "ap1",
+      "guid": "a481896c95254cf48cf03302133ce10c.16"
+    },
+    {
+      "title": "Buffalo of 16th Street, Denver",
+      "lat": 39.749505,
+      "lng": -104.997709,
+      "ornamentId": "ap1",
+      "guid": "210ab0a2673c4545b0e019c7d5badaf5.16"
+    },
+    {
+      "title": "Edward W. Wynkoop Building",
+      "lat": 39.752866,
+      "lng": -104.999466,
+      "ornamentId": "ap1",
+      "guid": "8444113ba7f34593b3cc947a7e2c4bff.16"
+    },
+    {
+      "title": "Sugar Building 1906",
+      "lat": 39.751106,
+      "lng": -105.000017,
+      "ornamentId": "ap1",
+      "guid": "d3ff4c26d04f4148b5da38e20368131a.12"
+    },
+    {
+      "title": "Larimer Green Project",
+      "lat": 39.747939,
+      "lng": -104.999517,
+      "ornamentId": "ap1",
+      "guid": "20f771727af44fd7a61fc7cfd9beb7b1.16"
+    },
+    {
+      "title": "Feels so Good",
+      "lat": 39.748376,
+      "lng": -104.998015,
+      "ornamentId": "ap1",
+      "guid": "635a4fa75c1a4df89841c887c13b2b52.16"
+    },
+    {
+      "title": "Dairy Block Message",
+      "lat": 39.753357,
+      "lng": -104.996398,
+      "ornamentId": "ap1",
+      "guid": "7be7063d210c44d98cbddaa77e58c71f.16"
+    },
+    {
+      "title": "Bee Mural",
+      "lat": 39.752372,
+      "lng": -104.999423,
+      "ornamentId": "ap1",
+      "guid": "b25ce5e650cb41ff8faa7f12460d748f.16"
+    },
+    {
+      "title": "Bent Lens",
+      "lat": 39.747672,
+      "lng": -104.999543,
+      "ornamentId": "ap1",
+      "guid": "9014e90dd20b42ad947b5e3e1ed88b41.16"
+    },
+    {
+      "title": "Larimer Square Cats",
+      "lat": 39.747854,
+      "lng": -104.999289,
+      "ornamentId": "ap1",
+      "guid": "82f32af0844f4643b73f0babf577b28a.16"
+    },
+    {
+      "title": "Builders",
+      "lat": 39.745185,
+      "lng": -104.996374,
+      "ornamentId": "ap1",
+      "guid": "09767224b05049a6a8a51bda3d28e876.16"
+    },
+    {
+      "title": "The Oscar Wallpaper",
+      "lat": 39.743032,
+      "lng": -104.989162,
+      "ornamentId": "ap1",
+      "guid": "c62b58336e284b18a2fa4cd4407a9708.16"
+    },
+    {
+      "title": "Block Ring",
+      "lat": 39.743431,
+      "lng": -104.989903,
+      "ornamentId": "ap1",
+      "guid": "d0ad38819cb945cb87268ac907545e5c.16"
+    },
+    {
+      "title": "Asian fashion blanks",
+      "lat": 39.74331,
+      "lng": -104.99142,
+      "ornamentId": "ap1",
+      "guid": "bebb391f5ebc413fb5e941d52b5edcfd.16"
+    },
+    {
+      "title": "Denver Energy Center Sign",
+      "lat": 39.742519,
+      "lng": -104.988357,
+      "ornamentId": "ap1",
+      "guid": "47c91b359f0b463f9e6efd9907732215.11"
+    },
+    {
+      "title": "Hard Rock Cafe Denver",
+      "lat": 39.743619,
+      "lng": -104.990446,
+      "ornamentId": "ap1",
+      "guid": "31174b422e82358ab6be140c60d17d3b.16"
+    },
+    {
+      "title": "17th St: Top of the World",
+      "lat": 39.74462,
+      "lng": -104.98922,
+      "ornamentId": "ap1",
+      "guid": "69c0a68a96cc4031b6749b7ec8e25392.11"
+    },
+    {
+      "title": "Masonic Building",
+      "lat": 39.744398,
+      "lng": -104.990954,
+      "ornamentId": "ap1",
+      "guid": "bf75badf59234e8d8a57b60ed878d01e.11"
+    },
+    {
+      "title": "Denver Pavilions",
+      "lat": 39.743594,
+      "lng": -104.991186,
+      "ornamentId": "ap1",
+      "guid": "74fcdf8b43fb411084114d32fc3a488d.16"
+    },
+    {
+      "title": "Kittredge Building",
+      "lat": 39.744154,
+      "lng": -104.990672,
+      "ornamentId": "ap1",
+      "guid": "305496f6f6164e71aa56e9dd3a0e26d9.16"
+    },
+    {
+      "title": "Denver Club Building",
+      "lat": 39.744972,
+      "lng": -104.989638,
+      "ornamentId": "ap1",
+      "guid": "104090881a5941e0929cd3752f676ba7.12"
+    },
+    {
+      "title": "Clyfford Still Mural",
+      "lat": 39.743808,
+      "lng": -104.992022,
+      "ornamentId": "ap1",
+      "guid": "77eaa4242cd04c8ea50e8f2b20ae0a96.16"
+    },
+    {
+      "title": "Surfing Mural",
+      "lat": 39.744951,
+      "lng": -104.991594,
+      "ornamentId": "ap1",
+      "guid": "1aad8e125ed14a1d9e23341bf6e90cc8.16"
+    },
+    {
+      "title": "Gone West",
+      "lat": 39.744786,
+      "lng": -104.992859,
+      "ornamentId": "ap1",
+      "guid": "200734d095224b33b298fa72c273f834.11"
+    },
+    {
+      "title": "East 2 West Source Point",
+      "lat": 39.740289,
+      "lng": -104.990325,
+      "ornamentId": "ap1",
+      "guid": "7281d8a970b04ee6b2bbe50e6e0344fc.12"
+    },
+    {
+      "title": "Starlet Mural",
+      "lat": 39.744653,
+      "lng": -104.994924,
+      "ornamentId": "ap1",
+      "guid": "839ad4f1a3e94d1ead30129ab7c10277.16"
+    },
+    {
+      "title": "Cubes",
+      "lat": 39.7405,
+      "lng": -104.989545,
+      "ornamentId": "ap1",
+      "guid": "a774f891a78b4c11a1633a497fa81ff6.16"
+    },
+    {
+      "title": "Kenneth Macintosh Statute",
+      "lat": 39.740821,
+      "lng": -104.989102,
+      "ornamentId": "ap1",
+      "guid": "a0753277aa4f4a0db3c3f9d652f14492.11"
+    },
+    {
+      "title": "Mountain Bull",
+      "lat": 39.742455,
+      "lng": -104.993311,
+      "ornamentId": "ap1",
+      "guid": "33e8e66e2c3b4a4a8e6581bed812d564.16"
+    },
+    {
+      "title": "Independence Building",
+      "lat": 39.741213,
+      "lng": -104.991689,
+      "ornamentId": "ap1",
+      "guid": "53b4712758ce4428b1b0909a3384b8e5.16"
+    },
+    {
+      "title": "Professional Building",
+      "lat": 39.74122,
+      "lng": -104.990533,
+      "ornamentId": "ap1",
+      "guid": "2c11bc4943b54c4da2d75e83c5378a62.11"
+    },
+    {
+      "title": "Alfred Packer",
+      "lat": 39.744801,
+      "lng": -104.992836,
+      "ornamentId": "ap1",
+      "guid": "8f0b81d414074424ab0e351fcd1ef766.16"
+    },
+    {
+      "title": "On the Road",
+      "lat": 39.744639,
+      "lng": -104.993029,
+      "ornamentId": "ap1",
+      "guid": "b9b7df9629f54ec8bf92a2d360eb5533.16"
+    },
+    {
+      "title": "Crystal Hands Mural",
+      "lat": 39.745513,
+      "lng": -104.994102,
+      "ornamentId": "ap1",
+      "guid": "844c16d64eca35c8b16869e9577622cd.16"
+    },
+    {
+      "title": "Brown Palace Broadway Entrance",
+      "lat": 39.744108,
+      "lng": -104.987514,
+      "ornamentId": "ap1",
+      "guid": "ce5ff264c0874ab8aecd7079bfb5b93d.16"
+    },
+    {
+      "title": "Six Sculptures Scaling Stone",
+      "lat": 39.743839,
+      "lng": -104.993071,
+      "ornamentId": "ap1",
+      "guid": "28933ad298143c88a4276770b4ee8d9e.16"
+    },
+    {
+      "title": "Ship Cabin",
+      "lat": 39.744679,
+      "lng": -104.988461,
+      "ornamentId": "ap1",
+      "guid": "67c7cccc34b245898a53439402e50adb.16"
+    },
+    {
+      "title": "Children's Art Reimagined",
+      "lat": 39.743424,
+      "lng": -104.993521,
+      "ornamentId": "ap1",
+      "guid": "d272498773b24928ae70321e52f3feb5.16"
+    },
+    {
+      "title": "Bones of the Earth",
+      "lat": 39.744063,
+      "lng": -104.993313,
+      "ornamentId": "ap1",
+      "guid": "dcc43ddc44e34f66b5fad6e404a1a006.16"
+    },
+    {
+      "title": "Smoky Hill Trail",
+      "lat": 39.740295,
+      "lng": -104.98764,
+      "ornamentId": "ap1",
+      "guid": "98c9f9b4423e4939b7a39880f2ba116c.12"
+    },
+    {
+      "title": "Home Reed Ltd",
+      "lat": 39.744499,
+      "lng": -104.988024,
+      "ornamentId": "ap1",
+      "guid": "b63090fd467941378bae54bed71e4469.16"
+    },
+    {
+      "title": "Cowboy",
+      "lat": 39.744684,
+      "lng": -104.98751,
+      "ornamentId": "ap1",
+      "guid": "2f8d9f65ce924d35a78fcb873edd625c.12"
+    },
+    {
+      "title": "Gridlock",
+      "lat": 39.742874,
+      "lng": -104.987573,
+      "ornamentId": "ap1",
+      "guid": "04cf4a873075465193287ab4bcbea0fb.16"
+    },
+    {
+      "title": "Archway Artwork",
+      "lat": 39.74395,
+      "lng": -104.987943,
+      "ornamentId": "ap1",
+      "guid": "85e4aab2a40e4460baa8af8caf3bcc47.16"
+    },
+    {
+      "title": "Macintosh Park Plaza",
+      "lat": 39.740259,
+      "lng": -104.989934,
+      "ornamentId": "ap1",
+      "guid": "749bfa121d6542ee920bd3fa9efa0568.11"
+    },
+    {
+      "title": "Don't Be Koi",
+      "lat": 39.743754,
+      "lng": -104.989056,
+      "ornamentId": "ap1",
+      "guid": "fa1a9a10dcde3e1fb683bf070317b1b0.16"
+    },
+    {
+      "title": "Denver Urban Renewal Authority Marker",
+      "lat": 39.744373,
+      "lng": -104.991303,
+      "ornamentId": "ap1",
+      "guid": "118de6d41698488eabb799391c6bb0bd.16"
+    },
+    {
+      "title": "Brown Palace Ship Tavern",
+      "lat": 39.744523,
+      "lng": -104.98754,
+      "ornamentId": "ap1",
+      "guid": "a9d293f9136e4e3c8358a6ca0441707a.16"
+    },
+    {
+      "title": "Ellyngton's Contemporary American Cuisine",
+      "lat": 39.744055,
+      "lng": -104.987828,
+      "ornamentId": "ap1",
+      "guid": "aa26f5e30b2a4567abb74c6d176294f7.16"
+    },
+    {
+      "title": "Brown Palace Hotel in Denver",
+      "lat": 39.7437,
+      "lng": -104.987543,
+      "ornamentId": "ap1",
+      "guid": "83ad02c321264b438e7f23ec2e1625d7.16"
+    },
+    {
+      "title": "\"CROWNED KID\"",
+      "lat": 39.744637,
+      "lng": -104.992656,
+      "ornamentId": "ap1",
+      "guid": "276ef6ec1b1b4a1b8e657589bc0997be.16"
+    },
+    {
+      "title": "The Atrium Lobby",
+      "lat": 39.744366,
+      "lng": -104.98819,
+      "ornamentId": "ap1",
+      "guid": "50e47e20b0ed447280cd2d73cad3cc49.16"
+    },
+    {
+      "title": "Sheraton Plaza Courtyard Stacked Triangles",
+      "lat": 39.742321,
+      "lng": -104.989744,
+      "ornamentId": "ap1",
+      "guid": "26e801d3e5514df5bf8a6f6a904fe62f.16"
+    },
+    {
+      "title": "Glass Walkway Between Sheraton Towers",
+      "lat": 39.74205,
+      "lng": -104.98928,
+      "ornamentId": "ap1",
+      "guid": "2a22cc9f38e64d168223615a049231e2.16"
+    },
+    {
+      "title": "Wine Bottle Wall",
+      "lat": 39.744104,
+      "lng": -104.995138,
+      "ornamentId": "ap1",
+      "guid": "2837529961674b89a76d861b97d4df28.16"
+    },
+    {
+      "title": "Butch Cassidy",
+      "lat": 39.744815,
+      "lng": -104.992507,
+      "ornamentId": "ap1",
+      "guid": "bbc5c54c7ef94ec8a9dbf6f1ab83849c.16"
+    },
+    {
+      "title": "Denver Post Building",
+      "lat": 39.740835,
+      "lng": -104.988775,
+      "ornamentId": "ap1",
+      "guid": "6778f88f07f44f2c8c2d1e3f99519689.16"
+    },
+    {
+      "title": "Palace Arms",
+      "lat": 39.744377,
+      "lng": -104.988748,
+      "ornamentId": "ap1",
+      "guid": "f145dd6cfbec49979f96a5464876d9a1.16"
+    },
+    {
+      "title": "The Outer Space",
+      "lat": 39.744734,
+      "lng": -104.991365,
+      "ornamentId": "ap1",
+      "guid": "7c48d92554193224965039305ef1835f.16"
+    },
+    {
+      "title": "Denver Square",
+      "lat": 39.745472,
+      "lng": -104.989895,
+      "ornamentId": "ap1",
+      "guid": "419e0de030a7455e924958c9e239609a.16"
+    },
+    {
+      "title": "Union Station Portrait",
+      "lat": 39.743088,
+      "lng": -104.993748,
+      "ornamentId": "ap1",
+      "guid": "f343d47bdd7b4500ae4d02b9a766d788.16"
+    },
+    {
+      "title": "Wellington Webb Building",
+      "lat": 39.741201,
+      "lng": -104.990091,
+      "ornamentId": "ap1",
+      "guid": "7298e4f6ec244ad7bd96cfaddbc58484.16"
+    },
+    {
+      "title": "Denver #Selfie Museum",
+      "lat": 39.745553,
+      "lng": -104.993838,
+      "ornamentId": "ap1",
+      "guid": "1d484d28fa593920a4cce10b04ac8ce6.16"
+    },
+    {
+      "title": "The Black Baron",
+      "lat": 39.745463,
+      "lng": -104.990318,
+      "ornamentId": "ap1",
+      "guid": "fc83092b30be4be681029ba0aa872ccf.16"
+    },
+    {
+      "title": "Nest",
+      "lat": 39.74392,
+      "lng": -104.98834,
+      "ornamentId": "ap1",
+      "guid": "79faa2b1a9bf4587a4ab72d970a599e1.16"
+    },
+    {
+      "title": "Denver Energy Center",
+      "lat": 39.742539,
+      "lng": -104.987561,
+      "ornamentId": "ap1",
+      "guid": "5547f916845a44db857b517d8dd932e6.16"
+    },
+    {
+      "title": "The Oscar Wallpaper",
+      "lat": 39.742988,
+      "lng": -104.988403,
+      "ornamentId": "ap1",
+      "guid": "c00283ab0e834eb8bc53cd3916c10426.16"
+    },
+    {
+      "title": "3D Red Fan Wall art",
+      "lat": 39.743331,
+      "lng": -104.992469,
+      "ornamentId": "ap1",
+      "guid": "fc50fc25dddf34858356aa410e722204.16"
+    },
+    {
+      "title": "Paramount Theater",
+      "lat": 39.744191,
+      "lng": -104.990094,
+      "ornamentId": "ap1",
+      "guid": "dede088dc12e4296b7cac0446740d127.16"
+    },
+    {
+      "title": "Cubes 2",
+      "lat": 39.740682,
+      "lng": -104.989316,
+      "ornamentId": "ap1",
+      "guid": "131337b6577e425eb7b175672c3f6405.16"
+    },
+    {
+      "title": "Wall Street of the Rockies",
+      "lat": 39.744901,
+      "lng": -104.989199,
+      "ornamentId": "ap1",
+      "guid": "50174e24256e4458bee6f156c5a739c6.16"
+    },
+    {
+      "title": "Webb Building Pendulum",
+      "lat": 39.740478,
+      "lng": -104.990302,
+      "ornamentId": "ap1",
+      "guid": "3bf7f941dc2542bfbe8e50c97aba050f.11"
+    },
+    {
+      "title": "Compass Rose",
+      "lat": 39.743366,
+      "lng": -104.987645,
+      "ornamentId": "ap1",
+      "guid": "9fdca6f985fe4f72bcaa69bc2d130a4c.16"
+    },
+    {
+      "title": "\"Field Report\"",
+      "lat": 39.743567,
+      "lng": -104.993299,
+      "ornamentId": "ap1",
+      "guid": "c65d07308e9f4e11a6381654e7e39037.16"
+    },
+    {
+      "title": "Neusteter Building",
+      "lat": 39.74557,
+      "lng": -104.992986,
+      "ornamentId": "ap1",
+      "guid": "77bdd102f3a24232b6ee536084413e84.16"
+    },
+    {
+      "title": "Republic Plaza",
+      "lat": 39.743438,
+      "lng": -104.989002,
+      "ornamentId": "ap1",
+      "guid": "139acb424b543deeb4756c1ba5b51848.16"
+    },
+    {
+      "title": "Sisterhood art display",
+      "lat": 39.74247,
+      "lng": -104.991389,
+      "ornamentId": "ap1",
+      "guid": "6d3d766fed14301fbac5d0a74ca12fd1.16"
+    },
+    {
+      "title": "Sheraton Hotel",
+      "lat": 39.742478,
+      "lng": -104.989042,
+      "ornamentId": "ap1",
+      "guid": "23f58ac3bddf44e6ab928f4793b76314.12"
+    },
+    {
+      "title": "American Icons Mural",
+      "lat": 39.743951,
+      "lng": -104.994249,
+      "ornamentId": "ap1",
+      "guid": "b7a528ef0842449ab6cc018d23a5c1ce.12"
+    },
+    {
+      "title": "Overlay",
+      "lat": 39.740566,
+      "lng": -104.990857,
+      "ornamentId": "ap1",
+      "guid": "3eed809506724a10bbae35e39b4c2584.16"
+    },
+    {
+      "title": "Dupler Furs Mural",
+      "lat": 39.744343,
+      "lng": -104.991808,
+      "ornamentId": "ap1",
+      "guid": "bfe4ffb005454a14b9bd287666914c82.16"
+    },
+    {
+      "title": "Welcome",
+      "lat": 39.74093,
+      "lng": -104.987564,
+      "ornamentId": "ap1",
+      "guid": "5f7c43ecb2c34c708feedb6ae74dd781.16"
+    },
+    {
+      "title": "Poké Club Sumo",
+      "lat": 39.745131,
+      "lng": -104.993772,
+      "ornamentId": "ap1",
+      "guid": "d8e42f58942336088fc9414cd779c9ab.16"
+    },
+    {
+      "title": "Denver Mural",
+      "lat": 39.745234,
+      "lng": -104.9943,
+      "ornamentId": "ap1",
+      "guid": "c17ed5a140413e9095de52f3508151f8.16"
+    },
+    {
+      "title": "Denver Says No to Hate",
+      "lat": 39.745155,
+      "lng": -104.990304,
+      "ornamentId": "ap1",
+      "guid": "21d6fface2304040a65df6929af9901c.16"
+    },
+    {
+      "title": "Large Modern Pavillion",
+      "lat": 39.743234,
+      "lng": -104.989056,
+      "ornamentId": "ap1",
+      "guid": "ebe0e429e3413cb7bca841790b90779b.16"
+    },
+    {
+      "title": "Navarre Building (1880)",
+      "lat": 39.7447,
+      "lng": -104.988009,
+      "ornamentId": "ap1",
+      "guid": "048a9ce37f9747dfb485e090ddb5b31b.11"
+    },
+    {
+      "title": "Synergy",
+      "lat": 39.742915,
+      "lng": -104.990074,
+      "ornamentId": "ap1",
+      "guid": "c30acf5460304c8eb89853c304185a58.16"
+    },
+    {
+      "title": "1617 Building",
+      "lat": 39.745559,
+      "lng": -104.991898,
+      "ornamentId": "ap1",
+      "guid": "2254e9202f993b5294fa10f17aee91ed.16"
+    },
+    {
+      "title": "Plaque on 17th and Tremont",
+      "lat": 39.744158,
+      "lng": -104.988073,
+      "ornamentId": "ap1",
+      "guid": "8dfd79e0015546b697670a38b843467b.11"
+    },
+    {
+      "title": "University Building Pencil Smokestack",
+      "lat": 39.746526,
+      "lng": -104.99456,
+      "ornamentId": "ap1",
+      "guid": "adc469900ed44d29851c99010dff59c3.16"
+    },
+    {
+      "title": "Los Cabos Peruvian Mural",
+      "lat": 39.746033,
+      "lng": -104.994759,
+      "ornamentId": "ap1",
+      "guid": "5996a0d998e64cc2ab2c90e1336a60b4.16"
+    },
+    {
+      "title": "Denver City Mural",
+      "lat": 39.746195,
+      "lng": -104.994876,
+      "ornamentId": "ap1",
+      "guid": "b59194e61c4145f6b41f7c5c03856b0f.16"
+    },
+    {
+      "title": "Odd Fellows Hall, Denver",
+      "lat": 39.74622,
+      "lng": -104.994508,
+      "ornamentId": "ap1",
+      "guid": "fc537da533274e1b900f481b4f0f3713.16"
+    },
+    {
+      "title": "Gas and Electric Building",
+      "lat": 39.745704,
+      "lng": -104.995416,
+      "ornamentId": "ap1",
+      "guid": "36b9454bfc384db793f2e58437a1e076.11"
+    },
+    {
+      "title": "Mindi J. Romoff Plaza Dedication Plaque",
+      "lat": 39.750064,
+      "lng": -104.994281,
+      "ornamentId": "ap1",
+      "guid": "c4db693747af44a1b7787f0332219042.16"
+    },
+    {
+      "title": "Cowboy Pajamas",
+      "lat": 39.747905,
+      "lng": -104.992273,
+      "ornamentId": "ap1",
+      "guid": "907e85ab604b47b78306e236afdf41d0.11"
+    },
+    {
+      "title": "17th St: Yo Soy Joaquin",
+      "lat": 39.750124,
+      "lng": -104.995901,
+      "ornamentId": "ap1",
+      "guid": "2f7a9268ef96427389bfac6cda94f1b5.16"
+    },
+    {
+      "title": "Old Colorado National Bank Vault",
+      "lat": 39.747458,
+      "lng": -104.993249,
+      "ornamentId": "ap1",
+      "guid": "0f989b48079d42208508b61950bb4344.16"
+    },
+    {
+      "title": "Freedom Is Fragile",
+      "lat": 39.751402,
+      "lng": -104.993855,
+      "ornamentId": "ap1",
+      "guid": "03df1df9ef654af7a552bd73fa3bc5e8.16"
+    },
+    {
+      "title": "Solid Investment",
+      "lat": 39.746976,
+      "lng": -104.991835,
+      "ornamentId": "ap1",
+      "guid": "740d44f9e2ee4ccaa3d69288537d9528.16"
+    },
+    {
+      "title": "Denver City Cable Railway Co.",
+      "lat": 39.75071,
+      "lng": -104.994329,
+      "ornamentId": "ap1",
+      "guid": "323df94365d64695820fde09ec31fdf3.16"
+    },
+    {
+      "title": "16th & Stout LTR Station",
+      "lat": 39.746032,
+      "lng": -104.992941,
+      "ornamentId": "ap1",
+      "guid": "8682207373f44c2e80fd8581013c1d98.16"
+    },
+    {
+      "title": "Falling Rock Tap House",
+      "lat": 39.753822,
+      "lng": -104.995363,
+      "ornamentId": "ap1",
+      "guid": "5ef64475ec764305984f9bd51efb1655.16"
+    },
+    {
+      "title": "Alternate Rest and Labor",
+      "lat": 39.748968,
+      "lng": -104.990156,
+      "ornamentId": "ap1",
+      "guid": "2685bb6ffb16438880205d028138f55b.16"
+    },
+    {
+      "title": "Buerger Bros Building",
+      "lat": 39.747928,
+      "lng": -104.991942,
+      "ornamentId": "ap1",
+      "guid": "30afbb6c04cd4b38bb35df131f0938ea.16"
+    },
+    {
+      "title": "17th St: Origins",
+      "lat": 39.746415,
+      "lng": -104.991175,
+      "ornamentId": "ap1",
+      "guid": "e864eab473d244909f9f22f81ed7129f.16"
+    },
+    {
+      "title": "Denver Bikeway Sign",
+      "lat": 39.749991,
+      "lng": -104.99308,
+      "ornamentId": "ap1",
+      "guid": "6250672308b6355ba592cc1a14f2c30c.16"
+    },
+    {
+      "title": "17th St: March On",
+      "lat": 39.746139,
+      "lng": -104.990776,
+      "ornamentId": "ap1",
+      "guid": "c6a138719c2f4e9f85e7b47592f6ebd9.16"
+    },
+    {
+      "title": "17th St: Coal Miner's Daughter",
+      "lat": 39.74909,
+      "lng": -104.99502,
+      "ornamentId": "ap1",
+      "guid": "bd77d6a7bbb0473b9ffa05e048e83e60.16"
+    },
+    {
+      "title": "Summit Music Hall",
+      "lat": 39.753426,
+      "lng": -104.995294,
+      "ornamentId": "ap1",
+      "guid": "a1d202840f704dadaf7555d2f5fb4f64.16"
+    },
+    {
+      "title": "Arraj Court House",
+      "lat": 39.749812,
+      "lng": -104.990152,
+      "ornamentId": "ap1",
+      "guid": "07784d94f67e49adbad9e63539c54577.11"
+    },
+    {
+      "title": "Welton Street to Five Points",
+      "lat": 39.745602,
+      "lng": -104.990076,
+      "ornamentId": "ap1",
+      "guid": "b015536581054f5aa5fb4dd4d078d2f8.16"
+    },
+    {
+      "title": "Green Bus Cafe",
+      "lat": 39.750339,
+      "lng": -104.995464,
+      "ornamentId": "ap1",
+      "guid": "9f8b179c7f8a3856b23cca7cd8b9ebfa.16"
+    },
+    {
+      "title": "Taney Smith Entrance",
+      "lat": 39.74902,
+      "lng": -104.990518,
+      "ornamentId": "ap1",
+      "guid": "4620f82a21e04f68b57403a3cbbd1aa9.16"
+    },
+    {
+      "title": "Annuit Coeptis",
+      "lat": 39.749849,
+      "lng": -104.988725,
+      "ornamentId": "ap1",
+      "guid": "b62261f37365471a8558f7e41c909a5c.16"
+    },
+    {
+      "title": "Beaumont Fountain",
+      "lat": 39.747198,
+      "lng": -104.98786,
+      "ornamentId": "ap1",
+      "guid": "a81d20ef82aa4e16aa214831c1f26a62.11"
+    },
+    {
+      "title": "Lagare Butler Entrance",
+      "lat": 39.748456,
+      "lng": -104.990956,
+      "ornamentId": "ap1",
+      "guid": "88502edb00984bd682c2ac09a573555b.16"
+    },
+    {
+      "title": "17th St: Rails & Mountains",
+      "lat": 39.7497,
+      "lng": -104.995885,
+      "ornamentId": "ap1",
+      "guid": "1053987c392e46bda7ec112563c61d52.16"
+    },
+    {
+      "title": "Dairy Building",
+      "lat": 39.753158,
+      "lng": -104.995618,
+      "ornamentId": "ap1",
+      "guid": "8068268a11e54e6b94a75cb9307c7519.11"
+    },
+    {
+      "title": "Equitable Building, Denver",
+      "lat": 39.746397,
+      "lng": -104.992056,
+      "ornamentId": "ap1",
+      "guid": "ea60145885d54e8a898e4d73de03ceb0.16"
+    },
+    {
+      "title": "17th Street: Take Your Pick",
+      "lat": 39.747599,
+      "lng": -104.992735,
+      "ornamentId": "ap1",
+      "guid": "793200f066f04593b394626e984e3702.16"
+    },
+    {
+      "title": "Tensegrity",
+      "lat": 39.749889,
+      "lng": -104.995332,
+      "ornamentId": "ap1",
+      "guid": "0837d275568a4a40ab216129304488c5.11"
+    },
+    {
+      "title": "Inverse Step",
+      "lat": 39.749638,
+      "lng": -104.990431,
+      "ornamentId": "ap1",
+      "guid": "ec3751aa202b48009a8c02e34d67752c.16"
+    },
+    {
+      "title": "B's Ballpark Museum",
+      "lat": 39.753931,
+      "lng": -104.994581,
+      "ornamentId": "ap1",
+      "guid": "d342823f28b145338f57f339601a0d65.12"
+    },
+    {
+      "title": "E is for EQUITABLE",
+      "lat": 39.746483,
+      "lng": -104.991583,
+      "ornamentId": "ap1",
+      "guid": "3f6faa9970e24de7af07146a84c39e37.16"
+    },
+    {
+      "title": "5224 Feet",
+      "lat": 39.747728,
+      "lng": -104.992172,
+      "ornamentId": "ap1",
+      "guid": "a98c069b15234b25bedb499e5dc86d54.16"
+    },
+    {
+      "title": "Promenade, by Anne Weber",
+      "lat": 39.749187,
+      "lng": -104.994445,
+      "ornamentId": "ap1",
+      "guid": "c13177802d434745acbc3b2d2c2ceda5.11"
+    },
+    {
+      "title": "Granite Tower Gardens and Seating Area",
+      "lat": 39.749633,
+      "lng": -104.992193,
+      "ornamentId": "ap1",
+      "guid": "b17a6826fdb33877b4fa1bf3afdfa7f5.16"
+    },
+    {
+      "title": "Byron White United States Courthouse Facade",
+      "lat": 39.748402,
+      "lng": -104.990108,
+      "ornamentId": "ap1",
+      "guid": "060c838f521d49ad8b1e066122fe072c.11"
+    },
+    {
+      "title": "US Custom House Northeast Entrance",
+      "lat": 39.748872,
+      "lng": -104.98775,
+      "ornamentId": "ap1",
+      "guid": "b7a87d1ac01d4b67b2b9f495eebb5fe8.16"
+    },
+    {
+      "title": "The Equitable Building",
+      "lat": 39.746541,
+      "lng": -104.991834,
+      "ornamentId": "ap1",
+      "guid": "364e4f25fa8537aeae7558f95311ea5b.16"
+    },
+    {
+      "title": "Bishop Machebeuf Bust",
+      "lat": 39.748283,
+      "lng": -104.987974,
+      "ornamentId": "ap1",
+      "guid": "0c1bd654b2204f01a92a564840501ab9.16"
+    },
+    {
+      "title": "Capitol Windmill",
+      "lat": 39.750908,
+      "lng": -104.99422,
+      "ornamentId": "ap1",
+      "guid": "d944e29e2982495b839a1f460f2cfafa.16"
+    },
+    {
+      "title": "Shock Treatment",
+      "lat": 39.746787,
+      "lng": -104.991548,
+      "ornamentId": "ap1",
+      "guid": "6fd5609c91314f9180094b863a141ed1.16"
+    },
+    {
+      "title": "Petrified Wood Art",
+      "lat": 39.748805,
+      "lng": -104.992509,
+      "ornamentId": "ap1",
+      "guid": "755b30c5a5f13de1b3d50fb9c4595fb9.16"
+    },
+    {
+      "title": "Veterans Memorial",
+      "lat": 39.747915,
+      "lng": -104.988225,
+      "ornamentId": "ap1",
+      "guid": "5cc65f6606d9440e9b95177455f95868.11"
+    },
+    {
+      "title": "Holy Ghost Catholic Church",
+      "lat": 39.748069,
+      "lng": -104.987841,
+      "ornamentId": "ap1",
+      "guid": "fd7220f5d6314c74849e1b2d7eba7c09.16"
+    },
+    {
+      "title": "Rock Climbing Practice Wall",
+      "lat": 39.749641,
+      "lng": -104.991216,
+      "ornamentId": "ap1",
+      "guid": "f0ca4e3817ec3895809b46df763a4b7c.16"
+    },
+    {
+      "title": "Ideal Cement Building",
+      "lat": 39.747325,
+      "lng": -104.992327,
+      "ornamentId": "ap1",
+      "guid": "ebbff683baab40dfb9a5ca8286dea5ff.16"
+    },
+    {
+      "title": "Spilt Milk",
+      "lat": 39.753589,
+      "lng": -104.996082,
+      "ornamentId": "ap1",
+      "guid": "247b7bc6432d4303983f4147e990e392.16"
+    },
+    {
+      "title": "Arapahoe Street Marker",
+      "lat": 39.748827,
+      "lng": -104.99423,
+      "ornamentId": "ap1",
+      "guid": "5dc505560dfb48b7bf760834731de3a7.16"
+    },
+    {
+      "title": "Old Rite Aid Building",
+      "lat": 39.746769,
+      "lng": -104.993418,
+      "ornamentId": "ap1",
+      "guid": "cf86e80625174bbe8e92d310ecb68417.16"
+    },
+    {
+      "title": "Stainless Shapes Sculpture",
+      "lat": 39.747032,
+      "lng": -104.990473,
+      "ornamentId": "ap1",
+      "guid": "40c3dcb208be4c25b27ee253600f71fc.16"
+    },
+    {
+      "title": "17th St: Out with the Old",
+      "lat": 39.747876,
+      "lng": -104.993122,
+      "ornamentId": "ap1",
+      "guid": "e2d0e7b6e51b402a82be348560873123.16"
+    },
+    {
+      "title": "Flowery Stair Lamps",
+      "lat": 39.748484,
+      "lng": -104.991168,
+      "ornamentId": "ap1",
+      "guid": "6f7aef89718e45e89c6e684935da4c88.16"
+    },
+    {
+      "title": "1900 Lawrence Public Plaza",
+      "lat": 39.751596,
+      "lng": -104.992101,
+      "ornamentId": "ap1",
+      "guid": "0b3b713cf94335f3aa22f68342cb2cc1.16"
+    },
+    {
+      "title": "Powerful Lady",
+      "lat": 39.752587,
+      "lng": -104.995807,
+      "ornamentId": "ap1",
+      "guid": "6134bd40e668463db22230af8535252a.16"
+    },
+    {
+      "title": "17th Street: Cherry Creek Song",
+      "lat": 39.74965,
+      "lng": -104.995355,
+      "ornamentId": "ap1",
+      "guid": "2b2fe08d22194eae88d44e6469e7677c.16"
+    },
+    {
+      "title": "Buddhist Temple Bell",
+      "lat": 39.752059,
+      "lng": -104.992323,
+      "ornamentId": "ap1",
+      "guid": "6e093ce37a174afbbd60edc83b2ea6ac.16"
+    },
+    {
+      "title": "Tabor Center Clock",
+      "lat": 39.749483,
+      "lng": -104.996132,
+      "ornamentId": "ap1",
+      "guid": "9e568cf74e2e4c2ca9b02e4d96a33a80.11"
+    },
+    {
+      "title": "Rooftop Athletics",
+      "lat": 39.745597,
+      "lng": -104.988589,
+      "ornamentId": "ap1",
+      "guid": "52f308c781b44225a67ff98e518a6f63.16"
+    },
+    {
+      "title": "Silence of the Rams",
+      "lat": 39.748086,
+      "lng": -104.990735,
+      "ornamentId": "ap1",
+      "guid": "11c3a4f89af14535ac2ae9370d4c28aa.11"
+    },
+    {
+      "title": "17th St: Private and Public",
+      "lat": 39.749472,
+      "lng": -104.995094,
+      "ornamentId": "ap1",
+      "guid": "c0c1ec7ebeee4500b69fe5c7c01a374d.16"
+    },
+    {
+      "title": "Denver Buddhist Temple",
+      "lat": 39.752157,
+      "lng": -104.992036,
+      "ornamentId": "ap1",
+      "guid": "c4ae047e63c24dcdb156d3f9f05151ee.16"
+    },
+    {
+      "title": "18th And California LTR Station",
+      "lat": 39.746911,
+      "lng": -104.989825,
+      "ornamentId": "ap1",
+      "guid": "d6a81ffd5f9b40c2b838a1f8eff94e7c.16"
+    },
+    {
+      "title": "Boston Building",
+      "lat": 39.747281,
+      "lng": -104.99272,
+      "ornamentId": "ap1",
+      "guid": "4091533c29cd4615a9032bc1f15f4a94.12"
+    },
+    {
+      "title": "Cool Jazz Nightly",
+      "lat": 39.753447,
+      "lng": -104.993435,
+      "ornamentId": "ap1",
+      "guid": "9f8c0913b8fb4c9c83f3e3f6b318c6dd.16"
+    },
+    {
+      "title": "Woman Suffrage Plaque",
+      "lat": 39.748346,
+      "lng": -104.993582,
+      "ornamentId": "ap1",
+      "guid": "13539de8d87843e9b24500475dfab303.16"
+    },
+    {
+      "title": "ChinaTown Past, Present, Future Mural",
+      "lat": 39.750828,
+      "lng": -104.99279,
+      "ornamentId": "ap1",
+      "guid": "5e501cd61a8032e7b45e7cbe09398b91.16"
+    },
+    {
+      "title": "The Crocker Cracker Factory",
+      "lat": 39.753131,
+      "lng": -104.995681,
+      "ornamentId": "ap1",
+      "guid": "a7543730e680446f8acd4bfa0809084f.16"
+    },
+    {
+      "title": "18th And Stout LTR Station",
+      "lat": 39.747972,
+      "lng": -104.990516,
+      "ornamentId": "ap1",
+      "guid": "0e692a1aebe04358947f3b4f22f82517.16"
+    },
+    {
+      "title": "Stone Lions Outside Pacific Mercantile",
+      "lat": 39.751698,
+      "lng": -104.992712,
+      "ornamentId": "ap1",
+      "guid": "1e2aa42003f744269bdc174f99213159.16"
+    },
+    {
+      "title": "Skyline Park Mini Golf",
+      "lat": 39.74839,
+      "lng": -104.995492,
+      "ornamentId": "ap1",
+      "guid": "dca03c620acc41928afc04bf2fbf646a.16"
+    },
+    {
+      "title": "Mountain Frieze",
+      "lat": 39.745583,
+      "lng": -104.992504,
+      "ornamentId": "ap1",
+      "guid": "f7cf04ad48b144ce9bb501d9cc2a6558.16"
+    },
+    {
+      "title": "Native American Mural",
+      "lat": 39.747253,
+      "lng": -104.993542,
+      "ornamentId": "ap1",
+      "guid": "2ee46212b3fb4eef8097ed564c6d410c.16"
+    },
+    {
+      "title": "Irregular Form",
+      "lat": 39.749952,
+      "lng": -104.989672,
+      "ornamentId": "ap1",
+      "guid": "16644c3b963d4eb5bf5cd9c8ddc7386c.16"
+    },
+    {
+      "title": "Colorado Business Bank Clock",
+      "lat": 39.747445,
+      "lng": -104.992522,
+      "ornamentId": "ap1",
+      "guid": "378be39bc9b14070839eed26cfb4c7ca.16"
+    },
+    {
+      "title": "Skyline Fountain",
+      "lat": 39.748716,
+      "lng": -104.994909,
+      "ornamentId": "ap1",
+      "guid": "74f7b2fe61f74e078affa27dfc0f859f.16"
+    },
+    {
+      "title": "Sound Wall",
+      "lat": 39.749401,
+      "lng": -104.988212,
+      "ornamentId": "ap1",
+      "guid": "11d7f1e8727d45a1b3cc4a3d5ec11e32.11"
+    },
+    {
+      "title": "Lady Liberty",
+      "lat": 39.7466,
+      "lng": -104.989854,
+      "ornamentId": "ap1",
+      "guid": "eaff852e4b4346dbad6bae38ed6f3509.16"
+    },
+    {
+      "title": "How the Sundial Works",
+      "lat": 39.748524,
+      "lng": -104.989446,
+      "ornamentId": "ap1",
+      "guid": "0bef397bec4441d296ec9c7db98b35f9.16"
+    },
+    {
+      "title": "Johns Manville Plaza Picnic Area",
+      "lat": 39.746649,
+      "lng": -104.991082,
+      "ornamentId": "ap1",
+      "guid": "12d47cdfe9b83f438dc1143a11ad1b8f.16"
+    },
+    {
+      "title": "Mosaic Falls",
+      "lat": 39.748795,
+      "lng": -104.993716,
+      "ornamentId": "ap1",
+      "guid": "e6284798961146f89247cbe1d30fa719.16"
+    },
+    {
+      "title": "Champa Square",
+      "lat": 39.746516,
+      "lng": -104.993752,
+      "ornamentId": "ap1",
+      "guid": "02cf6e7e2e9e492e8c17370df57fb21d.16"
+    },
+    {
+      "title": "1UP",
+      "lat": 39.753879,
+      "lng": -104.995067,
+      "ornamentId": "ap1",
+      "guid": "4e8218ab505e40e5b44bb687505ac6d8.16"
+    },
+    {
+      "title": "US Custom House, Denver",
+      "lat": 39.748368,
+      "lng": -104.98888,
+      "ornamentId": "ap1",
+      "guid": "d0ebdbf3b9c8487492c3442fef161437.11"
+    },
+    {
+      "title": "Denver Steps",
+      "lat": 39.749638,
+      "lng": -104.993791,
+      "ornamentId": "ap1",
+      "guid": "9695870b859f47df991101c17a149f0a.16"
+    },
+    {
+      "title": "The Heart Of Drahnne",
+      "lat": 39.749075,
+      "lng": -104.989367,
+      "ornamentId": "ap1",
+      "guid": "b1d595d9a8a2446182fd3dd88421eba4.16"
+    },
+    {
+      "title": "Landscaping Excellence Plaque",
+      "lat": 39.750751,
+      "lng": -104.995563,
+      "ornamentId": "ap1",
+      "guid": "4357f5b4240639c288a172e2bf3dc1b3.16"
+    },
+    {
+      "title": "Metro Ride Map",
+      "lat": 39.749383,
+      "lng": -104.992665,
+      "ornamentId": "ap1",
+      "guid": "21fe2f2322913d55a1dc209148f0ba42.16"
+    },
+    {
+      "title": "And Art",
+      "lat": 39.747497,
+      "lng": -104.990431,
+      "ornamentId": "ap1",
+      "guid": "1f930a6340d03c759ec68a5e57db4950.16"
+    },
+    {
+      "title": "Electronic Mural",
+      "lat": 39.74959,
+      "lng": -104.989792,
+      "ornamentId": "ap1",
+      "guid": "36cf1a7382ef4de688d191b7476b69fe.16"
+    },
+    {
+      "title": "Herzog public murals",
+      "lat": 39.751239,
+      "lng": -104.991596,
+      "ornamentId": "ap1",
+      "guid": "11fc9ec7726a3b1fa10510906b1ff54d.16"
+    },
+    {
+      "title": "The House of Mirrors",
+      "lat": 39.753216,
+      "lng": -104.99381,
+      "ornamentId": "ap1",
+      "guid": "9267bd63ef1e4b999346a6e26bbff66e.16"
+    },
+    {
+      "title": "Tabor Center",
+      "lat": 39.749366,
+      "lng": -104.995785,
+      "ornamentId": "ap1",
+      "guid": "6366517ee3da302e8f5600d828876a9e.16"
+    },
+    {
+      "title": "Sakura Rose Shrine",
+      "lat": 39.752334,
+      "lng": -104.992395,
+      "ornamentId": "ap1",
+      "guid": "d737a914183946ff9cdaa7cade2f5800.16"
+    },
+    {
+      "title": "Tavern Downtown",
+      "lat": 39.753473,
+      "lng": -104.993865,
+      "ornamentId": "ap1",
+      "guid": "b530cae8c2d14f469fd06c6f92fdccf6.16"
+    },
+    {
+      "title": "Federal Services Totem",
+      "lat": 39.749097,
+      "lng": -104.989153,
+      "ornamentId": "ap1",
+      "guid": "342edeffed694c5f93fbb983553b53c7.16"
+    },
+    {
+      "title": "17th St: Tower and Park",
+      "lat": 39.748188,
+      "lng": -104.995415,
+      "ornamentId": "ap1",
+      "guid": "8d08dbd7709e4ffeae56ed770dfa84f9.16"
+    },
+    {
+      "title": "If Thou Desire Rest",
+      "lat": 39.748287,
+      "lng": -104.991068,
+      "ornamentId": "ap1",
+      "guid": "366d7ed3dfc54554bbea421dc1d54bc2.16"
+    },
+    {
+      "title": "Whole Nectar Mural",
+      "lat": 39.749702,
+      "lng": -104.994634,
+      "ornamentId": "ap1",
+      "guid": "28a4202303bc3970976e1b4ae74a00f1.16"
+    },
+    {
+      "title": "17th St: The Barnes Dance",
+      "lat": 39.746794,
+      "lng": -104.992006,
+      "ornamentId": "ap1",
+      "guid": "0a9c9513e11b4a0783b5c8640515a98d.16"
+    },
+    {
+      "title": "Denver Bikeway to Five Points",
+      "lat": 39.746541,
+      "lng": -104.988545,
+      "ornamentId": "ap1",
+      "guid": "2f3389932e2439a591a2f3b8a0f554a6.16"
+    },
+    {
+      "title": "US Circuit Library",
+      "lat": 39.749078,
+      "lng": -104.989805,
+      "ornamentId": "ap1",
+      "guid": "918ca4d922c048cd9a70e39600bafd0f.12"
+    },
+    {
+      "title": "Coors Field Mural",
+      "lat": 39.754447,
+      "lng": -104.995373,
+      "ornamentId": "ap1",
+      "guid": "204f052ae4354ecc9ab6f5fea8607020.16"
+    },
+    {
+      "title": "Union Pacific Railroad Building",
+      "lat": 39.754938,
+      "lng": -104.997386,
+      "ornamentId": "ap1",
+      "guid": "127122e43f8d403485394e3bae613586.16"
+    },
+    {
+      "title": "Tom’s Watch Bar",
+      "lat": 39.754959,
+      "lng": -104.996524,
+      "ornamentId": "ap1",
+      "guid": "8b6c6fa69b8134d0823ff4ec76561f8b.16"
+    },
+    {
+      "title": "Howl at the Moon",
+      "lat": 39.755226,
+      "lng": -104.996858,
+      "ornamentId": "ap1",
+      "guid": "825ad55380c5410b91f1c47a7d3538fc.16"
+    },
+    {
+      "title": "Coors Field Inaugural Season Plaque",
+      "lat": 39.755416,
+      "lng": -104.996481,
+      "ornamentId": "ap1",
+      "guid": "731376dfadf54a57aa14790766e5fc19.16"
+    },
+    {
+      "title": "Baseball Rollercoaster",
+      "lat": 39.755016,
+      "lng": -104.9962,
+      "ornamentId": "ap1",
+      "guid": "2619db237e5f3e6aacb44d83f94d9bcf.16"
+    }
+  ]
+}
