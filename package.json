@@ -37,7 +37,7 @@
         "@eslint/js": "^10.0.1",
         "@eslint/json": "^2.0.1",
         "@semantic-release/exec": "^7.1.0",
-        "conventional-changelog-conventionalcommits": "^10.3.0",
+        "conventional-changelog-conventionalcommits": "~9.3.1",
         "css-loader": "^7.1.4",
         "eslint": "^10.8.1",
         "globals": "^16.5.0",
