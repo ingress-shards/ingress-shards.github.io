@@ -1,21 +1,14 @@
 import * as Instant from "temporal-polyfill/fns/Instant";
-import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
 
-import { FACTION_COLORS } from "../../constants.js";
-import { calculateShardActionSchedule, convertToCsv, formatTimeWithMs, formatDurationMs, formatZonedDateTimeWithMs } from "./data-helpers.js";
+import { calculateShardActionSchedule, formatTimeWithMs, formatDurationMs, formatZonedDateTimeWithMs } from "./data-helpers.js";
 
-const INDENT = '    ';
-
-
-export function validateProcessedSeriesData(processedSeriesData, seriesConfig, blueprints, verbose = false) {
-    console.log(`ℹ️ Validating processed data: ${seriesConfig.name}, ${Object.keys(processedSeriesData).length} sites...`);
+export function validateProcessedSeriesData(processedSeriesData, seriesConfig, blueprints) {
     const processedSites = Object.values(processedSeriesData);
-    const results = validateSites(processedSites, seriesConfig, blueprints, verbose);
-    console.log(`ℹ️ Validation complete.\n`);
+    const results = validateSites(processedSites, seriesConfig, blueprints);
     return results;
 }
 
-function validateSites(processedSites, seriesConfig, blueprints, verbose = false) {
+function validateSites(processedSites, seriesConfig, blueprints) {
     const seriesMissing = [];
     const seriesOutsideWindow = [];
     const seriesInvalidSequences = [];
@@ -98,7 +91,6 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                     let missingShardActions = [];
                     let shardActionsOutsideJumpWindow = [];
                     let invalidShardSequences = [];
-                    let invalidDespawnsCount = 0;
                     for (const [waveIndex, wave] of site.waves.entries()) {
                         const expectedWaveShards = (siteConfig && siteConfig.shardCounts) ? siteConfig.shardCounts[waveIndex] : shardMechanic.waves[waveIndex].quantity;
                         if (wave.shards.length !== expectedWaveShards) {
@@ -261,7 +253,6 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                             return a.shardId - b.shardId;
                         });
 
-                        console.log(`⚠️ Site ${site.geocode.id}: has ${missingShardActions.length} missing shard actions.`);
                         const tableData = missingShardActions.map(action => {
                             const formattedTime = formatZonedDateTimeWithMs(action.time);
                             return {
@@ -280,7 +271,6 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                             return a.actualTime.epochMilliseconds - b.actualTime.epochMilliseconds;
                         });
 
-                        console.log(`⚠️ Site ${site.geocode.id}: has ${shardActionsOutsideJumpWindow.length} shard actions outside the expected 1-minute window.`);
                         const tableData = shardActionsOutsideJumpWindow.map(action => {
                             const formattedActualTime = formatZonedDateTimeWithMs(action.actualTime);
                             const formattedScheduledTime = formatZonedDateTimeWithMs(action.scheduledTime);
@@ -300,7 +290,6 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                         seriesOutsideWindow.push(...tableData);
                     }
                     if (invalidShardSequences.length > 0) {
-                        console.log(`⚠️ Site ${site.geocode.id}: has ${invalidShardSequences.length} invalid shard jump sequences.`);
                         const tableData = [];
                         invalidShardSequences.sort((a, b) => {
                             if (a.wave !== b.wave) return a.wave - b.wave;
@@ -311,23 +300,7 @@ function validateSites(processedSites, seriesConfig, blueprints, verbose = false
                         }
                         seriesInvalidSequences.push(...tableData);
                     }
-                    if (invalidDespawnsCount > 0) {
-                        console.log(`⚠️ Site ${site.geocode.id}: has ${invalidDespawnsCount} invalid despawn actions.`);
-                    }
                 }
-            }
-        }
-
-        if (site.fullEvent) {
-            for (const [shardPathKey, shardPath] of Object.entries(site.fullEvent.shardPaths)) {
-                if (shardPath.links && shardPath.jumps && shardPath.links.length > 0 && shardPath.jumps.length > 0) {
-                    console.log(`⚠️ Site ${site.geocode.id}: Shard path ${shardPathKey} with ${shardPath.links.length} links and ${shardPath.jumps.length}.`);
-                }
-                if (shardPath.jumps && shardPath.jumps.length > 1) {
-                    console.log(`⚠️ Site ${site.geocode.id}: ${shardPath.jumps.length} random teleports in shard path ${shardPathKey}.`);
-                }
-
-
             }
         }
 

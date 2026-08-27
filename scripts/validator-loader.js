@@ -33,8 +33,7 @@ async function runValidator() {
             if (!processedData) {
                 continue;
             }
-            console.log(`ℹ️ Validating processed data for ${seriesConfig.name}...`);
-            const results = validateProcessedSeriesData(processedData, seriesConfig, eventBlueprints, verbose);
+            const results = validateProcessedSeriesData(processedData, seriesConfig, eventBlueprints);
             if (results) {
                 if (results.missingShardActions) allMissing.push(...results.missingShardActions);
                 if (results.shardActionsOutsideJumpWindow) allOutsideWindow.push(...results.shardActionsOutsideJumpWindow);

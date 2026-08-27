@@ -144,34 +144,6 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
             });
         }
 
-        let totalActualActions = 0;
-        let totalExpectedActions = 0;
-        for (const [waveIndex, wave] of site.waves.entries()) {
-            const expectedWaveSchedule = shardActionSchedule.waves[waveIndex];
-            for (const shard of wave.shards) {
-                totalActualActions += shard.history.length;
-                totalExpectedActions += expectedWaveSchedule.length;
-            }
-        }
-
-        const spawnLatencies = [];
-        const jumpLatencies = [];
-        for (const stats of Object.values(actionStats)) {
-            if (stats.action === 'spawn') {
-                spawnLatencies.push(...stats.latencies);
-            } else if (stats.action === 'jump') {
-                jumpLatencies.push(...stats.latencies);
-            }
-        }
-
-        const avgSpawnMs = spawnLatencies.length > 0 ? (spawnLatencies.reduce((sum, val) => sum + Math.abs(val), 0) / spawnLatencies.length) : null;
-        const avgJumpMs = jumpLatencies.length > 0 ? (jumpLatencies.reduce((sum, val) => sum + Math.abs(val), 0) / jumpLatencies.length) : null;
-
-        const avgSpawnStr = avgSpawnMs !== null ? formatDurationMs(avgSpawnMs, true) : 'N/A';
-        const avgJumpStr = avgJumpMs !== null ? formatDurationMs(avgJumpMs, true) : 'N/A';
-
-        console.log(`ℹ️ Site ${site.geocode.id} average times - Spawn: ${avgSpawnStr}, Jump: ${avgJumpStr}`);
-
         return tableData;
     }
     return null;
