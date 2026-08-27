@@ -1,6 +1,7 @@
 import "leaflet/dist/leaflet.css";
+import "maplibre-gl/dist/maplibre-gl.css";
 import "github-fork-ribbon-css/gh-fork-ribbon.css";
-import 'flag-icon-css/css/flag-icons.min.css';
+import "../../gen/flag-icons.css";
 import "../assets/main.css";
 import { initMap } from "./ui/map/map-manager.js";
 import { initDataStore } from "./data/data-store.js";

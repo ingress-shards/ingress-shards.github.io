@@ -12,6 +12,21 @@ const resolvePackage = (pkg) => path.dirname(fileURLToPath(import.meta.resolve(`
 
 export const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'package.json'), 'utf-8'));
 
+const secretsPath = path.resolve(__dirname, '.secrets');
+if (fs.existsSync(secretsPath)) {
+    const secretsContent = fs.readFileSync(secretsPath, 'utf-8');
+    for (const line of secretsContent.split(/\r?\n/)) {
+        const trimmed = line.trim();
+        if (trimmed && !trimmed.startsWith('#') && trimmed.includes('=')) {
+            const [key, ...rest] = trimmed.split('=');
+            const val = rest.join('=').trim().replace(/^["']|["']$/g, '');
+            if (!process.env[key.trim()]) {
+                process.env[key.trim()] = val;
+            }
+        }
+    }
+}
+
 export default (env, { appVersion }) => {
     return {
         entry: './src/js/index.js',
@@ -25,22 +40,7 @@ export default (env, { appVersion }) => {
             rules: [
                 {
                     test: /\.css$/,
-                    include: [
-                        resolvePackage('flag-icon-css')
-                    ],
-                    use: [
-                        'style-loader',
-                        {
-                            loader: 'css-loader',
-                        },
-                    ],
-                },
-                {
-                    test: /\.css$/,
                     use: ['style-loader', 'css-loader'],
-                    exclude: [
-                        resolvePackage('flag-icon-css')
-                    ],
                 },
                 {
                     test: /abaddon1_shard\.png$/,
@@ -52,7 +52,7 @@ export default (env, { appVersion }) => {
                 {
                     test: /\.(png|svg|jpg|jpeg|gif)$/i,
                     include: [
-                        resolvePackage('flag-icon-css')
+                        path.resolve(__dirname, 'gen/flags')
                     ],
                     exclude: [
                         /abaddon1_shard\.png$/
@@ -65,7 +65,7 @@ export default (env, { appVersion }) => {
                 {
                     test: /\.(png|svg|jpg|jpeg|gif)$/i,
                     exclude: [
-                        resolvePackage('flag-icon-css'),
+                        path.resolve(__dirname, 'gen/flags'),
                         /abaddon1_shard\.png$/,
                         resolvePackage('leaflet')
                     ],
@@ -92,6 +92,7 @@ export default (env, { appVersion }) => {
         plugins: [
             new webpack.DefinePlugin({
                 __APP_VERSION__: JSON.stringify(appVersion),
+                __CARTO_API_KEY__: JSON.stringify(process.env.CARTO_API_KEY || ''),
             }),
             new HtmlWebpackPlugin({
                 template: './index.html',

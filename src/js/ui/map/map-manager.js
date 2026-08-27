@@ -1,4 +1,5 @@
 import * as L from "leaflet";
+import "@maplibre/maplibre-gl-leaflet";
 import "leaflet-providers";
 import "leaflet.motion";
 import "leaflet-relief";
@@ -14,10 +15,19 @@ export function initMap() {
 
     createCustomPanes(map);
 
+    const cartoKeyParam = __CARTO_API_KEY__ ? `?key=${__CARTO_API_KEY__}` : '';
+
     const baseMaps = {
         OSM: L.tileLayer.provider("OpenStreetMap.Mapnik"),
-        "CartoDB Positron": L.tileLayer.provider("CartoDB.Positron"),
-        "CartoDB Dark Matter": L.tileLayer.provider("CartoDB.DarkMatter").addTo(map),
+        "CartoDB Positron": L.maplibreGL({
+            style: `https://basemaps.cartocdn.com/gl/positron-gl-style/style.json${cartoKeyParam}`,
+        }),
+        "CartoDB Dark Matter": L.maplibreGL({
+            style: `https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json${cartoKeyParam}`,
+        }).addTo(map),
+        "CartoDB Voyager": L.maplibreGL({
+            style: `https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json${cartoKeyParam}`,
+        }),
         "ESRI WorldImagery": L.tileLayer.provider("Esri.WorldImagery"),
         "ESRI WorldTopoMap": L.tileLayer.provider('Esri.WorldTopoMap'),
         "Google Hybrid": L.tileLayer("http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}", {

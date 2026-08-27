@@ -25,6 +25,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CARTO_API_KEY: ${{ secrets.CARTO_API_KEY }}
     steps:
       - uses: actions/checkout@v6
         with:
