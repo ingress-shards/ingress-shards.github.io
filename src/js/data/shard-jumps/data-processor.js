@@ -1,6 +1,6 @@
-import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
-import * as Instant from "temporal-polyfill/fns/Instant";
-import * as Duration from "temporal-polyfill/fns/Duration";
+import { fromString as zdtFromString, add as zdtAdd } from "temporal-polyfill/fns/ZonedDateTime";
+import { fromString as instantFromString } from "temporal-polyfill/fns/Instant";
+import { fromFields as durationFromFields } from "temporal-polyfill/fns/Duration";
 import { getBasic } from "temporal-polyfill/fns/Calendar";
 import { HISTORY_REASONS, SITE_AGGREGATION_DISTANCE, getAbbreviatedTeam } from "../../constants.js";
 import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs, getPortalKey } from "./data-helpers.js";
@@ -113,7 +113,7 @@ export function processSeriesData(seriesDataPackage) {
     // Pre-calculate dateMillis for each site once to avoid slow temporal parsing in loops
     sitesGeocode.forEach(site => {
         if (site.dateMillis === undefined) {
-            const zdt = ZonedDateTime.fromString(site.date, getBasic);
+            const zdt = zdtFromString(site.date, getBasic);
             site.dateMillis = zdt.epochMilliseconds;
         }
     });
@@ -122,7 +122,7 @@ export function processSeriesData(seriesDataPackage) {
     console.log(`ℹ️ Processing ${shardJumpTimes.length} shard jump times files, ${ornamentedPortals?.length || 0} ornamented portals files and ${targetPortals?.length || 0} target portals files.`);
 
     const allObservedOrnamentedPortals = ornamentedPortals?.flatMap(exportObj => {
-        const observedAt = exportObj.timestamp ? Instant.fromString(exportObj.timestamp).epochMilliseconds : 0;
+        const observedAt = exportObj.timestamp ? instantFromString(exportObj.timestamp).epochMilliseconds : 0;
         return exportObj.portals.map(p => ({ ...p, observedAt }));
     }) || [];
 
@@ -345,12 +345,12 @@ function applyFragmentsToSite(site, fragments, siteTargetPortals, seriesConfig, 
     if (shardMechanic && shardMechanic.waves && shardMechanic.waves.length > 1) {
         site.waves = [];
 
-        const baseline = ZonedDateTime.fromString(site.geocode.date, getBasic);
+        const baseline = zdtFromString(site.geocode.date, getBasic);
 
         shardMechanic.waves.forEach((wave, index) => {
-            const waveStart = new Date(ZonedDateTime.add(baseline, Duration.fromFields({ minutes: wave.startOffset })).epochMilliseconds);
+            const waveStart = new Date(zdtAdd(baseline, durationFromFields({ minutes: wave.startOffset })).epochMilliseconds);
             // endOffset is inclusive of the minute, so we look until the start of the next minute
-            const waveEnd = new Date(ZonedDateTime.add(baseline, Duration.fromFields({ minutes: wave.endOffset + 1 })).epochMilliseconds);
+            const waveEnd = new Date(zdtAdd(baseline, durationFromFields({ minutes: wave.endOffset + 1 })).epochMilliseconds);
 
             const waveFragments = fragments.filter(fragment => {
                 const spawnTime = getFragmentSpawnTimeMs(fragment);

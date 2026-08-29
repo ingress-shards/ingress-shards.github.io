@@ -6,9 +6,9 @@ import { getFlagTooltipHtml } from "./ui-formatters.js"
 import { formatEpochToLocalTime, formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
 import { getEventDuration } from "../shared/event-helpers.js";
 import { getHexagonSVG } from "./marker-template.js";
-import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
-import * as Now from "temporal-polyfill/fns/Now";
-import * as Duration from "temporal-polyfill/fns/Duration";
+import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } from "temporal-polyfill/fns/ZonedDateTime";
+import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
+import { fromFields as durationFromFields } from "temporal-polyfill/fns/Duration";
 import { getBasic } from "temporal-polyfill/fns/Calendar";
 
 const shardIcon = L.icon({
@@ -482,16 +482,16 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     if (!siteData) return { title: '', content: '' };
 
     const siteEventType = EVENT_BRANDS[siteGeocode.eventType];
-    const startTime = ZonedDateTime.fromString(siteGeocode.date, getBasic);
+    const startTime = zdtFromString(siteGeocode.date, getBasic);
     const durationMins = getEventDuration(siteGeocode, seriesId);
-    const endTime = ZonedDateTime.add(startTime, Duration.fromFields({ minutes: durationMins }));
-    const now = Now.zonedDateTimeISO(siteGeocode.timezone);
+    const endTime = zdtAdd(startTime, durationFromFields({ minutes: durationMins }));
+    const now = zonedDateTimeISO(siteGeocode.timezone);
     let countdownSuffix = '';
 
-    if (ZonedDateTime.compare(now, startTime) < 0) {
+    if (zdtCompare(now, startTime) < 0) {
         const remaining = getTimeRemaining(siteGeocode.date, siteGeocode.timezone);
         countdownSuffix = ` (Starts in ${remaining})`;
-    } else if (ZonedDateTime.compare(now, startTime) >= 0 && ZonedDateTime.compare(now, endTime) <= 0) {
+    } else if (zdtCompare(now, startTime) >= 0 && zdtCompare(now, endTime) <= 0) {
         const remaining = getActiveEventRemaining(siteGeocode.date, siteGeocode.timezone, durationMins);
         countdownSuffix = ` (Active: ${remaining} remaining)`;
     }

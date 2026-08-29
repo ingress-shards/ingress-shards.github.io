@@ -1,4 +1,7 @@
-import * as Instant from "temporal-polyfill/fns/Instant";
+import {
+    fromEpochMilliseconds as instantFromEpochMilliseconds,
+    toZonedDateTimeISO,
+} from "temporal-polyfill/fns/Instant";
 
 import { calculateShardActionSchedule, formatTimeWithMs, formatDurationMs, formatZonedDateTimeWithMs } from "./data-helpers.js";
 
@@ -101,8 +104,8 @@ function validateSites(processedSites, seriesConfig, blueprints) {
                             const expectedWaveSchedule = [...shardActionSchedule.waves[waveIndex]];
                             if (shard.history.length !== expectedWaveSchedule.length) {
                                 for (const historyItem of shard.history) {
-                                    const inst = Instant.fromEpochMilliseconds(Number(historyItem.moveTime));
-                                    const zonedDateTime = Instant.toZonedDateTimeISO(inst, site.geocode.timezone);
+                                    const inst = instantFromEpochMilliseconds(Number(historyItem.moveTime));
+                                    const zonedDateTime = toZonedDateTimeISO(inst, site.geocode.timezone);
 
                                     const expectedIndex = expectedWaveSchedule.findIndex(wsa => {
                                         const actionMatches = (
@@ -136,8 +139,8 @@ function validateSites(processedSites, seriesConfig, blueprints) {
                                     const historyItem = shard.history[i];
                                     const scheduledItem = expectedWaveSchedule[i];
 
-                                    const inst = Instant.fromEpochMilliseconds(Number(historyItem.moveTime));
-                                    const zonedDateTime = Instant.toZonedDateTimeISO(inst, site.geocode.timezone);
+                                    const inst = instantFromEpochMilliseconds(Number(historyItem.moveTime));
+                                    const zonedDateTime = toZonedDateTimeISO(inst, site.geocode.timezone);
 
                                     const actionMatches = (
                                         (scheduledItem.action === "spawn" && historyItem.reason === "spawn") ||

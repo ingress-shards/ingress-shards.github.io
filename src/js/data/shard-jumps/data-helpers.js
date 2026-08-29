@@ -1,6 +1,13 @@
-import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
-import * as Duration from "temporal-polyfill/fns/Duration";
-import * as Instant from "temporal-polyfill/fns/Instant";
+import {
+    fromString as zdtFromString,
+    add as zdtAdd,
+    toLocaleString as zdtToLocaleString,
+} from "temporal-polyfill/fns/ZonedDateTime";
+import { fromFields as durationFromFields } from "temporal-polyfill/fns/Duration";
+import {
+    fromEpochMilliseconds as instantFromEpochMilliseconds,
+    toZonedDateTimeISO,
+} from "temporal-polyfill/fns/Instant";
 import { getBasic } from "temporal-polyfill/fns/Calendar";
 import { HISTORY_REASONS } from "../../constants.js";
 import { truncateToDecimalPlaces } from "../../shared/math-helpers.js";
@@ -38,14 +45,13 @@ export function calculateCentroid(portalsMap) {
     let totalLongitude = 0;
 
     for (const id of portalIds) {
-        const portal = portalsMap[id];
-        totalLatitude += portal.lat;
-        totalLongitude += portal.lng;
+        totalLatitude += portalsMap[id].lat;
+        totalLongitude += portalsMap[id].lng;
     }
 
     return {
         lat: truncateToDecimalPlaces(totalLatitude / portalIds.length, 6),
-        lng: truncateToDecimalPlaces(totalLongitude / portalIds.length, 6),
+        lng: truncateToDecimalPlaces(totalLongitude / portalIds.length, 6)
     };
 }
 
@@ -102,25 +108,25 @@ export function printTable(data) {
 }
 
 export function calculateShardActionSchedule(shardMechanic, siteGeocode) {
-    const startTimeZoned = ZonedDateTime.fromString(siteGeocode.date, getBasic);
+    const startTimeZoned = zdtFromString(siteGeocode.date, getBasic);
     let schedule = {
         startTime: startTimeZoned,
         waves: []
     };
 
     for (const wave of shardMechanic.waves) {
-        const waveStartTimeZoned = ZonedDateTime.add(
+        const waveStartTimeZoned = zdtAdd(
             startTimeZoned,
-            Duration.fromFields({ minutes: wave.startOffset }),
+            durationFromFields({ minutes: wave.startOffset }),
         );
 
         let waveSchedule = [];
         for (const waveAction of shardMechanic.waveActions.filter((a) =>
             ["spawn", "jump", "despawn"].includes(a.action),
         )) {
-            const waveActionTimeZoned = ZonedDateTime.add(
+            const waveActionTimeZoned = zdtAdd(
                 waveStartTimeZoned,
-                Duration.fromFields({ minutes: waveAction.time }),
+                durationFromFields({ minutes: waveAction.time }),
             );
             waveSchedule.push({
                 action: waveAction.action,
@@ -157,7 +163,7 @@ export function convertToCsv(data) {
 
 export function formatZonedDateTimeWithMs(zdt) {
     if (!zdt) return '-';
-    return ZonedDateTime.toLocaleString(zdt, 'en-US', {
+    return zdtToLocaleString(zdt, 'en-US', {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
@@ -168,8 +174,8 @@ export function formatZonedDateTimeWithMs(zdt) {
 
 export function formatTimeWithMs(epochMs, timezone) {
     if (!epochMs) return '-';
-    const inst = Instant.fromEpochMilliseconds(Number(epochMs));
-    const zdt = Instant.toZonedDateTimeISO(inst, timezone);
+    const inst = instantFromEpochMilliseconds(Number(epochMs));
+    const zdt = toZonedDateTimeISO(inst, timezone);
     return formatZonedDateTimeWithMs(zdt);
 }
 
