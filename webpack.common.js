@@ -39,10 +39,6 @@ export default (env, { appVersion }) => {
         module: {
             rules: [
                 {
-                    test: /\.css$/,
-                    use: ['style-loader', 'css-loader'],
-                },
-                {
                     test: /abaddon1_shard\.png$/,
                     type: 'asset/resource',
                     generator: {
