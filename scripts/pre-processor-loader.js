@@ -95,20 +95,26 @@ async function runDataProcessor() {
         const seriesPromises = seriesMetadata.series.map(config => processSingleSeries(config, verbose));
         const results = await Promise.all(seriesPromises);
 
-        const allSeriesData = {};
+        const seriesDataDir = path.join(OUTPUT_DIR, 'data');
+        if (!existsSync(seriesDataDir)) {
+            mkdirSync(seriesDataDir, { recursive: true });
+        }
+
+        const writePromises = [];
+
         results.forEach(res => {
             if (res) {
-                allSeriesData[res.seriesId] = res.processedData;
+                const seriesFilePath = path.join(seriesDataDir, `${res.seriesId}.json`);
+                writePromises.push(fs.writeFile(seriesFilePath, JSON.stringify(res.processedData), 'utf-8'));
             }
         });
 
-        const outputFilePath = path.join(OUTPUT_DIR, `processed_series_data.json`);
         try {
-            await fs.writeFile(outputFilePath, JSON.stringify(allSeriesData), 'utf-8');
+            await Promise.all(writePromises);
             const endTime = performance.now();
-            console.log(`✅ Series data successfully processed and saved to ${outputFilePath} in ${((endTime - startTime) / 1000).toFixed(2)} seconds`);
+            console.log(`✅ Series data successfully processed (${results.filter(Boolean).length} series files saved to ${seriesDataDir}) in ${((endTime - startTime) / 1000).toFixed(2)} seconds`);
         } catch (e) {
-            console.error(`❌ Failed to write output file.`, e);
+            console.error(`❌ Failed to write output files.`, e);
             process.exit(1);
         }
     } catch (error) {
