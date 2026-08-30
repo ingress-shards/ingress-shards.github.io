@@ -133,6 +133,11 @@ export default (env, { appVersion }) => {
                         },
                     },
                     {
+                        from: path.resolve(__dirname, 'gen/data'),
+                        to: 'data/',
+                        noErrorOnMissing: true,
+                    },
+                    {
                         from: path.resolve(__dirname, 'docs/assets/shard-site.png'),
                         to: 'images/',
                     },

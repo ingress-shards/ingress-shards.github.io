@@ -1,9 +1,9 @@
 import { IS_NAVIGATING_BACK, navigate, setViewDispatchers } from "../router.js";
-import { getSeriesLayer, getDetailsPanelContent as getSeriesDetailsContent, setupMarkerHover, getSeriesControl, initSeriesLayers } from "./series-renderer.js";
+import { refreshSeriesLayer, getDetailsPanelContent as getSeriesDetailsContent, setupMarkerHover, getSeriesControl, initSeriesLayers } from "./series-renderer.js";
 import { getSiteLayers, getDetailsPanelContent as getSiteDetailsContent, updateAllPolylineStyles, setActiveSiteLayer, getSiteControl } from "./site-renderer.js";
 import { detailsPanelControl } from "./details-panel.js";
 import { handleCustomFile, getDetailsPanelContent as getCustomDetailsContent } from "./custom-file-handler.js";
-import { getDefaultSeriesId, getSeriesMetadata, getSeriesGeocode } from "../data/data-store.js";
+import { getDefaultSeriesId, getSeriesMetadata, getSeriesGeocode, loadSeriesData } from "../data/data-store.js";
 import { CUSTOM_SERIES_ID } from "../constants.js";
 
 let IS_MAP_INTERACTION_ACTIVE = false;
@@ -13,11 +13,12 @@ let detailsPanel, seriesControlPanel, waveControlPanel;
 let isOrnamentVisible = false;
 
 const mapDispatchers = {
-    displaySeriesDetails: (seriesId) => {
+    displaySeriesDetails: async (seriesId) => {
         if (!map) return;
         cleanupLayers({ seriesId });
 
-        const seriesLayer = getSeriesLayer(seriesId);
+        await loadSeriesData(seriesId);
+        const seriesLayer = refreshSeriesLayer(seriesId);
         if (seriesLayer && !map.hasLayer(seriesLayer)) {
             map.addLayer(seriesLayer);
         }
@@ -43,10 +44,12 @@ const mapDispatchers = {
         const viewAction = () => { map.setView([0, 0], 2, { duration: 0 }); }
         performMapMoveAction(flyAction, viewAction);
     },
-    displaySiteDetails: (seriesId, siteNavigationId) => {
+    displaySiteDetails: async (seriesId, siteNavigationId) => {
         if (!map) return;
         let siteId = seriesId + "-" + siteNavigationId;
         cleanupLayers({ siteId });
+
+        await loadSeriesData(seriesId);
 
         const siteLayers = getSiteLayers(seriesId, siteId);
         if (!siteLayers) return;
@@ -104,11 +107,13 @@ const mapDispatchers = {
             })
         });
     },
-    displayWaveDetails: (seriesId, siteNavigationId, waveId) => {
+    displayWaveDetails: async (seriesId, siteNavigationId, waveId) => {
         if (!map) return;
 
         let siteId = seriesId + "-" + siteNavigationId;
         cleanupLayers({ siteId, waveId });
+
+        await loadSeriesData(seriesId);
 
         const siteLayers = getSiteLayers(seriesId, siteId);
         if (!siteLayers) return;

@@ -1,6 +1,5 @@
 import seriesMetadata from "../../../conf/series_metadata.json" with { type: "json" };
 import seriesGeocode from "../../../gen/series_geocode.json" with { type: "json" };
-import seriesData from "../../../gen/processed_series_data.json" with { type: "json" };
 import { CUSTOM_SERIES_ID } from "../constants.js";
 
 const seriesCache = {};
@@ -14,7 +13,7 @@ export async function initDataStore() {
         },
         geocode: {
             id: CUSTOM_SERIES_ID,
-            sites: [],
+            sites: {},
         },
         data: {},
     };
@@ -38,17 +37,38 @@ export async function initDataStore() {
             }, {});
 
             seriesCache[seriesId].geocode = {
-                sites: sitesMap
+                sites: sitesMap,
             };
         }
     }
 
-    for (const [seriesId, data] of Object.entries(seriesData)) {
-        seriesCache[seriesId].data = data;
-    }
-
     if (!defaultSeriesId && seriesMetadata.series.length > 0) {
         defaultSeriesId = seriesMetadata.series[0].id;
+    }
+}
+
+export async function loadSeriesData(seriesId) {
+    if (!seriesId) return null;
+    if (seriesId === CUSTOM_SERIES_ID) {
+        return seriesCache.custom?.data || {};
+    }
+
+    const entry = seriesCache[seriesId];
+    if (!entry) return null;
+    if (entry.data) return entry.data;
+
+    try {
+        const response = await fetch(`data/${seriesId}.json`);
+        if (!response.ok) {
+            console.warn(`Could not load series data for ${seriesId}: HTTP ${response.status}`);
+            return null;
+        }
+        const data = await response.json();
+        entry.data = data;
+        return data;
+    } catch (error) {
+        console.error(`Failed to fetch series data for ${seriesId}:`, error);
+        return null;
     }
 }
 
@@ -83,4 +103,5 @@ export function addCustomData(processedData) {
     for (const [siteId, siteData] of Object.entries(data)) {
         seriesCache.custom.data[siteId] = siteData;
     }
-}
+}
+

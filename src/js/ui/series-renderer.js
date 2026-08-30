@@ -153,28 +153,30 @@ export function initSeriesLayers() {
 }
 
 export function updateCustomSeriesLayer(seriesId) {
-    const currentSeriesLayer = seriesLayerCache.get(seriesId);
-    if (!currentSeriesLayer) return;
-    const currentSiteMarkers = [];
-    currentSeriesLayer.eachLayer(function (layer) {
-        if (layer instanceof L.Marker) {
-            currentSiteMarkers.push(layer);
-        }
-    });
+    return refreshSeriesLayer(seriesId);
+}
 
+export function refreshSeriesLayer(seriesId) {
     const updatedSeriesLayer = renderSeriesLayer(seriesId);
-    updatedSeriesLayer.eachLayer(function (layer) {
-        if (
-            layer instanceof L.Marker &&
-            layer._siteId &&
-            !currentSiteMarkers.find(marker => marker._siteId === layer._siteId)) {
-            currentSeriesLayer.addLayer(layer);
-        }
-    });
+    const existingSeriesLayer = seriesLayerCache.get(seriesId);
+    if (existingSeriesLayer) {
+        existingSeriesLayer.clearLayers();
+        updatedSeriesLayer.eachLayer(layer => {
+            existingSeriesLayer.addLayer(layer);
+        });
+        return existingSeriesLayer;
+    }
+    seriesLayerCache.set(seriesId, updatedSeriesLayer);
+    return updatedSeriesLayer;
 }
 
 export function getSeriesLayer(seriesId) {
-    return seriesLayerCache.get(seriesId);
+    let layer = seriesLayerCache.get(seriesId);
+    if (!layer) {
+        layer = renderSeriesLayer(seriesId);
+        seriesLayerCache.set(seriesId, layer);
+    }
+    return layer;
 }
 
 export function getSeriesControl() {
