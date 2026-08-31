@@ -39,10 +39,6 @@ export default (env, { appVersion }) => {
         module: {
             rules: [
                 {
-                    test: /\.css$/,
-                    use: ['style-loader', 'css-loader'],
-                },
-                {
                     test: /abaddon1_shard\.png$/,
                     type: 'asset/resource',
                     generator: {
@@ -135,6 +131,11 @@ export default (env, { appVersion }) => {
                             geocode.version = appVersion;
                             return JSON.stringify(geocode, null, 2);
                         },
+                    },
+                    {
+                        from: path.resolve(__dirname, 'gen/data'),
+                        to: 'data/',
+                        noErrorOnMissing: true,
                     },
                     {
                         from: path.resolve(__dirname, 'docs/assets/shard-site.png'),

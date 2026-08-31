@@ -1,5 +1,8 @@
-import * as Instant from "temporal-polyfill/fns/Instant";
-import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
+import {
+    fromEpochMilliseconds as instantFromEpochMilliseconds,
+    toZonedDateTimeISO,
+} from "temporal-polyfill/fns/Instant";
+import { toLocaleString as zdtToLocaleString } from "temporal-polyfill/fns/ZonedDateTime";
 import { calculateShardActionSchedule, formatZonedDateTimeWithMs, formatDurationMs } from "./data-helpers.js";
 
 /**
@@ -46,8 +49,8 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
                 const scheduleCopy = [...expectedWaveSchedule];
 
                 for (const historyItem of shard.history) {
-                    const inst = Instant.fromEpochMilliseconds(Number(historyItem.moveTime));
-                    const zonedDateTime = Instant.toZonedDateTimeISO(inst, site.geocode.timezone);
+                    const inst = instantFromEpochMilliseconds(Number(historyItem.moveTime));
+                    const zonedDateTime = toZonedDateTimeISO(inst, site.geocode.timezone);
 
                     const matches = scheduleCopy.map((scheduledItem, index) => {
                         const isActionMatch =
@@ -72,7 +75,7 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
 
                         const reason = matchedScheduledItem.action;
                         const waveNumber = waveIndex + 1;
-                        const scheduledTimeStr = ZonedDateTime.toLocaleString(matchedScheduledItem.time, "en-US", {
+                        const scheduledTimeStr = zdtToLocaleString(matchedScheduledItem.time, "en-US", {
                             hour: "2-digit",
                             minute: "2-digit",
                             hourCycle: "h23"

@@ -6,9 +6,9 @@ import { getScoresText } from "./site-renderer.js";
 import { getSeriesMetadata, getSeriesGeocode, getSiteData, getAllSeriesIds } from "../data/data-store.js";
 import { formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js";
-import * as ZonedDateTime from "temporal-polyfill/fns/ZonedDateTime";
-import * as Now from "temporal-polyfill/fns/Now";
-import * as Duration from "temporal-polyfill/fns/Duration";
+import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } from "temporal-polyfill/fns/ZonedDateTime";
+import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
+import { fromFields as durationFromFields } from "temporal-polyfill/fns/Duration";
 import { getBasic } from "temporal-polyfill/fns/Calendar";
 import { getEventDuration } from "../shared/event-helpers.js";
 import { TACTICAL_MARKER_SVG } from "./marker-template.js";
@@ -35,11 +35,11 @@ function getOutcome(siteData) {
 function isEventActive(site, seriesId) {
     const durationMins = getEventDuration(site, seriesId);
 
-    const startTime = ZonedDateTime.fromString(site.date, getBasic);
-    const endTime = ZonedDateTime.add(startTime, Duration.fromFields({ minutes: durationMins }));
-    const now = Now.zonedDateTimeISO(site.timezone);
+    const startTime = zdtFromString(site.date, getBasic);
+    const endTime = zdtAdd(startTime, durationFromFields({ minutes: durationMins }));
+    const now = zonedDateTimeISO(site.timezone);
 
-    return ZonedDateTime.compare(now, startTime) >= 0 && ZonedDateTime.compare(now, endTime) <= 0;
+    return zdtCompare(now, startTime) >= 0 && zdtCompare(now, endTime) <= 0;
 }
 
 function renderSeriesLayer(seriesId) {
@@ -57,8 +57,8 @@ function renderSeriesLayer(seriesId) {
         const hasFragments = siteData?.fullEvent?.shards?.length > 0;
         const hasOrnaments = Object.values(siteData?.portals || {}).some(p => p.ornamentId);
 
-        const startTime = ZonedDateTime.fromString(site.date, getBasic);
-        const now = Now.zonedDateTimeISO(site.timezone);
+        const startTime = zdtFromString(site.date, getBasic);
+        const now = zonedDateTimeISO(site.timezone);
 
         let phaseClass = '';
         let outcome = 'NONE';
@@ -70,7 +70,7 @@ function renderSeriesLayer(seriesId) {
         } else if (isEventActive(site, seriesId)) {
             // Active phase: Event is happening now
             phaseClass = 'is-phase-active';
-        } else if (ZonedDateTime.compare(now, startTime) < 0) {
+        } else if (zdtCompare(now, startTime) < 0) {
             // Future sites
             if (hasOrnaments) {
                 // Discovery phase: Future and information available
@@ -106,10 +106,10 @@ function renderSeriesLayer(seriesId) {
         const timeRemainingText = remainingTime ? ` (${remainingTime})` : '';
 
         const eventDuration = getEventDuration(site, seriesId);
-        const endTime = ZonedDateTime.add(startTime, Duration.fromFields({ minutes: eventDuration }));
-        const completionGraceEnd = ZonedDateTime.add(endTime, Duration.fromFields({ days: 1 }));
-        const isComplete = ZonedDateTime.compare(now, endTime) > 0;
-        const isWithinCompletionGrace = ZonedDateTime.compare(now, completionGraceEnd) <= 0;
+        const endTime = zdtAdd(startTime, durationFromFields({ minutes: eventDuration }));
+        const completionGraceEnd = zdtAdd(endTime, durationFromFields({ days: 1 }));
+        const isComplete = zdtCompare(now, endTime) > 0;
+        const isWithinCompletionGrace = zdtCompare(now, completionGraceEnd) <= 0;
         const activeRemaining = getActiveEventRemaining(site.date, site.timezone, eventDuration);
 
         let siteTooltip = '';
@@ -134,7 +134,7 @@ function renderSeriesLayer(seriesId) {
             }
             const siteUrl = `#/${seriesId}/${site.id.replace(seriesId + "-", "")}`;
             addEventInteraction(siteMarker, 'click', () => { navigate(siteUrl); });
-        } else if (ZonedDateTime.compare(startTime, now) < 0) {
+        } else if (zdtCompare(startTime, now) < 0) {
             siteTooltip += `<em>No data available</em>`;
         }
         siteMarker.bindTooltip(siteTooltip, { permanent: false, direction: 'auto' });
@@ -153,28 +153,30 @@ export function initSeriesLayers() {
 }
 
 export function updateCustomSeriesLayer(seriesId) {
-    const currentSeriesLayer = seriesLayerCache.get(seriesId);
-    if (!currentSeriesLayer) return;
-    const currentSiteMarkers = [];
-    currentSeriesLayer.eachLayer(function (layer) {
-        if (layer instanceof L.Marker) {
-            currentSiteMarkers.push(layer);
-        }
-    });
+    return refreshSeriesLayer(seriesId);
+}
 
+export function refreshSeriesLayer(seriesId) {
     const updatedSeriesLayer = renderSeriesLayer(seriesId);
-    updatedSeriesLayer.eachLayer(function (layer) {
-        if (
-            layer instanceof L.Marker &&
-            layer._siteId &&
-            !currentSiteMarkers.find(marker => marker._siteId === layer._siteId)) {
-            currentSeriesLayer.addLayer(layer);
-        }
-    });
+    const existingSeriesLayer = seriesLayerCache.get(seriesId);
+    if (existingSeriesLayer) {
+        existingSeriesLayer.clearLayers();
+        updatedSeriesLayer.eachLayer(layer => {
+            existingSeriesLayer.addLayer(layer);
+        });
+        return existingSeriesLayer;
+    }
+    seriesLayerCache.set(seriesId, updatedSeriesLayer);
+    return updatedSeriesLayer;
 }
 
 export function getSeriesLayer(seriesId) {
-    return seriesLayerCache.get(seriesId);
+    let layer = seriesLayerCache.get(seriesId);
+    if (!layer) {
+        layer = renderSeriesLayer(seriesId);
+        seriesLayerCache.set(seriesId, layer);
+    }
+    return layer;
 }
 
 export function getSeriesControl() {

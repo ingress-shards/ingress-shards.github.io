@@ -13,7 +13,7 @@ graph TD
     A[Raw Shard Data] --> B(prepare:data)
     B --> C[Geocoding scripts/geocode.py]
     C --> D[Data Processor scripts/pre-processor-loader.js]
-    D --> E[Processed Data gen/processed_series_data.json]
+    D --> E[Processed Series Data gen/data/*.json]
     E --> F[Validator scripts/validator-loader.js]
     E --> G[Statistics scripts/statistics-loader.js]
     F --> H[(gen/reports/)]

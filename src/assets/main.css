@@ -269,6 +269,15 @@ table.ingress-event-scores tfoot {
     }
 }
 
+.ornament-hexagon-marker {
+    pointer-events: none !important;
+}
+
+.ornament-hexagon-marker circle {
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+
 .marker-radar-container {
     position: relative;
     width: 25px;

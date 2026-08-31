@@ -9,7 +9,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PROCESSED_DATA_PATH = path.join(__dirname, '..', 'gen', 'processed_series_data.json');
+const DATA_DIR = path.join(__dirname, '..', 'gen', 'data');
 const REPORTS_DIR = path.join(__dirname, '..', 'gen', 'reports');
 
 async function runStatistics() {
@@ -17,16 +17,18 @@ async function runStatistics() {
         const startTime = performance.now();
         console.log(`ℹ️ Calculating shard jump statistics...`);
 
-        const content = await fs.readFile(PROCESSED_DATA_PATH, 'utf-8');
-        const allSeriesData = JSON.parse(content);
-
         const allStats = [];
 
         for (const seriesConfig of seriesMetadata.series) {
-            const processedData = allSeriesData[seriesConfig.id];
-            if (!processedData) {
+            const seriesFilePath = path.join(DATA_DIR, `${seriesConfig.id}.json`);
+            let processedData = null;
+            try {
+                const content = await fs.readFile(seriesFilePath, 'utf-8');
+                processedData = JSON.parse(content);
+            } catch {
                 continue;
             }
+
             const seriesStats = calculateStatisticsForSeason(processedData, seriesConfig, eventBlueprints);
             if (seriesStats) {
                 allStats.push(...seriesStats);
