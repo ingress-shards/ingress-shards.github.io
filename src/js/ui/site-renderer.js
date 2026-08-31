@@ -1,5 +1,5 @@
 import * as L from "leaflet";
-import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, EVENT_BRANDS, ORNAMENT_BRANDS, SIGNAL_COLOR, ORNAMENT_ONLY_COLOR, TARGET_ARTIFACT_IDS } from "../constants.js";
+import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, EVENT_BRANDS, ORNAMENT_BRANDS, SIGNAL_COLOR, BACKGROUND_PORTAL_COLOR, TARGET_ARTIFACT_IDS } from "../constants.js";
 import shardIconUrl from '../../images/abaddon1_shard.png';
 import { getSiteData, getSeriesMetadata, getSeriesGeocode } from "../data/data-store.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
@@ -36,67 +36,98 @@ export function setActiveSiteLayer(siteLayer) {
     activeSiteLayer = siteLayer;
 }
 
+function createLazyShardLayer({ seriesId, siteId, shardData, portals, timezone, layerType, waveId }) {
+    const group = L.featureGroup();
+    group._layerType = layerType;
+    group._siteId = siteId.replace(seriesId + "-", "");
+    group._seriesId = seriesId;
+    if (waveId) group._waveId = waveId;
+    group._initialized = false;
+
+    group.onAdd = function (map) {
+        if (!this._initialized) {
+            const rendered = renderShardLayer({
+                seriesId,
+                siteId,
+                shardData,
+                portals,
+                timezone,
+                layerType,
+            });
+            rendered.eachLayer(l => this.addLayer(l));
+            this.shardMotionPaths = rendered.shardMotionPaths || [];
+            this.startShardMotion = function () {
+                if (rendered.startShardMotion) rendered.startShardMotion();
+            };
+            this._initialized = true;
+        }
+        return L.FeatureGroup.prototype.onAdd.call(this, map);
+    };
+
+    return group;
+}
+
+function createLazyOrnamentLayer(siteId, siteData) {
+    const group = L.featureGroup();
+    group._layerType = 'site-overlay';
+    group._siteId = siteId;
+    group._initialized = false;
+
+    group.onAdd = function (map) {
+        if (!this._initialized) {
+            const ornamentMarkers = [];
+            for (const portal of Object.values(siteData.portals || {})) {
+                if (portal.ornamentId) {
+                    const latLng = L.latLng(portal.lat, portal.lng);
+                    const brand = ORNAMENT_BRANDS[portal.ornamentId];
+                    const style = brand?.style || {};
+
+                    let markerIcon;
+                    let pane = 'ornamentPane';
+
+                    if (style.icon) {
+                        markerIcon = L.icon({
+                            iconUrl: style.icon,
+                            iconSize: style.size || [40, 40],
+                            iconAnchor: style.size ? [style.size[0] / 2, style.size[1] / 2] : [20, 20]
+                        });
+                        pane = 'ornamentFrontPane';
+                    } else {
+                        markerIcon = L.divIcon({
+                            className: 'ornament-hexagon-marker',
+                            html: getHexagonSVG(style.color || SIGNAL_COLOR, BACKGROUND_PORTAL_COLOR),
+                            iconSize: [40, 40],
+                            iconAnchor: [20, 20]
+                        });
+                    }
+
+                    const getTooltipHtml = () => formatPortalTooltip(portal, [], siteData.geocode.timezone);
+                    ornamentMarkers.push(
+                        L.marker(latLng, {
+                            icon: markerIcon,
+                            interactive: true,
+                            pane: pane
+                        }).bindTooltip(getTooltipHtml, { interactive: true })
+                          .bindPopup(getTooltipHtml, { closeButton: false, autoClose: true })
+                    );
+                }
+            }
+            ornamentMarkers.forEach(m => this.addLayer(m));
+            this._initialized = true;
+        }
+        return L.FeatureGroup.prototype.onAdd.call(this, map);
+    };
+
+    return group;
+}
+
 function renderSiteData({ seriesId, siteId, siteData }) {
     const layersDetails = [];
     const hasShards = siteData.fullEvent?.shards?.length > 0;
+    const ornamentCount = Object.values(siteData.portals || {}).filter(p => p.ornamentId).length;
 
-    const ornamentLayer = L.featureGroup();
-    ornamentLayer._layerType = 'site-overlay';
-    ornamentLayer._siteId = siteId;
-    let ornamentCount = 0;
-    for (const portal of Object.values(siteData.portals || {})) {
-        if (portal.ornamentId) {
-            ornamentCount++;
-            const latLng = L.latLng(portal.lat, portal.lng);
-            const brand = ORNAMENT_BRANDS[portal.ornamentId];
-            const style = brand?.style || {};
-            const ornamentColor = style.color || SIGNAL_COLOR;
-
-            let markerIcon;
-            let pane = 'ornamentPane';
-
-            if (style.icon) {
-                // 1a. The Visual Image Ornament
-                markerIcon = L.icon({
-                    iconUrl: style.icon,
-                    iconSize: style.size || [40, 40],
-                    iconAnchor: style.size ? [style.size[0] / 2, style.size[1] / 2] : [20, 20]
-                });
-                pane = 'ornamentFrontPane';
-            } else {
-                // 1b. The Visual Hexagon Frame (using custom color)
-                markerIcon = L.divIcon({
-                    className: 'ornament-hexagon-marker',
-                    html: getHexagonSVG(ornamentColor),
-                    iconSize: [40, 40],
-                    iconAnchor: [20, 20]
-                });
-            }
-
-            L.marker(latLng, {
-                icon: markerIcon,
-                interactive: false,
-                pane: pane,
-                opacity: 0.6
-            }).addTo(ornamentLayer);
-
-            // 2. The Interactive Anchor Pin (Opt-in)
-            const tooltipHtml = formatPortalTooltip(portal, [], siteData.geocode.timezone);
-            L.circleMarker(latLng, {
-                radius: 6,
-                color: ORNAMENT_ONLY_COLOR,
-                fillOpacity: 0.6,
-                opacity: 0.6,
-                weight: 1,
-                interactive: true,
-                pane: 'ornamentPane'
-            }).bindTooltip(tooltipHtml, { interactive: true })
-                .bindPopup(tooltipHtml, { closeButton: false, autoClose: true })
-                .addTo(ornamentLayer);
-        }
-    }
-
-    if (ornamentLayer.getLayers().length > 0) {
+    if (ornamentCount > 0) {
+        const ornamentLayer = createLazyOrnamentLayer(siteId, siteData);
         layersDetails.push({
             id: "ornaments",
             label: "Anomaly Zone Portals",
@@ -109,7 +140,7 @@ function renderSiteData({ seriesId, siteId, siteData }) {
     const isSingularEvent = !siteData.waves || siteData.waves.length <= 1;
 
     if (hasShards) {
-        const fullEventLayer = renderShardLayer({
+        const fullEventLayer = createLazyShardLayer({
             seriesId,
             siteId,
             shardData: siteData.fullEvent,
@@ -117,7 +148,6 @@ function renderSiteData({ seriesId, siteId, siteData }) {
             timezone: siteData.geocode.timezone,
             layerType: 'site',
         });
-        fullEventLayer._seriesId = seriesId;
         layersDetails.push({
             id: "all",
             label: isSingularEvent ? "Shards" : "All waves",
@@ -129,16 +159,15 @@ function renderSiteData({ seriesId, siteId, siteData }) {
             siteData.waves.forEach((wave, index) => {
                 const waveNumber = index + 1;
                 const waveId = `wave-${waveNumber}`;
-                const waveLayer = renderShardLayer({
+                const waveLayer = createLazyShardLayer({
                     seriesId,
                     siteId,
                     shardData: wave,
                     portals: siteData.portals,
                     timezone: siteData.geocode.timezone,
                     layerType: 'wave',
+                    waveId,
                 });
-                waveLayer._seriesId = seriesId;
-                waveLayer._waveId = waveId;
                 layersDetails.push({
                     id: waveId,
                     label: `Wave ${waveNumber}`,
@@ -171,47 +200,51 @@ export function getSiteControl(siteId) {
 }
 
 function renderShardLayer({ seriesId, siteId, shardData, portals, timezone, layerType }) {
-    const shardLayer = L.featureGroup();
-    shardLayer._layerType = layerType;
-    shardLayer._siteId = siteId.replace(seriesId + "-", "");
-
     const safeShardData = shardData || {};
     const shardPathsMap = createShardPathLayers(safeShardData.shardPaths || {}, portals, timezone);
-    shardPathsMap.forEach((shardPath) => shardPath.addTo(shardLayer));
-
     const { portalHistoryMap, shardMotionData } = processShardData(safeShardData.shards || [], portals);
     const shardMotionPaths = createShardMotionPaths(shardMotionData);
 
-    shardLayer.shardMotionPaths = [];
+    const shardMotionPathsList = [];
     shardMotionPaths.forEach((shardPathPoly) => {
-        shardPathPoly.addTo(shardLayer);
-        shardLayer.shardMotionPaths.push(shardPathPoly);
+        shardMotionPathsList.push(shardPathPoly);
 
         for (const shardPath of shardPathPoly.shardPaths) {
             const path = shardPathsMap.get(shardPath);
-            if (path) path.shardPathPoly = shardPathPoly;
-            path.on("mouseover", function () {
-                shardPathPoly.motionStart();
-            });
+            if (path) {
+                path.shardPathPoly = shardPathPoly;
+                path.on("mouseover", function () {
+                    shardPathPoly.motionStart();
+                });
+            }
         }
     });
+
+    const { portalMarkers, staticShardMarkers } = createPortalMarkers(portals, portalHistoryMap, timezone, layerType === 'wave' ? shardData.targets : null);
+
+    const allLayers = [
+        ...Array.from(shardPathsMap.values()),
+        ...shardMotionPathsList,
+        ...portalMarkers,
+        ...staticShardMarkers
+    ];
+
+    if (layerType === 'wave' && shardData.targets) {
+        const targetLayer = L.featureGroup(renderTargetMarkers(portals, shardData.targets));
+        targetLayer._layerType = 'target-layer';
+        allLayers.push(targetLayer);
+    }
+
+    const shardLayer = L.featureGroup(allLayers);
+    shardLayer._layerType = layerType;
+    shardLayer._siteId = siteId.replace(seriesId + "-", "");
+    shardLayer.shardMotionPaths = shardMotionPathsList;
 
     shardLayer.startShardMotion = function () {
         this.shardMotionPaths.forEach(shardPathPoly => {
             shardPathPoly.motionStart();
         });
     };
-
-    const { portalMarkers, staticShardMarkers } = createPortalMarkers(portals, portalHistoryMap, timezone, layerType === 'wave' ? shardData.targets : null);
-    portalMarkers.forEach((marker) => marker.addTo(shardLayer));
-    staticShardMarkers.forEach((marker) => marker.addTo(shardLayer));
-
-    if (layerType === 'wave' && shardData.targets) {
-        const targetLayer = L.featureGroup();
-        targetLayer._layerType = 'target-layer';
-        renderTargetMarkers(portals, shardData.targets).forEach(m => m.addTo(targetLayer));
-        targetLayer.addTo(shardLayer);
-    }
 
     return shardLayer;
 }
@@ -318,7 +351,7 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone, targets) {
         if (portalHistory.length === 0 && !targetFaction) continue;
 
         const lastKnownTeam = getLastKnownTeam(portalHistory);
-        const portalTooltip = formatPortalTooltip(portal, portalHistory, timeZone, targetFaction);
+        const getPortalTooltip = () => formatPortalTooltip(portal, portalHistory, timeZone, targetFaction);
 
         portalHistory.forEach(([, shardHistory]) => {
             const shardHistoryReasons = shardHistory.flatMap(h => h.reason);
@@ -330,7 +363,7 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone, targets) {
                 staticShardMarkers.push(L.marker(latLng, {
                     icon: shardIcon,
                     pane: 'shardPane'
-                }).bindTooltip(portalTooltip).bindPopup(portalTooltip));
+                }).bindTooltip(getPortalTooltip).bindPopup(getPortalTooltip));
             }
         });
 
@@ -338,9 +371,9 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone, targets) {
             L.circleMarker(latLng, {
                 color: FACTION_COLORS[lastKnownTeam] || FACTION_COLORS.NEU,
                 pane: 'markerPane'
-            }).bindTooltip(portalTooltip, {
+            }).bindTooltip(getPortalTooltip, {
                 interactive: true
-            }).bindPopup(portalTooltip, {
+            }).bindPopup(getPortalTooltip, {
                 closeButton: false,
                 autoClose: true,
             })
@@ -399,7 +432,7 @@ function renderShardPath(shardPath, shardPathPortals, timeZone) {
     let polyline;
 
     if (shardPath.links && shardPath.links.length > 0) {
-        const { tooltip, coords, biDirectionalMoves } = formatLinkPathTooltip(shardPath, shardPathPortals, timeZone);
+        const { coords, biDirectionalMoves } = formatLinkPathTooltip(shardPath, shardPathPortals, timeZone);
         const linkColor = FACTION_COLORS[shardPath.links[shardPath.links.length - 1].team] || FACTION_COLORS.NEU;
 
         polyline = L.polyline(coords, {
@@ -407,15 +440,17 @@ function renderShardPath(shardPath, shardPathPortals, timeZone) {
             dashArray: ["10,5,5,5,5,5,5,5,10000"],
         });
         polyline.biDirectionalJumps = biDirectionalMoves;
-        polyline.bindTooltip(tooltip, { sticky: true }).bindPopup(tooltip, { sticky: true });
+        const getTooltip = () => formatLinkPathTooltip(shardPath, shardPathPortals, timeZone).tooltip;
+        polyline.bindTooltip(getTooltip, { sticky: true }).bindPopup(getTooltip, { sticky: true });
     } else if (shardPath.jumps && shardPath.jumps.length > 0) {
-        const { tooltip, coords } = formatJumpPathTooltip(shardPath, shardPathPortals, timeZone);
+        const { coords } = formatJumpPathTooltip(shardPath, shardPathPortals, timeZone);
 
         polyline = L.polyline(coords, {
             color: SIGNAL_COLOR,
             dashArray: ["10,10"],
         });
-        polyline.bindTooltip(tooltip, { sticky: true }).bindPopup(tooltip, { sticky: true });
+        const getTooltip = () => formatJumpPathTooltip(shardPath, shardPathPortals, timeZone).tooltip;
+        polyline.bindTooltip(getTooltip, { sticky: true }).bindPopup(getTooltip, { sticky: true });
     }
 
     return polyline;

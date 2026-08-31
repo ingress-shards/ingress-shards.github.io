@@ -22,7 +22,7 @@ export const FACTION_COLORS = {
 export const TIE_COLOR = "#AF00FF";
 export const SIGNAL_COLOR = "#FFCC00";
 export const NO_DATA_COLOR = "#777777";
-export const ORNAMENT_ONLY_COLOR = "#BDBDBD";
+export const BACKGROUND_PORTAL_COLOR = "#BDBDBD";
 export const HISTORY_REASONS = {
     SPAWN: "spawn",
     NO_MOVE: "no move",

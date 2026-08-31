@@ -31,10 +31,15 @@ export const TACTICAL_MARKER_SVG = `
         <circle class="marker-pin-inner" cx="12.5" cy="12.5" r="4.5" fill="url(#innerBead)" stroke="rgba(0,0,0,0.2)" stroke-width="0.4" />
     </svg>`;
 
-export const getHexagonSVG = (color) => `
-    <svg width="40" height="40" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" style="display: block;" opacity="0.6">
+export const getHexagonSVG = (ornamentColor, portalColor = "#BDBDBD") => `
+    <svg width="40" height="40" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" style="display: block; pointer-events: none;">
         <polygon points="15,2 27,8.5 27,21.5 15,28 3,21.5 3,8.5" 
-                 fill="${color}" fill-opacity="0.1" 
-                 stroke="${color}" stroke-width="2" 
-                 stroke-linejoin="round" />
+                 fill="${ornamentColor}" fill-opacity="0.05" 
+                 stroke="${ornamentColor}" stroke-width="2" stroke-opacity="0.5"
+                 stroke-linejoin="round"
+                 style="pointer-events: none;" />
+        <circle cx="15" cy="15" r="4.5" 
+                fill="${portalColor}" fill-opacity="0.6" 
+                stroke="${portalColor}" stroke-width="1" stroke-opacity="0.6"
+                style="pointer-events: auto; cursor: pointer;" />
     </svg>`;
