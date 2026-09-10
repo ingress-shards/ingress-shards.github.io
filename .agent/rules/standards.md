@@ -40,9 +40,9 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
     - `refactor:`, `ci:`, `docs(README):` trigger **patch** bumps (custom rules in `release.config.cjs`)
 - **Finding current version:** Always check git tags with `git fetch --tags && git tag --list | tail -5` to see the latest released version.
 - **Branch strategy:** 
-    - The `main` branch is the ONLY stable branch allowing production deployments. 
-    - Any other branch (regardless of name) will automatically trigger an `alpha` prerelease format for versioning, tags, and packages.
-- **Previews:** Every push to a non-main branch generates a downloadable `dist` artifact in GitHub Actions for verification. Use `npm run preview` or `yarn run preview` (if applicable) for local artifact testing.
+    - The `main` branch is the ONLY branch that publishes releases and deployments.
+    - Feature/fix branches and PRs trigger CI validation checks only. Prerelease/alpha versions are not published; releases and version tags are strictly cut upon merging into `main`.
+- **Previews:** Pull requests generate a downloadable `dist` build artifact in GitHub Actions for verification. Use `npm run preview` or `yarn run preview` (if applicable) for local artifact testing.
 
 ---
 
@@ -80,12 +80,9 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
     git tag -l | xargs git tag -d
     git fetch origin --tags
 
-    # 4. Remove alpha tags from origin
-    git tag -l "*-alpha*" | xargs -I {} git push origin :refs/tags/{}
-
-    # 5. Prune local branches already merged into main
+    # 4. Prune local branches already merged into main
     git branch --merged main | grep -v '^\*' | grep -v 'main' | xargs -r git branch -d
 
-    # 6. Final prune
+    # 5. Final prune
     git remote prune origin
     ```
