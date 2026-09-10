@@ -62,7 +62,7 @@
         "leaflet-providers": "^3.0.0",
         "leaflet-relief": "^1.7.0",
         "leaflet.motion": "github:neon-ninja/leaflet.motion",
-        "maplibre-gl": "^5.1.1",
+        "maplibre-gl": "^6.9.0",
         "temporal-polyfill": "^1.0.4"
     }
 }
