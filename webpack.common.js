@@ -102,6 +102,14 @@ export default (env, { appVersion }) => {
             new CopyWebpackPlugin({
                 patterns: [
                     {
+                        from: path.join(resolvePackage('maplibre-gl'), 'dist', 'maplibre-gl-worker.mjs'),
+                        to: 'js/maplibre-gl-worker.mjs',
+                    },
+                    {
+                        from: path.join(resolvePackage('maplibre-gl'), 'dist', 'maplibre-gl-shared.mjs'),
+                        to: 'js/maplibre-gl-shared.mjs',
+                    },
+                    {
                         from: path.join(resolvePackage('leaflet'), 'dist', 'images'),
                         to: 'images/markers',
                     },
