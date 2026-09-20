@@ -1,0 +1,666 @@
+{
+  "siteId": "2026-apollo-singapore",
+  "exportedAt": 1789808684,
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Kim Keat Little Twin Dragon",
+            "latE6": 1334019,
+            "lngE6": 103856946
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "TPY Dragon Playground",
+            "latE6": 1331912,
+            "lngE6": 103854199
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "Bubbly Entrance",
+            "latE6": 1332219,
+            "lngE6": 103847671
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "Children At Play Sculpture",
+            "latE6": 1332261,
+            "lngE6": 103847187
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "Shrove Tuesday",
+            "latE6": 1339091,
+            "lngE6": 103849293
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789804981231
+        },
+        {
+          "portalInfo": {
+            "title": "191 Playground",
+            "latE6": 1331504,
+            "lngE6": 103850943
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "Carpark Pavilion",
+            "latE6": 1337532,
+            "lngE6": 103852643
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "Height Park",
+            "latE6": 1335416,
+            "lngE6": 103843407
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789804981231
+        },
+        {
+          "portalInfo": {
+            "title": "Blk 103 Pavilion",
+            "latE6": 1340221,
+            "lngE6": 103847850
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "Communal Fitness Corner",
+            "latE6": 1339411,
+            "lngE6": 103844659
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789804981231
+        },
+        {
+          "portalInfo": {
+            "title": "Healthy ocean healthy us mural",
+            "latE6": 1331589,
+            "lngE6": 103850102
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "Stone Seating Corner",
+            "latE6": 1332606,
+            "lngE6": 103857964
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "106 Dino Playground",
+            "latE6": 1340568,
+            "lngE6": 103848232
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "The Great Lamp at Toa Payoh",
+            "latE6": 1339986,
+            "lngE6": 103848892
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "Creamier",
+            "latE6": 1337874,
+            "lngE6": 103843389
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "Body Flexing",
+            "latE6": 1335078,
+            "lngE6": 103843973
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "Relaxing Aisle",
+            "latE6": 1333142,
+            "lngE6": 103855488
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "261A Pavilion",
+            "latE6": 1333845,
+            "lngE6": 103856048
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "Blk 153A Fitness Station",
+            "latE6": 1333710,
+            "lngE6": 103845466
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "Blk 36 Elderly Fitness Corner",
+            "latE6": 1334760,
+            "lngE6": 103855487
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "Aquarium Mural",
+            "latE6": 1332914,
+            "lngE6": 103857907
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "116 Community Shelter",
+            "latE6": 1340490,
+            "lngE6": 103846938
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "Exit D Toa Payoh Station",
+            "latE6": 1333299,
+            "lngE6": 103846525
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789804981231
+        },
+        {
+          "portalInfo": {
+            "title": "Green Towered Playground",
+            "latE6": 1335812,
+            "lngE6": 103853783
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "Teal Pyramid Pavilion",
+            "latE6": 1335744,
+            "lngE6": 103854737
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789804981231
+        },
+        {
+          "portalInfo": {
+            "title": "Toa Payoh APEX Event Plaza",
+            "latE6": 1332675,
+            "lngE6": 103855444
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789804981231
+        },
+        {
+          "portalInfo": {
+            "title": "Foot Reflexology Disc",
+            "latE6": 1336746,
+            "lngE6": 103854141
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "Cute Dino Number 6",
+            "latE6": 1336372,
+            "lngE6": 103853787
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "130B Elderly fitness corner",
+            "latE6": 1337680,
+            "lngE6": 103842719
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "Toa Payoh Block 37 Playground",
+            "latE6": 1335022,
+            "lngE6": 103855618
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "BLK 149 Fitness Station",
+            "latE6": 1333998,
+            "lngE6": 103843559
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "Children's Playground at 122 Toa Payoh",
+            "latE6": 1340121,
+            "lngE6": 103846418
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "Bishan-ToaPayoh Fitness Corner",
+            "latE6": 1335454,
+            "lngE6": 103844589
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "130C Precinct Pavilion",
+            "latE6": 1337052,
+            "lngE6": 103843350
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "Giant Giants Statues",
+            "latE6": 1336305,
+            "lngE6": 103844456
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "Blue Pavilion At TPY",
+            "latE6": 1340026,
+            "lngE6": 103844734
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789797780782
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Kim Keat Ville - Park",
+            "latE6": 1332749,
+            "lngE6": 103856147
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "Kim Keat Outdoor Badminton Court",
+            "latE6": 1334045,
+            "lngE6": 103857234
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "Dino Playground",
+            "latE6": 1332413,
+            "lngE6": 103856022
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "Hawker Fare Wall Mural",
+            "latE6": 1338142,
+            "lngE6": 103844916
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789804982038
+        },
+        {
+          "portalInfo": {
+            "title": "Blk 25 Kim Keat Ville",
+            "latE6": 1334015,
+            "lngE6": 103856531
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "263 Shelter",
+            "latE6": 1332870,
+            "lngE6": 103855262
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "Toa Payoh Bloom",
+            "latE6": 1340598,
+            "lngE6": 103848758
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "Aquatail Viking Ship",
+            "latE6": 1335188,
+            "lngE6": 103844123
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "Barbeque pit at the Peak",
+            "latE6": 1336165,
+            "lngE6": 103845111
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "New Playground for Children Aged 2-5",
+            "latE6": 1333977,
+            "lngE6": 103855851
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789804981231
+        },
+        {
+          "portalInfo": {
+            "title": "The Aeroplane",
+            "latE6": 1331273,
+            "lngE6": 103851159
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789804982038
+        },
+        {
+          "portalInfo": {
+            "title": "Braddell House",
+            "latE6": 1340480,
+            "lngE6": 103847204
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "Badminton Court Between Blk 120 and Blk 123",
+            "latE6": 1338988,
+            "lngE6": 103845315
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "Elderly Fitness corner @ 193 Toa Payoh",
+            "latE6": 1331832,
+            "lngE6": 103851193
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "Bloom's Imprint at 106A",
+            "latE6": 1340546,
+            "lngE6": 103848503
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "Block 157 playground",
+            "latE6": 1332809,
+            "lngE6": 103846388
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "National Day Mural",
+            "latE6": 1336199,
+            "lngE6": 103854378
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "Small Gazebo",
+            "latE6": 1340263,
+            "lngE6": 103849211
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "Abandon Playground",
+            "latE6": 1339672,
+            "lngE6": 103845197
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "Toa Payoh East Lego Mural",
+            "latE6": 1336190,
+            "lngE6": 103854790
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789804982038
+        },
+        {
+          "portalInfo": {
+            "title": "155 Amphitheatre",
+            "latE6": 1333447,
+            "lngE6": 103845970
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "Bioretention Swale",
+            "latE6": 1336332,
+            "lngE6": 103843752
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "Fitness Zone",
+            "latE6": 1336474,
+            "lngE6": 103844131
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "Welcome to Kim Keat",
+            "latE6": 1334102,
+            "lngE6": 103857946
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789806781306
+        },
+        {
+          "portalInfo": {
+            "title": "FairPrice @ 192 Toa Payoh",
+            "latE6": 1331841,
+            "lngE6": 103850748
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "Heights Park",
+            "latE6": 1335070,
+            "lngE6": 103844299
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789801381735
+        },
+        {
+          "portalInfo": {
+            "title": "Infinity Door",
+            "latE6": 1333655,
+            "lngE6": 103844170
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789804981231
+        },
+        {
+          "portalInfo": {
+            "title": "Merlion Mural",
+            "latE6": 1336474,
+            "lngE6": 103854513
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "Blue IPPT Corner",
+            "latE6": 1334910,
+            "lngE6": 103855959
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789799580882
+        },
+        {
+          "portalInfo": {
+            "title": "Braddell Pavilion",
+            "latE6": 1340615,
+            "lngE6": 103847526
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789804981231
+        },
+        {
+          "portalInfo": {
+            "title": "Blk 155 Fitness Corner",
+            "latE6": 1333033,
+            "lngE6": 103845540
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "Chop Seng Heng Supermarket",
+            "latE6": 1333758,
+            "lngE6": 103844833
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "Mural at Block 259",
+            "latE6": 1333969,
+            "lngE6": 103857793
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "TPY105 Elderly Fitness Corner",
+            "latE6": 1340567,
+            "lngE6": 103849259
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789803181363
+        },
+        {
+          "portalInfo": {
+            "title": "Eldercare Exercise Ground",
+            "latE6": 1337559,
+            "lngE6": 103844153
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789797780782
+        },
+        {
+          "portalInfo": {
+            "title": "Blk 118A Toa Payoh Linkhall",
+            "latE6": 1339697,
+            "lngE6": 103845567
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789799580882
+        }
+      ]
+    }
+  ]
+}
