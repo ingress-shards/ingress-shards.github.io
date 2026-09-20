@@ -1,0 +1,657 @@
+{
+  "siteId": "2026-apollo-denver-co",
+  "exportedAt": 1789860386,
+  "artifact": [
+    {
+      "id": "targetres",
+      "name": "Target RES",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Color Blast",
+            "latE6": 39751101,
+            "lngE6": -104999395
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "How the Sundial Works",
+            "latE6": 39748524,
+            "lngE6": -104989446
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "Falling Rock Tap House",
+            "latE6": 39753822,
+            "lngE6": -104995363
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789851781372
+        },
+        {
+          "portalInfo": {
+            "title": "1UP",
+            "latE6": 39753879,
+            "lngE6": -104995067
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Bishop Machebeuf Bust",
+            "latE6": 39748283,
+            "lngE6": -104987974
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Beaumont Fountain",
+            "latE6": 39747198,
+            "lngE6": -104987860
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Sound Wall",
+            "latE6": 39749401,
+            "lngE6": -104988212
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "Rooftop Athletics",
+            "latE6": 39745597,
+            "lngE6": -104988589
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Overlay",
+            "latE6": 39740566,
+            "lngE6": -104990857
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "Union Pacific Railroad Building",
+            "latE6": 39754938,
+            "lngE6": -104997386
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "Alley Fountain",
+            "latE6": 39747563,
+            "lngE6": -104998519
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "Fountains At Union Station",
+            "latE6": 39752528,
+            "lngE6": -105000546
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789851781372
+        },
+        {
+          "portalInfo": {
+            "title": "City Bakery",
+            "latE6": 39749356,
+            "lngE6": -105000267
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Rhein Haus Denver",
+            "latE6": 39748297,
+            "lngE6": -105000614
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789851781717
+        },
+        {
+          "portalInfo": {
+            "title": "Gusterman's Guardian",
+            "latE6": 39747015,
+            "lngE6": -104998589
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789854062201
+        },
+        {
+          "portalInfo": {
+            "title": "Ice House, Landmark Designation",
+            "latE6": 39754110,
+            "lngE6": -104998194
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "Edward W. Wynkoop Building",
+            "latE6": 39752866,
+            "lngE6": -104999466
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Euclid Hall",
+            "latE6": 39747662,
+            "lngE6": -105000119
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "15th & Wazee Street",
+            "latE6": 39750268,
+            "lngE6": -105001472
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "Steven Whitney Memorial Plaque",
+            "latE6": 39749615,
+            "lngE6": -105002637
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Henry Lee Building - 1907",
+            "latE6": 39751253,
+            "lngE6": -105000250
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Oxford Hotel and Annex",
+            "latE6": 39752240,
+            "lngE6": -104999152
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Victoria Beltz Library",
+            "latE6": 39753763,
+            "lngE6": -104998749
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Coors Field Inaugural Season Plaque",
+            "latE6": 39755416,
+            "lngE6": -104996481
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Cubes 2",
+            "latE6": 39740682,
+            "lngE6": -104989316
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "Republic Plaza",
+            "latE6": 39743438,
+            "lngE6": -104989002
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Welcome",
+            "latE6": 39740930,
+            "lngE6": -104987564
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Smoky Hill Trail",
+            "latE6": 39740295,
+            "lngE6": -104987640
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Gridlock",
+            "latE6": 39742874,
+            "lngE6": -104987573
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "The Atrium Lobby",
+            "latE6": 39744366,
+            "lngE6": -104988190
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "Starlet Mural",
+            "latE6": 39744653,
+            "lngE6": -104994924
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "American Icons Mural",
+            "latE6": 39743951,
+            "lngE6": -104994249
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Denver Post Building",
+            "latE6": 39740835,
+            "lngE6": -104988775
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789851781372
+        },
+        {
+          "portalInfo": {
+            "title": "Ship Cabin",
+            "latE6": 39744679,
+            "lngE6": -104988461
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789851781372
+        },
+        {
+          "portalInfo": {
+            "title": "Professional Building",
+            "latE6": 39741220,
+            "lngE6": -104990533
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Spire Building",
+            "latE6": 39744505,
+            "lngE6": -104996034
+          },
+          "targetAlignment": "RESISTANCE",
+          "observedAt": 1789851781372
+        }
+      ]
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL",
+      "target": [
+        {
+          "portalInfo": {
+            "title": "Baseball Rollercoaster",
+            "latE6": 39755016,
+            "lngE6": -104996200
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "Spilt Milk",
+            "latE6": 39753589,
+            "lngE6": -104996082
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Federal Services Totem",
+            "latE6": 39749097,
+            "lngE6": -104989153
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Electronic Mural",
+            "latE6": 39749590,
+            "lngE6": -104989792
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789851781372
+        },
+        {
+          "portalInfo": {
+            "title": "Denver Bikeway to Five Points",
+            "latE6": 39746541,
+            "lngE6": -104988545
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Veterans Memorial",
+            "latE6": 39747915,
+            "lngE6": -104988225
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Mechanical Octopus",
+            "latE6": 39751343,
+            "lngE6": -104999920
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789851781372
+        },
+        {
+          "portalInfo": {
+            "title": "Wynkoop Needle Fan Sculpture",
+            "latE6": 39751034,
+            "lngE6": -105000491
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Bent Lens",
+            "latE6": 39747672,
+            "lngE6": -104999543
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Musical Barrel 7",
+            "latE6": 39752758,
+            "lngE6": -104996949
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Larimer Square Cats",
+            "latE6": 39747854,
+            "lngE6": -104999289
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789851781372
+        },
+        {
+          "portalInfo": {
+            "title": "Manny's Bridge",
+            "latE6": 39750118,
+            "lngE6": -105003272
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "Local Transit Through The Ages",
+            "latE6": 39752283,
+            "lngE6": -105000663
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Wynkoop Brewing Company",
+            "latE6": 39753513,
+            "lngE6": -104998380
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789851781372
+        },
+        {
+          "portalInfo": {
+            "title": "Dog Savvy",
+            "latE6": 39747470,
+            "lngE6": -104999513
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "The People Of Union Station",
+            "latE6": 39753190,
+            "lngE6": -104999408
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "Landmark Designation, Oxford Annex",
+            "latE6": 39752558,
+            "lngE6": -104999508
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "Constitution Hall",
+            "latE6": 39749722,
+            "lngE6": -105000252
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "MJ O’Fallon Supply Company",
+            "latE6": 39751090,
+            "lngE6": -105001882
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Visions West Art Gallery",
+            "latE6": 39752758,
+            "lngE6": -104997814
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Elephant Corral Fountain",
+            "latE6": 39749754,
+            "lngE6": -105001716
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Sisterhood art display",
+            "latE6": 39742470,
+            "lngE6": -104991389
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789851781372
+        },
+        {
+          "portalInfo": {
+            "title": "Coors Field Mural",
+            "latE6": 39754447,
+            "lngE6": -104995373
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "East 2 West Source Point",
+            "latE6": 39740289,
+            "lngE6": -104990325
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Cowboy",
+            "latE6": 39744684,
+            "lngE6": -104987510
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "Denver Energy Center Sign",
+            "latE6": 39742519,
+            "lngE6": -104988357
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Navarre Building (1880)",
+            "latE6": 39744700,
+            "lngE6": -104988009
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "Wine Bottle Wall",
+            "latE6": 39744104,
+            "lngE6": -104995138
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789853581738
+        },
+        {
+          "portalInfo": {
+            "title": "Denver Energy Center",
+            "latE6": 39742539,
+            "lngE6": -104987561
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Civic Center Station Fountain",
+            "latE6": 39741861,
+            "lngE6": -104987645
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789849981412
+        },
+        {
+          "portalInfo": {
+            "title": "Independence Building",
+            "latE6": 39741213,
+            "lngE6": -104991689
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789848181479
+        },
+        {
+          "portalInfo": {
+            "title": "Sheraton Hotel",
+            "latE6": 39742478,
+            "lngE6": -104989042
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
+            "title": "Nest",
+            "latE6": 39743920,
+            "lngE6": -104988340
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789851781372
+        },
+        {
+          "portalInfo": {
+            "title": "Brown Palace Hotel in Denver",
+            "latE6": 39743700,
+            "lngE6": -104987543
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789855382145
+        },
+        {
+          "portalInfo": {
+            "title": "Denver Compass",
+            "latE6": 39744651,
+            "lngE6": -104993790
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789849981412
+        }
+      ]
+    }
+  ]
+}
