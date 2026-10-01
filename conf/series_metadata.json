@@ -386,7 +386,6 @@
             "name": "Apollo",
             "year": 2026,
             "overviewUrl": "https://ingress.com/news/2026-apollo",
-            "defaultView": true,
             "shardComponents": [
                 {
                     "eventType": "ANOMALY",
@@ -414,6 +413,41 @@
                                 { "name": "Singapore", "lat": 1.352083, "lng": 103.819836 },
                                 { "name": "Denver CO, USA", "lat": 39.7392358, "lng": -104.990251 }
                             ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2026-cygnus",
+            "name": "Cygnus",
+            "year": 2026,
+            "overviewUrl": "https://ingress.com/news/2026-cygnus",
+            "defaultView": true,
+            "shardComponents": [
+                {
+                    "eventType": "STORM",
+                    "startTime": "14:00",
+                    "shardMechanics": "1w_420m_18j",
+                    "schedule": [
+                        {
+                            "date": "2026-10-17",
+                            "sites": [
+                                { "name": "Suzhou, China", "lat": 31.311123, "lng": 120.621288 },
+                                { "name": "Colombo, Sri Lanka", "lat": 6.938861, "lng": 79.854201 },
+                                { "name": "Sofia, Bulgaria", "lat": 42.697703, "lng": 23.321736 },
+                                { "name": "Magdeburg, Germany", "lat": 52.131478, "lng": 11.640079 },
+                                { "name": "Toronto, ON, Canada", "lat": 43.653482, "lng": -79.383935 },
+                                { "name": "Las Vegas, NV, USA", "lat": 36.167426, "lng": -115.148413 }
+                            ]
+                        },
+                        {
+                            "date": "2026-10-24",
+                            "sites": []
+                        },
+                        {
+                            "date": "2026-11-21",
+                            "sites": []
                         }
                     ]
                 }

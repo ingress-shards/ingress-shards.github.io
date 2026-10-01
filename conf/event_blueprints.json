@@ -150,6 +150,31 @@
           { "action": "jump", "time": 240 },
           { "action": "despawn", "time": 480 }
         ]
+      },
+      "1w_420m_18j": {
+        "waves": [{ "startOffset": 0, "endOffset": 420, "quantity": 3 }],
+        "waveActions": [
+          { "action": "spawn", "time": 0 },
+          { "action": "jump", "time": 15 },
+          { "action": "jump", "time": 17 },
+          { "action": "jump", "time": 19 },
+          { "action": "jump", "time": 45 },
+          { "action": "jump", "time": 47 },
+          { "action": "jump", "time": 49 },
+          { "action": "jump", "time": 75 },
+          { "action": "jump", "time": 77 },
+          { "action": "jump", "time": 79 },
+          { "action": "jump", "time": 105 },
+          { "action": "jump", "time": 107 },
+          { "action": "jump", "time": 109 },
+          { "action": "jump", "time": 135 },
+          { "action": "jump", "time": 137 },
+          { "action": "jump", "time": 139 },
+          { "action": "jump", "time": 165 },
+          { "action": "jump", "time": 167 },
+          { "action": "jump", "time": 169 },
+          { "action": "despawn", "time": 420 }
+        ]
       }
     },
     "targets": {
