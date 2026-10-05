@@ -130,7 +130,7 @@ function renderSiteData({ seriesId, siteId, siteData }) {
         const ornamentLayer = createLazyOrnamentLayer(siteId, siteData);
         layersDetails.push({
             id: "ornaments",
-            label: "Anomaly Zone Portals",
+            label: "Ornamented Portals",
             layer: ornamentLayer,
             isOverlay: true,
             showByDefault: !hasShards || ornamentCount < 10
@@ -386,7 +386,10 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone, targets) {
 }
 
 function formatPortalTooltip(portal, portalHistory, timeZone, targetFaction) {
-    const ornamentLabel = ORNAMENT_BRANDS[portal.ornamentId]?.label || `Ornament: ${portal.ornamentId}`;
+    const ornamentBrand = ORNAMENT_BRANDS[portal.ornamentId];
+    const ornamentLabel = ornamentBrand?.label
+        ? `${ornamentBrand.label} (${portal.ornamentId})`
+        : `Ornament (${portal.ornamentId})`;
     const ornamentHtml = portal.ornamentId ? `<i>${ornamentLabel}</i><br/>` : '';
     const targetHtml = targetFaction ? `<strong><span style="color:${FACTION_COLORS[targetFaction]}">${targetFaction}</span></strong> <i>Target Portal</i><br/>` : '';
     const separator = portalHistory.length > 0 ? '<hr />' : '';
@@ -539,7 +542,7 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
 
     let content = `
         <div style="margin-bottom: 8px">
-            Date: ${formatIsoToShortDate(siteGeocode.date, siteGeocode.timezone)}${countdownSuffix}${ornamentCount > 0 ? `<br/>Anomaly Zone Portals: ${ornamentCount}` : ''}
+            Date: ${formatIsoToShortDate(siteGeocode.date, siteGeocode.timezone)}${countdownSuffix}${ornamentCount > 0 ? `<br/>Ornamented Portals: ${ornamentCount}` : ''}
         </div>`;
 
     if (hasShards) {

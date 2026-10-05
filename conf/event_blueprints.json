@@ -28,15 +28,15 @@
     },
     "ornaments": {
       "ap1": {
-        "label": "Anomaly Portal",
+        "label": "Ornamented Portal",
         "style": { "color": "#F58634" }
       },
       "ap2": {
-        "label": "Anomaly Portal",
+        "label": "Ornamented Portal",
         "style": { "color": "#FF32F7" }
       },
       "ap3": {
-        "label": "Anomaly Portal",
+        "label": "Ornamented Portal",
         "style": { "color": "#7E14FF" }
       },
       "nl-1331-2026": {
