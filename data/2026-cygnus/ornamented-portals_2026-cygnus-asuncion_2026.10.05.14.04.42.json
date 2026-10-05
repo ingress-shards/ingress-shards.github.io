@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-asuncion",
+  "exportedAt": 1791205482,
+  "portals": [
+    {
+      "title": "Ganzo",
+      "lat": -25.280493,
+      "lng": -57.633574,
+      "ornamentId": "ap1",
+      "guid": "62c2d5bf019941e28981fa2f2f2bbd68.16"
+    },
+    {
+      "title": "La Bailarina",
+      "lat": -25.284603,
+      "lng": -57.630115,
+      "ornamentId": "ap2",
+      "guid": "675e04547f0c4406aa8884e6ff93567c.16"
+    },
+    {
+      "title": "Graffiti Libre Por Siempre",
+      "lat": -25.282729,
+      "lng": -57.635212,
+      "ornamentId": "ap3",
+      "guid": "9591e4ecd6fe47c1bc126abde937c211.16"
+    }
+  ]
+}

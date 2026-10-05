@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-warsaw",
+  "exportedAt": 1791205487,
+  "portals": [
+    {
+      "title": "Wedel Mural Astronauta",
+      "lat": 52.246147,
+      "lng": 21.050405,
+      "ornamentId": "ap3",
+      "guid": "c9e2d44172aa47f8a22761fe97e737ee.16"
+    },
+    {
+      "title": "Boisko miejskie",
+      "lat": 52.24722,
+      "lng": 21.073762,
+      "ornamentId": "ap2",
+      "guid": "a2f52f6e286b44bcbe6ee77a93a39c04.16"
+    },
+    {
+      "title": "Tablica informacyjna Parku Skaryszewskiego",
+      "lat": 52.240543,
+      "lng": 21.059032,
+      "ornamentId": "ap1",
+      "guid": "913cf88fdc473d3b829354928a423426.16"
+    }
+  ]
+}

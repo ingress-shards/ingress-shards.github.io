@@ -443,7 +443,14 @@
                         },
                         {
                             "date": "2026-10-24",
-                            "sites": []
+                            "sites": [
+                                { "name": "Kōchi, Japan", "lat": 33.558848, "lng": 133.531092 },
+                                { "name": "Gurugram, India", "lat": 28.464615, "lng": 77.029919 },
+                                { "name": "Warsaw, Poland", "lat": 52.229676, "lng": 21.012229 },
+                                { "name": "Norwich, UK", "lat": 52.628558, "lng": 1.292395 },
+                                { "name": "Asunción, Paraguay", "lat": -25.294743, "lng": -57.581991 },
+                                { "name": "Nashville, TN, USA", "lat": 36.162664, "lng": -86.781602 }
+                            ]
                         },
                         {
                             "date": "2026-11-21",

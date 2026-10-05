@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-magdeburg",
+  "exportedAt": 1791205466,
+  "portals": [
+    {
+      "title": "Gedenktafel zum Tod Editahs Prinzessin von Angelsachsen",
+      "lat": 52.125533,
+      "lng": 11.63514,
+      "ornamentId": "ap3",
+      "guid": "b13522521aca4f308d22493172a95d9c.16"
+    },
+    {
+      "title": "Wassertropfen Schleinufer",
+      "lat": 52.129115,
+      "lng": 11.641862,
+      "ornamentId": "ap2",
+      "guid": "3eeaa951e78248c6be94365119a7dbf3.16"
+    },
+    {
+      "title": "Schweizer Milchkuranstalt auf dem Fürstenwall",
+      "lat": 52.122944,
+      "lng": 11.634815,
+      "ornamentId": "ap1",
+      "guid": "0b9e330438254194b3dd76c59b236ccf.16"
+    }
+  ]
+}

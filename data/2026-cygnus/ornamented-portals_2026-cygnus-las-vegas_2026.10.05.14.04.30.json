@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-las-vegas",
+  "exportedAt": 1791205470,
+  "portals": [
+    {
+      "title": "Planet Hollywood South Footbridge",
+      "lat": 36.108402,
+      "lng": -115.172191,
+      "ornamentId": "ap2",
+      "guid": "732b9b31c5233cf1b2dd78ce7dc54951.16"
+    },
+    {
+      "title": "Dave's Hot Chicken Las Vegas Sign",
+      "lat": 36.114263,
+      "lng": -115.171629,
+      "ornamentId": "ap1",
+      "guid": "47c4a7c8b13834c68fb1a4359122184e.16"
+    },
+    {
+      "title": "Horse",
+      "lat": 36.111861,
+      "lng": -115.175036,
+      "ornamentId": "ap3",
+      "guid": "dd7ba37e911c42c3ada26fba23409e90.16"
+    }
+  ]
+}

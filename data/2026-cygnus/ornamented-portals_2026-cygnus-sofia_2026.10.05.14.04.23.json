@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-sofia",
+  "exportedAt": 1791205463,
+  "portals": [
+    {
+      "title": "National Palace of Culture",
+      "lat": 42.685406,
+      "lng": 23.319031,
+      "ornamentId": "ap3",
+      "guid": "74d48e7201b04df29f31dc184741dbad.12"
+    },
+    {
+      "title": "Жена в народна носия",
+      "lat": 42.696492,
+      "lng": 23.328355,
+      "ornamentId": "ap1",
+      "guid": "19d939578188455aae96a3911bba4554.16"
+    },
+    {
+      "title": "Monument",
+      "lat": 42.680034,
+      "lng": 23.32105,
+      "ornamentId": "ap2",
+      "guid": "36904ecc5e22437d9ec0b4a025be2eb9.12"
+    }
+  ]
+}
