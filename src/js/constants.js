@@ -31,7 +31,7 @@ export const HISTORY_REASONS = {
     DESPAWN: "despawn",
 };
 
-export const SITE_AGGREGATION_DISTANCE = 10000;
+export const SITE_AGGREGATION_DISTANCE = 25000;
 export const CUSTOM_SERIES_ID = "custom";
 
 export function getAbbreviatedTeam(fullTeamName) {
