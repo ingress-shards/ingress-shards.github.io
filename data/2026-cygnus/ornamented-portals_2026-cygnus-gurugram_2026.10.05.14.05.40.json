@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-gurugram",
+  "exportedAt": 1791205540,
+  "portals": [
+    {
+      "title": "Roman Gazebo",
+      "lat": 28.46931,
+      "lng": 77.065837,
+      "ornamentId": "ap1",
+      "guid": "558d7d54c5ff4f6584944523407d0933.16"
+    },
+    {
+      "title": "Mega Fountain",
+      "lat": 28.47032,
+      "lng": 77.063729,
+      "ornamentId": "ap3",
+      "guid": "244ac48fd87e490da1098600bc70c850.16"
+    },
+    {
+      "title": "Circular shape structure",
+      "lat": 28.465081,
+      "lng": 77.068984,
+      "ornamentId": "ap2",
+      "guid": "95f18a44bcbe3ddf91c7ad7a849a43af.16"
+    }
+  ]
+}

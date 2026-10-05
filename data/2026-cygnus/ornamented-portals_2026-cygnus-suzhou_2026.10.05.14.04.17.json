@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-suzhou",
+  "exportedAt": 1791205457,
+  "portals": [
+    {
+      "title": "主题公园地图",
+      "lat": 31.305618,
+      "lng": 120.723814,
+      "ornamentId": "ap1",
+      "guid": "89b0ec0846c93017b6f5b7904a5ef0f1.16"
+    },
+    {
+      "title": "斜塘中的景观石",
+      "lat": 31.305614,
+      "lng": 120.729282,
+      "ornamentId": "ap3",
+      "guid": "f0d5cfd70b13338881ee9dc62cfd8c6d.16"
+    },
+    {
+      "title": "老街亭",
+      "lat": 31.305159,
+      "lng": 120.737533,
+      "ornamentId": "ap2",
+      "guid": "b57e46b46a7744dbb5f46bf46e25f09c.16"
+    }
+  ]
+}

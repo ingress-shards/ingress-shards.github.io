@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-nashville",
+  "exportedAt": 1791205480,
+  "portals": [
+    {
+      "title": "Colonel James Robertson",
+      "lat": 36.164257,
+      "lng": -86.775367,
+      "ornamentId": "ap3",
+      "guid": "d1223441607c4540b39a206b33ad89b4.12"
+    },
+    {
+      "title": "Fringtree plaque",
+      "lat": 36.160049,
+      "lng": -86.77214,
+      "ornamentId": "ap2",
+      "guid": "a44d20a57b993f03a9a209ec75db85b2.16"
+    },
+    {
+      "title": "Walk of Fame: Roy Orbison",
+      "lat": 36.159393,
+      "lng": -86.776624,
+      "ornamentId": "ap1",
+      "guid": "1fd48cd35b654a9bb63b2551484a3723.16"
+    }
+  ]
+}

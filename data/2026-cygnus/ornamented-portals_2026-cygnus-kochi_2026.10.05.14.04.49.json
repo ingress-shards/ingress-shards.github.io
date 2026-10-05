@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-kochi",
+  "exportedAt": 1791205489,
+  "portals": [
+    {
+      "title": "実川八百五郎翁の像",
+      "lat": 33.558827,
+      "lng": 133.540089,
+      "ornamentId": "ap1",
+      "guid": "73809023ce084881ac3cdc3485cf2901.16"
+    },
+    {
+      "title": "中央公園の噴水",
+      "lat": 33.55998,
+      "lng": 133.540997,
+      "ornamentId": "ap2",
+      "guid": "baf1c04cd6ee425fb40b06c27c572fd3.16"
+    },
+    {
+      "title": "服を脱ぐ",
+      "lat": 33.559822,
+      "lng": 133.537239,
+      "ornamentId": "ap3",
+      "guid": "e15c02dc70364d80944577ae3c8a1992.16"
+    }
+  ]
+}

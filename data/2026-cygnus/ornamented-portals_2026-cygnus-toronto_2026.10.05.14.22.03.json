@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-toronto",
+  "exportedAt": 1791206523,
+  "portals": [
+    {
+      "title": "Montgomery's Meadow Sign",
+      "lat": 43.651106,
+      "lng": -79.524857,
+      "ornamentId": "ap1",
+      "guid": "1fd66404f70a43938032171cf3ccff51.16"
+    },
+    {
+      "title": "A Plaque For Hank",
+      "lat": 43.648801,
+      "lng": -79.523518,
+      "ornamentId": "ap2",
+      "guid": "5466ecbbe5b23df489eddcee2c44b0f2.16"
+    },
+    {
+      "title": "New Horizons Community Garden",
+      "lat": 43.646294,
+      "lng": -79.518693,
+      "ornamentId": "ap3",
+      "guid": "f9cd5f61465140e8845df63449aab7a7.16"
+    }
+  ]
+}

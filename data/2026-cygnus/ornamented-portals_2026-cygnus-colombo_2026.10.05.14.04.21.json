@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-colombo",
+  "exportedAt": 1791205461,
+  "portals": [
+    {
+      "title": "The Wall Art Elephant",
+      "lat": 6.838832,
+      "lng": 79.870435,
+      "ornamentId": "ap3",
+      "guid": "cdc7ca472edc41db938501faecfa7da3.16"
+    },
+    {
+      "title": "Gale Pansala. Temple on the Rock.",
+      "lat": 6.847632,
+      "lng": 79.861746,
+      "ornamentId": "ap2",
+      "guid": "9b05d6fd38db472180b2314096d81817.16"
+    },
+    {
+      "title": "Artistic Wall around Dehiwela",
+      "lat": 6.851847,
+      "lng": 79.863717,
+      "ornamentId": "ap1",
+      "guid": "74c17bfe5fa4404c8af73d84d5f7242f.16"
+    }
+  ]
+}

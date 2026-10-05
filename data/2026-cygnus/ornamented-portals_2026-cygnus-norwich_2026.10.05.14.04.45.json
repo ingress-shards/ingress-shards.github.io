@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-norwich",
+  "exportedAt": 1791205485,
+  "portals": [
+    {
+      "title": "Chapelfield Bandstand",
+      "lat": 52.627465,
+      "lng": 1.288056,
+      "ornamentId": "ap3",
+      "guid": "b8813852ec774c16939827501fcd46c5.16"
+    },
+    {
+      "title": "Eagle Walk Football Pitch",
+      "lat": 52.621232,
+      "lng": 1.282833,
+      "ornamentId": "ap2",
+      "guid": "8382169c88f048c4b029586dd80c129d.16"
+    },
+    {
+      "title": "Welcome to Jenny Lind Park Sign 2",
+      "lat": 52.624103,
+      "lng": 1.284639,
+      "ornamentId": "ap1",
+      "guid": "0e137ace587e3280a5802afc59081ede.16"
+    }
+  ]
+}
