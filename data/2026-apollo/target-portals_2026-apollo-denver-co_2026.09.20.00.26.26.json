@@ -626,6 +626,15 @@
         },
         {
           "portalInfo": {
+            "title": "Mountain Bull",
+            "latE6": 39742455,
+            "lngE6": -104993311
+          },
+          "targetAlignment": "ENLIGHTENED",
+          "observedAt": 1789857181933
+        },
+        {
+          "portalInfo": {
             "title": "Nest",
             "latE6": 39743920,
             "lngE6": -104988340
