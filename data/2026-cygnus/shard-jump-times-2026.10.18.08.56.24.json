@@ -1,0 +1,2384 @@
+{
+  "artifact": [
+    {
+      "id": "abaddon1",
+      "name": "Abaddon 1"
+    },
+    {
+      "id": "hotel",
+      "name": "Hotel"
+    },
+    {
+      "id": "juliet",
+      "name": "Juliet"
+    },
+    {
+      "id": "foxtrot",
+      "name": "Foxtrot",
+      "fragment": [
+        {
+          "id": "foxtrot_01",
+          "history": [
+            {
+              "moveTimeMs": "1792296000142",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Christ the King Statue",
+                "description": "A Memorial Marble Statue at Christ the King Roman Catholic Church",
+                "latE6": 36098506,
+                "lngE6": -115234767,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1792280701702",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Alligator Bar at The Orleans",
+                "latE6": 36102784,
+                "lngE6": -115201263,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Christ the King Statue",
+                "description": "A Memorial Marble Statue at Christ the King Roman Catholic Church",
+                "latE6": 36098506,
+                "lngE6": -115234767,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792280592600",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792278901514",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Tournament of Kings Arena",
+                "latE6": 36099043,
+                "lngE6": -115175436,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Alligator Bar at The Orleans",
+                "latE6": 36102784,
+                "lngE6": -115201263,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792278491493",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792277101495",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Taco Bell Wedding Chapel",
+                "description": "Serving up nachos and I Do-s since 2017, this one of a kind wedding venue can be ordered right off the menu giving you and 15 of your closest friends an unburritoable experience. Wed Más!",
+                "latE6": 36108658,
+                "lngE6": -115172281,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Tournament of Kings Arena",
+                "latE6": 36099043,
+                "lngE6": -115175436,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792276392970",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792275301621",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Stella Artois Beer Cafe",
+                "description": "Stella Artois Beer Cafe in Terminal 1, A gates at LAS (Las Vegas Airport)",
+                "latE6": 36085319,
+                "lngE6": -115154351,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Taco Bell Wedding Chapel",
+                "description": "Serving up nachos and I Do-s since 2017, this one of a kind wedding venue can be ordered right off the menu giving you and 15 of your closest friends an unburritoable experience. Wed Más!",
+                "latE6": 36108658,
+                "lngE6": -115172281,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792272896136",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792273501620",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Planet Hollywood South Footbridge",
+                "description": "Footbridge from Planet Hollywood crossing Harmon Road on the strip in Las Vegas",
+                "latE6": 36108402,
+                "lngE6": -115172191,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Stella Artois Beer Cafe",
+                "description": "Stella Artois Beer Cafe in Terminal 1, A gates at LAS (Las Vegas Airport)",
+                "latE6": 36085319,
+                "lngE6": -115154351,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792272502250",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792271701467",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Dave's Hot Chicken Las Vegas Sign",
+                "description": "Popular Restaurant Chain Serving Chicken, Fries & Shakes",
+                "latE6": 36114263,
+                "lngE6": -115171629,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Planet Hollywood South Footbridge",
+                "description": "Footbridge from Planet Hollywood crossing Harmon Road on the strip in Las Vegas",
+                "latE6": 36108402,
+                "lngE6": -115172191,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792271306535",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792270800841",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Dave's Hot Chicken Las Vegas Sign",
+                "description": "Popular Restaurant Chain Serving Chicken, Fries & Shakes",
+                "latE6": 36114263,
+                "lngE6": -115171629,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "foxtrot_02",
+          "history": [
+            {
+              "moveTimeMs": "1792296000199",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Christ the King Catholic Church",
+                "latE6": 36099029,
+                "lngE6": -115234694,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1792280821944",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Alligator Bar at The Orleans",
+                "latE6": 36102784,
+                "lngE6": -115201263,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Christ the King Catholic Church",
+                "latE6": 36099029,
+                "lngE6": -115234694,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792280428362",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792279021845",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Moe’s Southwest Grill",
+                "description": "Moe's Southwest Grill serves Southwestern cuisine at gates A10 to A15 in Harry Reid International Airport. It is a convenient snack store for passengers to eat while they wait for their flights.",
+                "latE6": 36085501,
+                "lngE6": -115154277,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Alligator Bar at The Orleans",
+                "latE6": 36102784,
+                "lngE6": -115201263,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792278237152",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792277220035",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792275421528",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Taco Bell Wedding Chapel",
+                "description": "Serving up nachos and I Do-s since 2017, this one of a kind wedding venue can be ordered right off the menu giving you and 15 of your closest friends an unburritoable experience. Wed Más!",
+                "latE6": 36108658,
+                "lngE6": -115172281,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Moe’s Southwest Grill",
+                "description": "Moe's Southwest Grill serves Southwestern cuisine at gates A10 to A15 in Harry Reid International Airport. It is a convenient snack store for passengers to eat while they wait for their flights.",
+                "latE6": 36085501,
+                "lngE6": -115154277,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792274802008",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792273621461",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Stella Artois Beer Cafe",
+                "description": "Stella Artois Beer Cafe in Terminal 1, A gates at LAS (Las Vegas Airport)",
+                "latE6": 36085319,
+                "lngE6": -115154351,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Taco Bell Wedding Chapel",
+                "description": "Serving up nachos and I Do-s since 2017, this one of a kind wedding venue can be ordered right off the menu giving you and 15 of your closest friends an unburritoable experience. Wed Más!",
+                "latE6": 36108658,
+                "lngE6": -115172281,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792272896136",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792271821418",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Planet Hollywood South Footbridge",
+                "description": "Footbridge from Planet Hollywood crossing Harmon Road on the strip in Las Vegas",
+                "latE6": 36108402,
+                "lngE6": -115172191,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Stella Artois Beer Cafe",
+                "description": "Stella Artois Beer Cafe in Terminal 1, A gates at LAS (Las Vegas Airport)",
+                "latE6": 36085319,
+                "lngE6": -115154351,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792271544645",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792270802650",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Planet Hollywood South Footbridge",
+                "description": "Footbridge from Planet Hollywood crossing Harmon Road on the strip in Las Vegas",
+                "latE6": 36108402,
+                "lngE6": -115172191,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "foxtrot_03",
+          "history": [
+            {
+              "moveTimeMs": "1792296000261",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Alligator Bar at The Orleans",
+                "latE6": 36102784,
+                "lngE6": -115201263,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1792280941710",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Inspiration church Sculpture",
+                "description": "Church",
+                "latE6": 36098935,
+                "lngE6": -115234856,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Alligator Bar at The Orleans",
+                "latE6": 36102784,
+                "lngE6": -115201263,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792280602648",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792279141408",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Orleans Bowling Center",
+                "description": "This bowling alley is located inside The Orleans Casino.",
+                "latE6": 36102643,
+                "lngE6": -115202359,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Inspiration church Sculpture",
+                "description": "Church",
+                "latE6": 36098935,
+                "lngE6": -115234856,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792278550689",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792277341582",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Horse",
+                "latE6": 36111861,
+                "lngE6": -115175036,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Orleans Bowling Center",
+                "description": "This bowling alley is located inside The Orleans Casino.",
+                "latE6": 36102643,
+                "lngE6": -115202359,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792276494500",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792275540374",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792273740045",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792271940035",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792270801861",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Horse",
+                "latE6": 36111861,
+                "lngE6": -115175036,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kilo",
+      "name": "Kilo"
+    },
+    {
+      "id": "oscar",
+      "name": "Oscar"
+    },
+    {
+      "id": "targetres",
+      "name": "Target RES"
+    },
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "fragment": [
+        {
+          "id": "alpha_02",
+          "history": [
+            {
+              "moveTimeMs": "1792242000167",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "听雨轩",
+                "latE6": 31160293,
+                "lngE6": 120727753,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1792226821557",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792225021174",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792223220854",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792221421506",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "人大苏州校区东门",
+                "description": "作为开放式校园并没有传统意义上的校门，只在东门立起一雕塑，呈敞开的门的形状，表达了人大苏州校区欢迎四方来客的热情开放态度。",
+                "latE6": 31279225,
+                "lngE6": 120730191,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "听雨轩",
+                "latE6": 31160293,
+                "lngE6": 120727753,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792221270757",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792219621542",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "松涛街口袋公园",
+                "description": "松涛街口袋公园",
+                "latE6": 31294097,
+                "lngE6": 120729583,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "人大苏州校区东门",
+                "description": "作为开放式校园并没有传统意义上的校门，只在东门立起一雕塑，呈敞开的门的形状，表达了人大苏州校区欢迎四方来客的热情开放态度。",
+                "latE6": 31279225,
+                "lngE6": 120730191,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792219458631",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792217821426",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "老街亭",
+                "latE6": 31305159,
+                "lngE6": 120737533,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "松涛街口袋公园",
+                "description": "松涛街口袋公园",
+                "latE6": 31294097,
+                "lngE6": 120729583,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792217650053",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792216802677",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "老街亭",
+                "latE6": 31305159,
+                "lngE6": 120737533,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "alpha_01",
+          "history": [
+            {
+              "moveTimeMs": "1792242000084",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "蠡墅地铁站4号口",
+                "description": "地铁站出入口",
+                "latE6": 31232744,
+                "lngE6": 120616477,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1792226701045",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792224900150",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792223100047",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792221300153",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792219501521",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "象棋阵",
+                "latE6": 31303644,
+                "lngE6": 120721402,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "蠡墅地铁站4号口",
+                "description": "地铁站出入口",
+                "latE6": 31232744,
+                "lngE6": 120616477,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792218856237",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792217701488",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "主题公园地图",
+                "description": "主题公园的地图",
+                "latE6": 31305618,
+                "lngE6": 120723814,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "象棋阵",
+                "latE6": 31303644,
+                "lngE6": 120721402,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792217360641",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792216802459",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "主题公园地图",
+                "description": "主题公园的地图",
+                "latE6": 31305618,
+                "lngE6": 120723814,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "alpha_03",
+          "history": [
+            {
+              "moveTimeMs": "1792242000237",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "广德福",
+                "description": "一个休息区",
+                "latE6": 31406558,
+                "lngE6": 120781810,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1792226942785",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "阳澄圣境",
+                "description": "一个门楼",
+                "latE6": 31406793,
+                "lngE6": 120781156,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "广德福",
+                "description": "一个休息区",
+                "latE6": 31406558,
+                "lngE6": 120781810,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792225908930",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792225141582",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "六度门",
+                "latE6": 31409067,
+                "lngE6": 120774546,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "阳澄圣境",
+                "description": "一个门楼",
+                "latE6": 31406793,
+                "lngE6": 120781156,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792223915240",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792223341847",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "纠缠",
+                "description": "纠缠不清",
+                "latE6": 31323337,
+                "lngE6": 120696449,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "六度门",
+                "latE6": 31409067,
+                "lngE6": 120774546,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792223124742",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792221540260",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792219741915",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "斜塘中的景观石",
+                "description": "藏在树林中",
+                "latE6": 31305614,
+                "lngE6": 120729282,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "纠缠",
+                "description": "纠缠不清",
+                "latE6": 31323337,
+                "lngE6": 120696449,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792218401119",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792217940202",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792216801893",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "斜塘中的景观石",
+                "description": "藏在树林中",
+                "latE6": 31305614,
+                "lngE6": 120729282,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lima",
+      "name": "Lima"
+    },
+    {
+      "id": "sierra",
+      "name": "Sierra"
+    },
+    {
+      "id": "echo",
+      "name": "Echo",
+      "fragment": [
+        {
+          "id": "echo_03",
+          "history": [
+            {
+              "moveTimeMs": "1792285200168",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Montgomery's Meadow Sign",
+                "description": "Educational sign about local wildlife garden.",
+                "latE6": 43651106,
+                "lngE6": -79524857,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1792270140049",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792268340646",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792266541535",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Islington Heights Park",
+                "description": "Public park on Bywood Drive",
+                "latE6": 43658924,
+                "lngE6": -79533233,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Montgomery's Meadow Sign",
+                "description": "Educational sign about local wildlife garden.",
+                "latE6": 43651106,
+                "lngE6": -79524857,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792266277412",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792264740031",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792262941537",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "New Horizons Community Garden",
+                "description": "Community garden in Tom Riley Park.",
+                "latE6": 43646294,
+                "lngE6": -79518693,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Islington Heights Park",
+                "description": "Public park on Bywood Drive",
+                "latE6": 43658924,
+                "lngE6": -79533233,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792262818529",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792261140042",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792260001688",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "New Horizons Community Garden",
+                "description": "Community garden in Tom Riley Park.",
+                "latE6": 43646294,
+                "lngE6": -79518693,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "echo_01",
+          "history": [
+            {
+              "moveTimeMs": "1792285200034",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Rexdale Mall",
+                "description": "Local community mall",
+                "latE6": 43716324,
+                "lngE6": -79554683,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1792269901476",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "St Phillip's Anglican Church",
+                "latE6": 43701249,
+                "lngE6": -79533301,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Rexdale Mall",
+                "description": "Local community mall",
+                "latE6": 43716324,
+                "lngE6": -79554683,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792269158921",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792268101397",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Islington Heights Park",
+                "description": "Public park on Bywood Drive",
+                "latE6": 43658924,
+                "lngE6": -79533233,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "St Phillip's Anglican Church",
+                "latE6": 43701249,
+                "lngE6": -79533301,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792267075934",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792266301430",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Montgomery's Meadow Sign",
+                "description": "Educational sign about local wildlife garden.",
+                "latE6": 43651106,
+                "lngE6": -79524857,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Islington Heights Park",
+                "description": "Public park on Bywood Drive",
+                "latE6": 43658924,
+                "lngE6": -79533233,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792266277412",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792264500243",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792262700110",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792260900107",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792260003830",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Montgomery's Meadow Sign",
+                "description": "Educational sign about local wildlife garden.",
+                "latE6": 43651106,
+                "lngE6": -79524857,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "echo_02",
+          "history": [
+            {
+              "moveTimeMs": "1792285200099",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "ARRWORX TO HUB WEST",
+                "description": "Exhibition to HOME(LAND)",
+                "latE6": 43632375,
+                "lngE6": -79555858,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1792270020178",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792268221494",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Cloverdale Mall - Hall of History",
+                "description": "Photographs and plaques showcasing the malls historic events.",
+                "latE6": 43631259,
+                "lngE6": -79555221,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "ARRWORX TO HUB WEST",
+                "description": "Exhibition to HOME(LAND)",
+                "latE6": 43632375,
+                "lngE6": -79555858,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792268111651",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792266421644",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Terry Fox Run 6KM Marker",
+                "latE6": 43652420,
+                "lngE6": -79542659,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Cloverdale Mall - Hall of History",
+                "description": "Photographs and plaques showcasing the malls historic events.",
+                "latE6": 43631259,
+                "lngE6": -79555221,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792266364950",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792264621395",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "A Plaque For Hank",
+                "description": "A memorial plaque for Hank Spencer - In loving memory: Husband, Dad, Grandpa, Teacher, Coach, Volunteer, Friend \"When you're weary...\"",
+                "latE6": 43648801,
+                "lngE6": -79523518,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Terry Fox Run 6KM Marker",
+                "latE6": 43652420,
+                "lngE6": -79542659,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792264366573",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792262820137",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792261020093",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792260000764",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "A Plaque For Hank",
+                "description": "A memorial plaque for Hank Spencer - In loving memory: Husband, Dad, Grandpa, Teacher, Coach, Volunteer, Friend \"When you're weary...\"",
+                "latE6": 43648801,
+                "lngE6": -79523518,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "name": "India"
+    },
+    {
+      "id": "bravo",
+      "name": "Bravo",
+      "fragment": [
+        {
+          "id": "bravo_03",
+          "history": [
+            {
+              "moveTimeMs": "1792251000174",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Sri Sudharmaramaya Stupa",
+                "latE6": 6863837,
+                "lngE6": 79863963,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1792235942494",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Kalubowila Water Tower",
+                "latE6": 6866846,
+                "lngE6": 79877275,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Sri Sudharmaramaya Stupa",
+                "latE6": 6863837,
+                "lngE6": 79863963,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792235787963",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792234141670",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "White Buddha Statue",
+                "latE6": 6860194,
+                "lngE6": 79866919,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Kalubowila Water Tower",
+                "latE6": 6866846,
+                "lngE6": 79877275,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792233486291",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792232341482",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Cleopatra Wall Art",
+                "description": "Egyptian painting",
+                "latE6": 6832073,
+                "lngE6": 79877160,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "White Buddha Statue",
+                "latE6": 6860194,
+                "lngE6": 79866919,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792231814544",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792230541522",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Dehiwala Junction Jumma Mosque",
+                "description": "This is the Jumma Masjid at Dehiwala where many Muslim devotees come and pray",
+                "latE6": 6852890,
+                "lngE6": 79866145,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Cleopatra Wall Art",
+                "description": "Egyptian painting",
+                "latE6": 6832073,
+                "lngE6": 79877160,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792230380512",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792228741760",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "The Wall Art Elephant",
+                "latE6": 6838832,
+                "lngE6": 79870435,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Dehiwala Junction Jumma Mosque",
+                "description": "This is the Jumma Masjid at Dehiwala where many Muslim devotees come and pray",
+                "latE6": 6852890,
+                "lngE6": 79866145,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792228413469",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792226940039",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792225801667",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "The Wall Art Elephant",
+                "latE6": 6838832,
+                "lngE6": 79870435,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "bravo_01",
+          "history": [
+            {
+              "moveTimeMs": "1792251000036",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Dehiwala Railway Station",
+                "description": "Dehiwala",
+                "latE6": 6851090,
+                "lngE6": 79862014,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1792235702641",
+              "reason": "jump",
+              "originPortalInfo": {
+                "title": "Artistic Wall around Dehiwela",
+                "description": "Artistic Wall around dehiwela representing traditional Sri Lankan architecture.",
+                "latE6": 6851847,
+                "lngE6": 79863717,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Dehiwala Railway Station",
+                "description": "Dehiwala",
+                "latE6": 6851090,
+                "lngE6": 79862014,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1792233900125",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792232100108",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792230300053",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792228500058",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792226700217",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792225802606",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Artistic Wall around Dehiwela",
+                "description": "Artistic Wall around dehiwela representing traditional Sri Lankan architecture.",
+                "latE6": 6851847,
+                "lngE6": 79863717,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "bravo_02",
+          "history": [
+            {
+              "moveTimeMs": "1792251000109",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Guardian lion statue.",
+                "description": "Guardian lion statue at Reginold cooray open stadium",
+                "latE6": 6713071,
+                "lngE6": 79901792,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1792235820138",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792234020032",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792232220035",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792230420033",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792228620194",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792226821362",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Gale Pansala. Temple on the Rock.",
+                "latE6": 6847632,
+                "lngE6": 79861746,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Guardian lion statue.",
+                "description": "Guardian lion statue at Reginold cooray open stadium",
+                "latE6": 6713071,
+                "lngE6": 79901792,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792226804369",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792225800721",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Gale Pansala. Temple on the Rock.",
+                "latE6": 6847632,
+                "lngE6": 79861746,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "delta",
+      "name": "Delta",
+      "fragment": [
+        {
+          "id": "delta_02",
+          "history": [
+            {
+              "moveTimeMs": "1792263600217",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Kirche Plötzky",
+                "description": "Ev. Kirche St. Maria Magdalena",
+                "latE6": 52052944,
+                "lngE6": 11800189,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1792248421723",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Fraunhofer IFF",
+                "description": "Das Gebäude des Fraunhofer Instituts für Fabrikbetrieb und -automatisierung IFF wurde 1998 fertiggestellt.",
+                "latE6": 52139145,
+                "lngE6": 11652265,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Kirche Plötzky",
+                "description": "Ev. Kirche St. Maria Magdalena",
+                "latE6": 52052944,
+                "lngE6": 11800189,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792247854656",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792246620162",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792244820092",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792243021057",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792241222280",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Wassertropfen Schleinufer",
+                "description": "Graffitikunst am Verteilerkasten im Schleinufer 5 in Form einer Vielzahl an Wassertropfen",
+                "latE6": 52129115,
+                "lngE6": 11641862,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Fraunhofer IFF",
+                "description": "Das Gebäude des Fraunhofer Instituts für Fabrikbetrieb und -automatisierung IFF wurde 1998 fertiggestellt.",
+                "latE6": 52139145,
+                "lngE6": 11652265,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792241066660",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792239421044",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792238402074",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Wassertropfen Schleinufer",
+                "description": "Graffitikunst am Verteilerkasten im Schleinufer 5 in Form einer Vielzahl an Wassertropfen",
+                "latE6": 52129115,
+                "lngE6": 11641862,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "delta_01",
+          "history": [
+            {
+              "moveTimeMs": "1792263600150",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Informationstafel",
+                "description": "Informationen über Feste, Veranstaltungen und Projekte im Dorf Elbenau",
+                "latE6": 52045558,
+                "lngE6": 11761334,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1792248301564",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Roter Anker",
+                "latE6": 52125104,
+                "lngE6": 11649711,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Informationstafel",
+                "description": "Informationen über Feste, Veranstaltungen und Projekte im Dorf Elbenau",
+                "latE6": 52045558,
+                "lngE6": 11761334,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792247230792",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792246500053",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792244700188",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792242902255",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Schweizer Milchkuranstalt auf dem Fürstenwall",
+                "description": "Biergarten Schweizer Milchkuranstalt auf dem Fürstenwall",
+                "latE6": 52122944,
+                "lngE6": 11634815,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Roter Anker",
+                "latE6": 52125104,
+                "lngE6": 11649711,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792242359704",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792241101902",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792239301036",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792238400832",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Schweizer Milchkuranstalt auf dem Fürstenwall",
+                "description": "Biergarten Schweizer Milchkuranstalt auf dem Fürstenwall",
+                "latE6": 52122944,
+                "lngE6": 11634815,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "delta_03",
+          "history": [
+            {
+              "moveTimeMs": "1792263600280",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Kriegsdenkmal Plötzky",
+                "description": "Dem auf dem Felde Gefallenen zum Gedächtnis",
+                "latE6": 52052778,
+                "lngE6": 11800309,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1792248541063",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792246741423",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Kirche Plötzky",
+                "description": "Ev. Kirche St. Maria Magdalena",
+                "latE6": 52052944,
+                "lngE6": 11800189,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Kriegsdenkmal Plötzky",
+                "description": "Dem auf dem Felde Gefallenen zum Gedächtnis",
+                "latE6": 52052778,
+                "lngE6": 11800309,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1779976137779",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792244942781",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Deutsche Post Filiale",
+                "description": "am Pechauer Platz 9b",
+                "latE6": 52113319,
+                "lngE6": 11669447,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Kirche Plötzky",
+                "description": "Ev. Kirche St. Maria Magdalena",
+                "latE6": 52052944,
+                "lngE6": 11800189,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792244662680",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792243141464",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Trikot des SC Magdeburg",
+                "description": "Ein übergroßes Trikot der Bundesliga-Handballer des SC Magdeurg.",
+                "latE6": 52128540,
+                "lngE6": 11666269,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Deutsche Post Filiale",
+                "description": "am Pechauer Platz 9b",
+                "latE6": 52113319,
+                "lngE6": 11669447,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792242866706",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792241341039",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792239541508",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Gedenktafel zum Tod Editahs Prinzessin von Angelsachsen",
+                "description": "Bergraben im Dom zu Magdeburg",
+                "latE6": 52125533,
+                "lngE6": 11635140,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Trikot des SC Magdeburg",
+                "description": "Ein übergroßes Trikot der Bundesliga-Handballer des SC Magdeurg.",
+                "latE6": 52128540,
+                "lngE6": 11666269,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792239308434",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792238402671",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Gedenktafel zum Tod Editahs Prinzessin von Angelsachsen",
+                "description": "Bergraben im Dom zu Magdeburg",
+                "latE6": 52125533,
+                "lngE6": 11635140,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "charlie",
+      "name": "Charlie",
+      "fragment": [
+        {
+          "id": "charlie_01",
+          "history": [
+            {
+              "moveTimeMs": "1792260002022",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Kolonki",
+                "latE6": 42690083,
+                "lngE6": 23332192,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1792244702368",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Jumbo Plazza",
+                "description": "Верига магазини  JUMBO  е най-голямата  верига  за  детски  играчки  в България.",
+                "latE6": 42708459,
+                "lngE6": 23458224,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Kolonki",
+                "latE6": 42690083,
+                "lngE6": 23332192,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792244316782",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792242901378",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Grafit",
+                "description": "Grafit",
+                "latE6": 42711938,
+                "lngE6": 23408061,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Jumbo Plazza",
+                "description": "Верига магазини  JUMBO  е най-голямата  верига  за  детски  играчки  в България.",
+                "latE6": 42708459,
+                "lngE6": 23458224,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792241744400",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792241101656",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "катерушка",
+                "latE6": 42703872,
+                "lngE6": 23361630,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Grafit",
+                "description": "Grafit",
+                "latE6": 42711938,
+                "lngE6": 23408061,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792240711124",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792239302052",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "oneptm",
+                "description": "graffiti on the building",
+                "latE6": 42692538,
+                "lngE6": 23354681,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "катерушка",
+                "latE6": 42703872,
+                "lngE6": 23361630,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792238849856",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792237501505",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Мраморни колони на вход",
+                "description": "Входна врата в римски стил с мраморни колони",
+                "latE6": 42691126,
+                "lngE6": 23338656,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "oneptm",
+                "description": "graffiti on the building",
+                "latE6": 42692538,
+                "lngE6": 23354681,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792237305364",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792235702425",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Жена в народна носия",
+                "description": "Bulgarian National Woman",
+                "latE6": 42696492,
+                "lngE6": 23328355,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Мраморни колони на вход",
+                "description": "Входна врата в римски стил с мраморни колони",
+                "latE6": 42691126,
+                "lngE6": 23338656,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792235408550",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792234801728",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Жена в народна носия",
+                "description": "Bulgarian National Woman",
+                "latE6": 42696492,
+                "lngE6": 23328355,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "charlie_03",
+          "history": [
+            {
+              "moveTimeMs": "1792260002162",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Kolonki",
+                "latE6": 42690083,
+                "lngE6": 23332192,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1792244942148",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Jumbo Plazza",
+                "description": "Верига магазини  JUMBO  е най-голямата  верига  за  детски  играчки  в България.",
+                "latE6": 42708459,
+                "lngE6": 23458224,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Kolonki",
+                "latE6": 42690083,
+                "lngE6": 23332192,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792244316782",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792243142429",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Grafit",
+                "description": "Grafit",
+                "latE6": 42711938,
+                "lngE6": 23408061,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Jumbo Plazza",
+                "description": "Верига магазини  JUMBO  е най-голямата  верига  за  детски  играчки  в България.",
+                "latE6": 42708459,
+                "lngE6": 23458224,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792241744400",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792241341870",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "катерушка",
+                "latE6": 42703872,
+                "lngE6": 23361630,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Grafit",
+                "description": "Grafit",
+                "latE6": 42711938,
+                "lngE6": 23408061,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792240711124",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792239543161",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "oneptm",
+                "description": "graffiti on the building",
+                "latE6": 42692538,
+                "lngE6": 23354681,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "катерушка",
+                "latE6": 42703872,
+                "lngE6": 23361630,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792238849856",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792237741519",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Мраморни колони на вход",
+                "description": "Входна врата в римски стил с мраморни колони",
+                "latE6": 42691126,
+                "lngE6": 23338656,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "oneptm",
+                "description": "graffiti on the building",
+                "latE6": 42692538,
+                "lngE6": 23354681,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792237305364",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792235941492",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "National Palace of Culture",
+                "description": "Национален Дворец на Културата",
+                "latE6": 42685406,
+                "lngE6": 23319031,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Мраморни колони на вход",
+                "description": "Входна врата в римски стил с мраморни колони",
+                "latE6": 42691126,
+                "lngE6": 23338656,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1792235487125",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1792234800846",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "National Palace of Culture",
+                "description": "Национален Дворец на Културата",
+                "latE6": 42685406,
+                "lngE6": 23319031,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "charlie_02",
+          "history": [
+            {
+              "moveTimeMs": "1792260002096",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "They did their duty",
+                "description": "Благодарствен паметник на служителите изпълнили дълга си с цената на собствения си живот",
+                "latE6": 42663853,
+                "lngE6": 23320158,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1792244821030",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792243020086",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792241220092",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792239421729",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Monument",
+                "description": "In geometry, an icosahedron is a polyhedron with 20 faces.",
+                "latE6": 42680034,
+                "lngE6": 23321050,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "They did their duty",
+                "description": "Благодарствен паметник на служителите изпълнили дълга си с цената на собствения си живот",
+                "latE6": 42663853,
+                "lngE6": 23320158,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792239403005",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1792237620083",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792235821034",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1792234802956",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Monument",
+                "description": "In geometry, an icosahedron is a polyhedron with 20 faces.",
+                "latE6": 42680034,
+                "lngE6": 23321050,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quebec",
+      "name": "Quebec"
+    },
+    {
+      "id": "tango",
+      "name": "Tango"
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL"
+    },
+    {
+      "id": "xray",
+      "name": "Xray"
+    },
+    {
+      "id": "whiskey",
+      "name": "Whiskey"
+    },
+    {
+      "id": "golf",
+      "name": "Golf"
+    },
+    {
+      "id": "victor",
+      "name": "Victor"
+    },
+    {
+      "id": "romeo",
+      "name": "Romeo"
+    },
+    {
+      "id": "mike",
+      "name": "Mike"
+    },
+    {
+      "id": "november",
+      "name": "November"
+    },
+    {
+      "id": "zulu",
+      "name": "Zulu"
+    },
+    {
+      "id": "abaddon2",
+      "name": "Abaddon 2"
+    },
+    {
+      "id": "uniform",
+      "name": "Uniform"
+    },
+    {
+      "id": "yankee",
+      "name": "Yankee"
+    },
+    {
+      "id": "papa",
+      "name": "Papa"
+    }
+  ]
+}
