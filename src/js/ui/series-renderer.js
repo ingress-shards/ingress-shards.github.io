@@ -3,14 +3,14 @@ import { EVENT_BRANDS } from "../constants.js";
 import { addEventInteraction } from "./event-handler.js";
 import { navigate } from "../router.js";
 import { getScoresText } from "./site-renderer.js";
-import { getSeriesMetadata, getSeriesGeocode, getSiteData, getAllSeriesIds } from "../data/data-store.js";
+import { getSeasonMetadata, getSeasonGeocode, getSiteData, getAllSeasonIds } from "../../data/SeasonDataStore.js";
 import { formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js";
 import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } from "temporal-polyfill/fns/ZonedDateTime";
 import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
 import { fromFields as durationFromFields } from "temporal-polyfill/fns/Duration";
 import { getBasic } from "temporal-polyfill/fns/Calendar";
-import { getEventDuration } from "../shared/event-helpers.js";
+import { getEventConfigRegistry } from "../../config/EventConfig.js";
 import { TACTICAL_MARKER_SVG } from "./marker-template.js";
 
 const seriesLayerCache = new Map();
@@ -32,8 +32,8 @@ function getOutcome(siteData) {
 }
 
 
-function isEventActive(site, seriesId) {
-    const durationMins = getEventDuration(site, seriesId);
+function isEventActive(site) {
+    const durationMins = getEventConfigRegistry().getSiteDurationMinutes(site.id);
 
     const startTime = zdtFromString(site.date, getBasic);
     const endTime = zdtAdd(startTime, durationFromFields({ minutes: durationMins }));
@@ -42,32 +42,32 @@ function isEventActive(site, seriesId) {
     return zdtCompare(now, startTime) >= 0 && zdtCompare(now, endTime) <= 0;
 }
 
-function renderSeriesLayer(seriesId) {
+async function renderSeriesLayer(seriesId) {
     const seriesLayer = L.featureGroup();
     seriesLayer._layerType = 'series';
     seriesLayer._seriesId = seriesId;
 
-    const geocode = getSeriesGeocode(seriesId);
+    const geocode = getSeasonGeocode(seriesId);
     if (!geocode?.sites) {
         return seriesLayer;
     }
 
     for (const site of Object.values(geocode.sites)) {
-        const siteData = getSiteData(seriesId, site.id);
+        const siteData = await getSiteData(seriesId, site.id);
         const hasFragments = siteData?.fullEvent?.shards?.length > 0;
         const hasOrnaments = Object.values(siteData?.portals || {}).some(p => p.ornamentId);
 
         const startTime = zdtFromString(site.date, getBasic);
         const now = zonedDateTimeISO(site.timezone);
 
-        let phaseClass = '';
-        let outcome = 'NONE';
+        let phaseClass;
+        let outcome;
 
         if (hasFragments) {
             // Outcome phase: Shard jump data is available
             outcome = getOutcome(siteData);
             phaseClass = `is-phase-outcome outcome-${outcome.toLowerCase()}`;
-        } else if (isEventActive(site, seriesId)) {
+        } else if (isEventActive(site)) {
             // Active phase: Event is happening now
             phaseClass = 'is-phase-active';
         } else if (zdtCompare(now, startTime) < 0) {
@@ -105,7 +105,7 @@ function renderSeriesLayer(seriesId) {
         const remainingTime = getTimeRemaining(site.date, site.timezone);
         const timeRemainingText = remainingTime ? ` (${remainingTime})` : '';
 
-        const eventDuration = getEventDuration(site, seriesId);
+        const eventDuration = getEventConfigRegistry().getSiteDurationMinutes(site.id);
         const endTime = zdtAdd(startTime, durationFromFields({ minutes: eventDuration }));
         const completionGraceEnd = zdtAdd(endTime, durationFromFields({ days: 1 }));
         const isComplete = zdtCompare(now, endTime) > 0;
@@ -125,7 +125,7 @@ function renderSeriesLayer(seriesId) {
             Type: ${EVENT_BRANDS[site.eventType].label}<br />`;
 
         if (siteData) {
-            const scoresText = getScoresText({ seriesId, siteId: site.id, type: 'full' });
+            const scoresText = await getScoresText({ seriesId, siteId: site.id, siteData, type: 'full' });
             if (scoresText) {
                 siteTooltip += scoresText;
             } else if (hasOrnaments) {
@@ -144,20 +144,23 @@ function renderSeriesLayer(seriesId) {
 }
 
 export function initSeriesLayers() {
-    const allSeriesIds = getAllSeriesIds();
+    const allSeriesIds = getAllSeasonIds();
     for (const seriesId of allSeriesIds) {
         if (!seriesLayerCache.has(seriesId)) {
-            seriesLayerCache.set(seriesId, renderSeriesLayer(seriesId));
+            const seriesLayer = L.featureGroup();
+            seriesLayer._layerType = 'series';
+            seriesLayer._seriesId = seriesId;
+            seriesLayerCache.set(seriesId, seriesLayer);
         }
     }
 }
 
-export function updateCustomSeriesLayer(seriesId) {
+export async function updateCustomSeriesLayer(seriesId) {
     return refreshSeriesLayer(seriesId);
 }
 
-export function refreshSeriesLayer(seriesId) {
-    const updatedSeriesLayer = renderSeriesLayer(seriesId);
+export async function refreshSeriesLayer(seriesId) {
+    const updatedSeriesLayer = await renderSeriesLayer(seriesId);
     const existingSeriesLayer = seriesLayerCache.get(seriesId);
     if (existingSeriesLayer) {
         existingSeriesLayer.clearLayers();
@@ -170,10 +173,10 @@ export function refreshSeriesLayer(seriesId) {
     return updatedSeriesLayer;
 }
 
-export function getSeriesLayer(seriesId) {
+export async function getSeriesLayer(seriesId) {
     let layer = seriesLayerCache.get(seriesId);
-    if (!layer) {
-        layer = renderSeriesLayer(seriesId);
+    if (!layer || layer.getLayers().length === 0) {
+        layer = await renderSeriesLayer(seriesId);
         seriesLayerCache.set(seriesId, layer);
     }
     return layer;
@@ -182,16 +185,16 @@ export function getSeriesLayer(seriesId) {
 export function getSeriesControl() {
     let controlLayers = {};
     for (const [seriesId, layer] of seriesLayerCache.entries()) {
-        const metadata = getSeriesMetadata(seriesId);
+        const metadata = getSeasonMetadata(seriesId);
         const seriesLabel = metadata.year ? `${metadata.year}: ${metadata.name}` : metadata.name;
         controlLayers[seriesLabel] = layer;
     }
     return L.control.layers(controlLayers, {}, { collapsed: true, position: "topleft" });
 }
 
-export function getDetailsPanelContent(seriesId) {
-    const metadata = getSeriesMetadata(seriesId);
-    const geocode = getSeriesGeocode(seriesId);
+export async function getDetailsPanelContent(seriesId) {
+    const metadata = getSeasonMetadata(seriesId);
+    const geocode = getSeasonGeocode(seriesId);
 
     if (!metadata || !geocode || !geocode.sites) {
         return { title: metadata?.name ? `${metadata.name} Season` : 'Details', content: '<p><em>Season information not available.</em></p>' };
@@ -217,7 +220,7 @@ export function getDetailsPanelContent(seriesId) {
 
     content += `<div class="series-sites-list">`;
 
-    typeOrder.forEach(eventType => {
+    for (const eventType of typeOrder) {
         if (sitesByEventType[eventType]) {
             const sitesOfEventType = sitesByEventType[eventType];
 
@@ -226,11 +229,11 @@ export function getDetailsPanelContent(seriesId) {
                     ${sitesOfEventType.length} ${EVENT_BRANDS[eventType].label} Sites</h4>`;
             content += `<div class="group-list collapsed-group">`;
 
-            sitesOfEventType.forEach(site => {
+            for (const site of sitesOfEventType) {
                 const flag = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
                 const siteUrl = `#/${metadata.id}/${site.id.replace(metadata.id + "-", "")}`;
 
-                const scoresText = getScoresText({
+                const scoresText = await getScoresText({
                     seriesId: metadata.id,
                     siteId: site.id,
                     type: 'simple',
@@ -246,10 +249,10 @@ export function getDetailsPanelContent(seriesId) {
                             ${flag} ${site.name}
                         </button>
                         ${scoresText && ` ${scoresText}`}<br />`;
-            });
+            }
+            content += `</div> `;
         }
-        content += `</div> `;
-    });
+    }
 
     return {
         title: `${metadata.name} Season`,

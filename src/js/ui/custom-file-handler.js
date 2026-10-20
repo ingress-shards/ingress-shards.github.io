@@ -1,5 +1,5 @@
-import { CUSTOM_SERIES_ID } from "../constants.js";
-import { addCustomData } from "../data/data-store.js";
+import { CUSTOM_SEASON_ID } from "../constants.js";
+import { addCustomData } from "../../data/SeasonDataStore.js";
 import { navigate } from "../router.js";
 import { updateCustomSeriesLayer } from "./series-renderer.js";
 
@@ -28,7 +28,7 @@ export async function processSingleFile(customFile) {
             { type: "module" }
         );
         jsonParserWorker.postMessage({
-            seriesId: CUSTOM_SERIES_ID,
+            seriesId: CUSTOM_SEASON_ID,
             customFile: {
                 fileName: customFile.name,
                 rawData: localRawJsonString,
@@ -37,9 +37,9 @@ export async function processSingleFile(customFile) {
         jsonParserWorker.onmessage = async (workerEvent) => {
             if (workerEvent.data.status === "complete") {
                 addCustomData(workerEvent.data.processedData);
-                updateCustomSeriesLayer(CUSTOM_SERIES_ID);
+                updateCustomSeriesLayer(CUSTOM_SEASON_ID);
 
-                navigate(`#/${CUSTOM_SERIES_ID}`);
+                navigate(`#/${CUSTOM_SEASON_ID}`);
 
                 jsonParserWorker.terminate();
             }
@@ -49,7 +49,7 @@ export async function processSingleFile(customFile) {
 }
 
 export function getDetailsPanelContent() {
-    let content = `<input id="${CUSTOM_SERIES_ID}-file-input" class="series" type="file" accept="application/json" />`;
+    let content = `<input id="${CUSTOM_SEASON_ID}-file-input" class="series" type="file" accept="application/json" />`;
 
     return {
         title: `Custom Season Details`,
