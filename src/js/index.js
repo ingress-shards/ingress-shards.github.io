@@ -7,13 +7,11 @@ import "../assets/main.css";
 
 setWorkerUrl(new URL('/js/maplibre-gl-worker.mjs', window.location.origin).href);
 import { initMap } from "./ui/map/map-manager.js";
-import { initDataStore } from "./data/data-store.js";
 import { initController } from "./ui/ui-controller.js";
 
 async function initApplication() {
     try {
         const map = initMap();
-        await initDataStore();
         initController(map);
     } catch (error) {
         console.error("Failed to start application:", error);

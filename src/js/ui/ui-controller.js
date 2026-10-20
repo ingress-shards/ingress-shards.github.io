@@ -3,8 +3,8 @@ import { refreshSeriesLayer, getDetailsPanelContent as getSeriesDetailsContent, 
 import { getSiteLayers, getDetailsPanelContent as getSiteDetailsContent, updateAllPolylineStyles, setActiveSiteLayer, getSiteControl } from "./site-renderer.js";
 import { detailsPanelControl } from "./details-panel.js";
 import { handleCustomFile, getDetailsPanelContent as getCustomDetailsContent } from "./custom-file-handler.js";
-import { getDefaultSeriesId, getSeriesMetadata, getSeriesGeocode, loadSeriesData } from "../data/data-store.js";
-import { CUSTOM_SERIES_ID } from "../constants.js";
+import { getDefaultSeasonId, getSeasonMetadata, getSeasonGeocode, getSeasonData } from "../../data/SeasonDataStore.js";
+import { CUSTOM_SEASON_ID } from "../constants.js";
 
 let IS_MAP_INTERACTION_ACTIVE = false;
 
@@ -17,17 +17,17 @@ const mapDispatchers = {
         if (!map) return;
         cleanupLayers({ seriesId });
 
-        await loadSeriesData(seriesId);
-        const seriesLayer = refreshSeriesLayer(seriesId);
+        await getSeasonData(seriesId);
+        const seriesLayer = await refreshSeriesLayer(seriesId);
         if (seriesLayer && !map.hasLayer(seriesLayer)) {
             map.addLayer(seriesLayer);
         }
 
-        const metadata = getSeriesMetadata(seriesId);
+        const metadata = getSeasonMetadata(seriesId);
         document.title = `${metadata?.name} Season | Ingress Shards Map`;
 
-        let detailsPanelContent = getSeriesDetailsContent(seriesId);
-        if (seriesId === CUSTOM_SERIES_ID) {
+        let detailsPanelContent = await getSeriesDetailsContent(seriesId);
+        if (seriesId === CUSTOM_SEASON_ID) {
             const customDetailsContent = getCustomDetailsContent();
             detailsPanelContent = {
                 title: customDetailsContent.title,
@@ -49,9 +49,9 @@ const mapDispatchers = {
         let siteId = seriesId + "-" + siteNavigationId;
         cleanupLayers({ siteId });
 
-        await loadSeriesData(seriesId);
+        await getSeasonData(seriesId);
 
-        const siteLayers = getSiteLayers(seriesId, siteId);
+        const siteLayers = await getSiteLayers(seriesId, siteId);
         if (!siteLayers) return;
 
         const defaultLayerDetails = siteLayers.find(l => l.id === "all");
@@ -74,12 +74,12 @@ const mapDispatchers = {
             }
         }
 
-        const seriesMetadata = getSeriesMetadata(seriesId);
+        const seriesMetadata = getSeasonMetadata(seriesId);
         const seriesName = seriesMetadata?.name;
-        const siteGeocode = getSeriesGeocode(seriesId)?.sites?.[siteId];
+        const siteGeocode = getSeasonGeocode(seriesId)?.sites?.[siteId];
         const siteName = siteGeocode?.name;
         document.title = `${seriesName}: ${siteName} | Ingress Shards Map`;
-        detailsPanel.update(getSiteDetailsContent(seriesId, siteId));
+        detailsPanel.update(await getSiteDetailsContent(seriesId, siteId));
 
         // Calculate bounds accurately: merge shards (all) and ornaments if present
         let siteBounds = null;
@@ -113,9 +113,9 @@ const mapDispatchers = {
         let siteId = seriesId + "-" + siteNavigationId;
         cleanupLayers({ siteId, waveId });
 
-        await loadSeriesData(seriesId);
+        await getSeasonData(seriesId);
 
-        const siteLayers = getSiteLayers(seriesId, siteId);
+        const siteLayers = await getSiteLayers(seriesId, siteId);
         if (!siteLayers) return;
 
         const waveLayerDetails = siteLayers.find(l => l.id === waveId);
@@ -136,12 +136,12 @@ const mapDispatchers = {
             controlContainer.classList.add('ingress-wave-control');
         }
 
-        const seriesMetadata = getSeriesMetadata(seriesId);
+        const seriesMetadata = getSeasonMetadata(seriesId);
         const seriesName = seriesMetadata?.name;
-        const siteGeocode = getSeriesGeocode(seriesId)?.sites?.[siteId];
+        const siteGeocode = getSeasonGeocode(seriesId)?.sites?.[siteId];
         const siteName = siteGeocode?.name;
         document.title = `${seriesName}: ${siteName} | Ingress Shards Map`;
-        detailsPanel.update(getSiteDetailsContent(seriesId, siteId, waveId));
+        detailsPanel.update(await getSiteDetailsContent(seriesId, siteId, waveId));
 
         let siteBounds = null;
         if (waveLayerDetails && waveLayerDetails.layer.getLayers().length > 0) {
@@ -169,8 +169,8 @@ const mapDispatchers = {
         });
     },
     showDefaultView: () => {
-        const defaultSeriesId = getDefaultSeriesId();
-        if (defaultSeriesId) navigate(`#/${defaultSeriesId}`);
+        const defaultSeasonId = getDefaultSeasonId();
+        if (defaultSeasonId) navigate(`#/${defaultSeasonId}`);
     },
 };
 
@@ -255,7 +255,7 @@ function setupEventListeners(map) {
     });
 
     document.addEventListener('change', (e) => {
-        const target = e.target.closest(`#${CUSTOM_SERIES_ID}-file-input`);
+        const target = e.target.closest(`#${CUSTOM_SEASON_ID}-file-input`);
         if (target) {
             e.preventDefault();
             e.stopPropagation();

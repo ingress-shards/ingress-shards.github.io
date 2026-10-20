@@ -1,10 +1,10 @@
 import * as L from "leaflet";
 import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, EVENT_BRANDS, ORNAMENT_BRANDS, SIGNAL_COLOR, BACKGROUND_PORTAL_COLOR, TARGET_ARTIFACT_IDS } from "../constants.js";
 import shardIconUrl from '../../images/abaddon1_shard.png';
-import { getSiteData, getSeriesMetadata, getSeriesGeocode } from "../data/data-store.js";
+import { getSiteData, getSeasonMetadata, getSeasonGeocode } from "../../data/SeasonDataStore.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
 import { formatEpochToLocalTime, formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
-import { getEventDuration } from "../shared/event-helpers.js";
+import { getEventConfigRegistry } from "../../config/EventConfig.js";
 import { getHexagonSVG } from "./marker-template.js";
 import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } from "temporal-polyfill/fns/ZonedDateTime";
 import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
@@ -20,10 +20,10 @@ const shardIcon = L.icon({
 const siteLayerCache = new Map();
 let activeSiteLayer = null;
 
-export function getSiteLayers(seriesId, siteId) {
+export async function getSiteLayers(seriesId, siteId) {
     let cacheEntry = siteLayerCache.get(siteId);
     if (!cacheEntry) {
-        const siteData = getSiteData(seriesId, siteId);
+        const siteData = await getSiteData(seriesId, siteId);
         if (!siteData) return null;
 
         cacheEntry = renderSiteData({ seriesId, siteId, siteData });
@@ -513,15 +513,15 @@ function formatJumpPathTooltip(shardPath, shardPathPortals, timeZone) {
     return { tooltip, coords };
 }
 
-export function getDetailsPanelContent(seriesId, siteId, waveId) {
-    const seriesMetadata = getSeriesMetadata(seriesId);
-    const siteGeocode = getSeriesGeocode(seriesId)?.sites[siteId];
-    const siteData = getSiteData(seriesId, siteId);
+export async function getDetailsPanelContent(seriesId, siteId, waveId) {
+    const seriesMetadata = getSeasonMetadata(seriesId);
+    const siteGeocode = getSeasonGeocode(seriesId)?.sites[siteId];
+    const siteData = await getSiteData(seriesId, siteId);
     if (!siteData) return { title: '', content: '' };
 
     const siteEventType = EVENT_BRANDS[siteGeocode.eventType];
     const startTime = zdtFromString(siteGeocode.date, getBasic);
-    const durationMins = getEventDuration(siteGeocode, seriesId);
+    const durationMins = getEventConfigRegistry().getSiteDurationMinutes(siteId);
     const endTime = zdtAdd(startTime, durationFromFields({ minutes: durationMins }));
     const now = zonedDateTimeISO(siteGeocode.timezone);
     let countdownSuffix = '';
@@ -585,7 +585,7 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
         }
     }
 
-    content += getScoresText({
+    content += await getScoresText({
         seriesId,
         siteId,
         waveId,
@@ -605,10 +605,11 @@ export function getDetailsPanelContent(seriesId, siteId, waveId) {
     };
 }
 
-export function getScoresText({ seriesId, siteId, waveId, siteData, type = 'full', timezone, eventStart, eventEnd }) {
+export async function getScoresText({ seriesId, siteId, waveId, siteData, type = 'full', timezone, eventStart, eventEnd }) {
     if (!siteData) {
-        siteData = getSiteData(seriesId, siteId);
+        siteData = await getSiteData(seriesId, siteId);
     }
+    if (!siteData) return '';
     if (type === 'table' && (!siteData.waves || siteData.waves.length <= 1)) {
         type = 'full';
     }
