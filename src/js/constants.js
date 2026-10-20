@@ -1,10 +1,9 @@
-import eventBlueprints from "../../conf/event_blueprints.json" with { type: "json" };
+import eventBlueprints from "@ingress-shards/ingress-events-core/conf/event_blueprints.json" with { type: "json" };
 
 export const INGRESS_INTEL_PORTAL_LINK = 'https://intel.ingress.com/intel?pll='
 
-// Direct reference to blueprint brands
-export const EVENT_BRANDS = eventBlueprints.branding.events;
-export const ORNAMENT_BRANDS = eventBlueprints.branding.ornaments;
+export const EVENT_BRANDS = eventBlueprints.events;
+export const ORNAMENT_BRANDS = eventBlueprints.ornaments;
 export const TEAM_ABBREVIATIONS = {
     "RESISTANCE": "RES",
     "ENLIGHTENED": "ENL",
@@ -32,7 +31,7 @@ export const HISTORY_REASONS = {
 };
 
 export const SITE_AGGREGATION_DISTANCE = 25000;
-export const CUSTOM_SERIES_ID = "custom";
+export const CUSTOM_SEASON_ID = "custom";
 
 export function getAbbreviatedTeam(fullTeamName) {
     return TEAM_ABBREVIATIONS[fullTeamName];
