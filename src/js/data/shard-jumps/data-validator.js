@@ -21,8 +21,9 @@ function validateSites(processedSites, seriesConfig, blueprints) {
         eventTypeConfigs: {},
     };
 
-    if (seriesConfig.shardComponents) {
-        seriesConfig.shardComponents.forEach(componentConfig => {
+    const components = seriesConfig.components;
+    if (components) {
+        components.forEach(componentConfig => {
             const shardMechanic = (blueprints.mechanics?.shards || blueprints.shardMechanics)[componentConfig.shardMechanics];
             const targetMechanic = (blueprints.mechanics?.targets || blueprints.targetMechanics)[componentConfig.targetMechanics];
 
@@ -47,7 +48,7 @@ function validateSites(processedSites, seriesConfig, blueprints) {
     for (const site of processedSites) {
         if (Object.entries(seriesValidation.eventTypeConfigs).length > 0) {
             const siteEventType = site.geocode.eventType;
-            const componentConfig = seriesConfig.shardComponents?.find(et => et.eventType === siteEventType);
+            const componentConfig = components?.find(et => et.eventType === siteEventType);
 
             // Resolve site override
             let siteConfig = null;

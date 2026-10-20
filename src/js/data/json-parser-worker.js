@@ -1,9 +1,9 @@
-import { CUSTOM_SERIES_ID, SITE_AGGREGATION_DISTANCE } from '../constants.js';
+import { CUSTOM_SEASON_ID, SITE_AGGREGATION_DISTANCE } from '../constants.js';
 import { processSeriesData } from './shard-jumps/data-processor.js';
 import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from './shard-jumps/data-helpers.js';
 import { haversineDistance, roundToDecimalPlaces } from "../shared/math-helpers.js";
 import { formatEpochToSerializationString, isWithin24Hours } from '../shared/date-helpers.js';
-import eventBlueprints from '../../../conf/event_blueprints.json' with { type: 'json' };
+import { getEventConfigRegistry } from '../../config/EventConfig.js';
 
 const siteCounter = Symbol("siteCounter");
 const rawFragments = Symbol("rawFragments");
@@ -19,7 +19,7 @@ self.onmessage = function (event) {
         const seriesDataPackage = {
             config: { name: 'Custom Season' },
             geocode: customGeocode,
-            blueprints: eventBlueprints,
+            blueprints: getEventConfigRegistry().blueprints,
             rawData: rawDataMap,
         }
         const processedData = processSeriesData(seriesDataPackage);
@@ -64,7 +64,7 @@ function getCustomGeocode({ fileName, parsedData }) {
             if (matchedSite) {
                 matchedSite[rawFragments].push(fragment);
             } else {
-                const siteId = `${CUSTOM_SERIES_ID}-${fileName}-${customGeocode[siteCounter]}`;
+                const siteId = `${CUSTOM_SEASON_ID}-${fileName}-${customGeocode[siteCounter]}`;
                 const fragmentSpawnTimeMs = getFragmentSpawnTimeMs(fragment);
                 const newSite = {
                     id: siteId,

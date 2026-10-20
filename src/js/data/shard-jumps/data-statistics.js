@@ -33,10 +33,10 @@ function calculateSiteStatistics(site, seriesConfig, blueprints) {
     if (site.waves?.length > 0 && site.geocode) {
 
         const siteEventType = site.geocode.eventType;
-        const componentConfig = seriesConfig.shardComponents?.find(et => et.eventType === siteEventType);
+        const componentConfig = seriesConfig.components?.find(et => et.eventType === siteEventType);
         if (!componentConfig) return null;
 
-        const shardMechanic = (blueprints.mechanics?.shards || blueprints.shardMechanics)[componentConfig.shardMechanics];
+        const shardMechanic = blueprints.shardMechanics[componentConfig.shardMechanics];
         if (!shardMechanic) return null;
 
         const shardActionSchedule = calculateShardActionSchedule(shardMechanic, site.geocode);

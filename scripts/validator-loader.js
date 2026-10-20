@@ -1,10 +1,24 @@
-import eventBlueprints from "../conf/event_blueprints.json" with { type: "json" };
-import seriesMetadata from "../conf/series_metadata.json" with { type: "json" };
+import eventBlueprints from "@ingress-shards/ingress-events-core/conf/event_blueprints.json" with { type: "json" };
+import seasonManifest from "@ingress-shards/ingress-events-core/conf/season_manifest.json" with { type: "json" };
 import { validateProcessedSeriesData } from "../src/js/data/shard-jumps/data-validator.js";
 import { convertToCsv } from "../src/js/data/shard-jumps/data-helpers.js";
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from "url";
+
+const seriesList = seasonManifest.seasons.map(season => ({
+    id: season.id,
+    name: season.name,
+    year: season.year,
+    overviewUrl: season.overviewUrl,
+    components: season.components.map(c => ({
+        eventType: c.eventType,
+        startTime: c.startTime,
+        shardMechanics: c.mechanics?.shards?.shardMechanics,
+        targetMechanics: c.mechanics?.shards?.targetMechanics,
+        ...(c.schedule && { schedule: c.schedule }),
+    }))
+}));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,7 +39,7 @@ async function runValidator() {
 
         const summary = {};
 
-        for (const seriesConfig of seriesMetadata.series) {
+        for (const seriesConfig of seriesList) {
             const seriesFilePath = path.join(DATA_DIR, `${seriesConfig.id}.json`);
             let processedData = null;
             try {

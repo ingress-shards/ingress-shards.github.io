@@ -1,5 +1,5 @@
-import eventBlueprints from "../conf/event_blueprints.json" with { type: "json" };
-import seriesMetadata from "../conf/series_metadata.json" with { type: "json" };
+import eventBlueprints from "@ingress-shards/ingress-events-core/conf/event_blueprints.json" with { type: "json" };
+import seasonManifest from "@ingress-shards/ingress-events-core/conf/season_manifest.json" with { type: "json" };
 import seriesGeocode from "../gen/series_geocode.json" with { type: "json" };
 import { processSeriesData } from '../src/js/data/shard-jumps/data-processor.js';
 import fs from 'fs/promises';
@@ -7,6 +7,20 @@ import { existsSync, mkdirSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from "url";
 import { FILE_PATTERNS } from "../src/js/constants.js";
+
+const seriesList = seasonManifest.seasons.map(season => ({
+    id: season.id,
+    name: season.name,
+    year: season.year,
+    overviewUrl: season.overviewUrl,
+    components: season.components.map(c => ({
+        eventType: c.eventType,
+        startTime: c.startTime,
+        shardMechanics: c.mechanics?.shards?.shardMechanics,
+        targetMechanics: c.mechanics?.shards?.targetMechanics,
+        ...(c.schedule && { schedule: c.schedule }),
+    }))
+}));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -85,14 +99,14 @@ async function runDataProcessor() {
     try {
         const verbose = process.argv.includes('--verbose');
         const startTime = performance.now();
-        console.log(`ℹ️ Processing shard data for ${seriesMetadata.series.length} series... (verbose: ${verbose})`);
+        console.log(`ℹ️ Processing shard data for ${seriesList.length} series... (verbose: ${verbose})`);
 
         if (!existsSync(OUTPUT_DIR)) {
             mkdirSync(OUTPUT_DIR, { recursive: true });
         }
 
         // Process all series in parallel
-        const seriesPromises = seriesMetadata.series.map(config => processSingleSeries(config, verbose));
+        const seriesPromises = seriesList.map(config => processSingleSeries(config, verbose));
         const results = await Promise.all(seriesPromises);
 
         const seriesDataDir = path.join(OUTPUT_DIR, 'data');
