@@ -1,7 +1,0 @@
-pandas
-requests
-requests_cache
-shapely
-timezonefinder
-reverse-geocoder
-unidecode
