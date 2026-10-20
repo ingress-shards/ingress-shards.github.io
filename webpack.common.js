@@ -39,6 +39,11 @@ export default (env, { appVersion }) => {
         module: {
             rules: [
                 {
+                    test: /\.ts$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/,
+                },
+                {
                     test: /abaddon1_shard\.png$/,
                     type: 'asset/resource',
                     generator: {
@@ -114,33 +119,6 @@ export default (env, { appVersion }) => {
                         to: 'images/markers',
                     },
                     {
-                        from: path.resolve(__dirname, 'conf/event_blueprints.json'),
-                        to: 'public/conf/',
-                        transform(content) {
-                            const blueprints = JSON.parse(content.toString());
-                            blueprints.version = appVersion;
-                            return JSON.stringify(blueprints, null, 2);
-                        },
-                    },
-                    {
-                        from: path.resolve(__dirname, 'conf/series_metadata.json'),
-                        to: 'public/conf/',
-                        transform(content) {
-                            const metadata = JSON.parse(content.toString());
-                            metadata.version = appVersion;
-                            return JSON.stringify(metadata, null, 2);
-                        },
-                    },
-                    {
-                        from: path.resolve(__dirname, 'gen/series_geocode.json'),
-                        to: 'public/conf/',
-                        transform(content) {
-                            const geocode = JSON.parse(content.toString());
-                            geocode.version = appVersion;
-                            return JSON.stringify(geocode, null, 2);
-                        },
-                    },
-                    {
                         from: path.resolve(__dirname, 'gen/data'),
                         to: 'data/',
                         noErrorOnMissing: true,
@@ -155,24 +133,12 @@ export default (env, { appVersion }) => {
                     },
                 ]
             }),
-            {
-                apply: (compiler) => {
-                    compiler.hooks.thisCompilation.tap('GenerateVersionFile', (compilation) => {
-                        compilation.hooks.processAssets.tap(
-                            {
-                                name: 'GenerateVersionFile',
-                                stage: webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
-                            },
-                            (assets) => {
-                                const content = JSON.stringify({ version: appVersion }, null, 2);
-                                assets['public/conf/version.json'] = new webpack.sources.RawSource(content);
-                            }
-                        );
-                    });
-                }
-            }
         ],
         resolve: {
+            extensions: ['.ts', '.js', '.json'],
+            extensionAlias: {
+                '.js': ['.ts', '.js'],
+            },
             alias: {
                 'leaflet.motion': fileURLToPath(import.meta.resolve('leaflet.motion/dist/leaflet.motion.min.js')),
             }
