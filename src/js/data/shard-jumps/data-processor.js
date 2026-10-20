@@ -318,8 +318,8 @@ function applyTargetPortalsToSite(site, siteTargetPortals) {
 
 function applyFragmentsToSite(site, fragments, siteTargetPortals, seriesConfig, blueprints, verbose) {
     const siteEventType = site.geocode.eventType;
-    const shardComponents = seriesConfig.shardComponents || [];
-    const seriesEventConfig = shardComponents.find(et => et.eventType === siteEventType);
+    const components = seriesConfig.components || [];
+    const seriesEventConfig = components.find(et => et.eventType === siteEventType);
 
     // Find site-specific config for overrides
     let siteConfig = null;
@@ -329,7 +329,7 @@ function applyFragmentsToSite(site, fragments, siteTargetPortals, seriesConfig, 
     });
 
     // Resolve blueprints
-    const shardMechanic = seriesEventConfig ? blueprints.mechanics.shards[seriesEventConfig.shardMechanics] : null;
+    const shardMechanic = seriesEventConfig ? blueprints.shardMechanics?.[seriesEventConfig.shardMechanics] : null;
 
     site.fullEvent = processFragments({
         fragments,
@@ -384,7 +384,7 @@ function applyFragmentsToSite(site, fragments, siteTargetPortals, seriesConfig, 
     }
 }
 
-function processFragments({ fragments, portalLookup, sitePortals, siteTargetPortals, eventType, geocode, fullEvent, verbose = false }) {
+function processFragments({ fragments, portalLookup, sitePortals, siteTargetPortals, eventType, geocode, fullEvent }) {
     const siteName = geocode.name;
     const viewData = {
         shards: [],
