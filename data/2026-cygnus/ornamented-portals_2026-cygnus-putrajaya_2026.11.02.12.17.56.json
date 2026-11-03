@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-putrajaya",
+  "exportedAt": 1793621876,
+  "portals": [
+    {
+      "title": "Putra Fountain",
+      "lat": 2.934991,
+      "lng": 101.690088,
+      "ornamentId": "ap1",
+      "guid": "5a5f0c5715cb484aa73d8a9b0044c5d5.16"
+    },
+    {
+      "title": "Dry Water Fountain of Medan Selera Laman Putra",
+      "lat": 2.937455,
+      "lng": 101.694064,
+      "ornamentId": "ap2",
+      "guid": "86b05cb70d6932f5bece9b36962adf84.16"
+    },
+    {
+      "title": "parallel bar",
+      "lat": 2.936817,
+      "lng": 101.684299,
+      "ornamentId": "ap3",
+      "guid": "a5f9c8c5130f4252b80d23d85492a2c7.16"
+    }
+  ]
+}

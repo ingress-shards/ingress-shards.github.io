@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-malaga",
+  "exportedAt": 1793621918,
+  "portals": [
+    {
+      "title": "Archicofradia La Expiracion",
+      "lat": 36.715969,
+      "lng": -4.428159,
+      "ornamentId": "ap3",
+      "guid": "99f0dcd309ad4d3293f7ecac2850f225.11"
+    },
+    {
+      "title": "Quiosco El Cenachero",
+      "lat": 36.720069,
+      "lng": -4.41312,
+      "ornamentId": "ap1",
+      "guid": "02adc647cac14334be7bb003dededa3b.16"
+    },
+    {
+      "title": "Alcalde Garcia Grana",
+      "lat": 36.717928,
+      "lng": -4.419937,
+      "ornamentId": "ap2",
+      "guid": "2331bf403d9442b8a1efed5c742a797e.16"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-concepcion",
+  "exportedAt": 1793621584,
+  "portals": [
+    {
+      "title": "Parque Bicentenario",
+      "lat": -36.831506,
+      "lng": -73.062949,
+      "ornamentId": "ap2",
+      "guid": "2c6f4ffffc2e4caa9e50114689ee3803.16"
+    },
+    {
+      "title": "Fuente De Ceres",
+      "lat": -36.826971,
+      "lng": -73.050223,
+      "ornamentId": "ap3",
+      "guid": "de3e6a99bdb84b88b1e52dcc5a7c71ef.16"
+    },
+    {
+      "title": "Monumento Al Valor Y Espíritu De Bomberos",
+      "lat": -36.833143,
+      "lng": -73.048565,
+      "ornamentId": "ap1",
+      "guid": "249ed57582e14fcaaf8d746e8378dacc.16"
+    }
+  ]
+}
