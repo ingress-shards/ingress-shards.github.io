@@ -1,16 +1,30 @@
 import {
     fromString as zdtFromString,
     withFields as zdtWithFields,
+    withTimeZone as zdtWithTimeZone,
     compare as zdtCompare,
     diff as zdtDiff,
     add as zdtAdd,
+    toLocaleString as zdtToLocaleString,
+    toPlainDateTime as zdtToPlainDateTime,
 } from "temporal-polyfill/fns/ZonedDateTime";
+import {
+    fromEpochMilliseconds as instantFromEpochMilliseconds,
+    toZonedDateTimeISO as instantToZonedDateTimeISO,
+} from "temporal-polyfill/fns/Instant";
+import {
+    toString as pdtToString,
+} from "temporal-polyfill/fns/PlainDateTime";
 import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
 import { fromFields as durationFromFields } from "temporal-polyfill/fns/Duration";
 import { getBasic } from "temporal-polyfill/fns/Calendar";
 
-// Default locale, safely checking for navigator object which only exists in browsers.
-const DEFAULT_LOCALE = typeof navigator !== 'undefined' ? navigator.language : 'en-GB';
+// Default locale using browser language preferences, falling back to en-GB.
+export function getDefaultLocale() {
+    return typeof navigator !== 'undefined'
+        ? (navigator.language || 'en-GB')
+        : 'en-GB';
+}
 
 const MS_PER_SECOND = 1000;
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
@@ -31,25 +45,28 @@ export function convertMsEpochToSecEpoch(epochMs) {
  * This is the standard format required for the geocode storage date field.
  */
 export function formatEpochToSerializationString(epochTimeMs) {
-    const dateObject = new Date(Number(epochTimeMs));
-    return dateObject.toISOString().replace(/\.\d{3}Z$/, '');
+    const inst = instantFromEpochMilliseconds(Number(epochTimeMs));
+    const pdt = zdtToPlainDateTime(instantToZonedDateTimeISO(inst, 'UTC'));
+    return pdtToString(pdt, { smallestUnit: 'seconds', fractionalSecondDigits: 0 });
 }
 
 /**
  * Formats the serialized ISO 8601 string (YYYY-MM-DDTHH:mm:ss) into a locale-specific short date string (e.g., 3/15/2023).
  */
-export function formatIsoToShortDate(isoString, timeZone, locale = DEFAULT_LOCALE) {
+export function formatIsoToShortDate(isoString, timeZone, locale = getDefaultLocale()) {
     const zdt = zdtFromString(isoString, getBasic);
-    const epochMillis = zdt.epochMilliseconds;
-    return new Date(epochMillis).toLocaleDateString(locale, { timeZone: zdt.timeZoneId, dateStyle: 'short' });
+    const targetZdt = timeZone ? zdtWithTimeZone(zdt, timeZone) : zdt;
+    return zdtToLocaleString(targetZdt, locale, { dateStyle: 'short' });
 }
 
 /**
  * Formats an epoch time for local display time.
  */
-export function formatEpochToLocalTime(epochMs, timeZone, locale = DEFAULT_LOCALE) {
-    return new Date(Number(epochMs)).toLocaleTimeString(locale, {
-        timeZone,
+export function formatEpochToLocalTime(epochMs, timeZone, locale = getDefaultLocale()) {
+    const inst = instantFromEpochMilliseconds(Number(epochMs));
+    const tz = timeZone || (typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().timeZone : 'UTC');
+    const zdt = instantToZonedDateTimeISO(inst, tz);
+    return zdtToLocaleString(zdt, locale, {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
@@ -60,9 +77,11 @@ export function formatEpochToLocalTime(epochMs, timeZone, locale = DEFAULT_LOCAL
 /**
  * Formats an epoch time for local date and time display.
  */
-export function formatEpochToLocalDateTime(epochMs, timeZone, locale = DEFAULT_LOCALE) {
-    return new Date(Number(epochMs)).toLocaleString(locale, {
-        timeZone,
+export function formatEpochToLocalDateTime(epochMs, timeZone, locale = getDefaultLocale()) {
+    const inst = instantFromEpochMilliseconds(Number(epochMs));
+    const tz = timeZone || (typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().timeZone : 'UTC');
+    const zdt = instantToZonedDateTimeISO(inst, tz);
+    return zdtToLocaleString(zdt, locale, {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
@@ -85,24 +104,18 @@ export function isWithin24Hours(targetTimeMs, referenceTimeMs) {
 }
 
 /**
- * Creates a new Date object for a wave's start or end time, preserving the timezone of the original site event.
+ * Creates a ZonedDateTime object for a wave's start or end time, preserving the timezone of the original site event.
  * It correctly combines the date from the event's ISO string with a new time string.
  * @param {string} siteDateIso - The original ISO 8601 date string for the site (e.g., "2025-11-15T14:00:00+01:00").
  * @param {string} siteTimezone - The IANA timezone name for the site (e.g., "Europe/Amsterdam").
  * @param {string} timeStr - The time string for the wave (e.g., "14:02").
- * @returns {Date} A new Date object representing the precise start/end of the wave.
+ * @returns {import('temporal-polyfill').ZonedDateTime} A ZonedDateTime object representing the precise start/end of the wave.
  */
 export function createWaveDate(siteDateIso, siteTimezone, timeStr) {
     const [hour, minute] = timeStr.split(':').map(Number);
-
-    // 1. Create a ZonedDateTime object directly from the ISO string.
     const zdt = zdtFromString(siteDateIso, getBasic);
-
-    // 2. Create a new DateTime by setting the desired time.
-    const waveZdt = zdtWithFields(zdt, { hour, minute, second: 0, millisecond: 0 });
-
-    // 3. Convert back to a native Date object for use in the rest of your application.
-    return new Date(waveZdt.epochMilliseconds);
+    const targetZdt = siteTimezone ? zdtWithTimeZone(zdt, siteTimezone) : zdt;
+    return zdtWithFields(targetZdt, { hour, minute, second: 0, millisecond: 0 });
 }
 
 /**
