@@ -1,32 +1,62 @@
 import { CUSTOM_SEASON_ID, SITE_AGGREGATION_DISTANCE } from '../constants.js';
-import { processSeriesData } from './shard-jumps/data-processor.js';
-import { calculateCentroid, getCoordsForFragment, getFragmentSpawnTimeMs } from './shard-jumps/data-helpers.js';
 import { haversineDistance, roundToDecimalPlaces } from "../shared/math-helpers.js";
 import { formatEpochToSerializationString, isWithin24Hours } from '../shared/date-helpers.js';
 import { getEventConfigRegistry } from '../../config/EventConfig.js';
+import { DataIngestionPipeline } from "@ingress-shards/ingress-events-core";
 
 const siteCounter = Symbol("siteCounter");
 const rawFragments = Symbol("rawFragments");
 
-self.onmessage = function (event) {
+self.onmessage = async function (event) {
     const { seriesId, customFile } = event.data;
 
     try {
         console.log(`Processing custom file: ${customFile.fileName}`);
         const parsedData = JSON.parse(customFile.rawData);
-        const rawDataMap = {}; rawDataMap['shardJumpTimes'] = [parsedData];
         const customGeocode = getCustomGeocode({ fileName: customFile.fileName, parsedData });
-        const seriesDataPackage = {
-            config: { name: 'Custom Season' },
-            geocode: customGeocode,
-            blueprints: getEventConfigRegistry().blueprints,
-            rawData: rawDataMap,
+
+        const registry = getEventConfigRegistry();
+        for (const site of customGeocode.sites) {
+            const startMs = new Date(site.date).getTime();
+            registry.registerSite({
+                seasonId: CUSTOM_SEASON_ID,
+                geocode: {
+                    id: site.id,
+                    name: site.name,
+                    latE6: Math.round(site.lat * 1e6),
+                    lngE6: Math.round(site.lng * 1e6),
+                    eventType: site.eventType,
+                    startTime: site.date,
+                    timeZone: "UTC",
+                },
+                timeline: {
+                    start: startMs,
+                    preEventCutoff: startMs - 7200000,
+                    end: startMs + 14400000,
+                    durationMinutes: 240,
+                    shards: [{
+                        waveNumber: 1,
+                        start: startMs,
+                        end: startMs + 14400000,
+                        expectedShards: site[rawFragments].length,
+                        shardsActions: [],
+                    }],
+                },
+            });
         }
-        const processedData = processSeriesData(seriesDataPackage);
+
+        const candidateSites = registry.getSitesForSeason(CUSTOM_SEASON_ID);
+        const pipeline = new DataIngestionPipeline(registry, candidateSites);
+        const siteRecords = await pipeline.ingestBatch([{
+            filename: customFile.fileName,
+            data: customFile.rawData,
+        }]);
+        const records = Object.fromEntries(siteRecords.map((r) => [r.metadata.siteId, r]));
+
         const customProcessedData = {
             geocode: customGeocode,
-            data: processedData,
-        }
+            data: records,
+        };
         self.postMessage({ status: "complete", processedData: customProcessedData, seriesId });
     } catch (error) {
         console.error('Error during processing:', error);
@@ -91,3 +121,43 @@ function getCustomGeocode({ fileName, parsedData }) {
 
     return customGeocode;
 }
+
+/**
+ * @deprecated Legacy conversion logic pending Phase 5 migration to Core's DataObservationAdapter and custom upload pipeline.
+ */
+function getCoordsForFragment(fragment) {
+    const spawnHistoryItem = fragment.history?.find(h => h.reason === "spawn" || h.action === "spawn") ?? fragment.history?.[0];
+    const portal = spawnHistoryItem?.destinationPortalInfo || spawnHistoryItem?.originPortalInfo;
+    return {
+        latitude: portal ? portal.latE6 / 1e6 : 0,
+        longitude: portal ? portal.lngE6 / 1e6 : 0,
+    };
+}
+
+/**
+ * @deprecated Legacy conversion logic pending Phase 5 migration to Core's DataObservationAdapter and custom upload pipeline.
+ */
+function getFragmentSpawnTimeMs(fragment) {
+    const spawnHistoryItem = fragment.history?.find(h => h.reason === "spawn" || h.action === "spawn") ?? fragment.history?.[0];
+    return spawnHistoryItem ? Number(spawnHistoryItem.moveTimeMs ?? spawnHistoryItem.moveTime) : Date.now();
+}
+
+/**
+ * @deprecated Legacy conversion logic pending Phase 5 migration to Core's DataObservationAdapter and custom upload pipeline.
+ */
+function calculateCentroid(fragments) {
+    let totalLat = 0, totalLng = 0, count = 0;
+    for (const f of fragments) {
+        const coords = getCoordsForFragment(f);
+        if (coords.latitude && coords.longitude) {
+            totalLat += coords.latitude;
+            totalLng += coords.longitude;
+            count++;
+        }
+    }
+    return {
+        lat: count > 0 ? roundToDecimalPlaces(totalLat / count, 6) : 0,
+        lng: count > 0 ? roundToDecimalPlaces(totalLng / count, 6) : 0,
+    };
+}
+

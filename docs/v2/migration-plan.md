@@ -6,7 +6,7 @@ Version 2 of the Ingress Shard Map re-platforms the project to consume [`@ingres
 
 ### Core Goals:
 - **Single Source of Truth**: Eliminate duplicated event mechanics, blueprints, scoring logic, and configuration between the shard map and IITC plugin.
-- **Mature Data Pipeline**: Replace the legacy 33 KB monolithic `data-processor.js` with Core's unit-tested processors (`SiteDataProcessor`, `SiteRecordMerger`, `DefaultPortalMergeStrategy`, `WaveShardJumpBuilder`, `ShardPathBuilder`).
+- **Mature Data Pipeline**: Replace the legacy 33 KB monolithic `data-processor.js` with Core's unit-tested processors (`DataIngestionPipeline`, `SiteRecordMerger`, `DefaultPortalMergeStrategy`, `WaveShardJumpBuilder`, `ShardPathBuilder`).
 - **End-to-End TypeScript Alignment**: Transition the Map application to TypeScript incrementally, consuming Core's strict domain models (`SiteConfig`, `EventTimeline`, `SeasonConfig`, `SiteRecord`) with zero runtime shape ambiguity.
 - **Semantic Parity**: Ensure that all historical events continue to produce identical scoring, statistics, portal counts, and jump paths.
 - **Controlled Rollout**: Use an integration branch model to prevent breaking `main` or premature `semantic-release` triggers.
@@ -63,8 +63,14 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
    - Author new/migrated configuration and data store layers in TypeScript directly under `src/<domain>/` (`src/config/EventConfig.ts`, `src/data/DataStore.ts`).
    - Legacy JavaScript files (`data-processor.js`, `site-renderer.js`, etc.) remain in `src/js/` undisturbed.
 2. **Phase 3 (Offline Data Pipeline):**
-   - Author offline loaders and adapters in TypeScript (`scripts/pre-processor-loader.ts`, `scripts/validator-loader.ts`, `scripts/statistics-loader.ts`).
-   - Delete legacy 33 KB `data-processor.js` (saving dozens of hours that would otherwise be wasted typing obsolete code).
+   - Install `tsx` devDependency for direct, zero-build execution of TypeScript CLI scripts.
+   - Author offline pipeline in TypeScript (`scripts/pipeline/SeasonIngestionPipeline.ts`, `scripts/pre-processor-loader.ts`, `scripts/validator-loader.ts`, `scripts/statistics-loader.ts`).
+   - Move build-time validation and statistics logic entirely into `scripts/` (relocating offline logic out of `src/js/`).
+   - Implement deterministic chronological file staging (ornaments → target portals → timestamped shard jumps) with in-memory accumulator writeback per season to prevent overriding site records or losing historical observations.
+   - Execute final comprehensive analysis pass (`SiteRecordAnalyser`, `WaveShardJumpBuilder`, `GoalScoringEngine`, `LinkScoringEngine`, centroids) on the fully accumulated portal graph.
+   - Provide transitional UI bridging in `SeasonDataStore.ts` so existing Leaflet renderers remain fully functional until Phase 5.
+   - Completely delete `src/js/data/shard-jumps/` directory (`data-processor.js`, `data-helpers.js`, `data-validator.js`, `data-statistics.js`).
+   - Optimize CI release workflow by dropping obsolete `processed-data` upload while retaining diagnostic `validation-reports` and Pages deployment.
 3. **Phase 4 & 5 (UI & Display Components):**
    - Author new modern UI components and scoring displays natively in TypeScript.
    - Delete legacy Leaflet DOM renderers (`site-renderer.js`, `series-renderer.js`).
@@ -81,14 +87,14 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 | **Event Timeline & Durations** | Custom minute calculations in `event-helpers.js` | `EventTimeline.durationMinutes` & `getSiteDurationMinutes()` | Precalculated in Core's `EventConfigRegistry`. Direct property read. |
 | **Event Configuration** | `conf/event_blueprints.json`, `conf/series_metadata.json` | `EventConfigRegistry`, `@ingress-shards/ingress-events-core/conf/*` | Centralized singleton in `src/config/EventConfig.ts`. Direct typed access. |
 | **Data Store & Cache** | `src/js/data/data-store.js` (series-centric) | `src/data/DataStore.ts` (season-centric) | Typed runtime cache storing `SeasonConfig` and lazily fetching `data/{seasonId}.json`. No legacy aliases. |
-| **Data Processing** | `src/js/data/shard-jumps/data-processor.js` | `SiteDataProcessor`, `SiteRecordMerger`, `DefaultPortalMergeStrategy` | Tested portal merging, deduplication, and observation adapters. |
+| **Data Processing** | `src/js/data/shard-jumps/data-processor.js` | `DataIngestionPipeline`, `SiteRecordMerger`, `DefaultPortalMergeStrategy` | Tested portal merging, deduplication, and observation adapters. |
 | **Scoring Calculations** | Custom logic in `data-processor.js` | `GoalScoringEngine`, `LinkScoringEngine` | Strict adherence to official Anomaly and Skirmish blueprints. |
 | **Jump & Path Building** | Custom loops in `data-processor.js` | `WaveShardJumpBuilder`, `ShardPathBuilder` | Dynamic jump links and target absorption detection. |
 | **Date & Time** | `src/js/shared/date-helpers.js` | `common/Date.ts` (functional `temporal-polyfill/fns`) | `formatDuration`, `parseTimestampFromFilename`, `parseZonedDateTime`. |
 | **Math & Geo** | `src/js/shared/math-helpers.js` | `common/Geo.ts`, `common/Math.ts` | E6 integer coordinates, `haversineDistance`, centroids, bounding boxes. |
 | **Visual Tokens & Styling** | Hardcoded colors in CSS & JS | `visuals/Colors.ts`, `visuals/index.css` | Canonical faction colors, tokens, and CSS variables. |
 | **Scoring Table & Tooltips** | `site-renderer.js` (`renderTableScores`) | Core `display/` (`ScoringTable` & breakdown tooltips) | Elevating plugin's `ScoringTableComponent` to Core provides identical rich scoring tables in both siblings. |
-| **In-Browser Uploads** | `src/js/ui/custom-file-handler.js` | `DataObservationAdapter` + `SiteDataProcessor` | Custom JSON uploads execute the identical pipeline as build-time artifacts. |
+| **In-Browser Uploads** | `src/js/ui/custom-file-handler.js` | `DataObservationAdapter` + `DataIngestionPipeline` | Custom JSON uploads execute the identical pipeline as build-time artifacts. |
 
 ---
 
@@ -124,26 +130,39 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 - [x] Run full `npm run validate` pass
 
 ### Phase 3: Offline Data Pipeline & Pre-processor Migration
-- [ ] Update `release.yml` step `Upload Processed Data Artifact` to upload `path: gen/data/`
-- [ ] Refactor loaders to TypeScript: `pre-processor-loader.ts`, `validator-loader.ts`, `statistics-loader.ts`
-- [ ] Replace `data-processor.js` with Core's `SiteDataProcessor`
-- [ ] Prune `@deprecated` `gen/series_geocode.json` bridge generation from `generate-flag-assets.js`
-- [ ] Prune `seriesList` bridge mappings from loader scripts
-- [ ] Prune legacy `data-processor.js` and `data-helpers.js`
+- [x] Add `tsx` devDependency to `package.json` for running TypeScript CLI scripts
+- [x] Implement `scripts/pipeline/SeasonIngestionPipeline.ts`:
+  - Chronological file staging: `ornamented-portals-*` (Stage 1) → `target-portals-*` (Stage 2) → `shard-jump-times-*` (Stage 3, timestamp-sorted)
+  - Pre-initialize accumulator `Map<SiteId, SiteRecord>` from `EventConfigRegistry`
+  - Ingest files via `DataIngestionPipeline` with immediate accumulator writeback
+  - Final analysis pass across all season sites via `SiteRecordAnalyser.analyze()`
+- [x] Refactor `scripts/pre-processor-loader.ts` to TypeScript:
+  - Ingest all seasons via `SeasonIngestionPipeline` and emit `gen/data/<seasonId>.json` (`Record<SiteId, SiteRecord>`)
+- [x] Refactor `scripts/validator-loader.ts` and `scripts/statistics-loader.ts` to TypeScript:
+  - Move validation rules and statistics logic directly into `scripts/` (co-located with offline loaders, decoupled from `src/`)
+  - Read `gen/data/<seasonId>.json` and validate against Core `SiteRecord` / `SiteAnalysis`
+  - Maintain the 6 static report assets in `gen/reports/`
+- [x] Update `package.json` scripts to invoke TypeScript loaders via `tsx`
+- [x] Update `SeasonDataStore.ts` to bridge `SiteRecord` / `SiteAnalysis` shapes for legacy UI renderers (`site-renderer.js`, `series-renderer.js`) until Phase 5
+- [x] Align `json-parser-worker.js` / custom file processing to import Core `DataIngestionPipeline` directly
+- [x] Prune `@deprecated` `gen/series_geocode.json` bridge generation from `generate-flag-assets.js`
+- [x] Completely delete `src/js/data/shard-jumps/` directory (`data-processor.js`, `data-helpers.js`, `data-validator.js`, `data-statistics.js`)
+- [x] Optimize `release.yml`: remove obsolete `processed-data` upload (retaining `validation-reports` and Pages deployment)
+- [x] Run full `npm run validate` pass
 
 ### Phase 4: Shared Utility & Constants Pruning
 - [ ] Replace `src/js/shared/math-helpers.js` usages with Core `Geo`
-- [ ] Replace `src/js/shared/date-helpers.js` usages with Core `Date` utilities
 - [ ] Replace hardcoded palettes in `constants.js` with canonical exports from `@ingress-shards/ingress-events-core`
 - [x] Replace `event-helpers.js` with direct reads of `siteConfig.timeline.durationMinutes`
 - [ ] Deprecate/prune `constants.js` once UI renderers reference Core directly
 
 ### Phase 5: UI & Renderer Adaptation in TypeScript
 - [ ] Elevate `ScoringTableComponent` and breakdown tooltip formatters from IITC plugin into `@ingress-shards/ingress-events-core` (`src/display/`)
+- [ ] Review and migrate date & formatting utilities from `src/js/shared/date-helpers.js` into `@ingress-shards/ingress-events-core` (`src/common/Date.ts` / `src/display/`) to eliminate duplicate date logic between siblings and transition Map UI to pure Core utilities
 - [ ] Author new modern UI components in TypeScript (`src/ui/`)
 - [ ] Render waves, paths, and jumps from Core `SiteAnalysis`
 - [ ] Integrate `ShardJumpGrouper` from Core into jump history UI
-- [ ] Update `custom-file-handler.ts` to parse local user-dropped logs through `SiteDataProcessor`
+- [ ] Update `custom-file-handler.ts` and deprecate legacy `json-parser-worker.js` clustering helpers (`getCoordsForFragment`, `getFragmentSpawnTimeMs`, `calculateCentroid`) in favor of Core `DataObservationAdapter`
 - [ ] Delete legacy JavaScript renderers (`site-renderer.js`, `series-renderer.js`)
 
 ### Phase 6: Semantic Parity Verification & Testing

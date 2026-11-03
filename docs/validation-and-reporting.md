@@ -83,9 +83,10 @@ To keep the web frontend extremely lightweight, we do not package the validation
 
 ## 4. High-Quality DRY Shared Helpers
 
-To maintain a clean and highly maintainable codebase, both the statistics calculator and the validator utilize shared formatting and serialization helpers from `src/js/data/shard-jumps/data-helpers.js`:
+To maintain a clean and highly maintainable codebase, both the statistics calculator and the validator utilize shared formatting and serialization helpers from `scripts/validation/CsvHelpers.ts`:
 
 - **`convertToCsv(data)`**: Iterates over structured objects, extract headers, and serializes rows. Target portal names (containing `Origin`, `Destination`, or `Portal`) are cleanly wrapped in double-quotes to ensure quote-safety and spreadsheet compatibility.
 - **`formatZonedDateTimeWithMs(zdt)`**: Formats `ZonedDateTime` instances using consistent milliseconds formatting (`HH:MM:SS.mmm`).
 - **`formatTimeWithMs(epochMs, timezone)`**: Handles epoch millisecond translation to zoned local time strings.
 - **`formatDurationMs(durationMs)`**: Consolidates latency formatting into structured duration outputs (e.g., `1m 24.5s` or `8.3s`).
+

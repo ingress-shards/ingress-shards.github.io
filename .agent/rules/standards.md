@@ -20,10 +20,19 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
 - **Constraints:** Do not add new dependencies without asking first. Keep components under 150 lines. Never delete comments unless objectively outdated. *Do not guess file paths; verify file existence before editing.*
 - **Vibe:** This is a PERSONAL project. Tone should be concise. No conversational filler. Just code and "Why" it works.
 - **Peer Review:** To ensure changes match requirements and standards, the AI must simulate/trigger a 'Standards Review' (as if by a different agent) for all proposed and executed changes. This review must be documented in the implementation plan and walkthrough.
+- **Execution Guardrails & Time-Boxing:**
+  - **Early-Exit Trigger:** If any debugging, investigation, or discrepancy resolution exceeds **15 minutes** or **3 consecutive unsuccessful attempts**, the AI must **halt autonomously**. Never enter an open-ended mutation or guessing loop.
+  - **Parity Principle:** Always err on the side of **semantic parity** (accurate domain models, business logic, scoring, and UI behavior) over strict bit-for-bit or character-for-character parity. Do not spend time reverse-engineering legacy formatting bugs or mathematical fencepost errors.
+  - **Compatibility Decisions:** When encountering legacy quirks, schema mismatches, or potential breaking changes, **always ask the user** about backward-compatibility options (e.g. transitional adapter vs clean break) rather than unilaterally making assumptions or constructing complex shims.
+  - **Escalation Protocol:** Upon halting, immediately present:
+    1. *The Delta:* Clear comparison (Expected vs. Actual behavior or output).
+    2. *The Root Cause:* Why the discrepancy or failure is occurring.
+    3. *Actionable Trade-offs:* Concrete options regarding semantic correctness vs backward compatibility so the user can make an informed decision.
+  - **Fast-Feedback Iteration:** Always verify iterative changes using the smallest possible unit or micro-fixture (<500ms) rather than executing full end-to-end suites or multi-season pipelines on every cycle. Reserve full verification suites strictly for the final pass.
 
 ## 4. General Tooling (Global)
 - **ESLint:** Always ensure the project follows the rules defined in `eslint.config.js` (this automatically handles enforcing camelCase for variables/functions).
-- **Interoperability:** Provide solutions that work cross-platform (Windows/Linux). Use `git mv` when renaming files.
+- **Interoperability:** Provide solutions that work cross-platform (Windows/Linux). Use `git mv` when renaming files. Use `git grep` or `bash -c` when searching files (avoid PowerShell `Select-String` with `**` globs, which do not recurse).
 - **Clean Workspace:** After a build, ensure the workspace is clean (remove `tsconfig.tsbuildinfo`, `yarn-error.log`, etc.).
 - **Secrets:** For local development/testing, ensure the `.secrets` file is present in the root (but strictly ignored in `.gitignore`) to provide necessary environment variables.
 

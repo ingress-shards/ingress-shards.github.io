@@ -31,7 +31,6 @@ jobs:
         with:
           fetch-depth: 0
 
-
       - uses: actions/setup-node@v6
         with:
           node-version: "lts/*"
@@ -40,18 +39,20 @@ jobs:
       - name: Install node dependencies
         run: npm install
 
+      - name: Cache Build & Lint
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache
+          key: ${{ runner.os }}-map-cache-${{ hashFiles('package-lock.json', 'src/**') }}
+          restore-keys: |
+            ${{ runner.os }}-map-cache-
+
       - name: Initial Build (Fallback/Manual)
         run: |
           # Get latest tag (e.g. v1.16.1) or fallback to 0.0.0
           LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
           # Strip the 'v' prefix for the build
           APP_VERSION=${LATEST_TAG#v} npm run build
-
-      - name: Upload Processed Data Artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: processed-data
-          path: gen/processed_series_data.json
 
       - name: Upload Validation Reports Artifact
         uses: actions/upload-artifact@v7
