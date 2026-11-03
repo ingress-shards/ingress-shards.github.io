@@ -454,7 +454,14 @@
                         },
                         {
                             "date": "2026-11-21",
-                            "sites": []
+                            "sites": [
+                                { "name": "Perth, Australia", "lat": -31.959229, "lng": 115.876362 },
+                                { "name": "Putrajaya, Malaysia", "lat": 2.934991, "lng": 101.690088 },
+                                { "name": "Innsbruck, Austria", "lat": 47.270597, "lng": 11.396003 },
+                                { "name": "Málaga, Spain", "lat": 36.717928, "lng": -4.419937 },
+                                { "name": "Concepción, Chile", "lat": -36.831506, "lng": -73.062949 },
+                                { "name": "Vancouver, Canada", "lat": 49.31624, "lng": -123.071922 }
+                            ]
                         }
                     ]
                 }

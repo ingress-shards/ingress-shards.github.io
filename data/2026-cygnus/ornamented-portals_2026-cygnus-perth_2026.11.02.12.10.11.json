@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-perth",
+  "exportedAt": 1793621411,
+  "portals": [
+    {
+      "title": "Peter Pan",
+      "lat": -31.959229,
+      "lng": 115.876362,
+      "ornamentId": "ap1",
+      "guid": "3a18256f7c3e4f13aed0d44430450b69.11"
+    },
+    {
+      "title": "Wellington Square Gazebo",
+      "lat": -31.95434,
+      "lng": 115.872051,
+      "ornamentId": "ap3",
+      "guid": "7489e37a1e4836648a57426303557889.16"
+    },
+    {
+      "title": "Langley Park Pavillion Murals",
+      "lat": -31.960588,
+      "lng": 115.867784,
+      "ornamentId": "ap2",
+      "guid": "5957095580833da7843a856132011809.16"
+    }
+  ]
+}
