@@ -2,7 +2,10 @@
     "compilerOptions": {
         "module": "ES2022",
         "target": "ES2022",
-        "lib": ["ES2022", "dom"],
+        "lib": [
+            "ES2022",
+            "dom"
+        ],
         "moduleResolution": "Bundler",
         "resolveJsonModule": true,
         "skipLibCheck": true,
@@ -17,15 +20,14 @@
         "allowJs": true,
         "checkJs": false,
         "paths": {
-            "@ingress-shards/ingress-events-core": [
-                "../ingress-events-core/dist/index.d.mts",
-                "./node_modules/@ingress-shards/ingress-events-core/dist/index.d.mts"
-            ],
             "@ingress-shards/ingress-events-core/*": [
                 "../ingress-events-core/dist/*",
                 "./node_modules/@ingress-shards/ingress-events-core/dist/*"
             ]
         }
     },
-    "include": ["src/**/*", "scripts/**/*"]
+    "include": [
+        "src/**/*",
+        "scripts/**/*"
+    ]
 }

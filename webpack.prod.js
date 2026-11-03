@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import { merge } from 'webpack-merge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import TerserPlugin from 'terser-webpack-plugin';
 import common, { packageJson } from './webpack.common.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,6 +24,11 @@ export default (env = {}) => {
             ],
         },
         optimization: {
+            minimizer: [
+                new TerserPlugin({
+                    minify: TerserPlugin.swcMinify,
+                }),
+            ],
             splitChunks: {
                 chunks: 'all',
                 maxInitialRequests: 10,

@@ -1,5 +1,5 @@
 import * as L from "leaflet";
-import { EVENT_BRANDS } from "../constants.js";
+import { EVENT_BRANDS, CUSTOM_SEASON_ID } from "../constants.js";
 import { addEventInteraction } from "./event-handler.js";
 import { navigate } from "../router.js";
 import { getScoresText } from "./site-renderer.js";
@@ -186,7 +186,7 @@ export function getSeriesControl() {
     let controlLayers = {};
     for (const [seriesId, layer] of seriesLayerCache.entries()) {
         const metadata = getSeasonMetadata(seriesId);
-        const seriesLabel = metadata.year ? `${metadata.year}: ${metadata.name}` : metadata.name;
+        const seriesLabel = (seriesId === CUSTOM_SEASON_ID || !metadata?.year) ? metadata.name : `${metadata.year}: ${metadata.name}`;
         controlLayers[seriesLabel] = layer;
     }
     return L.control.layers(controlLayers, {}, { collapsed: true, position: "topleft" });
