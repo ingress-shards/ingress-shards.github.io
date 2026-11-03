@@ -67,13 +67,13 @@ export class SeasonDataStore {
 
     /**
      * Retrieves a site's telemetry record, returning from cache if available or loading the season data.
+     * Adapts SiteRecord into transitional legacy shapes for Leaflet renderers until Phase 5.
      */
-    public async getSiteData(seasonId: SeasonId, siteId: SiteId): Promise<SiteRecord | undefined> {
-        if (seasonId in this.cache) {
-            return this.cache[seasonId]?.[siteId];
-        }
+    public async getSiteData(seasonId: SeasonId, siteId: SiteId): Promise<unknown | undefined> {
         const seasonData = await this.getSeasonData(seasonId);
-        return seasonData[siteId];
+        const record = seasonData[siteId];
+        if (!record) return undefined;
+        return adaptSiteRecordToLegacy(record);
     }
 
     public addCustomData(processedData: { data: SiteRecordMap }): void {
@@ -95,7 +95,7 @@ export async function getSeasonData(seasonId: SeasonId): Promise<SiteRecordMap> 
 }
 
 /** @deprecated Call seasonDataStore.getSiteData() directly */
-export async function getSiteData(seasonId: SeasonId, siteId: SiteId): Promise<SiteRecord | undefined> {
+export async function getSiteData(seasonId: SeasonId, siteId: SiteId): Promise<unknown | undefined> {
     return seasonDataStore.getSiteData(seasonId, siteId);
 }
 
@@ -117,7 +117,7 @@ export function getAllSeasonIds(): SeasonId[] {
 /** @deprecated Query EventConfigRegistry directly */
 export function getSeasonMetadata(seasonId: SeasonId): SeasonMetadata | undefined {
     if (seasonId === CUSTOM_SEASON_ID) {
-        return { id: CUSTOM_SEASON_ID, name: "Custom", year: new Date().getFullYear(), overviewUrl: "", components: [] };
+        return { id: CUSTOM_SEASON_ID, name: "Custom", overviewUrl: "", components: [] } as unknown as SeasonMetadata;
     }
     return getEventConfigRegistry().getSeasonMetadata(seasonId);
 }
@@ -138,4 +138,222 @@ export function getSeasonGeocode(seasonId: SeasonId): { sites: Record<SiteId, Le
         };
     }
     return { sites };
+}
+
+function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
+    if (!record || "geocode" in record) return record;
+
+    const registry = getEventConfigRegistry();
+    const siteConfig = registry.getSiteConfig(record.metadata.siteId);
+    const gc = siteConfig?.geocode;
+    const timezone = gc?.timeZone ?? "UTC";
+
+    const geocode = gc ? {
+        ...gc,
+        lat: gc.latE6 / 1e6,
+        lng: gc.lngE6 / 1e6,
+        timezone,
+        date: gc.startTime,
+        country_code: gc.countryCode,
+    } : undefined;
+
+    const portals: Record<number, Record<string, unknown>> = {};
+    for (const [idStr, p] of Object.entries(record.observations?.portals ?? {})) {
+        const id = Number(idStr);
+        const pRecord = p as unknown as {
+            ornamentId?: string;
+            guid?: string;
+            history?: Array<{ type?: string; ornId?: string }>;
+        };
+        const ornamentId = pRecord.history?.find(h => h.type === "pre-event")?.ornId
+            ?? pRecord.history?.find(h => h.type === "target")?.ornId
+            ?? pRecord.ornamentId;
+        portals[id] = {
+            id,
+            title: p.title,
+            lat: p.latE6 / 1e6,
+            lng: p.lngE6 / 1e6,
+            latE6: p.latE6,
+            lngE6: p.lngE6,
+            ...(ornamentId && { ornamentId }),
+            ...(pRecord.guid && { guid: pRecord.guid }),
+        };
+    }
+
+    const rawShards = Object.entries(record.observations?.shards ?? {}).map(([id, sh]) => ({
+        id: Number(id),
+        history: sh.history?.map(h => ({
+            ...h,
+            team: h.align,
+            reason: h.action,
+            moveTimeMs: String(h.moveTime),
+        })) ?? [],
+    }));
+
+    const allShards = rawShards.flatMap(shard => {
+        const history = shard.history ?? [];
+        const spawnCount = history.filter(h => (h.action === "spawn" || h.reason === "spawn")).length;
+        if (spawnCount <= 1) return [{ id: shard.id, history }];
+
+        const instances: Array<{ id: number; history: Record<string, unknown>[] }> = [];
+        let current: { id: number; history: Record<string, unknown>[] } | null = null;
+        for (const h of history) {
+            const action = h.action || h.reason;
+            if (action === "spawn" || !current) {
+                current = { id: shard.id, history: [] };
+                instances.push(current);
+            }
+            current.history.push(h);
+        }
+        return instances;
+    });
+
+    const centroid = record.analysis?.centroid ? {
+        lat: record.analysis.centroid.latE6 / 1e6,
+        lng: record.analysis.centroid.lngE6 / 1e6,
+    } : undefined;
+
+    const shardPaths: Record<string, unknown> = {};
+    if (record.analysis?.shardPaths) {
+        for (const [pathKey, sp] of Object.entries(record.analysis.shardPaths)) {
+            const [p1, p2] = pathKey.split("-").map(Number);
+            shardPaths[pathKey] = {
+                originPortalId: p1,
+                destinationPortalId: p2,
+                originPortal: portals[p1!],
+                destinationPortal: portals[p2!],
+                distance: sp.distance,
+                links: sp.links.map(l => ({
+                    linkTime: l.linkTime,
+                    time: l.linkTime,
+                    team: l.align,
+                    moves: l.moves,
+                })),
+                ...(sp.teleports && { jumps: sp.teleports }),
+            };
+        }
+    }
+
+    const timelineWaves = siteConfig?.timeline?.shards;
+    const waves = (timelineWaves && timelineWaves.length > 1)
+        ? timelineWaves.map((tw, idx) => {
+            const nextStart = timelineWaves[idx + 1]?.start ?? (tw.end + 60000);
+            const waveShards = allShards.filter(sh => {
+                const spawn = sh.history?.find(h => (h.action === "spawn" || h.reason === "spawn")) ?? sh.history?.[0];
+                const t = spawn ? Number(spawn.moveTime) : null;
+                return t !== null && t >= tw.start && t < nextStart;
+            });
+            const waveAnalysis = record.analysis?.waves?.[idx + 1];
+
+            const waveShardPaths: Record<string, unknown> = {};
+            if (record.analysis?.shardPaths) {
+                for (const [pathKey, sp] of Object.entries(record.analysis.shardPaths)) {
+                    const linksInWave = sp.links
+                        .map(l => {
+                            const movesInWave = l.moves.filter(m => m.moveTime >= tw.start && m.moveTime < nextStart);
+                            if (movesInWave.length === 0) return null;
+                            return {
+                                linkTime: l.linkTime,
+                                time: l.linkTime,
+                                team: l.align,
+                                moves: movesInWave,
+                            };
+                        })
+                        .filter((l): l is NonNullable<typeof l> => l !== null);
+
+                    const teleportsInWave = sp.teleports?.filter(t => t.moveTime >= tw.start && t.moveTime < nextStart);
+
+                    if (linksInWave.length > 0 || (teleportsInWave && teleportsInWave.length > 0)) {
+                        const [p1, p2] = pathKey.split("-").map(Number);
+                        waveShardPaths[pathKey] = {
+                            originPortalId: p1,
+                            destinationPortalId: p2,
+                            originPortal: portals[p1!],
+                            destinationPortal: portals[p2!],
+                            distance: sp.distance,
+                            links: linksInWave,
+                            ...(teleportsInWave && teleportsInWave.length > 0 && { jumps: teleportsInWave }),
+                        };
+                    }
+                }
+            }
+
+            const waveScores = { RES: 0, ENL: 0, MAC: 0 };
+            for (const sh of waveShards) {
+                for (const h of sh.history ?? []) {
+                    const action = (h as { action?: string; reason?: string }).action ?? (h as { action?: string; reason?: string }).reason;
+                    if (action === "link") {
+                        const team = (h as { team?: string; align?: string }).team ?? (h as { team?: string; align?: string }).align;
+                        if (team && team in waveScores) {
+                            waveScores[team as keyof typeof waveScores]++;
+                        }
+                    }
+                }
+            }
+
+            const waveTargets: { RES: number[]; ENL: number[] } = { RES: [], ENL: [] };
+            for (const [idStr, p] of Object.entries(record.observations?.portals ?? {})) {
+                const pid = Number(idStr);
+                const pHistory = (p as unknown as { history?: Array<{ type?: string; ornId?: string; timestamp?: number }> }).history;
+                if (!pHistory) continue;
+                for (const h of pHistory) {
+                    if (h.type === "target" && h.timestamp !== undefined && h.timestamp >= tw.start && h.timestamp <= tw.end) {
+                        if (h.ornId === "targetres") waveTargets.RES.push(pid);
+                        else if (h.ornId === "targetenl") waveTargets.ENL.push(pid);
+                    }
+                }
+            }
+
+            return {
+                waveIndex: idx,
+                period: { start: tw.start, end: tw.end },
+                shards: waveShards,
+                shardPaths: waveShardPaths,
+                targets: waveTargets,
+                scores: waveScores,
+                counters: waveAnalysis?.statistics ?? { shards: { moving: waveShards.length, nonMoving: 0 } },
+            };
+        })
+        : undefined;
+
+    const totalScores = { RES: 0, ENL: 0, MAC: 0 };
+    if (waves && waves.length > 0) {
+        for (const w of waves) {
+            totalScores.RES += (w.scores?.RES ?? 0);
+            totalScores.ENL += (w.scores?.ENL ?? 0);
+            totalScores.MAC += (w.scores?.MAC ?? 0);
+        }
+    } else {
+        for (const sh of allShards) {
+            for (const h of sh.history ?? []) {
+                const action = (h as { action?: string; reason?: string }).action ?? (h as { action?: string; reason?: string }).reason;
+                if (action === "link") {
+                    const team = (h as { team?: string; align?: string }).team ?? (h as { team?: string; align?: string }).align;
+                    if (team && team in totalScores) {
+                        totalScores[team as keyof typeof totalScores]++;
+                    }
+                }
+            }
+        }
+    }
+
+    const counters = record.analysis?.statistics
+        ?? record.analysis?.waves?.[1]?.statistics
+        ?? { shards: { moving: allShards.length, nonMoving: 0 } };
+
+    const fullEvent = {
+        shards: allShards,
+        shardPaths,
+        scores: totalScores,
+        counters,
+    };
+
+    return {
+        ...record,
+        geocode,
+        portals,
+        centroid,
+        waves,
+        fullEvent,
+    };
 }
