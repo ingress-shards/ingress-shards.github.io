@@ -486,7 +486,8 @@ function formatLinkPathTooltip(shardPath, shardPathPortals, timeZone) {
         for (const move of link.moves) {
             const moveTime = formatEpochToLocalTime(move.moveTime, timeZone);
             const portalJumpText = biDirectionalMoves ? (move.origin === portalA.id ? "(A -> B)" : "(B -> A)") : "";
-            tooltip += `<strong>Shard ${move.shardId}</strong> jumped ${portalJumpText} at ${moveTime} for ${move.points} point${move.points !== 1 ? 's' : ''}<br />`;
+            const points = move.totalPoints ?? move.points ?? 0;
+            tooltip += `<strong>Shard ${move.shardId}</strong> jumped ${portalJumpText} at ${moveTime} for ${points} point${points !== 1 ? 's' : ''}<br />`;
         }
 
         if (index < sortedLinks.length - 1) {
@@ -772,11 +773,13 @@ function renderTargetMarkers(portals, targets) {
 
             // 1. The Visual Target Icon
             if (style.icon) {
+                const width = Array.isArray(style.size) ? style.size[0] : (style.size?.width ?? 40);
+                const height = Array.isArray(style.size) ? style.size[1] : (style.size?.height ?? 40);
                 markers.push(L.marker(latLng, {
                     icon: L.icon({
                         iconUrl: style.icon,
-                        iconSize: style.size || [40, 40],
-                        iconAnchor: style.size ? [style.size[0] / 2, style.size[1] / 2] : [20, 20]
+                        iconSize: [width, height],
+                        iconAnchor: [width / 2, height / 2]
                     }),
                     interactive: false,
                     pane: 'targetPane'
