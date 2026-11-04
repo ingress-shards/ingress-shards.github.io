@@ -26,7 +26,7 @@ This document tracks technical improvements, feature backlog items, and architec
   - In Phase 5 (UI & Renderer Adaptation), review all helper methods in date-helpers.js (ormatIsoToShortDate, ormatEpochToLocalTime, ormatEpochToLocalDateTime, getTimeRemaining, getActiveEventRemaining) and migrate them into @ingress-shards/ingress-events-core (src/common/Date.ts / src/display/), unifying temporal formatting between the map application and IITC plugin.
   - Review and deprecate legacy ad-hoc clustering helpers in json-parser-worker.js (getCoordsForFragment, getFragmentSpawnTimeMs, calculateCentroid) in favor of Core's DataObservationAdapter.
 
- (`SiteRecord`)
+### Domain Concept Naming Alignment (`SiteRecord`)
 - **Context**: The naming of `SiteRecord` causes conceptual confusion with TypeScript's built-in `Record<K, V>` utility type (similarly to how `SeasonRecord` was pruned).
 - **Target Enhancement**:
   - In a dedicated post-migration phase, evaluate renaming `SiteRecord` to a more descriptive domain term (e.g., `SiteTelemetry`, `SiteObservationData`, or `SiteData`).
@@ -100,3 +100,19 @@ This document tracks technical improvements, feature backlog items, and architec
     - Enforce `unicorn/filename-case: ["error", { case: "kebabCase" }]` (matching Rule 6.B).
     - Disable post-ES2022 rules (`unicorn/no-array-sort`, `unicorn/prefer-iterator-to-array`) consistent with the ES2022 target.
     - Curate or tune Unicorn rules to avoid disruptive changes to established project patterns.
+
+### Package Manager Migration: NPM to Yarn Berry (Yarn 4)
+- **Context**: `ingress-shards.github.io` currently uses NPM (`package-lock.json`), whereas sibling repositories ([`ingress-events-core`](file:///c:/Users/Lewis/git/yeggs-github/ingress-events-core) and [`iitc-plugin-site-observer`](file:///c:/Users/Lewis/git/yeggs-github/iitc-plugin-site-observer)) and the umbrella workspace root use Yarn Berry (v4) with the `node-modules` linker (`nodeLinker: node-modules`). This creates divergence in workspace tooling, script execution (`npm --prefix` vs `yarn --cwd`), and local/CI dependency resolution.
+- **Target Enhancement**:
+  - Migrate package management from NPM to Yarn Berry (v4), standardizing toolchain alignment across all three repositories.
+  - Standardize workspace-level dispatch commands to `yarn --cwd ingress-shards.github.io <command>`.
+  - Replace `package-lock.json` with `yarn.lock` and configure `.yarnrc.yml` with `nodeLinker: node-modules`.
+  - Update GitHub Actions CI workflows (`.github/workflows/validate.yml` and `.github/workflows/deploy.yml`) to use Corepack and Yarn Berry.
+
+### Language Migration: Complete JavaScript to TypeScript Conversion
+- **Context**: `ingress-shards.github.io` currently operates in a hybrid mode (`allowJs: true` in `tsconfig.json`). While newly introduced V2 data layers (`src/data/`) and adapters are written in TypeScript, legacy UI components, map controllers, event handlers, and web workers under `src/js/` remain in plain JavaScript (ES modules).
+- **Target Enhancement**:
+  - Incrementally migrate all remaining JavaScript modules (`src/js/**/*.js`) to TypeScript (`.ts`).
+  - Introduce strict domain interfaces for map visual elements, layer controllers, UI state management, and Leaflet extension points.
+  - Transition the build pipeline from esbuild JavaScript bundling to fully type-checked TypeScript compilation (`strict: true`, `noImplicitAny: true`).
+  - Reorganize legacy directory layouts (e.g., merging `src/js/` into modular TypeScript packages such as `src/ui/`, `src/map/`, `src/workers/`).
