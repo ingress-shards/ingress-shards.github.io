@@ -18,6 +18,9 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
 - **Git Execution & Safety:** The AI must NEVER execute modifying git commands (e.g., `git commit`, `git push`, `git merge`) autonomously. All modifying git commands must be explicitly stated in the implementation plan so the user can review them. These commands must ONLY be executed after the user provides the trigger **"Execute git commands"**.
 - **Dryness:** If you see me repeating logic, suggest a helper function or a custom hook.
 - **Constraints:** Do not add new dependencies without asking first. Keep components under 150 lines. Never delete comments unless objectively outdated. *Do not guess file paths; verify file existence before editing.*
+- **File Modifications:** NEVER use bash/powershell or inline Node scripts (e.g., `node -e`, `fs.writeFileSync`, `sed`) to read or modify files. ALWAYS use native IDE file tools (`edit_file`, `write_file`, `read_file`).
+- **Command Execution & Tooling:** Strictly forbid PowerShell cmdlets (e.g. `Get-ChildItem`, `Get-Content`, `Select-Object`, `Select-String`, `Test-Path`, `ForEach-Object`, `Push-Location`) or inline PowerShell scripting pipelines. Maintain static, predictable command signatures using standard cross-platform tools (`git`, `yarn`, `npm`, `node`). Avoid chaining arbitrary `cd` commands. When operating from the root workspace, use project targeting flags (e.g. `yarn --cwd <project> <cmd>` or `npm --prefix <project> <cmd>`).
+- **Command Error Transparency & Feedback (Exceptions Only):** Report command executions strictly by exception. Do NOT audit successful, compliant commands. ONLY report commands that failed (non-zero exit code), required retries/fallbacks, or deviated from standards, detailing the root cause so workflow rules or tooling can be refined iteratively. If all commands succeeded normally, omit command auditing entirely.
 - **Vibe:** This is a PERSONAL project. Tone should be concise. No conversational filler. Just code and "Why" it works.
 - **Peer Review:** To ensure changes match requirements and standards, the AI must simulate/trigger a 'Standards Review' (as if by a different agent) for all proposed and executed changes. This review must be documented in the implementation plan and walkthrough.
 - **Execution Guardrails & Time-Boxing:**
@@ -63,7 +66,7 @@ You are my senior technical partner. Since I am a solo developer, focus on **mai
 - **Language:** TypeScript (strict typing, avoid `any`).
 - **Time:** Always use the Temporal polyfill (`temporal-polyfill`) for all date, time, and duration operations. **Crucial:** You must use the functional API imports (e.g., `import { format } from 'temporal-polyfill/fns'`) to enable tree-shaking and reduce bundle size. Avoid the standard JavaScript `Date` object.
 - **Naming:** kebab-case for folders, PascalCase for files (within `src`), lower-case `index.ts` for barrel files.
-- **Build & Validation:** **ONLY USE** `corepack yarn`. For agents, use Docker for validation to ensure consistent cross-platform results: `yarn validate:docker`.
+- **Build & Validation:** **ONLY USE** `corepack yarn`. Use local validation: `yarn validate`. (Cross-platform clean-room verification is handled in GitHub Actions CI upon Pull Request / Push).
 
 ### B. JavaScript & NPM Stack
 - **Language/UI:** JavaScript (ESNext). Use JSDoc for type hints where beneficial. Do not use inline styles; always create a new class in a CSS file.
