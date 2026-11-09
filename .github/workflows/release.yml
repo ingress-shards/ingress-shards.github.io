@@ -54,13 +54,6 @@ jobs:
           # Strip the 'v' prefix for the build
           APP_VERSION=${LATEST_TAG#v} npm run build
 
-      - name: Upload Validation Reports Artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: validation-reports
-          path: gen/reports/
-          if-no-files-found: ignore
-
       - name: Tag & Release
         id: semantic
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'

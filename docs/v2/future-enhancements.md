@@ -1,6 +1,6 @@
 # Ingress Shard Map V2: Potential Future Enhancements
 
-This document tracks technical improvements, feature backlog items, and architectural enhancements identified during the V2 migration that are beyond the immediate scope of the initial re-platforming onto [`@ingress-shards/ingress-events-core`](file:///c:/Users/Lewis/git/yeggs-github/ingress-events-core).
+This document tracks technical improvements, feature backlog items, and architectural enhancements identified during the V2 migration that are beyond the immediate scope of the initial re-platforming onto `@ingress-shards/ingress-events-core`.
 
 ---
 
@@ -14,7 +14,7 @@ This document tracks technical improvements, feature backlog items, and architec
 
 ### Recursive Portals Ingestion & Processing
 - **Context**: Ingress event mechanics can include "recursive portals" (portals with recurring shard cycles or special anomalous wave rules). 
-- **Current State**: [`DataFiles.ts`](file:///c:/Users/Lewis/git/yeggs-github/ingress-events-core/src/types/DataFiles.ts) defines `recursivePortals` metadata (`importPattern: /^recursive-portals.*\.json$/i`) and [`Portal.ts`](file:///c:/Users/Lewis/git/yeggs-github/ingress-events-core/src/sites/Portal.ts) declares `RecursiveHistoryEntry` (`type: "recursive"`). However, Core does not yet possess a dedicated `RecursivePortalsAdapter` in `src/types/processing/adapters/`.
+- **Current State**: `DataFiles.ts` defines `recursivePortals` metadata (`importPattern: /^recursive-portals.*\.json$/i`) and `Portal.ts` declares `RecursiveHistoryEntry` (`type: "recursive"`). However, Core does not yet possess a dedicated `RecursivePortalsAdapter` in `src/types/processing/adapters/`.
 - **Target Enhancement**:
   - Implement `RecursivePortalsAdapter` in Core with full unit test coverage.
   - Wire the adapter into `DataIngestionPipeline` to merge recursive portal observations into the unified portal history.
@@ -23,23 +23,23 @@ This document tracks technical improvements, feature backlog items, and architec
 ### Review & Elevation of Shared Date and Data Helpers (Phase 5)
 - **Context**: Date and duration formatting helpers currently reside in src/js/shared/date-helpers.js. In addition, ad-hoc fragment clustering logic exists in src/js/data/json-parser-worker.js.
 - **Target Enhancement**:
-  - In Phase 5 (UI & Renderer Adaptation), review all helper methods in date-helpers.js (ormatIsoToShortDate, ormatEpochToLocalTime, ormatEpochToLocalDateTime, getTimeRemaining, getActiveEventRemaining) and migrate them into @ingress-shards/ingress-events-core (src/common/Date.ts / src/display/), unifying temporal formatting between the map application and IITC plugin.
+  - In Phase 5 (UI & Renderer Adaptation), review all helper methods in date-helpers.js (formatIsoToShortDate, formatEpochToLocalTime, formatEpochToLocalDateTime, getTimeRemaining, getActiveEventRemaining) and migrate them into @ingress-shards/ingress-events-core (src/common/Date.ts / src/display/), unifying temporal formatting between the map application and IITC plugin.
   - Review and deprecate legacy ad-hoc clustering helpers in json-parser-worker.js (getCoordsForFragment, getFragmentSpawnTimeMs, calculateCentroid) in favor of Core's DataObservationAdapter.
 
 ### Domain Concept Naming Alignment (`SiteRecord`)
 - **Context**: The naming of `SiteRecord` causes conceptual confusion with TypeScript's built-in `Record<K, V>` utility type (similarly to how `SeasonRecord` was pruned).
 - **Target Enhancement**:
   - In a dedicated post-migration phase, evaluate renaming `SiteRecord` to a more descriptive domain term (e.g., `SiteTelemetry`, `SiteObservationData`, or `SiteData`).
-  - Align type naming across all sibling repositories ([`ingress-events-core`](file:///c:/Users/Lewis/git/yeggs-github/ingress-events-core), [`ingress-shards.github.io`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io), and [`iitc-plugin-site-observer`](file:///c:/Users/Lewis/git/yeggs-github/iitc-plugin-site-observer)).
+  - Align type naming across all sibling repositories (`ingress-events-core`, `ingress-shards.github.io`, and `iitc-plugin-site-observer`).
 
 ---
 
 ## 2. Custom Season & User Experience
 
 ### Full Custom Season Processing via Core Engine
-- **Context**: Currently, user-dropped files in [`custom-file-handler.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/ui/custom-file-handler.js) parse through a legacy Web Worker (`json-parser-worker.js`) running obsolete `data-processor.js` logic. Furthermore, [`SeasonDataStore.ts`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/data/SeasonDataStore.ts) maintains a static stub for `CUSTOM_SEASON_ID` (`custom`) that does not dynamically register with `EventConfigRegistry`.
+- **Context**: Currently, user-dropped files in `custom-file-handler.js` parse through a legacy Web Worker (`json-parser-worker.js`) running obsolete `data-processor.js` logic. Furthermore, `SeasonDataStore.ts` maintains a static stub for `CUSTOM_SEASON_ID` (`custom`) that does not dynamically register with `EventConfigRegistry`.
 - **Target Enhancement**:
-  - Replace the legacy worker with a TypeScript worker or service utilizing Core's [`DataIngestionPipeline`](file:///c:/Users/Lewis/git/yeggs-github/ingress-events-core/src/sites/processing/DataIngestionPipeline.ts).
+  - Replace the legacy worker with a TypeScript worker or service utilizing Core's `DataIngestionPipeline`.
   - Dynamically register uploaded season metadata, geocodes, and timeline blueprints into `EventConfigRegistry` (e.g. via a dedicated `registerSite(siteConfig: SiteConfig)` method on `EventConfigRegistry`).
   - Support multi-file batch drag-and-drop (e.g., dropping discovery, target portals, and shard jump logs simultaneously to synthesize an ad-hoc custom event site).
   - Enable local export of the synthesized site record to JSON directly from the map UI.
@@ -47,6 +47,12 @@ This document tracks technical improvements, feature backlog items, and architec
 ---
 
 ## 3. Map Rendering & Display
+
+### Jump Window Duration & Timing in Wave Summary Tooltip
+- **Context**: In Phase 3, `ShardJumpWindow` models both `scheduledStart` and `actualEnd` epoch timestamps directly inside `SiteRecord`, deprecating the generic `timestamp` field.
+- **Target Enhancement**:
+  - **IITC Plugin**: Completed in Phase 3 Part 2 (`TooltipComponent` displays "Jump Window Duration" using Core's `formatDuration`).
+  - **Map UI**: In Phase 5 (UI & Renderer Adaptation), render the observed jump window duration (in minutes and seconds: `actualEnd - scheduledStart`) alongside the jump number and action count in the map wave summary tooltip table.
 
 ### Interactive Scoring Breakdown & Display Elevation
 - **Context**: IITC Plugin features advanced tooltip scoring breakdowns and jump history grouper utilities.
@@ -93,16 +99,16 @@ This document tracks technical improvements, feature backlog items, and architec
 ## 5. Tooling & Linting Alignment
 
 ### ESLint & Unicorn Alignment with Sibling Repositories
-- **Context**: [`ingress-events-core`](file:///c:/Users/Lewis/git/yeggs-github/ingress-events-core) and [`iitc-plugin-site-observer`](file:///c:/Users/Lewis/git/yeggs-github/iitc-plugin-site-observer) use `eslint-plugin-unicorn` alongside TypeScript-ESLint, disabling post-ES2022 rules (`unicorn/no-array-sort` and `unicorn/prefer-iterator-to-array`) for ES2022 compatibility. In `ingress-shards.github.io`, the project currently uses standard `@eslint/js` and `typescript-eslint` without Unicorn to prevent imposing 300+ stylistic and non-deterministic violations across legacy JavaScript modules in `src/js/`.
+- **Context**: `ingress-events-core` and `iitc-plugin-site-observer` use `eslint-plugin-unicorn` alongside TypeScript-ESLint, disabling post-ES2022 rules (`unicorn/no-array-sort` and `unicorn/prefer-iterator-to-array`) for ES2022 compatibility. In `ingress-shards.github.io`, the project currently uses standard `@eslint/js` and `typescript-eslint` without Unicorn to prevent imposing 300+ stylistic and non-deterministic violations across legacy JavaScript modules in `src/js/`.
 - **Target Enhancement**:
   - Once legacy modules under `src/js/` are refactored or migrated to modern TypeScript in future V2 iterations, install `eslint-plugin-unicorn`.
-  - Align [`eslint.config.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/eslint.config.js) with the sibling repositories:
+  - Align `eslint.config.js` with the sibling repositories:
     - Enforce `unicorn/filename-case: ["error", { case: "kebabCase" }]` (matching Rule 6.B).
     - Disable post-ES2022 rules (`unicorn/no-array-sort`, `unicorn/prefer-iterator-to-array`) consistent with the ES2022 target.
     - Curate or tune Unicorn rules to avoid disruptive changes to established project patterns.
 
 ### Package Manager Migration: NPM to Yarn Berry (Yarn 4)
-- **Context**: `ingress-shards.github.io` currently uses NPM (`package-lock.json`), whereas sibling repositories ([`ingress-events-core`](file:///c:/Users/Lewis/git/yeggs-github/ingress-events-core) and [`iitc-plugin-site-observer`](file:///c:/Users/Lewis/git/yeggs-github/iitc-plugin-site-observer)) and the umbrella workspace root use Yarn Berry (v4) with the `node-modules` linker (`nodeLinker: node-modules`). This creates divergence in workspace tooling, script execution (`npm --prefix` vs `yarn --cwd`), and local/CI dependency resolution.
+- **Context**: `ingress-shards.github.io` currently uses NPM (`package-lock.json`), whereas sibling repositories (`ingress-events-core` and `iitc-plugin-site-observer`) and the umbrella workspace root use Yarn Berry (v4) with the `node-modules` linker (`nodeLinker: node-modules`). This creates divergence in workspace tooling, script execution (`npm --prefix` vs `yarn --cwd`), and local/CI dependency resolution.
 - **Target Enhancement**:
   - Migrate package management from NPM to Yarn Berry (v4), standardizing toolchain alignment across all three repositories.
   - Standardize workspace-level dispatch commands to `yarn --cwd ingress-shards.github.io <command>`.

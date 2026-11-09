@@ -2,7 +2,7 @@
 
 ## 1. Overview & Objectives
 
-Version 2 of the Ingress Shard Map re-platforms the project to consume [`@ingress-shards/ingress-events-core`](file:///c:/Users/Lewis/git/yeggs-github/ingress-events-core) as an external dependency and progressively adopts **TypeScript** to achieve end-to-end type safety across the entire ecosystem.
+Version 2 of the Ingress Shard Map re-platforms the project to consume [`@ingress-shards/ingress-events-core`](https://github.com/ingress-shards/ingress-events-core) as an external dependency and progressively adopts **TypeScript** to achieve end-to-end type safety across the entire ecosystem.
 
 ### Core Goals:
 - **Single Source of Truth**: Eliminate duplicated event mechanics, blueprints, scoring logic, and configuration between the shard map and IITC plugin.
@@ -64,13 +64,15 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
    - Legacy JavaScript files (`data-processor.js`, `site-renderer.js`, etc.) remain in `src/js/` undisturbed.
 2. **Phase 3 (Offline Data Pipeline):**
    - Install `tsx` devDependency for direct, zero-build execution of TypeScript CLI scripts.
-   - Author offline pipeline in TypeScript (`scripts/pipeline/SeasonIngestionPipeline.ts`, `scripts/pre-processor-loader.ts`, `scripts/validator-loader.ts`, `scripts/statistics-loader.ts`).
-   - Move build-time validation and statistics logic entirely into `scripts/` (relocating offline logic out of `src/js/`).
+   - Author offline pipeline in TypeScript (`scripts/pipeline/SeasonIngestionPipeline.ts`, `scripts/process-season-data.ts`).
+   - Relocate offline logic out of `src/js/` into Core's domain pipeline (`DataIngestionPipeline`, `SiteRecordAnalyser`).
    - Implement deterministic chronological file staging (ornaments → target portals → timestamped shard jumps) with in-memory accumulator writeback per season to prevent overriding site records or losing historical observations.
-   - Execute final comprehensive analysis pass (`SiteRecordAnalyser`, `WaveShardJumpBuilder`, `GoalScoringEngine`, `LinkScoringEngine`, centroids) on the fully accumulated portal graph.
+   - Execute final comprehensive analysis pass (`SiteRecordAnalyser`, `WaveAnalyser`, `LinkScoringEngine`, `SeasonPointsCalculator`, centroids) on the fully accumulated portal graph.
+   - Embed validation, anomaly metrics (`invalidActions`, `mismatchedMoves`, `mismatchedScoringJumps`, `extendedJumpWindows`), and jump window durations natively into `SiteRecord`.
+   - Retire legacy CSV reports (`actions-outside-window.csv`, `invalid-shard-sequences.csv`, `link-alignment-mismatches.csv`, `site-statistics.csv`, `validation-summary.json`) and eliminate `scripts/validation/` and transitional adapters.
    - Provide transitional UI bridging in `SeasonDataStore.ts` so existing Leaflet renderers remain fully functional until Phase 5.
    - Completely delete `src/js/data/shard-jumps/` directory (`data-processor.js`, `data-helpers.js`, `data-validator.js`, `data-statistics.js`).
-   - Optimize CI release workflow by dropping obsolete `processed-data` upload while retaining diagnostic `validation-reports` and Pages deployment.
+   - Optimize CI release workflow by dropping obsolete `processed-data` and `validation-reports` uploads (retaining Pages deployment).
 3. **Phase 4 & 5 (UI & Display Components):**
    - Author new modern UI components and scoring displays natively in TypeScript.
    - Delete legacy Leaflet DOM renderers (`site-renderer.js`, `series-renderer.js`).
@@ -138,16 +140,16 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
   - Final analysis pass across all season sites via `SiteRecordAnalyser.analyze()`
 - [x] Refactor `scripts/pre-processor-loader.ts` to TypeScript:
   - Ingest all seasons via `SeasonIngestionPipeline` and emit `gen/data/<seasonId>.json` (`Record<SiteId, SiteRecord>`)
-- [x] Refactor `scripts/validator-loader.ts` and `scripts/statistics-loader.ts` to TypeScript:
-  - Move validation rules and statistics logic directly into `scripts/` (co-located with offline loaders, decoupled from `src/`)
-  - Read `gen/data/<seasonId>.json` and validate against Core `SiteRecord` / `SiteAnalysis`
-  - Maintain the 6 static report assets in `gen/reports/`
-- [x] Update `package.json` scripts to invoke TypeScript loaders via `tsx`
+- [x] Streamline data pipeline to emit `gen/data/<seasonId>.json` via `scripts/process-season-data.ts`:
+  - Run ingestion and analysis natively using Core's `SeasonIngestionPipeline` and `SiteRecordAnalyser`
+  - Consolidate validation anomalies (`invalidActions`, `mismatchedMoves`, `mismatchedScoringJumps`, `extendedJumpWindows`) directly into `SiteRecord.analysis.statistics` and `ShardJumpWindow`
+  - Permanently retire legacy CSV reports (`actions-outside-window.csv`, `invalid-shard-sequences.csv`, `link-alignment-mismatches.csv`, `site-statistics.csv`, `validation-summary.json`) and delete `scripts/validation/` and legacy loaders
+- [x] Update `package.json` scripts (`data:process`, `prepare:data`, `validate`) to invoke TypeScript pipeline via `tsx`
 - [x] Update `SeasonDataStore.ts` to bridge `SiteRecord` / `SiteAnalysis` shapes for legacy UI renderers (`site-renderer.js`, `series-renderer.js`) until Phase 5
 - [x] Align `json-parser-worker.js` / custom file processing to import Core `DataIngestionPipeline` directly
 - [x] Prune `@deprecated` `gen/series_geocode.json` bridge generation from `generate-flag-assets.js`
 - [x] Completely delete `src/js/data/shard-jumps/` directory (`data-processor.js`, `data-helpers.js`, `data-validator.js`, `data-statistics.js`)
-- [x] Optimize `release.yml`: remove obsolete `processed-data` upload (retaining `validation-reports` and Pages deployment)
+- [x] Optimize `release.yml`: remove obsolete `processed-data` and `validation-reports` uploads (retaining Pages deployment)
 - [x] Run full `npm run validate` pass
 
 ### Phase 4: Shared Utility & Constants Pruning
