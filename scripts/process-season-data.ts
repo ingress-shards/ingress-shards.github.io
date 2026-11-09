@@ -2,7 +2,6 @@ import fs from "node:fs/promises";
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import {
     DataIngestionPipeline,
@@ -22,7 +21,6 @@ const DATA_DIR = path.join(ROOT_DIR, "data");
 const SCRIPTS_DIR = path.join(ROOT_DIR, "scripts");
 const GEN_DIR = path.join(ROOT_DIR, "gen");
 const OUTPUT_DATA_DIR = path.join(GEN_DIR, "data");
-const REPORTS_DIR = path.join(GEN_DIR, "reports");
 const HASH_FILE = path.join(GEN_DIR, ".data_hash");
 const CORE_DIST_FILE = path.join(ROOT_DIR, "node_modules", "@ingress-shards", "ingress-events-core", "dist", "index.mjs");
 
@@ -45,10 +43,10 @@ function computeFingerprint(): string {
 }
 
 function hasValidArtifacts(): boolean {
-    if (!existsSync(OUTPUT_DATA_DIR) || !existsSync(REPORTS_DIR) || !existsSync(HASH_FILE)) {
+    if (!existsSync(OUTPUT_DATA_DIR) || !existsSync(HASH_FILE)) {
         return false;
     }
-    return readdirSync(OUTPUT_DATA_DIR).length > 0 && readdirSync(REPORTS_DIR).length > 0;
+    return readdirSync(OUTPUT_DATA_DIR).length > 0;
 }
 
 export class SeasonDataIngestor {
@@ -85,7 +83,7 @@ async function run(): Promise<void> {
         try {
             const savedFingerprint = readFileSync(HASH_FILE, "utf-8").trim();
             if (savedFingerprint === currentFingerprint) {
-                console.log("ℹ️ Season data and reports are up to date (cached). Skipping data processing & analysis.");
+                console.log("ℹ️ Season data is up to date (cached). Skipping data processing.");
                 return;
             }
         } catch {
@@ -93,7 +91,7 @@ async function run(): Promise<void> {
         }
     }
 
-    console.log("ℹ️ Season data or logic changed. Running data processing and analysis...");
+    console.log("ℹ️ Season data or logic changed. Running data processing...");
     const startTime = performance.now();
     const registry = getEventConfigRegistry();
     const ingestor = new SeasonDataIngestor(registry);
@@ -115,12 +113,6 @@ async function run(): Promise<void> {
 
     const duration = ((performance.now() - startTime) / 1000).toFixed(2);
     console.log(`✅ Season data successfully processed (${seasonIds.length} seasons saved to ${OUTPUT_DATA_DIR}) in ${duration} seconds`);
-
-    // Refresh validation and statistics reports in sync
-    execSync("npm run data:analyze", {
-        cwd: ROOT_DIR,
-        stdio: "inherit",
-    });
 
     mkdirSync(GEN_DIR, { recursive: true });
     writeFileSync(HASH_FILE, currentFingerprint, "utf-8");

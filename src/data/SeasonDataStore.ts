@@ -243,7 +243,6 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
                 const t = spawn ? Number(spawn.moveTime) : null;
                 return t !== null && t >= tw.start && t < nextStart;
             });
-            const waveAnalysis = record.analysis?.waves?.[idx + 1];
 
             const waveShardPaths: Record<string, unknown> = {};
             if (record.analysis?.shardPaths) {
@@ -304,6 +303,17 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
                 }
             }
 
+            const waveAnalysis = record.analysis?.waves?.[idx + 1];
+
+            const emptyWaveCounters = {
+                shards: {
+                    moving: 0,
+                    nonMoving: waveShards.length,
+                },
+                links: 0,
+                paths: 0,
+            };
+
             return {
                 waveIndex: idx,
                 period: { start: tw.start, end: tw.end },
@@ -311,7 +321,7 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
                 shardPaths: waveShardPaths,
                 targets: waveTargets,
                 scores: waveScores,
-                counters: waveAnalysis?.statistics ?? { shards: { moving: waveShards.length, nonMoving: 0 } },
+                counters: waveAnalysis?.statistics ?? emptyWaveCounters,
             };
         })
         : undefined;
@@ -338,8 +348,7 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
     }
 
     const counters = record.analysis?.statistics
-        ?? record.analysis?.waves?.[1]?.statistics
-        ?? { shards: { moving: allShards.length, nonMoving: 0 } };
+        ?? { shards: { moving: allShards.length, nonMoving: 0 }, links: 0, paths: 0 };
 
     const fullEvent = {
         shards: allShards,
