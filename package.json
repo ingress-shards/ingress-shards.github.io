@@ -48,7 +48,7 @@
         "semantic-release-export-data": "^1.2.0",
         "style-loader": "^4.0.0",
         "webpack": "^5.112.2",
-        "webpack-bundle-analyzer": "^5.4.0",
+        "webpack-bundle-analyzer": "^5.4.2",
         "webpack-cli": "^7.3.1",
         "webpack-dev-server": "^6.1.0",
         "webpack-merge": "^6.0.1"
@@ -63,6 +63,6 @@
         "leaflet-relief": "^1.7.0",
         "leaflet.motion": "github:neon-ninja/leaflet.motion",
         "maplibre-gl": "^6.16.0",
-        "temporal-polyfill": "^1.0.6"
+        "temporal-polyfill": "^1.0.8"
     }
 }
