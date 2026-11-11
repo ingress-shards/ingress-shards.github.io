@@ -1,7 +1,7 @@
 import { CUSTOM_SEASON_ID, SITE_AGGREGATION_DISTANCE } from '../constants.js';
 import { haversineDistance, roundToDecimalPlaces } from "../shared/math-helpers.js";
 import { formatEpochToSerializationString, isWithin24Hours } from '../shared/date-helpers.js';
-import { getEventConfigRegistry } from '../../config/EventConfig.js';
+import { getConfigRegistry } from '../../config/EventConfig.js';
 import { DataIngestionPipeline } from "@ingress-shards/ingress-events-core";
 
 const siteCounter = Symbol("siteCounter");
@@ -15,7 +15,7 @@ self.onmessage = async function (event) {
         const parsedData = JSON.parse(customFile.rawData);
         const customGeocode = getCustomGeocode({ fileName: customFile.fileName, parsedData });
 
-        const registry = getEventConfigRegistry();
+        const registry = getConfigRegistry();
         for (const site of customGeocode.sites) {
             const startMs = new Date(site.date).getTime();
             registry.registerSite({

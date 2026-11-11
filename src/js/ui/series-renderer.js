@@ -10,7 +10,7 @@ import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } fro
 import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
 import { fromFields as durationFromFields } from "temporal-polyfill/fns/Duration";
 import { getBasic } from "temporal-polyfill/fns/Calendar";
-import { getEventConfigRegistry } from "../../config/EventConfig.js";
+import { getConfigRegistry } from "../../config/EventConfig.js";
 import { TACTICAL_MARKER_SVG } from "./marker-template.js";
 
 const seriesLayerCache = new Map();
@@ -33,7 +33,7 @@ function getOutcome(siteData) {
 
 
 function isEventActive(site) {
-    const durationMins = getEventConfigRegistry().getSiteDurationMinutes(site.id);
+    const durationMins = getConfigRegistry().getSiteDurationMinutes(site.id);
 
     const startTime = zdtFromString(site.date, getBasic);
     const endTime = zdtAdd(startTime, durationFromFields({ minutes: durationMins }));
@@ -105,7 +105,7 @@ async function renderSeriesLayer(seriesId) {
         const remainingTime = getTimeRemaining(site.date, site.timezone);
         const timeRemainingText = remainingTime ? ` (${remainingTime})` : '';
 
-        const eventDuration = getEventConfigRegistry().getSiteDurationMinutes(site.id);
+        const eventDuration = getConfigRegistry().getSiteDurationMinutes(site.id);
         const endTime = zdtAdd(startTime, durationFromFields({ minutes: eventDuration }));
         const completionGraceEnd = zdtAdd(endTime, durationFromFields({ days: 1 }));
         const isComplete = zdtCompare(now, endTime) > 0;

@@ -22,10 +22,3 @@ const configRegistry = new ConfigRegistry(
 export function getConfigRegistry(): ConfigRegistry {
     return configRegistry;
 }
-
-/**
- * @deprecated Transitional alias. Use getConfigRegistry() instead.
- */
-export function getEventConfigRegistry(): ConfigRegistry {
-    return configRegistry;
-}

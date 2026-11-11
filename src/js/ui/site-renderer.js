@@ -4,7 +4,7 @@ import shardIconUrl from '../../images/abaddon1_shard.png';
 import { getSiteData, getSeasonMetadata, getSeasonGeocode } from "../../data/SeasonDataStore.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
 import { formatEpochToLocalTime, formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
-import { getEventConfigRegistry } from "../../config/EventConfig.js";
+import { getConfigRegistry } from "../../config/EventConfig.js";
 import { getHexagonSVG } from "./marker-template.js";
 import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } from "temporal-polyfill/fns/ZonedDateTime";
 import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
@@ -522,7 +522,7 @@ export async function getDetailsPanelContent(seriesId, siteId, waveId) {
 
     const siteEventType = EVENT_BRANDS[siteGeocode.eventType];
     const startTime = zdtFromString(siteGeocode.date, getBasic);
-    const durationMins = getEventConfigRegistry().getSiteDurationMinutes(siteId);
+    const durationMins = getConfigRegistry().getSiteDurationMinutes(siteId);
     const endTime = zdtAdd(startTime, durationFromFields({ minutes: durationMins }));
     const now = zonedDateTimeISO(siteGeocode.timezone);
     let countdownSuffix = '';
