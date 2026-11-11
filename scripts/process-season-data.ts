@@ -5,13 +5,13 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import {
     DataIngestionPipeline,
-    type SiteRecord,
+    type SiteState,
     type SiteId,
     type SeasonId,
     type IngestionItem,
-    type EventConfigRegistry,
+    type ConfigRegistry,
 } from "@ingress-shards/ingress-events-core";
-import { getEventConfigRegistry } from "../src/config/EventConfig.js";
+import { getConfigRegistry } from "../src/config/EventConfig.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -50,9 +50,9 @@ function hasValidArtifacts(): boolean {
 }
 
 export class SeasonDataIngestor {
-    constructor(private readonly registry: EventConfigRegistry) {}
+    constructor(private readonly registry: ConfigRegistry) {}
 
-    public async ingestSeason(seasonId: SeasonId, seasonDir: string): Promise<Record<SiteId, SiteRecord>> {
+    public async ingestSeason(seasonId: SeasonId, seasonDir: string): Promise<Record<SiteId, SiteState>> {
         let files: string[] = [];
         try {
             files = await fs.readdir(seasonDir);
@@ -70,8 +70,8 @@ export class SeasonDataIngestor {
             }))
         );
 
-        const siteRecords = await pipeline.ingestBatch(items);
-        return Object.fromEntries(siteRecords.map((r) => [r.metadata.siteId, r]));
+        const siteStates = await pipeline.ingestBatch(items);
+        return Object.fromEntries(siteStates.map((s) => [s.metadata.siteId, s]));
     }
 }
 
@@ -93,7 +93,7 @@ async function run(): Promise<void> {
 
     console.log("ℹ️ Season data or logic changed. Running data processing...");
     const startTime = performance.now();
-    const registry = getEventConfigRegistry();
+    const registry = getConfigRegistry();
     const ingestor = new SeasonDataIngestor(registry);
     const seasonIds = registry.getAllSeasonIds();
 
@@ -104,10 +104,10 @@ async function run(): Promise<void> {
     await Promise.all(
         seasonIds.map(async (seasonId) => {
             const seasonDir = path.join(DATA_DIR, seasonId);
-            const records = await ingestor.ingestSeason(seasonId, seasonDir);
+            const siteStates = await ingestor.ingestSeason(seasonId, seasonDir);
             const outputPath = path.join(OUTPUT_DATA_DIR, `${seasonId}.json`);
-            await fs.writeFile(outputPath, JSON.stringify(records), "utf-8");
-            console.log(`ℹ️ Processed season ${seasonId}: ${Object.keys(records).length} sites.`);
+            await fs.writeFile(outputPath, JSON.stringify(siteStates), "utf-8");
+            console.log(`ℹ️ Processed season ${seasonId}: ${Object.keys(siteStates).length} sites.`);
         })
     );
 

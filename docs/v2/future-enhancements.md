@@ -26,30 +26,24 @@ This document tracks technical improvements, feature backlog items, and architec
   - In Phase 5 (UI & Renderer Adaptation), review all helper methods in date-helpers.js (formatIsoToShortDate, formatEpochToLocalTime, formatEpochToLocalDateTime, getTimeRemaining, getActiveEventRemaining) and migrate them into @ingress-shards/ingress-events-core (src/common/Date.ts / src/display/), unifying temporal formatting between the map application and IITC plugin.
   - Review and deprecate legacy ad-hoc clustering helpers in json-parser-worker.js (getCoordsForFragment, getFragmentSpawnTimeMs, calculateCentroid) in favor of Core's DataObservationAdapter.
 
-### Domain Concept Naming Alignment (`SiteRecord`)
-- **Context**: The naming of `SiteRecord` causes conceptual confusion with TypeScript's built-in `Record<K, V>` utility type (similarly to how `SeasonRecord` was pruned).
-- **Target Enhancement**:
-  - In a dedicated post-migration phase, evaluate renaming `SiteRecord` to a more descriptive domain term (e.g., `SiteTelemetry`, `SiteObservationData`, or `SiteData`).
-  - Align type naming across all sibling repositories (`ingress-events-core`, `ingress-shards.github.io`, and `iitc-plugin-site-observer`).
-
 ---
 
 ## 2. Custom Season & User Experience
 
 ### Full Custom Season Processing via Core Engine
-- **Context**: Currently, user-dropped files in `custom-file-handler.js` parse through a legacy Web Worker (`json-parser-worker.js`) running obsolete `data-processor.js` logic. Furthermore, `SeasonDataStore.ts` maintains a static stub for `CUSTOM_SEASON_ID` (`custom`) that does not dynamically register with `EventConfigRegistry`.
+- **Context**: Currently, user-dropped files in `custom-file-handler.js` parse through a legacy Web Worker (`json-parser-worker.js`) running obsolete `data-processor.js` logic. Furthermore, `SeasonDataStore.ts` maintains a static stub for `CUSTOM_SEASON_ID` (`custom`) that does not dynamically register with `ConfigRegistry`.
 - **Target Enhancement**:
   - Replace the legacy worker with a TypeScript worker or service utilizing Core's `DataIngestionPipeline`.
-  - Dynamically register uploaded season metadata, geocodes, and timeline blueprints into `EventConfigRegistry` (e.g. via a dedicated `registerSite(siteConfig: SiteConfig)` method on `EventConfigRegistry`).
+  - Dynamically register uploaded season metadata, geocodes, and timeline blueprints into `ConfigRegistry` (e.g. via a dedicated `registerSite(siteConfig: SiteConfig)` method on `ConfigRegistry`).
   - Support multi-file batch drag-and-drop (e.g., dropping discovery, target portals, and shard jump logs simultaneously to synthesize an ad-hoc custom event site).
-  - Enable local export of the synthesized site record to JSON directly from the map UI.
+  - Enable local export of the synthesized site state to JSON directly from the map UI.
 
 ---
 
 ## 3. Map Rendering & Display
 
 ### Jump Window Duration & Timing in Wave Summary Tooltip
-- **Context**: In Phase 3, `ShardJumpWindow` models both `scheduledStart` and `actualEnd` epoch timestamps directly inside `SiteRecord`, deprecating the generic `timestamp` field.
+- **Context**: In Phase 3, `ShardJumpWindow` models both `scheduledStart` and `actualEnd` epoch timestamps directly inside `SiteState`, deprecating the generic `timestamp` field.
 - **Target Enhancement**:
   - **IITC Plugin**: Completed in Phase 3 Part 2 (`TooltipComponent` displays "Jump Window Duration" using Core's `formatDuration`).
   - **Map UI**: In Phase 5 (UI & Renderer Adaptation), render the observed jump window duration (in minutes and seconds: `actualEnd - scheduledStart`) alongside the jump number and action count in the map wave summary tooltip table.

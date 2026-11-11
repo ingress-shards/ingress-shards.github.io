@@ -1,12 +1,12 @@
-import { getEventConfigRegistry } from "../config/EventConfig.js";
+import { getConfigRegistry } from "../config/EventConfig.js";
 import { CUSTOM_SEASON_ID } from "../js/constants.js";
 import type {
     SeasonId,
     SiteId,
     SeasonMetadata,
     SiteGeocode,
-    SiteRecord,
-    SiteRecordMap,
+    SiteState,
+    SiteStateMap,
 } from "@ingress-shards/ingress-events-core";
 
 /**
@@ -25,17 +25,17 @@ export type LegacySiteGeocode = SiteGeocode & {
  * Service responsible solely for lazy-loading and in-memory caching of season telemetry.
  */
 export class SeasonDataStore {
-    private readonly cache: Record<SeasonId, SiteRecordMap> = {
+    private readonly cache: Record<SeasonId, SiteStateMap> = {
         [CUSTOM_SEASON_ID]: {},
     };
-    private readonly inflight = new Map<SeasonId, Promise<SiteRecordMap>>();
+    private readonly inflight = new Map<SeasonId, Promise<SiteStateMap>>();
 
     /**
      * Retrieves the telemetry map for a given season, loading it if not cached.
      * Throws an Error if the request fails, avoiding silent failure/null swallowing.
      * Deduplicates concurrent requests for the same season.
      */
-    public async getSeasonData(seasonId: SeasonId): Promise<SiteRecordMap> {
+    public async getSeasonData(seasonId: SeasonId): Promise<SiteStateMap> {
         if (!seasonId) {
             throw new Error("Cannot fetch season data: seasonId is required.");
         }
@@ -54,7 +54,7 @@ export class SeasonDataStore {
             if (!response.ok) {
                 throw new Error(`Failed to load season data for ${seasonId}: HTTP ${response.status} ${response.statusText}`);
             }
-            const data = (await response.json()) as SiteRecordMap;
+            const data = (await response.json()) as SiteStateMap;
             this.cache[seasonId] = data;
             return data;
         })().finally(() => {
@@ -66,17 +66,17 @@ export class SeasonDataStore {
     }
 
     /**
-     * Retrieves a site's telemetry record, returning from cache if available or loading the season data.
-     * Adapts SiteRecord into transitional legacy shapes for Leaflet renderers until Phase 5.
+     * Retrieves a site's telemetry state, returning from cache if available or loading the season data.
+     * Adapts SiteState into transitional legacy shapes for Leaflet renderers until Phase 5.
      */
     public async getSiteData(seasonId: SeasonId, siteId: SiteId): Promise<unknown | undefined> {
         const seasonData = await this.getSeasonData(seasonId);
-        const record = seasonData[siteId];
-        if (!record) return undefined;
-        return adaptSiteRecordToLegacy(record);
+        const state = seasonData[siteId];
+        if (!state) return undefined;
+        return adaptSiteStateToLegacy(state);
     }
 
-    public addCustomData(processedData: { data: SiteRecordMap }): void {
+    public addCustomData(processedData: { data: SiteStateMap }): void {
         const custom = this.cache[CUSTOM_SEASON_ID];
         if (custom) {
             Object.assign(custom, processedData.data);
@@ -90,7 +90,7 @@ export class SeasonDataStore {
 export const seasonDataStore = new SeasonDataStore();
 
 /** @deprecated Call seasonDataStore.getSeasonData() directly */
-export async function getSeasonData(seasonId: SeasonId): Promise<SiteRecordMap> {
+export async function getSeasonData(seasonId: SeasonId): Promise<SiteStateMap> {
     return seasonDataStore.getSeasonData(seasonId);
 }
 
@@ -100,31 +100,31 @@ export async function getSiteData(seasonId: SeasonId, siteId: SiteId): Promise<u
 }
 
 /** @deprecated Call seasonDataStore.addCustomData() directly */
-export function addCustomData(processedData: { geocode: { sites: LegacySiteGeocode[] }; data: SiteRecordMap }): void {
+export function addCustomData(processedData: { geocode: { sites: LegacySiteGeocode[] }; data: SiteStateMap }): void {
     seasonDataStore.addCustomData(processedData);
 }
 
-/** @deprecated Query EventConfigRegistry directly via getEventConfigRegistry().getDefaultSeasonId() */
+/** @deprecated Query ConfigRegistry directly via getConfigRegistry().getDefaultSeasonId() */
 export function getDefaultSeasonId(): SeasonId | null {
-    return getEventConfigRegistry().getDefaultSeasonId() ?? null;
+    return getConfigRegistry().getDefaultSeasonId() ?? null;
 }
 
-/** @deprecated Query EventConfigRegistry directly via getEventConfigRegistry().getAllSeasonIds() */
+/** @deprecated Query ConfigRegistry directly via getConfigRegistry().getAllSeasonIds() */
 export function getAllSeasonIds(): SeasonId[] {
-    return [CUSTOM_SEASON_ID, ...getEventConfigRegistry().getAllSeasonIds()];
+    return [CUSTOM_SEASON_ID, ...getConfigRegistry().getAllSeasonIds()];
 }
 
-/** @deprecated Query EventConfigRegistry directly */
+/** @deprecated Query ConfigRegistry directly */
 export function getSeasonMetadata(seasonId: SeasonId): SeasonMetadata | undefined {
     if (seasonId === CUSTOM_SEASON_ID) {
-        return { id: CUSTOM_SEASON_ID, name: "Custom", overviewUrl: "", components: [] } as unknown as SeasonMetadata;
+        return { id: CUSTOM_SEASON_ID, name: "Custom", overviewUrl: "", events: [] } as unknown as SeasonMetadata;
     }
-    return getEventConfigRegistry().getSeasonMetadata(seasonId);
+    return getConfigRegistry().getSeasonMetadata(seasonId);
 }
 
-/** @deprecated Query EventConfigRegistry directly */
+/** @deprecated Query ConfigRegistry directly */
 export function getSeasonGeocode(seasonId: SeasonId): { sites: Record<SiteId, LegacySiteGeocode> } | undefined {
-    const seasonSites = getEventConfigRegistry().getSitesForSeason(seasonId);
+    const seasonSites = getConfigRegistry().getSitesForSeason(seasonId);
     if (seasonSites.length === 0) return undefined;
     const sites: Record<SiteId, LegacySiteGeocode> = {};
     for (const site of seasonSites) {
@@ -140,11 +140,11 @@ export function getSeasonGeocode(seasonId: SeasonId): { sites: Record<SiteId, Le
     return { sites };
 }
 
-function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
-    if (!record || "geocode" in record) return record;
+function adaptSiteStateToLegacy(state: SiteState): unknown {
+    if (!state || "geocode" in state) return state;
 
-    const registry = getEventConfigRegistry();
-    const siteConfig = registry.getSiteConfig(record.metadata.siteId);
+    const registry = getConfigRegistry();
+    const siteConfig = registry.getSiteConfig(state.metadata.siteId);
     const gc = siteConfig?.geocode;
     const timezone = gc?.timeZone ?? "UTC";
 
@@ -158,7 +158,7 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
     } : undefined;
 
     const portals: Record<number, Record<string, unknown>> = {};
-    for (const [idStr, p] of Object.entries(record.observations?.portals ?? {})) {
+    for (const [idStr, p] of Object.entries(state.telemetry?.portals ?? {})) {
         const id = Number(idStr);
         const pRecord = p as unknown as {
             ornamentId?: string;
@@ -180,7 +180,7 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
         };
     }
 
-    const rawShards = Object.entries(record.observations?.shards ?? {}).map(([id, sh]) => ({
+    const rawShards = Object.entries(state.telemetry?.shards ?? {}).map(([id, sh]) => ({
         id: Number(id),
         history: sh.history?.map(h => ({
             ...h,
@@ -208,14 +208,14 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
         return instances;
     });
 
-    const centroid = record.analysis?.centroid ? {
-        lat: record.analysis.centroid.latE6 / 1e6,
-        lng: record.analysis.centroid.lngE6 / 1e6,
+    const centroid = state.analysis?.centroid ? {
+        lat: state.analysis.centroid.latE6 / 1e6,
+        lng: state.analysis.centroid.lngE6 / 1e6,
     } : undefined;
 
     const shardPaths: Record<string, unknown> = {};
-    if (record.analysis?.shardPaths) {
-        for (const [pathKey, sp] of Object.entries(record.analysis.shardPaths)) {
+    if (state.analysis?.shardPaths) {
+        for (const [pathKey, sp] of Object.entries(state.analysis.shardPaths)) {
             const [p1, p2] = pathKey.split("-").map(Number);
             shardPaths[pathKey] = {
                 originPortalId: p1,
@@ -245,8 +245,8 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
             });
 
             const waveShardPaths: Record<string, unknown> = {};
-            if (record.analysis?.shardPaths) {
-                for (const [pathKey, sp] of Object.entries(record.analysis.shardPaths)) {
+            if (state.analysis?.shardPaths) {
+                for (const [pathKey, sp] of Object.entries(state.analysis.shardPaths)) {
                     const linksInWave = sp.links
                         .map(l => {
                             const movesInWave = l.moves.filter(m => m.moveTime >= tw.start && m.moveTime < nextStart);
@@ -291,7 +291,7 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
             }
 
             const waveTargets: { RES: number[]; ENL: number[] } = { RES: [], ENL: [] };
-            for (const [idStr, p] of Object.entries(record.observations?.portals ?? {})) {
+            for (const [idStr, p] of Object.entries(state.telemetry?.portals ?? {})) {
                 const pid = Number(idStr);
                 const pHistory = (p as unknown as { history?: Array<{ type?: string; ornId?: string; timestamp?: number }> }).history;
                 if (!pHistory) continue;
@@ -303,7 +303,7 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
                 }
             }
 
-            const waveAnalysis = record.analysis?.waves?.[idx + 1];
+            const waveAnalysis = state.analysis?.waves?.[idx + 1];
 
             const emptyWaveCounters = {
                 shards: {
@@ -347,7 +347,7 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
         }
     }
 
-    const counters = record.analysis?.statistics
+    const counters = state.analysis?.statistics
         ?? { shards: { moving: allShards.length, nonMoving: 0 }, links: 0, paths: 0 };
 
     const fullEvent = {
@@ -358,7 +358,7 @@ function adaptSiteRecordToLegacy(record: SiteRecord): unknown {
     };
 
     return {
-        ...record,
+        ...state,
         geocode,
         portals,
         centroid,

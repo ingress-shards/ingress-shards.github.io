@@ -47,15 +47,15 @@ self.onmessage = async function (event) {
 
         const candidateSites = registry.getSitesForSeason(CUSTOM_SEASON_ID);
         const pipeline = new DataIngestionPipeline(registry, candidateSites);
-        const siteRecords = await pipeline.ingestBatch([{
+        const siteStates = await pipeline.ingestBatch([{
             filename: customFile.fileName,
             data: customFile.rawData,
         }]);
-        const records = Object.fromEntries(siteRecords.map((r) => [r.metadata.siteId, r]));
+        const states = Object.fromEntries(siteStates.map((s) => [s.metadata.siteId, s]));
 
         const customProcessedData = {
             geocode: customGeocode,
-            data: records,
+            data: states,
         };
         self.postMessage({ status: "complete", processedData: customProcessedData, seriesId });
     } catch (error) {
