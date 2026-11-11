@@ -6,8 +6,8 @@ Version 2 of the Ingress Shard Map re-platforms the project to consume [`@ingres
 
 ### Core Goals:
 - **Single Source of Truth**: Eliminate duplicated event mechanics, blueprints, scoring logic, and configuration between the shard map and IITC plugin.
-- **Mature Data Pipeline**: Replace the legacy 33 KB monolithic `data-processor.js` with Core's unit-tested processors (`DataIngestionPipeline`, `SiteRecordMerger`, `DefaultPortalMergeStrategy`, `WaveShardJumpBuilder`, `ShardPathBuilder`).
-- **End-to-End TypeScript Alignment**: Transition the Map application to TypeScript incrementally, consuming Core's strict domain models (`SiteConfig`, `EventTimeline`, `SeasonConfig`, `SiteRecord`) with zero runtime shape ambiguity.
+- **Mature Data Pipeline**: Replace the legacy 33 KB monolithic `data-processor.js` with Core's unit-tested processors (`DataIngestionPipeline`, `SiteStateMerger`, `DefaultPortalMergeStrategy`, `ShardJumpWindowBuilder`, `ShardPathBuilder`).
+- **End-to-End TypeScript Alignment**: Transition the Map application to TypeScript incrementally, consuming Core's strict domain models (`SiteConfig`, `EventTimeline`, `SeasonConfig`, `SiteState`) with zero runtime shape ambiguity.
 - **Semantic Parity**: Ensure that all historical events continue to produce identical scoring, statistics, portal counts, and jump paths.
 - **Controlled Rollout**: Use an integration branch model to prevent breaking `main` or premature `semantic-release` triggers.
 
@@ -53,22 +53,22 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 ```
 [Phase 2: Hybrid Setup] ──> [Phase 3: Pipeline in TS] ──> [Phase 4-5: UI in TS] ──> [100% Strict TS]
  tsconfig (allowJs: true)     Loaders & adapters in TS     New UI renderers in TS    Legacy .js pruned
- EventConfig.ts, DataStore.ts Prune data-processor.js      Prune legacy renderers    100% type-checked
+ EventConfig.ts, SeasonDataStore.ts  Prune data-processor.js      Prune legacy renderers    100% type-checked
 ```
 
 1. **Phase 2 (Tooling & Core Layer):**
    - Install `typescript` (^5.9.3), `ts-loader`, `@types/node`.
    - Add `tsconfig.json` with `"allowJs": true`, `"checkJs": false`, `"strict": true`, and `"moduleResolution": "bundler"`.
    - Configure `webpack.common.js` with `ts-loader` and `.ts` extension resolution / extension aliases.
-   - Author new/migrated configuration and data store layers in TypeScript directly under `src/<domain>/` (`src/config/EventConfig.ts`, `src/data/DataStore.ts`).
+   - Author new/migrated configuration and data store layers in TypeScript directly under `src/<domain>/` (`src/config/EventConfig.ts`, `src/data/SeasonDataStore.ts`).
    - Legacy JavaScript files (`data-processor.js`, `site-renderer.js`, etc.) remain in `src/js/` undisturbed.
 2. **Phase 3 (Offline Data Pipeline):**
    - Install `tsx` devDependency for direct, zero-build execution of TypeScript CLI scripts.
-   - Author offline pipeline in TypeScript (`scripts/pipeline/SeasonIngestionPipeline.ts`, `scripts/process-season-data.ts`).
-   - Relocate offline logic out of `src/js/` into Core's domain pipeline (`DataIngestionPipeline`, `SiteRecordAnalyser`).
-   - Implement deterministic chronological file staging (ornaments → target portals → timestamped shard jumps) with in-memory accumulator writeback per season to prevent overriding site records or losing historical observations.
-   - Execute final comprehensive analysis pass (`SiteRecordAnalyser`, `WaveAnalyser`, `LinkScoringEngine`, `SeasonPointsCalculator`, centroids) on the fully accumulated portal graph.
-   - Embed validation, anomaly metrics (`invalidActions`, `mismatchedMoves`, `mismatchedScoringJumps`, `extendedJumpWindows`), and jump window durations natively into `SiteRecord`.
+   - Author offline pipeline in TypeScript (`scripts/process-season-data.ts`).
+   - Relocate offline logic out of `src/js/` into Core's domain pipeline (`DataIngestionPipeline`, `SiteStateAnalyser`).
+   - Implement deterministic chronological file staging (ornaments → target portals → timestamped shard jumps) with in-memory accumulator writeback per season to prevent overriding site states or losing historical telemetry.
+   - Execute final comprehensive analysis pass (`SiteStateAnalyser`, `WaveAnalyser`, `LinkScoringEngine`, `SeasonPointsCalculator`, centroids) on the fully accumulated portal graph.
+   - Embed validation, anomaly metrics (`invalidActions`, `mismatchedMoves`, `mismatchedScoringJumps`, `extendedJumpWindows`), and jump window durations natively into `SiteState`.
    - Retire legacy CSV reports (`actions-outside-window.csv`, `invalid-shard-sequences.csv`, `link-alignment-mismatches.csv`, `site-statistics.csv`, `validation-summary.json`) and eliminate `scripts/validation/` and transitional adapters.
    - Provide transitional UI bridging in `SeasonDataStore.ts` so existing Leaflet renderers remain fully functional until Phase 5.
    - Completely delete `src/js/data/shard-jumps/` directory (`data-processor.js`, `data-helpers.js`, `data-validator.js`, `data-statistics.js`).
@@ -86,12 +86,12 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 | Area | V1 Map Implementation | V2 Core Replacement | Notes |
 | :--- | :--- | :--- | :--- |
 | **Geocoding & Location Cache** | `scripts/geocode.py`, `requirements.txt`, `cache.sqlite` | `@ingress-shards/ingress-events-core/conf/season_geocode.json` | **Completely eliminated in Map.** Geocoding is maintained upstream in Core with CI sqlite cache. Map drops Python toolchain and cache. |
-| **Event Timeline & Durations** | Custom minute calculations in `event-helpers.js` | `EventTimeline.durationMinutes` & `getSiteDurationMinutes()` | Precalculated in Core's `EventConfigRegistry`. Direct property read. |
-| **Event Configuration** | `conf/event_blueprints.json`, `conf/series_metadata.json` | `EventConfigRegistry`, `@ingress-shards/ingress-events-core/conf/*` | Centralized singleton in `src/config/EventConfig.ts`. Direct typed access. |
-| **Data Store & Cache** | `src/js/data/data-store.js` (series-centric) | `src/data/DataStore.ts` (season-centric) | Typed runtime cache storing `SeasonConfig` and lazily fetching `data/{seasonId}.json`. No legacy aliases. |
-| **Data Processing** | `src/js/data/shard-jumps/data-processor.js` | `DataIngestionPipeline`, `SiteRecordMerger`, `DefaultPortalMergeStrategy` | Tested portal merging, deduplication, and observation adapters. |
-| **Scoring Calculations** | Custom logic in `data-processor.js` | `GoalScoringEngine`, `LinkScoringEngine` | Strict adherence to official Anomaly and Skirmish blueprints. |
-| **Jump & Path Building** | Custom loops in `data-processor.js` | `WaveShardJumpBuilder`, `ShardPathBuilder` | Dynamic jump links and target absorption detection. |
+| **Event Timeline & Durations** | Custom minute calculations in `event-helpers.js` | `EventTimeline.durationMinutes` & `getSiteDurationMinutes()` | Precalculated in Core's `ConfigRegistry`. Direct property read. |
+| **Event Configuration** | `conf/event_blueprints.json`, `conf/series_metadata.json` | `ConfigRegistry`, `@ingress-shards/ingress-events-core/conf/*` | Centralized singleton in `src/config/EventConfig.ts`. Direct typed access. |
+| **Data Store & Cache** | `src/js/data/data-store.js` (series-centric) | `src/data/SeasonDataStore.ts` (season-centric) | Typed runtime cache storing `SeasonConfig` and lazily fetching `data/{seasonId}.json`. No legacy aliases. |
+| **Data Processing** | `src/js/data/shard-jumps/data-processor.js` | `DataIngestionPipeline`, `SiteStateMerger`, `DefaultPortalMergeStrategy` | Tested portal merging, deduplication, and telemetry adapters. |
+| **Scoring Calculations** | Custom logic in `data-processor.js` | `TargetScoringEngine`, `LinkScoringEngine` | Strict adherence to official Anomaly and Skirmish blueprints. |
+| **Jump & Path Building** | Custom loops in `data-processor.js` | `ShardJumpWindowBuilder`, `ShardPathBuilder` | Dynamic jump links and target absorption detection. |
 | **Date & Time** | `src/js/shared/date-helpers.js` | `common/Date.ts` (functional `temporal-polyfill/fns`) | `formatDuration`, `parseTimestampFromFilename`, `parseZonedDateTime`. |
 | **Math & Geo** | `src/js/shared/math-helpers.js` | `common/Geo.ts`, `common/Math.ts` | E6 integer coordinates, `haversineDistance`, centroids, bounding boxes. |
 | **Visual Tokens & Styling** | Hardcoded colors in CSS & JS | `visuals/Colors.ts`, `visuals/index.css` | Canonical faction colors, tokens, and CSS variables. |
@@ -107,12 +107,12 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 - [x] Add `.npmrc` configured for `@ingress-shards` on GitHub Packages
 - [x] Centralize local synchronization in `ingress-events-core` (`scripts/sync-to-siblings.js`)
 - [x] Install dependency `@ingress-shards/ingress-events-core` (`^0.8.2`)
-- [x] Pin `temporal-polyfill` to `~1.0.5` across all projects
+- [x] Align `temporal-polyfill` to `^1.0.8` across all projects (and move to `peerDependencies` in Core)
 - [x] Validate workspace build and scripts run cleanly with new dependency
 
 ### Phase 2: Configuration, Toolchain & TypeScript Setup
 - [x] Add geocode database cache step to `ingress-events-core/.github/workflows/release.yml`
-- [x] Add `durationMinutes` to `EventTimeline` in Core (`SeasonConfig.ts`) and expose `getSiteDurationMinutes` on `EventConfigRegistry`
+- [x] Add `durationMinutes` to `EventTimeline` in Core (`SeasonConfig.ts`) and expose `getSiteDurationMinutes` on `ConfigRegistry`
 - [x] Stash Denver target portal fix (`data/2026-apollo/target-portals_2026-apollo-denver-co_2026.09.20.00.26.26.json`) for separate `main` patch
 - [x] Install `typescript` (^5.9.3), `ts-loader`, `@types/node` and configure `tsconfig.json` with `allowJs: true`
 - [x] Update `webpack.common.js` to resolve `.ts` and compile via `ts-loader` with extension aliases
@@ -122,31 +122,27 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 - [x] Migrate `src/js/data/data-store.js` to `src/data/SeasonDataStore.ts`:
   - Adopt `season` terminology (`cache`, `getSeasonData`, `getAllSeasonIds`, etc.)
   - Streamline as pure telemetry cache with no constructor, no `init()`, and no config dependency
-  - Replace `loadSeasonData` with `getSeasonData` returning `Promise<SiteRecordMap>` (throwing descriptive error on failure, deduplicating inflight requests)
+  - Replace `loadSeasonData` with `getSeasonData` returning `Promise<SiteStateMap>` (throwing descriptive error on failure, deduplicating inflight requests)
   - Provide unified cache-first `getSiteData(seasonId, siteId)` (retrieving telemetry if not cached)
   - Completely eliminate backward-compatibility aliases (`loadSeriesData`, etc.)
-  - Replace `shardComponents` with `components`
-- [x] Delete `src/js/shared/event-helpers.js` and call `getEventConfigRegistry().getSiteDurationMinutes(...)` directly
+  - Replace `shardComponents` with `components` (later aligned to `events` / `SeasonEvent` in Core)
+- [x] Delete `src/js/shared/event-helpers.js` and call `getConfigRegistry().getSiteDurationMinutes(...)` directly
 - [x] Update UI callers ([`ui-controller.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/ui/ui-controller.js), [`series-renderer.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/ui/series-renderer.js), [`site-renderer.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/ui/site-renderer.js), [`custom-file-handler.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/ui/custom-file-handler.js), [`index.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/index.js)) to call `SeasonDataStore` season methods directly
-- [x] Update loaders and legacy scripts to use `components` instead of `shardComponents`
+- [x] Update loaders and legacy scripts to use `events` (`SeasonEvent`) instead of `shardComponents`
 - [x] Run full `npm run validate` pass
 
 ### Phase 3: Offline Data Pipeline & Pre-processor Migration
 - [x] Add `tsx` devDependency to `package.json` for running TypeScript CLI scripts
-- [x] Implement `scripts/pipeline/SeasonIngestionPipeline.ts`:
+- [x] Streamline data pipeline into `scripts/process-season-data.ts`:
   - Chronological file staging: `ornamented-portals-*` (Stage 1) → `target-portals-*` (Stage 2) → `shard-jump-times-*` (Stage 3, timestamp-sorted)
-  - Pre-initialize accumulator `Map<SiteId, SiteRecord>` from `EventConfigRegistry`
-  - Ingest files via `DataIngestionPipeline` with immediate accumulator writeback
-  - Final analysis pass across all season sites via `SiteRecordAnalyser.analyze()`
-- [x] Refactor `scripts/pre-processor-loader.ts` to TypeScript:
-  - Ingest all seasons via `SeasonIngestionPipeline` and emit `gen/data/<seasonId>.json` (`Record<SiteId, SiteRecord>`)
-- [x] Streamline data pipeline to emit `gen/data/<seasonId>.json` via `scripts/process-season-data.ts`:
-  - Run ingestion and analysis natively using Core's `SeasonIngestionPipeline` and `SiteRecordAnalyser`
-  - Consolidate validation anomalies (`invalidActions`, `mismatchedMoves`, `mismatchedScoringJumps`, `extendedJumpWindows`) directly into `SiteRecord.analysis.statistics` and `ShardJumpWindow`
-  - Permanently retire legacy CSV reports (`actions-outside-window.csv`, `invalid-shard-sequences.csv`, `link-alignment-mismatches.csv`, `site-statistics.csv`, `validation-summary.json`) and delete `scripts/validation/` and legacy loaders
+  - Pre-initialize accumulator `Map<SiteId, SiteState>` from `ConfigRegistry`
+  - Ingest and analyze all season sites natively using Core's `DataIngestionPipeline` and `SiteStateAnalyser`, emitting `gen/data/<seasonId>.json` (`Record<SiteId, SiteState>`)
+  - Consolidate validation anomalies (`invalidActions`, `mismatchedMoves`, `mismatchedScoringJumps`, `extendedJumpWindows`) directly into `SiteState.analysis.statistics` and `ShardJumpWindow`
+  - Permanently retire legacy CSV reports (`actions-outside-window.csv`, `invalid-shard-sequences.csv`, `link-alignment-mismatches.csv`, `site-statistics.csv`, `validation-summary.json`) and delete `scripts/validation/`, standalone loaders, and `conf/series_metadata.json`
 - [x] Update `package.json` scripts (`data:process`, `prepare:data`, `validate`) to invoke TypeScript pipeline via `tsx`
-- [x] Update `SeasonDataStore.ts` to bridge `SiteRecord` / `SiteAnalysis` shapes for legacy UI renderers (`site-renderer.js`, `series-renderer.js`) until Phase 5
-- [x] Align `json-parser-worker.js` / custom file processing to import Core `DataIngestionPipeline` directly
+- [x] Update `SeasonDataStore.ts` to bridge `SiteState` / `SiteAnalysis` shapes for legacy UI renderers (`site-renderer.js`, `series-renderer.js`) until Phase 5
+- [x] Align `json-parser-worker.js` / custom file processing to import Core `DataIngestionPipeline` directly and remove deprecated `getEventConfigRegistry()` alias
+- [x] Align semantic domain terminology (`SiteState`, `SiteTelemetry`, `ConfigRegistry`, `HostSite`, `SeasonEvent`) across Core, Plugin, and Map
 - [x] Prune `@deprecated` `gen/series_geocode.json` bridge generation from `generate-flag-assets.js`
 - [x] Completely delete `src/js/data/shard-jumps/` directory (`data-processor.js`, `data-helpers.js`, `data-validator.js`, `data-statistics.js`)
 - [x] Optimize `release.yml`: remove obsolete `processed-data` and `validation-reports` uploads (retaining Pages deployment)

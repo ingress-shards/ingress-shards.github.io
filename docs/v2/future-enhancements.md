@@ -14,10 +14,10 @@ This document tracks technical improvements, feature backlog items, and architec
 
 ### Recursive Portals Ingestion & Processing
 - **Context**: Ingress event mechanics can include "recursive portals" (portals with recurring shard cycles or special anomalous wave rules). 
-- **Current State**: `DataFiles.ts` defines `recursivePortals` metadata (`importPattern: /^recursive-portals.*\.json$/i`) and `Portal.ts` declares `RecursiveHistoryEntry` (`type: "recursive"`). However, Core does not yet possess a dedicated `RecursivePortalsAdapter` in `src/types/processing/adapters/`.
+- **Current State**: `DataFiles.ts` defines `recursivePortals` metadata (`importPattern: /^recursive-portals.*\.json$/i`) and `Portal.ts` declares `RecursiveHistoryEntry` (`type: "recursive"`). However, Core does not yet possess a dedicated `RecursivePortalsAdapter` in `src/pipeline/adapters/`.
 - **Target Enhancement**:
   - Implement `RecursivePortalsAdapter` in Core with full unit test coverage.
-  - Wire the adapter into `DataIngestionPipeline` to merge recursive portal observations into the unified portal history.
+  - Wire the adapter into `DataIngestionPipeline` to merge recursive portal telemetry into the unified portal history.
   - Update pre-processor loaders and UI map renderers to display recursive status or custom portal ornaments.
 
 ### Review & Elevation of Shared Date and Data Helpers (Phase 5)
@@ -31,7 +31,7 @@ This document tracks technical improvements, feature backlog items, and architec
 ## 2. Custom Season & User Experience
 
 ### Full Custom Season Processing via Core Engine
-- **Context**: Currently, user-dropped files in `custom-file-handler.js` parse through a legacy Web Worker (`json-parser-worker.js`) running obsolete `data-processor.js` logic. Furthermore, `SeasonDataStore.ts` maintains a static stub for `CUSTOM_SEASON_ID` (`custom`) that does not dynamically register with `ConfigRegistry`.
+- **Context**: Currently, user-dropped files in `custom-file-handler.js` parse through `json-parser-worker.js`, which already invokes Core's `DataIngestionPipeline` but retains legacy fragment-clustering helpers (`getCoordsForFragment`, `getFragmentSpawnTimeMs`, `calculateCentroid`). Furthermore, `SeasonDataStore.ts` maintains a static stub for `CUSTOM_SEASON_ID` (`custom`) that relies on ad-hoc worker site registration.
 - **Target Enhancement**:
   - Replace the legacy worker with a TypeScript worker or service utilizing Core's `DataIngestionPipeline`.
   - Dynamically register uploaded season metadata, geocodes, and timeline blueprints into `ConfigRegistry` (e.g. via a dedicated `registerSite(siteConfig: SiteConfig)` method on `ConfigRegistry`).
@@ -107,12 +107,12 @@ This document tracks technical improvements, feature backlog items, and architec
   - Migrate package management from NPM to Yarn Berry (v4), standardizing toolchain alignment across all three repositories.
   - Standardize workspace-level dispatch commands to `yarn --cwd ingress-shards.github.io <command>`.
   - Replace `package-lock.json` with `yarn.lock` and configure `.yarnrc.yml` with `nodeLinker: node-modules`.
-  - Update GitHub Actions CI workflows (`.github/workflows/validate.yml` and `.github/workflows/deploy.yml`) to use Corepack and Yarn Berry.
+  - Update GitHub Actions CI workflows (`.github/workflows/release.yml`) to use Corepack and Yarn Berry.
 
 ### Language Migration: Complete JavaScript to TypeScript Conversion
 - **Context**: `ingress-shards.github.io` currently operates in a hybrid mode (`allowJs: true` in `tsconfig.json`). While newly introduced V2 data layers (`src/data/`) and adapters are written in TypeScript, legacy UI components, map controllers, event handlers, and web workers under `src/js/` remain in plain JavaScript (ES modules).
 - **Target Enhancement**:
   - Incrementally migrate all remaining JavaScript modules (`src/js/**/*.js`) to TypeScript (`.ts`).
   - Introduce strict domain interfaces for map visual elements, layer controllers, UI state management, and Leaflet extension points.
-  - Transition the build pipeline from esbuild JavaScript bundling to fully type-checked TypeScript compilation (`strict: true`, `noImplicitAny: true`).
+  - Tighten `tsconfig.json` and `webpack.common.js` (`ts-loader`) once legacy JS files are removed to enforce full compile-time type checking (`strict: true`, `noImplicitAny: true`, `allowJs: false`).
   - Reorganize legacy directory layouts (e.g., merging `src/js/` into modular TypeScript packages such as `src/ui/`, `src/map/`, `src/workers/`).
