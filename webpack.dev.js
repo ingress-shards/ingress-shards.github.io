@@ -2,14 +2,14 @@ import { merge } from 'webpack-merge';
 import { execSync } from 'child_process';
 import common, { packageJson } from './webpack.common.js';
 
-let gitCommitHash = '';
-try {
-    gitCommitHash = execSync('git rev-parse --short HEAD').toString().trim();
-} catch (e) {
-    console.warn('Could not get git commit hash: ', e);
-}
+export default (env = {}) => {
+    let gitCommitHash = '';
+    try {
+        gitCommitHash = execSync('git rev-parse --short HEAD').toString().trim();
+    } catch (e) {
+        console.warn('Could not get git commit hash: ', e);
+    }
 
-export default (env) => {
     const appVersion = gitCommitHash ? `${packageJson.version}-${gitCommitHash}` : packageJson.version;
     return merge(common(env, { appVersion }), {
         mode: 'development',

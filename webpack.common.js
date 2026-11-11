@@ -28,12 +28,19 @@ if (fs.existsSync(secretsPath)) {
 }
 
 export default (env, { appVersion }) => {
+    const leafletDir = resolvePackage('leaflet');
+    const maplibreDistDir = path.join(resolvePackage('maplibre-gl'), 'dist');
+
     return {
         entry: './src/js/index.js',
         cache: {
             type: 'filesystem',
             buildDependencies: {
-                config: [fileURLToPath(import.meta.url)],
+                config: [
+                    fileURLToPath(import.meta.url),
+                    path.resolve(__dirname, 'webpack.dev.js'),
+                    path.resolve(__dirname, 'webpack.prod.js'),
+                ],
             },
         },
         module: {
@@ -60,9 +67,6 @@ export default (env, { appVersion }) => {
                     include: [
                         path.resolve(__dirname, 'gen/flags')
                     ],
-                    exclude: [
-                        /abaddon1_shard\.png$/
-                    ],
                     type: 'asset/resource',
                     generator: {
                         filename: 'images/flag-icons/[name].[contenthash:8][ext]',
@@ -73,17 +77,19 @@ export default (env, { appVersion }) => {
                     exclude: [
                         path.resolve(__dirname, 'gen/flags'),
                         /abaddon1_shard\.png$/,
-                        resolvePackage('leaflet')
+                        leafletDir
                     ],
                     type: 'asset/resource',
                     generator: {
                         filename: 'images/[name].[contenthash:8][ext]',
                     },
                 },
+                // Leaflet markers are copied manually in CopyWebpackPlugin below so the full set (shadows, @2x) is present.
+                // This rule handles URL resolution for markers explicitly imported or referenced in CSS without re-emitting them.
                 {
                     test: /\.(png|svg|jpg|jpeg|gif)$/i,
                     include: [
-                        resolvePackage('leaflet')
+                        leafletDir
                     ],
                     type: 'asset/resource',
                     generator: {
@@ -91,8 +97,17 @@ export default (env, { appVersion }) => {
                         emit: false,
                     },
                 },
-                // Markers are copied manually below to ensure the complete set (shadows, @2x) is present.
-                // The rule above handles path resolution for files explicitly imported or used in CSS.
+
+                // Prevent Webpack from trying to statically resolve MapLibre's runtime `new URL(url, import.meta.url)` worker helper.
+                {
+                    test: /\.mjs$/,
+                    include: [
+                        maplibreDistDir
+                    ],
+                    parser: {
+                        url: false,
+                    },
+                },
             ],
         },
         plugins: [
@@ -112,15 +127,15 @@ export default (env, { appVersion }) => {
             new CopyWebpackPlugin({
                 patterns: [
                     {
-                        from: path.join(resolvePackage('maplibre-gl'), 'dist', 'maplibre-gl-worker.mjs'),
+                        from: path.join(maplibreDistDir, 'maplibre-gl-worker.mjs'),
                         to: 'js/maplibre-gl-worker.mjs',
                     },
                     {
-                        from: path.join(resolvePackage('maplibre-gl'), 'dist', 'maplibre-gl-shared.mjs'),
+                        from: path.join(maplibreDistDir, 'maplibre-gl-shared.mjs'),
                         to: 'js/maplibre-gl-shared.mjs',
                     },
                     {
-                        from: path.join(resolvePackage('leaflet'), 'dist', 'images'),
+                        from: path.join(leafletDir, 'dist', 'images'),
                         to: 'images/markers',
                     },
                     {
@@ -151,7 +166,7 @@ export default (env, { appVersion }) => {
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: '[name].bundle.js',
-            chunkFilename: 'js/[name].[contenthash:8].js',
+            chunkFilename: '[name].chunk.js',
             assetModuleFilename: 'images/[hash][ext][query]',
             clean: true,
             publicPath: '/',
