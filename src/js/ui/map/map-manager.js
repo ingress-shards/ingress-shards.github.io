@@ -43,16 +43,6 @@ export function initMap() {
         options: { position: 'topleft' },
         onAdd: function () {
             this._div = L.DomUtil.create('div', 'elevation-legend');
-            this._div.style.background = 'rgba(255, 255, 255, 0.9)';
-            this._div.style.border = '1px solid #ccc';
-            this._div.style.borderRadius = '2px';
-            this._div.style.fontSize = '12px';
-            this._div.style.fontFamily = 'monospace';
-            this._div.style.fontWeight = 'bold';
-            this._div.style.marginTop = '10px';
-            this._div.style.width = '75px';
-            // Start visible if the layer is on, otherwise hidden until data confirms visibility
-            this._div.style.display = 'none';
             this.update(currentMin, currentMax);
             return this._div;
         },
@@ -65,10 +55,7 @@ export function initMap() {
                 const hue = 210 - ratio * 180;
                 const rgb = hsvToRgb(hue, 1, 1);
 
-                html += `
-                    <div style="background: rgb(${rgb[0]},${rgb[1]},${rgb[2]}); color: #000; text-align: center; white-space: nowrap; overflow: hidden; padding: 1px 0;">
-                        ${val.toFixed(0)} m
-                    </div>`;
+                html += `<div class="elevation-legend-item" style="background: rgb(${rgb[0]},${rgb[1]},${rgb[2]});">${val.toFixed(0)} m</div>`;
             }
             this._div.innerHTML = html;
         },

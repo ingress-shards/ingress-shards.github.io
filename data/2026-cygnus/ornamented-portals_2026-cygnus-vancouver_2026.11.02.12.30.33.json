@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-vancouver",
+  "exportedAt": 1793622633,
+  "portals": [
+    {
+      "title": "Green Necklace Trail Marker - Vic Park West",
+      "lat": 49.317846,
+      "lng": -123.075664,
+      "ornamentId": "ap2",
+      "guid": "9637b11b6dfa4545b9d3603f8c64db06.16"
+    },
+    {
+      "title": "St Andrews Park",
+      "lat": 49.317773,
+      "lng": -123.068713,
+      "ornamentId": "ap3",
+      "guid": "f9d3dbe9b3bb4dac81a4561ae11cec40.16"
+    },
+    {
+      "title": "Loving Memory Bench",
+      "lat": 49.31624,
+      "lng": -123.071922,
+      "ornamentId": "ap1",
+      "guid": "6c15b7cba9894d438820811b0080ef69.16"
+    }
+  ]
+}

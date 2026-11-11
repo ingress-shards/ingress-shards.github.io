@@ -1,0 +1,27 @@
+{
+  "siteId": "2026-cygnus-innsbruck",
+  "exportedAt": 1793741149,
+  "portals": [
+    {
+      "title": "Als Sieger gekommen ...",
+      "lat": 47.273159,
+      "lng": 11.395597,
+      "ornamentId": "ap2",
+      "guid": "e7e327369f323708ad15b2feefdd3119.16"
+    },
+    {
+      "title": "Steinbrunnen",
+      "lat": 47.272088,
+      "lng": 11.405495,
+      "ornamentId": "ap3",
+      "guid": "c7ca5bdafe3335a0867f828e2d52d736.16"
+    },
+    {
+      "title": "Weihnachtsbilder",
+      "lat": 47.267279,
+      "lng": 11.392014,
+      "ornamentId": "ap1",
+      "guid": "eb85f2caa44044819438ca7c699174f3.16"
+    }
+  ]
+}

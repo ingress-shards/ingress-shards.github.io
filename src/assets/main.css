@@ -354,3 +354,25 @@ table.ingress-event-scores tfoot {
     --pin-color: var(--color-neu);
     --pin-inner-color: #fff;
 }
+
+/* Elevation Legend */
+.elevation-legend {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 12px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 75px;
+    display: none;
+}
+
+.elevation-legend-item {
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 1px 0;
+}
