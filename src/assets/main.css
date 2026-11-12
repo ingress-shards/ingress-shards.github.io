@@ -200,15 +200,15 @@ hr.tooltip-sub-divider {
 }
 
 .faction-RES {
-    color: var(--shards-res-color);
+    color: var(--color-res);
 }
 
 .faction-ENL {
-    color: var(--shards-enl-color);
+    color: var(--color-enl);
 }
 
 .faction-MAC {
-    color: var(--shards-mac-color);
+    color: var(--color-mac);
 }
 
 table.ingress-event-scores {
@@ -236,7 +236,7 @@ table.ingress-event-scores tr[data-site-id]:hover {
 
 table.ingress-event-scores tr.highlight {
     background-color: rgba(255, 204, 0, 0.05) !important;
-    box-shadow: inset 0 0 0 2px var(--shards-signal-color);
+    box-shadow: inset 0 0 0 2px var(--color-signal);
     transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 
@@ -312,36 +312,36 @@ table.ingress-event-scores tfoot {
 /* Specific Phase States */
 .is-phase-discovery {
     --radar-speed: 4s;
-    --pin-color: var(--shards-signal-color);
+    --pin-color: var(--color-signal);
 }
 
 .is-phase-active {
     --radar-speed: 1s;
-    --pin-color: var(--shards-signal-color);
+    --pin-color: var(--color-signal);
 }
 
 .is-phase-nodata {
-    --pin-color: var(--shards-nodata-color);
+    --pin-color: var(--color-nodata);
 }
 
 /* Outcome Branding (Formerly Completed States) */
 .outcome-res {
-    --pin-color: var(--shards-res-color);
+    --pin-color: var(--color-res);
     --pin-inner-color: #fff;
 }
 
 .outcome-enl {
-    --pin-color: var(--shards-enl-color);
+    --pin-color: var(--color-enl);
     --pin-inner-color: #fff;
 }
 
 .outcome-tie {
-    --pin-color: var(--shards-tie-color);
+    --pin-color: var(--color-tie);
     --pin-inner-color: #fff;
 }
 
 .outcome-none {
-    --pin-color: var(--shards-neu-color);
+    --pin-color: var(--color-neu);
     --pin-inner-color: #fff;
 }
 
