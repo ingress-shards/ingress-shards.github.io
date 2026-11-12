@@ -1,5 +1,4 @@
-import { CUSTOM_SEASON_ID } from "../constants.js";
-import { addCustomData } from "../../data/SeasonDataStore.js";
+import { addCustomData, CUSTOM_SEASON_ID } from "../../data/SeasonDataStore.js";
 import { navigate } from "../router.js";
 import { updateCustomSeriesLayer } from "./series-renderer.js";
 

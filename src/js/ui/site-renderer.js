@@ -1,5 +1,5 @@
 import * as L from "leaflet";
-import { HISTORY_REASONS, FACTION_COLORS, INGRESS_INTEL_PORTAL_LINK, EVENT_BRANDS, ORNAMENT_BRANDS, SIGNAL_COLOR, BACKGROUND_PORTAL_COLOR, TARGET_ARTIFACT_IDS } from "../constants.js";
+import { ALIGNMENT_COLORS, UI_COLORS } from "@ingress-shards/ingress-events-core";
 import shardIconUrl from '../../images/abaddon1_shard.png';
 import { getSiteData, getSeasonMetadata, getSeasonGeocode } from "../../data/SeasonDataStore.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
@@ -10,6 +10,8 @@ import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } fro
 import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
 import { fromFields as durationFromFields } from "temporal-polyfill/fns/Duration";
 import { getBasic } from "temporal-polyfill/fns/Calendar";
+
+const INGRESS_INTEL_PORTAL_LINK = "https://intel.ingress.com/intel?pll=";
 
 const shardIcon = L.icon({
     iconUrl: shardIconUrl,
@@ -79,7 +81,7 @@ function createLazyOrnamentLayer(siteId, siteData) {
             for (const portal of Object.values(siteData.portals || {})) {
                 if (portal.ornamentId) {
                     const latLng = L.latLng(portal.lat, portal.lng);
-                    const brand = ORNAMENT_BRANDS[portal.ornamentId];
+                    const brand = getConfigRegistry().blueprints.ornaments[portal.ornamentId];
                     const style = brand?.style || {};
 
                     let markerIcon;
@@ -95,7 +97,7 @@ function createLazyOrnamentLayer(siteId, siteData) {
                     } else {
                         markerIcon = L.divIcon({
                             className: 'ornament-hexagon-marker',
-                            html: getHexagonSVG(style.color || SIGNAL_COLOR, BACKGROUND_PORTAL_COLOR),
+                            html: getHexagonSVG(style.color || UI_COLORS.SIGNAL, UI_COLORS.ORNAMENT_ONLY),
                             iconSize: [40, 40],
                             iconAnchor: [20, 20]
                         });
@@ -278,11 +280,11 @@ function processShardData(shards, portalsMap) {
         const shardPaths = [];
 
         for (const historyItem of shard.history) {
-            const portalIds = historyItem.reason === HISTORY_REASONS.LINK || historyItem.reason === HISTORY_REASONS.JUMP
+            const portalIds = historyItem.reason === "link" || historyItem.reason === "jump"
                 ? [historyItem.portalId, historyItem.dest]
                 : [historyItem.portalId];
 
-            if (historyItem.reason === HISTORY_REASONS.LINK || historyItem.reason === HISTORY_REASONS.JUMP) {
+            if (historyItem.reason === "link" || historyItem.reason === "jump") {
                 const originPortal = portalsMap[historyItem.portalId];
                 const destPortal = portalsMap[historyItem.dest];
 
@@ -355,9 +357,9 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone, targets) {
 
         portalHistory.forEach(([, shardHistory]) => {
             const shardHistoryReasons = shardHistory.flatMap(h => h.reason);
-            const isStaticSpawn = shardHistoryReasons.includes(HISTORY_REASONS.SPAWN) &&
-                !shardHistoryReasons.includes(HISTORY_REASONS.LINK) &&
-                !shardHistoryReasons.includes(HISTORY_REASONS.JUMP);
+            const isStaticSpawn = shardHistoryReasons.includes("spawn") &&
+                !shardHistoryReasons.includes("link") &&
+                !shardHistoryReasons.includes("jump");
 
             if (isStaticSpawn) {
                 staticShardMarkers.push(L.marker(latLng, {
@@ -369,7 +371,7 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone, targets) {
 
         portalMarkers.push(
             L.circleMarker(latLng, {
-                color: FACTION_COLORS[lastKnownTeam] || FACTION_COLORS.NEU,
+                color: ALIGNMENT_COLORS[lastKnownTeam] || ALIGNMENT_COLORS.NEU,
                 pane: 'markerPane'
             }).bindTooltip(getPortalTooltip, {
                 interactive: true
@@ -386,25 +388,25 @@ function createPortalMarkers(portals, portalHistoryMap, timeZone, targets) {
 }
 
 function formatPortalTooltip(portal, portalHistory, timeZone, targetFaction) {
-    const ornamentBrand = ORNAMENT_BRANDS[portal.ornamentId];
+    const ornamentBrand = getConfigRegistry().blueprints.ornaments[portal.ornamentId];
     const ornamentLabel = ornamentBrand?.label
         ? `${ornamentBrand.label} (${portal.ornamentId})`
         : `Ornament (${portal.ornamentId})`;
     const ornamentHtml = portal.ornamentId ? `<i>${ornamentLabel}</i><br/>` : '';
-    const targetHtml = targetFaction ? `<strong><span style="color:${FACTION_COLORS[targetFaction]}">${targetFaction}</span></strong> <i>Target Portal</i><br/>` : '';
+    const targetHtml = targetFaction ? `<strong><span style="color:${ALIGNMENT_COLORS[targetFaction]}">${targetFaction}</span></strong> <i>Target Portal</i><br/>` : '';
     const separator = portalHistory.length > 0 ? '<hr />' : '';
     let tooltipHtml = `<strong>${portal.title}</strong> <a href="${INGRESS_INTEL_PORTAL_LINK}${portal.lat},${portal.lng}" target="intel_page">Intel</a><br/>${targetHtml}${ornamentHtml}${separator}`;
 
     portalHistory.forEach(([shardId, shardHistory], index) => {
         tooltipHtml += `<strong>Shard ${shardId}</strong><br />`;
         for (const historyItem of shardHistory) {
-            const teamToDisplay = ![HISTORY_REASONS.NO_MOVE, HISTORY_REASONS.JUMP].includes(historyItem.reason) ? historyItem.team || "NEU" : undefined;
+            const teamToDisplay = !["no move", "jump"].includes(historyItem.reason) ? historyItem.team || "NEU" : undefined;
 
             let reasonToDisplay = historyItem.reason;
-            if (historyItem.reason === HISTORY_REASONS.LINK) reasonToDisplay = HISTORY_REASONS.JUMP;
-            else if (historyItem.reason === HISTORY_REASONS.JUMP) reasonToDisplay = 'randomly teleported';
+            if (historyItem.reason === "link") reasonToDisplay = "jump";
+            else if (historyItem.reason === "jump") reasonToDisplay = 'randomly teleported';
 
-            tooltipHtml += `${reasonToDisplay} at ${formatEpochToLocalTime(historyItem.moveTime, timeZone)}${teamToDisplay ? ` - <span style="color:${FACTION_COLORS[teamToDisplay]}">${teamToDisplay}</span>` : ""}<br />`;
+            tooltipHtml += `${reasonToDisplay} at ${formatEpochToLocalTime(historyItem.moveTime, timeZone)}${teamToDisplay ? ` - <span style="color:${ALIGNMENT_COLORS[teamToDisplay]}">${teamToDisplay}</span>` : ""}<br />`;
         }
 
         if (index < portalHistory.length - 1) {
@@ -436,7 +438,7 @@ function renderShardPath(shardPath, shardPathPortals, timeZone) {
 
     if (shardPath.links && shardPath.links.length > 0) {
         const { coords, biDirectionalMoves } = formatLinkPathTooltip(shardPath, shardPathPortals, timeZone);
-        const linkColor = FACTION_COLORS[shardPath.links[shardPath.links.length - 1].team] || FACTION_COLORS.NEU;
+        const linkColor = ALIGNMENT_COLORS[shardPath.links[shardPath.links.length - 1].team] || ALIGNMENT_COLORS.NEU;
 
         polyline = L.polyline(coords, {
             color: linkColor,
@@ -449,7 +451,7 @@ function renderShardPath(shardPath, shardPathPortals, timeZone) {
         const { coords } = formatJumpPathTooltip(shardPath, shardPathPortals, timeZone);
 
         polyline = L.polyline(coords, {
-            color: SIGNAL_COLOR,
+            color: UI_COLORS.SIGNAL,
             dashArray: ["10,10"],
         });
         const getTooltip = () => formatJumpPathTooltip(shardPath, shardPathPortals, timeZone).tooltip;
@@ -480,7 +482,7 @@ function formatLinkPathTooltip(shardPath, shardPathPortals, timeZone) {
 
     const sortedLinks = [...shardPath.links].sort((a, b) => a.linkTime - b.linkTime);
     sortedLinks.forEach((link, index) => {
-        const linkColor = FACTION_COLORS[link.team] || FACTION_COLORS.NEU;
+        const linkColor = ALIGNMENT_COLORS[link.team] || ALIGNMENT_COLORS.NEU;
         tooltip += `Linked at ${formatEpochToLocalTime(link.linkTime, timeZone)} by <span style="color:${linkColor}">${link.team || "NEU"}</span> <br />`;
 
         for (const move of link.moves) {
@@ -520,7 +522,7 @@ export async function getDetailsPanelContent(seriesId, siteId, waveId) {
     const siteData = await getSiteData(seriesId, siteId);
     if (!siteData) return { title: '', content: '' };
 
-    const siteEventType = EVENT_BRANDS[siteGeocode.eventType];
+    const siteEventType = getConfigRegistry().blueprints.events[siteGeocode.eventType];
     const startTime = zdtFromString(siteGeocode.date, getBasic);
     const durationMins = getConfigRegistry().getSiteDurationMinutes(siteId);
     const endTime = zdtAdd(startTime, durationFromFields({ minutes: durationMins }));
@@ -630,18 +632,18 @@ export async function getScoresText({ seriesId, siteId, waveId, siteData, type =
 }
 
 function renderSimpleScores(scores) {
-    let html = `<span style="color:${FACTION_COLORS.RES}">${scores.RES}</span>:<span style="color:${FACTION_COLORS.ENL}">${scores.ENL}</span>`;
+    let html = `<span style="color:${ALIGNMENT_COLORS.RES}">${scores.RES}</span>:<span style="color:${ALIGNMENT_COLORS.ENL}">${scores.ENL}</span>`;
     if (scores.MAC > 0) {
-        html += `:<span style="color:${FACTION_COLORS.MAC}">${scores.MAC}</span>`;
+        html += `:<span style="color:${ALIGNMENT_COLORS.MAC}">${scores.MAC}</span>`;
     }
     return html;
 }
 
 function renderFullScores(scores) {
-    let html = `<span style="color:${FACTION_COLORS.RES}">RES: ${scores.RES} </span>
-            <span style="color:${FACTION_COLORS.ENL}">ENL: ${scores.ENL} </span>`;
+    let html = `<span style="color:${ALIGNMENT_COLORS.RES}">RES: ${scores.RES} </span>
+            <span style="color:${ALIGNMENT_COLORS.ENL}">ENL: ${scores.ENL} </span>`;
     if (scores.MAC > 0) {
-        html += `<span style="color:${FACTION_COLORS.MAC}">MAC: ${scores.MAC}</span>`;
+        html += `<span style="color:${ALIGNMENT_COLORS.MAC}">MAC: ${scores.MAC}</span>`;
     }
     return html;
 }
@@ -754,13 +756,14 @@ function renderTargetMarkers(portals, targets) {
     if (!targets) return markers;
 
     const factionIcons = {
-        'RES': TARGET_ARTIFACT_IDS.RES,
-        'ENL': TARGET_ARTIFACT_IDS.ENL
+        'RES': 'targetres',
+        'ENL': 'targetenl'
     };
 
+    const ornaments = getConfigRegistry().blueprints.ornaments;
     for (const [faction, portalIds] of Object.entries(targets)) {
         const ornamentId = factionIcons[faction];
-        const brand = ORNAMENT_BRANDS[ornamentId];
+        const brand = ornaments[ornamentId];
         if (!brand) continue;
 
         const style = brand.style || {};

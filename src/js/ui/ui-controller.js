@@ -3,8 +3,7 @@ import { refreshSeriesLayer, getDetailsPanelContent as getSeriesDetailsContent, 
 import { getSiteLayers, getDetailsPanelContent as getSiteDetailsContent, updateAllPolylineStyles, setActiveSiteLayer, getSiteControl } from "./site-renderer.js";
 import { detailsPanelControl } from "./details-panel.js";
 import { handleCustomFile, getDetailsPanelContent as getCustomDetailsContent } from "./custom-file-handler.js";
-import { getDefaultSeasonId, getSeasonMetadata, getSeasonGeocode, getSeasonData } from "../../data/SeasonDataStore.js";
-import { CUSTOM_SEASON_ID } from "../constants.js";
+import { getDefaultSeasonId, getSeasonMetadata, getSeasonGeocode, getSeasonData, CUSTOM_SEASON_ID } from "../../data/SeasonDataStore.js";
 
 let IS_MAP_INTERACTION_ACTIVE = false;
 

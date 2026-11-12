@@ -1,8 +1,12 @@
-import { CUSTOM_SEASON_ID, SITE_AGGREGATION_DISTANCE } from '../constants.js';
-import { haversineDistance, roundToDecimalPlaces } from "../shared/math-helpers.js";
+import { CUSTOM_SEASON_ID } from "../../data/SeasonDataStore.js";
 import { formatEpochToSerializationString, isWithin24Hours } from '../shared/date-helpers.js';
 import { getConfigRegistry } from '../../config/EventConfig.js';
-import { DataIngestionPipeline } from "@ingress-shards/ingress-events-core";
+import {
+    DataIngestionPipeline,
+    haversineDistance,
+    roundToDecimalPlaces,
+    SITE_AGGREGATION_DISTANCE_METERS,
+} from "@ingress-shards/ingress-events-core";
 
 const siteCounter = Symbol("siteCounter");
 const rawFragments = Symbol("rawFragments");
@@ -78,17 +82,21 @@ function getCustomGeocode({ fileName, parsedData }) {
         const sortedFragments = artifact.fragment.sort((a, b) => a.id.localeCompare(b.id));
         for (const fragment of sortedFragments) {
             const fragmentCoords = getCoordsForFragment(fragment);
+            const fragmentE6Coords = {
+                latE6: Math.round(fragmentCoords.latitude * 1e6),
+                lngE6: Math.round(fragmentCoords.longitude * 1e6),
+            };
             const matchedSite = customGeocode.sites.find(site => {
                 const siteCoords = {
-                    latitude: site.lat,
-                    longitude: site.lng,
+                    latE6: Math.round(site.lat * 1e6),
+                    lngE6: Math.round(site.lng * 1e6),
                 };
 
-                const distance = roundToDecimalPlaces(haversineDistance(fragmentCoords, siteCoords), 2);
+                const distance = roundToDecimalPlaces(haversineDistance(fragmentE6Coords, siteCoords), 2);
                 const siteDate = new Date(site.date).getTime();
                 const matchingDate = isWithin24Hours(getFragmentSpawnTimeMs(fragment), siteDate);
 
-                return (distance < SITE_AGGREGATION_DISTANCE && matchingDate);
+                return (distance < SITE_AGGREGATION_DISTANCE_METERS && matchingDate);
             });
 
             if (matchedSite) {

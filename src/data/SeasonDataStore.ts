@@ -1,5 +1,4 @@
 import { getConfigRegistry } from "../config/EventConfig.js";
-import { CUSTOM_SEASON_ID } from "../js/constants.js";
 import type {
     SeasonId,
     SiteId,
@@ -8,6 +7,8 @@ import type {
     SiteState,
     SiteStateMap,
 } from "@ingress-shards/ingress-events-core";
+
+export const CUSTOM_SEASON_ID = "custom";
 
 /**
  * @deprecated Transitional geocode interface providing legacy decimal coordinates (.lat, .lng)

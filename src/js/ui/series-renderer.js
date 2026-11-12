@@ -1,9 +1,8 @@
 import * as L from "leaflet";
-import { EVENT_BRANDS, CUSTOM_SEASON_ID } from "../constants.js";
 import { addEventInteraction } from "./event-handler.js";
 import { navigate } from "../router.js";
 import { getScoresText } from "./site-renderer.js";
-import { getSeasonMetadata, getSeasonGeocode, getSiteData, getAllSeasonIds } from "../../data/SeasonDataStore.js";
+import { getSeasonMetadata, getSeasonGeocode, getSiteData, getAllSeasonIds, CUSTOM_SEASON_ID } from "../../data/SeasonDataStore.js";
 import { formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js";
 import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } from "temporal-polyfill/fns/ZonedDateTime";
@@ -122,7 +121,7 @@ async function renderSeriesLayer(seriesId) {
         siteTooltip += `
             ${flagHtml} <strong>${site.name}</strong><br />
             Date: ${formatIsoToShortDate(site.date, site.timezone)}${timeRemainingText}<br />
-            Type: ${EVENT_BRANDS[site.eventType].label}<br />`;
+            Type: ${getConfigRegistry().blueprints.events[site.eventType].label}<br />`;
 
         if (siteData) {
             const scoresText = await getScoresText({ seriesId, siteId: site.id, siteData, type: 'full' });
@@ -208,7 +207,8 @@ export async function getDetailsPanelContent(seriesId) {
         return groups;
     }, {});
 
-    const typeOrder = Object.keys(EVENT_BRANDS);
+    const eventBrands = getConfigRegistry().blueprints.events;
+    const typeOrder = Object.keys(eventBrands);
 
     let content = '';
     if (metadata.year) {
@@ -226,7 +226,7 @@ export async function getDetailsPanelContent(seriesId) {
 
             content += `<h4 class="group-header group-toggle">
                     <span class="toggle-icon">▶</span>
-                    ${sitesOfEventType.length} ${EVENT_BRANDS[eventType].label} Sites</h4>`;
+                    ${sitesOfEventType.length} ${eventBrands[eventType].label} Sites</h4>`;
             content += `<div class="group-list collapsed-group">`;
 
             for (const site of sitesOfEventType) {

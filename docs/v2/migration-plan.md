@@ -149,10 +149,10 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 - [x] Run full `npm run validate` pass
 
 ### Phase 4: Shared Utility & Constants Pruning
-- [ ] Replace `src/js/shared/math-helpers.js` usages with Core `Geo`
-- [ ] Replace hardcoded palettes in `constants.js` with canonical exports from `@ingress-shards/ingress-events-core`
+- [x] Replace `src/js/shared/math-helpers.js` usages with Core `Geo`
+- [x] Replace hardcoded palettes in `constants.js` with canonical exports from `@ingress-shards/ingress-events-core`
 - [x] Replace `event-helpers.js` with direct reads of `siteConfig.timeline.durationMinutes`
-- [ ] Deprecate/prune `constants.js` once UI renderers reference Core directly
+- [x] Deprecate/prune `constants.js` once UI renderers reference Core directly
 
 ### Phase 5: UI & Renderer Adaptation in TypeScript
 - [ ] Elevate `ScoringTableComponent` and breakdown tooltip formatters from IITC plugin into `@ingress-shards/ingress-events-core` (`src/display/`)

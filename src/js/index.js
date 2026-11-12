@@ -3,6 +3,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { setWorkerUrl } from "maplibre-gl";
 import "github-fork-ribbon-css/gh-fork-ribbon.css";
 import "../../gen/flag-icons.css";
+import "@ingress-shards/ingress-events-core/visuals/tokens.css";
 import "../assets/main.css";
 
 setWorkerUrl(new URL('/js/maplibre-gl-worker.mjs', window.location.origin).href);
