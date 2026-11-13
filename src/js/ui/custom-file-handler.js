@@ -1,5 +1,5 @@
 import { addCustomData, CUSTOM_SEASON_ID } from "../../data/SeasonDataStore.js";
-import { navigate } from "../router.js";
+import { navigate } from "../../routing/Router.js";
 import { updateCustomSeriesLayer } from "./series-renderer.js";
 
 export async function handleCustomFile(event) {

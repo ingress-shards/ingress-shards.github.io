@@ -3,15 +3,20 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSy
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import eventBlueprints from "@ingress-shards/ingress-events-core/conf/event_blueprints.json";
+import seasonManifest from "@ingress-shards/ingress-events-core/conf/season_manifest.json";
+import seasonGeocode from "@ingress-shards/ingress-events-core/conf/season_geocode.json";
 import {
+    ConfigRegistry,
     DataIngestionPipeline,
     type SiteState,
     type SiteId,
     type SeasonId,
     type IngestionItem,
-    type ConfigRegistry,
+    type EventBlueprints,
+    type SeasonManifest,
+    type SeasonGeocode,
 } from "@ingress-shards/ingress-events-core";
-import { getConfigRegistry } from "../src/config/EventConfig.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -93,7 +98,11 @@ async function run(): Promise<void> {
 
     console.log("ℹ️ Season data or logic changed. Running data processing...");
     const startTime = performance.now();
-    const registry = getConfigRegistry();
+    const registry = new ConfigRegistry(
+        eventBlueprints as EventBlueprints,
+        seasonManifest as SeasonManifest,
+        seasonGeocode as SeasonGeocode
+    );
     const ingestor = new SeasonDataIngestor(registry);
     const seasonIds = registry.getAllSeasonIds();
 
