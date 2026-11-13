@@ -613,6 +613,15 @@ export async function getScoresText({ seriesId, siteId, waveId, siteData, type =
         siteData = await getSiteData(seriesId, siteId);
     }
     if (!siteData) return '';
+
+    const siteGeocode = getSeasonGeocode(seriesId)?.sites[siteId];
+    const effectiveStart = eventStart
+        ?? siteData.waves?.[0]?.period?.start
+        ?? (siteGeocode?.date ? zdtFromString(siteGeocode.date, getBasic).epochMilliseconds : undefined);
+    if (effectiveStart !== undefined && Date.now() < effectiveStart) {
+        return '';
+    }
+
     if (type === 'table' && (!siteData.waves || siteData.waves.length <= 1)) {
         type = 'full';
     }

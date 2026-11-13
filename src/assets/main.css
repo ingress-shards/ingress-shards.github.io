@@ -345,8 +345,16 @@ table.ingress-event-scores tfoot {
     --pin-inner-color: #fff;
 }
 
+/* Keep top-left controls stacked predictably with the elevation legend at the bottom */
+.leaflet-top.leaflet-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 /* Elevation Legend */
 .elevation-legend {
+    order: 100;
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid #ccc;
     border-radius: 2px;

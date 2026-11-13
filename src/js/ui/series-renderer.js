@@ -1,6 +1,6 @@
 import * as L from "leaflet";
-import { addEventInteraction } from "./event-handler.js";
-import { navigate } from "../router.js";
+import { addEventInteraction } from "../../ui/touchSupport.js";
+import { navigate } from "../../routing/Router.js";
 import { getScoresText } from "./site-renderer.js";
 import { getSeasonMetadata, getSeasonGeocode, getSiteData, getAllSeasonIds, CUSTOM_SEASON_ID } from "../../data/SeasonDataStore.js";
 import { formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
@@ -233,9 +233,11 @@ export async function getDetailsPanelContent(seriesId) {
                 const flag = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
                 const siteUrl = `#/${metadata.id}/${site.id.replace(metadata.id + "-", "")}`;
 
+                const siteData = await getSiteData(metadata.id, site.id);
                 const scoresText = await getScoresText({
                     seriesId: metadata.id,
                     siteId: site.id,
+                    siteData,
                     type: 'simple',
                     timezone: site.timezone
                 });
@@ -245,7 +247,7 @@ export async function getDetailsPanelContent(seriesId) {
                                 data-route="${siteUrl}"
                                 data-site-id="${site.id}"
                                 id="${site.id}"
-                                ${!scoresText ? 'disabled="disabled"' : ''}>
+                                ${!siteData ? 'disabled="disabled"' : ''}>
                             ${flag} ${site.name}
                         </button>
                         ${scoresText && ` ${scoresText}`}<br />`;
