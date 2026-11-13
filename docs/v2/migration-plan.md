@@ -51,18 +51,20 @@ main (v1.42.x) ──┬──────────────────�
 To maintain development velocity and avoid throwaway work, TypeScript is adopted **incrementally** across the phases:
 
 ```
-[Phase 2: Hybrid Setup] ──> [Phase 3: Pipeline in TS] ──> [Phase 4-5: UI in TS] ──> [100% Strict TS]
- tsconfig (allowJs: true)     Loaders & adapters in TS     New UI renderers in TS    Legacy .js pruned
- EventConfig.ts, SeasonDataStore.ts  Prune data-processor.js      Prune legacy renderers    100% type-checked
+[Phase 1-2: Setup & TS] ──> [Phase 3: Pipeline] ──> [Phase 4: Utilities] ──> [Phase 4a: Glue in TS] ──> [Phase 5: UI in TS] ──> [Phase 6-7: Parity & Release]
+ feat/v2-core-integration    process-season-data.ts  Prune math/constants     index, router, map,        New UI renderers in TS    verify-v1-v2-parity.ts
+ EventConfig, SeasonDataStore Prune data-processor.js  (date-helpers -> Ph 5)   events, controller in TS   Prune legacy src/js/      100% strict TS, v2.0.0
 ```
 
-1. **Phase 2 (Tooling & Core Layer):**
+1. **Phase 1 (Setup & Branching):**
+   - Create long-lived integration branch `feat/v2-core-integration` from `main`, configure `.npmrc`, and align `@ingress-shards/ingress-events-core` and `temporal-polyfill` across sibling repositories.
+2. **Phase 2 (Configuration, Toolchain & TypeScript Setup):**
    - Install `typescript` (^5.9.3), `ts-loader`, `@types/node`.
    - Add `tsconfig.json` with `"allowJs": true`, `"checkJs": false`, `"strict": true`, and `"moduleResolution": "bundler"`.
    - Configure `webpack.common.js` with `ts-loader` and `.ts` extension resolution / extension aliases.
    - Author new/migrated configuration and data store layers in TypeScript directly under `src/<domain>/` (`src/config/EventConfig.ts`, `src/data/SeasonDataStore.ts`).
    - Legacy JavaScript files (`data-processor.js`, `site-renderer.js`, etc.) remain in `src/js/` undisturbed.
-2. **Phase 3 (Offline Data Pipeline):**
+3. **Phase 3 (Offline Data Pipeline & Pre-processor Migration):**
    - Install `tsx` devDependency for direct, zero-build execution of TypeScript CLI scripts.
    - Author offline pipeline in TypeScript (`scripts/process-season-data.ts`).
    - Relocate offline logic out of `src/js/` into Core's domain pipeline (`DataIngestionPipeline`, `SiteStateAnalyser`).
@@ -73,11 +75,23 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
    - Provide transitional UI bridging in `SeasonDataStore.ts` so existing Leaflet renderers remain fully functional until Phase 5.
    - Completely delete `src/js/data/shard-jumps/` directory (`data-processor.js`, `data-helpers.js`, `data-validator.js`, `data-statistics.js`).
    - Optimize CI release workflow by dropping obsolete `processed-data` and `validation-reports` uploads (retaining Pages deployment).
-3. **Phase 4 & 5 (UI & Display Components):**
-   - Author new modern UI components and scoring displays natively in TypeScript.
-   - Delete legacy Leaflet DOM renderers (`site-renderer.js`, `series-renderer.js`).
-4. **Phase 7 (Release):**
-   - Entire codebase is 100% TypeScript with complete compile-time type safety.
+4. **Phase 4 (Shared Utility & Constants Pruning):**
+   - Replace `src/js/shared/math-helpers.js` usages with Core `Geo`.
+   - Replace hardcoded palettes and constants in `constants.js` with canonical exports from `@ingress-shards/ingress-events-core` and prune `constants.js`.
+   - Replace `event-helpers.js` with direct reads of `siteConfig.timeline.durationMinutes` via `ConfigRegistry`.
+   - (`src/js/shared/date-helpers.js` migration is deferred to Phase 5 alongside UI formatting.)
+5. **Phase 4a (Glue & Infrastructure Review & TypeScript Migration):**
+   - Add `@types/leaflet` and ambient declarations (`src/types/ambient.d.ts`) for Webpack globals, CSS/asset imports, and untyped Leaflet plugins.
+   - Review, improve, and migrate core glue modules (`index.ts`, `router.ts`, `event-handler.ts`, `map-manager.ts`, `ui-controller.ts`) to TypeScript before UI renderer refactoring.
+6. **Phase 5 (UI & Renderer Adaptation in TypeScript):**
+   - Elevate `ScoringTableComponent` and breakdown tooltip formatters from IITC plugin into Core (`src/display/`), and migrate `date-helpers.js` utilities into Core (`src/common/Date.ts` / `src/display/`).
+   - Author new modern UI components and scoring displays natively in TypeScript (`src/ui/`).
+   - Migrate remaining UI/map modules (`elevation.js`, `details-panel.js`, `ui-formatters.js`, `custom-file-handler.js`, `json-parser-worker.js`).
+   - Delete legacy Leaflet DOM renderers and helpers (`site-renderer.js`, `series-renderer.js`, `marker-template.js`, `date-helpers.js`) and remove `src/js/`.
+7. **Phase 6 (Semantic Parity Verification & Testing):**
+   - Implement `scripts/verify-v1-v2-parity.ts` to verify the 5 Domain Invariants across all historical seasons (`2024-erasedmem` through `2026-apollo`) and perform visual checks on Anomaly, Skirmish, and StandBy archetype sites.
+8. **Phase 7 (Release & Cutover to V2):**
+   - Entire codebase is 100% TypeScript with complete compile-time type safety; run final `npm run validate`, merge `feat/v2-core-integration` to `main`, and cut `v2.0.0`.
 
 ---
 
@@ -154,14 +168,28 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 - [x] Replace `event-helpers.js` with direct reads of `siteConfig.timeline.durationMinutes`
 - [x] Deprecate/prune `constants.js` once UI renderers reference Core directly
 
+### Phase 4a: Glue & Infrastructure Review & TypeScript Migration
+- [x] Add `@types/leaflet` (`devDependency`), create `src/types/ambient.d.ts` (Webpack globals, CSS/asset imports, untyped Leaflet plugins), and update `webpack.common.js` entry to `./src/index.ts`
+- [x] Implement typed observable `MapState` (`src/state/MapState.ts`) for view and layer visibility state with independent `localStorage` persistence
+- [x] Review, improve, and migrate `src/js/index.js` → `src/index.ts` (explicit composition root wiring `ConfigRegistry`, `SeasonDataStore`, `AppStore`, input tracking, map, UI, and router)
+- [x] Review, improve, and migrate `src/js/router.js` → `src/routing/Router.ts` (bind hash & history changes directly to `AppStore`, clean back-navigation detection)
+- [x] Review, improve, and migrate `src/js/ui/event-handler.js` → `src/ui/touchSupport.ts` (replace `window.*` touch/timer globals with typed module state, review touch/mouse suppression)
+- [x] Review, improve, and migrate `src/js/ui/map/map-manager.js` → `src/ui/map/MapManager.ts` (map/pane initialization, base layers, relief/elevation legend lifecycle)
+- [x] Review, improve, and migrate `src/js/ui/ui-controller.js` → `src/ui/UIController.ts` (subscribe to `MapState`, consolidate `displaySiteDetails` / `displayWaveDetails` duplication, layer cleanup, scoped event delegation)
+- [x] Run full `npm run validate` pass
+
 ### Phase 5: UI & Renderer Adaptation in TypeScript
+- [ ] Evaluate `lit-html` vs `Svelte` (vs framework-free TS) for Phase 5 UI rendering, templates, and event binding
 - [ ] Elevate `ScoringTableComponent` and breakdown tooltip formatters from IITC plugin into `@ingress-shards/ingress-events-core` (`src/display/`)
 - [ ] Review and migrate date & formatting utilities from `src/js/shared/date-helpers.js` into `@ingress-shards/ingress-events-core` (`src/common/Date.ts` / `src/display/`) to eliminate duplicate date logic between siblings and transition Map UI to pure Core utilities
-- [ ] Author new modern UI components in TypeScript (`src/ui/`)
+- [ ] Author new modern UI components in TypeScript (`src/ui/`) and migrate `elevation.js`, `details-panel.js`, and `ui-formatters.js`
+- [ ] Review `UIController.ts` once views subscribe to `MapState` directly (move view-specific rendering/events into views and either dissolve `UIController` or slim it down to shared viewport/camera/title coordination)
+- [ ] Review Leaflet custom pane names (`ornamentPane`, `ornamentFrontPane`, `targetPane`, `shardPane`) for accuracy
 - [ ] Render waves, paths, and jumps from Core `SiteAnalysis`
+- [ ] Drive score rendering natively from `SiteState` / `SiteAnalysis` (omit scores when wave states are absent or season points are not required, removing the legacy `SeasonDataStore` `fullEvent.scores` bridge and `getScoresText` pre-event workaround)
 - [ ] Integrate `ShardJumpGrouper` from Core into jump history UI
 - [ ] Update `custom-file-handler.ts` and deprecate legacy `json-parser-worker.js` clustering helpers (`getCoordsForFragment`, `getFragmentSpawnTimeMs`, `calculateCentroid`) in favor of Core `DataObservationAdapter`
-- [ ] Delete legacy JavaScript renderers (`site-renderer.js`, `series-renderer.js`)
+- [ ] Delete legacy JavaScript renderers and helpers (`site-renderer.js`, `series-renderer.js`, `marker-template.js`, `date-helpers.js`) and remove `src/js/`
 
 ### Phase 6: Semantic Parity Verification & Testing
 - [ ] Implement `scripts/verify-v1-v2-parity.ts` checking the 5 Domain Invariants
