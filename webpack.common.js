@@ -32,7 +32,7 @@ export default (env, { appVersion }) => {
     const maplibreDistDir = path.join(resolvePackage('maplibre-gl'), 'dist');
 
     return {
-        entry: './src/js/index.js',
+        entry: './src/index.ts',
         cache: {
             type: 'filesystem',
             buildDependencies: {
