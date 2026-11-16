@@ -1,9 +1,8 @@
 import * as L from "leaflet";
-import { ALIGNMENT_COLORS, UI_COLORS } from "@ingress-shards/ingress-events-core";
+import { ALIGNMENT_COLORS, UI_COLORS, formatDate, formatTime, formatDuration } from "@ingress-shards/ingress-events-core";
 import shardIconUrl from '../../images/abaddon1_shard.png';
 import { getSiteData, getSeasonMetadata, getSeasonGeocode } from "../../data/SeasonDataStore.js";
 import { getFlagTooltipHtml } from "./ui-formatters.js"
-import { formatEpochToLocalTime, formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
 import { getConfigRegistry } from "../../config/EventConfig.js";
 import { getHexagonSVG } from "./marker-template.js";
 import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } from "temporal-polyfill/fns/ZonedDateTime";
@@ -406,7 +405,7 @@ function formatPortalTooltip(portal, portalHistory, timeZone, targetFaction) {
             if (historyItem.reason === "link") reasonToDisplay = "jump";
             else if (historyItem.reason === "jump") reasonToDisplay = 'randomly teleported';
 
-            tooltipHtml += `${reasonToDisplay} at ${formatEpochToLocalTime(historyItem.moveTime, timeZone)}${teamToDisplay ? ` - <span style="color:${ALIGNMENT_COLORS[teamToDisplay]}">${teamToDisplay}</span>` : ""}<br />`;
+            tooltipHtml += `${reasonToDisplay} at ${formatTime(historyItem.moveTime, timeZone, true)}${teamToDisplay ? ` - <span style="color:${ALIGNMENT_COLORS[teamToDisplay]}">${teamToDisplay}</span>` : ""}<br />`;
         }
 
         if (index < portalHistory.length - 1) {
@@ -483,10 +482,10 @@ function formatLinkPathTooltip(shardPath, shardPathPortals, timeZone) {
     const sortedLinks = [...shardPath.links].sort((a, b) => a.linkTime - b.linkTime);
     sortedLinks.forEach((link, index) => {
         const linkColor = ALIGNMENT_COLORS[link.team] || ALIGNMENT_COLORS.NEU;
-        tooltip += `Linked at ${formatEpochToLocalTime(link.linkTime, timeZone)} by <span style="color:${linkColor}">${link.team || "NEU"}</span> <br />`;
+        tooltip += `Linked at ${formatTime(link.linkTime, timeZone, true)} by <span style="color:${linkColor}">${link.team || "NEU"}</span> <br />`;
 
         for (const move of link.moves) {
-            const moveTime = formatEpochToLocalTime(move.moveTime, timeZone);
+            const moveTime = formatTime(move.moveTime, timeZone, true);
             const portalJumpText = biDirectionalMoves ? (move.origin === portalA.id ? "(A -> B)" : "(B -> A)") : "";
             const points = move.totalPoints ?? move.points ?? 0;
             tooltip += `<strong>Shard ${move.shardId}</strong> jumped ${portalJumpText} at ${moveTime} for ${points} point${points !== 1 ? 's' : ''}<br />`;
@@ -508,7 +507,7 @@ function formatJumpPathTooltip(shardPath, shardPathPortals, timeZone) {
     const fromPortal = jump.origin === portalA.id ? portalA : portalB;
     const toPortal = jump.origin === portalA.id ? portalB : portalA;
     const coords = [L.latLng(fromPortal.lat, fromPortal.lng), L.latLng(toPortal.lat, toPortal.lng)];
-    const moveTime = formatEpochToLocalTime(jump.moveTime, timeZone);
+    const moveTime = formatTime(jump.moveTime, timeZone, true);
 
     const tooltip = `<strong>${fromPortal.title} -> ${toPortal.title} (${distanceDisplay})</strong><hr />
         <strong>Shard ${jump.shardId}</strong> randomly teleported at ${moveTime}<br />`;
@@ -530,10 +529,10 @@ export async function getDetailsPanelContent(seriesId, siteId, waveId) {
     let countdownSuffix = '';
 
     if (zdtCompare(now, startTime) < 0) {
-        const remaining = getTimeRemaining(siteGeocode.date, siteGeocode.timezone);
+        const remaining = formatDuration(now.epochMilliseconds, startTime.epochMilliseconds, 'long');
         countdownSuffix = ` (Starts in ${remaining})`;
     } else if (zdtCompare(now, startTime) >= 0 && zdtCompare(now, endTime) <= 0) {
-        const remaining = getActiveEventRemaining(siteGeocode.date, siteGeocode.timezone, durationMins);
+        const remaining = formatDuration(now.epochMilliseconds, endTime.epochMilliseconds, 'long');
         countdownSuffix = ` (Active: ${remaining} remaining)`;
     }
 
@@ -545,7 +544,7 @@ export async function getDetailsPanelContent(seriesId, siteId, waveId) {
 
     let content = `
         <div style="margin-bottom: 8px">
-            Date: ${formatIsoToShortDate(siteGeocode.date, siteGeocode.timezone)}${countdownSuffix}${ornamentCount > 0 ? `<br/>Ornamented Portals: ${ornamentCount}` : ''}
+            Date: ${formatDate(siteGeocode.date, siteGeocode.timezone)}${countdownSuffix}${ornamentCount > 0 ? `<br/>Ornamented Portals: ${ornamentCount}` : ''}
         </div>`;
 
     if (hasShards) {
@@ -666,9 +665,7 @@ function renderTableScores(waves, totalScores, activeWaveId, seriesId, siteId, t
 
     let eventTimeRange = '';
     if (eventStart && eventEnd) {
-        const start = formatEpochToLocalTime(eventStart, timezone);
-        const end = formatEpochToLocalTime(eventEnd, timezone);
-        eventTimeRange = `${start.split(':')[0]}:${start.split(':')[1]} - ${end.split(':')[0]}:${end.split(':')[1]}`;
+        eventTimeRange = `${formatTime(eventStart, timezone)} - ${formatTime(eventEnd, timezone)}`;
     }
 
     let scoresHtml = `<table class='ingress-event-scores'>
@@ -689,9 +686,7 @@ function renderTableScores(waves, totalScores, activeWaveId, seriesId, siteId, t
 
         let waveTime = '';
         if (wave.period) {
-            const start = formatEpochToLocalTime(wave.period.start, timezone);
-            const end = formatEpochToLocalTime(wave.period.end, timezone);
-            waveTime = `${start.split(':')[0]}:${start.split(':')[1]} - ${end.split(':')[0]}:${end.split(':')[1]}`;
+            waveTime = `${formatTime(wave.period.start, timezone)} - ${formatTime(wave.period.end, timezone)}`;
         }
 
         scoresHtml += `<tr${isHighlighted ? ' class="highlight"' : ''} data-series-id="${seriesId}" data-site-id="${siteNavigationId}" data-wave-id="${waveId}">

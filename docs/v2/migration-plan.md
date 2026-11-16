@@ -51,9 +51,13 @@ main (v1.42.x) ──┬──────────────────�
 To maintain development velocity and avoid throwaway work, TypeScript is adopted **incrementally** across the phases:
 
 ```
-[Phase 1-2: Setup & TS] ──> [Phase 3: Pipeline] ──> [Phase 4: Utilities] ──> [Phase 4a: Glue in TS] ──> [Phase 5: UI in TS] ──> [Phase 6-7: Parity & Release]
- feat/v2-core-integration    process-season-data.ts  Prune math/constants     index, router, map,        New UI renderers in TS    verify-v1-v2-parity.ts
- EventConfig, SeasonDataStore Prune data-processor.js  (date-helpers -> Ph 5)   events, controller in TS   Prune legacy src/js/      100% strict TS, v2.0.0
+[Phase 1-2: Setup & TS] ──> [Phase 3: Pipeline] ──> [Phase 4: Utilities] ──> [Phase 4a: Glue in TS] ──> [Phase 5a-5f: UI & Display Slices] ──> [Phase 6-7: Parity & Release]
+ feat/v2-core-integration    process-season-data.ts  Prune math/constants     index, router, map,        5a: Core Elevation (Tooltips/Date)       verify-v1-v2-parity.ts
+ EventConfig, SeasonDataStore Prune data-processor.js  (date-helpers -> Ph 5)   events, controller in TS   5b: Theming & Pane Foundation            100% strict TS, v2.0.0
+                                                                                                         5c: DetailsPanel & Scoring Views
+                                                                                                         5d: Map Layers (Season/Site/Wave)
+                                                                                                         5e: Custom File Ingestion
+                                                                                                         5f: Legacy Pruning & Zero-JS
 ```
 
 1. **Phase 1 (Setup & Branching):**
@@ -79,19 +83,50 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
    - Replace `src/js/shared/math-helpers.js` usages with Core `Geo`.
    - Replace hardcoded palettes and constants in `constants.js` with canonical exports from `@ingress-shards/ingress-events-core` and prune `constants.js`.
    - Replace `event-helpers.js` with direct reads of `siteConfig.timeline.durationMinutes` via `ConfigRegistry`.
-   - (`src/js/shared/date-helpers.js` migration is deferred to Phase 5 alongside UI formatting.)
+   - (`src/js/shared/date-helpers.js` migration is deferred to Phase 5a alongside UI formatting.)
 5. **Phase 4a (Glue & Infrastructure Review & TypeScript Migration):**
    - Add `@types/leaflet` and ambient declarations (`src/types/ambient.d.ts`) for Webpack globals, CSS/asset imports, and untyped Leaflet plugins.
-   - Review, improve, and migrate core glue modules (`index.ts`, `router.ts`, `event-handler.ts`, `map-manager.ts`, `ui-controller.ts`) to TypeScript before UI renderer refactoring.
-6. **Phase 5 (UI & Renderer Adaptation in TypeScript):**
-   - Elevate `ScoringTableComponent` and breakdown tooltip formatters from IITC plugin into Core (`src/display/`), and migrate `date-helpers.js` utilities into Core (`src/common/Date.ts` / `src/display/`).
-   - Author new modern UI components and scoring displays natively in TypeScript (`src/ui/`).
-   - Migrate remaining UI/map modules (`elevation.js`, `details-panel.js`, `ui-formatters.js`, `custom-file-handler.js`, `json-parser-worker.js`).
-   - Delete legacy Leaflet DOM renderers and helpers (`site-renderer.js`, `series-renderer.js`, `marker-template.js`, `date-helpers.js`) and remove `src/js/`.
+   - Implement typed observable `MapState` (`src/state/MapState.ts`) with independent `localStorage` persistence.
+   - Review, improve, and migrate core glue modules (`index.ts`, `Router.ts`, `touchSupport.ts`, `MapManager.ts`, `UIController.ts`) to TypeScript before UI renderer refactoring.
+6. **Phase 5 (UI & Display Adaptation in TypeScript — 6 Slices):**
+   - **Phase 5a (Core Display & Tooltip Elevation)**: Elevate framework-agnostic HTML generators for tooltips (portal, link, wave, goal, link rules), scoring tables, and date/countdown helpers into Core (`src/display/` & `src/common/Date.ts`).
+   - **Phase 5b (Map Component Foundation, Theming & Leaflet Panes)**: Add dark/light theme state to `MapState` with token switching and base-layer sync; clean up Leaflet panes; migrate leaf helpers (`uiFormatters.ts`, `ElevationOverlay.ts`, marker templates).
+   - **Phase 5c (Details Panel & Scoring Views)**: Migrate `DetailsPanel.ts` to a typed component reacting to `MapState` and theme; wire Core `ScoringTable`, `ShardJumpGrouper`, and interactive popovers.
+   - **Phase 5d (Season & Site Map Layers)**: Migrate `SeasonLayer.ts`, `SiteLayer.ts`, and `WaveLayer.ts` to TypeScript, consuming `SiteState` directly and using Core's unified tooltips; slim down `UIController.ts`.
+   - **Phase 5e (Custom File Ingestion)**: Migrate custom file handler and worker to TypeScript using Core's `DataObservationAdapter` and `DataIngestionPipeline`.
+   - **Phase 5f (Legacy Pruning & Zero-JS Cutover)**: Drop `adaptSiteStateToLegacy` from `SeasonDataStore.ts`, delete `src/js/`, set `allowJs: false`, and verify clean zero-JS build.
 7. **Phase 6 (Semantic Parity Verification & Testing):**
    - Implement `scripts/verify-v1-v2-parity.ts` to verify the 5 Domain Invariants across all historical seasons (`2024-erasedmem` through `2026-apollo`) and perform visual checks on Anomaly, Skirmish, and StandBy archetype sites.
 8. **Phase 7 (Release & Cutover to V2):**
    - Entire codebase is 100% TypeScript with complete compile-time type safety; run final `npm run validate`, merge `feat/v2-core-integration` to `main`, and cut `v2.0.0`.
+
+---
+
+## 4. Phase 5 Display Architecture: Containers vs. Content, Tooltip Unification & Theming
+
+To maintain long-term maintainability and prevent visual or behavioral divergence between the IITC Plugin and the Shard Map, Phase 5 enforces a strict separation between **Leaflet Container Mechanics** and **Core Content Generation**:
+
+### 4.1 Container Mechanics vs. Content Generation
+
+| Display Concept | Leaflet / Map Application (Where & How it is hosted) | Core Display Module (What renders inside it) |
+| :--- | :--- | :--- |
+| **Panes** | Z-index viewport stacking contexts (`map.createPane()`): `ornamentPane`, `targetPane`, `shardPane`. | *Pure CSS z-index and pointer-event declarations.* |
+| **Controls / Panels** | Viewport-pinned corner chrome (`L.Control`): `DetailsPanel`, `ElevationLegend`. | **`DetailsPanel`**, **`ScoringTable`**, **`ElevationLegend`** content. |
+| **Layers** | Geographic lat/lng entities on panes (`L.Marker`, `L.Polyline`, `L.FeatureGroup`). | **`SiteMarker`**, **`ShardMotionPolyline`**, **`TargetOrnament`** SVG/CSS templates. |
+| **Tooltips & Popovers** | Anchored overlays (`L.Tooltip`, `L.Popup`, or interactive table cell popovers). | **Unified Tooltip Generators**: Portal telemetry, Link details, Wave summary, Goal breakdown, Link breakdown. |
+
+### 4.2 Tooltip & Popover Unification
+Historically, both the IITC Plugin and the Map independently formatted portal tooltips, link jump paths, and scoring summaries. In Phase 5, all HTML formatting functions are elevated into Core (`@ingress-shards/ingress-events-core/display/`):
+- `formatPortalTooltip(portal, history, timeZone, targetFaction)`: Portal title, Intel link, ornament brand/label, and chronological shard arrival/departure telemetry.
+- `formatLinkTooltip(shardPath, portals, timeZone)`: Endpoints, distance, link timestamps, and jump movements with awarded points.
+- `formatWaveTooltip(waveNum, waveState, siteConfig, siteState)`: Jump actions, duration (`actualEnd - scheduledStart`), and duration warning thresholds.
+- `formatGoalTooltip(waveNum, waveState, faction, siteConfig, siteState)`: Target portal breakdown by jump group with scored/unscored counts.
+- `formatLinkScoringTooltip(waveNum, waveState, faction, siteConfig, registry)`: Rule-by-rule points breakdown and mismatch tracking.
+
+### 4.3 Dark / Light Mode Architecture
+1. **Observable Theme State**: `MapState` tracks `theme: "light" | "dark" | "system"`, persisted independently to `localStorage` key `ingress-shards-map:theme:v1`.
+2. **Semantic Design Tokens**: A `data-theme="light"` or `data-theme="dark"` attribute on `document.documentElement` switches CSS custom properties (`--bg-primary`, `--text-primary`, `--color-border`) sourced from Core's `tokens.css`.
+3. **Base Map Synchronization**: Switching theme automatically aligns the default base map tile set (*CartoDB Dark Matter* for dark, *CartoDB Positron* for light) while preserving user-selected manual overrides.
 
 ---
 
@@ -178,18 +213,48 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 - [x] Review, improve, and migrate `src/js/ui/ui-controller.js` → `src/ui/UIController.ts` (subscribe to `MapState`, consolidate `displaySiteDetails` / `displayWaveDetails` duplication, layer cleanup, scoped event delegation)
 - [x] Run full `npm run validate` pass
 
-### Phase 5: UI & Renderer Adaptation in TypeScript
+### Phase 5a: Core Display & Tooltip Elevation (`ingress-events-core`)
+- [ ] Review and migrate date & countdown formatting utilities from `src/js/shared/date-helpers.js` into `@ingress-shards/ingress-events-core` (`src/common/Date.ts` / `src/display/`)
+- [ ] Elevate `ScoringTableComponent` from IITC plugin into `@ingress-shards/ingress-events-core` (`src/display/`)
+- [ ] Elevate unified tooltip formatters into `@ingress-shards/ingress-events-core` (`src/display/`):
+  - Portal tooltip (portal title, Intel link, ornament label, shard telemetry history)
+  - Link/path tooltip (origin/destination, distance, link timestamps, moves, awarded points)
+  - Wave summary, Goal breakdown, and Link scoring breakdown popover content
+- [ ] Align jump window duration display (`actualEnd - scheduledStart`) and formatting inside Core tooltips
+- [ ] Sync/release Core to siblings and verify `iitc-plugin-site-observer` and `ingress-shards.github.io` consume the elevated display exports
+
+### Phase 5b: Map Component Foundation, Theming & Leaflet Panes
 - [ ] Evaluate `lit-html` vs `Svelte` (vs framework-free TS) for Phase 5 UI rendering, templates, and event binding
-- [ ] Elevate `ScoringTableComponent` and breakdown tooltip formatters from IITC plugin into `@ingress-shards/ingress-events-core` (`src/display/`)
-- [ ] Review and migrate date & formatting utilities from `src/js/shared/date-helpers.js` into `@ingress-shards/ingress-events-core` (`src/common/Date.ts` / `src/display/`) to eliminate duplicate date logic between siblings and transition Map UI to pure Core utilities
-- [ ] Author new modern UI components in TypeScript (`src/ui/`) and migrate `elevation.js`, `details-panel.js`, and `ui-formatters.js`
-- [ ] Review `UIController.ts` once views subscribe to `MapState` directly (move view-specific rendering/events into views and either dissolve `UIController` or slim it down to shared viewport/camera/title coordination)
-- [ ] Review Leaflet custom pane names (`ornamentPane`, `ornamentFrontPane`, `targetPane`, `shardPane`) for accuracy
-- [ ] Render waves, paths, and jumps from Core `SiteAnalysis`
+- [ ] Add `theme: "light" | "dark" | "system"` to `MapState` (`src/state/MapState.ts`) with `subscribeTheme` and independent `localStorage` persistence
+- [ ] Wire `data-theme` attribute switching on `document.documentElement` using semantic CSS tokens (`tokens.css`) and synchronize default base map selection (*CartoDB Dark Matter* vs *CartoDB Positron*)
+- [ ] Review and standardize Leaflet custom pane names (`ornamentPane`, `ornamentFrontPane`, `targetPane`, `shardPane`) in `MapManager.ts`
+- [ ] Migrate leaf utilities:
+  - `src/js/ui/ui-formatters.js` → `src/ui/uiFormatters.ts`
+  - `src/js/ui/marker-template.js` → consume Core's `visuals/templates` directly
+  - `src/js/ui/map/elevation.js` → consolidate into `src/ui/map/ElevationOverlay.ts` with theme-aware legend styling
+
+### Phase 5c: Details Panel & Scoring Views in TypeScript
+- [ ] Migrate `src/js/ui/details-panel.js` → `src/ui/details/DetailsPanel.ts` (typed `L.Control` subscribing to `MapState` and theme)
+- [ ] Integrate Core's elevated `ScoringTable` and `ShardJumpGrouper` into the details panel
 - [ ] Drive score rendering natively from `SiteState` / `SiteAnalysis` (omit scores when wave states are absent or season points are not required, removing the legacy `SeasonDataStore` `fullEvent.scores` bridge and `getScoresText` pre-event workaround)
-- [ ] Integrate `ShardJumpGrouper` from Core into jump history UI
-- [ ] Update `custom-file-handler.ts` and deprecate legacy `json-parser-worker.js` clustering helpers (`getCoordsForFragment`, `getFragmentSpawnTimeMs`, `calculateCentroid`) in favor of Core `DataObservationAdapter`
-- [ ] Delete legacy JavaScript renderers and helpers (`site-renderer.js`, `series-renderer.js`, `marker-template.js`, `date-helpers.js`) and remove `src/js/`
+- [ ] Wire interactive Wave summary, Goal, and Link scoring breakdown popover tooltips
+
+### Phase 5d: Season & Site Map Layers (Geographic Canvas)
+- [ ] Migrate `src/js/ui/series-renderer.js` → `src/ui/layers/SeasonLayer.ts` (rendering tactical markers, radar sweep, and status phases from `SiteState` & `SitePhase`)
+- [ ] Migrate `src/js/ui/site-renderer.js` → `src/ui/layers/SiteLayer.ts` & `WaveLayer.ts` (rendering portals, target portals, and `analysis.shardPaths` directly)
+- [ ] Bind Core's elevated portal and link tooltip formatters to map markers and polylines
+- [ ] Review `UIController.ts` once views subscribe to `MapState` directly (slim down to shared viewport/camera/title coordination)
+- [ ] Evaluate stripping `ShardMove.scoredRules` from serialized season JSON (retaining only `totalPoints`)
+
+### Phase 5e: Custom File Ingestion (Isolated Sub-Phase)
+- [ ] Migrate `src/js/ui/custom-file-handler.js` → `src/ui/custom/CustomFileHandler.ts`
+- [ ] Replace `src/js/data/json-parser-worker.js` with a typed TypeScript worker using Core's `DataObservationAdapter` and `DataIngestionPipeline`
+- [ ] Retire legacy ad-hoc fragment clustering (`getCoordsForFragment`, `getFragmentSpawnTimeMs`, `calculateCentroid`) and wire custom site registration into `ConfigRegistry`
+
+### Phase 5f: Final Legacy Pruning & Zero-JS Cutover
+- [ ] Remove `adaptSiteStateToLegacy` and `@deprecated` transitional methods from `SeasonDataStore.ts`
+- [ ] Delete all remaining files under `src/js/` (`site-renderer.js`, `series-renderer.js`, `marker-template.js`, `date-helpers.js`, etc.) and remove `src/js/`
+- [ ] Set `"allowJs": false` in `tsconfig.json` and run full `npm run validate` pass
 
 ### Phase 6: Semantic Parity Verification & Testing
 - [ ] Implement `scripts/verify-v1-v2-parity.ts` checking the 5 Domain Invariants

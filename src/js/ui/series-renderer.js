@@ -3,7 +3,7 @@ import { addEventInteraction } from "../../ui/touchSupport.js";
 import { navigate } from "../../routing/Router.js";
 import { getScoresText } from "./site-renderer.js";
 import { getSeasonMetadata, getSeasonGeocode, getSiteData, getAllSeasonIds, CUSTOM_SEASON_ID } from "../../data/SeasonDataStore.js";
-import { formatIsoToShortDate, getTimeRemaining, getActiveEventRemaining } from "../shared/date-helpers.js";
+import { formatDate, formatDuration } from "@ingress-shards/ingress-events-core";
 import { getFlagTooltipHtml } from "./ui-formatters.js";
 import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } from "temporal-polyfill/fns/ZonedDateTime";
 import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
@@ -101,7 +101,9 @@ async function renderSeriesLayer(seriesId) {
         siteMarker._siteId = site.id;
 
         const flagHtml = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
-        const remainingTime = getTimeRemaining(site.date, site.timezone);
+        const remainingTime = zdtCompare(now, startTime) < 0
+            ? formatDuration(now.epochMilliseconds, startTime.epochMilliseconds, 'long')
+            : null;
         const timeRemainingText = remainingTime ? ` (${remainingTime})` : '';
 
         const eventDuration = getConfigRegistry().getSiteDurationMinutes(site.id);
@@ -109,7 +111,9 @@ async function renderSeriesLayer(seriesId) {
         const completionGraceEnd = zdtAdd(endTime, durationFromFields({ days: 1 }));
         const isComplete = zdtCompare(now, endTime) > 0;
         const isWithinCompletionGrace = zdtCompare(now, completionGraceEnd) <= 0;
-        const activeRemaining = getActiveEventRemaining(site.date, site.timezone, eventDuration);
+        const activeRemaining = zdtCompare(now, startTime) >= 0 && zdtCompare(now, endTime) <= 0
+            ? formatDuration(now.epochMilliseconds, endTime.epochMilliseconds, 'long')
+            : null;
 
         let siteTooltip = '';
         if (activeRemaining) {
@@ -120,7 +124,7 @@ async function renderSeriesLayer(seriesId) {
 
         siteTooltip += `
             ${flagHtml} <strong>${site.name}</strong><br />
-            Date: ${formatIsoToShortDate(site.date, site.timezone)}${timeRemainingText}<br />
+            Date: ${formatDate(site.date, site.timezone)}${timeRemainingText}<br />
             Type: ${getConfigRegistry().blueprints.events[site.eventType].label}<br />`;
 
         if (siteData) {
