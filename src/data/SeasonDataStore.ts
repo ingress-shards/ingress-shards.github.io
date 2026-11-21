@@ -67,12 +67,19 @@ export class SeasonDataStore {
     }
 
     /**
-     * Retrieves a site's telemetry state, returning from cache if available or loading the season data.
-     * Adapts SiteState into transitional legacy shapes for Leaflet renderers until Phase 5.
+     * Retrieves a site's typed V2 telemetry state, returning from cache if available or loading the season data.
+     */
+    public async getSiteState(seasonId: SeasonId, siteId: SiteId): Promise<SiteState | undefined> {
+        const seasonData = await this.getSeasonData(seasonId);
+        return seasonData[siteId];
+    }
+
+    /**
+     * @deprecated Transitional adapter returning legacy shapes for Leaflet renderers until Phase 5.
+     * Use {@link getSiteState} for typed V2 `SiteState` access.
      */
     public async getSiteData(seasonId: SeasonId, siteId: SiteId): Promise<unknown | undefined> {
-        const seasonData = await this.getSeasonData(seasonId);
-        const state = seasonData[siteId];
+        const state = await this.getSiteState(seasonId, siteId);
         if (!state) return undefined;
         return adaptSiteStateToLegacy(state);
     }
