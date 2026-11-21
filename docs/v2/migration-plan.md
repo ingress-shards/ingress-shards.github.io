@@ -116,12 +116,14 @@ To maintain long-term maintainability and prevent visual or behavioral divergenc
 | **Tooltips & Popovers** | Anchored overlays (`L.Tooltip`, `L.Popup`, or interactive table cell popovers). | **Unified Tooltip Generators**: Portal telemetry, Link details, Wave summary, Goal breakdown, Link breakdown. |
 
 ### 4.2 Tooltip & Popover Unification
-Historically, both the IITC Plugin and the Map independently formatted portal tooltips, link jump paths, and scoring summaries. In Phase 5, all HTML formatting functions are elevated into Core (`@ingress-shards/ingress-events-core/display/`):
-- `formatPortalTooltip(portal, history, timeZone, targetFaction)`: Portal title, Intel link, ornament brand/label, and chronological shard arrival/departure telemetry.
-- `formatLinkTooltip(shardPath, portals, timeZone)`: Endpoints, distance, link timestamps, and jump movements with awarded points.
-- `formatWaveTooltip(waveNum, waveState, siteConfig, siteState)`: Jump actions, duration (`actualEnd - scheduledStart`), and duration warning thresholds.
-- `formatGoalTooltip(waveNum, waveState, faction, siteConfig, siteState)`: Target portal breakdown by jump group with scored/unscored counts.
-- `formatLinkScoringTooltip(waveNum, waveState, faction, siteConfig, registry)`: Rule-by-rule points breakdown and mismatch tracking.
+Historically, both the IITC Plugin and the Map independently formatted site/portal tooltips, link jump paths, and scoring summaries. In Phase 5, all HTML renderers, DOM resolvers, and the shared floating overlay host are elevated into Core (`src/display/tooltips/`):
+- `renderSiteTooltip({ siteConfig, eventTypeLabel, siteState, nowMs })` + `createSiteTooltipResolver`: Active/grace banners, flag, site name, formatted date/countdown, event type, and score or ornament summary.
+- `renderPortalTooltip({ portal, shardHistory, ornaments, siteConfig })` + `createPortalTooltipResolver`: Portal title, Intel link, target faction badge, ornament label(s), and chronological shard arrival/departure telemetry.
+- `renderPathTooltip({ shardPath, portalA, portalB, portalAId, siteConfig })` + `createPathTooltipResolver`: Endpoints, distance, link timestamps, jump movements with awarded points, and random idle teleports.
+- `renderWaveTooltip({ siteConfig, waveNum, waveState })` + `createWaveTooltipResolver`: Jump group action counts, duration (`actualEnd - scheduledStart`), and duration warning thresholds.
+- `renderGoalScoringTooltip({ siteConfig, waveState, faction, portals, goalRules })` + `createGoalScoringTooltipResolver`: Target portal breakdown by jump group with scored/unscored counts.
+- `renderLinkScoringTooltip({ siteConfig, waveState, faction, linkRules })` + `createLinkScoringTooltipResolver`: Rule-by-rule points breakdown and mismatch tracking.
+- `bindTooltips(resolver, root?)` (`TooltipHost.ts` + `TooltipContext.ts`): Delegated `[data-tooltip-type]` hover/click host rendering into a shared `.tooltip-overlay`.
 
 ### 4.3 Dark / Light Mode Architecture
 1. **Observable Theme State**: `MapState` tracks `theme: "light" | "dark" | "system"`, persisted independently to `localStorage` key `ingress-shards-map:theme:v1`.
@@ -214,14 +216,15 @@ Historically, both the IITC Plugin and the Map independently formatted portal to
 - [x] Run full `npm run validate` pass
 
 ### Phase 5a: Core Display & Tooltip Elevation (`ingress-events-core`)
-- [ ] Review and migrate date & countdown formatting utilities from `src/js/shared/date-helpers.js` into `@ingress-shards/ingress-events-core` (`src/common/Date.ts` / `src/display/`)
-- [ ] Elevate `ScoringTableComponent` from IITC plugin into `@ingress-shards/ingress-events-core` (`src/display/`)
-- [ ] Elevate unified tooltip formatters into `@ingress-shards/ingress-events-core` (`src/display/`):
-  - Portal tooltip (portal title, Intel link, ornament label, shard telemetry history)
-  - Link/path tooltip (origin/destination, distance, link timestamps, moves, awarded points)
-  - Wave summary, Goal breakdown, and Link scoring breakdown popover content
-- [ ] Align jump window duration display (`actualEnd - scheduledStart`) and formatting inside Core tooltips
-- [ ] Sync/release Core to siblings and verify `iitc-plugin-site-observer` and `ingress-shards.github.io` consume the elevated display exports
+- [x] Review and migrate date & countdown formatting utilities from `src/js/shared/date-helpers.js` into `@ingress-shards/ingress-events-core` (`src/common/Date.ts` / `src/common/Locale.ts`)
+- [x] Elevate `ScoringTableComponent` from IITC plugin into `@ingress-shards/ingress-events-core` (`src/display/ScoringTable.ts` & `src/visuals/display.css`)
+- [x] Elevate unified tooltip renderers and `TooltipHost` into `@ingress-shards/ingress-events-core` (`src/display/tooltips/`):
+  - Site tooltip (`SiteTooltip.ts`)
+  - Portal tooltip (`PortalTooltip.ts` — portal title, Intel link, ornament label, shard telemetry history)
+  - Path tooltip (`PathTooltip.ts` — link & random teleport origin/destination, distance, timestamps, moves, awarded points)
+  - Wave summary (`WaveTooltip.ts`), Goal breakdown (`GoalScoringTooltip.ts`), and Link scoring breakdown (`LinkScoringTooltip.ts`) popover content + shared `TooltipHost.ts` (`bindTooltips`) and `TooltipContext.ts`
+- [x] Align jump window duration display (`actualEnd - scheduledStart`) and formatting inside Core tooltips
+- [x] Sync/release Core to siblings and verify `iitc-plugin-site-observer` and `ingress-shards.github.io` consume the elevated display exports
 
 ### Phase 5b: Map Component Foundation, Theming & Leaflet Panes
 - [ ] Evaluate `lit-html` vs `Svelte` (vs framework-free TS) for Phase 5 UI rendering, templates, and event binding
