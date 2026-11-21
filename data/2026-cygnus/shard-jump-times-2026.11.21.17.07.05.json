@@ -1,0 +1,1586 @@
+{
+  "artifact": [
+    {
+      "id": "abaddon1",
+      "name": "Abaddon 1"
+    },
+    {
+      "id": "hotel",
+      "name": "Hotel"
+    },
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "fragment": [
+        {
+          "id": "alpha_01",
+          "history": [
+            {
+              "moveTimeMs": "1795266007016",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Inbetween Moments",
+                "description": "Another fabulous whimsical piece by the lovely Hayley Welsh.\nTHESE inbetween MOMENTS ARE the ONES to be BETWEEN.",
+                "latE6": -31972150,
+                "lngE6": 115894996,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1795250702274",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Path Guide",
+                "description": "Entrance point to the burswood parkland for Great Eastern highway.",
+                "latE6": -31962395,
+                "lngE6": 115898774,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Inbetween Moments",
+                "description": "Another fabulous whimsical piece by the lovely Hayley Welsh.\nTHESE inbetween MOMENTS ARE the ONES to be BETWEEN.",
+                "latE6": -31972150,
+                "lngE6": 115894996,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795250336856",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795248903495",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Historical Information Board",
+                "latE6": -31971813,
+                "lngE6": 115894449,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Path Guide",
+                "description": "Entrance point to the burswood parkland for Great Eastern highway.",
+                "latE6": -31962395,
+                "lngE6": 115898774,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795248370726",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795247101526",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Eve Angel",
+                "description": "\n",
+                "latE6": -31960956,
+                "lngE6": 115896050,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Historical Information Board",
+                "latE6": -31971813,
+                "lngE6": 115894449,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795246556705",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795245301894",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Peter Pan",
+                "latE6": -31959229,
+                "lngE6": 115876362,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Eve Angel",
+                "description": "\n",
+                "latE6": -31960956,
+                "lngE6": 115896050,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795245294072",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795243501039",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795241700228",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795240802830",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Peter Pan",
+                "latE6": -31959229,
+                "lngE6": 115876362,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "alpha_02",
+          "history": [
+            {
+              "moveTimeMs": "1795266007084",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "St Bartholomew's Cemetery",
+                "latE6": -31956692,
+                "lngE6": 115878424,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1795250821413",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Trail marker - Hill St and Langley Park",
+                "description": "Showing the local area - Perth's first airfield now the scene of many a festival and community event.",
+                "latE6": -31960178,
+                "lngE6": 115867540,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "St Bartholomew's Cemetery",
+                "latE6": -31956692,
+                "lngE6": 115878424,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795250102950",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795249022109",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795247221205",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Patrick Kelly Memorial",
+                "latE6": -31955536,
+                "lngE6": 115878950,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Trail marker - Hill St and Langley Park",
+                "description": "Showing the local area - Perth's first airfield now the scene of many a festival and community event.",
+                "latE6": -31960178,
+                "lngE6": 115867540,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795247167744",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795245420036",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795243622500",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Langley Park Pavillion Murals",
+                "description": "Series of Murals on the Langley Park Pavillion",
+                "latE6": -31960588,
+                "lngE6": 115867784,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Patrick Kelly Memorial",
+                "latE6": -31955536,
+                "lngE6": 115878950,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795243615513",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795241821036",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795240804892",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Langley Park Pavillion Murals",
+                "description": "Series of Murals on the Langley Park Pavillion",
+                "latE6": -31960588,
+                "lngE6": 115867784,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "alpha_03",
+          "history": [
+            {
+              "moveTimeMs": "1795266007157",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Narrows Bridge Trail Marker",
+                "description": "This trail marker guides walkers and cyclists along the Narrows Bridge precinct.",
+                "latE6": -31962365,
+                "lngE6": 115847602,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1795250940136",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795249141036",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795247342233",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Greeting Meerkats",
+                "description": "Artworks commissioned for phase one of the Connect South project include a family of meerkats who will welcome visitors.",
+                "latE6": -31971959,
+                "lngE6": 115853058,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Narrows Bridge Trail Marker",
+                "description": "This trail marker guides walkers and cyclists along the Narrows Bridge precinct.",
+                "latE6": -31962365,
+                "lngE6": 115847602,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795246836710",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795245541978",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Langley Park Pavillion Murals",
+                "description": "Series of Murals on the Langley Park Pavillion",
+                "latE6": -31960588,
+                "lngE6": 115867784,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Greeting Meerkats",
+                "description": "Artworks commissioned for phase one of the Connect South project include a family of meerkats who will welcome visitors.",
+                "latE6": -31971959,
+                "lngE6": 115853058,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795245496604",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795243741643",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Patrick Kelly Memorial",
+                "latE6": -31955536,
+                "lngE6": 115878950,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Langley Park Pavillion Murals",
+                "description": "Series of Murals on the Langley Park Pavillion",
+                "latE6": -31960588,
+                "lngE6": 115867784,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795243615513",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795241941615",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Wellington Square Gazebo",
+                "description": "A new picnic gazebo which was added as part of the 2020 park upgrade.",
+                "latE6": -31954340,
+                "lngE6": 115872051,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Patrick Kelly Memorial",
+                "latE6": -31955536,
+                "lngE6": 115878950,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795241801921",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795240802179",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Wellington Square Gazebo",
+                "description": "A new picnic gazebo which was added as part of the 2020 park upgrade.",
+                "latE6": -31954340,
+                "lngE6": 115872051,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lima",
+      "name": "Lima"
+    },
+    {
+      "id": "india",
+      "name": "India"
+    },
+    {
+      "id": "targetres",
+      "name": "Target RES"
+    },
+    {
+      "id": "bravo",
+      "name": "Bravo",
+      "fragment": [
+        {
+          "id": "bravo_02",
+          "history": [
+            {
+              "moveTimeMs": "1795266000129",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Informational Locations Sign & Map Pillar",
+                "description": "Located near tourist hotspot Taman Botani and Megalith Park. All the direction you need. Easy access. Alot of parking!",
+                "latE6": 2946163,
+                "lngE6": 101697920,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1795250821035",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795249041892",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Taman DiRaja Pahang Pavillion",
+                "description": "Beautifully craft Pavillion in Wetland",
+                "latE6": 2944793,
+                "lngE6": 101693794,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Informational Locations Sign & Map Pillar",
+                "description": "Located near tourist hotspot Taman Botani and Megalith Park. All the direction you need. Easy access. Alot of parking!",
+                "latE6": 2946163,
+                "lngE6": 101697920,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795248295828",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795247221034",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795245422630",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Taman Botani Gazebo",
+                "description": "Gazebo entrance to Putrajaya Seafood Restaurant",
+                "latE6": 2943943,
+                "lngE6": 101694618,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Taman DiRaja Pahang Pavillion",
+                "description": "Beautifully craft Pavillion in Wetland",
+                "latE6": 2944793,
+                "lngE6": 101693794,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795245204865",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795243621729",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Huge NTK Shrine",
+                "description": "A special shrine that blessed the people who visited it. It is located at the Serdang Utama playground parking lot.",
+                "latE6": 3031472,
+                "lngE6": 101698657,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Taman Botani Gazebo",
+                "description": "Gazebo entrance to Putrajaya Seafood Restaurant",
+                "latE6": 2943943,
+                "lngE6": 101694618,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795243607107",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795241821583",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Dry Water Fountain of Medan Selera Laman Putra",
+                "description": "Located at Medan Selera Laman Putra,Precint 1 Putrajaya. Sometimes there is water, sometimes no water flowing. Mostly during the weekend you can see the wonderful fountain with the blue light!",
+                "latE6": 2937455,
+                "lngE6": 101694064,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Huge NTK Shrine",
+                "description": "A special shrine that blessed the people who visited it. It is located at the Serdang Utama playground parking lot.",
+                "latE6": 3031472,
+                "lngE6": 101698657,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795241811340",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795240805953",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Dry Water Fountain of Medan Selera Laman Putra",
+                "description": "Located at Medan Selera Laman Putra,Precint 1 Putrajaya. Sometimes there is water, sometimes no water flowing. Mostly during the weekend you can see the wonderful fountain with the blue light!",
+                "latE6": 2937455,
+                "lngE6": 101694064,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "bravo_01",
+          "history": [
+            {
+              "moveTimeMs": "1795266000044",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Seri Kembangan B Watertank",
+                "latE6": 3029582,
+                "lngE6": 101699640,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1795250701306",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Guan Yin Temple",
+                "description": "Chinese temple",
+                "latE6": 3026638,
+                "lngE6": 101700485,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Seri Kembangan B Watertank",
+                "latE6": 3029582,
+                "lngE6": 101699640,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1788690815570",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795248902087",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Goddess Guan Yin",
+                "latE6": 3028889,
+                "lngE6": 101700338,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Guan Yin Temple",
+                "description": "Chinese temple",
+                "latE6": 3026638,
+                "lngE6": 101700485,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1775477621210",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795247102704",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "NTK Megaria Lili",
+                "description": "God that blessing Megaria Lili's residents.",
+                "latE6": 3033916,
+                "lngE6": 101699104,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Goddess Guan Yin",
+                "latE6": 3028889,
+                "lngE6": 101700338,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1765846981377",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795245302697",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Pillar of Precinct Nine Plan Lokasi",
+                "description": "Map plan for whole area Precinct 9 Putrajaya",
+                "latE6": 2937905,
+                "lngE6": 101680226,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "NTK Megaria Lili",
+                "description": "God that blessing Megaria Lili's residents.",
+                "latE6": 3033916,
+                "lngE6": 101699104,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795242768577",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795243501737",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Playground",
+                "description": "Taman Bentara",
+                "latE6": 2942087,
+                "lngE6": 101519899,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Pillar of Precinct Nine Plan Lokasi",
+                "description": "Map plan for whole area Precinct 9 Putrajaya",
+                "latE6": 2937905,
+                "lngE6": 101680226,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795242768987",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795241702568",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Putra Fountain",
+                "latE6": 2934991,
+                "lngE6": 101690088,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Playground",
+                "description": "Taman Bentara",
+                "latE6": 2942087,
+                "lngE6": 101519899,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795241623332",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795240802180",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Putra Fountain",
+                "latE6": 2934991,
+                "lngE6": 101690088,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "bravo_03",
+          "history": [
+            {
+              "moveTimeMs": "1795266000205",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "A gazebo no1",
+                "description": "a gazebo at R&R BSP",
+                "latE6": 2947952,
+                "lngE6": 101581044,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1795250941031",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795249140086",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795247340033",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795245541035",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795243741035",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795241942803",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "parallel bar",
+                "description": "mini gym equiment",
+                "latE6": 2936817,
+                "lngE6": 101684299,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "A gazebo no1",
+                "description": "a gazebo at R&R BSP",
+                "latE6": 2947952,
+                "lngE6": 101581044,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795241696113",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795240803814",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "parallel bar",
+                "description": "mini gym equiment",
+                "latE6": 2936817,
+                "lngE6": 101684299,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "juliet",
+      "name": "Juliet"
+    },
+    {
+      "id": "echo",
+      "name": "Echo"
+    },
+    {
+      "id": "sierra",
+      "name": "Sierra"
+    },
+    {
+      "id": "kilo",
+      "name": "Kilo"
+    },
+    {
+      "id": "xray",
+      "name": "Xray"
+    },
+    {
+      "id": "whiskey",
+      "name": "Whiskey"
+    },
+    {
+      "id": "zulu",
+      "name": "Zulu"
+    },
+    {
+      "id": "november",
+      "name": "November"
+    },
+    {
+      "id": "oscar",
+      "name": "Oscar"
+    },
+    {
+      "id": "golf",
+      "name": "Golf"
+    },
+    {
+      "id": "victor",
+      "name": "Victor"
+    },
+    {
+      "id": "targetenl",
+      "name": "Target ENL"
+    },
+    {
+      "id": "romeo",
+      "name": "Romeo"
+    },
+    {
+      "id": "mike",
+      "name": "Mike"
+    },
+    {
+      "id": "quebec",
+      "name": "Quebec"
+    },
+    {
+      "id": "delta",
+      "name": "Delta",
+      "fragment": [
+        {
+          "id": "delta_02",
+          "currentPortalInfo": {
+            "title": "Antigua Casa De Guardia",
+            "latE6": 36717709,
+            "lngE6": -4423429,
+            "team": "ENLIGHTENED"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1795276021324",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Grafiti Bailen-Miraflores",
+                "latE6": 36724947,
+                "lngE6": -4431922,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Antigua Casa De Guardia",
+                "latE6": 36717709,
+                "lngE6": -4423429,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795275784861",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795274222826",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Cristo De Mena",
+                "description": "Campus Tecnológico de la Universidad Internacional de Andalucía",
+                "latE6": 36718912,
+                "lngE6": -4426936,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Grafiti Bailen-Miraflores",
+                "latE6": 36724947,
+                "lngE6": -4431922,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795274182957",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795272421031",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795270620130",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795268822573",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Pozo Gibralfaro",
+                "latE6": 36723883,
+                "lngE6": -4410928,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Cristo De Mena",
+                "description": "Campus Tecnológico de la Universidad Internacional de Andalucía",
+                "latE6": 36718912,
+                "lngE6": -4426936,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795268616362",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795267021566",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Alcalde Garcia Grana",
+                "latE6": 36717928,
+                "lngE6": -4419937,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Pozo Gibralfaro",
+                "latE6": 36723883,
+                "lngE6": -4410928,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795266964631",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795266004936",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Alcalde Garcia Grana",
+                "latE6": 36717928,
+                "lngE6": -4419937,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "delta_03",
+          "currentPortalInfo": {
+            "title": "Antigua Casa De Guardia",
+            "latE6": 36717709,
+            "lngE6": -4423429,
+            "team": "ENLIGHTENED"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1795276141662",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Grafiti Bailen-Miraflores",
+                "latE6": 36724947,
+                "lngE6": -4431922,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Antigua Casa De Guardia",
+                "latE6": 36717709,
+                "lngE6": -4423429,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795275784861",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795274341702",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Cristo De Mena",
+                "description": "Campus Tecnológico de la Universidad Internacional de Andalucía",
+                "latE6": 36718912,
+                "lngE6": -4426936,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Grafiti Bailen-Miraflores",
+                "latE6": 36724947,
+                "lngE6": -4431922,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795274182957",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795272541035",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795270741033",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795268941555",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Pozo Gibralfaro",
+                "latE6": 36723883,
+                "lngE6": -4410928,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Cristo De Mena",
+                "description": "Campus Tecnológico de la Universidad Internacional de Andalucía",
+                "latE6": 36718912,
+                "lngE6": -4426936,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795268616362",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795267142142",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Archicofradia La Expiracion",
+                "description": "Iglesia de San Pedro y archicofradía de la espiración. El viernes santo tiene salida procesional.",
+                "latE6": 36715969,
+                "lngE6": -4428159,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Pozo Gibralfaro",
+                "latE6": 36723883,
+                "lngE6": -4410928,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795267087061",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795266006923",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Archicofradia La Expiracion",
+                "description": "Iglesia de San Pedro y archicofradía de la espiración. El viernes santo tiene salida procesional.",
+                "latE6": 36715969,
+                "lngE6": -4428159,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "delta_01",
+          "currentPortalInfo": {
+            "title": "Arte callejero",
+            "latE6": 36714570,
+            "lngE6": -4423561,
+            "team": "ENLIGHTENED"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1795275902222",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Cristo De Mena",
+                "description": "Campus Tecnológico de la Universidad Internacional de Andalucía",
+                "latE6": 36718912,
+                "lngE6": -4426936,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Arte callejero",
+                "latE6": 36714570,
+                "lngE6": -4423561,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795275026484",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795274100153",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795272301035",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795270500227",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795268701378",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Pozo Gibralfaro",
+                "latE6": 36723883,
+                "lngE6": -4410928,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Cristo De Mena",
+                "description": "Campus Tecnológico de la Universidad Internacional de Andalucía",
+                "latE6": 36718912,
+                "lngE6": -4426936,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795268616362",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795266901868",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Quiosco El Cenachero",
+                "latE6": 36720069,
+                "lngE6": -4413120,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Pozo Gibralfaro",
+                "latE6": 36723883,
+                "lngE6": -4410928,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795266745360",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795266003822",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Quiosco El Cenachero",
+                "latE6": 36720069,
+                "lngE6": -4413120,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "charlie",
+      "name": "Charlie",
+      "fragment": [
+        {
+          "id": "charlie_01",
+          "currentPortalInfo": {
+            "title": "Steinbrunnen",
+            "description": "Ingenieur-Etzel-Park",
+            "latE6": 47272088,
+            "lngE6": 11405495,
+            "team": "ENLIGHTENED"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1795275900117",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795274101041",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795272300055",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795270501040",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795268701675",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795266902913",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Adolf Pichler Platz",
+                "latE6": 47265988,
+                "lngE6": 11391788,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Steinbrunnen",
+                "description": "Ingenieur-Etzel-Park",
+                "latE6": 47272088,
+                "lngE6": 11405495,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795266847491",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795266001871",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Adolf Pichler Platz",
+                "latE6": 47265988,
+                "lngE6": 11391788,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "charlie_02",
+          "currentPortalInfo": {
+            "title": "Jesuskreuz an der Weiherburggasse",
+            "latE6": 47278305,
+            "lngE6": 11396156,
+            "team": "ENLIGHTENED"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1795276022098",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Trail Marker - Höhenstraße Serpentine",
+                "description": "Markiert die Laufstrecke \"Hungerburg-Climb\" bei der Überquerung der Höhenstraßen Serpentine.",
+                "latE6": 47281470,
+                "lngE6": 11390741,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Jesuskreuz an der Weiherburggasse",
+                "latE6": 47278305,
+                "lngE6": 11396156,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795275379776",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795274220161",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795272420159",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795270621031",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795268821121",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Marterl Heiliger Wendelin",
+                "description": "Am Karwendeltalweg Scharnitz",
+                "latE6": 47383773,
+                "lngE6": 11285042,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Trail Marker - Höhenstraße Serpentine",
+                "description": "Markiert die Laufstrecke \"Hungerburg-Climb\" bei der Überquerung der Höhenstraßen Serpentine.",
+                "latE6": 47281470,
+                "lngE6": 11390741,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795268263103",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795267022356",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Monolith",
+                "description": "Steinkunst am Inn, kleiner Hofgarten",
+                "latE6": 47271513,
+                "lngE6": 11394361,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Marterl Heiliger Wendelin",
+                "description": "Am Karwendeltalweg Scharnitz",
+                "latE6": 47383773,
+                "lngE6": 11285042,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795266756288",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795266002888",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Monolith",
+                "description": "Steinkunst am Inn, kleiner Hofgarten",
+                "latE6": 47271513,
+                "lngE6": 11394361,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "charlie_03",
+          "currentPortalInfo": {
+            "title": "HBB Station Alpenzoo",
+            "latE6": 47282336,
+            "lngE6": 11400552,
+            "team": "RESISTANCE"
+          },
+          "history": [
+            {
+              "moveTimeMs": "1795276141891",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795274341859",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795272540872",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795270742065",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Marterl Heiliger Wendelin",
+                "description": "Am Karwendeltalweg Scharnitz",
+                "latE6": 47383773,
+                "lngE6": 11285042,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "HBB Station Alpenzoo",
+                "latE6": 47282336,
+                "lngE6": 11400552,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795268990622",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795268942631",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Adolf Pichler Platz",
+                "latE6": 47265988,
+                "lngE6": 11391788,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Marterl Heiliger Wendelin",
+                "description": "Am Karwendeltalweg Scharnitz",
+                "latE6": 47383773,
+                "lngE6": 11285042,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795268755762",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795267141313",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Steinbrunnen",
+                "description": "Ingenieur-Etzel-Park",
+                "latE6": 47272088,
+                "lngE6": 11405495,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Adolf Pichler Platz",
+                "latE6": 47265988,
+                "lngE6": 11391788,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795266847491",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795266005903",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Steinbrunnen",
+                "description": "Ingenieur-Etzel-Park",
+                "latE6": 47272088,
+                "lngE6": 11405495,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yankee",
+      "name": "Yankee"
+    },
+    {
+      "id": "papa",
+      "name": "Papa"
+    },
+    {
+      "id": "tango",
+      "name": "Tango"
+    },
+    {
+      "id": "uniform",
+      "name": "Uniform"
+    },
+    {
+      "id": "abaddon2",
+      "name": "Abaddon 2"
+    },
+    {
+      "id": "foxtrot",
+      "name": "Foxtrot"
+    }
+  ]
+}
