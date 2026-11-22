@@ -824,7 +824,474 @@
     },
     {
       "id": "echo",
-      "name": "Echo"
+      "name": "Echo",
+      "fragment": [
+        {
+          "id": "echo_03",
+          "history": [
+            {
+              "moveTimeMs": "1795305600203",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Horacio",
+                "description": "Escultura en U de Concepción",
+                "latE6": -36828508,
+                "lngE6": -73038234,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1795290541603",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Sede Social Junta de Vecinos \"El Progreso\" Copiulemu",
+                "description": "Sede social rural del comite de junta de vecinos, utilizada para actos masivos y reuniones",
+                "latE6": -36894044,
+                "lngE6": -72806190,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Horacio",
+                "description": "Escultura en U de Concepción",
+                "latE6": -36828508,
+                "lngE6": -73038234,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1793140139389",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795288741293",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Luchadora Entre Gatos y Montañas",
+                "description": "Mural de arte callejero",
+                "latE6": -36826319,
+                "lngE6": -73040983,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Sede Social Junta de Vecinos \"El Progreso\" Copiulemu",
+                "description": "Sede social rural del comite de junta de vecinos, utilizada para actos masivos y reuniones",
+                "latE6": -36894044,
+                "lngE6": -72806190,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795288105421",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795286942300",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Maquinas de Ejercicio La Peña 2",
+                "description": "Maquinas de ejercicios, en donde vienen tanto personas adultas como niños a ejercitarse para tener una vida saludable.",
+                "latE6": -37000461,
+                "lngE6": -73149101,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Luchadora Entre Gatos y Montañas",
+                "description": "Mural de arte callejero",
+                "latE6": -36826319,
+                "lngE6": -73040983,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1790630990253",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795285141920",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Mercado del Gran Concepción",
+                "description": "Lugar gastronómico y de artesanías del Gran Concepción",
+                "latE6": -36831254,
+                "lngE6": -73058849,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Maquinas de Ejercicio La Peña 2",
+                "description": "Maquinas de ejercicios, en donde vienen tanto personas adultas como niños a ejercitarse para tener una vida saludable.",
+                "latE6": -37000461,
+                "lngE6": -73149101,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795285069741",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795283341724",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Plaza de la Independencia",
+                "description": "Principal Plaza de Armas de la comuna. Se firmó el Acta de la Independencia acá en una oportunidad.",
+                "latE6": -36826755,
+                "lngE6": -73050660,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Mercado del Gran Concepción",
+                "description": "Lugar gastronómico y de artesanías del Gran Concepción",
+                "latE6": -36831254,
+                "lngE6": -73058849,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795282829601",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795281541295",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Fuente De Ceres",
+                "description": "Plaza de Armas - Concepción",
+                "latE6": -36826971,
+                "lngE6": -73050223,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Plaza de la Independencia",
+                "description": "Principal Plaza de Armas de la comuna. Se firmó el Acta de la Independencia acá en una oportunidad.",
+                "latE6": -36826755,
+                "lngE6": -73050660,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795281003077",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795280402886",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Fuente De Ceres",
+                "description": "Plaza de Armas - Concepción",
+                "latE6": -36826971,
+                "lngE6": -73050223,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "echo_02",
+          "history": [
+            {
+              "moveTimeMs": "1795305600135",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Bravo",
+                "description": "Graffiti dibujo caricaturesco de un animal bravo que te vigila por donde andes.",
+                "latE6": -36883052,
+                "lngE6": -73140580,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1795290421648",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Zona de Juegos Beer Garden Pub",
+                "description": "Área recreativa de juegos para los más pequeños, ubicados al interior del Beer Garden Pub de San Pedro de la Paz.",
+                "latE6": -36883405,
+                "lngE6": -73141243,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Bravo",
+                "description": "Graffiti dibujo caricaturesco de un animal bravo que te vigila por donde andes.",
+                "latE6": -36883052,
+                "lngE6": -73140580,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1782256332560",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795288621353",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Estación Biotren Lomas Coloradas",
+                "description": "Una de las estaciones que forma parte del circuito biotren que interconecta la comuna de San Pedro con Concepción Talcahuano y Coronel",
+                "latE6": -36882974,
+                "lngE6": -73139692,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Zona de Juegos Beer Garden Pub",
+                "description": "Área recreativa de juegos para los más pequeños, ubicados al interior del Beer Garden Pub de San Pedro de la Paz.",
+                "latE6": -36883405,
+                "lngE6": -73141243,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1782256223141",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795286821970",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Mural Honguito Rip",
+                "description": "Graffiti de un hongo minimalista y tag colorido, realizado por el artista RIP.",
+                "latE6": -36883298,
+                "lngE6": -73138837,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Estación Biotren Lomas Coloradas",
+                "description": "Una de las estaciones que forma parte del circuito biotren que interconecta la comuna de San Pedro con Concepción Talcahuano y Coronel",
+                "latE6": -36882974,
+                "lngE6": -73139692,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795213735835",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795285023479",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Mural La Caserita.",
+                "description": "Mural de local de venta frutas y verduras.",
+                "latE6": -36883695,
+                "lngE6": -73138007,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Mural Honguito Rip",
+                "description": "Graffiti de un hongo minimalista y tag colorido, realizado por el artista RIP.",
+                "latE6": -36883298,
+                "lngE6": -73138837,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795213737049",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795283221445",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Parque Bicentenario",
+                "description": "Parque construido después del Terremoto del 27F, un lugar amplio para encuentros deportivos, eventos musicales al aire libre y cultura por doquier, estos aprobados por la Municipalidad de Concepción.",
+                "latE6": -36831506,
+                "lngE6": -73062949,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Mural La Caserita.",
+                "description": "Mural de local de venta frutas y verduras.",
+                "latE6": -36883695,
+                "lngE6": -73138007,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795283173718",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795281420187",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795280400927",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Parque Bicentenario",
+                "description": "Parque construido después del Terremoto del 27F, un lugar amplio para encuentros deportivos, eventos musicales al aire libre y cultura por doquier, estos aprobados por la Municipalidad de Concepción.",
+                "latE6": -36831506,
+                "lngE6": -73062949,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "echo_01",
+          "history": [
+            {
+              "moveTimeMs": "1795305600079",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Misión Evangélica Pentecostes",
+                "description": "Iglesia pública",
+                "latE6": -37001239,
+                "lngE6": -73156697,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1795290300738",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795288500823",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795286701834",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Rotary International",
+                "description": "Bienvenido a coronel",
+                "latE6": -37001909,
+                "lngE6": -73160944,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Misión Evangélica Pentecostes",
+                "description": "Iglesia pública",
+                "latE6": -37001239,
+                "lngE6": -73156697,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795286338061",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795284902233",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Maquinas de Ejercicio La Peña 2",
+                "description": "Maquinas de ejercicios, en donde vienen tanto personas adultas como niños a ejercitarse para tener una vida saludable.",
+                "latE6": -37000461,
+                "lngE6": -73149101,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Rotary International",
+                "description": "Bienvenido a coronel",
+                "latE6": -37001909,
+                "lngE6": -73160944,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795082263544",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795283101627",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Este Memorial es un homenaje para ellos",
+                "description": "en el marco de la operación alfa carbón el 23 y 24 de agosto de 1984 la CNI asesinó a siete militantes del 1000 en Concepción los Ángeles y Valdivia",
+                "latE6": -36851202,
+                "lngE6": -73073431,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Maquinas de Ejercicio La Peña 2",
+                "description": "Maquinas de ejercicios, en donde vienen tanto personas adultas como niños a ejercitarse para tener una vida saludable.",
+                "latE6": -37000461,
+                "lngE6": -73149101,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795283044502",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795281301802",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Monumento Al Valor Y Espíritu De Bomberos",
+                "description": "La ciudad de Concepción en reconocimiento al valor y espíritu solidario de bomberos. Estatua conmemorativa.",
+                "latE6": -36833143,
+                "lngE6": -73048565,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationPortalInfo": {
+                "title": "Este Memorial es un homenaje para ellos",
+                "description": "en el marco de la operación alfa carbón el 23 y 24 de agosto de 1984 la CNI asesinó a siete militantes del 1000 en Concepción los Ángeles y Valdivia",
+                "latE6": -36851202,
+                "lngE6": -73073431,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreationTimeMs": "1795280725102",
+              "linkCreatorTeam": "ENLIGHTENED",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795280401852",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Monumento Al Valor Y Espíritu De Bomberos",
+                "description": "La ciudad de Concepción en reconocimiento al valor y espíritu solidario de bomberos. Estatua conmemorativa.",
+                "latE6": -36833143,
+                "lngE6": -73048565,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "sierra",
@@ -884,13 +1351,20 @@
       "fragment": [
         {
           "id": "delta_02",
-          "currentPortalInfo": {
-            "title": "Antigua Casa De Guardia",
-            "latE6": 36717709,
-            "lngE6": -4423429,
-            "team": "ENLIGHTENED"
-          },
           "history": [
+            {
+              "moveTimeMs": "1795291201091",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Antigua Casa De Guardia",
+                "latE6": 36717709,
+                "lngE6": -4423429,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
             {
               "moveTimeMs": "1795276021324",
               "reason": "link",
@@ -1008,13 +1482,20 @@
         },
         {
           "id": "delta_03",
-          "currentPortalInfo": {
-            "title": "Antigua Casa De Guardia",
-            "latE6": 36717709,
-            "lngE6": -4423429,
-            "team": "ENLIGHTENED"
-          },
           "history": [
+            {
+              "moveTimeMs": "1795291201157",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Antigua Casa De Guardia",
+                "latE6": 36717709,
+                "lngE6": -4423429,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
             {
               "moveTimeMs": "1795276141662",
               "reason": "link",
@@ -1134,13 +1615,20 @@
         },
         {
           "id": "delta_01",
-          "currentPortalInfo": {
-            "title": "Arte callejero",
-            "latE6": 36714570,
-            "lngE6": -4423561,
-            "team": "ENLIGHTENED"
-          },
           "history": [
+            {
+              "moveTimeMs": "1795291201016",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Arte callejero",
+                "latE6": 36714570,
+                "lngE6": -4423561,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
             {
               "moveTimeMs": "1795275902222",
               "reason": "link",
@@ -1249,96 +1737,21 @@
       "name": "Charlie",
       "fragment": [
         {
-          "id": "charlie_01",
-          "currentPortalInfo": {
-            "title": "Steinbrunnen",
-            "description": "Ingenieur-Etzel-Park",
-            "latE6": 47272088,
-            "lngE6": 11405495,
-            "team": "ENLIGHTENED"
-          },
+          "id": "charlie_02",
           "history": [
             {
-              "moveTimeMs": "1795275900117",
-              "reason": "no move",
-              "originCapturerTeam": "NEUTRAL",
-              "destinationCapturerTeam": "NEUTRAL",
-              "linkCreatorTeam": "NEUTRAL"
-            },
-            {
-              "moveTimeMs": "1795274101041",
-              "reason": "no move",
-              "originCapturerTeam": "NEUTRAL",
-              "destinationCapturerTeam": "NEUTRAL",
-              "linkCreatorTeam": "NEUTRAL"
-            },
-            {
-              "moveTimeMs": "1795272300055",
-              "reason": "no move",
-              "originCapturerTeam": "NEUTRAL",
-              "destinationCapturerTeam": "NEUTRAL",
-              "linkCreatorTeam": "NEUTRAL"
-            },
-            {
-              "moveTimeMs": "1795270501040",
-              "reason": "no move",
-              "originCapturerTeam": "NEUTRAL",
-              "destinationCapturerTeam": "NEUTRAL",
-              "linkCreatorTeam": "NEUTRAL"
-            },
-            {
-              "moveTimeMs": "1795268701675",
-              "reason": "no move",
-              "originCapturerTeam": "NEUTRAL",
-              "destinationCapturerTeam": "NEUTRAL",
-              "linkCreatorTeam": "NEUTRAL"
-            },
-            {
-              "moveTimeMs": "1795266902913",
-              "reason": "link",
+              "moveTimeMs": "1795291200193",
+              "reason": "despawn",
               "originPortalInfo": {
-                "title": "Adolf Pichler Platz",
-                "latE6": 47265988,
-                "lngE6": 11391788,
-                "team": "RESISTANCE"
-              },
-              "originCapturerTeam": "RESISTANCE",
-              "destinationPortalInfo": {
-                "title": "Steinbrunnen",
-                "description": "Ingenieur-Etzel-Park",
-                "latE6": 47272088,
-                "lngE6": 11405495,
-                "team": "RESISTANCE"
-              },
-              "destinationCapturerTeam": "RESISTANCE",
-              "linkCreationTimeMs": "1795266847491",
-              "linkCreatorTeam": "RESISTANCE",
-              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
-            },
-            {
-              "moveTimeMs": "1795266001871",
-              "reason": "spawn",
-              "originCapturerTeam": "NEUTRAL",
-              "destinationPortalInfo": {
-                "title": "Adolf Pichler Platz",
-                "latE6": 47265988,
-                "lngE6": 11391788,
+                "title": "Jesuskreuz an der Weiherburggasse",
+                "latE6": 47278305,
+                "lngE6": 11396156,
                 "team": "ENLIGHTENED"
               },
-              "destinationCapturerTeam": "ENLIGHTENED",
-              "linkCreatorTeam": "NEUTRAL"
-            }
-          ]
-        },
-        {
-          "id": "charlie_02",
-          "currentPortalInfo": {
-            "title": "Jesuskreuz an der Weiherburggasse",
-            "latE6": 47278305,
-            "lngE6": 11396156,
-            "team": "ENLIGHTENED"
-          },
-          "history": [
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
             {
               "moveTimeMs": "1795276022098",
               "reason": "link",
@@ -1445,14 +1858,110 @@
           ]
         },
         {
-          "id": "charlie_03",
-          "currentPortalInfo": {
-            "title": "HBB Station Alpenzoo",
-            "latE6": 47282336,
-            "lngE6": 11400552,
-            "team": "RESISTANCE"
-          },
+          "id": "charlie_01",
           "history": [
+            {
+              "moveTimeMs": "1795291200129",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Steinbrunnen",
+                "description": "Ingenieur-Etzel-Park",
+                "latE6": 47272088,
+                "lngE6": 11405495,
+                "team": "ENLIGHTENED"
+              },
+              "originCapturerTeam": "ENLIGHTENED",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "ENLIGHTENED"
+            },
+            {
+              "moveTimeMs": "1795275900117",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795274101041",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795272300055",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795270501040",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795268701675",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795266902913",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Adolf Pichler Platz",
+                "latE6": 47265988,
+                "lngE6": 11391788,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Steinbrunnen",
+                "description": "Ingenieur-Etzel-Park",
+                "latE6": 47272088,
+                "lngE6": 11405495,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795266847491",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795266001871",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Adolf Pichler Platz",
+                "latE6": 47265988,
+                "lngE6": 11391788,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "charlie_03",
+          "history": [
+            {
+              "moveTimeMs": "1795291200269",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "HBB Station Alpenzoo",
+                "latE6": 47282336,
+                "lngE6": 11400552,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
             {
               "moveTimeMs": "1795276141891",
               "reason": "no move",
@@ -1580,7 +2089,412 @@
     },
     {
       "id": "foxtrot",
-      "name": "Foxtrot"
+      "name": "Foxtrot",
+      "fragment": [
+        {
+          "id": "foxtrot_01",
+          "history": [
+            {
+              "moveTimeMs": "1795320000120",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Cape Roger Curtis Lighthouse",
+                "description": "Lighthouse at SW tip of Bowen Island",
+                "latE6": 49339977,
+                "lngE6": -123432866,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1795304701502",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Lovers Trail",
+                "latE6": 49301006,
+                "lngE6": -123148677,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Cape Roger Curtis Lighthouse",
+                "description": "Lighthouse at SW tip of Bowen Island",
+                "latE6": 49339977,
+                "lngE6": -123432866,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795303341682",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795302901674",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Japanese Canadian War Memorial",
+                "latE6": 49301010,
+                "lngE6": -123132090,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Lovers Trail",
+                "latE6": 49301006,
+                "lngE6": -123148677,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795299102510",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795301101560",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Green Necklace Trail Marker - Vic Park West",
+                "description": "Trail Marker on the City of North Vancouver's \"Green Necklace\".",
+                "latE6": 49317846,
+                "lngE6": -123075664,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Japanese Canadian War Memorial",
+                "latE6": 49301010,
+                "lngE6": -123132090,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795300400732",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795299301639",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Loving Memory Bench",
+                "latE6": 49316240,
+                "lngE6": -123071922,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Green Necklace Trail Marker - Vic Park West",
+                "description": "Trail Marker on the City of North Vancouver's \"Green Necklace\".",
+                "latE6": 49317846,
+                "lngE6": -123075664,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795299183280",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795297500157",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795295700034",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795294802847",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Loving Memory Bench",
+                "latE6": 49316240,
+                "lngE6": -123071922,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "foxtrot_03",
+          "history": [
+            {
+              "moveTimeMs": "1795320000242",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Black and white line mural",
+                "description": "Line mural",
+                "latE6": 49306226,
+                "lngE6": -123063754,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1795304941524",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Lights, Camera, Action",
+                "description": "A permanent bench donated by the Film industry. A place to rest will walk in the boulevard",
+                "latE6": 49314715,
+                "lngE6": -123057049,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Black and white line mural",
+                "description": "Line mural",
+                "latE6": 49306226,
+                "lngE6": -123063754,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795304839692",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795303140068",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795301340107",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795299540107",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795297741486",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Don and Mary Blues Plaque",
+                "latE6": 49325686,
+                "lngE6": -123057198,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Lights, Camera, Action",
+                "description": "A permanent bench donated by the Film industry. A place to rest will walk in the boulevard",
+                "latE6": 49314715,
+                "lngE6": -123057049,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795297571455",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795295941715",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "St Andrews Park",
+                "latE6": 49317773,
+                "lngE6": -123068713,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Don and Mary Blues Plaque",
+                "latE6": 49325686,
+                "lngE6": -123057198,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795295857560",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795294801746",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "St Andrews Park",
+                "latE6": 49317773,
+                "lngE6": -123068713,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "id": "foxtrot_02",
+          "history": [
+            {
+              "moveTimeMs": "1795320000184",
+              "reason": "despawn",
+              "originPortalInfo": {
+                "title": "Mt Gardner Dock",
+                "description": "A warf/dock for launching boats, open to the public, on the tourist spot of Bowen Island, BC",
+                "latE6": 49401782,
+                "lngE6": -123380052,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "RESISTANCE"
+            },
+            {
+              "moveTimeMs": "1795304821804",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Cape Roger Curtis Lighthouse",
+                "description": "Lighthouse at SW tip of Bowen Island",
+                "latE6": 49339977,
+                "lngE6": -123432866,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Mt Gardner Dock",
+                "description": "A warf/dock for launching boats, open to the public, on the tourist spot of Bowen Island, BC",
+                "latE6": 49401782,
+                "lngE6": -123380052,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1792887231219",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795303022919",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Vancouver’s Green Treasure",
+                "description": "Information board describing the terrain of Stanley Park",
+                "latE6": 49313003,
+                "lngE6": -123142883,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Cape Roger Curtis Lighthouse",
+                "description": "Lighthouse at SW tip of Bowen Island",
+                "latE6": 49339977,
+                "lngE6": -123432866,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795302958230",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795301221887",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Lovers Trail",
+                "latE6": 49301006,
+                "lngE6": -123148677,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Vancouver’s Green Treasure",
+                "description": "Information board describing the terrain of Stanley Park",
+                "latE6": 49313003,
+                "lngE6": -123142883,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795300703464",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795299421633",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Japanese Canadian War Memorial",
+                "latE6": 49301010,
+                "lngE6": -123132090,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Lovers Trail",
+                "latE6": 49301006,
+                "lngE6": -123148677,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795299102510",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "ORIGIN_TO_DESTINATION"
+            },
+            {
+              "moveTimeMs": "1795297621509",
+              "reason": "link",
+              "originPortalInfo": {
+                "title": "Green Necklace Trail Marker - Vic Park West",
+                "description": "Trail Marker on the City of North Vancouver's \"Green Necklace\".",
+                "latE6": 49317846,
+                "lngE6": -123075664,
+                "team": "RESISTANCE"
+              },
+              "originCapturerTeam": "RESISTANCE",
+              "destinationPortalInfo": {
+                "title": "Japanese Canadian War Memorial",
+                "latE6": 49301010,
+                "lngE6": -123132090,
+                "team": "RESISTANCE"
+              },
+              "destinationCapturerTeam": "RESISTANCE",
+              "linkCreationTimeMs": "1795297447533",
+              "linkCreatorTeam": "RESISTANCE",
+              "linkOriginatedFromOriginPortal": "DESTINATION_TO_ORIGIN"
+            },
+            {
+              "moveTimeMs": "1795295820195",
+              "reason": "no move",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationCapturerTeam": "NEUTRAL",
+              "linkCreatorTeam": "NEUTRAL"
+            },
+            {
+              "moveTimeMs": "1795294800755",
+              "reason": "spawn",
+              "originCapturerTeam": "NEUTRAL",
+              "destinationPortalInfo": {
+                "title": "Green Necklace Trail Marker - Vic Park West",
+                "description": "Trail Marker on the City of North Vancouver's \"Green Necklace\".",
+                "latE6": 49317846,
+                "lngE6": -123075664,
+                "team": "ENLIGHTENED"
+              },
+              "destinationCapturerTeam": "ENLIGHTENED",
+              "linkCreatorTeam": "NEUTRAL"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
