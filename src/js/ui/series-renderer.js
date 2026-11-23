@@ -32,7 +32,7 @@ function getOutcome(siteData) {
 
 
 function isEventActive(site) {
-    const durationMins = getConfigRegistry().getSiteDurationMinutes(site.id);
+    const durationMins = getConfigRegistry().getSiteActiveDurationMinutes(site.id);
 
     const startTime = zdtFromString(site.date, getBasic);
     const endTime = zdtAdd(startTime, durationFromFields({ minutes: durationMins }));
@@ -106,7 +106,7 @@ async function renderSeriesLayer(seriesId) {
             : null;
         const timeRemainingText = remainingTime ? ` (${remainingTime})` : '';
 
-        const eventDuration = getConfigRegistry().getSiteDurationMinutes(site.id);
+        const eventDuration = getConfigRegistry().getSiteActiveDurationMinutes(site.id);
         const endTime = zdtAdd(startTime, durationFromFields({ minutes: eventDuration }));
         const completionGraceEnd = zdtAdd(endTime, durationFromFields({ days: 1 }));
         const isComplete = zdtCompare(now, endTime) > 0;

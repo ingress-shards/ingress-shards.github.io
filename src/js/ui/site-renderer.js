@@ -523,7 +523,7 @@ export async function getDetailsPanelContent(seriesId, siteId, waveId) {
 
     const siteEventType = getConfigRegistry().blueprints.events[siteGeocode.eventType];
     const startTime = zdtFromString(siteGeocode.date, getBasic);
-    const durationMins = getConfigRegistry().getSiteDurationMinutes(siteId);
+    const durationMins = getConfigRegistry().getSiteActiveDurationMinutes(siteId);
     const endTime = zdtAdd(startTime, durationFromFields({ minutes: durationMins }));
     const now = zonedDateTimeISO(siteGeocode.timezone);
     let countdownSuffix = '';

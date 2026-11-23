@@ -37,7 +37,7 @@ self.onmessage = async function (event) {
                     start: startMs,
                     preEventCutoff: startMs - 7200000,
                     end: startMs + 14400000,
-                    durationMinutes: 240,
+                    activeDurationMinutes: 240,
                     shards: [{
                         waveNumber: 1,
                         start: startMs,
