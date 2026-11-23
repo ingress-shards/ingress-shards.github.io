@@ -82,7 +82,7 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 4. **Phase 4 (Shared Utility & Constants Pruning):**
    - Replace `src/js/shared/math-helpers.js` usages with Core `Geo`.
    - Replace hardcoded palettes and constants in `constants.js` with canonical exports from `@ingress-shards/ingress-events-core` and prune `constants.js`.
-   - Replace `event-helpers.js` with direct reads of `siteConfig.timeline.durationMinutes` via `ConfigRegistry`.
+   - Replace `event-helpers.js` with direct reads of `siteConfig.timeline.activeDurationMinutes` via `ConfigRegistry`.
    - (`src/js/shared/date-helpers.js` migration is deferred to Phase 5a alongside UI formatting.)
 5. **Phase 4a (Glue & Infrastructure Review & TypeScript Migration):**
    - Add `@types/leaflet` and ambient declarations (`src/types/ambient.d.ts`) for Webpack globals, CSS/asset imports, and untyped Leaflet plugins.
@@ -97,6 +97,7 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
    - **Phase 5f (Legacy Pruning & Zero-JS Cutover)**: Drop `adaptSiteStateToLegacy` from `SeasonDataStore.ts`, delete `src/js/`, set `allowJs: false`, and verify clean zero-JS build.
 7. **Phase 6 (Semantic Parity Verification & Testing):**
    - Implement `scripts/verify-v1-v2-parity.ts` to verify the 5 Domain Invariants across all historical seasons (`2024-erasedmem` through `2026-apollo`) and perform visual checks on Anomaly, Skirmish, and StandBy archetype sites.
+   - Review `iitc-plugin-site-observer` UI components (`SiteTableComponent`, `ToolsMenuComponent`, `ObserverView`, and UI hosts/controls) to identify structural and code-quality improvements aligned with the finalized Phase 5 display and templating patterns.
 8. **Phase 7 (Release & Cutover to V2):**
    - Entire codebase is 100% TypeScript with complete compile-time type safety; run final `npm run validate`, merge `feat/v2-core-integration` to `main`, and cut `v2.0.0`.
 
@@ -137,7 +138,7 @@ Historically, both the IITC Plugin and the Map independently formatted site/port
 | Area | V1 Map Implementation | V2 Core Replacement | Notes |
 | :--- | :--- | :--- | :--- |
 | **Geocoding & Location Cache** | `scripts/geocode.py`, `requirements.txt`, `cache.sqlite` | `@ingress-shards/ingress-events-core/conf/season_geocode.json` | **Completely eliminated in Map.** Geocoding is maintained upstream in Core with CI sqlite cache. Map drops Python toolchain and cache. |
-| **Event Timeline & Durations** | Custom minute calculations in `event-helpers.js` | `EventTimeline.durationMinutes` & `getSiteDurationMinutes()` | Precalculated in Core's `ConfigRegistry`. Direct property read. |
+| **Event Timeline & Durations** | Custom minute calculations in `event-helpers.js` | `SiteTimeline.activeDurationMinutes` & `getSiteActiveDurationMinutes()` | Precalculated in Core's `ConfigRegistry`. Direct property read. |
 | **Event Configuration** | `conf/event_blueprints.json`, `conf/series_metadata.json` | `ConfigRegistry`, `@ingress-shards/ingress-events-core/conf/*` | Centralized singleton in `src/config/EventConfig.ts`. Direct typed access. |
 | **Data Store & Cache** | `src/js/data/data-store.js` (series-centric) | `src/data/SeasonDataStore.ts` (season-centric) | Typed runtime cache storing `SeasonConfig` and lazily fetching `data/{seasonId}.json`. No legacy aliases. |
 | **Data Processing** | `src/js/data/shard-jumps/data-processor.js` | `DataIngestionPipeline`, `SiteStateMerger`, `DefaultPortalMergeStrategy` | Tested portal merging, deduplication, and telemetry adapters. |
@@ -163,7 +164,7 @@ Historically, both the IITC Plugin and the Map independently formatted site/port
 
 ### Phase 2: Configuration, Toolchain & TypeScript Setup
 - [x] Add geocode database cache step to `ingress-events-core/.github/workflows/release.yml`
-- [x] Add `durationMinutes` to `EventTimeline` in Core (`SeasonConfig.ts`) and expose `getSiteDurationMinutes` on `ConfigRegistry`
+- [x] Add `activeDurationMinutes` to `SiteTimeline` in Core (`SiteConfig.ts`) and expose `getSiteActiveDurationMinutes` on `ConfigRegistry`
 - [x] Stash Denver target portal fix (`data/2026-apollo/target-portals_2026-apollo-denver-co_2026.09.20.00.26.26.json`) for separate `main` patch
 - [x] Install `typescript` (^5.9.3), `ts-loader`, `@types/node` and configure `tsconfig.json` with `allowJs: true`
 - [x] Update `webpack.common.js` to resolve `.ts` and compile via `ts-loader` with extension aliases
@@ -177,7 +178,7 @@ Historically, both the IITC Plugin and the Map independently formatted site/port
   - Provide unified cache-first `getSiteData(seasonId, siteId)` (retrieving telemetry if not cached)
   - Completely eliminate backward-compatibility aliases (`loadSeriesData`, etc.)
   - Replace `shardComponents` with `components` (later aligned to `events` / `SeasonEvent` in Core)
-- [x] Delete `src/js/shared/event-helpers.js` and call `getConfigRegistry().getSiteDurationMinutes(...)` directly
+- [x] Delete `src/js/shared/event-helpers.js` and call `getConfigRegistry().getSiteActiveDurationMinutes(...)` directly
 - [x] Update UI callers ([`ui-controller.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/ui/ui-controller.js), [`series-renderer.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/ui/series-renderer.js), [`site-renderer.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/ui/site-renderer.js), [`custom-file-handler.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/ui/custom-file-handler.js), [`index.js`](file:///c:/Users/Lewis/git/yeggs-github/ingress-shards.github.io/src/js/index.js)) to call `SeasonDataStore` season methods directly
 - [x] Update loaders and legacy scripts to use `events` (`SeasonEvent`) instead of `shardComponents`
 - [x] Run full `npm run validate` pass
@@ -202,7 +203,7 @@ Historically, both the IITC Plugin and the Map independently formatted site/port
 ### Phase 4: Shared Utility & Constants Pruning
 - [x] Replace `src/js/shared/math-helpers.js` usages with Core `Geo`
 - [x] Replace hardcoded palettes in `constants.js` with canonical exports from `@ingress-shards/ingress-events-core`
-- [x] Replace `event-helpers.js` with direct reads of `siteConfig.timeline.durationMinutes`
+- [x] Replace `event-helpers.js` with direct reads of `siteConfig.timeline.activeDurationMinutes`
 - [x] Deprecate/prune `constants.js` once UI renderers reference Core directly
 
 ### Phase 4a: Glue & Infrastructure Review & TypeScript Migration
@@ -263,6 +264,10 @@ Historically, both the IITC Plugin and the Map independently formatted site/port
 - [ ] Implement `scripts/verify-v1-v2-parity.ts` checking the 5 Domain Invariants
 - [ ] Run parity checks across all historical seasons (`2024-erasedmem` through `2026-apollo`)
 - [ ] Visual regression testing on Anomaly, Skirmish, and StandBy archetype sites
+- [ ] **Plugin UI Component Review (`iitc-plugin-site-observer`)**: Review `SiteTableComponent` and sibling UI components (`ToolsMenuComponent`, `ObserverView`, and UI hosts/controls) for refactoring and code-quality improvements:
+  - Decompose oversized components (e.g., `SiteTableComponent` >300 lines) and separate phase/status view-model logic from HTML template rendering and jQuery DOM wiring
+  - Audit DOM state attributes (e.g., `data-actual-shards`, `data-has-ornaments`) and event listener lifecycles (e.g., cleaning up `window` listeners on `ObserverView` unmount)
+  - Align rendering, state handling, and shared Core display usage with patterns established in Phase 5
 
 ### Phase 7: Release & Cutover to V2
 - [ ] Final `npm run validate` pass
