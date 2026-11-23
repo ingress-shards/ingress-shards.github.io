@@ -40,15 +40,15 @@
         "@semantic-release/exec": "^7.1.0",
         "conventional-changelog-conventionalcommits": "~9.3.1",
         "css-loader": "^7.1.5",
-        "eslint": "^10.14.0",
+        "eslint": "^10.15.0",
         "globals": "^16.5.0",
         "html-webpack-plugin": "^5.6.8",
         "mini-css-extract-plugin": "^2.10.2",
         "semantic-release": "^25.0.2",
         "semantic-release-export-data": "^1.2.0",
         "style-loader": "^4.0.0",
-        "webpack": "^5.112.2",
-        "webpack-bundle-analyzer": "^5.4.2",
+        "webpack": "^5.113.0",
+        "webpack-bundle-analyzer": "^5.4.3",
         "webpack-cli": "^7.3.1",
         "webpack-dev-server": "^6.1.0",
         "webpack-merge": "^6.0.1"
@@ -62,7 +62,7 @@
         "leaflet-providers": "^3.0.0",
         "leaflet-relief": "^1.7.0",
         "leaflet.motion": "github:neon-ninja/leaflet.motion",
-        "maplibre-gl": "^6.16.0",
+        "maplibre-gl": "^6.19.0",
         "temporal-polyfill": "^1.0.8"
     }
 }
