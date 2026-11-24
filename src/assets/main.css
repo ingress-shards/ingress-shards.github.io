@@ -248,15 +248,8 @@ table.ingress-event-scores tfoot {
     font-weight: bold;
 }
 
-/* Marker Radar Sweep Animation */
-@keyframes marker-radar-sweep {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+.tooltip-site .fi {
+    margin-right: 0.35em;
 }
 
 .ornament-hexagon-marker {
@@ -273,40 +266,6 @@ table.ingress-event-scores tfoot {
     width: 25px;
     height: 41px;
     display: block;
-}
-
-.marker-radar-beam {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 60px;
-    height: 60px;
-    background: conic-gradient(from 0deg,
-            rgba(255, 102, 0, 0.7) 0deg,
-            rgba(255, 102, 0, 0.3) 15deg,
-            transparent 25deg);
-    border-radius: 50%;
-    z-index: -1;
-    pointer-events: none;
-    transform-origin: center;
-    animation: marker-radar-sweep var(--radar-speed, 2s) infinite linear;
-}
-
-/* SVG Pin Styling */
-.marker-svg-pin {
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
-}
-
-.marker-pin-body {
-    fill: var(--pin-color, #777);
-    stroke: rgba(0, 0, 0, 0.2);
-    stroke-width: 1;
-    transition: fill 0.3s ease;
-}
-
-.marker-pin-inner {
-    fill: var(--pin-inner-color, #fff);
-    transition: fill 0.3s ease;
 }
 
 /* Specific Phase States */
@@ -327,22 +286,18 @@ table.ingress-event-scores tfoot {
 /* Outcome Branding (Formerly Completed States) */
 .outcome-res {
     --pin-color: var(--color-res);
-    --pin-inner-color: #fff;
 }
 
 .outcome-enl {
     --pin-color: var(--color-enl);
-    --pin-inner-color: #fff;
 }
 
 .outcome-tie {
     --pin-color: var(--color-tie);
-    --pin-inner-color: #fff;
 }
 
 .outcome-none {
     --pin-color: var(--color-neu);
-    --pin-inner-color: #fff;
 }
 
 /* Keep top-left controls stacked predictably with the elevation legend at the bottom */

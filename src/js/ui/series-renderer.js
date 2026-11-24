@@ -3,14 +3,12 @@ import { addEventInteraction } from "../../ui/touchSupport.js";
 import { navigate } from "../../routing/Router.js";
 import { getScoresText } from "./site-renderer.js";
 import { getSeasonMetadata, getSeasonGeocode, getSiteData, getAllSeasonIds, CUSTOM_SEASON_ID } from "../../data/SeasonDataStore.js";
-import { formatDate, formatDuration } from "@ingress-shards/ingress-events-core";
-import { getFlagTooltipHtml } from "./ui-formatters.js";
+import { formatDate, formatDuration, renderFlagIcon, renderSiteMarker } from "@ingress-shards/ingress-events-core";
 import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } from "temporal-polyfill/fns/ZonedDateTime";
 import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
 import { fromFields as durationFromFields } from "temporal-polyfill/fns/Duration";
 import { getBasic } from "temporal-polyfill/fns/Calendar";
 import { getConfigRegistry } from "../../config/EventConfig.js";
-import { TACTICAL_MARKER_SVG } from "./marker-template.js";
 
 const seriesLayerCache = new Map();
 
@@ -91,7 +89,7 @@ async function renderSeriesLayer(seriesId) {
                 tooltipAnchor: [13, -28],
                 html: `
                     ${phaseClass.includes('phase-active') || phaseClass.includes('phase-discovery') ? '<div class="marker-radar-beam"></div>' : ''}
-                    ${TACTICAL_MARKER_SVG}
+                    ${renderSiteMarker()}
                 `
             })
         };
@@ -100,7 +98,7 @@ async function renderSeriesLayer(seriesId) {
         const siteMarker = L.marker(latLng, markerOptions);
         siteMarker._siteId = site.id;
 
-        const flagHtml = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
+        const flagHtml = renderFlagIcon(site.country_code);
         const remainingTime = zdtCompare(now, startTime) < 0
             ? formatDuration(now.epochMilliseconds, startTime.epochMilliseconds, 'long')
             : null;
@@ -234,7 +232,7 @@ export async function getDetailsPanelContent(seriesId) {
             content += `<div class="group-list collapsed-group">`;
 
             for (const site of sitesOfEventType) {
-                const flag = site.country_code ? getFlagTooltipHtml(site.country_code.toLowerCase()) : '';
+                const flag = renderFlagIcon(site.country_code);
                 const siteUrl = `#/${metadata.id}/${site.id.replace(metadata.id + "-", "")}`;
 
                 const siteData = await getSiteData(metadata.id, site.id);

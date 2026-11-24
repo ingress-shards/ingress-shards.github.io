@@ -6,11 +6,20 @@ import { isTouchDevice } from "../touchSupport.js";
 import type { BaseLayerName, MapState } from "../../state/MapState.js";
 import { ElevationOverlay } from "./ElevationOverlay.js";
 
-const CUSTOM_PANES: ReadonlyArray<{ name: string; zIndex: string }> = [
-    { name: "ornamentPane", zIndex: "350" },
-    { name: "ornamentFrontPane", zIndex: "625" },
-    { name: "targetPane", zIndex: "630" },
-    { name: "shardPane", zIndex: "640" },
+export const MAP_PANES = {
+    ORNAMENT: "ornamentPane",
+    ORNAMENT_FRONT: "ornamentFrontPane",
+    TARGET: "targetPane",
+    SHARD: "shardPane",
+} as const;
+
+export type MapPaneName = (typeof MAP_PANES)[keyof typeof MAP_PANES];
+
+const CUSTOM_PANES: ReadonlyArray<{ name: MapPaneName; zIndex: string }> = [
+    { name: MAP_PANES.ORNAMENT, zIndex: "350" },
+    { name: MAP_PANES.ORNAMENT_FRONT, zIndex: "625" },
+    { name: MAP_PANES.TARGET, zIndex: "630" },
+    { name: MAP_PANES.SHARD, zIndex: "640" },
 ];
 
 function cartoLayer(styleName: string): L.Layer {

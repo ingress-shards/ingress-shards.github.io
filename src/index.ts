@@ -3,7 +3,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { setWorkerUrl } from "maplibre-gl";
 import "github-fork-ribbon-css/gh-fork-ribbon.css";
 import "../gen/flag-icons.css";
-import "@ingress-shards/ingress-events-core/visuals/tokens.css";
+import "@ingress-shards/ingress-events-core/visuals/visuals.css";
 import "./assets/main.css";
 
 import eventBlueprints from "@ingress-shards/ingress-events-core/conf/event_blueprints.json";

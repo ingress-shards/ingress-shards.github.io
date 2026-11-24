@@ -1,10 +1,8 @@
 import * as L from "leaflet";
-import { ALIGNMENT_COLORS, UI_COLORS, formatDate, formatTime, formatDuration } from "@ingress-shards/ingress-events-core";
+import { ALIGNMENT_COLORS, UI_COLORS, formatDate, formatTime, formatDuration, renderFlagIcon, renderOrnamentPortal } from "@ingress-shards/ingress-events-core";
 import shardIconUrl from '../../images/abaddon1_shard.png';
 import { getSiteData, getSeasonMetadata, getSeasonGeocode } from "../../data/SeasonDataStore.js";
-import { getFlagTooltipHtml } from "./ui-formatters.js"
 import { getConfigRegistry } from "../../config/EventConfig.js";
-import { getHexagonSVG } from "./marker-template.js";
 import { fromString as zdtFromString, add as zdtAdd, compare as zdtCompare } from "temporal-polyfill/fns/ZonedDateTime";
 import { zonedDateTimeISO } from "temporal-polyfill/fns/Now";
 import { fromFields as durationFromFields } from "temporal-polyfill/fns/Duration";
@@ -96,7 +94,7 @@ function createLazyOrnamentLayer(siteId, siteData) {
                     } else {
                         markerIcon = L.divIcon({
                             className: 'ornament-hexagon-marker',
-                            html: getHexagonSVG(style.color || UI_COLORS.SIGNAL, UI_COLORS.ORNAMENT_ONLY),
+                            html: renderOrnamentPortal(style.color || UI_COLORS.SIGNAL),
                             iconSize: [40, 40],
                             iconAnchor: [20, 20]
                         });
@@ -598,7 +596,7 @@ export async function getDetailsPanelContent(seriesId, siteId, waveId) {
         eventEnd: actualEnd
     });
 
-    const flagHtml = siteGeocode?.country_code ? getFlagTooltipHtml(siteGeocode?.country_code.toLowerCase()) : '';
+    const flagHtml = renderFlagIcon(siteGeocode?.country_code);
 
     return {
         title: `${seriesMetadata?.name} ${siteEventType.label}<br/>${siteGeocode?.name}`,
