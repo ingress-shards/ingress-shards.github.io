@@ -51,13 +51,14 @@ main (v1.42.x) ──┬──────────────────�
 To maintain development velocity and avoid throwaway work, TypeScript is adopted **incrementally** across the phases:
 
 ```
-[Phase 1-2: Setup & TS] ──> [Phase 3: Pipeline] ──> [Phase 4: Utilities] ──> [Phase 4a: Glue in TS] ──> [Phase 5a-5f: UI & Display Slices] ──> [Phase 6-7: Parity & Release]
+[Phase 1-2: Setup & TS] ──> [Phase 3: Pipeline] ──> [Phase 4: Utilities] ──> [Phase 4a: Glue in TS] ──> [Phase 5a-5g: UI & Display Slices] ──> [Phase 6-7: Parity & Release]
  feat/v2-core-integration    process-season-data.ts  Prune math/constants     index, router, map,        5a: Core Elevation (Tooltips/Date)       verify-v1-v2-parity.ts
- EventConfig, SeasonDataStore Prune data-processor.js  (date-helpers -> Ph 5)   events, controller in TS   5b: Theming & Pane Foundation            100% strict TS, v2.0.0
+ EventConfig, SeasonDataStore Prune data-processor.js  (date-helpers -> Ph 5)   events, controller in TS   5b-1..3: Leaf Utils, Elevation, Theme    100% strict TS, v2.0.0
                                                                                                          5c: DetailsPanel & Scoring Views
                                                                                                          5d: Map Layers (Season/Site/Wave)
-                                                                                                         5e: Custom File Ingestion
-                                                                                                         5f: Legacy Pruning & Zero-JS
+                                                                                                         5e: Controls & Settings Menu UX
+                                                                                                         5f: Custom File Ingestion
+                                                                                                         5g: Legacy Pruning & Zero-JS
 ```
 
 1. **Phase 1 (Setup & Branching):**
@@ -88,13 +89,16 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
    - Add `@types/leaflet` and ambient declarations (`src/types/ambient.d.ts`) for Webpack globals, CSS/asset imports, and untyped Leaflet plugins.
    - Implement typed observable `MapState` (`src/state/MapState.ts`) with independent `localStorage` persistence.
    - Review, improve, and migrate core glue modules (`index.ts`, `Router.ts`, `touchSupport.ts`, `MapManager.ts`, `UIController.ts`) to TypeScript before UI renderer refactoring.
-6. **Phase 5 (UI & Display Adaptation in TypeScript — 6 Slices):**
+6. **Phase 5 (UI & Display Adaptation in TypeScript — Incremental Slices):**
    - **Phase 5a (Core Display & Tooltip Elevation)**: Elevate framework-agnostic HTML generators for tooltips (portal, link, wave, goal, link rules), scoring tables, and date/countdown helpers into Core (`src/display/` & `src/common/Date.ts`).
-   - **Phase 5b (Map Component Foundation, Theming & Leaflet Panes)**: Add dark/light theme state to `MapState` with token switching and base-layer sync; clean up Leaflet panes; migrate leaf helpers (`uiFormatters.ts`, `ElevationOverlay.ts`, marker templates).
-   - **Phase 5c (Details Panel & Scoring Views)**: Migrate `DetailsPanel.ts` to a typed component reacting to `MapState` and theme; wire Core `ScoringTable`, `ShardJumpGrouper`, and interactive popovers.
+   - **Phase 5b-1 (Leaf Utilities, Marker Templates & Panes)**: Standardize Core's `src/visuals/templates/` on `render*` functions (`renderSiteMarker`, `renderExportIcon`, `renderOrnamentIcon`, `renderOrnamentPortal`, `renderTargetOrnament`, `renderFlagIcon`) with zero inline styles, consume them in Map & Plugin, export typed `MAP_PANES` constants, deduplicate Core `visuals.css` marker/radar styles, and delete `ui-formatters.js` & `marker-template.js`.
+   - **Phase 5b-2 (Elevation Overlay Refactor)**: Split `elevation.js` & `ElevationOverlay.ts` into `elevationMath.ts`, `ElevationLegend.ts`, and `ElevationOverlay.ts`; fix single-fetch DEM sampling, `pixelSizeMeters` hillshade scaling, `tileunload` eviction, and official `leaflet-relief` types.
+   - **Phase 5b-3 (Theming Engine & Base-Layer Sync)**: Add dark-default surface tokens and `:root[data-theme="light"]` overrides in Core `tokens.css` / `display.css`; add `theme: "light" | "dark" | "system"` (default `"system"`) to `MapState`; wire `ThemeManager` (`data-theme` + `matchMedia`) and auto-sync default base map only when no manual `baseLayer` override is set.
+   - **Phase 5c (Details Panel & Scoring Views)**: Finalize `lit-html` vs framework-free TS decision; migrate `DetailsPanel.ts` to a typed component reacting to `MapState` and theme; wire Core `ScoringTable`, `ShardJumpGrouper`, and interactive popovers.
    - **Phase 5d (Season & Site Map Layers)**: Migrate `SeasonLayer.ts`, `SiteLayer.ts`, and `WaveLayer.ts` to TypeScript, consuming `SiteState` directly and using Core's unified tooltips; slim down `UIController.ts`.
-   - **Phase 5e (Custom File Ingestion)**: Migrate custom file handler and worker to TypeScript using Core's `DataObservationAdapter` and `DataIngestionPipeline`.
-   - **Phase 5f (Legacy Pruning & Zero-JS Cutover)**: Drop `adaptSiteStateToLegacy` from `SeasonDataStore.ts`, delete `src/js/`, set `allowJs: false`, and verify clean zero-JS build.
+   - **Phase 5e (UI Controls Consolidation & Theme Switcher)**: Consolidate map corner controls (base maps, overlays, theme toggle, GitHub link, season/wave controls) into a cohesive settings/hamburger menu UX once all panels and layers are in TypeScript.
+   - **Phase 5f (Custom File Ingestion)**: Migrate custom file handler and worker to TypeScript using Core's `DataObservationAdapter` and `DataIngestionPipeline`.
+   - **Phase 5g (Legacy Pruning & Zero-JS Cutover)**: Drop `adaptSiteStateToLegacy` from `SeasonDataStore.ts`, delete `src/js/`, set `allowJs: false`, and verify clean zero-JS build.
 7. **Phase 6 (Semantic Parity Verification & Testing):**
    - Implement `scripts/verify-v1-v2-parity.ts` to verify the 5 Domain Invariants across all historical seasons (`2024-erasedmem` through `2026-apollo`) and perform visual checks on Anomaly, Skirmish, and StandBy archetype sites.
    - Review `iitc-plugin-site-observer` UI components (`SiteTableComponent`, `ToolsMenuComponent`, `ObserverView`, and UI hosts/controls) to identify structural and code-quality improvements aligned with the finalized Phase 5 display and templating patterns.
@@ -111,7 +115,7 @@ To maintain long-term maintainability and prevent visual or behavioral divergenc
 
 | Display Concept | Leaflet / Map Application (Where & How it is hosted) | Core Display Module (What renders inside it) |
 | :--- | :--- | :--- |
-| **Panes** | Z-index viewport stacking contexts (`map.createPane()`): `ornamentPane`, `targetPane`, `shardPane`. | *Pure CSS z-index and pointer-event declarations.* |
+| **Panes** | Z-index viewport stacking contexts (`map.createPane()`): `ornamentPane`, `ornamentFrontPane`, `targetPane`, `shardPane`. | *Pure CSS z-index and pointer-event declarations.* |
 | **Controls / Panels** | Viewport-pinned corner chrome (`L.Control`): `DetailsPanel`, `ElevationLegend`. | **`DetailsPanel`**, **`ScoringTable`**, **`ElevationLegend`** content. |
 | **Layers** | Geographic lat/lng entities on panes (`L.Marker`, `L.Polyline`, `L.FeatureGroup`). | **`SiteMarker`**, **`ShardMotionPolyline`**, **`TargetOrnament`** SVG/CSS templates. |
 | **Tooltips & Popovers** | Anchored overlays (`L.Tooltip`, `L.Popup`, or interactive table cell popovers). | **Unified Tooltip Generators**: Portal telemetry, Link details, Wave summary, Goal breakdown, Link breakdown. |
@@ -127,9 +131,9 @@ Historically, both the IITC Plugin and the Map independently formatted site/port
 - `bindTooltips(resolver, root?)` (`TooltipHost.ts` + `TooltipContext.ts`): Delegated `[data-tooltip-type]` hover/click host rendering into a shared `.tooltip-overlay`.
 
 ### 4.3 Dark / Light Mode Architecture
-1. **Observable Theme State**: `MapState` tracks `theme: "light" | "dark" | "system"`, persisted independently to `localStorage` key `ingress-shards-map:theme:v1`.
+1. **Observable Theme State**: `MapState` tracks `theme: "light" | "dark" | "system"` (defaulting to `"system"`), persisted independently to `localStorage` key `ingress-shards-map:theme:v1`.
 2. **Semantic Design Tokens**: A `data-theme="light"` or `data-theme="dark"` attribute on `document.documentElement` switches CSS custom properties (`--bg-primary`, `--text-primary`, `--color-border`) sourced from Core's `tokens.css`.
-3. **Base Map Synchronization**: Switching theme automatically aligns the default base map tile set (*CartoDB Dark Matter* for dark, *CartoDB Positron* for light) while preserving user-selected manual overrides.
+3. **Base Map Synchronization**: Switching theme automatically aligns the default base map tile set (*CartoDB Dark Matter* for dark, *CartoDB Positron* for light) only when no manual base layer preference has been set.
 
 ---
 
@@ -227,17 +231,29 @@ Historically, both the IITC Plugin and the Map independently formatted site/port
 - [x] Align jump window duration display (`actualEnd - scheduledStart`) and formatting inside Core tooltips
 - [x] Sync/release Core to siblings and verify `iitc-plugin-site-observer` and `ingress-shards.github.io` consume the elevated display exports
 
-### Phase 5b: Map Component Foundation, Theming & Leaflet Panes
-- [ ] Evaluate `lit-html` vs `Svelte` (vs framework-free TS) for Phase 5 UI rendering, templates, and event binding
-- [ ] Add `theme: "light" | "dark" | "system"` to `MapState` (`src/state/MapState.ts`) with `subscribeTheme` and independent `localStorage` persistence
-- [ ] Wire `data-theme` attribute switching on `document.documentElement` using semantic CSS tokens (`tokens.css`) and synchronize default base map selection (*CartoDB Dark Matter* vs *CartoDB Positron*)
-- [ ] Review and standardize Leaflet custom pane names (`ornamentPane`, `ornamentFrontPane`, `targetPane`, `shardPane`) in `MapManager.ts`
-- [ ] Migrate leaf utilities:
-  - `src/js/ui/ui-formatters.js` → `src/ui/uiFormatters.ts`
-  - `src/js/ui/marker-template.js` → consume Core's `visuals/templates` directly
-  - `src/js/ui/map/elevation.js` → consolidate into `src/ui/map/ElevationOverlay.ts` with theme-aware legend styling
+### Phase 5b-1: Leaf Utilities, Marker Templates & Panes
+- [x] Elevate `renderFlagIcon(countryCode?)` into `ingress-events-core` (`src/visuals/templates/FlagIcon.ts`), adopt in `SiteTooltip.ts`, and delete `src/js/ui/ui-formatters.js`
+- [x] Standardize Core SVG templates (`src/visuals/templates/`) on CSS-variable-driven `render*` functions (`renderSiteMarker`, `renderExportIcon`, `renderOrnamentIcon`, `renderOrnamentPortal`, `renderTargetOrnament`) with zero inline styles and unit tests
+- [x] Replace `src/js/ui/marker-template.js` usages with Core's `renderSiteMarker` and `renderOrnamentPortal`, then delete `marker-template.js`
+- [x] Export typed `MAP_PANES` constants (`ornamentPane`, `ornamentFrontPane`, `targetPane`, `shardPane`) in `MapManager.ts`
+- [x] Import Core `visuals/visuals.css` in `src/index.ts` and remove duplicated marker/radar CSS rules from `src/assets/main.css`
+
+### Phase 5b-2: Elevation Overlay Refactor
+- [ ] Extract pure Terrarium/color/hillshade math into `src/ui/map/elevationMath.ts` with unit tests (`decodeTerrariumElevation`, `hsvToRgb`, `elevationRatioToRgb`, `computeHillshadeIntensity` with `pixelSizeMeters`, `sampleElevationGrid`)
+- [ ] Extract `ElevationLegend` into `src/ui/map/ElevationLegend.ts`
+- [ ] Refactor `src/ui/map/ElevationOverlay.ts` to sample DEM data directly inside `_fillHillshadeTile` (single fetch per tile), evict `tileRangeCache` on `tileunload`, and remove shadowed `leaflet-relief` stubs from `src/types/ambient.d.ts`
+- [ ] Delete `src/js/ui/map/elevation.js` (including unused `getElevationForLatLng` dead code)
+
+### Phase 5b-3: Theming Engine & Base-Layer Sync
+- [ ] Add dark-default surface tokens and `:root[data-theme="light"]` overrides to Core `tokens.css` (plus `--bg-header` token in `display.css`)
+- [ ] Review Core `src/visuals/Colors.ts` declarations (`ALIGNMENT_COLORS`, deprecated `FACTION_COLORS`, `UI_COLORS`) alongside `tokens.css` to prune unused or redundant color constants
+- [ ] Add `theme: "light" | "dark" | "system"` (default `"system"`) to `MapState` (`src/state/MapState.ts`) with `subscribeTheme`, unsubscribe callbacks, independent `localStorage` persistence (`ingress-shards-map:theme:v1`), and unit tests
+- [ ] Add `ThemeManager` (`src/ui/ThemeManager.ts`) resolving `"system"` via `matchMedia`, setting `document.documentElement.dataset.theme`, and notifying subscribers on OS/preference changes
+- [ ] Wire `MapManager.ts` to auto-swap default base map (*CartoDB Dark Matter* ↔ *CartoDB Positron*) on resolved theme changes only when no manual `baseLayer` preference has been set
+- [ ] Refactor hardcoded colors in `src/assets/main.css` (details panel, elevation legend, Leaflet controls/tooltips/popups) to consume semantic CSS tokens
 
 ### Phase 5c: Details Panel & Scoring Views in TypeScript
+- [ ] Finalize `lit-html` vs framework-free TS decision for stateful panel components (aligning Map Phase 5c and Plugin Phase 6)
 - [ ] Migrate `src/js/ui/details-panel.js` → `src/ui/details/DetailsPanel.ts` (typed `L.Control` subscribing to `MapState` and theme)
 - [ ] Integrate Core's elevated `ScoringTable` and `ShardJumpGrouper` into the details panel
 - [ ] Drive score rendering natively from `SiteState` / `SiteAnalysis` (omit scores when wave states are absent or season points are not required, removing the legacy `SeasonDataStore` `fullEvent.scores` bridge and `getScoresText` pre-event workaround)
@@ -250,14 +266,18 @@ Historically, both the IITC Plugin and the Map independently formatted site/port
 - [ ] Review `UIController.ts` once views subscribe to `MapState` directly (slim down to shared viewport/camera/title coordination)
 - [ ] Evaluate stripping `ShardMove.scoredRules` from serialized season JSON (retaining only `totalPoints`)
 
-### Phase 5e: Custom File Ingestion (Isolated Sub-Phase)
+### Phase 5e: UI Controls Consolidation & Theme Switcher
+- [ ] Design and implement consolidated map controls / settings menu (e.g., hamburger/gear menu absorbing base maps, overlays, theme switcher, and GitHub/about link to declutter map corners on desktop and mobile)
+- [ ] Wire interactive Theme switcher (`System` / `Dark` / `Light`) to `MapState`
+
+### Phase 5f: Custom File Ingestion (Isolated Sub-Phase)
 - [ ] Migrate `src/js/ui/custom-file-handler.js` → `src/ui/custom/CustomFileHandler.ts`
 - [ ] Replace `src/js/data/json-parser-worker.js` with a typed TypeScript worker using Core's `DataObservationAdapter` and `DataIngestionPipeline`
 - [ ] Retire legacy ad-hoc fragment clustering (`getCoordsForFragment`, `getFragmentSpawnTimeMs`, `calculateCentroid`) and wire custom site registration into `ConfigRegistry`
 
-### Phase 5f: Final Legacy Pruning & Zero-JS Cutover
+### Phase 5g: Final Legacy Pruning & Zero-JS Cutover
 - [ ] Remove `adaptSiteStateToLegacy` and `@deprecated` transitional methods from `SeasonDataStore.ts`
-- [ ] Delete all remaining files under `src/js/` (`site-renderer.js`, `series-renderer.js`, `marker-template.js`, `date-helpers.js`, etc.) and remove `src/js/`
+- [ ] Delete all remaining files under `src/js/` (`site-renderer.js`, `series-renderer.js`, `date-helpers.js`, etc.) and remove `src/js/`
 - [ ] Set `"allowJs": false` in `tsconfig.json` and run full `npm run validate` pass
 
 ### Phase 6: Semantic Parity Verification & Testing
