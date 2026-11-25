@@ -26,6 +26,17 @@ export default tseslint.config(
         __CARTO_API_KEY__: "readonly",
       },
     },
+    rules: {
+      "no-restricted-globals": [
+        "warn",
+        { name: "Date", message: "Use temporal-polyfill/fns instead of native Date." },
+      ],
+      "no-restricted-properties": [
+        "warn",
+        { object: "globalThis", property: "Date", message: "Use temporal-polyfill/fns instead of native Date." },
+        { object: "window", property: "Date", message: "Use temporal-polyfill/fns instead of native Date." },
+      ],
+    },
   },
   {
     files: ["**/*.ts"],
@@ -39,6 +50,25 @@ export default tseslint.config(
         __APP_VERSION__: "readonly",
         __CARTO_API_KEY__: "readonly",
       },
+    },
+    rules: {
+      "no-restricted-globals": [
+        "error",
+        { name: "Date", message: "Use temporal-polyfill/fns instead of native Date." },
+      ],
+      "no-restricted-properties": [
+        "error",
+        { object: "globalThis", property: "Date", message: "Use temporal-polyfill/fns instead of native Date." },
+        { object: "window", property: "Date", message: "Use temporal-polyfill/fns instead of native Date." },
+      ],
+      "@typescript-eslint/no-restricted-types": [
+        "error",
+        {
+          types: {
+            Date: { message: "Use temporal-polyfill/fns types instead of native Date." },
+          },
+        },
+      ],
     },
   },
   {
