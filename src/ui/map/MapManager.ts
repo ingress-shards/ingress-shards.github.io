@@ -22,10 +22,22 @@ const CUSTOM_PANES: ReadonlyArray<{ name: MapPaneName; zIndex: string }> = [
     { name: MAP_PANES.SHARD, zIndex: "640" },
 ];
 
+const WORLD_TILE_SIZE = 256;
+export const GLOBE_CENTER: L.LatLngTuple = [10, 0];
+
+function computeMinZoom(map: L.Map): number {
+    const size = map.getSize();
+    return Math.max(
+        Math.log2(Math.max(size.x, WORLD_TILE_SIZE) / WORLD_TILE_SIZE),
+        Math.log2(Math.max(size.y, WORLD_TILE_SIZE) / WORLD_TILE_SIZE)
+    );
+}
+
 function cartoLayer(styleName: string): L.Layer {
     const keyParam = __CARTO_API_KEY__ ? `?key=${__CARTO_API_KEY__}` : "";
     return L.maplibreGL({
         style: `https://basemaps.cartocdn.com/gl/${styleName}/style.json${keyParam}`,
+        renderWorldCopies: false,
     });
 }
 
@@ -38,10 +50,25 @@ export class MapManager {
 
     public initMap(): L.Map {
         const map = L.map("map", {
-            worldCopyJump: true,
+            zoomSnap: 0,
+            zoomDelta: 1,
+            maxBounds: [
+                [-85.0511, -180],
+                [85.0511, 180],
+            ],
+            maxBoundsViscosity: 1.0,
             minZoom: 2,
             doubleClickZoom: !isTouchDevice(),
-        }).setView([0, 0], 2);
+        });
+
+        const initialMinZoom = computeMinZoom(map);
+        map.setMinZoom(initialMinZoom);
+        map.setView(GLOBE_CENTER, initialMinZoom);
+        map.on("resize", () => {
+            const nextMinZoom = computeMinZoom(map);
+            map.setMinZoom(nextMinZoom);
+            if (map.getZoom() < nextMinZoom) map.setZoom(nextMinZoom);
+        });
 
         for (const { name, zIndex } of CUSTOM_PANES) {
             map.createPane(name);
@@ -53,14 +80,15 @@ export class MapManager {
         }
 
         const baseMaps: Record<BaseLayerName, L.Layer> = {
-            OSM: L.tileLayer.provider("OpenStreetMap.Mapnik"),
+            OSM: L.tileLayer.provider("OpenStreetMap.Mapnik", { noWrap: true }),
             "CartoDB Positron": cartoLayer("positron-gl-style"),
             "CartoDB Dark Matter": cartoLayer("dark-matter-gl-style"),
             "CartoDB Voyager": cartoLayer("voyager-gl-style"),
-            "ESRI WorldImagery": L.tileLayer.provider("Esri.WorldImagery"),
-            "ESRI WorldTopoMap": L.tileLayer.provider("Esri.WorldTopoMap"),
+            "ESRI WorldImagery": L.tileLayer.provider("Esri.WorldImagery", { noWrap: true }),
+            "ESRI WorldTopoMap": L.tileLayer.provider("Esri.WorldTopoMap", { noWrap: true }),
             "Google Hybrid": L.tileLayer("http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}", {
                 maxZoom: 20,
+                noWrap: true,
                 subdomains: ["mt0", "mt1", "mt2", "mt3"],
             }),
         };

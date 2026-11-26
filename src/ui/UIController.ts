@@ -19,6 +19,7 @@ import { handleCustomFile, getDetailsPanelContent as getCustomDetailsContent } f
 import { CUSTOM_SEASON_ID, type SeasonDataStore } from "../data/SeasonDataStore.js";
 import type { Router } from "../routing/Router.js";
 import type { MapState, ViewState } from "../state/MapState.js";
+import { GLOBE_CENTER } from "./map/MapManager.js";
 
 interface TaggedLayer extends L.Layer {
     _layerType?: "series" | "site" | "wave" | "site-overlay";
@@ -58,7 +59,7 @@ export class UIController {
     ) {}
 
     public init(): void {
-        this.detailsPanel = detailsPanelControl({ position: "bottomright" }) as DetailsPanelInstance;
+        this.detailsPanel = detailsPanelControl({ position: "bottomright", collapsed: true }) as DetailsPanelInstance;
         this.map.addControl(this.detailsPanel);
 
         initSeriesLayers();
@@ -124,10 +125,10 @@ export class UIController {
         setupMarkerHover(seriesLayer);
 
         const flyAction = (): void => {
-            this.map.flyTo([0, 0], 2, { duration: 1 });
+            this.map.flyTo(GLOBE_CENTER, this.map.getMinZoom(), { duration: 1 });
         };
         const viewAction = (): void => {
-            this.map.setView([0, 0], 2, { animate: false });
+            this.map.setView(GLOBE_CENTER, this.map.getMinZoom(), { animate: false });
         };
         this.performMapMoveAction(flyAction, viewAction);
     }
@@ -184,11 +185,12 @@ export class UIController {
 
         if (siteBounds && siteBounds.isValid()) {
             const bounds = siteBounds;
+            const fitOptions: L.FitBoundsOptions = { padding: [60, 60], maxZoom: 16 };
             const flyAction = (): void => {
-                this.map.flyToBounds(bounds, { duration: 1 });
+                this.map.flyToBounds(bounds, { ...fitOptions, duration: 1 });
             };
             const viewAction = (): void => {
-                this.map.fitBounds(bounds, { animate: false });
+                this.map.fitBounds(bounds, { ...fitOptions, animate: false });
             };
             this.performMapMoveAction(flyAction, viewAction);
         }

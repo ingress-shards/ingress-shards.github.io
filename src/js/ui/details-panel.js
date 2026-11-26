@@ -4,10 +4,14 @@ L.Control.DetailsPanel = L.Control.extend({
     options: {
         position: 'bottomright',
         title: 'Details',
+        collapsed: false,
     },
 
     onAdd: function () {
         this._container = L.DomUtil.create('div', 'leaflet-details-panel');
+        if (this.options.collapsed) {
+            L.DomUtil.addClass(this._container, 'collapsed');
+        }
 
         this._header = L.DomUtil.create('div', 'details-panel-header', this._container);
 
@@ -17,7 +21,7 @@ L.Control.DetailsPanel = L.Control.extend({
         this._title.innerHTML = `<h4>${this.options.title}</h4>`;
 
         this._toggleButton = L.DomUtil.create('button', 'details-panel-toggle', this._header);
-        this._toggleButton.innerHTML = '➖';
+        this._toggleButton.innerHTML = this.options.collapsed ? '➕' : '➖';
 
         this._content = L.DomUtil.create('div', 'details-panel-content', this._container);
         this._content.innerHTML = 'Select a series or site to view details.';
