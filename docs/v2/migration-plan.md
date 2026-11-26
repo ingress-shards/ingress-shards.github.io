@@ -92,8 +92,8 @@ To maintain development velocity and avoid throwaway work, TypeScript is adopted
 6. **Phase 5 (UI & Display Adaptation in TypeScript — Incremental Slices):**
    - **Phase 5a (Core Display & Tooltip Elevation)**: Elevate framework-agnostic HTML generators for tooltips (portal, link, wave, goal, link rules), scoring tables, and date/countdown helpers into Core (`src/display/` & `src/common/Date.ts`).
    - **Phase 5b-1 (Leaf Utilities, Marker Templates & Panes)**: Standardize Core's `src/visuals/templates/` on `render*` functions (`renderSiteMarker`, `renderExportIcon`, `renderOrnamentIcon`, `renderOrnamentPortal`, `renderTargetOrnament`, `renderFlagIcon`) with zero inline styles, consume them in Map & Plugin, export typed `MAP_PANES` constants, deduplicate Core `visuals.css` marker/radar styles, and delete `ui-formatters.js` & `marker-template.js`.
-   - **Phase 5b-2 (Elevation Overlay Refactor)**: Split `elevation.js` & `ElevationOverlay.ts` into `elevationMath.ts`, `ElevationLegend.ts`, and `ElevationOverlay.ts`; fix single-fetch DEM sampling, `pixelSizeMeters` hillshade scaling, `tileunload` eviction, and official `leaflet-relief` types.
-   - **Phase 5b-3 (Theming Engine & Base-Layer Sync)**: Add dark-default surface tokens and `:root[data-theme="light"]` overrides in Core `tokens.css` / `display.css`; add `theme: "light" | "dark" | "system"` (default `"system"`) to `MapState`; wire `ThemeManager` (`data-theme` + `matchMedia`) and auto-sync default base map only when no manual `baseLayer` override is set.
+   - **Phase 5b-2 (Elevation Overlay Refactor)**: Split `elevation.js` & `ElevationOverlay.ts` into `elevationMath.ts`, `elevationRange.ts`, `ElevationLegend.ts`, and `ElevationOverlay.ts`; delegate Terrarium decoding, tile reads, and hillshade intensity to `leaflet-relief`, fix single-fetch DEM sampling, `tileunload` eviction, and official `leaflet-relief` types.
+   - **Phase 5b-3 (Theming Engine & Base-Layer Sync)**: Add dark-default surface tokens and `:root[data-theme="light"]` overrides in Core `tokens.css` / `display.css`; add `theme: "light" | "dark" | "system"` (default `"system"`) to `MapState`; review/curate base-map layers (softer dark/light alternatives to stark *CartoDB Dark Matter*); wire `ThemeManager` (`data-theme` + `matchMedia`) and auto-sync default base map only when no manual `baseLayer` override is set.
    - **Phase 5c (Details Panel & Scoring Views)**: Finalize `lit-html` vs framework-free TS decision; migrate `DetailsPanel.ts` to a typed component reacting to `MapState` and theme; wire Core `ScoringTable`, `ShardJumpGrouper`, and interactive popovers.
    - **Phase 5d (Season & Site Map Layers)**: Migrate `SeasonLayer.ts`, `SiteLayer.ts`, and `WaveLayer.ts` to TypeScript, consuming `SiteState` directly and using Core's unified tooltips; slim down `UIController.ts`.
    - **Phase 5e (UI Controls Consolidation & Theme Switcher)**: Consolidate map corner controls (base maps, overlays, theme toggle, GitHub link, season/wave controls) into a cohesive settings/hamburger menu UX once all panels and layers are in TypeScript.
@@ -239,16 +239,17 @@ Historically, both the IITC Plugin and the Map independently formatted site/port
 - [x] Import Core `visuals/visuals.css` in `src/index.ts` and remove duplicated marker/radar CSS rules from `src/assets/main.css`
 
 ### Phase 5b-2: Elevation Overlay Refactor
-- [ ] Extract pure Terrarium/color/hillshade math into `src/ui/map/elevationMath.ts` with unit tests (`decodeTerrariumElevation`, `hsvToRgb`, `elevationRatioToRgb`, `computeHillshadeIntensity` with `pixelSizeMeters`, `sampleElevationGrid`)
-- [ ] Extract `ElevationLegend` into `src/ui/map/ElevationLegend.ts`
-- [ ] Refactor `src/ui/map/ElevationOverlay.ts` to sample DEM data directly inside `_fillHillshadeTile` (single fetch per tile), evict `tileRangeCache` on `tileunload`, and remove shadowed `leaflet-relief` stubs from `src/types/ambient.d.ts`
-- [ ] Delete `src/js/ui/map/elevation.js` (including unused `getElevationForLatLng` dead code)
+- [x] Extract hypsometric HSV/RGB color math into `src/ui/map/elevationMath.ts` and viewport grid sampling/range aggregation into `src/ui/map/elevationRange.ts` with unit tests
+- [x] Extract `ElevationLegend` into `src/ui/map/ElevationLegend.ts`
+- [x] Refactor `src/ui/map/ElevationOverlay.ts` to delegate Terrarium decoding, tile reads (`_getElevation`), and hillshade intensity to `leaflet-relief`, sample DEM data inside `_fillHillshadeTile` (single fetch per tile), evict `tileRangeCache` on `tileunload`, and remove shadowed `leaflet-relief` stubs from `src/types/ambient.d.ts`
+- [x] Delete `src/js/ui/map/elevation.js` (including unused `getElevationForLatLng` dead code)
 
 ### Phase 5b-3: Theming Engine & Base-Layer Sync
 - [ ] Add dark-default surface tokens and `:root[data-theme="light"]` overrides to Core `tokens.css` (plus `--bg-header` token in `display.css`)
 - [ ] Review Core `src/visuals/Colors.ts` declarations (`ALIGNMENT_COLORS`, deprecated `FACTION_COLORS`, `UI_COLORS`) alongside `tokens.css` to prune unused or redundant color constants
 - [ ] Add `theme: "light" | "dark" | "system"` (default `"system"`) to `MapState` (`src/state/MapState.ts`) with `subscribeTheme`, unsubscribe callbacks, independent `localStorage` persistence (`ingress-shards-map:theme:v1`), and unit tests
 - [ ] Add `ThemeManager` (`src/ui/ThemeManager.ts`) resolving `"system"` via `matchMedia`, setting `document.documentElement.dataset.theme`, and notifying subscribers on OS/preference changes
+- [ ] Review and curate available base-map layers (evaluate softer dark/light alternatives—*CartoDB Dark Matter* feels overly stark—and prune or refine choices in `MapManager.ts` / `MapState.ts`) before wiring theme auto-sync
 - [ ] Wire `MapManager.ts` to auto-swap default base map (*CartoDB Dark Matter* ↔ *CartoDB Positron*) on resolved theme changes only when no manual `baseLayer` preference has been set
 - [ ] Refactor hardcoded colors in `src/assets/main.css` (details panel, elevation legend, Leaflet controls/tooltips/popups) to consume semantic CSS tokens
 
