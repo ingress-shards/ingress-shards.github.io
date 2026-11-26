@@ -32,37 +32,36 @@ declare module "*.gif" {
 
 declare module "leaflet-providers";
 declare module "@maplibre/maplibre-gl-leaflet";
-declare module "leaflet-relief";
 declare module "leaflet.motion";
 
 import type * as L from "leaflet";
+import type { ReliefOptions } from "leaflet-relief";
 
-export interface ReliefTileEntry {
-    active?: boolean;
-}
-
-export interface ReliefGridLayer extends L.GridLayer {
-    _tiles: Record<string, ReliefTileEntry>;
-    _state: unknown;
-    _tileCoordsToKey(coords: L.Coords): string;
-    _createHillshadeColor?(tileData: number[]): [number, number, number, number];
-}
-
-export interface ReliefOptions extends L.GridLayerOptions {
-    mode?: string;
-    minNativeZoom?: number;
-    maxNativeZoom?: number;
-    elevationExtractor?: (r: number, g: number, b: number, a?: number) => number | null;
+declare global {
+    namespace L {
+        namespace GridLayer {
+            interface Relief {
+                _tiles: Record<string, { active?: boolean; current?: boolean; coords?: L.Coords; el?: HTMLElement }>;
+                _tileCoordsToKey(coords: L.Coords): string;
+                _wrapCoords(coords: L.Coords): L.Coords;
+            }
+        }
+    }
 }
 
 declare module "leaflet" {
-    function maplibreGL(options: { style: string }): L.Layer;
+    function maplibreGL(options: { style: string; renderWorldCopies?: boolean }): L.Layer;
 
     namespace tileLayer {
         function provider(providerName: string, options?: L.TileLayerOptions): L.TileLayer;
     }
 
+    namespace GridLayer {
+        type Relief = globalThis.L.GridLayer.Relief;
+        const Relief: typeof globalThis.L.GridLayer.Relief;
+    }
+
     namespace gridLayer {
-        function relief(options?: ReliefOptions): ReliefGridLayer;
+        function relief(options?: ReliefOptions): globalThis.L.GridLayer.Relief;
     }
 }

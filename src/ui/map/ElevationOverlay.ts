@@ -1,199 +1,149 @@
 import * as L from "leaflet";
 import "leaflet-relief";
+import { ElevationLegend, type ElevationLegendView } from "./ElevationLegend.js";
+import { elevationRatioToRgb } from "./elevationMath.js";
 import {
-    decodeElevation,
-    getTileElevationGrid,
-    hsvToRgb,
-    computeHillshadeIntensity,
-} from "../../js/ui/map/elevation.js";
-import type { ReliefGridLayer } from "../../types/ambient.js";
+    collectViewportElevationStats, computeExpandedElevationRange, computeTileSamplePoints,
+    sampleTileElevationGrid, shouldUpdateElevationRange, type CachedTileEntry, type ReliefTileRef,
+} from "./elevationRange.js";
+import { collectStaleTileKeys, repaintTileCanvas, TileRecolorQueue } from "./TileRecolorQueue.js";
 
-interface CachedTileRange {
-    grid: Float32Array;
-    points: L.LatLng[];
-}
-
-const TERRARIUM_TILE_URL = "https://elevation-tiles-prod.s3.amazonaws.com/terrarium/{z}/{x}/{y}.png";
-
-function elevationRatioToRgb(ratio: number): [number, number, number] {
-    const hue = 210 - ratio * 180;
-    const [r = 0, g = 0, b = 0] = hsvToRgb(hue, 1, 1);
-    return [r, g, b];
-}
-
-class ElevationLegend extends L.Control {
-    private div?: HTMLDivElement;
-
-    constructor(private initialMin: number, private initialMax: number) {
-        super({ position: "topleft" });
-    }
-
-    public override onAdd(): HTMLElement {
-        this.div = L.DomUtil.create("div", "elevation-legend") as HTMLDivElement;
-        this.update(this.initialMin, this.initialMax);
-        return this.div;
-    }
-
-    public update(min: number, max: number): void {
-        if (!this.div) return;
-        const steps = 19;
-        let html = "";
-        for (let i = steps; i >= 0; i--) {
-            const ratio = i / steps;
-            const val = min + ratio * (max - min);
-            const [r, g, b] = elevationRatioToRgb(ratio);
-            html += `<div class="elevation-legend-item" style="background: rgb(${r},${g},${b});">${val.toFixed(0)} m</div>`;
-        }
-        this.div.innerHTML = html;
-    }
-
-    public show(): void {
-        if (this.div) this.div.style.display = "block";
-    }
-
-    public hide(): void {
-        if (this.div) this.div.style.display = "none";
-    }
-}
+const NOOP_RGB: [number, number, number] = [0, 0, 0];
 
 /**
- * Manages the Terrarium elevation relief grid layer, dynamic viewport color scale,
- * and accompanying legend control.
+ * Manages the Mapterhorn elevation relief grid layer with progressive tile coloring,
+ * non-blocking 1-tile-per-frame adjustments, and an accompanying legend control.
  */
 export class ElevationOverlay {
     private currentMin = 0;
     private currentMax = 1000;
-    private readonly legend = new ElevationLegend(this.currentMin, this.currentMax);
-    private readonly reliefLayer: ReliefGridLayer;
-    private readonly tileRangeCache = new Map<string, CachedTileRange>();
-    private readonly sampleCtx = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+    private rangeVersion = 0;
+    private hasSampledRange = false;
+    private lastHillshadeIntensity = 1;
+    private readonly reliefLayer: L.GridLayer.Relief;
+    private readonly tileRangeCache = new Map<string, CachedTileEntry | null>();
+    private readonly recolorQueue = new TileRecolorQueue((key) => this.recolorTileByKey(key));
+    private originalFillTile!: L.GridLayer.Relief["_fillHillshadeTile"];
     private updateTimer: ReturnType<typeof setTimeout> | null = null;
 
-    constructor(private readonly map: L.Map) {
-        this.reliefLayer = L.gridLayer.relief({
-            mode: "hillshade",
-            opacity: 0,
-            maxNativeZoom: 15,
-            minNativeZoom: 6,
-            maxZoom: 20,
-            minZoom: 6,
-            elevationExtractor: decodeElevation,
-        });
+    private readonly resolveTileKey = (key: string, tile: ReliefTileRef): string =>
+        tile.coords ? this.toCacheKey(tile.coords) : key;
 
-        this.reliefLayer._createHillshadeColor = (t: number[]): [number, number, number, number] => {
-            const h = t[4] ?? 0;
-            const intensity = computeHillshadeIntensity(t, this.reliefLayer._state);
+    constructor(private readonly map: L.Map, private readonly legend: ElevationLegendView = new ElevationLegend(0, 1000)) {
+        const { elevationUrls, elevationAttributions, elevationMaxNativeZooms, elevationExtractors } = L.GridLayer.Relief;
+        this.reliefLayer = L.gridLayer.relief({
+            mode: "hillshade", hillshadeExaggeration: 3, opacity: 0, updateWhenIdle: true, updateWhenZooming: false, keepBuffer: 1, noWrap: true,
+            elevationUrl: elevationUrls.mapterhorn, attribution: elevationAttributions.mapterhorn,
+            maxNativeZoom: elevationMaxNativeZooms.mapterhorn, minNativeZoom: 6, maxZoom: 20, minZoom: 6,
+            elevationExtractor: (r, g, b, a) => (a < 255 ? -99999 : elevationExtractors.mapterhorn(r, g, b, a)),
+            hillshadeColorFunction: (intensity) => { this.lastHillshadeIntensity = intensity; return NOOP_RGB; },
+        });
+        this.installReliefHooks();
+        this.bindEvents();
+    }
+
+    public get layer(): L.Layer { return this.reliefLayer; }
+
+    private toCacheKey(coords: L.Coords): string {
+        return this.reliefLayer._tileCoordsToKey(this.reliefLayer._wrapCoords(coords));
+    }
+
+    private collectStats() {
+        return collectViewportElevationStats(this.map.getBounds(), this.reliefLayer._tiles, this.tileRangeCache, this.resolveTileKey);
+    }
+
+    private applyRange(min: number, max: number): void {
+        this.currentMin = min;
+        this.currentMax = max;
+        this.rangeVersion++;
+        this.legend.update(min, max);
+    }
+
+    private installReliefHooks(): void {
+        const originalCreateColor = this.reliefLayer._createHillshadeColor.bind(this.reliefLayer);
+        this.reliefLayer._createHillshadeColor = (zData, pixelSizeMeters) => {
+            originalCreateColor(zData, pixelSizeMeters);
+            const h = zData[4] ?? 0;
             const span = this.currentMax - this.currentMin || 1;
-            const ratio = Math.max(0, Math.min(1, (h - this.currentMin) / span));
-            const [r, g, b] = elevationRatioToRgb(ratio);
-            return [Math.round(r * intensity), Math.round(g * intensity), Math.round(b * intensity), 255];
+            const [r, g, b] = elevationRatioToRgb((h - this.currentMin) / span);
+            const k = this.lastHillshadeIntensity;
+            return [Math.round(r * k), Math.round(g * k), Math.round(b * k), 255];
         };
 
-        this.reliefLayer.on("tileload", (event: L.TileEvent) => this.handleTileLoad(event));
+        this.originalFillTile = this.reliefLayer._fillHillshadeTile.bind(this.reliefLayer);
+        this.reliefLayer._fillHillshadeTile = (data, tileData, coords, abortSignal) => {
+            if (abortSignal?.aborted) return;
+            const key = this.toCacheKey(coords);
+            let entry = this.tileRangeCache.get(key) ?? null;
+            if (!entry) {
+                const tileSize = this.reliefLayer.getTileSize().x;
+                entry = {
+                    grid: sampleTileElevationGrid(tileSize, (px, py) => this.reliefLayer._getElevation(tileData, px, py)),
+                    points: computeTileSamplePoints(this.map, coords, tileSize), coords, tileData, renderedVersion: -1,
+                };
+                this.tileRangeCache.set(key, entry);
+            }
+            if (!this.hasSampledRange) return;
+            const stats = this.collectStats();
+            const expanded = stats.found ? computeExpandedElevationRange(this.currentMin, this.currentMax, stats.min, stats.max) : null;
+            if (expanded) this.applyRange(expanded.min, expanded.max);
+            this.originalFillTile(data, tileData, coords, abortSignal);
+            entry.renderedVersion = this.rangeVersion;
+        };
+    }
+
+    private recolorTileByKey(key: string): boolean {
+        if (!this.map.hasLayer(this.reliefLayer)) { this.recolorQueue.cancel(); return false; }
+        const tile = this.reliefLayer._tiles[key];
+        const cached = tile?.current ? this.tileRangeCache.get(this.resolveTileKey(key, tile)) : null;
+        if (!cached || cached.renderedVersion === this.rangeVersion) return false;
+        const painted = repaintTileCanvas(tile?.el, (data) => this.originalFillTile(data, cached.tileData, cached.coords));
+        if (painted) cached.renderedVersion = this.rangeVersion;
+        return painted;
+    }
+
+    private bindEvents(): void {
+        const onSettled = (event: L.TileEvent): void => {
+            const key = this.toCacheKey(event.coords);
+            if (!this.tileRangeCache.has(key)) this.tileRangeCache.set(key, null);
+            this.scheduleViewRangeUpdate();
+        };
+        this.reliefLayer.on("tileload", onSettled);
+        this.reliefLayer.on("tileerror", onSettled);
+        this.reliefLayer.on("tileunload", (event: L.TileEvent) => this.tileRangeCache.delete(this.toCacheKey(event.coords)));
         this.reliefLayer.on("add", () => {
-            this.legend.addTo(this.map);
-            setTimeout(() => this.updateViewRange(true), 50);
+            this.hasSampledRange = false; this.reliefLayer.setOpacity(0); this.legend.addTo(this.map); this.scheduleViewRangeUpdate();
         });
         this.reliefLayer.on("remove", () => {
-            this.legend.remove();
+            this.cancelPendingUpdates(); this.hasSampledRange = false; this.tileRangeCache.clear(); this.legend.remove();
         });
-
-        this.map.on("movestart zoomstart", () => {
-            if (this.map.hasLayer(this.reliefLayer)) {
-                this.reliefLayer.setOpacity(0);
-                this.legend.hide();
-            }
-        });
-        this.map.on("moveend zoomend", () => this.updateViewRange());
+        this.map.on("movestart zoomstart", () => this.cancelPendingUpdates());
+        this.map.on("moveend zoomend", () => this.scheduleViewRangeUpdate());
     }
 
-    public get layer(): L.Layer {
-        return this.reliefLayer;
-    }
-
-    private handleTileLoad(event: L.TileEvent): void {
-        if (!this.sampleCtx) return;
-
-        const sampleCtx = this.sampleCtx;
-        const img = new Image();
-        img.crossOrigin = "anonymous";
-        img.onload = () => {
-            const grid = getTileElevationGrid(img, sampleCtx);
-            if (!grid) return;
-
-            const { z, x, y } = event.coords;
-            const points: L.LatLng[] = [];
-            for (let i = 0; i < 256; i++) {
-                const px = (i % 16) * 16 + 8;
-                const py = Math.floor(i / 16) * 16 + 8;
-                points.push(this.map.unproject([x * 256 + px, y * 256 + py], z));
-            }
-            const key = this.reliefLayer._tileCoordsToKey(event.coords);
-            this.tileRangeCache.set(key, { grid, points });
-            this.updateViewRange();
-        };
-        img.src = L.Util.template(TERRARIUM_TILE_URL, event.coords);
-    }
-
-    private updateViewRange(force = false): void {
+    private cancelPendingUpdates(): void {
         if (this.updateTimer !== null) clearTimeout(this.updateTimer);
-        const delay = force ? 10 : 100;
+        this.updateTimer = null; this.recolorQueue.cancel();
+    }
 
+    private scheduleViewRangeUpdate(): void {
+        if (this.updateTimer !== null) clearTimeout(this.updateTimer);
         this.updateTimer = setTimeout(() => {
             if (!this.map.hasLayer(this.reliefLayer)) return;
-
-            const viewBounds = this.map.getBounds();
-            let activeTileCount = 0;
-            let allTilesReady = true;
-            let min = 100000;
-            let max = -100000;
-            let found = false;
-
-            for (const key in this.reliefLayer._tiles) {
-                if (!this.reliefLayer._tiles[key]?.active) continue;
-                activeTileCount++;
-
-                const cachedData = this.tileRangeCache.get(key);
-                if (!cachedData) {
-                    allTilesReady = false;
-                    continue;
-                }
-
-                const { grid, points } = cachedData;
-                for (let i = 0; i < grid.length; i++) {
-                    const h = grid[i];
-                    const pt = points[i];
-                    if (h === undefined || h === -99999 || h < -10 || !pt) continue;
-                    if (viewBounds.contains(pt)) {
-                        if (h < min) min = h;
-                        if (h > max) max = h;
-                        found = true;
-                    }
-                }
+            const stats = this.collectStats();
+            if (stats.activeTileCount === 0) {
+                this.recolorQueue.cancel(); this.hasSampledRange = false;
+                this.reliefLayer.setOpacity(0); this.legend.hide(); return;
             }
-
-            if (!force && (!allTilesReady || activeTileCount === 0)) return;
-
-            if (found) {
-                const threshold = Math.max(10, (this.currentMax - this.currentMin) * 0.1);
-                const significantShift =
-                    Math.abs(min - this.currentMin) > threshold ||
-                    Math.abs(max - this.currentMax) > threshold;
-
-                if (significantShift || force) {
-                    if (significantShift) {
-                        this.currentMin = min;
-                        this.currentMax = max;
-                    }
-                    this.legend.update(this.currentMin, this.currentMax);
-                    this.reliefLayer.redraw();
-                }
-                this.reliefLayer.setOpacity(0.6);
-                this.legend.show();
-            } else if (force) {
-                this.reliefLayer.setOpacity(0.6);
-                this.legend.show();
+            if (stats.allTilesReady && !stats.found) { this.legend.hide(); return; }
+            if (!stats.allTilesReady || !stats.found) return;
+            if (shouldUpdateElevationRange(this.currentMin, this.currentMax, stats.min, stats.max, this.hasSampledRange)) {
+                this.hasSampledRange = true;
+                this.applyRange(stats.min, stats.max);
             }
-        }, delay);
+            this.recolorQueue.enqueue(collectStaleTileKeys(this.reliefLayer._tiles, this.tileRangeCache, this.resolveTileKey, this.rangeVersion));
+            this.reliefLayer.setOpacity(0.6);
+            this.legend.show();
+        }, 100);
     }
 }

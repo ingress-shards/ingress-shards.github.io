@@ -310,7 +310,14 @@ table.ingress-event-scores tfoot {
 /* Elevation Legend */
 .elevation-legend {
     order: 100;
-    background: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(
+        to bottom,
+        rgb(255, 128, 0) 0%,
+        rgb(255, 255, 0) 16.667%,
+        rgb(0, 255, 0) 50%,
+        rgb(0, 255, 255) 83.333%,
+        rgb(0, 128, 255) 100%
+    );
     border: 1px solid #ccc;
     border-radius: 2px;
     font-size: 12px;
@@ -320,6 +327,10 @@ table.ingress-event-scores tfoot {
     margin-top: 10px;
     width: 75px;
     display: none;
+}
+
+.elevation-legend.is-visible {
+    display: block;
 }
 
 .elevation-legend-item {
