@@ -151,6 +151,11 @@ export default (env, { appVersion }) => {
                         from: path.resolve(__dirname, 'src/images/ornament-icons'),
                         to: 'images/ornament-icons',
                     },
+                    {
+                        from: path.resolve(__dirname, 'review'),
+                        to: 'review',
+                        noErrorOnMissing: true,
+                    },
                 ]
             }),
         ],

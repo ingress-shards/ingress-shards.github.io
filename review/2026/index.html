@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingress Shards: 2026 Review</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" crossorigin="anonymous" />
+  <style>
+    /* Strict Faction Palette: Blue and Green are PURELY reserved for RES & ENL */
+    :root {
+      --res-base: #0088FF;
+      --res-soft: #38bdf8;
+      --res-bg: rgba(0, 136, 255, 0.12);
+      --res-border: rgba(0, 136, 255, 0.35);
+
+      --enl-base: #03DC03;
+      --enl-soft: #4ade80;
+      --enl-bg: rgba(3, 220, 3, 0.12);
+      --enl-border: rgba(3, 220, 3, 0.35);
+
+      --background: #111113;
+      --card: #1c1c20;
+      --foreground: #f4f4f5;
+      --muted-foreground: #b8c0cc;
+      --border: rgba(255, 255, 255, 0.16);
+    }
+
+    .text-enl { color: var(--enl-soft); }
+    .text-res { color: var(--res-soft); }
+    .bg-enl-soft { background-color: var(--enl-bg); }
+    .bg-res-soft { background-color: var(--res-bg); }
+    .border-enl { border-color: var(--enl-border); }
+    .border-res { border-color: var(--res-border); }
+
+    /* Unified Subtle Dotted Link Styling (No Arrow) */
+    .intel-link {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
+    .intel-link:hover {
+      color: #fbbf24;
+      text-decoration-color: #fbbf24;
+    }
+
+    .badge-link {
+      display: inline-flex;
+      flex-shrink: 0;
+      border-radius: 0.5rem;
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .badge-link:hover {
+      transform: scale(1.06);
+      filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.35));
+    }
+
+    /* Pill-less Flag Link with Subtle Hover Scale & Custom Blue/Green Tooltip */
+    .flag-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .flag-link:hover {
+      transform: translateY(-1px) scale(1.1);
+      filter: drop-shadow(0 2px 6px rgba(251, 191, 36, 0.4));
+    }
+    .flag-link .fi {
+      border-radius: 3px;
+      width: 1.55em;
+      height: 1.16em;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+    }
+    .flag-tooltip {
+      pointer-events: none;
+      opacity: 0;
+      position: absolute;
+      bottom: calc(100% + 7px);
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      z-index: 30;
+      background: #18181b;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 0.5rem;
+      padding: 0.35rem 0.55rem;
+      font-size: 11px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      transition: opacity 0.12s ease;
+    }
+    .flag-link:hover .flag-tooltip,
+    .flag-link:focus-visible .flag-tooltip {
+      opacity: 1;
+    }
+    .flag-row-edge-left > .flag-link:first-child .flag-tooltip {
+      left: 0;
+      transform: none;
+    }
+    .flag-grid-edge-right > .flag-link:nth-child(6n) .flag-tooltip {
+      left: auto;
+      right: 0;
+      transform: none;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 md:p-6 min-h-screen">
+  <div class="max-w-7xl mx-auto space-y-5">
+
+    <!-- Header Section with Radar Icon, Title, Attribution & High-Contrast Faction Pills -->
+    <header class="relative overflow-hidden rounded-2xl bg-[var(--card)] border border-[var(--border)] p-5 md:p-6 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="flex-shrink-0 p-3 rounded-2xl bg-[#ff7700]/10 border border-[#ff7700]/30 shadow-inner">
+            <svg class="w-11 h-11 md:w-12 md:h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="14" stroke="#ff7700" stroke-width="1.5" fill="rgba(255,119,0,0.06)"/>
+              <path d="M16 2v3.5M16 26.5V30M2 16h3.5M26.5 16H30" stroke="#ff7700" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="16" cy="16" r="2.2" fill="#ff7700"/>
+              <path d="M16 16l11.2-8.4A14 14 0 0 0 16 2z" fill="rgba(255,119,0,0.3)"/>
+              <path d="M16 16l11.2-8.4" stroke="#ff7700" stroke-width="1.5" stroke-linecap="round"/>
+              <polygon points="7.2,7.2 14.4,7.2 11.6,10.1" fill="#ff7700"/>
+              <polygon points="6.7,7.8 11.2,10.9 10.3,15.0" fill="#ff7700"/>
+              <polygon points="14.8,7.8 12.1,10.9 11.1,15.0" fill="#ff7700"/>
+              <path d="M17.4 19.3h7.8v4.4h-2.7l-1.2 2.1-1.2-2.1h-2.7z" stroke="#ff7700" stroke-width="0.9" stroke-linejoin="round"/>
+              <rect x="18.4" y="20.3" width="2.4" height="2.4" rx="0.3" fill="#ff7700"/>
+              <rect x="21.8" y="20.3" width="2.4" height="2.4" rx="0.3" fill="#ff7700"/>
+              <polygon points="9.5,18.5 12.1,20 12.1,23 9.5,24.5 6.9,23 6.9,20" stroke="#ff7700" stroke-width="0.9" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">
+              <span class="inline-block text-transparent bg-clip-text" style="background-image: linear-gradient(90deg, #22d3ee 0%, #a78bfa 35%, #f472b6 70%, #fbbf24 100%);">Ingress Shards: 2026 Review</span>
+            </h1>
+            <p class="text-xs text-[var(--muted-foreground)] mt-1">
+              Data provided by <a href="https://ingress-shards.github.io/" target="_blank" rel="noopener noreferrer" class="intel-link text-amber-400">ingress-shards.github.io</a>.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 self-start sm:self-auto">
+          <div class="px-3.5 py-2 rounded-xl bg-res-soft border border-res">
+            <div class="text-[11px] font-extrabold text-res tracking-wider uppercase">Resistance</div>
+            <div class="text-xl font-black text-[var(--foreground)] leading-tight font-mono">
+              2,481.4 <span class="text-xs font-bold text-res">50.6%</span>
+            </div>
+          </div>
+          <div class="px-3.5 py-2 rounded-xl bg-enl-soft border border-enl">
+            <div class="text-[11px] font-extrabold text-enl tracking-wider uppercase">Enlightened</div>
+            <div class="text-xl font-black text-[var(--foreground)] leading-tight font-mono">
+              2,424.6 <span class="text-xs font-bold text-enl">49.4%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Annual Stats -->
+    <section>
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 md:p-3.5 shadow-sm">
+        <div class="grid grid-cols-2 md:grid-cols-4 text-center">
+          <div class="py-2 md:py-1 px-3 border-b border-r md:border-b-0 border-[var(--border)]">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-purple-400 block">Global Footprint</span>
+            <div class="mt-0.5 flex items-baseline justify-center gap-1.5 flex-wrap">
+              <span class="text-xl font-black text-[var(--foreground)]">45 Sites</span>
+              <span class="text-xs font-medium text-[var(--muted-foreground)]">(31 Countries)</span>
+            </div>
+          </div>
+          <div class="py-2 md:py-1 px-3 border-b md:border-b-0 md:border-r border-[var(--border)]">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-indigo-400 block">Shards Spawned</span>
+            <div class="mt-0.5 flex items-baseline justify-center gap-1.5 flex-wrap">
+              <span class="text-xl font-black text-[var(--foreground)]">2,565</span>
+              <span class="text-xs font-medium text-[var(--muted-foreground)]">(82.8% moved)</span>
+            </div>
+          </div>
+          <div class="py-2 md:py-1 px-3 border-r border-[var(--border)]">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-amber-400 block">Link Jumps Recorded</span>
+            <div class="mt-0.5 flex items-baseline justify-center gap-1.5 flex-wrap">
+              <span class="text-xl font-black text-[var(--foreground)]">4,757</span>
+              <span class="text-xs font-medium text-[var(--muted-foreground)]">(98.8% scored)</span>
+            </div>
+          </div>
+          <div class="py-2 md:py-1 px-3">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-rose-400 block">Ornamented Portals</span>
+            <div class="mt-0.5 flex items-baseline justify-center gap-1.5 flex-wrap">
+              <span class="text-xl font-black text-[var(--foreground)]">8,309</span>
+              <span class="text-xs font-medium text-[var(--muted-foreground)]">(4,025 active)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Season Breakdown -->
+    <section>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[calc(40%-10px)_repeat(3,minmax(0,1fr))] gap-3">
+        
+        <div class="p-2.5 rounded-xl bg-[var(--card)] border border-teal-500/25 flex flex-col space-y-2.5 shadow-sm">
+          
+    <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <a href="https://ingress.com/news/2026-plusgamma" target="_blank" rel="noopener noreferrer" class="badge-link" title="View Season Overview">
+          <img src="https://ingress.plus/api/files/i37o5ykupb5voix/l8mi1sc9582nd6n/pgamma_season_gold_pwiam7m7cu.png?thumb=128x128" alt="+Gamma Medal" crossorigin="anonymous" class="w-11 h-11 rounded-lg object-contain bg-black/20 p-0.5 border border-teal-500/30" loading="lazy" />
+        </a>
+        <div class="min-w-0">
+          <h3 class="text-base font-extrabold text-teal-400 leading-tight">
+            <a href="https://ingress.com/news/2026-plusgamma" target="_blank" rel="noopener noreferrer" class="intel-link" title="View Season Overview">+Gamma</a>
+          </h3>
+          <span class="text-xs font-semibold text-[var(--muted-foreground)]">Q1</span>
+        </div>
+      </div>
+      <div class="text-right font-mono text-xs font-bold leading-snug flex-shrink-0">
+        <div class="text-res">RES 1,538.2</div>
+        <div class="text-enl">ENL 1,227.8</div>
+      </div>
+    </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 flex-1">
+          <div class="p-2 rounded-lg bg-[var(--background)] border border-[var(--border)] flex flex-col justify-between">
+            <div class="space-y-1 sm:min-h-[3.25rem]">
+              <span class="text-xs font-bold text-teal-400 uppercase tracking-wide block text-center">Investigation</span>
+              <p class="text-[11px] leading-snug text-[var(--muted-foreground)]">Contain shards in NL-1331 mobile research labs</p>
+            </div>
+            <div class="my-auto py-1.5">
+              
+      <div class="flex flex-col items-center gap-1.5">
+        <div class="flag-row-edge-left flex justify-center gap-1.5">
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/shenyang" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-cn"></span>
+      <span class="flag-tooltip"><strong class="text-white">Shenyang, China</strong><br><span class="text-res font-mono font-bold">RES 0</span> &bull; <span class="text-enl font-mono font-bold">ENL 189</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/galle" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-lk"></span>
+      <span class="flag-tooltip"><strong class="text-white">Galle, Sri Lanka</strong><br><span class="text-res font-mono font-bold">RES 478</span> &bull; <span class="text-enl font-mono font-bold">ENL 0</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/jelgava" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-lv"></span>
+      <span class="flag-tooltip"><strong class="text-white">Jelgava, Latvia</strong><br><span class="text-res font-mono font-bold">RES 157</span> &bull; <span class="text-enl font-mono font-bold">ENL 36</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/karlovy-vary" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-cz"></span>
+      <span class="flag-tooltip"><strong class="text-white">Karlovy Vary, Czechia</strong><br><span class="text-res font-mono font-bold">RES 274</span> &bull; <span class="text-enl font-mono font-bold">ENL 0</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/mexico-city" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-mx"></span>
+      <span class="flag-tooltip"><strong class="text-white">Mexico City, Mexico</strong><br><span class="text-res font-mono font-bold">RES 278</span> &bull; <span class="text-enl font-mono font-bold">ENL 5</span></span>
+    </a></div>
+        <div class="flag-row-edge-left flex justify-center gap-1.5">
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/parepare" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-id"></span>
+      <span class="flag-tooltip"><strong class="text-white">Parepare, Indonesia</strong><br><span class="text-res font-mono font-bold">RES 0</span> &bull; <span class="text-enl font-mono font-bold">ENL 125</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/rouen" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-fr"></span>
+      <span class="flag-tooltip"><strong class="text-white">Rouen, France</strong><br><span class="text-res font-mono font-bold">RES 0</span> &bull; <span class="text-enl font-mono font-bold">ENL 332</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/santiago" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-cl"></span>
+      <span class="flag-tooltip"><strong class="text-white">Santiago, Chile</strong><br><span class="text-res font-mono font-bold">RES 120</span> &bull; <span class="text-enl font-mono font-bold">ENL 5</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/toronto" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-ca"></span>
+      <span class="flag-tooltip"><strong class="text-white">Toronto, Canada</strong><br><span class="text-res font-mono font-bold">RES 0</span> &bull; <span class="text-enl font-mono font-bold">ENL 167</span></span>
+    </a></div>
+      </div>
+            </div>
+            <div>
+              <div class="pt-1.5 text-[11px] space-y-0.5">
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Shards</span>
+        <strong class="font-mono">387</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Links</span>
+        <strong class="font-mono">206</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Jumps</span>
+        <strong class="font-mono">215</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Portals</span>
+        <strong class="font-mono">431</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Total Dist</span>
+        <strong class="font-mono">29km</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Avg Dist</span>
+        <strong class="font-mono">136 m/j</strong>
+      </div></div>
+            </div>
+          </div>
+          <div class="p-2 rounded-lg bg-[var(--background)] border border-[var(--border)] flex flex-col justify-between">
+            <div class="space-y-1 sm:min-h-[3.25rem]">
+              <span class="text-xs font-bold text-teal-400 uppercase tracking-wide block text-center">Anomaly</span>
+              <p class="text-[11px] leading-snug text-[var(--muted-foreground)]">13 shards, 3 jumps, 4 targets / 30m wave &bull; 100 season pts split by best wave</p>
+            </div>
+            <div class="my-auto py-1.5">
+              <div class="grid grid-cols-3 gap-1.5 w-fit mx-auto justify-items-center">
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/lisbon" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-pt"></span>
+      <span class="flag-tooltip"><strong class="text-white">Lisbon, Portugal</strong><br><span class="text-res font-mono font-bold">RES 63</span> &bull; <span class="text-enl font-mono font-bold">ENL 37</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/charlotte" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-us"></span>
+      <span class="flag-tooltip"><strong class="text-white">Charlotte, NC, USA</strong><br><span class="text-res font-mono font-bold">RES 16.7</span> &bull; <span class="text-enl font-mono font-bold">ENL 83.3</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/hong-kong" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-hk"></span>
+      <span class="flag-tooltip"><strong class="text-white">Hong Kong</strong><br><span class="text-res font-mono font-bold">RES 34.9</span> &bull; <span class="text-enl font-mono font-bold">ENL 65.1</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/zagreb" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-hr"></span>
+      <span class="flag-tooltip"><strong class="text-white">Zagreb, Croatia</strong><br><span class="text-res font-mono font-bold">RES 29</span> &bull; <span class="text-enl font-mono font-bold">ENL 71</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/hyderabad" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-in"></span>
+      <span class="flag-tooltip"><strong class="text-white">Hyderabad, India</strong><br><span class="text-res font-mono font-bold">RES 29.3</span> &bull; <span class="text-enl font-mono font-bold">ENL 70.7</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-plusgamma/buenos-aires" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-ar"></span>
+      <span class="flag-tooltip"><strong class="text-white">Buenos Aires, Argentina</strong><br><span class="text-res font-mono font-bold">RES 58.3</span> &bull; <span class="text-enl font-mono font-bold">ENL 41.7</span></span>
+    </a></div>
+            </div>
+            <div>
+              <div class="pt-1.5 text-[11px] space-y-0.5">
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Shards</span>
+        <strong class="font-mono">468</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Links</span>
+        <strong class="font-mono">618</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Jumps</span>
+        <strong class="font-mono">675</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Portals</span>
+        <strong class="font-mono">757</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Total Dist</span>
+        <strong class="font-mono">164km</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Avg Dist</span>
+        <strong class="font-mono">243 m/j</strong>
+      </div></div>
+            </div>
+          </div></div>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[var(--card)] border border-violet-500/25 flex flex-col space-y-2.5 shadow-sm">
+          
+    <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <a href="https://ingress.com/news/2026-orion" target="_blank" rel="noopener noreferrer" class="badge-link" title="View Season Overview">
+          <img src="https://ingress.plus/api/files/i37o5ykupb5voix/ulq7sreqyfxr3gd/orion_gold_nygjszbipy.png?thumb=128x128" alt="Orion Medal" crossorigin="anonymous" class="w-11 h-11 rounded-lg object-contain bg-black/20 p-0.5 border border-violet-500/30" loading="lazy" />
+        </a>
+        <div class="min-w-0">
+          <h3 class="text-base font-extrabold text-violet-400 leading-tight">
+            <a href="https://ingress.com/news/2026-orion" target="_blank" rel="noopener noreferrer" class="intel-link" title="View Season Overview">Orion</a>
+          </h3>
+          <span class="text-xs font-semibold text-[var(--muted-foreground)]">Q2</span>
+        </div>
+      </div>
+      <div class="text-right font-mono text-xs font-bold leading-snug flex-shrink-0">
+        <div class="text-res">RES 282.5</div>
+        <div class="text-enl">ENL 317.5</div>
+      </div>
+    </div>
+          
+          <div class="p-2 rounded-lg bg-[var(--background)] border border-[var(--border)] flex flex-col justify-between flex-1">
+            <div class="space-y-1 sm:min-h-[3.25rem]">
+              <span class="text-xs font-bold text-violet-400 uppercase tracking-wide block text-center">Anomaly</span>
+              <p class="text-[11px] leading-snug text-[var(--muted-foreground)]">23 shards, 4 jumps, 6 targets / 30m wave &bull; 100 season pts split by best paired waves</p>
+            </div>
+            <div class="my-auto py-1.5">
+              <div class="grid grid-cols-3 gap-1.5 w-fit mx-auto justify-items-center">
+    <a href="https://ingress-shards.github.io/#/2026-orion/sydney" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-au"></span>
+      <span class="flag-tooltip"><strong class="text-white">Sydney, Australia</strong><br><span class="text-res font-mono font-bold">RES 16.9</span> &bull; <span class="text-enl font-mono font-bold">ENL 83.1</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-orion/prague" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-cz"></span>
+      <span class="flag-tooltip"><strong class="text-white">Prague, Czechia</strong><br><span class="text-res font-mono font-bold">RES 80.9</span> &bull; <span class="text-enl font-mono font-bold">ENL 19.1</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-orion/kure-city" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-jp"></span>
+      <span class="flag-tooltip"><strong class="text-white">Kure City, Japan</strong><br><span class="text-res font-mono font-bold">RES 36.4</span> &bull; <span class="text-enl font-mono font-bold">ENL 63.6</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-orion/jersey-city" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-us"></span>
+      <span class="flag-tooltip"><strong class="text-white">Jersey City, NJ, USA</strong><br><span class="text-res font-mono font-bold">RES 29.5</span> &bull; <span class="text-enl font-mono font-bold">ENL 70.5</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-orion/geneva" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-ch"></span>
+      <span class="flag-tooltip"><strong class="text-white">Geneva, Switzerland</strong><br><span class="text-res font-mono font-bold">RES 67</span> &bull; <span class="text-enl font-mono font-bold">ENL 33</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-orion/lima" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-pe"></span>
+      <span class="flag-tooltip"><strong class="text-white">Lima, Peru</strong><br><span class="text-res font-mono font-bold">RES 51.8</span> &bull; <span class="text-enl font-mono font-bold">ENL 48.2</span></span>
+    </a></div>
+            </div>
+            <div>
+              <div class="pt-1.5 text-[11px] space-y-0.5">
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Shards</span>
+        <strong class="font-mono">828</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Links</span>
+        <strong class="font-mono">1,450</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Jumps</span>
+        <strong class="font-mono">1,541</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Portals</span>
+        <strong class="font-mono">1,324</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Total Dist</span>
+        <strong class="font-mono">462km</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Avg Dist</span>
+        <strong class="font-mono">300 m/j</strong>
+      </div></div>
+            </div>
+          </div>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[var(--card)] border border-orange-500/25 flex flex-col space-y-2.5 shadow-sm">
+          
+    <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <a href="https://ingress.com/news/2026-apollo" target="_blank" rel="noopener noreferrer" class="badge-link" title="View Season Overview">
+          <img src="https://ingress.plus/api/files/i37o5ykupb5voix/va12fhe9y6mm4cy/apollo_gold_ygkz4mgn14.png?thumb=128x128" alt="Apollo Medal" crossorigin="anonymous" class="w-11 h-11 rounded-lg object-contain bg-black/20 p-0.5 border border-orange-500/30" loading="lazy" />
+        </a>
+        <div class="min-w-0">
+          <h3 class="text-base font-extrabold text-orange-400 leading-tight">
+            <a href="https://ingress.com/news/2026-apollo" target="_blank" rel="noopener noreferrer" class="intel-link" title="View Season Overview">Apollo</a>
+          </h3>
+          <span class="text-xs font-semibold text-[var(--muted-foreground)]">Q3</span>
+        </div>
+      </div>
+      <div class="text-right font-mono text-xs font-bold leading-snug flex-shrink-0">
+        <div class="text-res">RES 280.7</div>
+        <div class="text-enl">ENL 319.3</div>
+      </div>
+    </div>
+          
+          <div class="p-2 rounded-lg bg-[var(--background)] border border-[var(--border)] flex flex-col justify-between flex-1">
+            <div class="space-y-1 sm:min-h-[3.25rem]">
+              <span class="text-xs font-bold text-orange-400 uppercase tracking-wide block text-center">Anomaly</span>
+              <p class="text-[11px] leading-snug text-[var(--muted-foreground)]">23 shards, 4 jumps, 6 targets / 30m wave &bull; 100 season pts split by best paired waves</p>
+            </div>
+            <div class="my-auto py-1.5">
+              <div class="grid grid-cols-3 gap-1.5 w-fit mx-auto justify-items-center">
+    <a href="https://ingress-shards.github.io/#/2026-apollo/helsinki" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-fi"></span>
+      <span class="flag-tooltip"><strong class="text-white">Helsinki, Finland</strong><br><span class="text-res font-mono font-bold">RES 82.1</span> &bull; <span class="text-enl font-mono font-bold">ENL 17.9</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-apollo/bogota" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-co"></span>
+      <span class="flag-tooltip"><strong class="text-white">Bogotá, Colombia</strong><br><span class="text-res font-mono font-bold">RES 42.6</span> &bull; <span class="text-enl font-mono font-bold">ENL 57.4</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-apollo/seoul" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-kr"></span>
+      <span class="flag-tooltip"><strong class="text-white">Seoul, South Korea</strong><br><span class="text-res font-mono font-bold">RES 35.1</span> &bull; <span class="text-enl font-mono font-bold">ENL 64.9</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-apollo/paris" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-fr"></span>
+      <span class="flag-tooltip"><strong class="text-white">Paris, France</strong><br><span class="text-res font-mono font-bold">RES 48.9</span> &bull; <span class="text-enl font-mono font-bold">ENL 51.1</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-apollo/singapore" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-sg"></span>
+      <span class="flag-tooltip"><strong class="text-white">Singapore</strong><br><span class="text-res font-mono font-bold">RES 63.4</span> &bull; <span class="text-enl font-mono font-bold">ENL 36.6</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-apollo/denver-co" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-us"></span>
+      <span class="flag-tooltip"><strong class="text-white">Denver, CO, USA</strong><br><span class="text-res font-mono font-bold">RES 8.6</span> &bull; <span class="text-enl font-mono font-bold">ENL 91.4</span></span>
+    </a></div>
+            </div>
+            <div>
+              <div class="pt-1.5 text-[11px] space-y-0.5">
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Shards</span>
+        <strong class="font-mono">828</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Links</span>
+        <strong class="font-mono">1,919</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Jumps</span>
+        <strong class="font-mono">2,108</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Portals</span>
+        <strong class="font-mono">1,314</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Total Dist</span>
+        <strong class="font-mono">462km</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Avg Dist</span>
+        <strong class="font-mono">219 m/j</strong>
+      </div></div>
+            </div>
+          </div>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[var(--card)] border border-pink-500/25 flex flex-col space-y-2.5 shadow-sm">
+          
+    <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <a href="https://ingress.com/news/2026-cygnus" target="_blank" rel="noopener noreferrer" class="badge-link" title="View Season Overview">
+          <img src="https://ingress.plus/api/files/i37o5ykupb5voix/fpscpx321ciimjx/cygnus_gold_0ge0huks85.png?thumb=128x128" alt="Cygnus Medal" crossorigin="anonymous" class="w-11 h-11 rounded-lg object-contain bg-black/20 p-0.5 border border-pink-500/30" loading="lazy" />
+        </a>
+        <div class="min-w-0">
+          <h3 class="text-base font-extrabold text-pink-400 leading-tight">
+            <a href="https://ingress.com/news/2026-cygnus" target="_blank" rel="noopener noreferrer" class="intel-link" title="View Season Overview">Cygnus</a>
+          </h3>
+          <span class="text-xs font-semibold text-[var(--muted-foreground)]">Q4</span>
+        </div>
+      </div>
+      <div class="text-right font-mono text-xs font-bold leading-snug flex-shrink-0">
+        <div class="text-res">RES 380</div>
+        <div class="text-enl">ENL 560</div>
+      </div>
+    </div>
+          
+          <div class="p-2 rounded-lg bg-[var(--background)] border border-[var(--border)] flex flex-col justify-between flex-1">
+            <div class="space-y-1 sm:min-h-[3.25rem]">
+              <span class="text-xs font-bold text-pink-400 uppercase tracking-wide block text-center">Shard Storm</span>
+              <p class="text-[11px] leading-snug text-[var(--muted-foreground)]">3 shards per site &bull; 6 sets of 3 staggered jumps &bull; precise link lengths required</p>
+            </div>
+            <div class="my-auto py-1.5">
+              <div class="grid grid-cols-6 flag-grid-edge-right gap-1.5 w-fit mx-auto justify-items-center">
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/suzhou" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-cn"></span>
+      <span class="flag-tooltip"><strong class="text-white">Suzhou, China</strong><br><span class="text-res font-mono font-bold">RES 0</span> &bull; <span class="text-enl font-mono font-bold">ENL 45</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/colombo" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-lk"></span>
+      <span class="flag-tooltip"><strong class="text-white">Colombo, Sri Lanka</strong><br><span class="text-res font-mono font-bold">RES 10</span> &bull; <span class="text-enl font-mono font-bold">ENL 25</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/sofia" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-bg"></span>
+      <span class="flag-tooltip"><strong class="text-white">Sofia, Bulgaria</strong><br><span class="text-res font-mono font-bold">RES 5</span> &bull; <span class="text-enl font-mono font-bold">ENL 70</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/magdeburg" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-de"></span>
+      <span class="flag-tooltip"><strong class="text-white">Magdeburg, Germany</strong><br><span class="text-res font-mono font-bold">RES 50</span> &bull; <span class="text-enl font-mono font-bold">ENL 0</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/toronto" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-ca"></span>
+      <span class="flag-tooltip"><strong class="text-white">Toronto, Canada</strong><br><span class="text-res font-mono font-bold">RES 0</span> &bull; <span class="text-enl font-mono font-bold">ENL 35</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/las-vegas" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-us"></span>
+      <span class="flag-tooltip"><strong class="text-white">Las Vegas, NV, USA</strong><br><span class="text-res font-mono font-bold">RES 5</span> &bull; <span class="text-enl font-mono font-bold">ENL 60</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/kochi" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-jp"></span>
+      <span class="flag-tooltip"><strong class="text-white">Kōchi, Japan</strong><br><span class="text-res font-mono font-bold">RES 30</span> &bull; <span class="text-enl font-mono font-bold">ENL 10</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/gurugram" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-in"></span>
+      <span class="flag-tooltip"><strong class="text-white">Gurugram, India</strong><br><span class="text-res font-mono font-bold">RES 0</span> &bull; <span class="text-enl font-mono font-bold">ENL 90</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/warsaw" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-pl"></span>
+      <span class="flag-tooltip"><strong class="text-white">Warsaw, Poland</strong><br><span class="text-res font-mono font-bold">RES 50</span> &bull; <span class="text-enl font-mono font-bold">ENL 10</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/norwich" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-gb"></span>
+      <span class="flag-tooltip"><strong class="text-white">Norwich, UK</strong><br><span class="text-res font-mono font-bold">RES 60</span> &bull; <span class="text-enl font-mono font-bold">ENL 10</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/asuncion" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-py"></span>
+      <span class="flag-tooltip"><strong class="text-white">Asunción, Paraguay</strong><br><span class="text-res font-mono font-bold">RES 5</span> &bull; <span class="text-enl font-mono font-bold">ENL 35</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/nashville" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-us"></span>
+      <span class="flag-tooltip"><strong class="text-white">Nashville, TN, USA</strong><br><span class="text-res font-mono font-bold">RES 0</span> &bull; <span class="text-enl font-mono font-bold">ENL 105</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/perth" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-au"></span>
+      <span class="flag-tooltip"><strong class="text-white">Perth, Australia</strong><br><span class="text-res font-mono font-bold">RES 30</span> &bull; <span class="text-enl font-mono font-bold">ENL 20</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/putrajaya" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-my"></span>
+      <span class="flag-tooltip"><strong class="text-white">Putrajaya, Malaysia</strong><br><span class="text-res font-mono font-bold">RES 10</span> &bull; <span class="text-enl font-mono font-bold">ENL 20</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/innsbruck" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-at"></span>
+      <span class="flag-tooltip"><strong class="text-white">Innsbruck, Austria</strong><br><span class="text-res font-mono font-bold">RES 10</span> &bull; <span class="text-enl font-mono font-bold">ENL 20</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/malaga" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-es"></span>
+      <span class="flag-tooltip"><strong class="text-white">Málaga, Spain</strong><br><span class="text-res font-mono font-bold">RES 35</span> &bull; <span class="text-enl font-mono font-bold">ENL 0</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/concepcion" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-cl"></span>
+      <span class="flag-tooltip"><strong class="text-white">Concepción, Chile</strong><br><span class="text-res font-mono font-bold">RES 20</span> &bull; <span class="text-enl font-mono font-bold">ENL 5</span></span>
+    </a>
+    <a href="https://ingress-shards.github.io/#/2026-cygnus/vancouver" target="_blank" rel="noopener noreferrer" class="flag-link">
+      <span class="fi fi-ca"></span>
+      <span class="flag-tooltip"><strong class="text-white">Vancouver, Canada</strong><br><span class="text-res font-mono font-bold">RES 60</span> &bull; <span class="text-enl font-mono font-bold">ENL 0</span></span>
+    </a></div>
+            </div>
+            <div>
+              <div class="pt-1.5 text-[11px] space-y-0.5">
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Shards</span>
+        <strong class="font-mono">54</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Links</span>
+        <strong class="font-mono">133</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Jumps</span>
+        <strong class="font-mono">161</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Portals</span>
+        <strong class="font-mono">199</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded bg-white/[0.04]">
+        <span class="text-zinc-200">Total Dist</span>
+        <strong class="font-mono">796km</strong>
+      </div>
+      <div class="flex justify-between items-baseline px-1.5 py-0.5 rounded">
+        <span class="text-zinc-200">Avg Dist</span>
+        <strong class="font-mono">4,942 m/j</strong>
+      </div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fastest Snipes & Ancient Corridors -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div class="bg-[var(--card)] rounded-xl border border-amber-500/25 p-4 space-y-3 shadow-sm">
+        <div class="flex items-center justify-between gap-2">
+          <h3 class="text-sm font-bold flex items-center gap-2 text-amber-400"><span>⚡</span> Fastest Link Snipes</h3>
+          <span class="text-xs text-[var(--muted-foreground)]">Shortest elapsed link &rarr; jump</span>
+        </div>
+        <div class="space-y-2">
+            <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+              <div class="space-y-1.5 min-w-0 flex-1">
+                <div class="font-bold font-mono text-sm text-res">#1 &bull; 1.134s</div>
+                
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=34.243318,132.560350" target="_blank" rel="noopener noreferrer" class="intel-link" title="亀山橋 — Click to open in Intel Map">亀山橋</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=34.244196,132.560329" target="_blank" rel="noopener noreferrer" class="intel-link" title="ガストピア呉の神社 — Click to open in Intel Map">ガストピア呉の神社</a></div>
+      </div>
+              </div>
+              <div class="text-right flex-shrink-0 space-y-0.5">
+                <div class="font-bold text-white text-sm leading-tight">Kure City, Japan</div>
+                <div class="text-[11px] text-[var(--muted-foreground)]">Shard 56</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Linked: May 30 &bull; 16:45:11.008</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Jumped: May 30 &bull; 16:45:12.142</div>
+              </div>
+            </div>
+            <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+              <div class="space-y-1.5 min-w-0 flex-1">
+                <div class="font-bold font-mono text-sm text-enl">#2 &bull; 1.284s</div>
+                
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=-34.590900,-58.422393" target="_blank" rel="noopener noreferrer" class="intel-link" title="Murales Varios — Click to open in Intel Map">Murales Varios</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=-34.591778,-58.419509" target="_blank" rel="noopener noreferrer" class="intel-link" title="Calesita — Click to open in Intel Map">Calesita</a></div>
+      </div>
+              </div>
+              <div class="text-right flex-shrink-0 space-y-0.5">
+                <div class="font-bold text-white text-sm leading-tight">Buenos Aires, Argentina</div>
+                <div class="text-[11px] text-[var(--muted-foreground)]">Shard 19</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Linked: Mar 21 &bull; 14:50:01.526</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Jumped: Mar 21 &bull; 14:50:02.810</div>
+              </div>
+            </div>
+            <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+              <div class="space-y-1.5 min-w-0 flex-1">
+                <div class="font-bold font-mono text-sm text-res">#3 &bull; 1.409s</div>
+                
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=35.224526,-80.843718" target="_blank" rel="noopener noreferrer" class="intel-link" title="Four Seasons — Click to open in Intel Map">Four Seasons</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=35.224665,-80.843863" target="_blank" rel="noopener noreferrer" class="intel-link" title="Fountain at Charlotte Plaza — Click to open in Intel Map">Fountain at Charlotte Plaza</a></div>
+      </div>
+              </div>
+              <div class="text-right flex-shrink-0 space-y-0.5">
+                <div class="font-bold text-white text-sm leading-tight">Charlotte, NC, USA</div>
+                <div class="text-[11px] text-[var(--muted-foreground)]">Shard 47</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Linked: Feb 28 &bull; 16:00:04.019</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Jumped: Feb 28 &bull; 16:00:05.428</div>
+              </div>
+            </div></div>
+      </div>
+
+      <div class="bg-[var(--card)] rounded-xl border border-purple-500/25 p-4 space-y-3 shadow-sm">
+        <div class="flex items-center justify-between gap-2">
+          <h3 class="text-sm font-bold flex items-center gap-2 text-purple-400"><span>🏛️</span> Ancient Corridors</h3>
+          <span class="text-xs text-[var(--muted-foreground)]">Longest standing pre-existing links</span>
+        </div>
+        <div class="space-y-2">
+            <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+              <div class="space-y-1.5 min-w-0 flex-1">
+                <div class="font-bold font-mono text-sm text-res">#1 &bull; 4y 2m 17d 2h 11m 19s</div>
+                
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=34.166574,132.576511" target="_blank" rel="noopener noreferrer" class="intel-link" title="日向殉忠碑 — Click to open in Intel Map">日向殉忠碑</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=34.195055,132.855629" target="_blank" rel="noopener noreferrer" class="intel-link" title="中ノ島灯台 — Click to open in Intel Map">中ノ島灯台</a></div>
+      </div>
+              </div>
+              <div class="text-right flex-shrink-0 space-y-0.5">
+                <div class="font-bold text-white text-sm leading-tight">Kure City, Japan</div>
+                <div class="text-[11px] text-[var(--muted-foreground)]">Shard 5</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Linked: Mar 13, 2022 &bull; 12:03:44</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Jumped: May 30, 2026 &bull; 14:15:03</div>
+              </div>
+            </div>
+            <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+              <div class="space-y-1.5 min-w-0 flex-1">
+                <div class="font-bold font-mono text-sm text-res">#2 &bull; 3y 9m 23d 6h 59m 51s</div>
+                
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=34.166574,132.576511" target="_blank" rel="noopener noreferrer" class="intel-link" title="日向殉忠碑 — Click to open in Intel Map">日向殉忠碑</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=34.290988,132.817766" target="_blank" rel="noopener noreferrer" class="intel-link" title="光海神社の海岸鳥居 — Click to open in Intel Map">光海神社の海岸鳥居</a></div>
+      </div>
+              </div>
+              <div class="text-right flex-shrink-0 space-y-0.5">
+                <div class="font-bold text-white text-sm leading-tight">Kure City, Japan</div>
+                <div class="text-[11px] text-[var(--muted-foreground)]">Shard 26</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Linked: Aug 07, 2022 &bull; 07:55:10</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Jumped: May 30, 2026 &bull; 14:55:02</div>
+              </div>
+            </div>
+            <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+              <div class="space-y-1.5 min-w-0 flex-1">
+                <div class="font-bold font-mono text-sm text-res">#3 &bull; 2y 6m 26d 4h 45m 26s</div>
+                
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=34.189992,132.905910" target="_blank" rel="noopener noreferrer" class="intel-link" title="レンガ製の煙突 — Click to open in Intel Map">レンガ製の煙突</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=33.994488,132.566483" target="_blank" rel="noopener noreferrer" class="intel-link" title="風切鼻の灯台 — Click to open in Intel Map">風切鼻の灯台</a></div>
+      </div>
+              </div>
+              <div class="text-right flex-shrink-0 space-y-0.5">
+                <div class="font-bold text-white text-sm leading-tight">Kure City, Japan</div>
+                <div class="text-[11px] text-[var(--muted-foreground)]">Shard 5</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Linked: Nov 04, 2023 &bull; 09:39:37</div>
+                <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Jumped: May 30, 2026 &bull; 14:25:03</div>
+              </div>
+            </div></div>
+      </div>
+    </section>
+
+    <!-- The "Near Misses" -->
+    <section class="bg-[var(--card)] rounded-xl border border-rose-500/25 p-4 space-y-3 shadow-sm">
+      <div class="flex items-center justify-between gap-2">
+        <h3 class="text-sm font-bold flex items-center gap-2 text-rose-400"><span>💔</span> The "Near Misses"</h3>
+        <span class="text-xs text-[var(--muted-foreground)]">Closest misses on link length targets</span>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+        <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+          <div class="space-y-1.5 min-w-0 flex-1">
+            <div class="font-bold font-mono text-sm text-enl">#1 &bull; 21.32m</div>
+            
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=52.627465,1.288056" target="_blank" rel="noopener noreferrer" class="intel-link" title="Chapelfield Bandstand — Click to open in Intel Map">Chapelfield Bandstand</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=52.582419,1.293286" target="_blank" rel="noopener noreferrer" class="intel-link" title="Caistor Church of St Edmund — Click to open in Intel Map">Caistor Church of St Edmund</a></div>
+      </div>
+          </div>
+          <div class="text-right flex-shrink-0 space-y-0.5">
+            <div class="font-bold text-white text-sm leading-tight">Norwich, UK</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">Shard 3</div>
+            <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Link Length: 5,021.32m</div>
+            <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Ceiling: 5,000m</div>
+            <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Oct 24 &bull; 14:49:01</div>
+          </div>
+        </div>
+        <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+          <div class="space-y-1.5 min-w-0 flex-1">
+            <div class="font-bold font-mono text-sm text-enl">#2 &bull; 29.66m</div>
+            
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=-25.282729,-57.635212" target="_blank" rel="noopener noreferrer" class="intel-link" title="Graffiti Libre Por Siempre — Click to open in Intel Map">Graffiti Libre Por Siempre</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=-25.276430,-57.641891" target="_blank" rel="noopener noreferrer" class="intel-link" title="administración Nacional de navegación y puerto — Click to open in Intel Map">administración Nacional de navegación y puerto</a></div>
+      </div>
+          </div>
+          <div class="text-right flex-shrink-0 space-y-0.5">
+            <div class="font-bold text-white text-sm leading-tight">Asunción, Paraguay</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">Shard 3</div>
+            <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Link Length: 970.34m</div>
+            <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Floor: 1,000m</div>
+            <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Oct 24 &bull; 14:49:01</div>
+          </div>
+        </div>
+        <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+          <div class="space-y-1.5 min-w-0 flex-1">
+            <div class="font-bold font-mono text-sm text-enl">#3 &bull; 90.68m</div>
+            
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=52.582419,1.293286" target="_blank" rel="noopener noreferrer" class="intel-link" title="Caistor Church of St Edmund — Click to open in Intel Map">Caistor Church of St Edmund</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=52.628098,1.288243" target="_blank" rel="noopener noreferrer" class="intel-link" title="Saint Mary's Croft — Click to open in Intel Map">Saint Mary's Croft</a></div>
+      </div>
+          </div>
+          <div class="text-right flex-shrink-0 space-y-0.5">
+            <div class="font-bold text-white text-sm leading-tight">Norwich, UK</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">Shard 1</div>
+            <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Link Length: 5,090.68m</div>
+            <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Ceiling: 5,000m</div>
+            <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Oct 24 &bull; 15:45:01</div>
+          </div>
+        </div></div>
+    </section>
+
+    <!-- Distance Extremes & Shard Magnet -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div class="bg-[var(--card)] p-4 rounded-xl border border-cyan-500/25 space-y-3 shadow-sm">
+        <div class="flex items-center justify-between gap-2">
+          <h3 class="text-sm font-bold flex items-center gap-2 text-cyan-400"><span>📏</span> Jump Distance Extremes</h3>
+          <span class="text-xs text-[var(--muted-foreground)]">1,913km Traveled in 2026 (Avg 407m / jump)</span>
+        </div>
+        <div class="space-y-2">
+          <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+            <div class="space-y-1.5 min-w-0 flex-1">
+              <div class="font-bold font-mono text-sm text-res">Furthest &bull; 62.19km</div>
+              
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=33.560886,133.534173" target="_blank" rel="noopener noreferrer" class="intel-link" title="藤並公園のオブジェ — Click to open in Intel Map">藤並公園のオブジェ</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=33.346080,134.153136" target="_blank" rel="noopener noreferrer" class="intel-link" title="池山神社 — Click to open in Intel Map">池山神社</a></div>
+      </div>
+            </div>
+            <div class="text-right flex-shrink-0 space-y-0.5">
+              <div class="font-bold text-white text-sm leading-tight">Kōchi, Japan</div>
+              <div class="text-[11px] text-[var(--muted-foreground)]">Shard 3</div>
+              <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Oct 24 &bull; 15:19:01</div>
+            </div>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+            <div class="space-y-1.5 min-w-0 flex-1">
+              <div class="font-bold font-mono text-sm text-enl">Shortest &bull; 3.95m</div>
+              
+      <div class="space-y-0.5">
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">From:</span> <a href="https://intel.ingress.com/?pll=22.380506,114.196782" target="_blank" rel="noopener noreferrer" class="intel-link" title="Statute St. Benedict — Click to open in Intel Map">Statute St. Benedict</a></div>
+        <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">To:</span> <a href="https://intel.ingress.com/?pll=22.380527,114.196813" target="_blank" rel="noopener noreferrer" class="intel-link" title="Church of St. Benedict — Click to open in Intel Map">Church of St. Benedict</a></div>
+      </div>
+            </div>
+            <div class="text-right flex-shrink-0 space-y-0.5">
+              <div class="font-bold text-white text-sm leading-tight">Hong Kong</div>
+              <div class="text-[11px] text-[var(--muted-foreground)]">Shard 2</div>
+              <div class="font-mono text-[11px] text-[var(--muted-foreground)]">Mar 14 &bull; 16:50:03</div>
+            </div>
+          </div></div>
+      </div>
+
+      <div class="bg-[var(--card)] p-4 rounded-xl border border-fuchsia-500/25 space-y-3 shadow-sm">
+        <div class="flex items-center justify-between gap-2">
+          <h3 class="text-sm font-bold flex items-center gap-2 text-fuchsia-400"><span>🧲</span> Shard Magnet</h3>
+          <span class="text-xs text-[var(--muted-foreground)]">Most unique shards seen by a single portal</span>
+        </div>
+        <div class="space-y-2">
+          <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+            <div class="space-y-1.5 min-w-0 flex-1">
+              <div class="font-bold font-mono text-sm text-fuchsia-300">#1 &bull; 13 shards (25 moves)</div>
+              <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">Portal:</span> <a href="https://intel.ingress.com/?pll=1.336437,103.848443" target="_blank" rel="noopener noreferrer" class="intel-link" title="Exercise Corner Behind 85B — Click to open in Intel Map">Exercise Corner Behind 85B</a></div>
+            </div>
+            <div class="text-right flex-shrink-0 space-y-0.5">
+              <div class="font-bold text-white text-sm leading-tight">Singapore</div>
+              <div class="font-mono text-[11px] text-[var(--muted-foreground)]">12 departures</div>
+              <div class="font-mono text-[11px] text-[var(--muted-foreground)]">13 arrivals</div>
+            </div>
+          </div>
+          <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs flex justify-between items-start gap-3">
+            <div class="space-y-1.5 min-w-0 flex-1">
+              <div class="font-bold font-mono text-sm text-fuchsia-300">#2 &bull; 12 shards (22 moves)</div>
+              <div class="truncate pb-0.5"><span class="text-[var(--muted-foreground)]">Portal:</span> <a href="https://intel.ingress.com/?pll=37.522629,126.926403" target="_blank" rel="noopener noreferrer" class="intel-link" title="세상의 프레임 — Click to open in Intel Map">세상의 프레임</a></div>
+            </div>
+            <div class="text-right flex-shrink-0 space-y-0.5">
+              <div class="font-bold text-white text-sm leading-tight">Seoul, South Korea</div>
+              <div class="font-mono text-[11px] text-[var(--muted-foreground)]">11 departures</div>
+              <div class="font-mono text-[11px] text-[var(--muted-foreground)]">11 arrivals</div>
+            </div>
+          </div></div>
+      </div>
+    </section>
+
+    <footer class="text-center text-[11px] text-[var(--muted-foreground)] pt-1 pb-2">
+      Data from <a href="https://ingress-shards.github.io/" target="_blank" rel="noopener noreferrer" class="intel-link text-amber-400">ingress-shards.github.io</a> &bull; Timestamps in local time
+    </footer>
+  </div>
+</body>
+</html>
