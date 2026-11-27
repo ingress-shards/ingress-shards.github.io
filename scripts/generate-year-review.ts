@@ -549,7 +549,7 @@ function buildYearReview(year: number): string {
     const resPct = totalCombinedScore > 0 ? ((totalRes / totalCombinedScore) * 100).toFixed(1) : "0.0";
     const enlPct = totalCombinedScore > 0 ? ((totalEnl / totalCombinedScore) * 100).toFixed(1) : "0.0";
     const movedPct = totalShards > 0 ? ((movingShards / totalShards) * 100).toFixed(1) : "0.0";
-    const scoredPct = totalMovesAll > 0 ? ((totalScoredMoves / totalMovesAll) * 100).toFixed(1) : "0.0";
+    const totalUnscoredMoves = totalMovesAll - totalScoredMoves;
     const totalKmYear = Math.round(totalScoredDistMeters / 1000);
     const avgMetersYear = totalScoredMoves > 0 ? Math.round(totalScoredDistMeters / totalScoredMoves) : 0;
 
@@ -764,9 +764,19 @@ function buildYearReview(year: number): string {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      touch-action: manipulation;
       transition: transform 0.15s ease, filter 0.15s ease;
     }
-    .flag-link:hover {
+    @media (hover: hover) {
+      .flag-link:hover {
+        transform: translateY(-1px) scale(1.1);
+        filter: drop-shadow(0 2px 6px rgba(251, 191, 36, 0.4));
+      }
+      .flag-link:hover .flag-tooltip {
+        opacity: 1;
+      }
+    }
+    .flag-link.tooltip-open {
       transform: translateY(-1px) scale(1.1);
       filter: drop-shadow(0 2px 6px rgba(251, 191, 36, 0.4));
     }
@@ -793,8 +803,8 @@ function buildYearReview(year: number): string {
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
       transition: opacity 0.12s ease;
     }
-    .flag-link:hover .flag-tooltip,
-    .flag-link:focus-visible .flag-tooltip {
+    .flag-link:focus-visible .flag-tooltip,
+    .flag-link.tooltip-open .flag-tooltip {
       opacity: 1;
     }
     .flag-row-edge-left > .flag-link:first-child .flag-tooltip {
@@ -877,17 +887,17 @@ function buildYearReview(year: number): string {
             </div>
           </div>
           <div class="py-2 md:py-1 px-3 border-r border-[var(--border)]">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-amber-400 block">Link Jumps Recorded</span>
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-amber-400 block">Link Jumps Scored</span>
             <div class="mt-0.5 flex items-baseline justify-center gap-1.5 flex-wrap">
-              <span class="text-xl font-black text-[var(--foreground)]">${formatNumber(totalMovesAll)}</span>
-              <span class="text-xs font-medium text-[var(--muted-foreground)]">(${scoredPct}% scored)</span>
+              <span class="text-xl font-black text-[var(--foreground)]">${formatNumber(totalScoredMoves)}</span>
+              <span class="text-xs font-medium text-[var(--muted-foreground)]">(${formatNumber(totalUnscoredMoves)} unscored)</span>
             </div>
           </div>
           <div class="py-2 md:py-1 px-3">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-rose-400 block">Ornamented Portals</span>
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-rose-400 block">Active Portals</span>
             <div class="mt-0.5 flex items-baseline justify-center gap-1.5 flex-wrap">
-              <span class="text-xl font-black text-[var(--foreground)]">${formatNumber(totalOrnamentedPortals)}</span>
-              <span class="text-xs font-medium text-[var(--muted-foreground)]">(${formatNumber(totalActivePortals)} active)</span>
+              <span class="text-xl font-black text-[var(--foreground)]">${formatNumber(totalActivePortals)}</span>
+              <span class="text-xs font-medium text-[var(--muted-foreground)]">(${formatNumber(totalOrnamentedPortals)} ornamented)</span>
             </div>
           </div>
         </div>
@@ -949,9 +959,76 @@ function buildYearReview(year: number): string {
     </section>
 
     <footer class="text-center text-[11px] text-[var(--muted-foreground)] pt-1 pb-2">
-      Data from <a href="https://ingress-shards.github.io/" target="_blank" rel="noopener noreferrer" class="intel-link text-amber-400">ingress-shards.github.io</a> &bull; Timestamps in local time
+      Data from <a href="https://ingress-shards.github.io/" target="_blank" rel="noopener noreferrer" class="intel-link text-amber-400">ingress-shards.github.io</a> &bull; Timestamps in local time &bull; AI-assisted engineering (real data, zero vibes)
     </footer>
   </div>
+  <script>
+    (() => {
+      let activeFlag = null;
+      let lastInputWasTouch = false;
+
+      const closeActiveTooltip = () => {
+        if (!activeFlag) return;
+        activeFlag.classList.remove("tooltip-open");
+        activeFlag = null;
+      };
+
+      const openTooltip = (link) => {
+        if (activeFlag && activeFlag !== link) {
+          activeFlag.classList.remove("tooltip-open");
+        }
+        activeFlag = link;
+        activeFlag.classList.add("tooltip-open");
+      };
+
+      const handleOutsidePointer = (target) => {
+        if (!activeFlag) return;
+        if (!(target instanceof Element) || !target.closest(".flag-link")) {
+          closeActiveTooltip();
+        }
+      };
+
+      if ("PointerEvent" in window) {
+        document.addEventListener("pointerdown", (e) => {
+          lastInputWasTouch = e.pointerType === "touch" || e.pointerType === "pen";
+          handleOutsidePointer(e.target);
+        }, { passive: true, capture: true });
+      } else {
+        document.addEventListener("touchstart", (e) => {
+          lastInputWasTouch = true;
+          handleOutsidePointer(e.target);
+        }, { passive: true, capture: true });
+      }
+
+      document.addEventListener("keydown", (e) => {
+        lastInputWasTouch = false;
+        if (e.key === "Escape") {
+          closeActiveTooltip();
+        }
+      }, { passive: true, capture: true });
+
+      document.addEventListener("click", (e) => {
+        const link = e.target instanceof Element ? e.target.closest(".flag-link") : null;
+        if (!link) {
+          closeActiveTooltip();
+          return;
+        }
+
+        if (!lastInputWasTouch) {
+          closeActiveTooltip();
+          return;
+        }
+
+        if (activeFlag === link) {
+          closeActiveTooltip();
+          return;
+        }
+
+        e.preventDefault();
+        openTooltip(link);
+      });
+    })();
+  </script>
 </body>
 </html>
 `;
